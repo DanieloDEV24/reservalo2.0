@@ -1,0 +1,18 @@
+CRITICAL - 2024-04-07 17:20:42 --> ParseError: syntax error, unexpected token "}", expecting "," or ";"
+in APPPATH\Views\instalaciones\instalacion.php on line 55.
+ 1 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalacion', [], true)
+ 3 APPPATH\Controllers\instalaciones.php(82): view('instalaciones/instalacion', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->mostrarInstalacion(1)
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-07 17:21:00 --> ParseError: syntax error, unexpected token ":", expecting "," or ";"
+in APPPATH\Views\instalaciones\instalacion.php on line 54.
+ 1 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalacion', [], true)
+ 3 APPPATH\Controllers\instalaciones.php(82): view('instalaciones/instalacion', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->mostrarInstalacion(1)
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

@@ -1,0 +1,22 @@
+CRITICAL - 2024-04-27 11:53:27 --> ErrorException: Undefined variable $categorias
+in APPPATH\Views\mantenimientos\crudMantenimientos.php on line 24.
+ 1 APPPATH\Views\mantenimientos\crudMantenimientos.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categorias', 'C:\\proyectos\\reservalo\\app\\Views\\mantenimientos\\crudMantenimientos.php', 24)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\mantenimientos\\crudMantenimientos.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('mantenimientos/crudMantenimientos', [], true)
+ 5 APPPATH\Controllers\mantenimientos.php(140): view('mantenimientos/crudMantenimientos', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\mantenimientos->crudMantenimientos()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\mantenimientos))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-27 11:54:50 --> ErrorException: Undefined variable $modal
+in APPPATH\Views\mantenimientos\crudMantenimientos.php on line 115.
+ 1 APPPATH\Views\mantenimientos\crudMantenimientos.php(115): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $modal', 'C:\\proyectos\\reservalo\\app\\Views\\mantenimientos\\crudMantenimientos.php', 115)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\mantenimientos\\crudMantenimientos.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('mantenimientos/crudMantenimientos', [], true)
+ 5 APPPATH\Controllers\mantenimientos.php(140): view('mantenimientos/crudMantenimientos', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\mantenimientos->crudMantenimientos()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\mantenimientos))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

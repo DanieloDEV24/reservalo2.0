@@ -1,0 +1,50 @@
+CRITICAL - 2024-04-30 16:40:35 --> ErrorException: Undefined variable $instalacionSel
+in APPPATH\Views\mantenimientos\nuevoMantenimiento.php on line 22.
+ 1 APPPATH\Views\mantenimientos\nuevoMantenimiento.php(22): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $instalacionSel', 'C:\\proyectos\\reservalo\\app\\Views\\mantenimientos\\nuevoMantenimiento.php', 22)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\mantenimientos\\nuevoMantenimiento.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('mantenimientos/nuevoMantenimiento', [], true)
+ 5 APPPATH\Controllers\mantenimientos.php(98): view('mantenimientos/nuevoMantenimiento', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\mantenimientos->crudMantenimientos()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\mantenimientos))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-30 16:51:53 --> ErrorException: Undefined variable $fechaDefecto
+in APPPATH\Views\mantenimientos\nuevoMantenimiento.php on line 53.
+ 1 APPPATH\Views\mantenimientos\nuevoMantenimiento.php(53): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fechaDefecto', 'C:\\proyectos\\reservalo\\app\\Views\\mantenimientos\\nuevoMantenimiento.php', 53)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\mantenimientos\\nuevoMantenimiento.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('mantenimientos/nuevoMantenimiento', [], true)
+ 5 APPPATH\Controllers\mantenimientos.php(99): view('mantenimientos/nuevoMantenimiento', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\mantenimientos->crudMantenimientos()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\mantenimientos))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-30 17:37:55 --> ErrorException: Undefined array key "id_instalacion"
+in APPPATH\Controllers\instalaciones.php on line 402.
+ 1 APPPATH\Controllers\instalaciones.php(402): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_instalacion"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 402)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->obtenerInfoInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-30 17:37:56 --> ErrorException: Undefined array key "id_instalacion"
+in APPPATH\Controllers\instalaciones.php on line 402.
+ 1 APPPATH\Controllers\instalaciones.php(402): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_instalacion"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 402)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->obtenerInfoInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-30 17:37:58 --> ErrorException: Undefined array key "id_instalacion"
+in APPPATH\Controllers\instalaciones.php on line 402.
+ 1 APPPATH\Controllers\instalaciones.php(402): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_instalacion"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 402)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->obtenerInfoInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-30 17:38:00 --> ErrorException: Undefined array key "id_instalacion"
+in APPPATH\Controllers\instalaciones.php on line 402.
+ 1 APPPATH\Controllers\instalaciones.php(402): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_instalacion"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 402)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->obtenerInfoInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

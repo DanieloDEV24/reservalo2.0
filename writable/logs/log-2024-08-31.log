@@ -1,0 +1,68 @@
+CRITICAL - 2024-08-31 11:27:27 --> CodeIgniter\Exceptions\FrameworkException: The framework needs the following extension(s) installed and loaded: intl.
+in SYSTEMPATH\CodeIgniter.php on line 252.
+ 1 SYSTEMPATH\CodeIgniter.php(252): CodeIgniter\Exceptions\FrameworkException::forMissingExtension('intl')
+ 2 SYSTEMPATH\CodeIgniter.php(214): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+ 3 FCPATH\index.php(67): CodeIgniter\CodeIgniter->initialize()
+CRITICAL - 2024-08-31 11:27:27 --> ErrorException: Uncaught Error: Class "Locale" not found in D:\proyectos\reservalo\system\Helpers\number_helper.php:137
+Stack trace:
+#0 D:\proyectos\reservalo\system\Helpers\number_helper.php(56): format_number(4.0, 2, NULL, Array)
+#1 D:\proyectos\reservalo\system\Debug\BaseExceptionHandler.php(152): number_to_size(4.0, 2)
+#2 D:\proyectos\reservalo\app\Views\errors\html\error_exception.php(384): CodeIgniter\Debug\BaseExceptionHandler::describeMemory(4194304)
+#3 D:\proyectos\reservalo\system\Debug\BaseExceptionHandler.php(258): include('D:\\proyectos\\re...')
+#4 D:\proyectos\reservalo\system\Debug\BaseExceptionHandler.php(261): CodeIgniter\Debug\BaseExceptionHandler->CodeIgniter\Debug\{closure}()
+#5 D:\proyectos\reservalo\system\Debug\ExceptionHandler.php(112): CodeIgniter\Debug\BaseExceptionHandler->render(Object(CodeIgniter\Exceptions\FrameworkException), 500, 'D:\\proyectos\\re...')
+#6 D:\proyectos\reservalo\system\Debug\Exceptions.php(156): CodeIgniter\Debug\ExceptionHandler->handle(Object(CodeIgniter\Exceptions\FrameworkException), Object(CodeIgniter\HTTP\IncomingRequest), Object(CodeIgniter\HTTP\Response), 500, 1)
+#7 [internal function]: CodeIgniter\Debug\Exceptions->exceptionHandler(Object(CodeIgniter\Exceptions\FrameworkException))
+#8 {main}
+  thrown
+【Previous Exception】
+CodeIgniter\Exceptions\FrameworkException
+The framework needs the following extension(s) installed and loaded: intl.
+#0 D:\proyectos\reservalo\system\CodeIgniter.php(252): CodeIgniter\Exceptions\FrameworkException::forMissingExtension('intl')
+#1 D:\proyectos\reservalo\system\CodeIgniter.php(214): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+#2 D:\proyectos\reservalo\index.php(67): CodeIgniter\CodeIgniter->initialize()
+#3 {main}
+in SYSTEMPATH\Helpers\number_helper.php on line 137.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+ERROR - 2024-08-31 09:29:19 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'reservalo' in D:\proyectos\reservalo\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 D:\proyectos\reservalo\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo', 3306, '', 0)
+#1 D:\proyectos\reservalo\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 D:\proyectos\reservalo\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 D:\proyectos\reservalo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 D:\proyectos\reservalo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 D:\proyectos\reservalo\app\Controllers\Home.php(19): CodeIgniter\BaseModel->findAll()
+#7 D:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#8 D:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 D:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 D:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'reservalo' in D:\proyectos\reservalo\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 D:\proyectos\reservalo\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 D:\proyectos\reservalo\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 D:\proyectos\reservalo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#4 D:\proyectos\reservalo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#5 D:\proyectos\reservalo\app\Controllers\Home.php(19): CodeIgniter\BaseModel->findAll()
+#6 D:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#7 D:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 D:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 D:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-08-31 09:29:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'reservalo'
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `instalaciones`', [], false)
+ 3 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\Home.php(19): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-08-31 09:38:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -1,0 +1,56 @@
+CRITICAL - 2024-04-06 10:08:17 --> ErrorException: Undefined variable $instalacion
+in APPPATH\Views\instalaciones\index.php on line 59.
+ 1 APPPATH\Views\instalaciones\index.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $instalacion', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\index.php', 59)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\index.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/index', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(62): view('instalaciones/index', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-06 10:39:56 --> ErrorException: Undefined variable $cuerpo
+in APPPATH\Views\plantillas\main.php on line 43.
+ 1 APPPATH\Views\plantillas\main.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cuerpo', 'C:\\proyectos\\reservalo\\app\\Views\\plantillas\\main.php', 43)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\plantillas\\main.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\View\View.php(244): CodeIgniter\View\View->render('plantillas/main', [], true)
+ 5 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/index', [], true)
+ 6 APPPATH\Controllers\instalaciones.php(61): view('instalaciones/index', [...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-06 11:00:21 --> RuntimeException: View themes, no current section.
+in SYSTEMPATH\View\View.php on line 425.
+ 1 APPPATH\Views\instalaciones\instalacion.php(48): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\instalacion.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalacion', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(82): view('instalaciones/instalacion', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->mostrarInstalacion(1)
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-06 11:09:35 --> RuntimeException: View themes, no current section.
+in SYSTEMPATH\View\View.php on line 425.
+ 1 APPPATH\Views\instalaciones\instalacion.php(48): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\instalacion.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalacion', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(82): view('instalaciones/instalacion', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->mostrarInstalacion(1)
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-06 11:40:42 --> RuntimeException: View themes, no current section.
+in SYSTEMPATH\View\View.php on line 425.
+ 1 APPPATH\Views\instalaciones\instalacion.php(48): CodeIgniter\View\View->endSection()
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\instalacion.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalacion', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(82): view('instalaciones/instalacion', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->mostrarInstalacion(1)
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

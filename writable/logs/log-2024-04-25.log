@@ -1,0 +1,252 @@
+ERROR - 2024-04-25 18:07:34 --> mysqli_sql_exception: Unknown column 'id_instalaciones' in 'where clause' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instala...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instala...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instala...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instala...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update(Array)
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion(Array, '1')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+ERROR - 2024-04-25 18:07:34 --> mysqli_sql_exception: Unknown column 'id_instalaciones' in 'where clause' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instala...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instala...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instala...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instala...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update(Array)
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion(Array, '1')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-04-25 18:07:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_instalaciones' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `id_categoria` = :id_categoria:, `nombre` = :nombre:, `descripcion` = :descripcion:, `borrado` = :borrado:, `mantenimiento` = :mantenimiento:, `suplemento_material` = :suplemento_material:, `foto` = :foto:, `imagen1` = :imagen1:, `imagen2` = :imagen2:, `imagen3` = :imagen3:, `latencia` = :latencia:, `longitud` = :longitud:
+WHERE `id_instalaciones` = :id_instalaciones:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 APPPATH\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 18:07:35 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_instalaciones' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `id_categoria` = :id_categoria:, `nombre` = :nombre:, `descripcion` = :descripcion:, `borrado` = :borrado:, `mantenimiento` = :mantenimiento:, `suplemento_material` = :suplemento_material:, `foto` = :foto:, `imagen1` = :imagen1:, `imagen2` = :imagen2:, `imagen3` = :imagen3:, `latencia` = :latencia:, `longitud` = :longitud:
+WHERE `id_instalaciones` = :id_instalaciones:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 APPPATH\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 18:07:35 --> [Caused by] mysqli_sql_exception: Unknown column 'id_instalaciones' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `id_categoria` = :id_categoria:, `nombre` = :nombre:, `descripcion` = :descripcion:, `borrado` = :borrado:, `mantenimiento` = :mantenimiento:, `suplemento_material` = :suplemento_material:, `foto` = :foto:, `imagen1` = :imagen1:, `imagen2` = :imagen2:, `imagen3` = :imagen3:, `latencia` = :latencia:, `longitud` = :longitud:
+WHERE `id_instalaciones` = :id_instalaciones:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 18:07:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_instalaciones' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `id_categoria` = :id_categoria:, `nombre` = :nombre:, `descripcion` = :descripcion:, `borrado` = :borrado:, `mantenimiento` = :mantenimiento:, `suplemento_material` = :suplemento_material:, `foto` = :foto:, `imagen1` = :imagen1:, `imagen2` = :imagen2:, `imagen3` = :imagen3:, `latencia` = :latencia:, `longitud` = :longitud:
+WHERE `id_instalaciones` = :id_instalaciones:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 APPPATH\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 18:07:35 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_instalaciones' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `id_categoria` = :id_categoria:, `nombre` = :nombre:, `descripcion` = :descripcion:, `borrado` = :borrado:, `mantenimiento` = :mantenimiento:, `suplemento_material` = :suplemento_material:, `foto` = :foto:, `imagen1` = :imagen1:, `imagen2` = :imagen2:, `imagen3` = :imagen3:, `latencia` = :latencia:, `longitud` = :longitud:
+WHERE `id_instalaciones` = :id_instalaciones:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 APPPATH\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 18:07:35 --> [Caused by] mysqli_sql_exception: Unknown column 'id_instalaciones' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `id_categoria` = :id_categoria:, `nombre` = :nombre:, `descripcion` = :descripcion:, `borrado` = :borrado:, `mantenimiento` = :mantenimiento:, `suplemento_material` = :suplemento_material:, `foto` = :foto:, `imagen1` = :imagen1:, `imagen2` = :imagen2:, `imagen3` = :imagen3:, `latencia` = :latencia:, `longitud` = :longitud:
+WHERE `id_instalaciones` = :id_instalaciones:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-04-25 18:09:17 --> mysqli_sql_exception: Unknown column 'id_instalaciones' in 'where clause' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instala...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instala...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instala...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instala...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update(Array)
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion(Array, '1')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-04-25 18:09:22 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_instalaciones' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `id_categoria` = :id_categoria:, `nombre` = :nombre:, `descripcion` = :descripcion:, `borrado` = :borrado:, `mantenimiento` = :mantenimiento:, `suplemento_material` = :suplemento_material:, `foto` = :foto:, `imagen1` = :imagen1:, `imagen2` = :imagen2:, `imagen3` = :imagen3:, `latencia` = :latencia:, `longitud` = :longitud:
+WHERE `id_instalaciones` = :id_instalaciones:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 APPPATH\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-04-25 18:09:57 --> mysqli_sql_exception: Unknown column 'id_instalaciones' in 'where clause' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instala...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instala...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instala...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instala...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update(Array)
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion(Array, '1')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-04-25 18:09:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_instalaciones' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `id_categoria` = :id_categoria:, `nombre` = :nombre:, `descripcion` = :descripcion:, `borrado` = :borrado:, `mantenimiento` = :mantenimiento:, `suplemento_material` = :suplemento_material:, `foto` = :foto:, `imagen1` = :imagen1:, `imagen2` = :imagen2:, `imagen3` = :imagen3:, `latencia` = :latencia:, `longitud` = :longitud:
+WHERE `id_instalaciones` = :id_instalaciones:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 APPPATH\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 18:09:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_instalaciones' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `id_categoria` = :id_categoria:, `nombre` = :nombre:, `descripcion` = :descripcion:, `borrado` = :borrado:, `mantenimiento` = :mantenimiento:, `suplemento_material` = :suplemento_material:, `foto` = :foto:, `imagen1` = :imagen1:, `imagen2` = :imagen2:, `imagen3` = :imagen3:, `latencia` = :latencia:, `longitud` = :longitud:
+WHERE `id_instalaciones` = :id_instalaciones:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 APPPATH\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 18:09:57 --> [Caused by] mysqli_sql_exception: Unknown column 'id_instalaciones' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `id_categoria` = :id_categoria:, `nombre` = :nombre:, `descripcion` = :descripcion:, `borrado` = :borrado:, `mantenimiento` = :mantenimiento:, `suplemento_material` = :suplemento_material:, `foto` = :foto:, `imagen1` = :imagen1:, `imagen2` = :imagen2:, `imagen3` = :imagen3:, `latencia` = :latencia:, `longitud` = :longitud:
+WHERE `id_instalaciones` = :id_instalaciones:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 18:09:58 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_instalaciones' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `id_categoria` = :id_categoria:, `nombre` = :nombre:, `descripcion` = :descripcion:, `borrado` = :borrado:, `mantenimiento` = :mantenimiento:, `suplemento_material` = :suplemento_material:, `foto` = :foto:, `imagen1` = :imagen1:, `imagen2` = :imagen2:, `imagen3` = :imagen3:, `latencia` = :latencia:, `longitud` = :longitud:
+WHERE `id_instalaciones` = :id_instalaciones:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 APPPATH\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 18:09:58 --> [Caused by] mysqli_sql_exception: Unknown column 'id_instalaciones' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `id_categoria` = 1, `nombre` = \'Pabellón Municipal\', `descripcion` = \'En esta instalación podrás jugar a fútbol sala, baloncesto o usar redes portables y jugar al badminton\', `borrado` = 0, `mantenimiento` = 1, `suplemento_material` = \'2\', `foto` = \'futsal.jpg\', `imagen1` = \'futsal1.jpeg\', `imagen2` = \'futsal2.jpeg\', `imagen3` = \'futsal3.jpeg\', `latencia` = \'37.114075\', `longitud` = \'-4.7002783\'
+WHERE `id_instalaciones` = \'1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `id_categoria` = :id_categoria:, `nombre` = :nombre:, `descripcion` = :descripcion:, `borrado` = :borrado:, `mantenimiento` = :mantenimiento:, `suplemento_material` = :suplemento_material:, `foto` = :foto:, `imagen1` = :imagen1:, `imagen2` = :imagen2:, `imagen3` = :imagen3:, `latencia` = :latencia:, `longitud` = :longitud:
+WHERE `id_instalaciones` = :id_instalaciones:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(164): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\instalaciones.php(533): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->editarInstalacion()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 20:07:22 --> ErrorException: Undefined array key "categoria"
+in APPPATH\Models\instalacionesModel.php on line 149.
+ 1 APPPATH\Models\instalacionesModel.php(149): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "categoria"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 149)
+ 2 APPPATH\Controllers\instalaciones.php(580): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->borrarInstalacion()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 20:07:22 --> ErrorException: Undefined array key "categoria"
+in APPPATH\Models\instalacionesModel.php on line 149.
+ 1 APPPATH\Models\instalacionesModel.php(149): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "categoria"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 149)
+ 2 APPPATH\Controllers\instalaciones.php(580): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->borrarInstalacion()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 20:08:25 --> ErrorException: Undefined array key "categoria"
+in APPPATH\Models\instalacionesModel.php on line 149.
+ 1 APPPATH\Models\instalacionesModel.php(149): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "categoria"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 149)
+ 2 APPPATH\Controllers\instalaciones.php(580): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->borrarInstalacion()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 20:08:25 --> ErrorException: Undefined array key "categoria"
+in APPPATH\Models\instalacionesModel.php on line 149.
+ 1 APPPATH\Models\instalacionesModel.php(149): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "categoria"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 149)
+ 2 APPPATH\Controllers\instalaciones.php(580): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->borrarInstalacion()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-25 20:09:28 --> ErrorException: Undefined array key "categoria"
+in APPPATH\Models\instalacionesModel.php on line 149.
+ 1 APPPATH\Models\instalacionesModel.php(149): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "categoria"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 149)
+ 2 APPPATH\Controllers\instalaciones.php(580): App\Models\instalacionesModel->editarInstalacion([...], '1')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->borrarInstalacion()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

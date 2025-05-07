@@ -1,0 +1,356 @@
+INFO - 2024-05-13 07:27:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 07:27:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 07:27:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 07:28:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-13 07:31:48 --> Error connecting to the database: mysqli_sql_exception: Access denied for user '2daw11'@'localhost' (using password: YES) in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', '2daw11', Object(SensitiveParameterValue), 'BD2DAW11', 3306, '', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\proyectos\reservalo\system\Model.php(199): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\system\BaseModel.php(577): CodeIgniter\Model->doFind(true, '1')
+#6 C:\proyectos\reservalo\app\Controllers\instalaciones.php(605): CodeIgniter\BaseModel->find('1')
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user '****'@'localhost' (using password: YES) in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\proyectos\reservalo\system\Model.php(199): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\proyectos\reservalo\system\BaseModel.php(577): CodeIgniter\Model->doFind(true, '1')
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(605): CodeIgniter\BaseModel->find('1')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-13 07:31:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Access denied for user '****'@'localhost' (using password: YES)
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `instalaciones`
+WHERE `instalaciones`.`id_instalacion` = :instalaciones.id_instalacion:', [...], false)
+ 3 SYSTEMPATH\Model.php(199): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(577): CodeIgniter\Model->doFind(true, '1')
+ 5 APPPATH\Controllers\instalaciones.php(605): CodeIgniter\BaseModel->find('1')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-13 07:34:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 07:35:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 07:35:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 07:35:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 07:36:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 07:37:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 07:41:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 14:01:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 14:04:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 14:04:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 15:16:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 15:18:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 15:18:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 15:18:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 15:19:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-13 16:21:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-13 16:23:04 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `DISTINC...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINC...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINC...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINC...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(296): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-02')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-13 16:23:31 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `horas_pistas`
+JOIN `reservalo`.`periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `reservalo`.`tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_tipo_horario` IN :plantilla_horarios.id_tipo_horario:', [...], false)
+ 2 APPPATH\Models\horariosModel.php(296): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-02')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-13 16:23:31 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `horas_pistas`
+JOIN `reservalo`.`periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `reservalo`.`tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= \'2024-02-02\'
+AND `periodos`.`fecha_final` >= \'2024-02-02\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (11)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `horas_pistas`
+JOIN `reservalo`.`periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `reservalo`.`tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= \'2024-02-02\'
+AND `periodos`.`fecha_final` >= \'2024-02-02\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (11)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `horas_pistas`
+JOIN `reservalo`.`periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `reservalo`.`tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_tipo_horario` IN :plantilla_horarios.id_tipo_horario:', [...], false)
+ 4 APPPATH\Models\horariosModel.php(296): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-02')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-13 16:23:31 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `horas_pistas`
+JOIN `reservalo`.`periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `reservalo`.`tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= \'2024-02-02\'
+AND `periodos`.`fecha_final` >= \'2024-02-02\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (11)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `horas_pistas`
+JOIN `reservalo`.`periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `reservalo`.`tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= \'2024-02-02\'
+AND `periodos`.`fecha_final` >= \'2024-02-02\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (11)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `horas_pistas`
+JOIN `reservalo`.`periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `reservalo`.`tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= \'2024-02-02\'
+AND `periodos`.`fecha_final` >= \'2024-02-02\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (11)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `horas_pistas`
+JOIN `reservalo`.`periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `reservalo`.`tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_tipo_horario` IN :plantilla_horarios.id_tipo_horario:', [...], false)
+ 5 APPPATH\Models\horariosModel.php(296): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-02')
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-13 16:24:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-13 16:25:29 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`
+FROM `horas_pistas`
+JOIN...' at line 1 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `DISTINC...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINC...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINC...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINC...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(296): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-02')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-13 16:25:46 --> ErrorException: Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`
+FROM `horas_pistas`
+JOIN...' at line 1 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `DISTINC...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINC...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINC...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINC...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(296): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-02')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`
+FROM `horas_pistas`
+JOIN...' at line 1 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:311
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINC...')
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINC...')
+#2 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINC...', Array, false)
+#3 C:\proyectos\reservalo\app\Models\horariosModel.php(296): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\proyectos\reservalo\app\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-02')
+#5 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+  thrown
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2024-05-13 16:26:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-13 16:26:42 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`
+FROM `horas_pistas`
+JOIN...' at line 1 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `DISTINC...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINC...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINC...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINC...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(296): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-01')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-13 16:54:48 --> ErrorException: Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`
+FROM `horas_pistas`
+JOIN...' at line 1 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `DISTINC...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINC...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINC...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINC...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(296): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-01')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`
+FROM `horas_pistas`
+JOIN...' at line 1 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:311
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINC...')
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINC...')
+#2 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINC...', Array, false)
+#3 C:\proyectos\reservalo\app\Models\horariosModel.php(296): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\proyectos\reservalo\app\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-01')
+#5 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+  thrown
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2024-05-13 16:55:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-13 16:55:35 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`
+FROM (`tipos_horarios`, ...' at line 1 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `DISTINC...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINC...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINC...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINC...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(301): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-01')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-13 16:59:43 --> ErrorException: Uncaught mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`
+FROM (`tipos_horarios`, ...' at line 1 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `DISTINC...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINC...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINC...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINC...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(301): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-01')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`
+FROM (`tipos_horarios`, ...' at line 1 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:311
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINC...')
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINC...')
+#2 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINC...', Array, false)
+#3 C:\proyectos\reservalo\app\Models\horariosModel.php(301): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\proyectos\reservalo\app\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-01')
+#5 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+  thrown
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2024-05-13 16:59:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-13 17:00:34 --> mysqli_sql_exception: Not unique table/alias: 'tipos_horarios' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT DISTINCT...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(306): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-02')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-13 17:01:33 --> ErrorException: Uncaught mysqli_sql_exception: Not unique table/alias: 'tipos_horarios' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT DISTINCT...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(306): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-02')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Not unique table/alias: 'tipos_horarios' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:311
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT...')
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT...')
+#2 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT...', Array, false)
+#3 C:\proyectos\reservalo\app\Models\horariosModel.php(306): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\proyectos\reservalo\app\Controllers\instalaciones.php(731): App\Models\horariosModel->cambiarHorarioSoloMananas('2024-02-02')
+#5 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+  thrown
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2024-05-13 17:01:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-13 17:02:31 --> mysqli_sql_exception: Illegal parameter data types date and row for operation '<=' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `plantil...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `plantil...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `plantil...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `plantil...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(405): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(732): App\Models\horariosModel->getIdPlantillaSoloMananas(Array)
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}

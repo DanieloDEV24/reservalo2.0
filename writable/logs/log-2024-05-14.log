@@ -1,0 +1,655 @@
+INFO - 2024-05-14 06:31:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 06:32:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 06:33:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 06:33:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-14 07:42:35 --> mysqli_sql_exception: Illegal parameter data types date and row for operation '<=' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `plantil...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `plantil...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `plantil...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `plantil...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(405): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(732): App\Models\horariosModel->getIdPlantillaSoloMananas(Array)
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-14 07:44:16 --> ErrorException: Uncaught mysqli_sql_exception: Illegal parameter data types date and row for operation '<=' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `plantil...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `plantil...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `plantil...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `plantil...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(405): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(732): App\Models\horariosModel->getIdPlantillaSoloMananas(Array)
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Illegal parameter data types date and row for operation '<=' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:311
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `plantil...')
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `plantil...')
+#2 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `plantil...', Array, false)
+#3 C:\proyectos\reservalo\app\Models\horariosModel.php(405): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\proyectos\reservalo\app\Controllers\instalaciones.php(732): App\Models\horariosModel->getIdPlantillaSoloMananas(Array)
+#5 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+  thrown
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2024-05-14 07:46:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-14 07:46:55 --> ErrorException: Undefined array key "apertura_tarde"
+in APPPATH\Controllers\instalaciones.php on line 755.
+ 1 APPPATH\Controllers\instalaciones.php(755): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "apertura_tarde"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 755)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-14 07:47:21 --> ErrorException: Undefined array key 0
+in APPPATH\Models\horariosModel.php on line 180.
+ 1 APPPATH\Models\horariosModel.php(180): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\proyectos\\reservalo\\app\\Models\\horariosModel.php', 180)
+ 2 APPPATH\Controllers\instalaciones.php(709): App\Models\horariosModel->getInfoHorasPistas('2024-02-03')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-14 07:49:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 07:50:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 07:50:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 07:50:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 07:50:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 07:51:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 07:51:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 07:52:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 07:53:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-14 07:54:53 --> ErrorException: Undefined array key "apertura_tarde"
+in APPPATH\Controllers\instalaciones.php on line 755.
+ 1 APPPATH\Controllers\instalaciones.php(755): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "apertura_tarde"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 755)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-14 07:56:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 07:57:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 07:59:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-14 08:07:23 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT DISTINCT...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(279): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(736): App\Models\horariosModel->cambiarHorarioCerrado('2024-01-26')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-14 08:07:24 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_tipo_horario` IN :plantilla_horarios.id_tipo_horario:', [...], false)
+ 2 APPPATH\Models\horariosModel.php(279): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\instalaciones.php(736): App\Models\horariosModel->cambiarHorarioCerrado('2024-01-26')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-14 08:07:24 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_tipo_horario` IN :plantilla_horarios.id_tipo_horario:', [...], false)
+ 4 APPPATH\Models\horariosModel.php(279): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\instalaciones.php(736): App\Models\horariosModel->cambiarHorarioCerrado('2024-01-26')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-14 08:07:24 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_tipo_horario` IN :plantilla_horarios.id_tipo_horario:', [...], false)
+ 5 APPPATH\Models\horariosModel.php(279): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\instalaciones.php(736): App\Models\horariosModel->cambiarHorarioCerrado('2024-01-26')
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-14 08:07:57 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT DISTINCT...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(279): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(736): App\Models\horariosModel->cambiarHorarioCerrado('2024-01-26')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-14 08:08:07 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_tipo_horario` IN :plantilla_horarios.id_tipo_horario:', [...], false)
+ 2 APPPATH\Models\horariosModel.php(279): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\instalaciones.php(736): App\Models\horariosModel->cambiarHorarioCerrado('2024-01-26')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-14 08:08:07 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_tipo_horario` IN :plantilla_horarios.id_tipo_horario:', [...], false)
+ 4 APPPATH\Models\horariosModel.php(279): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\instalaciones.php(736): App\Models\horariosModel->cambiarHorarioCerrado('2024-01-26')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-14 08:08:07 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_tipo_horario` IN :plantilla_horarios.id_tipo_horario:', [...], false)
+ 5 APPPATH\Models\horariosModel.php(279): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\instalaciones.php(736): App\Models\horariosModel->cambiarHorarioCerrado('2024-01-26')
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-14 08:11:02 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT DISTINCT...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(279): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(736): App\Models\horariosModel->cambiarHorarioCerrado('2024-01-26')
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+INFO - 2024-05-14 08:11:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-14 08:12:00 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_tipo_horario` IN :plantilla_horarios.id_tipo_horario:', [...], false)
+ 2 APPPATH\Models\horariosModel.php(279): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\instalaciones.php(736): App\Models\horariosModel->cambiarHorarioCerrado('2024-01-26')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-14 08:12:00 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_tipo_horario` IN :plantilla_horarios.id_tipo_horario:', [...], false)
+ 4 APPPATH\Models\horariosModel.php(279): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\instalaciones.php(736): App\Models\horariosModel->cambiarHorarioCerrado('2024-01-26')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-14 08:12:00 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apert...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-26\'
+AND `periodos`.`fecha_final` >= \'2024-01-26\'
+AND `plantilla_horarios`.`id_tipo_horario` IN (8)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT DISTINCT `DISTINCT` `tipos_horarios`.`apertura_manana`, `tipos_horarios`.`cierre_manana`, `tipos_horarios`.`apertura_tarde`, `tipos_horarios`.`cierre_tarde`
+FROM `tipos_horarios`
+JOIN `plantilla_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+JOIN `periodos` ON `periodos`.`id_periodo` = `plantilla_horarios`.`id_periodo`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_tipo_horario` IN :plantilla_horarios.id_tipo_horario:', [...], false)
+ 5 APPPATH\Models\horariosModel.php(279): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\instalaciones.php(736): App\Models\horariosModel->cambiarHorarioCerrado('2024-01-26')
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-14 08:12:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 08:30:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 08:31:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 10:18:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-14 10:18:28 --> ErrorException: Cannot redeclare crear_calendario() (previously declared in C:\proyectos\reservalo\app\Helpers\calendar_helper.php:7)
+in APPPATH\Helpers\calendar_helper.php on line 25.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2024-05-14 10:19:14 --> ErrorException: Undefined variable $start_day
+in APPPATH\Helpers\calendar_helper.php on line 55.
+ 1 APPPATH\Helpers\calendar_helper.php(55): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $start_day', 'C:\\proyectos\\reservalo\\app\\Helpers\\calendar_helper.php', 55)
+ 2 SYSTEMPATH\Common.php(653): include_once('C:\\proyectos\\reservalo\\app\\Helpers\\calendar_helper.php')
+ 3 APPPATH\Controllers\instalaciones.php(617): helper([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-14 10:21:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:34:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:34:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:34:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:35:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:36:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:36:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:36:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:37:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:37:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:38:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:40:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:40:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:42:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:42:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:42:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:45:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:45:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:46:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-14 11:46:59 --> ErrorException: Undefined array key "id_instalación"
+in APPPATH\Controllers\reservas.php on line 21.
+ 1 APPPATH\Controllers\reservas.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_instalación"', 'C:\\proyectos\\reservalo\\app\\Controllers\\reservas.php', 21)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->mostrarPanelReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-14 11:47:56 --> ErrorException: Undefined array key "id_instalación"
+in APPPATH\Controllers\reservas.php on line 21.
+ 1 APPPATH\Controllers\reservas.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_instalación"', 'C:\\proyectos\\reservalo\\app\\Controllers\\reservas.php', 21)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->mostrarPanelReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-14 11:48:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:48:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-14 11:49:16 --> ErrorException: Undefined variable $calendar
+in APPPATH\Helpers\calendar_helper.php on line 30.
+ 1 APPPATH\Helpers\calendar_helper.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $calendar', 'C:\\proyectos\\reservalo\\app\\Helpers\\calendar_helper.php', 30)
+ 2 APPPATH\Controllers\reservas.php(31): calendarioMes(2024, 5, '1')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->mostrarPanelReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-14 11:50:04 --> ErrorException: Undefined variable $calendar
+in APPPATH\Helpers\calendar_helper.php on line 30.
+ 1 APPPATH\Helpers\calendar_helper.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $calendar', 'C:\\proyectos\\reservalo\\app\\Helpers\\calendar_helper.php', 30)
+ 2 APPPATH\Controllers\reservas.php(31): calendarioMes(2024, 5, '1')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->mostrarPanelReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-14 11:50:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:53:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:53:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:54:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:54:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:58:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 11:59:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 12:03:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 12:03:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 12:04:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 12:04:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 12:05:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 12:06:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 12:07:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 12:08:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 12:08:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 12:10:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 12:10:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 12:10:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:43:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:43:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:43:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:43:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:44:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:44:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:44:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:44:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:45:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:47:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:48:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:56:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:56:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:56:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:56:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:57:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 14:58:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:02:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:02:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:03:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:03:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:04:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:04:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:04:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:05:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:05:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:06:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:18:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:19:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:20:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:20:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:21:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:21:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:39:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:39:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:39:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:40:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:41:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:41:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:41:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:42:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:44:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:46:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:52:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:52:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:53:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:54:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:54:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:54:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:54:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:55:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:56:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:56:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 15:59:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:02:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:02:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:02:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:02:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:03:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:03:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:03:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:03:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:04:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:04:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:05:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:05:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:05:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:05:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:06:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:06:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:06:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:06:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:07:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:07:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:08:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:08:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:11:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:12:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:12:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:12:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:12:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:13:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:13:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:14:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:14:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:14:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:14:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:14:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:14:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:15:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:15:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:16:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:16:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:16:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:17:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:17:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:21:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:21:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:21:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:25:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:25:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:25:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:25:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:25:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:25:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:54:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:55:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 16:55:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:01:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:01:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:01:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:02:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:02:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:04:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:07:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:07:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:09:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:11:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:12:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:14:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:14:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:18:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:20:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:20:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:32:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:33:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:34:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:35:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:37:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:39:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:43:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:45:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:47:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:50:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:50:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:51:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:52:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:53:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:53:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:54:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:54:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:55:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:56:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:56:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 17:57:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 18:05:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 18:56:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:18:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:21:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:23:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-14 19:23:29 --> ErrorException: Undefined variable $pistasDisponibles
+in APPPATH\Controllers\reservas.php on line 91.
+ 1 APPPATH\Controllers\reservas.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pistasDisponibles', 'C:\\proyectos\\reservalo\\app\\Controllers\\reservas.php', 91)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->obtenerDatosReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-14 19:23:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-14 19:33:18 --> ErrorException: Undefined variable $pistasDisponibles
+in APPPATH\Controllers\reservas.php on line 91.
+ 1 APPPATH\Controllers\reservas.php(91): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pistasDisponibles', 'C:\\proyectos\\reservalo\\app\\Controllers\\reservas.php', 91)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->obtenerDatosReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-14 19:33:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:34:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:34:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:34:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:34:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:34:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:34:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:35:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:35:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:36:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:39:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:39:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:39:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:41:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:43:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-14 19:43:42 --> ErrorException: Undefined variable $pistasDisponibles
+in APPPATH\Controllers\reservas.php on line 90.
+ 1 APPPATH\Controllers\reservas.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pistasDisponibles', 'C:\\proyectos\\reservalo\\app\\Controllers\\reservas.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->obtenerDatosReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-14 19:44:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:45:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:46:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:47:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-14 19:48:05 --> ErrorException: Undefined variable $pistasNoDisponibles
+in APPPATH\Controllers\reservas.php on line 90.
+ 1 APPPATH\Controllers\reservas.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pistasNoDisponibles', 'C:\\proyectos\\reservalo\\app\\Controllers\\reservas.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->obtenerDatosReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-14 19:49:46 --> ErrorException: Undefined variable $pistasNoDisponibles
+in APPPATH\Controllers\reservas.php on line 90.
+ 1 APPPATH\Controllers\reservas.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $pistasNoDisponibles', 'C:\\proyectos\\reservalo\\app\\Controllers\\reservas.php', 90)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->obtenerDatosReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-14 19:50:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:52:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-14 19:52:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

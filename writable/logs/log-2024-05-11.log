@@ -1,0 +1,486 @@
+INFO - 2024-05-11 08:26:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 08:27:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 08:27:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 08:29:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 08:38:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 08:41:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 08:49:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 08:49:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 08:50:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 08:50:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 08:51:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 08:51:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 08:52:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 08:55:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 09:19:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 09:42:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-11 09:42:28 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (temp file operation failed) in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ho...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ho...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ho...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ho...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(65): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(653): App\Models\horariosModel->establecerHorario(Array)
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-11 09:42:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (temp file operation failed)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (:nombre:, :fecha_inicio:, :fecha_final:)', [...], false)
+ 2 APPPATH\Models\horariosModel.php(65): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\instalaciones.php(653): App\Models\horariosModel->establecerHorario([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 09:42:29 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (temp file operation failed)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (:nombre:, :fecha_inicio:, :fecha_final:)', [...], false)
+ 4 APPPATH\Models\horariosModel.php(65): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\instalaciones.php(653): App\Models\horariosModel->establecerHorario([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 09:42:29 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (temp file operation failed)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (:nombre:, :fecha_inicio:, :fecha_final:)', [...], false)
+ 5 APPPATH\Models\horariosModel.php(65): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\instalaciones.php(653): App\Models\horariosModel->establecerHorario([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-11 09:42:39 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (temp file operation failed) in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ho...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ho...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ho...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ho...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(65): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(653): App\Models\horariosModel->establecerHorario(Array)
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-11 09:42:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (temp file operation failed)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (:nombre:, :fecha_inicio:, :fecha_final:)', [...], false)
+ 2 APPPATH\Models\horariosModel.php(65): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\instalaciones.php(653): App\Models\horariosModel->establecerHorario([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 09:42:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (temp file operation failed)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (:nombre:, :fecha_inicio:, :fecha_final:)', [...], false)
+ 4 APPPATH\Models\horariosModel.php(65): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\instalaciones.php(653): App\Models\horariosModel->establecerHorario([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 09:42:40 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (temp file operation failed)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (:nombre:, :fecha_inicio:, :fecha_final:)', [...], false)
+ 5 APPPATH\Models\horariosModel.php(65): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\instalaciones.php(653): App\Models\horariosModel->establecerHorario([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-11 09:43:46 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (temp file operation failed) in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ho...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ho...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ho...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ho...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(65): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\proyectos\reservalo\app\Controllers\instalaciones.php(653): App\Models\horariosModel->establecerHorario(Array)
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-11 09:43:46 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (temp file operation failed)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (:nombre:, :fecha_inicio:, :fecha_final:)', [...], false)
+ 2 APPPATH\Models\horariosModel.php(65): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\instalaciones.php(653): App\Models\horariosModel->establecerHorario([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 09:43:46 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (temp file operation failed)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (:nombre:, :fecha_inicio:, :fecha_final:)', [...], false)
+ 4 APPPATH\Models\horariosModel.php(65): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\instalaciones.php(653): App\Models\horariosModel->establecerHorario([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 09:43:46 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (temp file operation failed)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (\'horario prueba 1\', \'2024-01-02\', \'2024-02-29\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`nombre`, `fecha_inicio`, `fecha_final`) VALUES (:nombre:, :fecha_inicio:, :fecha_final:)', [...], false)
+ 5 APPPATH\Models\horariosModel.php(65): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\instalaciones.php(653): App\Models\horariosModel->establecerHorario([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-11 09:44:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 09:44:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 09:44:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 09:48:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 09:48:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 09:49:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 09:51:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 10:39:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 10:40:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 10:41:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 10:50:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 10:51:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 10:52:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 10:54:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 10:54:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 10:56:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 10:57:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 12:19:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 12:21:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 12:23:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 12:24:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 12:25:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 12:26:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 12:39:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 12:40:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 12:40:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 12:40:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 12:42:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 12:47:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 13:50:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-11 13:50:39 --> ArgumentCountError: Too few arguments to function App\Models\horariosModel::plantilla(), 0 passed in C:\proyectos\reservalo\app\Controllers\instalaciones.php on line 345 and exactly 1 expected
+in APPPATH\Models\horariosModel.php on line 29.
+ 1 APPPATH\Controllers\instalaciones.php(345): App\Models\horariosModel->plantilla()
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crudInstalaciones()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-11 13:52:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-11 13:52:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-11 15:03:43 --> Error: Object of class DateTime could not be converted to string
+in SYSTEMPATH\Database\Query.php on line 333.
+ 1 SYSTEMPATH\Database\Query.php(333): strtr('SELECT *
+FROM `periodos`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:', [...])
+ 2 SYSTEMPATH\Database\Query.php(308): CodeIgniter\Database\Query->matchNamedBinds('SELECT *
+FROM `periodos`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:', [...])
+ 3 SYSTEMPATH\Database\Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 4 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\Query->getQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `periodos`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:', [...], false)
+ 6 APPPATH\Models\horariosModel.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 7 APPPATH\Helpers\calendar_helper.php(181): App\Models\horariosModel->getPeriodo(Object(DateTime))
+ 8 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 9 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+10 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+11 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+12 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+13 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 15:05:56 --> Error: Object of class DateTime could not be converted to string
+in SYSTEMPATH\Database\Query.php on line 333.
+ 1 SYSTEMPATH\Database\Query.php(333): strtr('SELECT *
+FROM `periodos`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:', [...])
+ 2 SYSTEMPATH\Database\Query.php(308): CodeIgniter\Database\Query->matchNamedBinds('SELECT *
+FROM `periodos`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:', [...])
+ 3 SYSTEMPATH\Database\Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 4 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\Query->getQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `periodos`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:', [...], false)
+ 6 APPPATH\Models\horariosModel.php(114): CodeIgniter\Database\BaseBuilder->get()
+ 7 APPPATH\Helpers\calendar_helper.php(181): App\Models\horariosModel->getPeriodo(Object(DateTime))
+ 8 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 9 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+10 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+11 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+12 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+13 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 15:06:21 --> ErrorException: Undefined array key 0
+in APPPATH\Models\horariosModel.php on line 118.
+ 1 APPPATH\Models\horariosModel.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\proyectos\\reservalo\\app\\Models\\horariosModel.php', 118)
+ 2 APPPATH\Helpers\calendar_helper.php(181): App\Models\horariosModel->getPeriodo('2024-01-03')
+ 3 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 4 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+ 5 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 15:15:00 --> ErrorException: Undefined array key 0
+in APPPATH\Models\horariosModel.php on line 118.
+ 1 APPPATH\Models\horariosModel.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\proyectos\\reservalo\\app\\Models\\horariosModel.php', 118)
+ 2 APPPATH\Helpers\calendar_helper.php(181): App\Models\horariosModel->getPeriodo('2024-01-03')
+ 3 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 4 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+ 5 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 15:15:35 --> Error: Object of class DateTime could not be converted to string
+in SYSTEMPATH\Database\Query.php on line 333.
+ 1 SYSTEMPATH\Database\Query.php(333): strtr('SELECT *
+FROM `plantilla_horarios`
+JOIN `periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_dia_semana` = :plantilla_horarios.id_dia_semana:
+AND `id_tipo_horario` = :id_tipo_horario:', [...])
+ 2 SYSTEMPATH\Database\Query.php(308): CodeIgniter\Database\Query->matchNamedBinds('SELECT *
+FROM `plantilla_horarios`
+JOIN `periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_dia_semana` = :plantilla_horarios.id_dia_semana:
+AND `id_tipo_horario` = :id_tipo_horario:', [...])
+ 3 SYSTEMPATH\Database\Query.php(159): CodeIgniter\Database\Query->compileBinds()
+ 4 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\Query->getQuery()
+ 5 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `plantilla_horarios`
+JOIN `periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_dia_semana` = :plantilla_horarios.id_dia_semana:
+AND `id_tipo_horario` = :id_tipo_horario:', [...], false)
+ 6 APPPATH\Models\horariosModel.php(45): CodeIgniter\Database\BaseBuilder->get()
+ 7 APPPATH\Helpers\calendar_helper.php(195): App\Models\horariosModel->plantilla(Object(DateTime), Object(DateTime), '3', 4)
+ 8 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 9 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+10 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+11 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+12 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+13 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+14 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-11 15:17:29 --> mysqli_sql_exception: Column 'id_tipo_horario' in where clause is ambiguous in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(45): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Helpers\calendar_helper.php(198): App\Models\horariosModel->plantilla('2024-01-02', '2024-02-29', '3', 4)
+#6 C:\proyectos\reservalo\app\Helpers\calendar_helper.php(54): estaEnHorarioNormal(Array, Object(DateTime), '1')
+#7 C:\proyectos\reservalo\app\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+#8 C:\proyectos\reservalo\app\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+#10 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#11 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-05-11 15:17:29 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_tipo_horario' in where clause is ambiguous
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `plantilla_horarios`
+JOIN `periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_dia_semana` = :plantilla_horarios.id_dia_semana:
+AND `id_tipo_horario` = :id_tipo_horario:', [...], false)
+ 2 APPPATH\Models\horariosModel.php(45): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Helpers\calendar_helper.php(198): App\Models\horariosModel->plantilla('2024-01-02', '2024-02-29', '3', 4)
+ 4 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 5 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+ 6 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 15:17:29 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_tipo_horario' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `plantilla_horarios`
+JOIN `periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-02\'
+AND `periodos`.`fecha_final` >= \'2024-02-29\'
+AND `plantilla_horarios`.`id_dia_semana` = \'3\'
+AND `id_tipo_horario` = 4')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `plantilla_horarios`
+JOIN `periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-02\'
+AND `periodos`.`fecha_final` >= \'2024-02-29\'
+AND `plantilla_horarios`.`id_dia_semana` = \'3\'
+AND `id_tipo_horario` = 4')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `plantilla_horarios`
+JOIN `periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_dia_semana` = :plantilla_horarios.id_dia_semana:
+AND `id_tipo_horario` = :id_tipo_horario:', [...], false)
+ 4 APPPATH\Models\horariosModel.php(45): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Helpers\calendar_helper.php(198): App\Models\horariosModel->plantilla('2024-01-02', '2024-02-29', '3', 4)
+ 6 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 7 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+ 8 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 15:17:29 --> [Caused by] mysqli_sql_exception: Column 'id_tipo_horario' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *
+FROM `plantilla_horarios`
+JOIN `periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-02\'
+AND `periodos`.`fecha_final` >= \'2024-02-29\'
+AND `plantilla_horarios`.`id_dia_semana` = \'3\'
+AND `id_tipo_horario` = 4', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `plantilla_horarios`
+JOIN `periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-02\'
+AND `periodos`.`fecha_final` >= \'2024-02-29\'
+AND `plantilla_horarios`.`id_dia_semana` = \'3\'
+AND `id_tipo_horario` = 4')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `plantilla_horarios`
+JOIN `periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= \'2024-01-02\'
+AND `periodos`.`fecha_final` >= \'2024-02-29\'
+AND `plantilla_horarios`.`id_dia_semana` = \'3\'
+AND `id_tipo_horario` = 4')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `plantilla_horarios`
+JOIN `periodos` ON `plantilla_horarios`.`id_periodo` = `periodos`.`id_periodo`
+JOIN `tipos_horarios` ON `plantilla_horarios`.`id_tipo_horario` = `tipos_horarios`.`id_tipo_horario`
+WHERE `periodos`.`fecha_inicio` <= :periodos.fecha_inicio:
+AND `periodos`.`fecha_final` >= :periodos.fecha_final:
+AND `plantilla_horarios`.`id_dia_semana` = :plantilla_horarios.id_dia_semana:
+AND `id_tipo_horario` = :id_tipo_horario:', [...], false)
+ 5 APPPATH\Models\horariosModel.php(45): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Helpers\calendar_helper.php(198): App\Models\horariosModel->plantilla('2024-01-02', '2024-02-29', '3', 4)
+ 7 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 8 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+ 9 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+10 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+11 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+12 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 15:18:34 --> ErrorException: Undefined array key 0
+in APPPATH\Helpers\calendar_helper.php on line 201.
+ 1 APPPATH\Helpers\calendar_helper.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\proyectos\\reservalo\\app\\Helpers\\calendar_helper.php', 201)
+ 2 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 3 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+ 4 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 15:25:34 --> TypeError: DateTime::createFromFormat(): Argument #2 ($datetime) must be of type string, DateTime given
+in APPPATH\Helpers\calendar_helper.php on line 313.
+ 1 APPPATH\Helpers\calendar_helper.php(313): DateTime::createFromFormat('H:i:s', Object(DateTime))
+ 2 APPPATH\Helpers\calendar_helper.php(203): obtenerHorasEntreDosHoras(Object(DateTime), Object(DateTime))
+ 3 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 4 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+ 5 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 15:26:36 --> ErrorException: Undefined array key 0
+in APPPATH\Helpers\calendar_helper.php on line 201.
+ 1 APPPATH\Helpers\calendar_helper.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\proyectos\\reservalo\\app\\Helpers\\calendar_helper.php', 201)
+ 2 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 3 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+ 4 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 15:28:12 --> ErrorException: Undefined array key 0
+in APPPATH\Models\horariosModel.php on line 49.
+ 1 APPPATH\Models\horariosModel.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\proyectos\\reservalo\\app\\Models\\horariosModel.php', 49)
+ 2 APPPATH\Helpers\calendar_helper.php(198): App\Models\horariosModel->plantilla('2024-01-07', '7', 4)
+ 3 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 4 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+ 5 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 15:32:39 --> ErrorException: Undefined variable $plantilla
+in APPPATH\Helpers\calendar_helper.php on line 204.
+ 1 APPPATH\Helpers\calendar_helper.php(204): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $plantilla', 'C:\\proyectos\\reservalo\\app\\Helpers\\calendar_helper.php', 204)
+ 2 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 3 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(1, 2024, '1')
+ 4 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 15:33:39 --> ErrorException: Undefined array key 0
+in APPPATH\Models\horariosModel.php on line 117.
+ 1 APPPATH\Models\horariosModel.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\proyectos\\reservalo\\app\\Models\\horariosModel.php', 117)
+ 2 APPPATH\Helpers\calendar_helper.php(181): App\Models\horariosModel->getPeriodo('2024-11-11')
+ 3 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 4 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(11, 2024, '1')
+ 5 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-11 15:39:12 --> ErrorException: Undefined array key 0
+in APPPATH\Models\horariosModel.php on line 117.
+ 1 APPPATH\Models\horariosModel.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\proyectos\\reservalo\\app\\Models\\horariosModel.php', 117)
+ 2 APPPATH\Helpers\calendar_helper.php(181): App\Models\horariosModel->getPeriodo('2024-11-11')
+ 3 APPPATH\Helpers\calendar_helper.php(54): estaEnHorarioNormal([...], Object(DateTime), '1')
+ 4 APPPATH\Helpers\calendar_helper.php(16): crear_calendar_mes(11, 2024, '1')
+ 5 APPPATH\Controllers\instalaciones.php(616): crear_calendario(2024, '1')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

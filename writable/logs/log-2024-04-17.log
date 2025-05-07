@@ -1,0 +1,6 @@
+CRITICAL - 2024-04-17 15:58:26 --> Error: Class "App\Controllers\instalacionModel" not found
+in APPPATH\Controllers\instalaciones.php on line 121.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

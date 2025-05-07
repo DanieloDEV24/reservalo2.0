@@ -1,0 +1,106 @@
+CRITICAL - 2024-04-19 06:52:59 --> ErrorException: move_uploaded_file(http://localhost/reservalo/images/billar.jpg): Failed to open stream: HTTP wrapper does not support writeable connections
+in APPPATH\Controllers\instalaciones.php on line 242.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'move_uploaded_file(http://localhost/reservalo/images/billar.jpg): Failed to open stream: HTTP wrapper does not support writeable connections', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 242)
+ 2 APPPATH\Controllers\instalaciones.php(242): move_uploaded_file('C:\\xampp\\tmp\\php7010.tmp', 'http://localhost/reservalo/images/billar.jpg')
+ 3 APPPATH\Controllers\instalaciones.php(223): App\Controllers\instalaciones->subirArchivo('C:\\xampp\\tmp\\php7010.tmp', 'billar.jpg')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-19 07:02:33 --> ErrorException: move_uploaded_file(http://localhost/reservalo/images/alerta.png): Failed to open stream: HTTP wrapper does not support writeable connections
+in APPPATH\Controllers\instalaciones.php on line 242.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'move_uploaded_file(http://localhost/reservalo/images/alerta.png): Failed to open stream: HTTP wrapper does not support writeable connections', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 242)
+ 2 APPPATH\Controllers\instalaciones.php(242): move_uploaded_file('C:\\xampp\\tmp\\php6F7E.tmp', 'http://localhost/reservalo/images/alerta.png')
+ 3 APPPATH\Controllers\instalaciones.php(223): App\Controllers\instalaciones->subirArchivo('C:\\xampp\\tmp\\php6F7E.tmp', 'alerta.png')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-19 07:48:17 --> ErrorException: Undefined variable $resultado
+in APPPATH\Views\instalaciones\crudInstalaciones.php on line 15.
+ 1 APPPATH\Views\instalaciones\crudInstalaciones.php(15): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $resultado', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\crudInstalaciones.php', 15)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\crudInstalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/crudInstalaciones', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(276): view('instalaciones/crudInstalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crudInstalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-19 07:49:10 --> ErrorException: Undefined array key "suplemento"
+in APPPATH\Views\instalaciones\crudInstalaciones.php on line 32.
+ 1 APPPATH\Views\instalaciones\crudInstalaciones.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "suplemento"', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\crudInstalaciones.php', 32)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\crudInstalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/crudInstalaciones', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(276): view('instalaciones/crudInstalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crudInstalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-19 11:32:39 --> ErrorException: Undefined array key "categoria"
+in APPPATH\Controllers\instalaciones.php on line 209.
+ 1 APPPATH\Controllers\instalaciones.php(209): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "categoria"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 209)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-19 11:34:10 --> ErrorException: Undefined array key "portada"
+in APPPATH\Controllers\instalaciones.php on line 217.
+ 1 APPPATH\Controllers\instalaciones.php(217): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "portada"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 217)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-19 11:35:16 --> ErrorException: Undefined array key "portada"
+in APPPATH\Controllers\instalaciones.php on line 217.
+ 1 APPPATH\Controllers\instalaciones.php(217): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "portada"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 217)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-19 11:36:36 --> ErrorException: Undefined array key "portada"
+in APPPATH\Controllers\instalaciones.php on line 217.
+ 1 APPPATH\Controllers\instalaciones.php(217): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "portada"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 217)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-19 11:37:57 --> Error: Call to a member function move() on array
+in APPPATH\Controllers\instalaciones.php on line 286.
+ 1 APPPATH\Controllers\instalaciones.php(229): App\Controllers\instalaciones->subirArchivo('atletismo.jpeg', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-19 11:38:53 --> Error: Call to a member function move() on array
+in APPPATH\Controllers\instalaciones.php on line 286.
+ 1 APPPATH\Controllers\instalaciones.php(229): App\Controllers\instalaciones->subirArchivo('atletismo.jpeg', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-19 11:47:31 --> ErrorException: mkdir(): No such file or directory
+in SYSTEMPATH\HTTP\Files\UploadedFile.php on line 185.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mkdir(): No such file or directory', 'C:\\proyectos\\reservalo\\system\\HTTP\\Files\\UploadedFile.php', 185)
+ 2 SYSTEMPATH\HTTP\Files\UploadedFile.php(185): mkdir('C:\\proyectos\\reservalo\\app\\../images/alerta.png/', 511, true)
+ 3 SYSTEMPATH\HTTP\Files\UploadedFile.php(139): CodeIgniter\HTTP\Files\UploadedFile->setPath('C:\\proyectos\\reservalo\\app\\../images/alerta.png/')
+ 4 APPPATH\Controllers\instalaciones.php(286): CodeIgniter\HTTP\Files\UploadedFile->move('C:\\proyectos\\reservalo\\app\\../images/alerta.png/')
+ 5 APPPATH\Controllers\instalaciones.php(229): App\Controllers\instalaciones->subirArchivo('alerta.png', Object(CodeIgniter\HTTP\Files\UploadedFile))
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-19 12:42:22 --> ErrorException: Undefined array key "categoria"
+in APPPATH\Controllers\instalaciones.php on line 211.
+ 1 APPPATH\Controllers\instalaciones.php(211): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "categoria"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 211)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-19 12:44:39 --> Error: Undefined constant "App\Controllers\post"
+in APPPATH\Controllers\instalaciones.php on line 211.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

@@ -1,0 +1,41 @@
+ERROR - 2024-04-21 17:45:45 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'reservalo' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo', 3306, '', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\proyectos\reservalo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\proyectos\reservalo\app\Controllers\Home.php(19): CodeIgniter\BaseModel->findAll()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'reservalo' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\proyectos\reservalo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\proyectos\reservalo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\proyectos\reservalo\app\Controllers\Home.php(19): CodeIgniter\BaseModel->findAll()
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-04-21 17:45:45 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'reservalo'
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `instalaciones`', [], false)
+ 3 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\Home.php(19): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

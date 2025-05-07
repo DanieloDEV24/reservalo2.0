@@ -1,0 +1,188 @@
+ERROR - 2024-05-07 14:26:27 --> Error connecting to the database: mysqli_sql_exception: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo', 3306, '', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\proyectos\reservalo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\proyectos\reservalo\app\Controllers\Home.php(19): CodeIgniter\BaseModel->findAll()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\proyectos\reservalo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\proyectos\reservalo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\proyectos\reservalo\app\Controllers\Home.php(19): CodeIgniter\BaseModel->findAll()
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-07 14:26:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `instalaciones`', [], false)
+ 3 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\Home.php(19): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-07 14:33:11 --> Error connecting to the database: ErrorException: mysqli::real_connect(): Error while reading greeting packet. PID=5852 in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\proyectos\\re...', 184)
+#1 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo', 3306, '', 0)
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\proyectos\reservalo\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#5 C:\proyectos\reservalo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\proyectos\reservalo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#7 C:\proyectos\reservalo\app\Controllers\Home.php(19): CodeIgniter\BaseModel->findAll()
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#10 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#12 {main}
+
+Next mysqli_sql_exception: MySQL server has gone away in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo', 3306, '', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\proyectos\reservalo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\proyectos\reservalo\app\Controllers\Home.php(19): CodeIgniter\BaseModel->findAll()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: MySQL server has gone away in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\proyectos\reservalo\system\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\proyectos\reservalo\system\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\proyectos\reservalo\app\Controllers\Home.php(19): CodeIgniter\BaseModel->findAll()
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-07 14:33:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: MySQL server has gone away
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `instalaciones`', [], false)
+ 3 SYSTEMPATH\Model.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\Home.php(19): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-07 14:33:11 --> ErrorException: Maximum execution time of 120 seconds exceeded
+in SYSTEMPATH\Debug\Exceptions.php on line 202.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2024-05-07 14:38:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-07 16:28:28 --> ParseError: syntax error, unexpected token "="
+in APPPATH\Controllers\instalaciones.php on line 345.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\instalaciones')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\instalaciones')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\instalaciones', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-07 16:28:29 --> ParseError: syntax error, unexpected token "="
+in APPPATH\Controllers\instalaciones.php on line 345.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\instalaciones')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\instalaciones')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\instalaciones', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-07 17:26:46 --> ErrorException: Undefined array key "apertura_mañana"
+in APPPATH\Views\instalaciones\horario.php on line 30.
+ 1 APPPATH\Views\instalaciones\horario.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "apertura_mañana"', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\horario.php', 30)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\horario.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/horario', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(388): view('instalaciones/horario', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crudInstalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-07 17:27:35 --> ErrorException: Undefined array key "apertura_mañana"
+in APPPATH\Views\instalaciones\horario.php on line 30.
+ 1 APPPATH\Views\instalaciones\horario.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "apertura_mañana"', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\horario.php', 30)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\horario.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/horario', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(388): view('instalaciones/horario', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crudInstalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-07 17:27:47 --> ErrorException: Undefined array key "cierre_mañana"
+in APPPATH\Views\instalaciones\horario.php on line 30.
+ 1 APPPATH\Views\instalaciones\horario.php(30): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "cierre_mañana"', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\horario.php', 30)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\horario.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/horario', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(388): view('instalaciones/horario', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crudInstalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-07 18:12:42 --> ErrorException: Array to string conversion
+in APPPATH\Views\instalaciones\horario.php on line 124.
+ 1 APPPATH\Views\instalaciones\horario.php(124): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\horario.php', 124)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\horario.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/horario', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(388): view('instalaciones/horario', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crudInstalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-07 19:59:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-07 20:03:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-07 20:04:46 --> ErrorException: Array to string conversion
+in APPPATH\Views\instalaciones\horario.php on line 36.
+ 1 APPPATH\Views\instalaciones\horario.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\horario.php', 36)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\horario.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/horario', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(388): view('instalaciones/horario', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crudInstalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-07 20:06:08 --> ErrorException: Array to string conversion
+in APPPATH\Views\instalaciones\horario.php on line 36.
+ 1 APPPATH\Views\instalaciones\horario.php(36): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\horario.php', 36)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\horario.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/horario', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(388): view('instalaciones/horario', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crudInstalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

@@ -1,0 +1,128 @@
+CRITICAL - 2024-04-28 18:11:38 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:12:10 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:12:12 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:12:13 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:12:14 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:12:15 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:12:16 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:12:17 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:12:18 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:14:19 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:15:35 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:15:37 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:15:38 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:15:39 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:15:40 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-28 18:20:21 --> ErrorException: Undefined array key "mantenimiento"
+in APPPATH\Models\instalacionesModel.php on line 52.
+ 1 APPPATH\Models\instalacionesModel.php(52): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "mantenimiento"', 'C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php', 52)
+ 2 APPPATH\Controllers\instalaciones.php(126): App\Models\instalacionesModel->filtradoInstalaciones([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

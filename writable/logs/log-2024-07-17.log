@@ -1,0 +1,665 @@
+INFO - 2024-07-17 16:36:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 16:44:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 16:44:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 16:44:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 16:44:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 16:44:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 16:45:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 16:45:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 16:54:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-07-17 16:54:17 --> mysqli_sql_exception: Unknown column 'instalaciones.id' in 'field list' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\proyectos\reservalo\system\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 C:\proyectos\reservalo\system\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+#6 C:\proyectos\reservalo\app\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-07-17 16:54:17 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'instalaciones.id' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id`
+) CI_count_all_results', [], false)
+ 2 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 3 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 4 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-17 16:54:17 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'instalaciones.id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id`
+) CI_count_all_results')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id`
+) CI_count_all_results', [], false)
+ 4 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 5 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 6 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-17 16:54:17 --> [Caused by] mysqli_sql_exception: Unknown column 'instalaciones.id' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id`
+) CI_count_all_results', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id`
+) CI_count_all_results')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id`
+) CI_count_all_results', [], false)
+ 5 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 6 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 7 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-07-17 16:55:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-07-17 16:55:06 --> mysqli_sql_exception: Unknown column 'categorias.id' in 'on clause' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\proyectos\reservalo\system\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 C:\proyectos\reservalo\system\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+#6 C:\proyectos\reservalo\app\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-07-17 16:55:06 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categorias.id' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [], false)
+ 2 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 3 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 4 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-17 16:55:06 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categorias.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [], false)
+ 4 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 5 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 6 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-17 16:55:06 --> [Caused by] mysqli_sql_exception: Unknown column 'categorias.id' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id` = `instalaciones`.`id_categoria`
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [], false)
+ 5 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 6 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 7 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-07-17 16:55:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 16:55:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 16:57:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 16:57:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 16:58:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 16:58:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 17:00:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-07-17 17:00:53 --> ErrorException: Undefined variable $instalaciones
+in APPPATH\Models\categoriasModel.php on line 39.
+ 1 APPPATH\Models\categoriasModel.php(39): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $instalaciones', 'C:\\proyectos\\reservalo\\app\\Models\\categoriasModel.php', 39)
+ 2 APPPATH\Controllers\Categorias.php(43): App\Models\categoriasModel->crudCategorias([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-07-17 17:01:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-07-17 17:01:13 --> mysqli_sql_exception: Column 'nombre' in where clause is ambiguous in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\proyectos\reservalo\system\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 C:\proyectos\reservalo\system\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+#6 C:\proyectos\reservalo\app\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-07-17 17:01:13 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'nombre' in where clause is ambiguous
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `nombre` LIKE :nombre: ESCAPE \'!\'
+AND `id_categoria` = :id_categoria:
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [...], false)
+ 2 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 3 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 4 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-17 17:01:13 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'nombre' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `nombre` LIKE \'%dep%\' ESCAPE \'!\'
+AND `id_categoria` = \'\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `nombre` LIKE \'%dep%\' ESCAPE \'!\'
+AND `id_categoria` = \'\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `nombre` LIKE :nombre: ESCAPE \'!\'
+AND `id_categoria` = :id_categoria:
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [...], false)
+ 4 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 5 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 6 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-17 17:01:14 --> [Caused by] mysqli_sql_exception: Column 'nombre' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `nombre` LIKE \'%dep%\' ESCAPE \'!\'
+AND `id_categoria` = \'\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `nombre` LIKE \'%dep%\' ESCAPE \'!\'
+AND `id_categoria` = \'\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `nombre` LIKE \'%dep%\' ESCAPE \'!\'
+AND `id_categoria` = \'\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `nombre` LIKE :nombre: ESCAPE \'!\'
+AND `id_categoria` = :id_categoria:
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [...], false)
+ 5 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 6 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 7 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-07-17 17:01:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-07-17 17:01:29 --> mysqli_sql_exception: Column 'id_categoria' in where clause is ambiguous in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\proyectos\reservalo\system\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 C:\proyectos\reservalo\system\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+#6 C:\proyectos\reservalo\app\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-07-17 17:01:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_categoria' in where clause is ambiguous
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `categorias`.`nombre` LIKE :categorias.nombre: ESCAPE \'!\'
+AND `id_categoria` = :id_categoria:
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [...], false)
+ 2 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 3 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 4 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-17 17:01:30 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_categoria' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `categorias`.`nombre` LIKE \'%dep%\' ESCAPE \'!\'
+AND `id_categoria` = \'\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `categorias`.`nombre` LIKE \'%dep%\' ESCAPE \'!\'
+AND `id_categoria` = \'\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `categorias`.`nombre` LIKE :categorias.nombre: ESCAPE \'!\'
+AND `id_categoria` = :id_categoria:
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [...], false)
+ 4 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 5 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 6 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-17 17:01:30 --> [Caused by] mysqli_sql_exception: Column 'id_categoria' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `categorias`.`nombre` LIKE \'%dep%\' ESCAPE \'!\'
+AND `id_categoria` = \'\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `categorias`.`nombre` LIKE \'%dep%\' ESCAPE \'!\'
+AND `id_categoria` = \'\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `categorias`.`nombre` LIKE \'%dep%\' ESCAPE \'!\'
+AND `id_categoria` = \'\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `categorias`.`nombre` LIKE :categorias.nombre: ESCAPE \'!\'
+AND `id_categoria` = :id_categoria:
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [...], false)
+ 5 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 6 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 7 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-07-17 17:01:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 17:02:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 17:03:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-07-17 17:03:04 --> mysqli_sql_exception: Invalid use of group function in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\proyectos\reservalo\system\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 C:\proyectos\reservalo\system\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+#6 C:\proyectos\reservalo\app\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-07-17 17:03:05 --> CodeIgniter\Database\Exceptions\DatabaseException: Invalid use of group function
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE COUNT(instalaciones.id_instalacion) = :COUNT(instalaciones.id_instalacion):
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [...], false)
+ 2 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 3 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 4 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-17 17:03:05 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Invalid use of group function
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE COUNT(instalaciones.id_instalacion) = \'5\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE COUNT(instalaciones.id_instalacion) = \'5\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE COUNT(instalaciones.id_instalacion) = :COUNT(instalaciones.id_instalacion):
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [...], false)
+ 4 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 5 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 6 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-17 17:03:05 --> [Caused by] mysqli_sql_exception: Invalid use of group function
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE COUNT(instalaciones.id_instalacion) = \'5\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE COUNT(instalaciones.id_instalacion) = \'5\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE COUNT(instalaciones.id_instalacion) = \'5\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE COUNT(instalaciones.id_instalacion) = :COUNT(instalaciones.id_instalacion):
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [...], false)
+ 5 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 6 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 7 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-07-17 17:04:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-07-17 17:04:28 --> mysqli_sql_exception: Unknown column 'numInstalaciones' in 'where clause' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\proyectos\reservalo\system\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 C:\proyectos\reservalo\system\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+#6 C:\proyectos\reservalo\app\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-07-17 17:04:28 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'numInstalaciones' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `numInstalaciones` = :numInstalaciones:
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [...], false)
+ 2 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 3 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 4 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-17 17:04:28 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'numInstalaciones' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `numInstalaciones` = \'5\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `numInstalaciones` = \'5\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `numInstalaciones` = :numInstalaciones:
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [...], false)
+ 4 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 5 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 6 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-07-17 17:04:28 --> [Caused by] mysqli_sql_exception: Unknown column 'numInstalaciones' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `numInstalaciones` = \'5\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `numInstalaciones` = \'5\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `numInstalaciones` = \'5\'
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT `categorias`.*, COUNT(instalaciones.id_instalacion) as numInstalaciones
+FROM `categorias`
+LEFT JOIN `instalaciones` ON `categorias`.`id_categoria` = `instalaciones`.`id_categoria`
+WHERE `numInstalaciones` = :numInstalaciones:
+GROUP BY `categorias`.`id_categoria`
+) CI_count_all_results', [...], false)
+ 5 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 6 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 7 APPPATH\Controllers\Categorias.php(43): CodeIgniter\BaseModel->paginate(5)
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\categorias->crudCategorias()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\categorias))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-07-17 17:07:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 17:07:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 17:07:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-07-17 17:07:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

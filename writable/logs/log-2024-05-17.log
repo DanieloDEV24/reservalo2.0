@@ -1,0 +1,328 @@
+INFO - 2024-05-17 14:21:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 14:23:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 14:23:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 15:34:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 15:34:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-17 15:34:32 --> ErrorException: Undefined array key "id_usuario"
+in APPPATH\Controllers\login.php on line 159.
+ 1 APPPATH\Controllers\login.php(159): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_usuario"', 'C:\\proyectos\\reservalo\\app\\Controllers\\login.php', 159)
+ 2 APPPATH\Controllers\login.php(139): App\Controllers\login->accesoUsuario([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\login->loguearse()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\login))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-17 15:35:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 15:36:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 15:36:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 15:36:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 15:36:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 15:36:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 15:39:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 15:39:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-17 15:39:27 --> ErrorException: Undefined array key "idFormaPago"
+in APPPATH\Controllers\reservas.php on line 150.
+ 1 APPPATH\Controllers\reservas.php(150): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "idFormaPago"', 'C:\\proyectos\\reservalo\\app\\Controllers\\reservas.php', 150)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-17 15:39:46 --> ErrorException: Undefined array key "idFormaPago"
+in APPPATH\Controllers\reservas.php on line 150.
+ 1 APPPATH\Controllers\reservas.php(150): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "idFormaPago"', 'C:\\proyectos\\reservalo\\app\\Controllers\\reservas.php', 150)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-17 15:40:04 --> ErrorException: Undefined array key "idFormaPago"
+in APPPATH\Controllers\reservas.php on line 150.
+ 1 APPPATH\Controllers\reservas.php(150): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "idFormaPago"', 'C:\\proyectos\\reservalo\\app\\Controllers\\reservas.php', 150)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-17 15:41:45 --> ErrorException: Undefined array key "idFormaPago"
+in APPPATH\Controllers\reservas.php on line 150.
+ 1 APPPATH\Controllers\reservas.php(150): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "idFormaPago"', 'C:\\proyectos\\reservalo\\app\\Controllers\\reservas.php', 150)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-17 15:45:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-17 15:47:52 --> ErrorException: Undefined array key "idFormaPago"
+in APPPATH\Controllers\reservas.php on line 150.
+ 1 APPPATH\Controllers\reservas.php(150): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "idFormaPago"', 'C:\\proyectos\\reservalo\\app\\Controllers\\reservas.php', 150)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-17 15:47:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 15:48:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-17 15:48:19 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE) in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\proyectos\reservalo\app\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas(Array)
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-17 15:48:19 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (:id_pista:, :id_hora:, :id_usuario:, :id_forma_pago:, :fecha_reserva:, :necesita_material:, :importe_reserva:)', [...], false)
+ 2 APPPATH\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-17 15:48:19 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, \'2\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, \'2\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (:id_pista:, :id_hora:, :id_usuario:, :id_forma_pago:, :fecha_reserva:, :necesita_material:, :importe_reserva:)', [...], false)
+ 4 APPPATH\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-17 15:48:19 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, \'2\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, \'2\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, \'2\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (:id_pista:, :id_hora:, :id_usuario:, :id_forma_pago:, :fecha_reserva:, :necesita_material:, :importe_reserva:)', [...], false)
+ 5 APPPATH\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-17 15:49:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-17 15:50:28 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE) in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\proyectos\reservalo\app\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas(Array)
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-17 15:50:28 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (:id_pista:, :id_hora:, :id_usuario:, :id_forma_pago:, :fecha_reserva:, :necesita_material:, :importe_reserva:)', [...], false)
+ 2 APPPATH\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-17 15:50:28 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, \'2\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, \'2\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (:id_pista:, :id_hora:, :id_usuario:, :id_forma_pago:, :fecha_reserva:, :necesita_material:, :importe_reserva:)', [...], false)
+ 4 APPPATH\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-17 15:50:28 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, \'2\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, \'2\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, \'2\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (:id_pista:, :id_hora:, :id_usuario:, :id_forma_pago:, :fecha_reserva:, :necesita_material:, :importe_reserva:)', [...], false)
+ 5 APPPATH\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-17 15:52:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-17 15:52:02 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE) in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\proyectos\reservalo\app\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas(Array)
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-17 15:52:02 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (:id_pista:, :id_hora:, :id_usuario:, :id_forma_pago:, :fecha_reserva:, :necesita_material:, :importe_reserva:)', [...], false)
+ 2 APPPATH\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-17 15:52:02 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, 2)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, 2)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (:id_pista:, :id_hora:, :id_usuario:, :id_forma_pago:, :fecha_reserva:, :necesita_material:, :importe_reserva:)', [...], false)
+ 4 APPPATH\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-17 15:52:02 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, 2)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, 2)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 0, 2)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (:id_pista:, :id_hora:, :id_usuario:, :id_forma_pago:, :fecha_reserva:, :necesita_material:, :importe_reserva:)', [...], false)
+ 5 APPPATH\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-17 15:55:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 15:59:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:00:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-17 16:00:14 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE) in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\proyectos\reservalo\app\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas(Array)
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-17 16:00:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (:id_pista:, :id_hora:, :id_usuario:, :id_forma_pago:, :fecha_reserva:, :necesita_material:, :importe_reserva:)', [...], false)
+ 2 APPPATH\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-17 16:01:21 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 1, 2)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 1, 2)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (:id_pista:, :id_hora:, :id_usuario:, :id_forma_pago:, :fecha_reserva:, :necesita_material:, :importe_reserva:)', [...], false)
+ 4 APPPATH\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-17 16:01:21 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`reservalo`.`reservas`, CONSTRAINT `fk_id_hora_01` FOREIGN KEY (`id_hora`) REFERENCES `horario_semanal` (`id_hora`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 1, 2)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 1, 2)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (\'1\', \'6899\', \'9\', \'2\', \'2024-05-24\', 1, 2)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `id_hora`, `id_usuario`, `id_forma_pago`, `fecha_reserva`, `necesita_material`, `importe_reserva`) VALUES (:id_pista:, :id_hora:, :id_usuario:, :id_forma_pago:, :fecha_reserva:, :necesita_material:, :importe_reserva:)', [...], false)
+ 5 APPPATH\Models\reservasModel.php(141): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\reservas.php(189): App\Models\reservasModel->insertReservas([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-17 16:01:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:03:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-17 16:03:52 --> mysqli_sql_exception: Unknown column 'n_plazas_reservadas' in 'field list' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `ho...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ho...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ho...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ho...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\reservasModel.php(155): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\proyectos\reservalo\app\Controllers\reservas.php(200): App\Models\reservasModel->insertHorasReservas(Array)
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-17 16:03:58 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'n_plazas_reservadas' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horas_reserva` (`id_reserva`, `id_hora_pista`, `necesita_material`, `n_plazas_reservadas`, `completo`, `importe`) VALUES (:id_reserva:, :id_hora_pista:, :necesita_material:, :n_plazas_reservadas:, :completo:, :importe:)', [...], false)
+ 2 APPPATH\Models\reservasModel.php(155): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\reservas.php(200): App\Models\reservasModel->insertHorasReservas([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-17 16:05:02 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'n_plazas_reservadas' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horas_reserva` (`id_reserva`, `id_hora_pista`, `necesita_material`, `n_plazas_reservadas`, `completo`, `importe`) VALUES (5, \'6899\', 1, \'4\', 0, 2)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horas_reserva` (`id_reserva`, `id_hora_pista`, `necesita_material`, `n_plazas_reservadas`, `completo`, `importe`) VALUES (5, \'6899\', 1, \'4\', 0, 2)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horas_reserva` (`id_reserva`, `id_hora_pista`, `necesita_material`, `n_plazas_reservadas`, `completo`, `importe`) VALUES (:id_reserva:, :id_hora_pista:, :necesita_material:, :n_plazas_reservadas:, :completo:, :importe:)', [...], false)
+ 4 APPPATH\Models\reservasModel.php(155): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\reservas.php(200): App\Models\reservasModel->insertHorasReservas([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-17 16:05:02 --> [Caused by] mysqli_sql_exception: Unknown column 'n_plazas_reservadas' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `horas_reserva` (`id_reserva`, `id_hora_pista`, `necesita_material`, `n_plazas_reservadas`, `completo`, `importe`) VALUES (5, \'6899\', 1, \'4\', 0, 2)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horas_reserva` (`id_reserva`, `id_hora_pista`, `necesita_material`, `n_plazas_reservadas`, `completo`, `importe`) VALUES (5, \'6899\', 1, \'4\', 0, 2)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horas_reserva` (`id_reserva`, `id_hora_pista`, `necesita_material`, `n_plazas_reservadas`, `completo`, `importe`) VALUES (5, \'6899\', 1, \'4\', 0, 2)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horas_reserva` (`id_reserva`, `id_hora_pista`, `necesita_material`, `n_plazas_reservadas`, `completo`, `importe`) VALUES (:id_reserva:, :id_hora_pista:, :necesita_material:, :n_plazas_reservadas:, :completo:, :importe:)', [...], false)
+ 5 APPPATH\Models\reservasModel.php(155): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\reservas.php(200): App\Models\reservasModel->insertHorasReservas([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-17 16:05:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:06:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:06:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:07:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:07:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:09:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:09:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:09:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:10:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:10:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:11:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:11:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:12:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:12:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:13:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:13:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:15:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:15:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:16:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:17:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:17:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:19:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:19:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:26:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:27:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:27:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:28:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:29:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:29:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:30:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:30:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:31:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:33:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:33:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:33:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:34:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-17 16:34:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

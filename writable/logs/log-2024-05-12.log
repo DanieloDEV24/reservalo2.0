@@ -1,0 +1,341 @@
+INFO - 2024-05-12 07:08:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:10:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:11:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:11:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:11:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:51:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:52:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:53:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:54:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:55:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 07:55:48 --> TypeError: date(): Argument #2 ($timestamp) must be of type ?int, string given
+in APPPATH\Controllers\instalaciones.php on line 703.
+ 1 APPPATH\Controllers\instalaciones.php(703): date('N', '2024-01-02')
+ 2 APPPATH\Controllers\instalaciones.php(658): App\Controllers\instalaciones->insertarHorasPistas('2024-01-02', '2024-02-29', '1', 11)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-12 07:56:36 --> TypeError: date(): Argument #2 ($timestamp) must be of type ?int, string given
+in APPPATH\Controllers\instalaciones.php on line 703.
+ 1 APPPATH\Controllers\instalaciones.php(703): date('N', '2024-01-02')
+ 2 APPPATH\Controllers\instalaciones.php(658): App\Controllers\instalaciones->insertarHorasPistas('2024-01-02', '2024-02-29', '1', 12)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-12 07:56:52 --> TypeError: date(): Argument #2 ($timestamp) must be of type ?int, string given
+in APPPATH\Controllers\instalaciones.php on line 703.
+ 1 APPPATH\Controllers\instalaciones.php(703): date('N', '2024-01-02')
+ 2 APPPATH\Controllers\instalaciones.php(658): App\Controllers\instalaciones->insertarHorasPistas('2024-01-02', '2024-02-29', '1', 13)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-12 07:56:58 --> TypeError: date(): Argument #2 ($timestamp) must be of type ?int, string given
+in APPPATH\Controllers\instalaciones.php on line 703.
+ 1 APPPATH\Controllers\instalaciones.php(703): date('N', '2024-01-02')
+ 2 APPPATH\Controllers\instalaciones.php(658): App\Controllers\instalaciones->insertarHorasPistas('2024-01-02', '2024-02-29', '1', 14)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-12 07:57:23 --> TypeError: date(): Argument #2 ($timestamp) must be of type ?int, string given
+in APPPATH\Controllers\instalaciones.php on line 703.
+ 1 APPPATH\Controllers\instalaciones.php(703): date('N', '2024-01-02')
+ 2 APPPATH\Controllers\instalaciones.php(658): App\Controllers\instalaciones->insertarHorasPistas('2024-01-02', '2024-02-29', '1', 15)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-12 07:58:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:58:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:59:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:59:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:59:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:59:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:59:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 07:59:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 08:00:20 --> ErrorException: Undefined array key "id_pista"
+in APPPATH\Controllers\instalaciones.php on line 736.
+ 1 APPPATH\Controllers\instalaciones.php(736): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_pista"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 736)
+ 2 APPPATH\Controllers\instalaciones.php(658): App\Controllers\instalaciones->insertarHorasPistas('2024-01-02', '2024-02-29', '1', 16)
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-12 08:01:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 08:01:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 08:01:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 08:02:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 08:02:39 --> CodeIgniter\Database\Exceptions\DatabaseException: You must set the database table to be used with your query.
+in SYSTEMPATH\Database\BaseConnection.php on line 884.
+ 1 SYSTEMPATH\Model.php(662): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH\Model.php(864): CodeIgniter\Model->builder()
+ 3 APPPATH\Controllers\instalaciones.php(751): CodeIgniter\Model->__call('insertHorasPista', [...])
+ 4 APPPATH\Controllers\instalaciones.php(658): App\Controllers\instalaciones->insertarHorasPistas('2024-01-02', '2024-02-29', '1', 18)
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-12 08:13:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 08:15:36 --> CodeIgniter\Database\Exceptions\DatabaseException: You must set the database table to be used with your query.
+in SYSTEMPATH\Database\BaseConnection.php on line 884.
+ 1 SYSTEMPATH\Model.php(662): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH\Model.php(864): CodeIgniter\Model->builder()
+ 3 APPPATH\Controllers\instalaciones.php(751): CodeIgniter\Model->__call('insertHorasPista', [...])
+ 4 APPPATH\Controllers\instalaciones.php(658): App\Controllers\instalaciones->insertarHorasPistas('2024-01-02', '2024-02-29', '1', 19)
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->peticionHorario()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-12 08:21:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 08:22:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 08:22:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 08:22:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 08:22:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 09:23:56 --> CodeIgniter\Database\Exceptions\DatabaseException: You must set the database table to be used with your query.
+in SYSTEMPATH\Database\BaseConnection.php on line 884.
+ 1 SYSTEMPATH\Model.php(662): CodeIgniter\Database\BaseConnection->table(null)
+ 2 SYSTEMPATH\Model.php(235): CodeIgniter\Model->builder()
+ 3 SYSTEMPATH\BaseModel.php(638): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\instalaciones.php(631): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-12 09:25:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:25:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:26:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:26:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:46:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:51:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:52:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:54:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:54:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:54:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:54:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:55:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:55:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:55:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:56:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:56:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:56:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:56:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:56:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 09:58:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:02:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:02:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:04:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:04:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:06:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:07:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:07:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:09:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:09:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:10:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:12:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:12:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:14:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:14:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:14:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:15:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:16:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:16:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:16:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:23:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:34:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:35:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 10:35:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 18:38:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 18:38:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 18:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 18:39:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:07:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:08:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:08:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:09:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:14:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:17:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-12 19:17:47 --> mysqli_sql_exception: Unknown column 'DISTINCT' in 'field list' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `DISTINC...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINC...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINC...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINC...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\horariosModel.php(140): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Helpers\calendar_helper.php(179): App\Models\horariosModel->getFechasExistentes('21')
+#6 C:\proyectos\reservalo\app\Helpers\calendar_helper.php(53): estaEnHorarioNormal(Array, Object(DateTime))
+#7 C:\proyectos\reservalo\app\Helpers\calendar_helper.php(15): crear_calendar_mes(1, 2024, '1')
+#8 C:\proyectos\reservalo\app\Controllers\instalaciones.php(618): crear_calendario(2024, '1')
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+#10 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#11 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-05-12 19:17:48 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'DISTINCT' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINCT` `fecha`
+FROM `horas_pistas`
+WHERE `id_horario` = :id_horario:', [...], false)
+ 2 APPPATH\Models\horariosModel.php(140): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Helpers\calendar_helper.php(179): App\Models\horariosModel->getFechasExistentes('21')
+ 4 APPPATH\Helpers\calendar_helper.php(53): estaEnHorarioNormal([...], Object(DateTime))
+ 5 APPPATH\Helpers\calendar_helper.php(15): crear_calendar_mes(1, 2024, '1')
+ 6 APPPATH\Controllers\instalaciones.php(618): crear_calendario(2024, '1')
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-12 19:17:48 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'DISTINCT' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINCT` `fecha`
+FROM `horas_pistas`
+WHERE `id_horario` = \'21\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINCT` `fecha`
+FROM `horas_pistas`
+WHERE `id_horario` = \'21\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINCT` `fecha`
+FROM `horas_pistas`
+WHERE `id_horario` = :id_horario:', [...], false)
+ 4 APPPATH\Models\horariosModel.php(140): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Helpers\calendar_helper.php(179): App\Models\horariosModel->getFechasExistentes('21')
+ 6 APPPATH\Helpers\calendar_helper.php(53): estaEnHorarioNormal([...], Object(DateTime))
+ 7 APPPATH\Helpers\calendar_helper.php(15): crear_calendar_mes(1, 2024, '1')
+ 8 APPPATH\Controllers\instalaciones.php(618): crear_calendario(2024, '1')
+ 9 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+10 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+11 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-12 19:17:48 --> [Caused by] mysqli_sql_exception: Unknown column 'DISTINCT' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `DISTINCT` `fecha`
+FROM `horas_pistas`
+WHERE `id_horario` = \'21\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `DISTINCT` `fecha`
+FROM `horas_pistas`
+WHERE `id_horario` = \'21\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `DISTINCT` `fecha`
+FROM `horas_pistas`
+WHERE `id_horario` = \'21\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `DISTINCT` `fecha`
+FROM `horas_pistas`
+WHERE `id_horario` = :id_horario:', [...], false)
+ 5 APPPATH\Models\horariosModel.php(140): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Helpers\calendar_helper.php(179): App\Models\horariosModel->getFechasExistentes('21')
+ 7 APPPATH\Helpers\calendar_helper.php(53): estaEnHorarioNormal([...], Object(DateTime))
+ 8 APPPATH\Helpers\calendar_helper.php(15): crear_calendar_mes(1, 2024, '1')
+ 9 APPPATH\Controllers\instalaciones.php(618): crear_calendario(2024, '1')
+10 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+11 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+12 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+13 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-12 19:20:09 --> ErrorException: Undefined array key 0
+in APPPATH\Models\horariosModel.php on line 162.
+ 1 APPPATH\Models\horariosModel.php(162): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\proyectos\\reservalo\\app\\Models\\horariosModel.php', 162)
+ 2 APPPATH\Helpers\calendar_helper.php(307): App\Models\horariosModel->getTipoDia([...])
+ 3 APPPATH\Helpers\calendar_helper.php(61): estaHorarioSoloManana([...], [...])
+ 4 APPPATH\Helpers\calendar_helper.php(15): crear_calendar_mes(7, 2024, '1')
+ 5 APPPATH\Controllers\instalaciones.php(618): crear_calendario(2024, '1')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-12 19:20:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:20:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:20:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:21:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:23:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 19:23:09 --> ErrorException: Allowed memory size of 536870912 bytes exhausted (tried to allocate 2097160 bytes)
+in SYSTEMPATH\Debug\Toolbar.php on line 292.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2024-05-12 19:26:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 19:26:14 --> ErrorException: Allowed memory size of 536870912 bytes exhausted (tried to allocate 2097160 bytes)
+in SYSTEMPATH\Debug\Toolbar.php on line 292.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2024-05-12 19:28:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 19:28:40 --> ErrorException: Allowed memory size of 536870912 bytes exhausted (tried to allocate 528384 bytes)
+in SYSTEMPATH\Debug\Toolbar.php on line 292.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2024-05-12 19:30:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 19:34:24 --> Error: Call to a member function format() on string
+in APPPATH\Helpers\calendar_helper.php on line 173.
+ 1 APPPATH\Helpers\calendar_helper.php(53): estaEnHorarioNormal([...], '2024-01-03')
+ 2 APPPATH\Helpers\calendar_helper.php(15): crear_calendar_mes(1, 2024, '1')
+ 3 APPPATH\Controllers\instalaciones.php(618): crear_calendario(2024, '1')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-12 19:35:16 --> Error: Call to a member function format() on string
+in APPPATH\Helpers\calendar_helper.php on line 173.
+ 1 APPPATH\Helpers\calendar_helper.php(53): estaEnHorarioNormal([...], '2024-01-03')
+ 2 APPPATH\Helpers\calendar_helper.php(15): crear_calendar_mes(1, 2024, '1')
+ 3 APPPATH\Controllers\instalaciones.php(618): crear_calendario(2024, '1')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-12 19:35:46 --> Error: Call to a member function format() on string
+in APPPATH\Helpers\calendar_helper.php on line 173.
+ 1 APPPATH\Helpers\calendar_helper.php(53): estaEnHorarioNormal([...], '2024-01-03')
+ 2 APPPATH\Helpers\calendar_helper.php(15): crear_calendar_mes(1, 2024, '1')
+ 3 APPPATH\Controllers\instalaciones.php(618): crear_calendario(2024, '1')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-12 19:36:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:38:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:39:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:40:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:42:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 19:52:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 20:24:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 20:25:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 20:27:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 20:28:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 20:29:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 20:30:01 --> ErrorException: Undefined array key 0
+in APPPATH\Models\horariosModel.php on line 180.
+ 1 APPPATH\Models\horariosModel.php(180): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\proyectos\\reservalo\\app\\Models\\horariosModel.php', 180)
+ 2 APPPATH\Controllers\instalaciones.php(707): App\Models\horariosModel->getInfoHorasPistas('2024-01-12')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-12 20:30:33 --> ErrorException: Undefined array key 0
+in APPPATH\Models\horariosModel.php on line 180.
+ 1 APPPATH\Models\horariosModel.php(180): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\proyectos\\reservalo\\app\\Models\\horariosModel.php', 180)
+ 2 APPPATH\Controllers\instalaciones.php(707): App\Models\horariosModel->getInfoHorasPistas('2024-01-12')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->modificarHorario()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-12 20:31:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 20:32:12 --> ErrorException: Undefined variable $fechaBuscar
+in APPPATH\Helpers\calendar_helper.php on line 184.
+ 1 APPPATH\Helpers\calendar_helper.php(184): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fechaBuscar', 'C:\\proyectos\\reservalo\\app\\Helpers\\calendar_helper.php', 184)
+ 2 APPPATH\Helpers\calendar_helper.php(53): estaEnHorarioNormal([...], '2024-01-03')
+ 3 APPPATH\Helpers\calendar_helper.php(15): crear_calendar_mes(1, 2024, '1')
+ 4 APPPATH\Controllers\instalaciones.php(618): crear_calendario(2024, '1')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-12 20:32:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 20:32:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-12 20:32:52 --> ErrorException: Undefined variable $fechaBuscar
+in APPPATH\Helpers\calendar_helper.php on line 184.
+ 1 APPPATH\Helpers\calendar_helper.php(184): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $fechaBuscar', 'C:\\proyectos\\reservalo\\app\\Helpers\\calendar_helper.php', 184)
+ 2 APPPATH\Helpers\calendar_helper.php(53): estaEnHorarioNormal([...], '2024-01-03')
+ 3 APPPATH\Helpers\calendar_helper.php(15): crear_calendar_mes(1, 2024, '1')
+ 4 APPPATH\Controllers\instalaciones.php(618): crear_calendario(2024, '1')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->crearHorario()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-12 20:34:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 20:35:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 20:35:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-12 20:36:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

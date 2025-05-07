@@ -1,0 +1,615 @@
+INFO - 2024-06-07 09:05:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:06:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:06:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:06:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:06:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:14:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:14:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:14:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:14:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:15:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:15:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:15:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:15:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:17:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:19:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:20:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:21:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:24:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:26:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:26:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:27:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:28:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:28:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:28:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:28:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:29:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:29:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:33:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:33:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:45:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:45:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:45:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:46:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:46:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:46:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:46:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:46:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:46:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:46:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:46:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:46:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-07 09:46:54 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPConnectOptions is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 65.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 1 de la instalacion Pabellón Municipal el dia 08/06/2024 a las 13:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 5</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-07 09:46:54 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$WrapChars is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 67.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 1 de la instalacion Pabellón Municipal el dia 08/06/2024 a las 13:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 5</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-07 09:46:54 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPValidateCert is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 70.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 1 de la instalacion Pabellón Municipal el dia 08/06/2024 a las 13:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 5</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-07 09:46:54 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPCharset is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 81.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 1 de la instalacion Pabellón Municipal el dia 08/06/2024 a las 13:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 5</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-07 09:46:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-07 09:46:58 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPConnectOptions is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 65.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 1 de la instalacion Pabellón Municipal el dia 08/06/2024 a las 13:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 5</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-07 09:46:58 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$WrapChars is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 67.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 1 de la instalacion Pabellón Municipal el dia 08/06/2024 a las 13:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 5</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-07 09:46:58 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPValidateCert is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 70.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 1 de la instalacion Pabellón Municipal el dia 08/06/2024 a las 13:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 5</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-07 09:46:58 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPCharset is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 81.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 1 de la instalacion Pabellón Municipal el dia 08/06/2024 a las 13:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 5</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-07 09:47:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:47:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:47:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:47:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:47:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:47:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:47:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:47:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:47:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:47:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-07 09:47:46 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPConnectOptions is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 65.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 1 de la instalacion Pabellón Municipal el dia 08/06/2024 a las 12:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 2</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-07 09:47:46 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$WrapChars is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 67.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 1 de la instalacion Pabellón Municipal el dia 08/06/2024 a las 12:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 2</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-07 09:47:46 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPValidateCert is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 70.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 1 de la instalacion Pabellón Municipal el dia 08/06/2024 a las 12:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 2</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-07 09:47:46 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPCharset is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 81.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 1 de la instalacion Pabellón Municipal el dia 08/06/2024 a las 12:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 2</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-07 09:47:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:47:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:47:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:47:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:48:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:48:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:48:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:48:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:48:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:48:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:48:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:48:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:48:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:48:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:48:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:49:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:49:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-06-07 09:49:14 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPConnectOptions is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 65.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 8 de la instalacion Salón de Actos el dia 08/06/2024 a las 12:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 10</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-07 09:49:14 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$WrapChars is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 67.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 8 de la instalacion Salón de Actos el dia 08/06/2024 a las 12:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 10</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-07 09:49:14 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPValidateCert is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 70.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 8 de la instalacion Salón de Actos el dia 08/06/2024 a las 12:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 10</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-06-07 09:49:14 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPCharset is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 81.
+ 1 APPPATH\Controllers\reservas.php(332): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 8 de la instalacion Salón de Actos el dia 08/06/2024 a las 12:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 10</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-07 09:49:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:49:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:49:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:50:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:51:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:52:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:56:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:56:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:57:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:57:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 09:57:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:04:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:05:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-06-07 10:05:08 --> mysqli_sql_exception: Column 'nombre' in where clause is ambiguous in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\proyectos\reservalo\system\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 C:\proyectos\reservalo\system\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+#6 C:\proyectos\reservalo\app\Controllers\reservas.php(272): CodeIgniter\BaseModel->paginate(6)
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\reservas->reservasAdmin()
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-06-07 10:05:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'nombre' in where clause is ambiguous
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT DISTINCT `instalaciones`.*
+FROM `instalaciones`
+JOIN `pistas` ON `pistas`.`id_instalacion` = `instalaciones`.`id_instalacion`
+JOIN `reservas` ON `reservas`.`id_pista` = `pistas`.`id_pista`
+WHERE `reservas`.`fecha_reserva` >= :reservas.fecha_reserva:
+AND  `nombre` LIKE :nombre: ESCAPE \'!\'
+) CI_count_all_results', [...], false)
+ 2 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 3 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 4 APPPATH\Controllers\reservas.php(272): CodeIgniter\BaseModel->paginate(6)
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->reservasAdmin()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 10:05:08 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'nombre' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT DISTINCT `instalaciones`.*
+FROM `instalaciones`
+JOIN `pistas` ON `pistas`.`id_instalacion` = `instalaciones`.`id_instalacion`
+JOIN `reservas` ON `reservas`.`id_pista` = `pistas`.`id_pista`
+WHERE `reservas`.`fecha_reserva` >= \'2024-06-07\'
+AND  `nombre` LIKE \'%%\' ESCAPE \'!\'
+) CI_count_all_results')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT DISTINCT `instalaciones`.*
+FROM `instalaciones`
+JOIN `pistas` ON `pistas`.`id_instalacion` = `instalaciones`.`id_instalacion`
+JOIN `reservas` ON `reservas`.`id_pista` = `pistas`.`id_pista`
+WHERE `reservas`.`fecha_reserva` >= \'2024-06-07\'
+AND  `nombre` LIKE \'%%\' ESCAPE \'!\'
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT DISTINCT `instalaciones`.*
+FROM `instalaciones`
+JOIN `pistas` ON `pistas`.`id_instalacion` = `instalaciones`.`id_instalacion`
+JOIN `reservas` ON `reservas`.`id_pista` = `pistas`.`id_pista`
+WHERE `reservas`.`fecha_reserva` >= :reservas.fecha_reserva:
+AND  `nombre` LIKE :nombre: ESCAPE \'!\'
+) CI_count_all_results', [...], false)
+ 4 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 5 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 6 APPPATH\Controllers\reservas.php(272): CodeIgniter\BaseModel->paginate(6)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->reservasAdmin()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-06-07 10:05:08 --> [Caused by] mysqli_sql_exception: Column 'nombre' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT DISTINCT `instalaciones`.*
+FROM `instalaciones`
+JOIN `pistas` ON `pistas`.`id_instalacion` = `instalaciones`.`id_instalacion`
+JOIN `reservas` ON `reservas`.`id_pista` = `pistas`.`id_pista`
+WHERE `reservas`.`fecha_reserva` >= \'2024-06-07\'
+AND  `nombre` LIKE \'%%\' ESCAPE \'!\'
+) CI_count_all_results', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT DISTINCT `instalaciones`.*
+FROM `instalaciones`
+JOIN `pistas` ON `pistas`.`id_instalacion` = `instalaciones`.`id_instalacion`
+JOIN `reservas` ON `reservas`.`id_pista` = `pistas`.`id_pista`
+WHERE `reservas`.`fecha_reserva` >= \'2024-06-07\'
+AND  `nombre` LIKE \'%%\' ESCAPE \'!\'
+) CI_count_all_results')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT DISTINCT `instalaciones`.*
+FROM `instalaciones`
+JOIN `pistas` ON `pistas`.`id_instalacion` = `instalaciones`.`id_instalacion`
+JOIN `reservas` ON `reservas`.`id_pista` = `pistas`.`id_pista`
+WHERE `reservas`.`fecha_reserva` >= \'2024-06-07\'
+AND  `nombre` LIKE \'%%\' ESCAPE \'!\'
+) CI_count_all_results')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM (
+SELECT DISTINCT `instalaciones`.*
+FROM `instalaciones`
+JOIN `pistas` ON `pistas`.`id_instalacion` = `instalaciones`.`id_instalacion`
+JOIN `reservas` ON `reservas`.`id_pista` = `pistas`.`id_pista`
+WHERE `reservas`.`fecha_reserva` >= :reservas.fecha_reserva:
+AND  `nombre` LIKE :nombre: ESCAPE \'!\'
+) CI_count_all_results', [...], false)
+ 5 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 6 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 7 APPPATH\Controllers\reservas.php(272): CodeIgniter\BaseModel->paginate(6)
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->reservasAdmin()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-06-07 10:05:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:05:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:05:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:06:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:07:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:08:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:08:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:09:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:09:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:09:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:09:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:09:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:12:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:13:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:13:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:15:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:15:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:16:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:17:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-06-07 10:18:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

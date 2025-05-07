@@ -1,0 +1,68 @@
+CRITICAL - 2024-04-18 16:05:07 --> ErrorException: Undefined variable $categorias
+in APPPATH\Views\instalaciones\nuevaInstalacion.php on line 40.
+ 1 APPPATH\Views\instalaciones\nuevaInstalacion.php(40): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categorias', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\nuevaInstalacion.php', 40)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\nuevaInstalacion.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/nuevaInstalacion', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(151): view('instalaciones/nuevaInstalacion')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-18 16:05:32 --> ErrorException: Undefined variable $categoriaFiltro
+in APPPATH\Views\instalaciones\nuevaInstalacion.php on line 43.
+ 1 APPPATH\Views\instalaciones\nuevaInstalacion.php(43): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categoriaFiltro', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\nuevaInstalacion.php', 43)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\nuevaInstalacion.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/nuevaInstalacion', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(151): view('instalaciones/nuevaInstalacion', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-18 16:40:25 --> ErrorException: Undefined array key "nombre"
+in APPPATH\Controllers\instalaciones.php on line 210.
+ 1 APPPATH\Controllers\instalaciones.php(210): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nombre"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 210)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-18 16:41:58 --> ErrorException: Undefined array key "portada"
+in APPPATH\Controllers\instalaciones.php on line 213.
+ 1 APPPATH\Controllers\instalaciones.php(213): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "portada"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 213)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-18 16:42:32 --> ErrorException: Undefined array key "portada"
+in APPPATH\Controllers\instalaciones.php on line 213.
+ 1 APPPATH\Controllers\instalaciones.php(213): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "portada"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 213)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-18 16:45:35 --> ErrorException: Undefined array key "portada"
+in APPPATH\Controllers\instalaciones.php on line 213.
+ 1 APPPATH\Controllers\instalaciones.php(213): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "portada"', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 213)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-18 17:00:18 --> ErrorException: move_uploaded_file(http://localhost/reservalo//images/Captura de pantalla 2023-03-04 224254.png): Failed to open stream: HTTP wrapper does not support writeable connections
+in APPPATH\Controllers\instalaciones.php on line 242.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'move_uploaded_file(http://localhost/reservalo//images/Captura de pantalla 2023-03-04 224254.png): Failed to open stream: HTTP wrapper does not support writeable connections', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 242)
+ 2 APPPATH\Controllers\instalaciones.php(242): move_uploaded_file('C:\\xampp\\tmp\\php6503.tmp', 'http://localhost/reservalo//images/Captura de pantalla 2023-03-04 224254.png')
+ 3 APPPATH\Controllers\instalaciones.php(223): App\Controllers\instalaciones->subirArchivo('C:\\xampp\\tmp\\php6503.tmp', 'Captura de pantalla 2023-03-04 224254.png')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-18 17:02:44 --> ErrorException: move_uploaded_file(http://localhost/reservalo//images/Captura de pantalla 2023-03-09 183447.png): Failed to open stream: HTTP wrapper does not support writeable connections
+in APPPATH\Controllers\instalaciones.php on line 242.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'move_uploaded_file(http://localhost/reservalo//images/Captura de pantalla 2023-03-09 183447.png): Failed to open stream: HTTP wrapper does not support writeable connections', 'C:\\proyectos\\reservalo\\app\\Controllers\\instalaciones.php', 242)
+ 2 APPPATH\Controllers\instalaciones.php(242): move_uploaded_file('C:\\xampp\\tmp\\php5AB6.tmp', 'http://localhost/reservalo//images/Captura de pantalla 2023-03-09 183447.png')
+ 3 APPPATH\Controllers\instalaciones.php(223): App\Controllers\instalaciones->subirArchivo('C:\\xampp\\tmp\\php5AB6.tmp', 'Captura de pantalla 2023-03-09 183447.png')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->nuevaInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

@@ -1,0 +1,33 @@
+CRITICAL - 2024-04-12 15:47:50 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Views\instalaciones\instalacion.php on line 6.
+ 1 APPPATH\Views\instalaciones\instalacion.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\instalacion.php', 6)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\instalacion.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalacion', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(107): view('instalaciones/instalacion', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->mostrarInstalacion(87)
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-12 15:48:12 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Views\instalaciones\instalacion.php on line 6.
+ 1 APPPATH\Views\instalaciones\instalacion.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\instalacion.php', 6)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\instalacion.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalacion', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(107): view('instalaciones/instalacion', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->mostrarInstalacion(87)
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-12 15:49:12 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Views\instalaciones\instalacion.php on line 6.
+ 1 APPPATH\Views\instalaciones\instalacion.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\instalacion.php', 6)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\proyectos\\reservalo\\app\\Views\\instalaciones\\instalacion.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalacion', [], true)
+ 5 APPPATH\Controllers\instalaciones.php(107): view('instalaciones/instalacion', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->mostrarInstalacion(878)
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

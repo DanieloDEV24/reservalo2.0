@@ -1,0 +1,750 @@
+INFO - 2024-05-30 16:44:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:44:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:44:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:45:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:45:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:45:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:45:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:46:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:46:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:46:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:46:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:46:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:46:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:46:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:47:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:47:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:47:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:47:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:47:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:47:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:48:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-05-30 16:48:16 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPConnectOptions is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 65.
+ 1 APPPATH\Controllers\reservas.php(269): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 2 de la instalacion Pabellón Municipal el dia 31/05/2024 a las 19:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 2</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-05-30 16:48:16 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$WrapChars is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 67.
+ 1 APPPATH\Controllers\reservas.php(269): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 2 de la instalacion Pabellón Municipal el dia 31/05/2024 a las 19:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 2</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-05-30 16:48:16 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPValidateCert is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 70.
+ 1 APPPATH\Controllers\reservas.php(269): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 2 de la instalacion Pabellón Municipal el dia 31/05/2024 a las 19:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 2</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-05-30 16:48:16 --> [DEPRECATED] Creation of dynamic property PHPMailer\PHPMailer\PHPMailer::$SMTPCharset is deprecated in APPPATH\Libraries\Mail\Lib_Mail.php on line 81.
+ 1 APPPATH\Controllers\reservas.php(269): App\Libraries\Mail\Lib_Mail->enviarCorreo('ruizsotodani2@gmail.com', 'RESERVA PISTA', '<!-- DEBUG-VIEW START 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+<h1>Reserva Realizada</h1>
+    <p>Hola, Danielo_24,</p>
+    <br>
+    <p>Le escribimos para informarle de que se ha realizado correctamente la reserva de la pista 2 de la instalacion Pabellón Municipal el dia 31/05/2024 a las 19:00:00</p>
+    <br>
+    <p>Las características de la reserva son: </p>
+    <ul>
+        <li>Suplemento: No</li>
+        <li>Nº de reservas: 2</li>
+    </ul>
+    <br>
+    <p>Si no coinciden alguna de las características con las deseadas o ha ocurrido algun problema, no dude en contactar con nosotros por la aplicación o vía email en reservalo@email.com</p>
+    <br>
+    <p>Gracias por confiar en nosotros,</p>
+    <br>
+    <p>Reservalo</p>
+<!-- DEBUG-VIEW ENDED 1 APPPATH\\Views\\Email\\v_plantillaEmail.php -->
+')
+ 2 APPPATH\Controllers\reservas.php(248): App\Controllers\reservas->escribirEmail('ruizsotodani2@gmail.com', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\reservas->realizarReserva()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 16:48:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:48:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:49:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:49:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:50:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:50:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:50:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:50:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:50:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:50:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:51:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:51:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:51:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:51:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 16:51:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:02:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:03:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:03:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:03:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:03:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:03:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:03:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:03:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:03:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:04:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:04:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:04:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:04:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:04:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:04:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:04:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:04:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:05:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:05:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:05:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:05:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:12:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:12:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:12:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:12:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:12:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:12:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:13:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:13:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:39:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:39:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:39:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:39:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:39:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:39:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:40:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:40:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:40:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:40:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:40:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:40:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:41:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:41:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:41:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:41:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:41:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:42:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 17:59:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 17:59:02 --> ErrorException: Undefined variable $datos
+in APPPATH\Controllers\DashBoard.php on line 17.
+ 1 APPPATH\Controllers\DashBoard.php(17): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $datos', 'C:\\proyectos\\reservalo\\app\\Controllers\\DashBoard.php', 17)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->index()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 17:59:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:02:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:03:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:04:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:04:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:05:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:18:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:19:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:20:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:20:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:42:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:44:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 18:44:07 --> Error: Class "App\Controllers\dashboardModel" not found
+in APPPATH\Controllers\DashBoard.php on line 25.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 18:45:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 18:45:43 --> ParseError: syntax error, unexpected token "echo"
+in APPPATH\Controllers\DashBoard.php on line 28.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Controllers\\dashboard.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\dashboard')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\dashboard')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\dashboard', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 18:45:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 18:46:01 --> Error: Class "App\Controllers\dashboardModel" not found
+in APPPATH\Controllers\DashBoard.php on line 25.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 18:46:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 18:46:38 --> Error: Class "App\Controllers\dashboardModel" not found
+in APPPATH\Controllers\DashBoard.php on line 25.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 18:47:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:47:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:50:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:51:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 18:51:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 19:06:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 19:06:38 --> ParseError: syntax error, unexpected token "->"
+in APPPATH\Models\dashboardModel.php on line 20.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\dashboardModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\dashboardModel')
+ 3 APPPATH\Controllers\DashBoard.php(26): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\dashboardModel')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:07:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 19:07:16 --> ParseError: syntax error, unexpected token "->"
+in APPPATH\Models\dashboardModel.php on line 20.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\dashboardModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\dashboardModel')
+ 3 APPPATH\Controllers\DashBoard.php(26): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\dashboardModel')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:08:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 19:08:13 --> Error: Cannot access protected property CodeIgniter\Database\MySQLi\Builder::$db
+in APPPATH\Models\dashboardModel.php on line 24.
+ 1 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:08:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 19:08:42 --> Error: Cannot access protected property CodeIgniter\Database\MySQLi\Builder::$db
+in APPPATH\Models\dashboardModel.php on line 24.
+ 1 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:09:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 19:09:55 --> Error: Cannot access protected property CodeIgniter\Database\MySQLi\Builder::$db
+in APPPATH\Models\dashboardModel.php on line 23.
+ 1 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:10:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 19:10:16 --> Error: Cannot access protected property CodeIgniter\Database\MySQLi\Builder::$db
+in APPPATH\Models\dashboardModel.php on line 23.
+ 1 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:13:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 19:14:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 19:14:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 19:16:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 19:17:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 19:22:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 19:24:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 19:26:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 19:35:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 19:35:33 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::query()
+in APPPATH\Models\dashboardModel.php on line 17.
+ 1 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:36:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 19:37:09 --> Error: Call to undefined function App\Models\YEAR()
+in APPPATH\Models\dashboardModel.php on line 21.
+ 1 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:37:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 19:37:29 --> Error: Call to undefined function App\Models\YEAR()
+in APPPATH\Models\dashboardModel.php on line 21.
+ 1 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:38:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-30 19:39:04 --> mysqli_sql_exception: Unknown column 'r.fecha_reserva' in 'field list' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(r....', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(r....')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(r....')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(r....', Array, false)
+#4 C:\proyectos\reservalo\app\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-30 19:39:11 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.fecha_reserva' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = :YEAR(r.fecha_reserva):
+AND `r`.`id_forma_pago` = :r.id_forma_pago:
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)', [...], false)
+ 2 APPPATH\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:43:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-30 19:44:01 --> mysqli_sql_exception: Unknown column 'r.fecha_reserva' in 'field list' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(r....', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(r....')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(r....')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(r....', Array, false)
+#4 C:\proyectos\reservalo\app\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-30 19:44:07 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.fecha_reserva' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = :YEAR(r.fecha_reserva):
+AND `r`.`id_forma_pago` = :r.id_forma_pago:
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)', [...], false)
+ 2 APPPATH\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:45:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-30 19:45:22 --> mysqli_sql_exception: Unknown column 'r.fecha_reserva' in 'on clause' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(re...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(re...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(re...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(re...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-30 19:45:26 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.fecha_reserva' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = :YEAR(reservas.fecha_reserva):
+AND `reservas`.`id_forma_pago` = :reservas.id_forma_pago:
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)', [...], false)
+ 2 APPPATH\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:46:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-05-30 19:46:16 --> mysqli_sql_exception: Unknown column 'reserva.fecha_reserva' in 'on clause' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(re...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(re...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(re...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(re...', Array, false)
+#4 C:\proyectos\reservalo\app\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\proyectos\reservalo\app\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+#6 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-05-30 19:46:25 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'reserva.fecha_reserva' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(reserva.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = :YEAR(reservas.fecha_reserva):
+AND `reservas`.`id_forma_pago` = :reservas.id_forma_pago:
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)', [...], false)
+ 2 APPPATH\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:48:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 19:49:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 19:55:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 19:55:21 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::query()
+in APPPATH\Models\dashboardModel.php on line 21.
+ 1 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:56:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 19:56:47 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Builder::query()
+in APPPATH\Models\dashboardModel.php on line 20.
+ 1 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:57:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 19:58:00 --> ParseError: Unmatched '}'
+in APPPATH\Models\dashboardModel.php on line 47.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\dashboardModel.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\dashboardModel')
+ 3 APPPATH\Controllers\DashBoard.php(26): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\dashboardModel')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-30 19:58:11 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.fecha_reserva' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = 2023
+AND `r`.`id_forma_pago` = 1
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = 2023
+AND `r`.`id_forma_pago` = 1
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = :YEAR(r.fecha_reserva):
+AND `r`.`id_forma_pago` = :r.id_forma_pago:
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)', [...], false)
+ 4 APPPATH\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-30 19:58:11 --> [Caused by] mysqli_sql_exception: Unknown column 'r.fecha_reserva' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = 2023
+AND `r`.`id_forma_pago` = 1
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = 2023
+AND `r`.`id_forma_pago` = 1
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = 2023
+AND `r`.`id_forma_pago` = 1
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = :YEAR(r.fecha_reserva):
+AND `r`.`id_forma_pago` = :r.id_forma_pago:
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)', [...], false)
+ 5 APPPATH\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 19:58:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 19:59:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 19:59:31 --> ErrorException: Undefined variable $db
+in APPPATH\Models\dashboardModel.php on line 12.
+ 1 APPPATH\Models\dashboardModel.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $db', 'C:\\proyectos\\reservalo\\app\\Models\\dashboardModel.php', 12)
+ 2 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 20:00:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-05-30 20:00:41 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.fecha_reserva' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = 2023
+AND `r`.`id_forma_pago` = 1
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = 2023
+AND `r`.`id_forma_pago` = 1
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = :YEAR(r.fecha_reserva):
+AND `r`.`id_forma_pago` = :r.id_forma_pago:
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)', [...], false)
+ 4 APPPATH\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-30 20:00:41 --> [Caused by] mysqli_sql_exception: Unknown column 'r.fecha_reserva' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = 2023
+AND `r`.`id_forma_pago` = 1
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = 2023
+AND `r`.`id_forma_pago` = 1
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = 2023
+AND `r`.`id_forma_pago` = 1
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(r.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(r.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(r.fecha_reserva) = :YEAR(r.fecha_reserva):
+AND `r`.`id_forma_pago` = :r.id_forma_pago:
+GROUP BY MONTH(r.fecha_reserva)
+ORDER BY MONTH(r.fecha_reserva)', [...], false)
+ 5 APPPATH\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-30 20:00:44 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.fecha_reserva' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = 2023
+AND `reservas`.`id_forma_pago` = 1
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = 2023
+AND `reservas`.`id_forma_pago` = 1
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = :YEAR(reservas.fecha_reserva):
+AND `reservas`.`id_forma_pago` = :reservas.id_forma_pago:
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)', [...], false)
+ 4 APPPATH\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-30 20:00:45 --> [Caused by] mysqli_sql_exception: Unknown column 'r.fecha_reserva' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = 2023
+AND `reservas`.`id_forma_pago` = 1
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = 2023
+AND `reservas`.`id_forma_pago` = 1
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = 2023
+AND `reservas`.`id_forma_pago` = 1
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(r.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = :YEAR(reservas.fecha_reserva):
+AND `reservas`.`id_forma_pago` = :reservas.id_forma_pago:
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)', [...], false)
+ 5 APPPATH\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-30 20:00:52 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'reserva.fecha_reserva' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(reserva.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = 2023
+AND `reservas`.`id_forma_pago` = 1
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(reserva.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = 2023
+AND `reservas`.`id_forma_pago` = 1
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(reserva.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = :YEAR(reservas.fecha_reserva):
+AND `reservas`.`id_forma_pago` = :reservas.id_forma_pago:
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)', [...], false)
+ 4 APPPATH\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-30 20:00:52 --> [Caused by] mysqli_sql_exception: Unknown column 'reserva.fecha_reserva' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(reserva.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = 2023
+AND `reservas`.`id_forma_pago` = 1
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(reserva.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = 2023
+AND `reservas`.`id_forma_pago` = 1
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(reserva.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = 2023
+AND `reservas`.`id_forma_pago` = 1
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT MONTH(reservas.fecha_reserva) AS Numero_de_Mes, COALESCE(COUNT(reservas.id_reserva), 0) AS Numero_de_Reservas
+FROM `reservas`
+LEFT JOIN (SELECT 1 AS month UNION SELECT 2 UNION SELECT 3 UNION SELECT 4 UNION SELECT 5 UNION SELECT 6 UNION SELECT 7 UNION SELECT 8 UNION SELECT 9 UNION SELECT 10 UNION SELECT 11 UNION SELECT 12) AS cal ON MONTH(reserva.fecha_reserva) = cal.month
+WHERE YEAR(reservas.fecha_reserva) = :YEAR(reservas.fecha_reserva):
+AND `reservas`.`id_forma_pago` = :reservas.id_forma_pago:
+GROUP BY MONTH(reservas.fecha_reserva)
+ORDER BY MONTH(reservas.fecha_reserva)', [...], false)
+ 5 APPPATH\Models\dashboardModel.php(26): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\DashBoard.php(28): App\Models\dashboardModel->obtenerPagosTarjetas()
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\dashboard->obtenerPagosTarjeta()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\dashboard))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-05-30 20:01:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 20:01:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 20:02:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 20:06:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 20:15:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 20:15:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 20:22:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 20:29:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 20:30:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 20:32:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 20:33:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 20:36:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-05-30 20:39:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

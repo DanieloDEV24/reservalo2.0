@@ -1,0 +1,211 @@
+WARNING - 2024-04-16 15:34:58 --> [DEPRECATED] Optional parameter $nombre declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\Home.php(16): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-04-16 15:34:58 --> [DEPRECATED] Optional parameter $categoria declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 0.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\Home.php(16): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-04-16 15:35:05 --> [DEPRECATED] Optional parameter $nombre declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\instalaciones.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-04-16 15:35:05 --> [DEPRECATED] Optional parameter $categoria declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 0.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\instalaciones.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-04-16 15:35:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-04-16 15:35:06 --> TypeError: App\Controllers\instalaciones::index(): Return value must be of type string, CodeIgniter\HTTP\RedirectResponse returned
+in APPPATH\Controllers\instalaciones.php on line 90.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-04-16 15:36:31 --> [DEPRECATED] Optional parameter $nombre declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\instalaciones.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-04-16 15:36:31 --> [DEPRECATED] Optional parameter $categoria declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 0.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\instalaciones.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-04-16 15:36:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-04-16 15:36:38 --> [DEPRECATED] Optional parameter $nombre declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\instalaciones.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-04-16 15:36:38 --> [DEPRECATED] Optional parameter $categoria declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 0.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\instalaciones.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-04-16 15:36:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-04-16 15:37:18 --> [DEPRECATED] Optional parameter $nombre declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\instalaciones.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-04-16 15:37:18 --> [DEPRECATED] Optional parameter $categoria declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 0.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\instalaciones.php(19): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2024-04-16 15:37:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-04-16 15:37:39 --> [DEPRECATED] Optional parameter $nombre declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\instalaciones.php(127): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->mostrarInstalacion(1)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-04-16 15:37:39 --> [DEPRECATED] Optional parameter $categoria declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 0.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\instalaciones.php(127): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->mostrarInstalacion(1)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-04-16 15:37:42 --> [DEPRECATED] Optional parameter $nombre declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 35.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\instalaciones.php(148): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->lugarInstalacion(1)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2024-04-16 15:37:42 --> [DEPRECATED] Optional parameter $categoria declared before required parameter $limit is implicitly treated as a required parameter in APPPATH\Models\instalacionesModel.php on line 0.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(311): include_once('C:\\proyectos\\reservalo\\system\\Debug\\Exceptions.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\proyectos\\reservalo\\app\\Models\\instalacionesModel.php')
+ 3 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Models\\instalacionesModel')
+ 4 APPPATH\Controllers\instalaciones.php(148): CodeIgniter\Autoloader\Autoloader->loadClass('App\\Models\\instalacionesModel')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->lugarInstalacion(1)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-04-16 16:19:10 --> mysqli_sql_exception: Unknown column 'categoria' in 'where clause' in C:\proyectos\reservalo\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\proyectos\reservalo\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*)...', 0)
+#1 C:\proyectos\reservalo\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*)...')
+#2 C:\proyectos\reservalo\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*)...')
+#3 C:\proyectos\reservalo\system\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*)...', Array, false)
+#4 C:\proyectos\reservalo\system\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+#5 C:\proyectos\reservalo\system\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+#6 C:\proyectos\reservalo\app\Controllers\instalaciones.php(53): CodeIgniter\BaseModel->paginate(1)
+#7 C:\proyectos\reservalo\system\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+#8 C:\proyectos\reservalo\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+#9 C:\proyectos\reservalo\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\proyectos\reservalo\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-04-16 16:19:10 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categoria' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `instalaciones`
+WHERE `categoria` = :categoria:', [...], false)
+ 2 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 3 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 4 APPPATH\Controllers\instalaciones.php(53): CodeIgniter\BaseModel->paginate(1)
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-16 16:19:10 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categoria' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `instalaciones`
+WHERE `categoria` = \'-1\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `instalaciones`
+WHERE `categoria` = \'-1\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `instalaciones`
+WHERE `categoria` = :categoria:', [...], false)
+ 4 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 5 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 6 APPPATH\Controllers\instalaciones.php(53): CodeIgniter\BaseModel->paginate(1)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-16 16:19:10 --> [Caused by] mysqli_sql_exception: Unknown column 'categoria' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT COUNT(*) AS `numrows`
+FROM `instalaciones`
+WHERE `categoria` = \'-1\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT COUNT(*) AS `numrows`
+FROM `instalaciones`
+WHERE `categoria` = \'-1\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT COUNT(*) AS `numrows`
+FROM `instalaciones`
+WHERE `categoria` = \'-1\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1700): CodeIgniter\Database\BaseConnection->query('SELECT COUNT(*) AS `numrows`
+FROM `instalaciones`
+WHERE `categoria` = :categoria:', [...], false)
+ 5 SYSTEMPATH\Model.php(624): CodeIgniter\Database\BaseBuilder->countAllResults(false)
+ 6 SYSTEMPATH\BaseModel.php(1239): CodeIgniter\Model->countAllResults(false)
+ 7 APPPATH\Controllers\instalaciones.php(53): CodeIgniter\BaseModel->paginate(1)
+ 8 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 9 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+10 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-16 16:19:44 --> Error: Cannot use object of type CodeIgniter\Pager\Pager as array
+in APPPATH\Views\instalaciones\index.php on line 130.
+ 1 SYSTEMPATH\View\View.php(228): include()
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/index', [], true)
+ 4 APPPATH\Controllers\instalaciones.php(60): view('instalaciones/index', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\instalaciones->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
