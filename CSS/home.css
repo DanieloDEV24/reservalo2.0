@@ -1,0 +1,292 @@
+@font-face {
+    font-family: "Satoshi";
+    src: url('../fonts/Satoshi/Fonts/WEB/fonts/Satoshi-Medium.ttf');
+}
+
+* {
+    font-family: 'Satoshi';
+}
+
+body
+{
+    background-color: #F5F5F9 !important;
+}
+
+.home
+{
+    background: url('../images/portada.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.8); /* color semitransparente */
+    background-blend-mode: darken; /* mezcla oscura */
+}
+
+.home h1
+{
+    margin: 0;
+}
+
+body
+{
+    margin: 0;
+    position: relative;
+}
+
+header
+{
+    background-color: transparent;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+}
+
+header
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    margin-right: 5%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.header-scrolled
+{
+    background-color: rgba(0, 0, 0, .8) !important;
+}
+
+header img
+{
+    width: 15%;
+    margin-left: 2%;
+}
+
+header nav 
+{
+    display: flex;
+    gap: 10%;
+    width: 60%;
+    justify-content: center;
+}
+
+header div 
+{
+    width: 20%;
+    display: flex;
+    justify-content: end;
+    padding-right: 2%;
+}
+
+header nav a, header>div a 
+{
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+.home .textoPortada
+{
+    width: 70%;
+    padding-top: 10%;
+    margin-bottom: 5%;
+    padding-left: 7%;
+}
+
+.home .textoPortada h1
+{
+    color: #fff;
+    font-size: 3rem;
+}
+
+header>div .button
+{
+    width: 100%;
+}
+
+.home .textoPortada .button
+{
+    margin-left: 0;
+}
+
+.button {
+    position: relative;
+    display: inline-block;
+    margin: 15px;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    color: #725AC1;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid #725AC1;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 0 #725AC1;
+  }
+  
+  .button:hover {
+    color: white;
+    box-shadow: inset 0 -100px 0 0 #725AC1;
+  }
+  
+ .button:active {
+    transform: scale(0.9);
+  }
+
+  .barraBusqueda
+  {
+    background-color: #fff;
+    padding: 1%;
+    width: 60%;
+    border-radius: 10px;
+  }
+
+  .barraBusqueda input, .barraBusqueda select
+  {
+    width: 100%;
+    margin: 0%;
+    border: none;
+    border-bottom: 2px solid #725AC1;
+  }
+
+  .mainDivBusqueda
+  {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3%;
+  }
+
+.content 
+{
+    padding: 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.content .divImagenes 
+{
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columnas */
+    width: 35%;
+    gap: 10px;
+}
+
+.content .divImagenes img
+{
+    width: 100%;
+    border-radius: 8px;
+}
+
+.content .comoFunciona
+{
+    width: 53%;
+}
+
+.content .comoFunciona h1
+{
+    font-size: 3.5rem;
+}
+
+.content .comoFunciona li, .content .comoFunciona p 
+{
+    font-size: 1.3rem;
+    margin-bottom: 0%;
+}
+
+.content .comoFunciona p 
+{
+    font-size: 1.5rem !important;
+}
+
+.deportes
+{
+    display: flex;
+}
+
+.deportes span
+{
+    width: 25%;
+    min-height: 300px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s ease;
+}
+
+.deportes span:hover
+{
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+#futbol
+{
+    background: url('../images/Futbol.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.6); /* color semitransparente */
+    background-blend-mode: darken; /* mezcla oscura */
+}
+
+#baloncesto
+{
+    background: url('../images/Baloncesto.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.6); /* color semitransparente */
+    background-blend-mode: darken; /* mezcla oscura */
+}
+
+#voley
+{
+    background: url('../images/Voley.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.6); /* color semitransparente */
+    background-blend-mode: darken; /* mezcla oscura */
+}
+
+#padel
+{
+    background: url('../images/Padel.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.6); /* color semitransparente */
+    background-blend-mode: darken; /* mezcla oscura */
+}
+
+
+.carruselTopReservas
+{
+    padding: 7%;
+    padding-top: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1); /* Esto invierte el color blanco a negro */
+}
+
+.carruselTopReservas button
+{
+    width: auto !important;
+}
+
+footer
+{
+    background-color: #000;
+    color: #fff;
+    min-height: 10vh;
+}

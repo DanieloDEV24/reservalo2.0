@@ -13,23 +13,8 @@ class Home extends BaseController
      */
     public function index(): string
     {
-        //Creamos el modelo de las instalaciones
-        $instalaciones = new instalacionesModel();
 
-        $categorias = new categoriasModel();
-        
-        //Buscamos todas las instalaciones
-        $resultado = $instalaciones->findAll();
-
-        // Selección de las categorías con más instalaciones
-        $numeroInstalaciones = count($resultado);
-
-        $instalacionesCategoria = $categorias->categoriasContador();
-
-
-        
-
-        //Devolvemos la vista
-        return view('index', ["numeroInstalaciones" => $numeroInstalaciones, "instalacionesCategoria" => $instalacionesCategoria, "baseUrl" => base_url()]);
+       //Devolvemos la vista
+        return view('index', ["baseUrl" => base_url()]);
     }
 }
