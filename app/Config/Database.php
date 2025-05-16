@@ -24,7 +24,7 @@ class Database extends Config
     /**
      * The default database connection.
      */
-    public array $BDReservalo = [
+    public array $BDReservalo2 = [
         'DSN'          => '',
         'hostname'     => 'localhost',
         'username'     => 'root',
