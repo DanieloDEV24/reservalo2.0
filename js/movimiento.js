@@ -39,9 +39,9 @@ $(document).ready(() => {
 
       $(window).on('scroll', function () {
         if ($(window).scrollTop() > 5) {
-          $('header').addClass('header-scrolled');
+          $('header.headerHome').addClass('header-scrolled');
         } else {
-          $('header').removeClass('header-scrolled');
+          $('header.headerHome').removeClass('header-scrolled');
         }
         
       });

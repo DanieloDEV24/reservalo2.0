@@ -19,7 +19,7 @@ class Database extends Config
      * Lets you choose which connection group to
      * use if no other is specified.
      */
-    public string $defaultGroup = 'BDReservalo';
+    public string $defaultGroup = 'BDReservalo2';
 
     /**
      * The default database connection.
@@ -29,7 +29,7 @@ class Database extends Config
         'hostname'     => 'localhost',
         'username'     => 'root',
         'password'     => '',
-        'database'     => 'reservalo',
+        'database'     => 'reservalo2',
         'DBDriver'     => 'MySQLi',
         'DBPrefix'     => '',
         'pConnect'     => false,

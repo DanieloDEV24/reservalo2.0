@@ -35,7 +35,7 @@ body
     position: relative;
 }
 
-header
+header.headerHome
 {
     background-color: transparent;
     position: fixed;
@@ -43,14 +43,17 @@ header
     top: 0;
 }
 
+header.headerHome
+{
+    width: 100%;
+    margin-right: 5%;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
 header
 {
     display: flex;
     justify-content: space-between;
-    width: 100%;
     align-items: center;
-    margin-right: 5%;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .header-scrolled
@@ -80,7 +83,7 @@ header div
     padding-right: 2%;
 }
 
-header nav a, header>div a 
+header.headerHome nav a, header.headerHome>div a 
 {
     color: #fff;
     text-decoration: none;
@@ -146,12 +149,13 @@ header>div .button
     border-radius: 10px;
   }
 
-  .barraBusqueda input, .barraBusqueda select
+  .barraBusqueda input, .barraBusqueda select, .modal input, .modal select
   {
     width: 100%;
     margin: 0%;
     border: none;
     border-bottom: 2px solid #725AC1;
+    background-color: transparent;
   }
 
   .mainDivBusqueda
@@ -289,4 +293,75 @@ footer
     background-color: #000;
     color: #fff;
     min-height: 10vh;
+    max-height: 10vh;
+    
 }
+
+/* <reset-style> ============================ */
+a {
+  text-decoration: none;
+}
+/* <main-style> ============================ */
+.menu__link {
+  color: #fff;
+  line-height: 2;
+  position: relative;
+}
+
+.menu__link::before {
+  content: '';
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #fff;
+  position: absolute;
+  bottom: -.05rem;
+  left: 50%;
+  transition: width .4s, left .4s;
+}
+
+.menu__link:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+header.headerPlantilla
+{
+    background-color: #fff;
+    color: #7645D9;
+    margin: 2%;
+    border-radius: 10px;
+}
+
+header.headerPlantilla .menu__link, header.headerPlantilla .menu__link::before
+{
+    color: #7645D9;
+}
+
+header.headerPlantilla a 
+{
+    text-decoration: none;
+}
+
+header.headerPlantilla .menu__link::before
+{
+  content: '';
+  width: 0;
+  height: 2px;
+  border-radius: 2px;
+  background-color: #7645D9 !important;
+  position: absolute;
+  bottom: -.05rem;
+  left: 50%;
+  transition: width .4s, left .4s;
+}
+
+header.headerPlantilla .menu__link:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+ header a 
+ {
+    font-size: 1.3rem;
+ }

@@ -1,0 +1,11 @@
+CRITICAL - 2025-05-14 10:30:54 --> ErrorException: Undefined variable $instalacion
+in APPPATH\Views\instalaciones\crudInstalaciones.php on line 64.
+ 1 APPPATH\Views\instalaciones\crudInstalaciones.php(64): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $instalacion', 'C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\crudInstalaciones.php', 64)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\crudInstalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/crudInstalaciones', [], true)
+ 5 APPPATH\Controllers\Instalaciones.php(22): view('instalaciones/crudInstalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
