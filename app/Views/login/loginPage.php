@@ -11,7 +11,8 @@
 
     <script src="<?= base_url() ?>js/jquery.js"></script>
     <script src="<?= base_url() ?>js/movimiento.js"></script>
-     <script src="<?= base_url() ?>js/login.js"></script>
+    <script src="<?= base_url() ?>js/login.js"></script>
+    <script src="<?= base_url() ?>js/validaciones.js"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
@@ -23,7 +24,19 @@
 
 </head>
 
-<body class="d-flex justify-content-center align-items-center bodyLogin"">
+<body class="d-flex justify-content-center align-items-center flex-wrap bodyLogin ">
+
+    <div id="mensaje2" style="width: 100%; padding: 1%; padding-bottom: 0%; display: flex; justify-content: center;">
+        <?php
+            if(isset($salida))
+            {
+                ?>
+                    <div style="width:auto" class="alert alert-<?=$salida["type"]?>" role="alert"><?=$salida["mensaje"]?></div>
+                <?php
+            }
+        ?>
+    </div>
+
     <div class="login">
 
         <div class="card-body">
@@ -38,16 +51,16 @@
             <p class="mb-1"><em>Tu app de reservas de instalaciones deportivas</em></p>
             <p class="mb-6">Porfavor, inicie sesión para continuar</p>
 
-            <form id="formAuthentication" class="mb-6" action="/sneat-html-django-admin-template-free/">
+            <form id="loginForm" class="mb-6" action="" method="post">
                 <input type="hidden" name="csrfmiddlewaretoken" value="sAH2uGhYD8U3bjDwPpS5SsEXDjRGqyVyGLY41A4VpjK7ea6Kthv1mkRK0HJL6JV7">
                 <div class="mb-6 loginEmail">
                     <label for="email" class="form-label">Correo electrónico</label>
-                    <input type="text" class="form-control" id="email" name="email-username" placeholder="Ej: email@ejemplo.com" autofocus="">
+                    <input type="text" class="form-control" id="email" name="emailLogin" placeholder="Ej: email@ejemplo.com" autofocus="">
                 </div>
                 <div class="mb-6 form-password-toggle">
                     <label class="form-label" for="password">Contraseña</label>
                     <div class="input-group input-group-merge loginPassword">
-                        <input type="password" id="password" class="form-control" name="password" placeholder="············" aria-describedby="password">
+                        <input type="password" id="password" class="form-control" name="passwordLogin" placeholder="············" aria-describedby="password">
                         <span class="input-group-text cursor-pointer botonVer" style="background-color: transparent; border: none"><i class="bi bi-eye"></i></span>
                     </div>
                 </div>

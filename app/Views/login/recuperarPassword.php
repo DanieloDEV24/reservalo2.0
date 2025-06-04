@@ -26,7 +26,7 @@
 
 <body class="d-flex justify-content-center align-items-center flex-wrap bodyLogin">
 
-    <div id="mensaje" style="width: 100%; padding: 1%; padding-bottom: 0%; display: flex; justify-content: center;">
+    <div id="mensaje3" style="width: 100%; padding: 1%; padding-bottom: 0%; display: flex; justify-content: center;">
     <?php
             if(isset($salida))
             {
@@ -47,44 +47,22 @@
                 </a>
             </div>
             <!-- /Logo -->
-            <h4 class="mb-1">Registrate</h4>
+            <h4 class="mb-1">Recuperar Contraseña</h4>
             <p class="mb-6">Introduzca los datos solicitados</p>
 
-            <form id="singInForm" class="mb-6" action="" method="post">
-                <input type="hidden" name="csrfmiddlewaretoken" value="sAH2uGhYD8U3bjDwPpS5SsEXDjRGqyVyGLY41A4VpjK7ea6Kthv1mkRK0HJL6JV7">
+            <form id="emailPasswordForm" class="mb-6" action="" method="post" name="formForgotPassword">
 
-                <div class=" loginEmail">
-                    <label for="nombreReg" class="form-label">Correo electrónico</label>
-                    <input type="text" class="form-control" id="nombreReg" name="nombreReg" placeholder="Ej: Rigoberto..." autofocus="">
+                <div class="passwordEmail">
+                    <label for="emailPass" class="form-label">Correo electrónico</label>
+                    <input type="text" class="form-control" id="emailPass" name="emailPass" autofocus="">
                 </div>
-                <br>
-
-                <div class=" loginEmail">
-                    <label for="emailReg" class="form-label">Correo electrónico</label>
-                    <input type="text" class="form-control" id="emailReg" name="emailReg" placeholder="Ej: email@ejemplo.com" autofocus="">
-                </div>
-                <br>
-                <div class=" form-password-toggle">
-                    <label class="form-label" for="passwordReg">Contraseña</label>
-                    <div class="input-group input-group-merge loginPassword">
-                        <input type="password" id="passwordReg" class="form-control" name="passwordReg" placeholder="············" aria-describedby="password">
-                        <span class="input-group-text cursor-pointer botonVer" style="background-color: transparent; border: none"><i class="bi bi-eye"></i></span>
-                    </div>
-                </div>
-                <br>
-            
                 <br>
                 <div>
-                    <button class="btn btn-primary d-grid w-100" type="submit">Registrarse</button>
+                    <button class="btn btn-primary d-grid w-100" type="submit">Enviar correo</button>
                 </div>
             </form>
     <br>
-            <p class="text-center">
-                <span>¿Ya tienes cuenta?</span>
-                <a href="<?=base_url()?>index.php/login">
-                    <span>Iniciar Sesión</span>
-                </a>
-            </p>
+            
         </div>
 
     </div>

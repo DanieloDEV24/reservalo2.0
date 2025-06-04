@@ -50,4 +50,47 @@ $(document).ready(() => {
             $('#mensaje').append(`<div style="width:auto" class="alert alert-${errores[0].type}" role="alert">${errores[0].mensaje}</div>`)
         }
     })
+
+
+    $('#loginForm').on('submit', function(e){
+        let email      = $('#email').val().trim()
+        let password   = $('#password').val().trim()
+        let salida     = {}
+        let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+        let errores    = []
+
+        if(email === "")
+        {
+            salida = {
+                type   : "danger",
+                mensaje: "Debe introducir una dirección de correo electrónico"
+            }
+            errores.push(salida)
+        }
+        else if(password === "")
+        {
+            salida = {
+                type   : "danger",
+                mensaje: "Debe introducir una contraseña"
+            }
+            errores.push(salida)
+        }
+        else if(!regexEmail.test(email))
+        {
+            salida = {
+                type   : "danger",
+                mensaje: "Debe introducir una dirección de correo válida"
+            }
+
+            errores.push(salida)
+        }
+
+        if(errores.length > 0)
+        {
+            e.preventDefault();
+            console.log(errores)
+            $('#mensaje2').empty()
+            $('#mensaje2    ').append(`<div style="width:auto" class="alert alert-${errores[0].type}" role="alert">${errores[0].mensaje}</div>`)
+        }
+    })
 })

@@ -10,3 +10,8 @@ $routes->get('/crudInstalaciones', 'Instalaciones::crudInstalaciones', ['filter'
 $routes->get('/login', 'Login::login');
 $routes->get('/singIn', 'Login::registrarse');
 $routes->post('/singIn', 'Login::registrarse');
+$routes->get('/login', 'Login::login');
+$routes->post('/login', 'Login::login');
+$routes->get('/logout', 'Login::logout');
+$routes->post('/forgotPass', 'Login::forgotPassword');
+$routes->get('/forgotPass', 'Login::forgotPassword');

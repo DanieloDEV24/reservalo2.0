@@ -118,7 +118,7 @@ header>div .button
     position: relative;
     display: inline-block;
     margin: 15px;
-    padding: 15px 30px;
+    padding: 15px;
     text-align: center;
     font-size: 18px;
     letter-spacing: 1px;
@@ -361,7 +361,53 @@ header.headerPlantilla .menu__link:hover::before {
   left: 0;
 }
 
- header a 
- {
+header a 
+{
     font-size: 1.3rem;
- }
+}
+
+header .mainLi
+{
+    border: 2px solid #725AC1;
+    border-radius: 10px;
+    width: 55%;
+}
+
+.mainLi>a span, .mainLi>a i, .dropdown-toggle::after
+{
+    color: #fff;
+    transition: all .3s ease-out;
+}
+
+.mainLi>a:hover span, .mainLi>a:hover i, .dropdown-toggle:hover::after
+{
+    color: #725AC1 !important;
+}
+
+.mainLi ul a i, .mainLi ul a span
+{
+    text-align: center;
+    color: #fff;
+    transition: all .3s ease-out;
+}
+
+.mainLi ul a:hover i, .mainLi ul a:hover span
+{
+    text-align: center;
+    color: #725AC1;
+}
+
+.dropdown-item:hover 
+{
+    background-color: transparent !important;
+}
+
+header li 
+{
+    list-style: none;
+}
+
+html
+{
+    overflow-x: hidden;
+}

@@ -34,7 +34,7 @@
       <a href="#" class="menu__link">Link</a>
     </nav>
     <div>
-      <a href="<?=base_url()?>index.php/login" class="button">Iniciar Sesión</a>
+      <a href="<?=base_url()?>index.php/login" class="button"><i class="bi bi-person"></i> Iniciar Sesión</a>
     </div>
   </header>
    <?=$view?>

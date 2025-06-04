@@ -1,0 +1,71 @@
+ERROR - 2025-05-21 14:39:02 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`reservalo2`.`usuarios`, CONSTRAINT `fk_usuarios_roles_01` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE NO ACTION ON UPDATE CASCADE) in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\loginModel.php(48): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Login.php(69): App\Models\loginModel->registrar('Danielr', 'danielruizdevel...', 'XXZKQD24.')
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Login->registrarse()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-05-21 14:39:02 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`reservalo2`.`usuarios`, CONSTRAINT `fk_usuarios_roles_01` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `usuarios` (`nombre`, `email`, `password`, `id_rol`) VALUES (:nombre:, :email:, :password:, :id_rol:)', [...], false)
+ 2 APPPATH\Models\loginModel.php(48): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Login.php(69): App\Models\loginModel->registrar('Danielr', 'danielruizdeveloper@gmail.com', 'XXZKQD24.')
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->registrarse()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-21 14:39:02 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`reservalo2`.`usuarios`, CONSTRAINT `fk_usuarios_roles_01` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `usuarios` (`nombre`, `email`, `password`, `id_rol`) VALUES (\'Danielr\', \'danielruizdeveloper@gmail.com\', \'6cd417576f4790d1de516e45340adacae98656c5\', 1)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `usuarios` (`nombre`, `email`, `password`, `id_rol`) VALUES (\'Danielr\', \'danielruizdeveloper@gmail.com\', \'6cd417576f4790d1de516e45340adacae98656c5\', 1)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `usuarios` (`nombre`, `email`, `password`, `id_rol`) VALUES (:nombre:, :email:, :password:, :id_rol:)', [...], false)
+ 4 APPPATH\Models\loginModel.php(48): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Login.php(69): App\Models\loginModel->registrar('Danielr', 'danielruizdeveloper@gmail.com', 'XXZKQD24.')
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->registrarse()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-05-21 14:39:02 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`reservalo2`.`usuarios`, CONSTRAINT `fk_usuarios_roles_01` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `usuarios` (`nombre`, `email`, `password`, `id_rol`) VALUES (\'Danielr\', \'danielruizdeveloper@gmail.com\', \'6cd417576f4790d1de516e45340adacae98656c5\', 1)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `usuarios` (`nombre`, `email`, `password`, `id_rol`) VALUES (\'Danielr\', \'danielruizdeveloper@gmail.com\', \'6cd417576f4790d1de516e45340adacae98656c5\', 1)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `usuarios` (`nombre`, `email`, `password`, `id_rol`) VALUES (\'Danielr\', \'danielruizdeveloper@gmail.com\', \'6cd417576f4790d1de516e45340adacae98656c5\', 1)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `usuarios` (`nombre`, `email`, `password`, `id_rol`) VALUES (:nombre:, :email:, :password:, :id_rol:)', [...], false)
+ 5 APPPATH\Models\loginModel.php(48): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Login.php(69): App\Models\loginModel->registrar('Danielr', 'danielruizdeveloper@gmail.com', 'XXZKQD24.')
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->registrarse()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-05-21 14:44:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-05-21 14:44:11 --> ErrorException: Undefined array key "rol"
+in APPPATH\Controllers\Login.php on line 95.
+ 1 APPPATH\Controllers\Login.php(95): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "rol"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Login.php', 95)
+ 2 APPPATH\Controllers\Login.php(76): App\Controllers\Login->accesoUsuario([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->registrarse()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-05-21 14:59:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-05-21 14:59:22 --> ErrorException: Undefined array key "id_usuario"
+in APPPATH\Controllers\Login.php on line 99.
+ 1 APPPATH\Controllers\Login.php(99): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_usuario"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Login.php', 99)
+ 2 APPPATH\Controllers\Login.php(79): App\Controllers\Login->accesoUsuario([...])
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->registrarse()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-05-21 15:02:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-05-21 15:02:34 --> TypeError: App\Controllers\Login::registrarse(): Return value must be of type string, CodeIgniter\HTTP\RedirectResponse returned
+in APPPATH\Controllers\Login.php on line 82.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->registrarse()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-05-21 15:04:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

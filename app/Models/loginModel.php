@@ -46,6 +46,8 @@ class loginModel extends Model
 
         //Realizamos la consulta
         $query = $builder->insert($dataInsert);
+
+        return $db->insertID();
     }
 
     public function existeEmail(string $email)
@@ -65,4 +67,89 @@ class loginModel extends Model
 
         return $result; 
     }
+
+    public function buscaUsuarioPorId(int $idUsuario)
+    {
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('usuarios');
+
+        // Realizamos la sentencia
+        $builder->select()->where("id_usuario", $idUsuario);
+
+        // Obtenemos los resultados
+        $query  = $builder->get();
+        $result = $query->getResultArray();
+
+        return $result[0]; 
+    }
+
+    public function passwordEmail($email)
+    {
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('usuarios');
+
+        // Realizamos la sentencia
+        $builder->select("password")->where("email", $email);
+
+        // Obtenemos los resultados
+        $query  = $builder->get();
+        $result = $query->getResultArray();
+
+        return $result[0];
+    }
+
+    public function selectDatawithEmail($email)
+    {
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('usuarios');
+
+        // Realizamos la sentencia
+        $builder->select()->where("email", $email);
+
+         // Obtenemos los resultados
+        $query  = $builder->get();
+        $result = $query->getResultArray();
+
+        return $result[0];
+    }
+
+    public function buscarIdporEmail (string $email)
+    {
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('usuarios');
+
+        // Realizamos la sentencia
+        $builder->select("id_usuario")->where("email", $email);
+
+         // Obtenemos los resultados
+        $query  = $builder->get();
+        $result = $query->getResultArray();
+
+        return $result[0];
+    }
+
+    public function anadirToken (array $data, int $id_usuario)
+    {
+        //Conexion a la base de datos
+        $db     = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('usuarios');
+
+        //Actualizamos los campos token y date_token con los valores creados
+        $builder->where("id_usuario", $id_usuario)->update($data);
+    }
+
 }
