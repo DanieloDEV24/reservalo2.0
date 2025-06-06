@@ -50,7 +50,7 @@
             <h4 class="mb-1">Recuperar Contraseña</h4>
             <p class="mb-6">Introduzca los datos solicitados</p>
 
-            <form id="emailPasswordForm" class="mb-6" action="" method="post" name="formForgotPassword">
+            <form id="emailPasswordForm" class="mb-6" action="" method="post">
 
                 <div class="passwordEmail">
                     <label for="emailPass" class="form-label">Correo electrónico</label>

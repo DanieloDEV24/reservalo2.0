@@ -73,7 +73,7 @@
                                Recuérdame
                             </label>
                         </div>
-                        <a href="/sneat-html-django-admin-template-free/auth/forgot_password/">
+                        <a href="<?=base_url()?>index.php/forgotPass">
                             <span>¿Has olvidado la contraseña?</span>
                         </a>
                     </div>

@@ -43,6 +43,21 @@ header.headerHome
     top: 0;
 }
 
+header.headerHome nav  .dropdown-toggle::after
+{
+    color: white;
+}
+
+header.headerPlantilla nav  .dropdown-toggle::after
+{
+    color: #7645D9 !important ;
+}
+
+header.headerHome nav .dropdown-toggle:hover::after 
+{
+    color: white !important;
+}
+
 header.headerHome
 {
     width: 100%;

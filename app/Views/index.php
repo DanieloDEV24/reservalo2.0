@@ -24,11 +24,19 @@
 <body>
   <header class="headerHome">
     <img src="<?= base_url() ?>images/Logo.png" alt="">
-    <nav>
+    <nav class="align-items-center">
       <a href="<?= base_url() ?>" class="menu__link"><i class="bi bi-house"></i> Home</a>
-      <a href="<?=base_url()?>index.php/crudInstalaciones" class="menu__link"><i class="bi bi-tools"></i> Gestor Instalaciones</a>
-      <a href="#" class="menu__link">Link</a>
-      <a href="#" class="menu__link">Link</a>
+      
+
+<div class="dropdown">
+  <a class="dropdown-toggle menu__link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    <i class="bi bi-tools"></i> Gestores
+  </a>
+  <ul class="dropdown-menu">
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudInstalaciones"><i class="bi bi-buildings"></i> Gestor Instalaciones</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button"><i class="bi bi-life-preserver"></i> Gestor Deportes</a></li>
+  </ul>
+</div>
     </nav>
     <div style="text-align: end; display: flex; justify-content: end">
       <?php

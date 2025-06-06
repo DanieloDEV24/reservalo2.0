@@ -161,40 +161,83 @@ class Login extends BaseController
 
     public function forgotPassword()
     {
-        // Modelo login
         $loginModel = new loginModel();
+        $request    = $this->request;
+        $post       = $request->getPost();
 
-        //Recogemos post
-        $request = $this->request;
-        $post    = $request->getPost();
-
-        if(!empty($post["formForgotPassword"]))
-        {
+        if (!empty($post)) {
             $emailRecuperacion = $post["emailPass"];
+            $emailExistente    = $loginModel->existeEmail($emailRecuperacion);
 
-            // Comprobamos que el email este en nuestra base de datos
-            $emailExistente = $loginModel->existeEmail($emailRecuperacion)["email"];
-            
-            if($emailRecuperacion === $emailExistente)
-            {
-                // Generamos el token
-                $token   = bin2hex(random_bytes(50));                 // Generamos un token seguro
-                $expires = date('Y-m-d H:i:s', strtotime('+1 hour')); // Expira en una hora
+            $existe = false;
+            foreach ($emailExistente as $value) {
+                if ($value["email"] === $emailRecuperacion) $existe = true;
+            }
 
-                // Guardamos los datos en la base de datos
-                $data    = [
-                    "token"      => $token, 
-                    "date_token" => $expires
+            if ($existe) {
+                // Token de recuperación
+                $token   = bin2hex(random_bytes(50));
+                $expires = date('Y-m-d H:i:s', strtotime('+1 hour'));
+
+                $data = [
+                    "token"      => $token,
+                    "token_date" => $expires
                 ];
 
-                $idEmail = $loginModel->buscarIdporEmail($emailRecuperacion);
+                $idEmail = intval($loginModel->buscarIdporEmail($emailRecuperacion)["id_usuario"]);
 
-                $loginModel->anadirToken($data, $idEmail);
-            }
-            else 
-            {
+                // Guardar el token (puedes descomentar si está funcionando bien)
+                // $loginModel->anadirToken($data, $idEmail);
+
+                // 🔁 URL personalizada de recuperación
+                $urlRecuperacion = base_url("auth/reset-password?token=$token");
+
+                // Contenido HTML del email
+                $htmlContent = "<h1>Recuperación de contraseña</h1>
+                            <p>Haz clic en el siguiente enlace para recuperar tu contraseña:</p>
+                            <p><a href='$urlRecuperacion'>Recuperar Contraseña</a></p>
+                            <p>Este enlace expirará en 1 hora.</p>";
+
+                // Envío con cURL a Resend
+                $apiKey = 're_EoU5q6Mw_Hz3ECMQADDxHKz3o3opLeS6e'; // ⚠️ Sustituye esto por tu API key real de Resend
+
+                $curlData = [
+                    'from'    => 'Ayuntamiento de Fuente de Piedra <informatica@fuentedepiedra.es>',
+                    'to'      => [$emailRecuperacion],
+                    'subject' => 'Recuperación de contraseña',
+                    'html'    => $htmlContent
+                ];
+
+                $ch = curl_init('https://api.resend.com/emails');
+                curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                    'Authorization: Bearer ' . $apiKey,
+                    'Content-Type: application/json',
+                ]);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData));
+
+                $response  = curl_exec($ch);
+                $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+                $curlError = curl_error($ch);
+                curl_close($ch);
+
+                if ($httpCode === 200 || $httpCode === 202) {
+                    $salida = [
+                        "mensaje" => "Se ha enviado al correo el enlace de recuperación",
+                        "success" => true,
+                        "type"    => "success"
+                    ];
+                } else {
+                    $salida = [
+                        "mensaje" => "Error al enviar correo: $curlError. Respuesta: $response",
+                        "success" => false,
+                        "type"    => "danger"
+                    ];
+                }
+            } else {
                 $salida = [
-                    "mensaje" => "El email no esta registrado", 
+                    "mensaje" => "El email no está registrado",
                     "success" => false,
                     "type"    => "danger"
                 ];
@@ -203,15 +246,19 @@ class Login extends BaseController
 
         if(isset($salida))
         {
-            return view ('login/recuperarPassword', ["baseUrl" => base_url(), "salida" => $salida]);
+            return view('login/recuperarPassword', [
+                "baseUrl" => base_url(),
+                "salida"  => $salida
+            ]);
         }
         else 
         {
-            return view ('login/recuperarPassword', ["baseUrl" => base_url()]);
+            return view('login/recuperarPassword', [
+                "baseUrl" => base_url()
+            ]);
         }
-
-
     }
+
  
 
     private function accesoUsuario($data)
