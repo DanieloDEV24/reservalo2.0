@@ -133,7 +133,7 @@ class loginModel extends Model
         // Realizamos la sentencia
         $builder->select("id_usuario")->where("email", $email);
 
-         // Obtenemos los resultados
+        // Obtenemos los resultados
         $query  = $builder->get();
         $result = $query->getResultArray();
 
@@ -150,6 +150,35 @@ class loginModel extends Model
 
         //Actualizamos los campos token y date_token con los valores creados
         $builder->where("id_usuario", $id_usuario)->update($data);
+    }
+
+    public function buscarPorToken (string $token)
+    {
+        //Conexion a la base de datos
+        $db      = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('usuarios');
+
+        //Buscamos por el token 
+        $builder->select()->where("token", $token);
+
+        $query  = $builder->get();
+        $result = $query->getResultArray();
+
+        return $result[0];
+    }
+
+    public function cambioPass(string $newPass, int $id_usuario) 
+    {
+        //Conexion a la base de datos
+        $db      = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('usuarios');
+
+        // Cambiamos el usuario
+        $builder->where("id_usuario", $id_usuario)->update(["password" => $newPass]);
     }
 
 }

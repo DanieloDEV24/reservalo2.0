@@ -15,3 +15,6 @@ $routes->post('/login', 'Login::login');
 $routes->get('/logout', 'Login::logout');
 $routes->post('/forgotPass', 'Login::forgotPassword');
 $routes->get('/forgotPass', 'Login::forgotPassword');
+$routes->post('/resetPassForm/(:num)', 'Login::resetPassForm/$1');
+$routes->get('/resetPassForm/(:num)', 'Login::resetPassForm/$1');
+$routes->get('/resetPass', 'Login::resetPass');

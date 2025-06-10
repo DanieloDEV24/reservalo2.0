@@ -6,6 +6,7 @@ use App\Models\categoriasModel;
 use App\Models\instalacionesModel;
 use App\Models\loginModel;
 use CodeIgniter\HTTP\ResponseInterface;
+use DateTime;
 
 class Login extends BaseController
 {
@@ -187,22 +188,24 @@ class Login extends BaseController
                 $idEmail = intval($loginModel->buscarIdporEmail($emailRecuperacion)["id_usuario"]);
 
                 // Guardar el token (puedes descomentar si está funcionando bien)
-                // $loginModel->anadirToken($data, $idEmail);
+                $loginModel->anadirToken($data, $idEmail);
 
                 // 🔁 URL personalizada de recuperación
-                $urlRecuperacion = base_url("auth/reset-password?token=$token");
+                $urlRecuperacion = base_url("/index.php/resetPass?token=$token");
 
-                // Contenido HTML del email
-                $htmlContent = "<h1>Recuperación de contraseña</h1>
-                            <p>Haz clic en el siguiente enlace para recuperar tu contraseña:</p>
-                            <p><a href='$urlRecuperacion'>Recuperar Contraseña</a></p>
-                            <p>Este enlace expirará en 1 hora.</p>";
+                setlocale(LC_TIME, 'es_ES', 'es_ES.UTF-8', 'spanish');
+                $timestamp = time();
+                $fecha_formateada = strftime('%A %e de %B, %Y', $timestamp);
 
+                $imagenLogo = $this->get_base64_image('images/Logo.png');
+
+
+                $htmlContent = view('plantillas/emailRecuPass', ["baseUrl" => base_url(), "url" => $urlRecuperacion, "fecha_hoy" => $fecha_formateada, "imgLogo" => $imagenLogo ]);
                 // Envío con cURL a Resend
                 $apiKey = 're_EoU5q6Mw_Hz3ECMQADDxHKz3o3opLeS6e'; // ⚠️ Sustituye esto por tu API key real de Resend
 
                 $curlData = [
-                    'from'    => 'Ayuntamiento de Fuente de Piedra <informatica@fuentedepiedra.es>',
+                    'from'    => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
                     'to'      => [$emailRecuperacion],
                     'subject' => 'Recuperación de contraseña',
                     'html'    => $htmlContent
@@ -259,7 +262,79 @@ class Login extends BaseController
         }
     }
 
- 
+    public function resetPass()
+    {
+        $request     = $this->request;
+        $token       = $request->getGet('token');
+        $modeloLogin = new loginModel();
+
+        // Busco un usuario con ese token
+        $usuario      = $modeloLogin->buscarPorToken($token);
+        $fecha_token  = new DateTime($usuario['token_date']);
+        $fecha_actual = new DateTime();
+        $diferencia   = $fecha_actual->getTimestamp() - $fecha_token->getTimestamp();
+
+        if($diferencia >= 0)
+        {
+            $salida = [
+                "mensaje" => "Ha expirado el plazo de 1h",
+                "success" => false,
+                "type"    => "danger"
+            ];
+
+            return view('login/recuperarPassword', [
+                "baseUrl" => base_url(),
+                "salida"  => $salida
+            ]);
+        }
+        else 
+        {
+            
+            return redirect()->to('/resetPassForm/'.$usuario["id_usuario"]); 
+        }
+
+
+    }
+
+    public function resetPassForm($user = null)
+    {
+        $modeloLogin = new loginModel();
+        $request     = $this->request;
+        $post        = $request->getPost();
+
+        if(!empty($post))
+        {
+            $newPass   = $post["newPassReset"];
+            $repetPass = $post["repetPassReset"];
+            
+            if($newPass !== $repetPass)
+            {
+                $salida = [
+                    "mensaje" => "Las contraseñas no coinciden",
+                    "success" => false,
+                    "type"    => "danger"
+                ];
+            }
+            else 
+            {
+                $passwordEncrypt = sha1($newPass);
+
+                // Cambiamos la contraseña y nos vamos al inicio
+                $modeloLogin->cambioPass($passwordEncrypt, $user);
+                
+                return redirect()->to('/'); 
+            }
+        }
+
+        if(isset($salida))
+        {
+             return view('login/resetPass', ["baseUrl" => base_url(), "salida" => $salida]);
+        }
+        else 
+        {
+             return view('login/resetPass', ["baseUrl" => base_url()]);
+        }
+    }
 
     private function accesoUsuario($data)
     {
@@ -276,5 +351,17 @@ class Login extends BaseController
         $session->set("usuario", $dataSesion);
        
     }
+
+    private function get_base64_image($image_path) {
+    $full_path = FCPATH . $image_path; // FCPATH apunta a la raíz de tu proyecto
+    if (!file_exists($full_path)) {
+        return ''; // O manejar el error de otra manera
+    }
+    $image_type = pathinfo($full_path, PATHINFO_EXTENSION);
+    $image_data = file_get_contents($full_path);
+    return 'data:image/' . $image_type . ';base64,' . base64_encode($image_data);
+}
     
 }
+
+
