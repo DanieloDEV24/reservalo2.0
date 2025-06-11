@@ -89,10 +89,12 @@
                                       <table cellpadding="0" cellspacing="0" width="100%">
                                         <tbody>
                                           <tr>
-                                            <td align="center">
-                                              
-                                                <img src="<?= base_url() ?>images/Logo.png" alt="">
-                                              
+                                            <td align="left">
+                                               <img src="https://i.imgur.com/IaSfssf.jpg" alt="Imagen" width="150" style="display:block">
+                                            </td>
+                                            <td align="right">
+                                               <img src="https://i.imgur.com/jmA8JNd.jpg" alt="Imagen" width="150" style="display:block">
+
                                             </td>
                                           </tr>
                                         </tbody>
@@ -259,7 +261,7 @@
                                                 <tbody>
                                                   <tr>
                                                     <td align="center" valign="top" class="es-p40r">
-                                                      <a target="_blank" href="">
+                                                      <a target="_blank" href="https://www.facebook.com/FuenteDePiedra">
                                                         <img title="Facebook" src="https://fvbncbd.stripocdn.email/content/assets/img/social-icons/logo-black/facebook-logo-black.png" alt="Fb" width="32">
                                                       </a>
                                                     </td>

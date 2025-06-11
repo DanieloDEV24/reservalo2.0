@@ -1,0 +1,190 @@
+INFO - 2025-06-11 11:38:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-06-11 11:40:25 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 11:41:57 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-11 11:41:57 --> ErrorException: Undefined variable $imagenLogo
+in APPPATH\Controllers\Login.php on line 201.
+ 1 APPPATH\Controllers\Login.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $imagenLogo', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Login.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 11:42:20 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-06-11 11:48:40 --> Error connecting to the database: mysqli_sql_exception: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `email`\n...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\loginModel.php(65): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Login.php(171): App\Models\loginModel->existeEmail('danielruizdevel...')
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `email`\n...', Array, false)
+#3 C:\Proyectos\reservalo2.0\app\Models\loginModel.php(65): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Proyectos\reservalo2.0\app\Controllers\Login.php(171): App\Models\loginModel->existeEmail('danielruizdevel...')
+#5 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2025-06-11 11:48:58 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `email`
+FROM `usuarios`', [], false)
+ 3 APPPATH\Models\loginModel.php(65): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Login.php(171): App\Models\loginModel->existeEmail('danielruizdeveloper@gmail.com')
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 11:49:50 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 11:53:07 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 11:53:19 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 11:53:59 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-11 11:53:59 --> ErrorException: Undefined variable $imagenLogo
+in APPPATH\Controllers\Login.php on line 202.
+ 1 APPPATH\Controllers\Login.php(202): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $imagenLogo', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Login.php', 202)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 11:54:17 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 12:00:53 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 12:01:12 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 12:01:46 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-11 14:26:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-06-11 14:27:05 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 14:28:29 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 14:28:55 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 14:29:36 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 14:31:10 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 14:31:48 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 14:32:45 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-06-11 14:32:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-06-11 14:32:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2025-06-11 14:33:12 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 14:33:36 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 14:34:32 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 14:35:11 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-06-11 14:39:09 --> ParseError: Unclosed '{' on line 178 does not match ')'
+in APPPATH\Controllers\Login.php on line 222.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Login.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Login')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Login')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Login', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 14:39:30 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 14:41:16 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2025-06-11 14:45:30 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Controllers\Login.php on line 198.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->forgotPassword()
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

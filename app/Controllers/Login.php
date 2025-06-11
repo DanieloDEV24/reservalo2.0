@@ -6,6 +6,7 @@ use App\Models\categoriasModel;
 use App\Models\instalacionesModel;
 use App\Models\loginModel;
 use CodeIgniter\HTTP\ResponseInterface;
+use IntlDateFormatter;
 use DateTime;
 
 class Login extends BaseController
@@ -193,22 +194,31 @@ class Login extends BaseController
                 // 🔁 URL personalizada de recuperación
                 $urlRecuperacion = base_url("/index.php/resetPass?token=$token");
 
-                setlocale(LC_TIME, 'es_ES', 'es_ES.UTF-8', 'spanish');
-                $timestamp = time();
-                $fecha_formateada = strftime('%A %e de %B, %Y', $timestamp);
+                $locale = 'es_ES'; // o 'es_ES.UTF-8'
+$date = new DateTime();
 
-                $imagenLogo = $this->get_base64_image('images/Logo.png');
+// Formato similar a: "martes 11 de junio, 2025"
+$formatter = new IntlDateFormatter(
+    $locale,
+    IntlDateFormatter::FULL,
+    IntlDateFormatter::NONE,
+    'Europe/Madrid', // Ajusta según tu zona horaria
+    IntlDateFormatter::GREGORIAN,
+    "EEEE d 'de' MMMM, yyyy"
+);
 
+$fecha_formateada = $formatter->format($date);
 
-                $htmlContent = view('plantillas/emailRecuPass', ["baseUrl" => base_url(), "url" => $urlRecuperacion, "fecha_hoy" => $fecha_formateada, "imgLogo" => $imagenLogo ]);
+                $htmlContent = view('plantillas/emailRecuPass', ["baseUrl" => base_url(), "url" => $urlRecuperacion, "fecha_hoy" => $fecha_formateada]);
+
                 // Envío con cURL a Resend
                 $apiKey = 're_EoU5q6Mw_Hz3ECMQADDxHKz3o3opLeS6e'; // ⚠️ Sustituye esto por tu API key real de Resend
 
                 $curlData = [
-                    'from'    => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
-                    'to'      => [$emailRecuperacion],
-                    'subject' => 'Recuperación de contraseña',
-                    'html'    => $htmlContent
+                    'from' => 'Ayuntamiento de Humilladero <noreply@resend.dev>',
+                    'to' => ['danielruizdeveloper@gmail.com'],
+                    'subject' => 'Cambiar Contraseña',
+                    'html' => $htmlContent,
                 ];
 
                 $ch = curl_init('https://api.resend.com/emails');
@@ -218,7 +228,7 @@ class Login extends BaseController
                 ]);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData));
+                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData , JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
 
                 $response  = curl_exec($ch);
                 $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -352,15 +362,7 @@ class Login extends BaseController
        
     }
 
-    private function get_base64_image($image_path) {
-    $full_path = FCPATH . $image_path; // FCPATH apunta a la raíz de tu proyecto
-    if (!file_exists($full_path)) {
-        return ''; // O manejar el error de otra manera
-    }
-    $image_type = pathinfo($full_path, PATHINFO_EXTENSION);
-    $image_data = file_get_contents($full_path);
-    return 'data:image/' . $image_type . ';base64,' . base64_encode($image_data);
-}
+
     
 }
 
