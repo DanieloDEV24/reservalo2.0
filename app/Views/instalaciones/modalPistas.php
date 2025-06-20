@@ -1,4 +1,4 @@
-<div class="modal" tabindex="-1" id="modalNuevaInstalacion">
+<div class="modal" tabindex="-1" id="modalPista">
 
 <div class="d-flex p-4 pb-0 justify-content-center alertModal">
 
@@ -7,15 +7,15 @@
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Crear Instalación <i class="bi bi-plus-circle"></i></h5>
+        <h5 class="modal-title">Crear Pistas <i class="bi bi-plus-circle"></i></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
       <div class="modal-body">
         <div class="row gap-5">
           <div class="col">
-            <label for="nombreInstalacion">Nombre:</label>
-            <input type="text" id="nombreInstalacion" name="nombreInstalacion" class="form-control" placeholder="Ej: Pista de padel">
+            <label for="numeroPistas">Numero de Pistas:</label>
+            <input type="number" id="nombreInstalacion" name="nombreInstalacion" class="form-control" placeholder="Ej: Pista de padel">
           </div>
 
           <div class="col">
@@ -26,18 +26,6 @@
                 <option value="<?= $deporte["id_deporte"] ?>"><?= $deporte["nombre"] ?></option>
               <?php endforeach; ?>
             </select>
-          </div>
-        </div>
-
-        <div class="row gap-5">
-          <div class="col">
-            <label for="precioInstalacion">Precio:</label>
-            <input type="number" id="precioInstalacion" name="precioInstalacion" class="form-control" placeholder="Ej: 5">
-          </div>
-
-          <div class="col">
-           <label for="capacidadInstalacion">Precio:</label>
-            <input type="number" id="capacidadInstalacion" name="capacidadInstalacion" class="form-control" placeholder="Ej: 5">
           </div>
         </div>
 
