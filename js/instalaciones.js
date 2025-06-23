@@ -110,7 +110,7 @@ $(document).ready(() => {
 
             console.log(catPrincipal, val)
 
-            if(val != catPrincipal && val != -1)
+            if(val != catPrincipal && catPrincipal != -1 && val != -1)
             {
                  const input = $(`
                 <input value="${val}" name="subcategoria" id="sub-${val}" type="radio">
@@ -122,5 +122,22 @@ $(document).ready(() => {
             
         });
     })
+
+
+    $('.toggle-switch input').on('change', function() {
+        const isChecked = $(this).is(':checked');
+
+        if (isChecked) {
+            $('#precioCompleto').removeAttr('readonly');
+            $('#precioCompleto').val()
+            $('#precioCompleto').css('color', 'black');
+            $('#precioCompleto').focus()
+        } 
+        else {
+            $('#precioCompleto').attr('readonly', 'readonly');
+            $('#precioCompleto').val()
+            $('#precioCompleto').css('color', '#ccc');
+        }
+    });
 
 });

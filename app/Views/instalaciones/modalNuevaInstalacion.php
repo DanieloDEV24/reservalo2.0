@@ -35,6 +35,28 @@
             <!-- Aquí se insertarán los radios dinámicamente -->
           </div>
         </div>
+        <div class="row gap-5 align-items-center">
+          <div class="col d-flex align-items-center gap-2">
+            <label for="">¿Puede hacer reserva completa?</label>
+            <label class="toggle-switch">
+              <input type="checkbox">
+              <div class="toggle-switch-background">
+                <div class="toggle-switch-handle"></div>
+              </div>
+            </label>
+          </div>
+
+          <div class="col">
+            <label for="precioCompleto">Precio completo:</label>
+            <input type="number" id="precioCompleto" name="precioCompleto" class="form-control" readonly style="color: #ccc" value="0.0">
+          </div>
+      </div>
+
+      <div class="row mt-3 pl-3 pr-3">
+        <div class="col">
+          <label for="">Escriba una descripcion</label>
+        <textarea name="descripcion" id="descripcion" class="mr-3 ml-3"></textarea>
+        </div>
       </div>
 
       <div class="modal-footer">

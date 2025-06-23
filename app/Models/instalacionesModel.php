@@ -15,7 +15,7 @@ class instalacionesModel extends Model
     protected $returnType = 'array'; //object
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['id_instalacion', 'nombre', 'descripcion', 'categoria_principal', 'categoria_opcional1', 'categoria_opcional2', 'precio_completo'];
+    protected $allowedFields = ['id_instalacion', 'nombre', 'descripcion', 'categoria_principal', 'categoria_opcional1', 'puede_completo', 'precio_completo'];
 
     protected bool $allowEmptyInserts = false;
 
