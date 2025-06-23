@@ -37,7 +37,7 @@
   </a>
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudInstalaciones"><i class="bi bi-buildings"></i> Gestor Instalaciones</a></li>
-    <li><a class="dropdown-item" style="color: #000;" type="button"><i class="bi bi-life-preserver"></i> Gestor Deportes</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button"><i class="bi bi-life-preserver"></i> Gestor categorias</a></li>
   </ul>
 </div>
     </nav>

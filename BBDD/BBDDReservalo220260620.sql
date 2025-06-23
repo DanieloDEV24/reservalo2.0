@@ -1,4 +1,4 @@
--- --------------------------------------------------------
+reservalo2-- --------------------------------------------------------
 -- Host:                         127.0.0.1
 -- Versión del servidor:         10.4.32-MariaDB - mariadb.org binary distribution
 -- SO del servidor:              Win64
@@ -19,16 +19,16 @@
 CREATE DATABASE IF NOT EXISTS `reservalo2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `reservalo2`;
 
--- Volcando estructura para tabla reservalo2.deportes
-CREATE TABLE IF NOT EXISTS `deportes` (
+-- Volcando estructura para tabla reservalo2.categorias
+CREATE TABLE IF NOT EXISTS `categorias` (
   `id_deporte` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_deporte`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla reservalo2.deportes: ~3 rows (aproximadamente)
-DELETE FROM `deportes`;
-INSERT INTO `deportes` (`id_deporte`, `nombre`) VALUES
+-- Volcando datos para la tabla reservalo2.categorias: ~3 rows (aproximadamente)
+DELETE FROM `categorias`;
+INSERT INTO `categorias` (`id_deporte`, `nombre`) VALUES
 	(1, 'fútbol'),
 	(2, 'pádel'),
 	(3, 'fútbol sala');
@@ -83,8 +83,8 @@ CREATE TABLE IF NOT EXISTS `tb_instalaciones` (
   `precio` float DEFAULT 0,
   `capacidad` int(11) DEFAULT 0,
   PRIMARY KEY (`id_instalaciones`),
-  KEY `FK1_instalaciones_deportes` (`id_deporte`),
-  CONSTRAINT `FK1_instalaciones_deportes` FOREIGN KEY (`id_deporte`) REFERENCES `deportes` (`id_deporte`) ON DELETE NO ACTION ON UPDATE CASCADE
+  KEY `FK1_instalaciones_categorias` (`id_deporte`),
+  CONSTRAINT `FK1_instalaciones_categorias` FOREIGN KEY (`id_deporte`) REFERENCES `categorias` (`id_deporte`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- Volcando datos para la tabla reservalo2.tb_instalaciones: ~1 rows (aproximadamente)

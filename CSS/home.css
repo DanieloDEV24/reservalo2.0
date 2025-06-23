@@ -224,12 +224,12 @@ header>div .button
     font-size: 1.5rem !important;
 }
 
-.deportes
+.categorias
 {
     display: flex;
 }
 
-.deportes span
+.categorias span
 {
     width: 25%;
     min-height: 300px;
@@ -240,7 +240,7 @@ header>div .button
     transition: all .3s ease;
 }
 
-.deportes span:hover
+.categorias span:hover
 {
     transform: scale(1.05);
     cursor: pointer;

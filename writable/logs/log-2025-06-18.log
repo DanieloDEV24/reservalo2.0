@@ -25,9 +25,9 @@ Stack trace:
 #10 {main}
 CRITICAL - 2025-06-18 14:54:12 --> CodeIgniter\Database\Exceptions\DatabaseException: Not unique table/alias: 'tb_instalaciones'
 in SYSTEMPATH\Database\BaseConnection.php on line 647.
- 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tb_instalaciones`.*, `deportes`.`nombre` as `deporte`
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tb_instalaciones`.*, `categorias`.`nombre` as `deporte`
 FROM (`tb_instalaciones`, `tb_instalaciones`)
-JOIN `deportes` ON `tb_instalaciones`.`id_deporte` = `deportes`.`id_deporte`', [], false)
+JOIN `categorias` ON `tb_instalaciones`.`id_deporte` = `categorias`.`id_deporte`', [], false)
  2 APPPATH\Models\instalacionesModel.php(23): CodeIgniter\Database\BaseBuilder->get()
  3 APPPATH\Controllers\Instalaciones.php(24): App\Models\instalacionesModel->getInstalaciones()
  4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()
@@ -36,15 +36,15 @@ JOIN `deportes` ON `tb_instalaciones`.`id_deporte` = `deportes`.`id_deporte`', [
  7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 CRITICAL - 2025-06-18 14:54:12 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Not unique table/alias: 'tb_instalaciones'
 in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
- 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tb_instalaciones`.*, `deportes`.`nombre` as `deporte`
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tb_instalaciones`.*, `categorias`.`nombre` as `deporte`
 FROM (`tb_instalaciones`, `tb_instalaciones`)
-JOIN `deportes` ON `tb_instalaciones`.`id_deporte` = `deportes`.`id_deporte`')
- 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tb_instalaciones`.*, `deportes`.`nombre` as `deporte`
+JOIN `categorias` ON `tb_instalaciones`.`id_deporte` = `categorias`.`id_deporte`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tb_instalaciones`.*, `categorias`.`nombre` as `deporte`
 FROM (`tb_instalaciones`, `tb_instalaciones`)
-JOIN `deportes` ON `tb_instalaciones`.`id_deporte` = `deportes`.`id_deporte`')
- 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tb_instalaciones`.*, `deportes`.`nombre` as `deporte`
+JOIN `categorias` ON `tb_instalaciones`.`id_deporte` = `categorias`.`id_deporte`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tb_instalaciones`.*, `categorias`.`nombre` as `deporte`
 FROM (`tb_instalaciones`, `tb_instalaciones`)
-JOIN `deportes` ON `tb_instalaciones`.`id_deporte` = `deportes`.`id_deporte`', [], false)
+JOIN `categorias` ON `tb_instalaciones`.`id_deporte` = `categorias`.`id_deporte`', [], false)
  4 APPPATH\Models\instalacionesModel.php(23): CodeIgniter\Database\BaseBuilder->get()
  5 APPPATH\Controllers\Instalaciones.php(24): App\Models\instalacionesModel->getInstalaciones()
  6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()
@@ -53,18 +53,18 @@ JOIN `deportes` ON `tb_instalaciones`.`id_deporte` = `deportes`.`id_deporte`', [
  9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 CRITICAL - 2025-06-18 14:54:12 --> [Caused by] mysqli_sql_exception: Not unique table/alias: 'tb_instalaciones'
 in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
- 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tb_instalaciones`.*, `deportes`.`nombre` as `deporte`
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `tb_instalaciones`.*, `categorias`.`nombre` as `deporte`
 FROM (`tb_instalaciones`, `tb_instalaciones`)
-JOIN `deportes` ON `tb_instalaciones`.`id_deporte` = `deportes`.`id_deporte`', 0)
- 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tb_instalaciones`.*, `deportes`.`nombre` as `deporte`
+JOIN `categorias` ON `tb_instalaciones`.`id_deporte` = `categorias`.`id_deporte`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `tb_instalaciones`.*, `categorias`.`nombre` as `deporte`
 FROM (`tb_instalaciones`, `tb_instalaciones`)
-JOIN `deportes` ON `tb_instalaciones`.`id_deporte` = `deportes`.`id_deporte`')
- 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tb_instalaciones`.*, `deportes`.`nombre` as `deporte`
+JOIN `categorias` ON `tb_instalaciones`.`id_deporte` = `categorias`.`id_deporte`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `tb_instalaciones`.*, `categorias`.`nombre` as `deporte`
 FROM (`tb_instalaciones`, `tb_instalaciones`)
-JOIN `deportes` ON `tb_instalaciones`.`id_deporte` = `deportes`.`id_deporte`')
- 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tb_instalaciones`.*, `deportes`.`nombre` as `deporte`
+JOIN `categorias` ON `tb_instalaciones`.`id_deporte` = `categorias`.`id_deporte`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `tb_instalaciones`.*, `categorias`.`nombre` as `deporte`
 FROM (`tb_instalaciones`, `tb_instalaciones`)
-JOIN `deportes` ON `tb_instalaciones`.`id_deporte` = `deportes`.`id_deporte`', [], false)
+JOIN `categorias` ON `tb_instalaciones`.`id_deporte` = `categorias`.`id_deporte`', [], false)
  5 APPPATH\Models\instalacionesModel.php(23): CodeIgniter\Database\BaseBuilder->get()
  6 APPPATH\Controllers\Instalaciones.php(24): App\Models\instalacionesModel->getInstalaciones()
  7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()

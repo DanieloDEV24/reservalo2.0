@@ -22,9 +22,9 @@ class Instalaciones extends BaseController
 
         $instalacionesModel = new instalacionesModel();
         $instalaciones = $instalacionesModel->getInstalaciones();
-        $deportes = $instalacionesModel->getDeportes();
+        $categorias = $instalacionesModel->getCategorias();
 
-        $nuevaInstalacion = view('instalaciones/modalNuevaInstalacion', ["baseUrl" => base_url(), "deportes"=>$deportes]);
+        $nuevaInstalacion = view('instalaciones/modalNuevaInstalacion', ["baseUrl" => base_url(), "categorias"=>$categorias]);
         $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "baseUrl" => base_url()]);
        
 
@@ -39,11 +39,12 @@ public function nuevaInstalacion()
     $instalacionesModel = new instalacionesModel();
 
     if (!empty($post)) {
-        $nombre      = $post["nombreInstalacion"];
-        $deporte     = $post["deporte"];
-        $descripcion = $post["descripcion"];
-        $precio      = $post["precio"];
-        $capacidad   = $post["capacidad"];
+        $nombre       = $post["nombreInstalacion"];
+        $deporte      = intval($post["deporte"]);
+        $descripcion  = $post["descripcion"];
+        $precio       = floatval($post["precio"]);
+        $capacidad    = intval($post["capacidad"]);
+        $numeroPistas = intval($post["numeroPistas"]);
 
         $data = [
             "nombre"      => $nombre, 
@@ -97,7 +98,19 @@ public function nuevaInstalacion()
         $data["img3"]    = $fotos["foto4"];
 
         // Guarda en la BD
-        //$id_nuevaInstalacion = $instalacionesModel->createInstalacion($data);
+        $id_nuevaInstalacion = $instalacionesModel->createInstalacion($data);
+
+        for ($i=1; $i <= $numeroPistas; $i++) { 
+            $nombrePista = $nombre." - Pista: ".$i;
+
+            $dataPista = 
+            [
+                "nombre"         => $nombrePista, 
+                "id_instalacion" => $id_nuevaInstalacion
+            ];
+
+            $instalacionesModel->createPistas($dataPista); 
+        }
 
         // Carga instalaciones para devolver
         $instalaciones = $instalacionesModel->getInstalaciones();

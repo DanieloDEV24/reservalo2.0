@@ -45,4 +45,4 @@
   <a href="#" id="crear" class="button" style="margin-left: 0;">Nueva <i class="bi bi-plus-circle"></i></a>
 </div>
 
-<?= $nuevaInstalacion ?>
+<?=$nuevaInstalacion?>

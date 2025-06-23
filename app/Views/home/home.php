@@ -51,7 +51,7 @@
       <!-- <img src="<?= base_url() ?>images/ImageComoFunciona3.jpg" alt="" > -->
     </div>
   </div>
-  <div class="deportes">
+  <div class="categorias">
     <span id="futbol">
       <h1>Fútbol</h1>
     </span>

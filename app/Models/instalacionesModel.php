@@ -7,15 +7,15 @@ use CodeIgniter\Model;
 class instalacionesModel extends Model
 {
 
-    protected $table = 'tb_instalaciones';
-    protected $primaryKey = 'id_instalaciones';
+    protected $table = 'instalaciones';
+    protected $primaryKey = 'id_instalacion';
 
     protected $useAutoIncrement = true;
 
     protected $returnType = 'array'; //object
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['id_instalaciones', 'id_deporte', 'nombre', 'descripcion', 'portada', 'img1', 'img2', 'img3', 'precio', 'capacidad' ];
+    protected $allowedFields = ['id_instalacion', 'nombre', 'descripcion', 'categoria_principal', 'categoria_opcional1', 'categoria_opcional2', 'precio_completo'];
 
     protected bool $allowEmptyInserts = false;
 
@@ -33,24 +33,24 @@ class instalacionesModel extends Model
         $db = \Config\Database::connect('BDReservalo2');
 
         //Obtenemos la tabla en la que vamos a buscar a los usuarios
-        $builder = $db->table('tb_instalaciones');
+        $builder = $db->table('instalaciones');
 
         //Realizamos la consulta
-        $query = $builder->select('tb_instalaciones.*, deportes.nombre as deporte')
-        ->join('deportes', 'tb_instalaciones.id_deporte = deportes.id_deporte')
+        $query = $builder->select('instalaciones.*, categorias.nombre as categoria')
+        ->join('categorias', 'instalaciones.categoria_principal = categorias.id_categoria')
         ->get();
 
         $result =  $result = $query->getResultArray();
         return $result;
     }
 
-    public function getDeportes() 
+    public function getCategorias() 
     {
         //Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
 
         //Obtenemos la tabla en la que vamos a buscar a los usuarios
-        $builder = $db->table('deportes');
+        $builder = $db->table('categorias');
 
         $query = $builder->select()->get();
 
@@ -64,7 +64,20 @@ class instalacionesModel extends Model
         $db = \Config\Database::connect('BDReservalo2');
 
         //Obtenemos la tabla en la que vamos a buscar a los usuarios
-        $builder = $db->table('deportes');
+        $builder = $db->table('instalaciones');
+
+        $builder->insert($data);
+
+        return $db->insertID();
+    }
+
+    public function createPistas (array $data)
+    {
+         //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('pistas');
 
         $builder->insert($data);
 

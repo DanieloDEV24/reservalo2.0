@@ -7,15 +7,15 @@ $(document).ready(() => {
     });
 
     // ✅ Escucha el cambio de archivos desde el principio
-    $('#imagenesInstalacion').on('change', function () {
-        archivos = this.files;
+    // $('#imagenesInstalacion').on('change', function () {
+    //     archivos = this.files;
 
-        if (archivos.length > 4) {
-            alert('Solo puedes seleccionar hasta 4 imágenes.');
-            $(this).val(''); // Limpiamos el input
-            archivos = null; // Opcional: limpiar la variable también
-        }
-    });
+    //     if (archivos.length > 4) {
+    //         alert('Solo puedes seleccionar hasta 4 imágenes.');
+    //         $(this).val(''); // Limpiamos el input
+    //         archivos = null; // Opcional: limpiar la variable también
+    //     }
+    // });
 
     $('#guardarInstalacion').on('click', function () {
 
@@ -23,13 +23,8 @@ $(document).ready(() => {
         errores = [];
 
         let nombreInstalacion = $('#nombreInstalacion').val();
-        let deporte = $('#deporteInstalacion').val();
-        let descripcion = $('#descripcionInstalacion').val();
-        let precio = $('#precioInstalacion').val();
-        let capacidad = $('#capacidadInstalacion').val();
-        let elementoSalidaCorrecta
+        let categoria         = $('#categorias').val();
 
-        console.log(nombreInstalacion, deporte, descripcion, archivos);
 
         if (nombreInstalacion === "") {
             let elementoSalida = {
@@ -39,7 +34,7 @@ $(document).ready(() => {
 
             errores.push(elementoSalida)
         }
-        if (deporte == -1) {
+        if (categoria == -1) {
             let elementoSalida = {
                 type: "danger",
                 return: 'Debe seleccionar un deporte'
@@ -47,41 +42,6 @@ $(document).ready(() => {
 
             errores.push(elementoSalida)
         }
-        if (descripcion === "") {
-            let elementoSalida = {
-                type: "danger",
-                return: 'El campo "descripción" no puede estar vacío'
-            }
-
-            errores.push(elementoSalida)
-        }
-        if (!archivos|| archivos.length === 0 ) {
-            let elementoSalida = {
-                type: "danger",
-                return: 'Debes seleccionar una foto'
-            }
-
-            errores.push(elementoSalida)
-        }
-
-        if (precio === "") {
-            let elementoSalida = {
-                type: "danger",
-                return: 'Debes seleccionar un precio'
-            }
-
-            errores.push(elementoSalida)
-        }
-
-        if (capacidad === "") {
-            let elementoSalida = {
-                type: "danger",
-                return: 'Debes seleccionar una capacidad'
-            }
-
-            errores.push(elementoSalida)
-        }
-
 
         if(errores.length === 0) {
             elementoSalidaCorrecta = {
@@ -99,14 +59,11 @@ $(document).ready(() => {
             console.log(precio, capacidad)
             let formData = new FormData();
             formData.append('nombreInstalacion', nombreInstalacion);
-            formData.append('deporte', deporte);
-            formData.append('descripcion', descripcion);
-            formData.append('precio', precio);
-            formData.append('capacidad', capacidad);
+            formData.append('categorias', categoria);
 
-            for (let i = 0; i < archivos.length; i++) {
-                formData.append('imagenes[]', archivos[i]);
-            }
+            // for (let i = 0; i < archivos.length; i++) {
+            //     formData.append('imagenes[]', archivos[i]);
+            // }
 
             $.ajax({
                 url   : "nuevaInstalacion",
@@ -116,7 +73,7 @@ $(document).ready(() => {
                 contentType: false, 
                 success: function(response)
                 {
-                     $('#modalNuevaInstalacion').modal('hide');
+                    $('#modalNuevaInstalacion').modal('hide');
                 },
                 error: function(e)
                 {
@@ -141,5 +98,29 @@ $(document).ready(() => {
 
     });
 
+    $('#categorias').on('change', function(){
+
+        $('#subcategorias').empty()
+
+       let catPrincipal = $(this).val()
+
+         $('#categorias option').each(function() {
+            const val = $(this).val();
+            const text = $(this).text();
+
+            console.log(catPrincipal, val)
+
+            if(val != catPrincipal && val != -1)
+            {
+                 const input = $(`
+                <input value="${val}" name="subcategoria" id="sub-${val}" type="radio">
+            `);
+            const label = $(`<label for="sub-${val}">${text}</label>`);
+
+            $('#subcategorias').append(input, label);
+            }
+            
+        });
+    })
 
 });
