@@ -19,6 +19,86 @@
 CREATE DATABASE IF NOT EXISTS `reservalo2` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `reservalo2`;
 
+-- Volcando estructura para tabla reservalo2.categorias
+CREATE TABLE IF NOT EXISTS `categorias` (
+  `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id_categoria`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcando datos para la tabla reservalo2.categorias: ~3 rows (aproximadamente)
+DELETE FROM `categorias`;
+INSERT INTO `categorias` (`id_categoria`, `nombre`) VALUES
+	(1, 'deporte'),
+	(2, 'cultura'),
+	(3, 'ocio');
+
+-- Volcando estructura para tabla reservalo2.incidencias
+CREATE TABLE IF NOT EXISTS `incidencias` (
+  `id_incidencia` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL DEFAULT '',
+  `fecha` date NOT NULL,
+  `id_pista` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_incidencia`),
+  KEY `FK1_pistas_incidencias` (`id_pista`),
+  CONSTRAINT `FK1_pistas_incidencias` FOREIGN KEY (`id_pista`) REFERENCES `pistas` (`id_pista`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcando datos para la tabla reservalo2.incidencias: ~0 rows (aproximadamente)
+DELETE FROM `incidencias`;
+
+-- Volcando estructura para tabla reservalo2.instalaciones
+CREATE TABLE IF NOT EXISTS `instalaciones` (
+  `id_instalacion` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) DEFAULT '',
+  `descripcion` varchar(250) DEFAULT '',
+  `categoria_principal` int(11) DEFAULT NULL,
+  `categoria_opcional1` int(11) DEFAULT NULL,
+  `categoria_opcional2` int(11) DEFAULT NULL,
+  `precio_completo` float DEFAULT NULL,
+  PRIMARY KEY (`id_instalacion`),
+  KEY `FK1_categorias_instalaciones` (`categoria_principal`),
+  KEY `FK2_categorias_instalaciones` (`categoria_opcional1`),
+  KEY `FK3_categorias_instalaciones` (`categoria_opcional2`),
+  CONSTRAINT `FK1_categorias_instalaciones` FOREIGN KEY (`categoria_principal`) REFERENCES `categorias` (`id_categoria`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `FK2_categorias_instalaciones` FOREIGN KEY (`categoria_opcional1`) REFERENCES `categorias` (`id_categoria`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `FK3_categorias_instalaciones` FOREIGN KEY (`categoria_opcional2`) REFERENCES `categorias` (`id_categoria`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcando datos para la tabla reservalo2.instalaciones: ~0 rows (aproximadamente)
+DELETE FROM `instalaciones`;
+
+-- Volcando estructura para tabla reservalo2.mantenimiento
+CREATE TABLE IF NOT EXISTS `mantenimiento` (
+  `id_mantenimiento` int(11) NOT NULL AUTO_INCREMENT,
+  `id_pista` int(11) DEFAULT NULL,
+  `nombre` varchar(50) DEFAULT '',
+  `fecha_inicio` date DEFAULT NULL,
+  `fecha_fin` date DEFAULT NULL,
+  PRIMARY KEY (`id_mantenimiento`),
+  KEY `FK1_mantenimiento_pistas` (`id_pista`),
+  CONSTRAINT `FK1_mantenimiento_pistas` FOREIGN KEY (`id_pista`) REFERENCES `pistas` (`id_pista`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcando datos para la tabla reservalo2.mantenimiento: ~0 rows (aproximadamente)
+DELETE FROM `mantenimiento`;
+
+-- Volcando estructura para tabla reservalo2.pistas
+CREATE TABLE IF NOT EXISTS `pistas` (
+  `id_pista` int(11) NOT NULL AUTO_INCREMENT,
+  `id_instalacion` int(11) DEFAULT NULL,
+  `imagen1` varchar(250) DEFAULT '',
+  `imagen2` varchar(250) DEFAULT '',
+  `imagen3` varchar(250) DEFAULT '',
+  `imagen4` varchar(250) DEFAULT '',
+  PRIMARY KEY (`id_pista`),
+  KEY `FK1_pistas_instalacion` (`id_instalacion`),
+  CONSTRAINT `FK1_pistas_instalacion` FOREIGN KEY (`id_instalacion`) REFERENCES `instalaciones` (`id_instalacion`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcando datos para la tabla reservalo2.pistas: ~0 rows (aproximadamente)
+DELETE FROM `pistas`;
+
 -- Volcando estructura para tabla reservalo2.roles
 CREATE TABLE IF NOT EXISTS `roles` (
   `id_rol` int(11) NOT NULL AUTO_INCREMENT,
