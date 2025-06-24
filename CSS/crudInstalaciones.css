@@ -261,5 +261,14 @@ table td .dropdown button i
   transform: translateX(20px);
 }
 
+.accordion-nuevaPista
+{
+  border: 1px dashed #ccc !important;
+}
+
+.accordion-button.nuevaPista::after
+{
+  display: none !important;
+}
 
 

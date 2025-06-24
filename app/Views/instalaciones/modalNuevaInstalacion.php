@@ -15,7 +15,7 @@
         <div class="row gap-5">
           <div class="col">
             <label for="nombreInstalacion">Nombre:</label>
-            <input type="text" id="nombreInstalacion" name="nombreInstalacion" class="form-control" placeholder="Ej: Pista de padel">
+            <input type="text" id="nombreInstalacion" name="nombreInstalacion" class="form-control" placeholder="Ej: Pistas de padel">
           </div>
 
           <div class="col">
@@ -50,23 +50,62 @@
             <label for="precioCompleto">Precio completo:</label>
             <input type="number" id="precioCompleto" name="precioCompleto" class="form-control" readonly style="color: #ccc" value="0.0">
           </div>
-      </div>
-
-      <div class="row mt-3 pl-3 pr-3">
-        <div class="col">
-          <label for="">Escriba una descripcion</label>
-        <textarea name="descripcion" id="descripcion" class="mr-3 ml-3"></textarea>
         </div>
-      </div>
 
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Cerrar <i class="bi bi-x-lg"></i>
-        </button>
-        <button type="submit" class="btn btn-primary" id="guardarInstalacion">
-          Guardar <i class="bi bi-check-lg"></i>
-        </button>
+        <div class="row mt-3 pl-3 pr-3">
+          <div class="col">
+            <label for="">Escriba una descripcion</label>
+            <textarea name="descripcion" id="descripcion" class="mr-3 ml-3"></textarea>
+          </div>
+        </div>
+
+        <div class="accordion mt-3" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button nuevaPista collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        Añadir Pista &nbsp; <i class="bi bi-plus-circle"></i>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <div class="row gap-5">
+          <div class="col">
+            <label>Nombre:</label>
+            <input type="text" name="nombrePista" class="form-control nombrePista" placeholder="Ej: Pista de padel nº 1">
+          </div>
+        </div>
+
+        <div class="row gap-5 mt-3">
+          <div class="col">
+            <label>Capacidad de la Pista:</label>
+            <input type="text" name="capacidadPista" class="form-control capacidadPista" placeholder="Ej: 4">
+          </div>
+
+          <div class="col">
+            <label>Precio de la Pista:</label>
+            <input type="text" name="precioPista" class="form-control precioPista" placeholder="Ej: 21">
+          </div>
+        </div>
+
+        <div class="d-flex gap-2 mt-3 justify-content-end">
+          <button class="btn btn-secondary vaciarPista">Vaciar</button>
+          <button class="btn btn-primary guardarPista">Guardar</button>
+        </div>
+
       </div>
     </div>
   </div>
 </div>
+
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Cerrar <i class="bi bi-x-lg"></i>
+          </button>
+          <button type="submit" class="btn btn-primary" id="guardarInstalacion">
+            Guardar <i class="bi bi-check-lg"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
