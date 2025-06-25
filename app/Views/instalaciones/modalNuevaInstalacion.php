@@ -29,7 +29,7 @@
           </div>
         </div>
 
-        <div class="row gap-5 mt-3">
+        <div class="row gap-3 mt-3">
           <label for="">Seleccione una categoría secundaria (primero debe seleccionar una categoria principal)</label>
           <div class="radio-input" id="subcategorias">
             <!-- Aquí se insertarán los radios dinámicamente -->
@@ -60,10 +60,10 @@
         </div>
 
         <div class="accordion mt-3" id="accordionExample">
-  <div class="accordion-item">
+  <div class="accordion-item" data-index="1">
     <h2 class="accordion-header">
-      <button class="accordion-button nuevaPista collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-        Añadir Pista &nbsp; <i class="bi bi-plus-circle"></i>
+      <button class="accordion-button nuevaPista collapsed d-flex justify-content-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        <div>Añadir Pista&nbsp;<i class="bi bi-plus-circle"></i></div>
       </button>
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -87,9 +87,18 @@
           </div>
         </div>
 
-        <div class="d-flex gap-2 mt-3 justify-content-end">
-          <button class="btn btn-secondary vaciarPista">Vaciar</button>
-          <button class="btn btn-primary guardarPista">Guardar</button>
+        <div class="d-flex justify-content-start mt-4">
+          <div class="w-50">
+            Selecciona las imágenes de la pista (máx 4)
+            <label class="btn btn-primary mt-1">
+              Imagenes
+              <input class="imagenes" type="file" name="imagenes[]" multiple accept="image/*" hidden>
+            </label>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2 mt-3 justify-content-end botonesPista">
+          <button class="btn btn-primary guardarPista">Guardar <i class="bi bi-check-lg"></i></button>
         </div>
 
       </div>

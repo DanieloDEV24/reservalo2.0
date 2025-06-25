@@ -39,12 +39,13 @@ public function nuevaInstalacion()
     $instalacionesModel = new instalacionesModel();
 
     if (!empty($post)) {
-        $nombre       = $post["nombreInstalacion"];
-        $deporte      = intval($post["deporte"]);
-        $descripcion  = $post["descripcion"];
-        $precio       = floatval($post["precio"]);
-        $capacidad    = intval($post["capacidad"]);
-        $numeroPistas = intval($post["numeroPistas"]);
+        $nombre         = $post["nombreInstalacion"];
+        $deporte        = intval($post["categorias"]);
+        $descripcion    = $post["descripcion"];
+        $puedeCompleto  = filter_var($post["puedeCompleto"], FILTER_VALIDATE_BOOLEAN);
+        $precioCompleto = floatval($post["precioCompleto"]);
+        $catSecundaria  = intval($post["catSecundaria"]);
+        $pistas         = json_decode($post["pistas"]);
 
         $data = [
             "nombre"      => $nombre, 
