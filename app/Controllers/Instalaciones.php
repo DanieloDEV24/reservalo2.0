@@ -40,7 +40,7 @@ public function nuevaInstalacion()
 
     if (!empty($post)) {
         $nombre         = $post["nombreInstalacion"];
-        $deporte        = intval($post["categorias"]);
+        $categoria      = intval($post["categorias"]);
         $descripcion    = $post["descripcion"];
         $puedeCompleto  = filter_var($post["puedeCompleto"], FILTER_VALIDATE_BOOLEAN);
         $precioCompleto = floatval($post["precioCompleto"]);
@@ -48,15 +48,12 @@ public function nuevaInstalacion()
         $pistas         = json_decode($post["pistas"]);
 
         $data = [
-            "nombre"      => $nombre, 
-            "deporte"     => $deporte,
-            "descripcion" => $descripcion,
-            "precio"      => $precio,
-            "capacidad"   => $capacidad,
-            "portada"     => "",
-            "img1"        => "",
-            "img2"        => "",
-            "img3"        => ""
+            "nombre"              => $nombre, 
+            "categoria_principal" => $categoria,
+            "descripcion"         => $descripcion,
+            "precio_completo"     => $precioCompleto,
+            "puede_completo"      => $puedeCompleto,
+            "categoria_opcional1" => $catSecundaria,
         ];
 
         $rutaDestino = FCPATH . 'images/';
@@ -64,55 +61,7 @@ public function nuevaInstalacion()
             mkdir($rutaDestino, 0755, true);
         }
 
-        $fotos = [
-            "foto1" => '',
-            "foto2" => '',
-            "foto3" => '',
-            "foto4" => '',
-        ];
-
-        $imagenes = $files['imagenes'];
-        $indice = 1;
-
-        if (is_array($imagenes)) {
-            foreach ($imagenes as $imagen) {
-                if ($indice > 4) break;
-                if ($imagen->isValid() && !$imagen->hasMoved()) {
-                    $nombreArchivo = $imagen->getName();
-                    $imagen->move($rutaDestino, $nombreArchivo, true);
-                    $fotos["foto$indice"] = $nombreArchivo;
-                    $indice++;
-                }
-            }
-        } else {
-            if ($imagenes->isValid() && !$imagenes->hasMoved()) {
-                $nombreArchivo = $imagenes->getName();
-                $imagenes->move($rutaDestino, $nombreArchivo, true);
-                $fotos["foto1"] = $nombreArchivo;
-            }
-        }
-
-        // Asignar fotos al array para la BD
-        $data["portada"] = $fotos["foto1"];
-        $data["img1"]    = $fotos["foto2"];
-        $data["img2"]    = $fotos["foto3"];
-        $data["img3"]    = $fotos["foto4"];
-
-        // Guarda en la BD
-        $id_nuevaInstalacion = $instalacionesModel->createInstalacion($data);
-
-        for ($i=1; $i <= $numeroPistas; $i++) { 
-            $nombrePista = $nombre." - Pista: ".$i;
-
-            $dataPista = 
-            [
-                "nombre"         => $nombrePista, 
-                "id_instalacion" => $id_nuevaInstalacion
-            ];
-
-            $instalacionesModel->createPistas($dataPista); 
-        }
-
+        
         // Carga instalaciones para devolver
         $instalaciones = $instalacionesModel->getInstalaciones();
 
