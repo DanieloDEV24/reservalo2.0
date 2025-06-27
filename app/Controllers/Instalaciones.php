@@ -46,6 +46,7 @@ public function nuevaInstalacion()
         $precioCompleto = floatval($post["precioCompleto"]);
         $catSecundaria  = intval($post["catSecundaria"]);
         $pistas         = json_decode($post["pistas"]);
+        $noPistas       = filter_var($post["noPistas"], FILTER_VALIDATE_BOOLEAN);
 
         $data = [
             "nombre"              => $nombre, 

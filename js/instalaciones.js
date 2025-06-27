@@ -24,13 +24,40 @@ $(document).ready(() => {
         });
     });
 
-    $('.toggle-switch input').on('change', function () {
-        const isChecked = $(this).is(':checked');
+    $('.toggle-switch input.puedeCompleto').on('change', function () {
+        let isChecked = $(this).is(':checked');
 
         if (isChecked) {
+            
             $('#precioCompleto').removeAttr('readonly').css('color', 'black').focus();
         } else {
-            $('#precioCompleto').attr('readonly', 'readonly').val(0.0).css('color', '#ccc');
+            if(!$('.toggle-switch input.noPistas').is(':checked'))$('#precioCompleto').attr('readonly', 'readonly').val(0.0).css('color', '#ccc');
+        }
+    });
+    
+
+        const item = $('.accordion-item[data-index="1"]');
+
+       $('.toggle-switch input.noPistas').on('change', function () {
+        let isChecked = $(this).is(':checked');
+        let buttonFiles = $(`<div class="d-flex justify-content-start mt-4">
+          <div class="w-50">
+            Selecciona las imágenes de la pista (máx 4)
+            <label class="btn btn-primary mt-1">
+              Imagenes
+              <input id="imgNoPistas" type="file" name="imagenes[]" multiple accept="image/*" hidden>
+            </label>
+          </div>
+        </div>`)
+        
+
+        if (isChecked) {
+            $('#accordionExample').empty()
+            $('#precioCompleto').removeAttr('readonly').css('color', 'black').focus();
+            $('.toggle-switch input.puedeCompleto').prop('disabled', true)
+        } else {
+            $('#accordionExample').append(item)
+            if(!$('.toggle-switch input.puedeCompleto').is(':checked'))$('#precioCompleto').attr('readonly', 'readonly').val(0.0).css('color', '#ccc');
         }
     });
 
@@ -142,21 +169,23 @@ $(document).ready(() => {
 
         let nombreInstalacion = $('#nombreInstalacion').val();
         let categoria = $('#categorias').val();
-        let puedeCompleto = $('.toggle-switch input').is(':checked');
+        let puedeCompleto = $('.toggle-switch input.puedeCompleto').is(':checked');
+        let noPistas = $('.toggle-switch input.noPistas').is(':checked');
         let precioCompleto = $('#precioCompleto').val();
         let descripcion = $('#descripcion').val();
         let categoriaSecundaria = 0;
 
-  $('#subcategorias input').each(function () {
-    if ($(this).is(':checked')) {
-        categoriaSecundaria = $(this).val();
-    }
-});
+        $('#subcategorias input').each(function () {
+            if ($(this).is(':checked')) {
+            categoriaSecundaria = $(this).val();
+            }
+        });
 
         if (!nombreInstalacion) errores.push('El campo "nombre" no puede estar vacío');
         if (categoria == -1) errores.push('Debe seleccionar un deporte');
         if (!descripcion) errores.push('Debe añadir una descripcion');
         if (puedeCompleto && (!precioCompleto || !parseFloat(precioCompleto))) errores.push('Debe seleccionar un precio válido');
+        if (noPistas && (!precioCompleto || !parseFloat(precioCompleto))) errores.push('Debe seleccionar un precio válido');
 
         if (errores.length === 0) {
             let formData = new FormData();
@@ -164,6 +193,7 @@ $(document).ready(() => {
             formData.append('categorias', categoria);
             formData.append('descripcion', descripcion);
             formData.append('puedeCompleto', puedeCompleto);
+            formData.append('noPistas', noPistas)
             formData.append('precioCompleto', precioCompleto);
             formData.append('catSecundaria', categoriaSecundaria);
 
