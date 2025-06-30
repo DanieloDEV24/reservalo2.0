@@ -208,4 +208,14 @@ table td .dropdown button i
   display: none !important;
 }
 
+.input-error
+{
+  border-color: red !important;
+}
+
+.input-ok
+{
+  border-color: #725AC1 !important;
+}
+
 

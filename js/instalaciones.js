@@ -3,6 +3,51 @@ $(document).ready(() => {
     let alertBox;
     let pistas = [];
     let contadorAcordeon = 1;
+    let imagenesNoPistas
+    const item = $(`<div class="accordion-item" data-index="1">
+    <h2 class="accordion-header">
+      <button class="accordion-button nuevaPista collapsed d-flex justify-content-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+        <div>Añadir Pista&nbsp;<i class="bi bi-plus-circle"></i></div>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <div class="row gap-5">
+          <div class="col">
+            <label>Nombre:</label>
+            <input type="text" name="nombrePista" class="form-control nombrePista" placeholder="Ej: Pista de padel nº 1">
+          </div>
+        </div>
+
+        <div class="row gap-5 mt-3">
+          <div class="col">
+            <label>Capacidad de la Pista:</label>
+            <input type="text" name="capacidadPista" class="form-control capacidadPista" placeholder="Ej: 4">
+          </div>
+
+          <div class="col">
+            <label>Precio de la Pista:</label>
+            <input type="text" name="precioPista" class="form-control precioPista" placeholder="Ej: 21">
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-start mt-4">
+          <div class="w-50">
+            Selecciona las imágenes de la pista (máx 4)
+            <label class="btn btn-primary mt-1">
+              Imagenes
+              <input class="imagenes" type="file" name="imagenes[]" multiple accept="image/*" hidden>
+            </label>
+          </div>
+        </div>
+
+        <div class="d-flex gap-2 mt-3 justify-content-end botonesPista">
+          <button class="btn btn-primary guardarPista">Guardar <i class="bi bi-check-lg"></i></button>
+        </div>
+
+      </div>
+    </div>
+  </div>`);
 
     $('#crear').click(() => {
         $('#modalNuevaInstalacion').modal('show');
@@ -28,20 +73,22 @@ $(document).ready(() => {
         let isChecked = $(this).is(':checked');
 
         if (isChecked) {
-            
             $('#precioCompleto').removeAttr('readonly').css('color', 'black').focus();
+            $('#capacidadCompleto').removeAttr('readonly').css('color', 'black').focus();
+
         } else {
-            if(!$('.toggle-switch input.noPistas').is(':checked'))$('#precioCompleto').attr('readonly', 'readonly').val(0.0).css('color', '#ccc');
+            if (!$('.toggle-switch input.noPistas').is(':checked')) $('#precioCompleto').attr('readonly', 'readonly').val(0.0).css('color', '#ccc');
+            if (!$('.toggle-switch input.noPistas').is(':checked')) $('#capacidadCompleto').attr('readonly', 'readonly').val(0.0).css('color', '#ccc');
         }
     });
-    
 
-        const item = $('.accordion-item[data-index="1"]');
 
-       $('.toggle-switch input.noPistas').on('change', function () {
+
+
+    $('.toggle-switch input.noPistas').on('change', function () {
         let isChecked = $(this).is(':checked');
-        let buttonFiles = $(`<div class="d-flex justify-content-start mt-4">
-          <div class="w-50">
+        let buttonFiles = $(`<div class="d-flex justify-content-start mt-4 mb-4">
+          <div class="w-50" id="divButtonFilesNoPistas">
             Selecciona las imágenes de la pista (máx 4)
             <label class="btn btn-primary mt-1">
               Imagenes
@@ -49,15 +96,24 @@ $(document).ready(() => {
             </label>
           </div>
         </div>`)
-        
+
 
         if (isChecked) {
+            pistas = [];
             $('#accordionExample').empty()
             $('#precioCompleto').removeAttr('readonly').css('color', 'black').focus();
+            $('#capacidadCompleto').removeAttr('readonly').css('color', 'black').focus();
+            if ($('.toggle-switch input.puedeCompleto').is(':checked')) $('.toggle-switch input.puedeCompleto').prop('checked', false)
             $('.toggle-switch input.puedeCompleto').prop('disabled', true)
+            $('#accordionExample').append(buttonFiles)
+
         } else {
+            $('#accordionExample').empty();
             $('#accordionExample').append(item)
-            if(!$('.toggle-switch input.puedeCompleto').is(':checked'))$('#precioCompleto').attr('readonly', 'readonly').val(0.0).css('color', '#ccc');
+            if (!$('.toggle-switch input.puedeCompleto').is(':checked')) $('#precioCompleto').attr('readonly', 'readonly').val(0.0).css('color', '#ccc');
+            if (!$('.toggle-switch input.puedeCompleto').is(':checked')) $('#capacidadCompleto').attr('readonly', 'readonly').val(0.0).css('color', '#ccc');
+            $('.toggle-switch input.puedeCompleto').prop('disabled', false);
+            
         }
     });
 
@@ -75,9 +131,26 @@ $(document).ready(() => {
         body.data('imagenesPista', archivos);
     });
 
+    $('#accordionExample').on('change', '#imgNoPistas', function (event) {
+        const maxArchivos = 4;
+        const archivos = this.files;
+
+        if (archivos.length > maxArchivos) {
+            alert('Solo puedes seleccionar un máximo de 4 imágenes.');
+            this.value = '';
+            return;
+        }
+
+        imagenesNoPistas = archivos
+    });
+
+
     $(document).on('click', '.guardarPista', function () {
         errores = [];
         $('#modalNuevaInstalacion .alertModal').empty();
+
+        let capacidadTotal = $('#capacidadCompleto').val();
+        let puedeTotal = $('.toggle-switch input.puedeCompleto').is(':checked');
 
         const body = $(this).closest('.accordion-body');
         const nombrePista = body.find('.nombrePista').val();
@@ -85,17 +158,48 @@ $(document).ready(() => {
         const precioPista = body.find('.precioPista').val();
         const imagenes = body.data('imagenesPista') || [];
 
-        if (!nombrePista) errores.push('Debes escribir un nombre');
-        if (!capacidadPista || capacidadPista == 0 || !parseInt(capacidadPista)) errores.push('Debes seleccionar una capacidad');
-        if (!precioPista || !parseFloat(precioPista)) errores.push('Debe seleccionar un precio');
+        if (!nombrePista) 
+        {
+            errores.push('Debes escribir un nombre para la pista');
+            camposError(body.find('.nombrePista'))
+        }
+        else 
+        {
+            campoSolucionado(body.find('.nombrePista'))
+        }
+
+        if (!capacidadPista || capacidadPista == 0 || !parseInt(capacidadPista)) 
+        {
+            errores.push('Debes seleccionar una capacidad para la pista');
+            camposError(body.find('.capacidadPista'))
+        }
+        else if(puedeTotal && (capacidadPista > capacidadTotal))
+        {
+            errores.push('La capacidad de una pista no puede superar a la total de la instalación');
+            camposError(body.find('.capacidadPista'))
+        }
+        else 
+        {
+            campoSolucionado(body.find('.capacidadPista'))
+        }
+
+        if (precioPista === '' || isNaN(precioPista))
+        {
+            errores.push('Debe seleccionar un precio para la pista');
+            camposError(body.find('.precioPista'))
+        }
+        else 
+        {
+             campoSolucionado(body.find('.precioPista'))
+        }
 
         if (errores.length === 0) {
             pistas.push({
                 id: contadorAcordeon,
-                nombrePista,
-                capacidadPista,
-                precioPista,
-                imagenes
+                nombrePista: nombrePista,
+                capacidadPista: capacidadPista,
+                precioPista: precioPista,
+                imagenes: imagenes
             });
 
             body.find('input').prop('readonly', true);
@@ -172,20 +276,64 @@ $(document).ready(() => {
         let puedeCompleto = $('.toggle-switch input.puedeCompleto').is(':checked');
         let noPistas = $('.toggle-switch input.noPistas').is(':checked');
         let precioCompleto = $('#precioCompleto').val();
+        let capacidadCompleto = $('#capacidadCompleto').val();
         let descripcion = $('#descripcion').val();
         let categoriaSecundaria = 0;
 
+
+
         $('#subcategorias input').each(function () {
             if ($(this).is(':checked')) {
-            categoriaSecundaria = $(this).val();
+                categoriaSecundaria = $(this).val();
             }
         });
 
-        if (!nombreInstalacion) errores.push('El campo "nombre" no puede estar vacío');
-        if (categoria == -1) errores.push('Debe seleccionar un deporte');
-        if (!descripcion) errores.push('Debe añadir una descripcion');
-        if (puedeCompleto && (!precioCompleto || !parseFloat(precioCompleto))) errores.push('Debe seleccionar un precio válido');
-        if (noPistas && (!precioCompleto || !parseFloat(precioCompleto))) errores.push('Debe seleccionar un precio válido');
+        if (!nombreInstalacion)
+        {
+            errores.push('El campo "nombre" de la instalación no puede estar vacío');
+            camposError($('#nombreInstalacion'))
+        }
+        else 
+        {
+            campoSolucionado($('#nombreInstalacion'))
+        }
+
+        if (categoria == -1)
+        {
+            errores.push('Debe seleccionar una categoría principal');
+            camposError($('#categorias'))
+        }
+        else 
+        {
+            campoSolucionado($('#categorias'))
+        }
+        
+        if (!descripcion)
+        {
+            errores.push('Debe añadir una descripcion');
+            camposError($('#descripcion'))
+        }
+        else 
+        {
+            campoSolucionado($('#descripcion'))
+        }
+if ((puedeCompleto || noPistas) && (precioCompleto === '' || isNaN(precioCompleto))) {
+    errores.push('Debe seleccionar un precio válido');
+    camposError($('#precioCompleto'));
+} else {
+    campoSolucionado($('#precioCompleto'));
+}
+
+
+        if ((puedeCompleto || noPistas) && (capacidadCompleto === '' || isNaN(capacidadCompleto) || parseInt(capacidadCompleto) === 0))
+        {
+            errores.push('Debe seleccionar una capacidad válida');
+            camposError($('#capacidadCompleto'));
+        }
+        else
+        {
+            campoSolucionado($('#capacidadCompleto'));
+        }
 
         if (errores.length === 0) {
             let formData = new FormData();
@@ -195,47 +343,69 @@ $(document).ready(() => {
             formData.append('puedeCompleto', puedeCompleto);
             formData.append('noPistas', noPistas)
             formData.append('precioCompleto', precioCompleto);
+            formData.append('capacidadCompleto', capacidadCompleto);
             formData.append('catSecundaria', categoriaSecundaria);
 
-            const pistasSinImagenes = pistas.map((pista, index) => {
-                if (pista.imagenes && pista.imagenes.length > 0) {
-                    Array.from(pista.imagenes).forEach((img, i) => {
-                        formData.append(`imagenes_pista_${index}[]`, img);
+            if (noPistas) {
+                pistas = [];
+                pistas.push(pista = {
+                    id: 1,
+                    nombrePista: `pista única ${nombreInstalacion}`,
+                    capacidadPista: capacidadCompleto,
+                    precioPista: precioCompleto,
+                })
+
+                if (imagenesNoPistas && imagenesNoPistas.length > 0) {
+                    Array.from(imagenesNoPistas).forEach((img, i) => {
+                        formData.append(`imagenes_pista_0[]`, img);
                     });
                 }
-                return {
-                    id: pista.id,
-                    nombrePista: pista.nombrePista,
-                    capacidadPista: pista.capacidadPista,
-                    precioPista: pista.precioPista
-                };
-            });
 
-            formData.append('pistas', JSON.stringify(pistasSinImagenes));
+                formData.append('pistas', JSON.stringify(pistas));
+            }
+            else {
+                const pistasSinImagenes = pistas.map((pista, index) => {
+                    if (pista.imagenes && pista.imagenes.length > 0) {
+                        Array.from(pista.imagenes).forEach((img, i) => {
+                            formData.append(`imagenes_pista_${index}[]`, img);
+                        });
+                    }
+                    return {
+                        id: pista.id,
+                        nombrePista: pista.nombrePista,
+                        capacidadPista: pista.capacidadPista,
+                        precioPista: pista.precioPista
+                    };
+                });
+
+                formData.append('pistas', JSON.stringify(pistasSinImagenes));
+            }
+
+
 
             for (let pair of formData.entries()) {
                 console.log(pair[0], pair[1]);
             }
 
             $.ajax({
-    url: 'nuevaInstalacion', // <-- Cambia esto por la URL correcta
-    type: 'POST',
-    data: formData,
-    processData: false, // Importante para enviar FormData
-    contentType: false, // Importante para enviar FormData
-    success: function (response) {
-        $('#modalNuevaInstalacion').modal('hide');
-    },
-    error: function (xhr, status, error) {
-        console.error('Error al guardar instalación');
-        console.error(xhr.responseText);
+                url: 'nuevaInstalacion', // <-- Cambia esto por la URL correcta
+                type: 'POST',
+                data: formData,
+                processData: false, // Importante para enviar FormData
+                contentType: false, // Importante para enviar FormData
+                success: function (response) {
+                    $('#modalNuevaInstalacion').modal('hide');
+                },
+                error: function (xhr, status, error) {
+                    console.error('Error al guardar instalación');
+                    console.error(xhr.responseText);
 
-        // Mostrar mensaje de error
-        let mensajeError = xhr.responseJSON?.mensaje || "Error inesperado";
-        let alerta = `<div class="alert alert-danger mb-0" role="alert">${mensajeError}</div>`;
-        $('#modalNuevaInstalacion .alertModal').prepend(alerta);
-    }
-});
+                    // Mostrar mensaje de error
+                    let mensajeError = xhr.responseJSON?.mensaje || "Error inesperado";
+                    let alerta = `<div class="alert alert-danger mb-0" role="alert">${mensajeError}</div>`;
+                    $('#modalNuevaInstalacion .alertModal').prepend(alerta);
+                }
+            });
 
         } else {
             let elementosLista = errores.map(e => `<li>${e}</li>`).join('');
@@ -243,4 +413,13 @@ $(document).ready(() => {
             $('#modalNuevaInstalacion .alertModal').prepend(alertBox);
         }
     });
+
+
+function camposError(input) {
+    input.addClass('input-error').removeClass('input-ok');
+}
+
+function campoSolucionado(input) {
+    input.removeClass('input-error').addClass('input-ok');
+}
 });

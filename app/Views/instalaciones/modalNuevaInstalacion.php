@@ -46,12 +46,6 @@
               </div>
             </label>
           </div>
-
-
-          <div class="col">
-            <label for="precioCompleto">Precio completo:</label>
-            <input type="number" id="precioCompleto" name="precioCompleto" class="form-control" readonly style="color: #ccc" value="0.0">
-          </div>
         </div>
 
         <div class="row gap-5 align-items-center mt-3">
@@ -63,6 +57,13 @@
                 <div class="toggle-switch-handle"></div>
               </div>
             </label>
+          </div>
+        </div>
+
+        <div class="row gap-5 mt-3">
+          <div class="col">
+            <label for="capacidadCompleto">Capacidad completo:</label>
+            <input type="number" id="capacidadCompleto" name="capacidadCompleto" class="form-control" readonly style="color: #ccc" value="0.0">
           </div>
 
           <div class="col">

@@ -27,7 +27,6 @@ class Instalaciones extends BaseController
         $nuevaInstalacion = view('instalaciones/modalNuevaInstalacion', ["baseUrl" => base_url(), "categorias"=>$categorias]);
         $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "baseUrl" => base_url()]);
        
-
         return view('plantillas/normal', ["view"=>$view, "baseUrl" => base_url()]);
     }
 
