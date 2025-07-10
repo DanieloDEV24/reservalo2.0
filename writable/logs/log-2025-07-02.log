@@ -1,0 +1,223 @@
+INFO - 2025-07-02 07:19:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 07:19:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 07:20:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 07:20:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 07:20:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 07:22:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 07:22:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 07:24:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 07:24:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 07:24:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 09:54:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 09:54:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 09:54:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 09:54:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 09:57:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 10:13:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-02 10:16:26 --> mysqli_sql_exception: Unknown column 'categoria_opcional' in 'field list' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `in...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `in...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `in...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `in...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(69): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(60): App\Models\instalacionesModel->createInstalacion(Array)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-07-02 10:16:26 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categoria_opcional' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (:nombre:, :descripcion:, :categoria_principal:, :categoria_opcional:, :puede_completo:, :no_pistas:, :precio_completo:)', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(69): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Instalaciones.php(60): App\Models\instalacionesModel->createInstalacion([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-02 10:16:26 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categoria_opcional' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial \', 1, 0, 1, 0, 33)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial \', 1, 0, 1, 0, 33)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (:nombre:, :descripcion:, :categoria_principal:, :categoria_opcional:, :puede_completo:, :no_pistas:, :precio_completo:)', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(69): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Instalaciones.php(60): App\Models\instalacionesModel->createInstalacion([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-02 10:16:26 --> [Caused by] mysqli_sql_exception: Unknown column 'categoria_opcional' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial \', 1, 0, 1, 0, 33)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial \', 1, 0, 1, 0, 33)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial \', 1, 0, 1, 0, 33)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (:nombre:, :descripcion:, :categoria_principal:, :categoria_opcional:, :puede_completo:, :no_pistas:, :precio_completo:)', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(69): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Instalaciones.php(60): App\Models\instalacionesModel->createInstalacion([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-07-02 10:16:53 --> mysqli_sql_exception: Unknown column 'categoria_opcional' in 'field list' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `in...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `in...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `in...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `in...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(69): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(60): App\Models\instalacionesModel->createInstalacion(Array)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-07-02 10:16:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categoria_opcional' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (:nombre:, :descripcion:, :categoria_principal:, :categoria_opcional:, :puede_completo:, :no_pistas:, :precio_completo:)', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(69): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Instalaciones.php(60): App\Models\instalacionesModel->createInstalacion([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-02 10:17:07 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categoria_opcional' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial \', 1, 0, 1, 0, 33)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial \', 1, 0, 1, 0, 33)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (:nombre:, :descripcion:, :categoria_principal:, :categoria_opcional:, :puede_completo:, :no_pistas:, :precio_completo:)', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(69): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Instalaciones.php(60): App\Models\instalacionesModel->createInstalacion([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-02 10:17:07 --> [Caused by] mysqli_sql_exception: Unknown column 'categoria_opcional' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial \', 1, 0, 1, 0, 33)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial \', 1, 0, 1, 0, 33)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial \', 1, 0, 1, 0, 33)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (:nombre:, :descripcion:, :categoria_principal:, :categoria_opcional:, :puede_completo:, :no_pistas:, :precio_completo:)', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(69): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Instalaciones.php(60): App\Models\instalacionesModel->createInstalacion([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-07-02 10:17:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-02 10:19:51 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`reservalo2`.`instalaciones`, CONSTRAINT `FK2_categorias_instalaciones` FOREIGN KEY (`categoria_opcional1`) REFERENCES `categorias` (`id_categoria`) ON DELETE NO ACTION ON UPDATE CASCADE) in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `in...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `in...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `in...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `in...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(69): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(60): App\Models\instalacionesModel->createInstalacion(Array)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+INFO - 2025-07-02 10:21:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-02 10:21:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`reservalo2`.`instalaciones`, CONSTRAINT `FK2_categorias_instalaciones` FOREIGN KEY (`categoria_opcional1`) REFERENCES `categorias` (`id_categoria`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional1`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (:nombre:, :descripcion:, :categoria_principal:, :categoria_opcional1:, :puede_completo:, :no_pistas:, :precio_completo:)', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(69): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Instalaciones.php(60): App\Models\instalacionesModel->createInstalacion([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-02 10:21:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`reservalo2`.`instalaciones`, CONSTRAINT `FK2_categorias_instalaciones` FOREIGN KEY (`categoria_opcional1`) REFERENCES `categorias` (`id_categoria`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional1`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial con la posibilidad de reservar el campo completo fútbol 11 o las pistas de fútbol 7 que son 2\', 1, 0, 1, 0, 33)')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional1`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial con la posibilidad de reservar el campo completo fútbol 11 o las pistas de fútbol 7 que son 2\', 1, 0, 1, 0, 33)')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional1`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (:nombre:, :descripcion:, :categoria_principal:, :categoria_opcional1:, :puede_completo:, :no_pistas:, :precio_completo:)', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(69): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Instalaciones.php(60): App\Models\instalacionesModel->createInstalacion([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-02 10:21:36 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`reservalo2`.`instalaciones`, CONSTRAINT `FK2_categorias_instalaciones` FOREIGN KEY (`categoria_opcional1`) REFERENCES `categorias` (`id_categoria`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional1`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial con la posibilidad de reservar el campo completo fútbol 11 o las pistas de fútbol 7 que son 2\', 1, 0, 1, 0, 33)', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional1`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial con la posibilidad de reservar el campo completo fútbol 11 o las pistas de fútbol 7 que son 2\', 1, 0, 1, 0, 33)')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional1`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (\'Campo de fútbol\', \'Campo de fútbol de césped artificial con la posibilidad de reservar el campo completo fútbol 11 o las pistas de fútbol 7 que son 2\', 1, 0, 1, 0, 33)')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `instalaciones` (`nombre`, `descripcion`, `categoria_principal`, `categoria_opcional1`, `puede_completo`, `no_pistas`, `precio_completo`) VALUES (:nombre:, :descripcion:, :categoria_principal:, :categoria_opcional1:, :puede_completo:, :no_pistas:, :precio_completo:)', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(69): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Instalaciones.php(60): App\Models\instalacionesModel->createInstalacion([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-07-02 10:22:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 10:22:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-02 10:25:11 --> BadMethodCallException: Call to undefined method App\Models\instalacionesModel::createPista
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\Instalaciones.php(103): CodeIgniter\Model->__call('createPista', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-07-02 10:26:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-07-02 10:28:08 --> mysqli_sql_exception: Unknown column 'nombrePista' in 'field list' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `pi...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pi...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pi...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pi...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(82): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(103): App\Models\instalacionesModel->createPistas(Array)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-07-02 10:29:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'nombrePista' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pistas` (`id_instalacion`, `nombrePista`, `capacidadPista`, `precioPista`, `imagen1`, `imagen2`, `imagen3`, `imagen4`) VALUES (:id_instalacion:, :nombrePista:, :capacidadPista:, :precioPista:, :imagen1:, :imagen2:, :imagen3:, :imagen4:)', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(82): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Instalaciones.php(103): App\Models\instalacionesModel->createPistas([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-02 10:29:49 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'nombrePista' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pistas` (`id_instalacion`, `nombrePista`, `capacidadPista`, `precioPista`, `imagen1`, `imagen2`, `imagen3`, `imagen4`) VALUES (3, \'Pista de Fútbol 7. nº1\', \'14\', \'21\', \'images/CampoFutbol4.jpg\', \'images/CampoFutbol3.jpg\', \'images/CampoFutbol2.jpg\', \'images/CampoFutbol1.jpg\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pistas` (`id_instalacion`, `nombrePista`, `capacidadPista`, `precioPista`, `imagen1`, `imagen2`, `imagen3`, `imagen4`) VALUES (3, \'Pista de Fútbol 7. nº1\', \'14\', \'21\', \'images/CampoFutbol4.jpg\', \'images/CampoFutbol3.jpg\', \'images/CampoFutbol2.jpg\', \'images/CampoFutbol1.jpg\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pistas` (`id_instalacion`, `nombrePista`, `capacidadPista`, `precioPista`, `imagen1`, `imagen2`, `imagen3`, `imagen4`) VALUES (:id_instalacion:, :nombrePista:, :capacidadPista:, :precioPista:, :imagen1:, :imagen2:, :imagen3:, :imagen4:)', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(82): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Instalaciones.php(103): App\Models\instalacionesModel->createPistas([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-07-02 10:29:49 --> [Caused by] mysqli_sql_exception: Unknown column 'nombrePista' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `pistas` (`id_instalacion`, `nombrePista`, `capacidadPista`, `precioPista`, `imagen1`, `imagen2`, `imagen3`, `imagen4`) VALUES (3, \'Pista de Fútbol 7. nº1\', \'14\', \'21\', \'images/CampoFutbol4.jpg\', \'images/CampoFutbol3.jpg\', \'images/CampoFutbol2.jpg\', \'images/CampoFutbol1.jpg\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pistas` (`id_instalacion`, `nombrePista`, `capacidadPista`, `precioPista`, `imagen1`, `imagen2`, `imagen3`, `imagen4`) VALUES (3, \'Pista de Fútbol 7. nº1\', \'14\', \'21\', \'images/CampoFutbol4.jpg\', \'images/CampoFutbol3.jpg\', \'images/CampoFutbol2.jpg\', \'images/CampoFutbol1.jpg\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pistas` (`id_instalacion`, `nombrePista`, `capacidadPista`, `precioPista`, `imagen1`, `imagen2`, `imagen3`, `imagen4`) VALUES (3, \'Pista de Fútbol 7. nº1\', \'14\', \'21\', \'images/CampoFutbol4.jpg\', \'images/CampoFutbol3.jpg\', \'images/CampoFutbol2.jpg\', \'images/CampoFutbol1.jpg\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pistas` (`id_instalacion`, `nombrePista`, `capacidadPista`, `precioPista`, `imagen1`, `imagen2`, `imagen3`, `imagen4`) VALUES (:id_instalacion:, :nombrePista:, :capacidadPista:, :precioPista:, :imagen1:, :imagen2:, :imagen3:, :imagen4:)', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(82): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Instalaciones.php(103): App\Models\instalacionesModel->createPistas([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->nuevaInstalacion()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-07-02 10:30:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 10:37:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-07-02 10:38:01 --> ErrorException: Undefined array key "id_instalaciones"
+in APPPATH\Views\instalaciones\crudInstalaciones.php on line 19.
+ 1 APPPATH\Views\instalaciones\crudInstalaciones.php(19): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_instalaciones"', 'C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\crudInstalaciones.php', 19)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\crudInstalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/crudInstalaciones', [], true)
+ 5 APPPATH\Controllers\Instalaciones.php(28): view('instalaciones/crudInstalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-07-02 10:38:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-07-02 10:38:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -19,3 +19,4 @@ $routes->post('/resetPassForm/(:num)', 'Login::resetPassForm/$1');
 $routes->get('/resetPassForm/(:num)', 'Login::resetPassForm/$1');
 $routes->get('/resetPass', 'Login::resetPass');
 $routes->post('/nuevaInstalacion', 'Instalaciones::nuevaInstalacion');
+$routes->post('/verInstalacion', 'Instalaciones::verInstalacion');

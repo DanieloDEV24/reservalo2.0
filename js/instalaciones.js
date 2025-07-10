@@ -402,7 +402,7 @@ $(document).ready(() => {
 
                 if (imagenesNoPistas && imagenesNoPistas.length > 0) {
                     Array.from(imagenesNoPistas).forEach((img, i) => {
-                        formData.append(`imagenes_pista_0[]`, img);
+                        formData.append(`imagenes_pista_1[]`, img);
                     });
                 }
 
@@ -412,7 +412,7 @@ $(document).ready(() => {
                 const pistasSinImagenes = pistas.map((pista, index) => {
                     if (pista.imagenes && pista.imagenes.length > 0) {
                         Array.from(pista.imagenes).forEach((img, i) => {
-                            formData.append(`imagenes_pista_${index}[]`, img);
+                            formData.append(`imagenes_pista_${pista.id}[]`, img);
                         });
                     }
                     return {
@@ -439,6 +439,38 @@ $(document).ready(() => {
                 processData: false, // Importante para enviar FormData
                 contentType: false, // Importante para enviar FormData
                 success: function (response) {
+                    
+                    let data = JSON.parse(response);
+                    let instalaciones = data.instalaciones;
+                    let tabla = $('#tabaInstalaciones tbody');
+                    tabla.empty();
+                    instalaciones.forEach((instalacion, index) => {
+                        let categoriaSecundaria = instalacion.categoria_opcional1 ? instalacion.categoria_opcional1 : '----';
+                        tabla.append(`
+                            <tr data-index="${instalacion.id_instalacion}">
+                                <td>${index + 1}</td>
+                                <td>${instalacion.nombre}</td>
+                                <td>${instalacion.categoria}</td>
+                                <td>${categoriaSecundaria}</td>
+                                <td>
+
+
+            <div class="dropdown" style="max-width: 200px;">
+              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-three-dots-vertical"></i>
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item btnVerInstalacion" href="#">Ver &nbsp;<i class="bi bi-eye"></i></a></li>
+                <li><a class="dropdown-item" href="#">Editar &nbsp;<i class="bi bi-pencil-square"></i></a></li>
+                <li><a class="dropdown-item" href="#">Borrar &nbsp;<i class="bi bi-trash3"></i></a></li>
+                <li><a class="dropdown-item" href="#">Dar de Baja &nbsp;<i class="bi bi-x-lg        "></i></a></li>
+              </ul>
+            </div>
+
+
+          </td>
+                            </tr>`);
+                    });
                     $('#modalNuevaInstalacion').modal('hide');
                 },
                 error: function (xhr, status, error) {
@@ -458,6 +490,36 @@ $(document).ready(() => {
             $('#modalNuevaInstalacion .alertModal').prepend(alertBox);
         }
     });
+
+
+    $('#tabaInstalaciones tbody').on('click', '.btnVerInstalacion', function(e) {
+    
+        e.preventDefault();
+
+        let index = $(this).closest('tr').data('index');
+
+        $.ajax({
+            url: 'verInstalacion',
+            method: 'POST',
+            data: {id: index},
+            dataType: 'json',
+            success: function(response) {
+                $('#modalVerInstalacion').modal('show');
+            },
+            error: function(xhr, status, error) {
+            // Mostrar mensaje legible al usuario
+            alert("⚠️ No se pudo cargar la instalación. Intenta nuevamente más tarde.");
+
+            // Registrar en consola para el desarrollador
+            console.error("Error AJAX:");
+            console.error("Estado:", status);
+            console.error("Código HTTP:", xhr.status);
+            console.error("Mensaje:", error);
+            console.error("Respuesta del servidor:", xhr.responseText);
+    }
+});
+
+    })
 
 
     function camposError(input) {

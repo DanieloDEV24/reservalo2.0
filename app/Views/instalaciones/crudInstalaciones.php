@@ -6,7 +6,8 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Nombre</th>
-        <th scope="col">Deporte</th>
+        <th scope="col">Categoria Principal</th>
+        <th scope="col">Categoria Secundaria</th>
         <th scope="col">Acciones</th>
       </tr>
     </thead>
@@ -16,10 +17,11 @@
       foreach ($instalaciones as $instalacion) {
         $cont++
       ?>
-        <tr data-index="<?= $instalacion["id_instalaciones"] ?>">
+        <tr data-index="<?= $instalacion["id_instalacion"] ?>">
           <td><?= $cont ?></td>
           <td><?= $instalacion["nombre"] ?></td>
-          <td><?= $instalacion["deporte"] ?></td>
+          <td><?= $instalacion["categoria"] ?></td>
+          <td><?=($instalacion["categoria_opcional1"] === null)? "----" : $instalacion["categoria_opcional1"]?></td>
           <td>
 
 
@@ -28,9 +30,10 @@
                 <i class="bi bi-three-dots-vertical"></i>
               </button>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Ver &nbsp;<i class="bi bi-eye"></i></a></li>
+                <li><a class="dropdown-item btnVerInstalacion" href="">Ver &nbsp;<i class="bi bi-eye"></i></a></li>
                 <li><a class="dropdown-item" href="#">Editar &nbsp;<i class="bi bi-pencil-square"></i></a></li>
                 <li><a class="dropdown-item" href="#">Borrar &nbsp;<i class="bi bi-trash3"></i></a></li>
+                <li><a class="dropdown-item" href="#">Dar de Baja &nbsp;<i class="bi bi-x-lg        "></i></a></li>
               </ul>
             </div>
 
@@ -46,3 +49,4 @@
 </div>
 
 <?=$nuevaInstalacion?>
+<?=$verInstalacion?>
