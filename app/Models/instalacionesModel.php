@@ -84,4 +84,33 @@ class instalacionesModel extends Model
         return $db->insertID();
     }
 
+    public function getInstalacion(int $id)
+    {
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('instalaciones');
+
+        $query = $builder->select()->where('id_instalacion', $id)->get();
+
+        $result = $query->getResultArray();
+        return $result;
+    }
+
+
+    public function getPistasByInstalacion(int $id_instalacion)
+    {
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('pistas');
+
+        $query = $builder->select()->where('id_instalacion', $id_instalacion)->get();
+
+        $result = $query->getResultArray();
+        return $result;
+    }
+
 }

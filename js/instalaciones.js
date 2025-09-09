@@ -491,9 +491,7 @@ $(document).ready(() => {
         }
     });
 
-
     $('#tabaInstalaciones tbody').on('click', '.btnVerInstalacion', function(e) {
-    
         e.preventDefault();
 
         let index = $(this).closest('tr').data('index');
@@ -504,6 +502,63 @@ $(document).ready(() => {
             data: {id: index},
             dataType: 'json',
             success: function(response) {
+                console.log(response);
+                $('#imagenVerInstalacion').css('background-image',`url(${base_url}images/${response.pistas[0].imagen1})`);
+                console.log()
+                $('#nombreVerInstalacion').text(response.instalacion[0].nombre + '.');
+                $('#descripcionVerInstalacion').text(response.instalacion[0].descripcion);
+                if(parseInt(response.instalacion[0].puede_completo) === 1)
+                {
+                    $('#capacidadCompletaVerInstalacion').text(response.instalacion[0].capacidad_completo)    
+                }
+                else 
+                {
+                    $('#capacidadCompletaVerInstalacion').text('----')    
+                }
+                $('#precioCompletoVerInstalacion').text(response.instalacion[0].precio_completo);
+
+                response.pistas.map((pista, index) => {
+                    let node = $(`
+  <div class="accordion-item" data-index="${pista["id_pista"]}">
+    <h2 class="accordion-header">
+      <button 
+        class="accordion-button nuevaPista collapsed d-flex justify-content-start" 
+        type="button" 
+        data-bs-toggle="collapse" 
+        data-bs-target="#collapse-${pista["id_pista"]}" 
+        aria-expanded="false" 
+        aria-controls="collapse-${pista["id_pista"]}">
+        <div>${pista["nombre_pista"]}</div>
+      </button>
+    </h2>
+    <div id="collapse-${pista["id_pista"]}" 
+         class="accordion-collapse collapse" 
+         data-bs-parent="#accordionPistas">
+      <div class="accordion-body">
+        <div class="galeria-imagenes-pistas">
+            <img src="${base_url}images/${pista["imagen1"]}" alt="Imagen 1 de ${pista["nombre_pista"]}">
+        </div>
+
+        <div class="row gap-5 mt-3">
+          <div class="col">
+            <label>Capacidad de la Pista:</label>
+            <p>${pista["capacidad_pista"]}</p>
+          </div>
+
+          <div class="col">
+            <label>Precio de la Pista:</label>
+            <p>${pista["precio_pista"]}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+`);
+
+  
+                    $('#accordionPistas').append(node);
+                })
+                
                 $('#modalVerInstalacion').modal('show');
             },
             error: function(xhr, status, error) {

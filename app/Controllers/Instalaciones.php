@@ -39,14 +39,15 @@ class Instalaciones extends BaseController
         $instalacionesModel = new instalacionesModel();
 
         if (!empty($post)) {
-            $nombre         = $post["nombreInstalacion"];
-            $categoria      = intval($post["categorias"]);
-            $descripcion    = $post["descripcion"];
-            $puedeCompleto  = filter_var($post["puedeCompleto"], FILTER_VALIDATE_BOOLEAN);
-            $precioCompleto = floatval($post["precioCompleto"]);
-            $catSecundaria  = intval($post["catSecundaria"]);
-            $pistas         = json_decode($post["pistas"]);
-            $noPistas       = filter_var($post["noPistas"], FILTER_VALIDATE_BOOLEAN);
+            $nombre            = $post["nombreInstalacion"];
+            $categoria         = intval($post["categorias"]);
+            $descripcion       = $post["descripcion"];
+            $puedeCompleto     = filter_var($post["puedeCompleto"], FILTER_VALIDATE_BOOLEAN);
+            $precioCompleto    = floatval($post["precioCompleto"]);
+            $catSecundaria     = intval($post["catSecundaria"]);
+            $pistas            = json_decode($post["pistas"]);
+            $noPistas          = filter_var($post["noPistas"], FILTER_VALIDATE_BOOLEAN);
+            $capacidadCompleto = intval($post["capacidadCompleto"]);
 
             $dataInstalacion = [
                 'nombre' => $nombre, 
@@ -55,7 +56,8 @@ class Instalaciones extends BaseController
                 'categoria_opcional1' => ($catSecundaria !== 0) ? $catSecundaria : null,
                 'puede_completo' => $puedeCompleto,
                 'no_pistas' => $noPistas,
-                'precio_completo' => ($puedeCompleto || $noPistas) ? $precioCompleto : null
+                'precio_completo' => ($puedeCompleto || $noPistas) ? $precioCompleto : null,
+                'capacidad_completo' => ($puedeCompleto) ? $capacidadCompleto : null
             ]; 
 
             $id_instalacion = $instalacionesModel->createInstalacion($dataInstalacion);
@@ -125,6 +127,29 @@ class Instalaciones extends BaseController
 
     public function verInstalacion()
     {
+
+        $post = $this->request->getPost();
+        $instalacionesModel = new instalacionesModel();
+        
+        if(!empty($post))
+        {
+            $id_instalacion = intval($post["id"]);
+            $instalacion    = $instalacionesModel->getInstalacion($id_instalacion);
+            
+            if($instalacion)
+            {
+                $pistas = $instalacionesModel->getPistasByInstalacion($id_instalacion);
+                echo json_encode([
+                    "success" => true,
+                    "message" => "Instalación encontrada",
+                    "instalacion" => $instalacion,
+                    "pistas" => $pistas
+                ]);
+                exit;
+            }
+           
+        }
+
         echo json_encode([
             "success" => false,
             "message" => "No se enviaron datos"
