@@ -20,8 +20,8 @@
         <tr data-index="<?= $instalacion["id_instalacion"] ?>">
           <td><?= $cont ?></td>
           <td><?= $instalacion["nombre"] ?></td>
-          <td><?= $instalacion["categoria"] ?></td>
-          <td><?=($instalacion["categoria_opcional1"] === null)? "----" : $instalacion["categoria_opcional1"]?></td>
+          <td><?= $instalacion["categoria_name"] ?></td>
+          <td><?=($instalacion["categoria_opcional1"] === null)? "----" : $instalacion["categoria_opc_name"]?></td>
           <td>
 
 

@@ -226,7 +226,7 @@ class Exceptions
      */
     public function shutdownHandler()
     {
-        $error = error_get_last();
+            $error = error_get_last();
 
         if ($error === null) {
             return;

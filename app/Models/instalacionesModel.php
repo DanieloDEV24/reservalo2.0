@@ -36,8 +36,9 @@ class instalacionesModel extends Model
         $builder = $db->table('instalaciones');
 
         //Realizamos la consulta
-        $query = $builder->select('instalaciones.*, categorias.nombre as categoria')
-        ->join('categorias', 'instalaciones.categoria_principal = categorias.id_categoria')
+        $query = $builder->select('instalaciones.*, categorias1.nombre as categoria_name, categorias2.nombre as categoria_opc_name')
+        ->join('categorias as categorias1', 'instalaciones.categoria_principal = categorias1.id_categoria', 'left')
+        ->join('categorias as categorias2', 'instalaciones.categoria_opcional1 = categorias2.id_categoria', 'left')
         ->get();
 
         $result =  $result = $query->getResultArray();
@@ -92,7 +93,11 @@ class instalacionesModel extends Model
         //Obtenemos la tabla en la que vamos a buscar a los usuarios
         $builder = $db->table('instalaciones');
 
-        $query = $builder->select()->where('id_instalacion', $id)->get();
+        $query = $builder->select('instalaciones.*, categorias1.nombre as categoria_name, categorias2.nombre as categoria_opc_name')
+        ->join('categorias as categorias1', 'instalaciones.categoria_principal = categorias1.id_categoria', 'left')
+        ->join('categorias as categorias2', 'instalaciones.categoria_opcional1 = categorias2.id_categoria', 'left')
+        ->where('id_instalacion', $id)
+        ->get();
 
         $result = $query->getResultArray();
         return $result;

@@ -239,4 +239,53 @@ table td .dropdown button i
   mask-composite: intersect; 
 }
 
+.galeria-imagenes-pistas
+{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2%;
+  align-items: center;
+  justify-content: center;
+}
+
+.galeria-imagenes-pistas img
+{
+  width: 32%;
+  height: auto;
+  height: 200px;
+  object-fit: cover;
+}
+
+.galeria-imagenes-pistas img:first-child
+{
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  margin-bottom: 2%;
+}
+
+#accordionPistas .accordion-item
+{
+  margin-bottom: 3%;
+}
+
+#categoriasVerInstalacion
+{
+  padding-bottom: 2%;
+}
+
+#categoriaPrincipalVerInstalacion
+{
+  color: #725AC1;
+  font-size: 20px;
+  font-style: italic;
+  margin-right: 1%;
+}
+
+#categoriaSecundariaVerInstalacion
+{
+  color: #aaa;
+  font-size: 20px;
+  font-style: italic;
+}
 

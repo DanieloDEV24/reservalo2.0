@@ -1,0 +1,462 @@
+INFO - 2025-09-10 11:09:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:10:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:10:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:10:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:10:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:17:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:17:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:17:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:17:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:17:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:18:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:18:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:19:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:19:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:19:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:19:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:19:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:19:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:19:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:19:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:19:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:20:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:20:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:20:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:21:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:21:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:21:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:21:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:22:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:28:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-10 11:28:50 --> Error connecting to the database: mysqli_sql_exception: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(24): App\Models\instalacionesModel->getInstalaciones()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#3 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(24): App\Models\instalacionesModel->getInstalaciones()
+#5 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2025-09-10 11:28:50 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias`.`nombre` as `categoria`
+FROM `instalaciones`
+JOIN `categorias` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`', [], false)
+ 3 APPPATH\Models\instalacionesModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Instalaciones.php(24): App\Models\instalacionesModel->getInstalaciones()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-09-10 11:28:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-10 11:28:59 --> Error connecting to the database: mysqli_sql_exception: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(24): App\Models\instalacionesModel->getInstalaciones()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#3 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(24): App\Models\instalacionesModel->getInstalaciones()
+#5 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2025-09-10 11:28:59 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias`.`nombre` as `categoria`
+FROM `instalaciones`
+JOIN `categorias` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`', [], false)
+ 3 APPPATH\Models\instalacionesModel.php(41): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Instalaciones.php(24): App\Models\instalacionesModel->getInstalaciones()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-09-10 11:29:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:29:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:30:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:30:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:30:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:30:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:30:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:37:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:37:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:37:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:37:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:37:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:38:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:38:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:40:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:40:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:40:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:40:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:42:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:43:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:43:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:43:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:43:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:43:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:44:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:44:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:46:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:46:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:48:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:53:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:55:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 11:56:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:11:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:11:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:11:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:11:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:13:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:14:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:14:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:14:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:19:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:24:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-10 14:24:15 --> mysqli_sql_exception: Unknown column 'categorias.id_categoria' in 'on clause' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `instala...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `instala...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `instala...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(99): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(137): App\Models\instalacionesModel->getInstalacion(4)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->verInstalacion()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-09-10 14:24:15 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categorias.id_categoria' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = :id_instalacion:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(99): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Instalaciones.php(137): App\Models\instalacionesModel->getInstalacion(4)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->verInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-09-10 14:24:15 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categorias.id_categoria' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = :id_instalacion:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(99): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Instalaciones.php(137): App\Models\instalacionesModel->getInstalacion(4)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->verInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-09-10 14:24:15 --> [Caused by] mysqli_sql_exception: Unknown column 'categorias.id_categoria' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = :id_instalacion:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(99): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Instalaciones.php(137): App\Models\instalacionesModel->getInstalacion(4)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->verInstalacion()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-09-10 14:24:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-10 14:24:39 --> mysqli_sql_exception: Unknown column 'categorias.id_categoria' in 'on clause' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `instala...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `instala...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `instala...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(99): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(137): App\Models\instalacionesModel->getInstalacion(4)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->verInstalacion()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-09-10 14:24:40 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categorias.id_categoria' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = :id_instalacion:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(99): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Instalaciones.php(137): App\Models\instalacionesModel->getInstalacion(4)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->verInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-09-10 14:24:40 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categorias.id_categoria' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = :id_instalacion:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(99): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Instalaciones.php(137): App\Models\instalacionesModel->getInstalacion(4)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->verInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-09-10 14:24:40 --> [Caused by] mysqli_sql_exception: Unknown column 'categorias.id_categoria' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = :id_instalacion:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(99): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Instalaciones.php(137): App\Models\instalacionesModel->getInstalacion(4)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->verInstalacion()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-09-10 14:25:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:25:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:25:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-09-10 14:25:25 --> mysqli_sql_exception: Unknown column 'categorias.id_categoria' in 'on clause' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `instala...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `instala...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `instala...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(99): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(137): App\Models\instalacionesModel->getInstalacion(4)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->verInstalacion()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-09-10 14:25:25 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categorias.id_categoria' in 'on clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = :id_instalacion:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(99): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Instalaciones.php(137): App\Models\instalacionesModel->getInstalacion(4)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->verInstalacion()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-09-10 14:25:25 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'categorias.id_categoria' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = :id_instalacion:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(99): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Instalaciones.php(137): App\Models\instalacionesModel->getInstalacion(4)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->verInstalacion()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-09-10 14:25:25 --> [Caused by] mysqli_sql_exception: Unknown column 'categorias.id_categoria' in 'on clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = 4')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias`.`id_categoria`
+WHERE `id_instalacion` = :id_instalacion:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(99): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Instalaciones.php(137): App\Models\instalacionesModel->getInstalacion(4)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->verInstalacion()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-09-10 14:25:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:26:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:27:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:27:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:28:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:28:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:29:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:29:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:29:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:29:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:40:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-10 14:40:05 --> ErrorException: Undefined array key "categoria_opc_name"
+in APPPATH\Views\instalaciones\crudInstalaciones.php on line 24.
+ 1 APPPATH\Views\instalaciones\crudInstalaciones.php(24): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "categoria_opc_name"', 'C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\crudInstalaciones.php', 24)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\crudInstalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/crudInstalaciones', [], true)
+ 5 APPPATH\Controllers\Instalaciones.php(29): view('instalaciones/crudInstalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-09-10 14:41:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-10 14:41:09 --> ErrorException: Undefined array key "categoria"
+in APPPATH\Views\instalaciones\crudInstalaciones.php on line 23.
+ 1 APPPATH\Views\instalaciones\crudInstalaciones.php(23): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "categoria"', 'C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\crudInstalaciones.php', 23)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\crudInstalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/crudInstalaciones', [], true)
+ 5 APPPATH\Controllers\Instalaciones.php(29): view('instalaciones/crudInstalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-09-10 14:41:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:41:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:41:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-09-10 14:41:19 --> ErrorException: Undefined array key "categoria"
+in APPPATH\Views\instalaciones\crudInstalaciones.php on line 23.
+ 1 APPPATH\Views\instalaciones\crudInstalaciones.php(23): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "categoria"', 'C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\crudInstalaciones.php', 23)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\crudInstalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/crudInstalaciones', [], true)
+ 5 APPPATH\Controllers\Instalaciones.php(29): view('instalaciones/crudInstalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->crudInstalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-09-10 14:41:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:41:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:43:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:43:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 14:45:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:01:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:17:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:19:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:19:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:20:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:20:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:23:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:24:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:24:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:24:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:25:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:28:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:28:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:30:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:31:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:31:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:31:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:46:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:47:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:50:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 15:51:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 16:11:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-09-10 16:13:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

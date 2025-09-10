@@ -506,16 +506,21 @@ $(document).ready(() => {
                 $('#imagenVerInstalacion').css('background-image',`url(${base_url}images/${response.pistas[0].imagen1})`);
                 console.log()
                 $('#nombreVerInstalacion').text(response.instalacion[0].nombre + '.');
+                $('#categoriaPrincipalVerInstalacion').text(response.instalacion[0].categoria_name)
+                $('#categoriaSecundariaVerInstalacion').text(response.instalacion[0].categoria_opc_name??' ');
                 $('#descripcionVerInstalacion').text(response.instalacion[0].descripcion);
                 if(parseInt(response.instalacion[0].puede_completo) === 1)
                 {
                     $('#capacidadCompletaVerInstalacion').text(response.instalacion[0].capacidad_completo)    
+                    $('#precioCompletoVerInstalacion').text(response.instalacion[0].precio_completo)
                 }
                 else 
                 {
-                    $('#capacidadCompletaVerInstalacion').text('----')    
+                    $('#capacidadCompletaVerInstalacion').text('----')  
+                    $('#precioCompletoVerInstalacion').text('----')  
                 }
-                $('#precioCompletoVerInstalacion').text(response.instalacion[0].precio_completo);
+
+                $('#accordionPistas').empty();
 
                 response.pistas.map((pista, index) => {
                     let node = $(`
@@ -536,18 +541,25 @@ $(document).ready(() => {
          data-bs-parent="#accordionPistas">
       <div class="accordion-body">
         <div class="galeria-imagenes-pistas">
-            <img src="${base_url}images/${pista["imagen1"]}" alt="Imagen 1 de ${pista["nombre_pista"]}">
+            <img src="${base_url}images/${pista["imagen1"]}" alt="Imagen 1 de ${pista["nombre_pista"]}" class="img-grande">
+            <img src="${base_url}images/${pista["imagen2"]}" alt="Imagen 2 de ${pista["nombre_pista"]}" class="img-pequena">
+            <img src="${base_url}images/${pista["imagen3"]}" alt="Imagen 3 de ${pista["nombre_pista"]}" class="img-pequena">
+            <img src="${base_url}images/${pista["imagen4"]}" alt="Imagen 4 de ${pista["nombre_pista"]}" class="img-pequena">
         </div>
 
         <div class="row gap-5 mt-3">
           <div class="col">
-            <label>Capacidad de la Pista:</label>
-            <p>${pista["capacidad_pista"]}</p>
+            <div class="row">
+                <div class="col-7"><label>Capacidad de la Pista:</label></div>
+                <div class="col-5"><p>${pista["capacidad_pista"]}</p></div>
+            </div>
           </div>
 
           <div class="col">
-            <label>Precio de la Pista:</label>
-            <p>${pista["precio_pista"]}</p>
+            <div class="row">
+                <div class="col"><label>Precio de la Pista:</label></div>
+                <div class="col"><p>${pista["precio_pista"]}</p></div>
+            </div>
           </div>
         </div>
       </div>
@@ -555,7 +567,7 @@ $(document).ready(() => {
   </div>
 `);
 
-  
+                    
                     $('#accordionPistas').append(node);
                 })
                 

@@ -45,4 +45,16 @@ $(document).ready(() => {
         }
         
       });
+
+
+      $(document).on('click', '.img-pequena', function() {
+        let imagenPequena = $(this);
+        let imagenGrande  = $('.img-grande');
+
+        let srcImgPequena = imagenPequena.attr('src');
+        let srcImgGrande  = imagenGrande.attr('src');
+
+        imagenGrande.attr('src', srcImgPequena);
+        imagenPequena.attr('src', srcImgGrande);
+      });
 })

@@ -1,5 +1,6 @@
 <script>
     const base_url = "<?= base_url() ?>";
+    
 </script>
 
 <div class="modal" tabindex="-1" id="modalVerInstalacion">
@@ -14,7 +15,10 @@
             <div class="modal-body">
 
                 <h1 id="nombreVerInstalacion"></h1>
-
+                <div id="categoriasVerInstalacion">
+                    <span id="categoriaPrincipalVerInstalacion"></span>
+                    <span id="categoriaSecundariaVerInstalacion"></span>
+                </div>
                 <p id="descripcionVerInstalacion"></p>
 
                 <div class="row gap-5">
