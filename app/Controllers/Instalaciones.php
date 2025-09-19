@@ -57,7 +57,7 @@ class Instalaciones extends BaseController
                 'puede_completo' => $puedeCompleto,
                 'no_pistas' => $noPistas,
                 'precio_completo' => ($puedeCompleto || $noPistas) ? $precioCompleto : null,
-                'capacidad_completo' => ($puedeCompleto) ? $capacidadCompleto : null
+                'capacidad_completo' => ($puedeCompleto || $noPistas) ? $capacidadCompleto : null
             ]; 
 
             $id_instalacion = $instalacionesModel->createInstalacion($dataInstalacion);

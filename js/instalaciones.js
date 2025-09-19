@@ -514,6 +514,11 @@ $(document).ready(() => {
                     $('#capacidadCompletaVerInstalacion').text(response.instalacion[0].capacidad_completo)    
                     $('#precioCompletoVerInstalacion').text(response.instalacion[0].precio_completo)
                 }
+                else if(parseInt(response.instalacion[0].no_pistas) === 1)
+                {
+                    $('#capacidadCompletaVerInstalacion').text(response.instalacion[0].capacidad_completo)    
+                    $('#precioCompletoVerInstalacion').text(response.instalacion[0].precio_completo)
+                }
                 else 
                 {
                     $('#capacidadCompletaVerInstalacion').text('----')  
