@@ -380,6 +380,11 @@ $(document).ready(() => {
             campoSolucionado($('#capacidadCompleto'));
         }
 
+        if(!noPistas && pistas.length === 0)
+        {
+            errores.push('Debe añadir al menos una pista a la instalación o seleccionar la opción de "es solo completa"');
+        }
+
         if (errores.length === 0) {
             let formData = new FormData();
             formData.append('nombreInstalacion', nombreInstalacion);
@@ -445,12 +450,12 @@ $(document).ready(() => {
                     let tabla = $('#tabaInstalaciones tbody');
                     tabla.empty();
                     instalaciones.forEach((instalacion, index) => {
-                        let categoriaSecundaria = instalacion.categoria_opcional1 ? instalacion.categoria_opcional1 : '----';
+                        let categoriaSecundaria = instalacion.categoria_opc_name ? instalacion.categoria_opc_name : '----';
                         tabla.append(`
                             <tr data-index="${instalacion.id_instalacion}">
                                 <td>${index + 1}</td>
                                 <td>${instalacion.nombre}</td>
-                                <td>${instalacion.categoria}</td>
+                                <td>${instalacion.categoria_name}</td>
                                 <td>${categoriaSecundaria}</td>
                                 <td>
 

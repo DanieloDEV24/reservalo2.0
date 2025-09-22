@@ -51,19 +51,31 @@
       <!-- <img src="<?= base_url() ?>images/ImageComoFunciona3.jpg" alt="" > -->
     </div>
   </div>
-  <div class="categorias">
-    <span id="futbol">
-      <h1>Fútbol</h1>
-    </span>
-    <span id="baloncesto">
-      <h1>Baloncesto</h1>
-    </span>
-    <span id="voley">
-      <h1>Voley</h1>
-    </span>
-    <span id="padel">
-      <h1>Padel</h1>
-    </span>
+
+  <div class="datos-gif">
+    <div class="dato-gif">
+      <img src="<?=base_url()?>/images/GIF/estadio.gif" class="" alt="..." >
+      <h2>+1500</h2>
+      <p>Instalaciones</p>
+    </div>
+
+    <div class="dato-gif">
+      <img src="<?=base_url()?>/images/GIF/categoria.gif" class="" alt="..." >
+      <h2>+5</h2>
+      <p>Categorías distintas</p>
+    </div>
+
+    <div class="dato-gif">
+      <img src="<?=base_url()?>/images/GIF/agregar-usuario.gif" class="" alt="..." >
+      <h2>+3000</h2>
+      <p>Usuarios registrados</p>
+    </div>
+
+    <div class="dato-gif">
+      <img src="<?=base_url()?>/images/GIF/reloj.gif" class="" alt="..." >
+      <h2>De Lunes a Viernes de 09:00 a 20:00</h2>
+      <p>Nuestro horario</p>
+    </div>
   </div>
 
   <div class="carruselTopReservas">
