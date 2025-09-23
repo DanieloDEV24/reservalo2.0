@@ -43,7 +43,7 @@
             <!-- Logo -->
             <div class="app-brand justify-content-center">
                 <a href="/sneat-html-django-admin-template-free/" class="app-brand-link gap-2 d-flex justify-content-center">
-                    <img src="<?=base_url()?>/images/Logo.png" alt="" style="width: 60%;">
+                    <img src="<?=base_url()?>/images/logo-reservalo-largo.png" alt="" style="width: 60%;">
                 </a>
             </div>
             <!-- /Logo -->
@@ -63,7 +63,7 @@
                 </div>
                 <br>
                 <div>
-                    <button class="btn btn-primary d-grid w-100" type="submit">Cambiar contraseña</button>
+                    <button class="btn-primary-personal" type="submit" style="width: 100%;">Cambiar contraseña</button>
                 </div>
             </form>
     <br>

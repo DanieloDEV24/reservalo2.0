@@ -43,7 +43,7 @@
             <!-- Logo -->
             <div class="app-brand justify-content-center">
                 <a href="/sneat-html-django-admin-template-free/" class="app-brand-link gap-2 d-flex justify-content-center">
-                    <img src="<?=base_url()?>/images/Logo.png" alt="" style="width: 60%;">
+                    <img src="<?=base_url()?>/images/logo-reservalo-largo.png" alt="" style="width: 60%;">
                 </a>
             </div>
             <!-- /Logo -->
@@ -80,7 +80,7 @@
                 </div>
                 <br>
                 <div class="mb-6">
-                    <button class="btn btn-primary d-grid w-100" type="submit">Iniciar Sesión</button>
+                    <button class="btn-primary-personal" type="submit" style="width: 100%; margin-bottom: 5%;">Iniciar Sesión</button>
                 </div>
             </form>
 

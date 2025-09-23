@@ -26,7 +26,7 @@
 
 <body>
   <header class="headerPlantilla">
-    <img src="<?= base_url() ?>images/Logo.png" alt="">
+    <img src="<?= base_url() ?>images/logo-reservalo.png" alt="">
        <nav class="align-items-center">
       <a href="<?= base_url() ?>" class="menu__link"><i class="bi bi-house"></i> Home</a>
       

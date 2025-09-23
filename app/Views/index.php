@@ -23,7 +23,7 @@
 
 <body>
   <header class="headerHome">
-    <img src="<?= base_url() ?>images/Logo.png" alt="">
+    <img src="<?= base_url() ?>images/logo-reservalo.png" alt="">
     <nav class="align-items-center">
       <a href="<?= base_url() ?>" class="menu__link"><i class="bi bi-house"></i> Home</a>
       
@@ -49,11 +49,9 @@
             <a  class="nav-link" href=<?=site_url('/logout')?>><span>Cerrar Sesión</span><i class="bi bi-arrow-right"></i></a>
           </li> -->
           <li class="navbar-dropdown dropdown-user dropdown mainLi">
-                  <a class=" dropdown-toggle hide-arrow d-flex align-items-center justify-content-end gap-2" href="javascript:void(0);" data-bs-toggle="dropdown" style="padding: 5%;">
-                    <div class="d-flex align-items-center gap-2 p-0">
+                  <a class="btn-primary-personal dropdown-toggle hide-arrow d-flex align-items-center justify-content-end gap-2" href="javascript:void(0);" data-bs-toggle="dropdown" style="padding: 5%;">
                       <i class="bi bi-person" style="font-size: 25px;"></i>
                       <span><?= $session->get('usuario')["nombre"];?></span>
-                    </div>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end iconoAvatar" style="background-color: #111">
                     <li style="width: 100%" class="d-flex justify-content-center">
@@ -70,7 +68,7 @@
         {
           // No existe la sesión 'usuario'
           ?>
-            <a href="<?=base_url()?>index.php/login" class="button"><i class="bi bi-person"></i> Iniciar Sesión</a>
+            <a href="<?=base_url()?>index.php/login" class="btn-primary-personal"><i class="bi bi-person"></i> Iniciar Sesión</a>
           <?php
         }
       ?>

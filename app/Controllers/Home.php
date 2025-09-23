@@ -14,7 +14,11 @@ class Home extends BaseController
     public function index(): string
     {
 
-        $view = view('home/home', ["baseUrl" => base_url()]);
+        $instalacionesModel = new instalacionesModel();
+
+        $instalacionesCarrousel = $instalacionesModel->getInstalacionesHome();
+
+        $view = view('home/home', ["baseUrl" => base_url(), "instalacionesCarrousel" => $instalacionesCarrousel]);
 
        //Devolvemos la vista
         return view('index', ["view" => $view, "baseUrl" => base_url()]);

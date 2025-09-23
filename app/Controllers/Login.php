@@ -215,7 +215,7 @@ $fecha_formateada = $formatter->format($date);
                 $apiKey = 're_EoU5q6Mw_Hz3ECMQADDxHKz3o3opLeS6e'; // ⚠️ Sustituye esto por tu API key real de Resend
 
                 $curlData = [
-                    'from' => 'Ayuntamiento de Humilladero <noreply@resend.dev>',
+                    'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
                     'to' => ['danielruizdeveloper@gmail.com'],
                     'subject' => 'Cambiar Contraseña',
                     'html' => $htmlContent,

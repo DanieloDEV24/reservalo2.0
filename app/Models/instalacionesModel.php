@@ -118,4 +118,23 @@ class instalacionesModel extends Model
         return $result;
     }
 
+    public function getInstalacionesHome ()
+    {
+       // Conexión a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        $builder = $db->table('instalaciones');
+
+        $builder->select('instalaciones.*, c1.nombre AS categoria_principal, c2.nombre AS categoria_secundaria, p.*');
+        $builder->join('categorias c1', 'instalaciones.categoria_principal = c1.id_categoria', 'inner');
+        $builder->join('categorias c2', 'instalaciones.categoria_opcional1 = c2.id_categoria', 'left'); // LEFT JOIN
+        $builder->join('pistas p', 'instalaciones.id_instalacion = p.id_instalacion', 'inner');
+        $builder->limit(3);
+
+        $query = $builder->get();
+        $result = $query->getResultArray(); // devuelve array de arrays
+
+        return $result;
+    }
+
 }
