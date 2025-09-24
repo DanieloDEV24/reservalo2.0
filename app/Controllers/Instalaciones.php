@@ -24,9 +24,10 @@ class Instalaciones extends BaseController
         $instalaciones = $instalacionesModel->getInstalaciones();
         $categorias = $instalacionesModel->getCategorias();
 
-        $nuevaInstalacion = view('instalaciones/modalNuevaInstalacion', ["baseUrl" => base_url(), "categorias" => $categorias]);
-        $verInstalacion   = view('instalaciones/modalVerInstalacion', ["baseUrl" => base_url()]);
-        $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "verInstalacion" => $verInstalacion, "baseUrl" => base_url()]);
+        $nuevaInstalacion  = view('instalaciones/modalNuevaInstalacion', ["baseUrl" => base_url(), "categorias" => $categorias]);
+        $verInstalacion    = view('instalaciones/modalVerInstalacion', ["baseUrl" => base_url()]);
+        $editarInstalacion = view('instalaciones/modalEditarInstalacion', ["baseUrl" => base_url()]);
+        $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "verInstalacion" => $verInstalacion, "editarInstalacion" => $editarInstalacion, "baseUrl" => base_url()]);
 
         return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
     }
@@ -154,5 +155,27 @@ class Instalaciones extends BaseController
             "success" => false,
             "message" => "No se enviaron datos"
         ]);
+    }
+
+    public function editarInstalacion()
+    {
+        $post = $this->request->getPost();
+        $instalacionesModel = new instalacionesModel();
+
+        if(!empty($post)){
+            $id_instalacion = intval($post["id"]);
+            $instalacion    = $instalacionesModel->getInstalacion($id_instalacion);
+
+            if($instalacion){
+                $pistas = $instalacionesModel->getPistasByInstalacion($id_instalacion);
+                echo json_encode([
+                    "success" => true,
+                    "message" => "Instalación encontrada",
+                    "instalacion" => $instalacion,
+                    "pistas" => $pistas
+                ]);
+                exit;
+            }
+        }
     }
 }

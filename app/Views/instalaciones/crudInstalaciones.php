@@ -31,9 +31,9 @@
               </button>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item btnVerInstalacion" href="">Ver &nbsp;<i class="bi bi-eye"></i></a></li>
-                <li><a class="dropdown-item" href="#">Editar &nbsp;<i class="bi bi-pencil-square"></i></a></li>
+                <li><a class="dropdown-item btnEditarInstalacion" href="">Editar &nbsp;<i class="bi bi-pencil-square"></i></a></li>
                 <li><a class="dropdown-item" href="#">Borrar &nbsp;<i class="bi bi-trash3"></i></a></li>
-                <li><a class="dropdown-item" href="#">Dar de Baja &nbsp;<i class="bi bi-x-lg        "></i></a></li>
+                <li><a class="dropdown-item" href="#">Dar de Baja &nbsp;<i class="bi bi-x-lg"></i></a></li>
               </ul>
             </div>
 
@@ -45,8 +45,9 @@
       ?>
     </tbody>
   </table>
-  <a href="#" id="crear" class="button" style="margin-left: 0;">Nueva <i class="bi bi-plus-circle"></i></a>
+  <a href="#" id="crear" class="btn-primary-personal" style="margin-left: 0; width: 20%">Nueva <i class="bi bi-plus-circle"></i></a>
 </div>
 
 <?=$nuevaInstalacion?>
 <?=$verInstalacion?>
+<?=$editarInstalacion?>

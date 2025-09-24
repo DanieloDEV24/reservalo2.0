@@ -25,16 +25,16 @@
   <header class="headerHome">
     <img src="<?= base_url() ?>images/logo-reservalo.png" alt="">
     <nav class="align-items-center">
-      <a href="<?= base_url() ?>" class="menu__link"><i class="bi bi-house"></i> Home</a>
+      <a href="<?= base_url() ?>" class="menu__link"> Home</a>
       
 
 <div class="dropdown">
   <a class="dropdown-toggle menu__link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="bi bi-tools"></i> Gestores
+     Gestores
   </a>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudInstalaciones"><i class="bi bi-buildings"></i> Gestor Instalaciones</a></li>
-    <li><a class="dropdown-item" style="color: #000;" type="button"><i class="bi bi-life-preserver"></i> Gestor categorias</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudInstalaciones"> Gestor Instalaciones</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button"> Gestor categorias</a></li>
   </ul>
 </div>
     </nav>

@@ -380,8 +380,7 @@ $(document).ready(() => {
             campoSolucionado($('#capacidadCompleto'));
         }
 
-        if(!noPistas && pistas.length === 0)
-        {
+        if (!noPistas && pistas.length === 0) {
             errores.push('Debe añadir al menos una pista a la instalación o seleccionar la opción de "es solo completa"');
         }
 
@@ -444,7 +443,7 @@ $(document).ready(() => {
                 processData: false, // Importante para enviar FormData
                 contentType: false, // Importante para enviar FormData
                 success: function (response) {
-                    
+
                     let data = JSON.parse(response);
                     let instalaciones = data.instalaciones;
                     let tabla = $('#tabaInstalaciones tbody');
@@ -460,17 +459,17 @@ $(document).ready(() => {
                                 <td>
 
 
-            <div class="dropdown" style="max-width: 200px;">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-three-dots-vertical"></i>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item btnVerInstalacion" href="#">Ver &nbsp;<i class="bi bi-eye"></i></a></li>
-                <li><a class="dropdown-item" href="#">Editar &nbsp;<i class="bi bi-pencil-square"></i></a></li>
-                <li><a class="dropdown-item" href="#">Borrar &nbsp;<i class="bi bi-trash3"></i></a></li>
-                <li><a class="dropdown-item" href="#">Dar de Baja &nbsp;<i class="bi bi-x-lg        "></i></a></li>
-              </ul>
-            </div>
+                <div class="dropdown" style="max-width: 200px;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-three-dots-vertical"></i>
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item btnVerInstalacion" href="#">Ver &nbsp;<i class="bi bi-eye"></i></a></li>
+                    <li><a class="dropdown-item" href="#">Editar &nbsp;<i class="bi bi-pencil-square"></i></a></li>
+                    <li><a class="dropdown-item" href="#">Borrar &nbsp;<i class="bi bi-trash3"></i></a></li>
+                    <li><a class="dropdown-item" href="#">Dar de Baja &nbsp;<i class="bi bi-x-lg        "></i></a></li>
+                </ul>
+                </div>
 
 
           </td>
@@ -496,7 +495,7 @@ $(document).ready(() => {
         }
     });
 
-    $('#tabaInstalaciones tbody').on('click', '.btnVerInstalacion', function(e) {
+    $('#tabaInstalaciones tbody').on('click', '.btnVerInstalacion', function (e) {
         e.preventDefault();
 
         let index = $(this).closest('tr').data('index');
@@ -504,30 +503,27 @@ $(document).ready(() => {
         $.ajax({
             url: 'verInstalacion',
             method: 'POST',
-            data: {id: index},
+            data: { id: index },
             dataType: 'json',
-            success: function(response) {
+            success: function (response) {
                 console.log(response);
-                $('#imagenVerInstalacion').css('background-image',`url(${base_url}images/${response.pistas[0].imagen1})`);
+                $('#imagenVerInstalacion').css('background-image', `url(${base_url}images/${response.pistas[0].imagen1})`);
                 console.log()
                 $('#nombreVerInstalacion').text(response.instalacion[0].nombre + '.');
                 $('#categoriaPrincipalVerInstalacion').text(response.instalacion[0].categoria_name)
-                $('#categoriaSecundariaVerInstalacion').text(response.instalacion[0].categoria_opc_name??' ');
+                $('#categoriaSecundariaVerInstalacion').text(response.instalacion[0].categoria_opc_name ?? ' ');
                 $('#descripcionVerInstalacion').text(response.instalacion[0].descripcion);
-                if(parseInt(response.instalacion[0].puede_completo) === 1)
-                {
-                    $('#capacidadCompletaVerInstalacion').text(response.instalacion[0].capacidad_completo)    
+                if (parseInt(response.instalacion[0].puede_completo) === 1) {
+                    $('#capacidadCompletaVerInstalacion').text(response.instalacion[0].capacidad_completo)
                     $('#precioCompletoVerInstalacion').text(response.instalacion[0].precio_completo)
                 }
-                else if(parseInt(response.instalacion[0].no_pistas) === 1)
-                {
-                    $('#capacidadCompletaVerInstalacion').text(response.instalacion[0].capacidad_completo)    
+                else if (parseInt(response.instalacion[0].no_pistas) === 1) {
+                    $('#capacidadCompletaVerInstalacion').text(response.instalacion[0].capacidad_completo)
                     $('#precioCompletoVerInstalacion').text(response.instalacion[0].precio_completo)
                 }
-                else 
-                {
-                    $('#capacidadCompletaVerInstalacion').text('----')  
-                    $('#precioCompletoVerInstalacion').text('----')  
+                else {
+                    $('#capacidadCompletaVerInstalacion').text('----')
+                    $('#precioCompletoVerInstalacion').text('----')
                 }
 
                 $('#accordionPistas').empty();
@@ -577,26 +573,76 @@ $(document).ready(() => {
   </div>
 `);
 
-                    
+
                     $('#accordionPistas').append(node);
                 })
-                
+
                 $('#modalVerInstalacion').modal('show');
             },
-            error: function(xhr, status, error) {
-            // Mostrar mensaje legible al usuario
-            alert("⚠️ No se pudo cargar la instalación. Intenta nuevamente más tarde.");
+            error: function (xhr, status, error) {
+                // Mostrar mensaje legible al usuario
+                alert("⚠️ No se pudo cargar la instalación. Intenta nuevamente más tarde.");
 
-            // Registrar en consola para el desarrollador
-            console.error("Error AJAX:");
-            console.error("Estado:", status);
-            console.error("Código HTTP:", xhr.status);
-            console.error("Mensaje:", error);
-            console.error("Respuesta del servidor:", xhr.responseText);
-    }
-});
+                // Registrar en consola para el desarrollador
+                console.error("Error AJAX:");
+                console.error("Estado:", status);
+                console.error("Código HTTP:", xhr.status);
+                console.error("Mensaje:", error);
+                console.error("Respuesta del servidor:", xhr.responseText);
+            }
+        });
 
     })
+
+    $('#tabaInstalaciones tbody').on('click', '.btnEditarInstalacion', function (e) {
+        e.preventDefault();
+
+        let index = $(this).closest('tr').data('index');
+
+        $.ajax({
+            url: 'editarInstalacion',
+            method: 'POST',
+            data: { id: index },
+            dataType: 'json',
+            success: function (response) {
+
+                $('#nombreInstalacionEditar').val(response.instalacion[0].nombre)
+                $('#categoriasEditar').val(response.instalacion[0].categoria_principal)
+                $('#subcategoriasEditar')
+
+                $('#categoriasEditar').on('change', function () {
+                    $('#subcategoriasEditar').empty();
+                    let catPrincipal = $(this).val();
+
+                    $('#categoriasEditar option').each(function () {
+                        const val = $(this).val();
+                        const text = $(this).text();
+
+                        if (val != catPrincipal && catPrincipal != -1 && val != -1) {
+                            const input = $(`<input value="${val}" name="subcategoriaEditar" id="sub-${val}" type="radio">`);
+                            const label = $(`<label for="sub-${val}">${text}</label>`);
+                            $('#subcategoriasEditar').append(input, label);
+                        }
+                    });
+                });
+
+                $('#modalEditarInstalacion').modal('show');
+            },
+            error: function (xhr, status, error) {
+                // Mostrar mensaje legible al usuario
+                alert("⚠️ No se pudo cargar la instalación. Intenta nuevamente más tarde.");
+
+                // Registrar en consola para el desarrollador
+                console.error("Error AJAX:");
+                console.error("Estado:", status);
+                console.error("Código HTTP:", xhr.status);
+                console.error("Mensaje:", error);
+                console.error("Respuesta del servidor:", xhr.responseText);
+            }
+        })
+
+    })
+
 
 
     function camposError(input) {

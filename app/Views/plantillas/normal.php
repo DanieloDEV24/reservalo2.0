@@ -28,21 +28,53 @@
   <header class="headerPlantilla">
     <img src="<?= base_url() ?>images/logo-reservalo.png" alt="">
        <nav class="align-items-center">
-      <a href="<?= base_url() ?>" class="menu__link"><i class="bi bi-house"></i> Home</a>
+      <a href="<?= base_url() ?>" class="menu__link"> Home</a>
       
 
 <div class="dropdown">
   <a class="dropdown-toggle menu__link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="bi bi-tools"></i> Gestores
+     Gestores
   </a>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudInstalaciones"><i class="bi bi-buildings"></i> Gestor Instalaciones</a></li>
-    <li><a class="dropdown-item" style="color: #000;" type="button"><i class="bi bi-life-preserver"></i> Gestor categorias</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudInstalaciones"> Gestor Instalaciones</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button"> Gestor categorias</a></li>
   </ul>
 </div>
     </nav>
-    <div>
-      <a href="<?=base_url()?>index.php/login" class="button"><i class="bi bi-person"></i> Iniciar Sesión</a>
+    <div style="text-align: end; display: flex; justify-content: end">
+      <?php
+        $session = session();
+        if ($session->has('usuario')) {
+          // La sesión 'usuario' existe
+          $usuario = $session->get('usuario');
+          ?>
+          <!-- <li class="nav-item">
+            <a  class="nav-link" href=<?=site_url('/logout')?>><span>Cerrar Sesión</span><i class="bi bi-arrow-right"></i></a>
+          </li> -->
+          <li class="navbar-dropdown dropdown-user dropdown mainLi">
+                  <a class="btn-primary-personal dropdown-toggle hide-arrow d-flex align-items-center justify-content-end gap-2" href="javascript:void(0);" data-bs-toggle="dropdown" style="padding: 5%;">
+                      <i class="bi bi-person" style="font-size: 25px;"></i>
+                      <span><?= $session->get('usuario')["nombre"];?></span>
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end iconoAvatar" style="background-color: #111">
+                    <li style="width: 100%" class="d-flex justify-content-center">
+                      <a class="dropdown-item d-flex justify-content-center iconoAvatar" href="<?=site_url('/logout')?>">
+                        <i class="bi bi-door-open me-2"></i>
+                        <span class="align-middle">Cerrar Sesión</span>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+          <?php
+        }
+        else 
+        {
+          // No existe la sesión 'usuario'
+          ?>
+            <a href="<?=base_url()?>index.php/login" class="btn-primary-personal"><i class="bi bi-person"></i> Iniciar Sesión</a>
+          <?php
+        }
+      ?>
     </div>
   </header>
    <?=$view?>

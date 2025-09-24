@@ -53,6 +53,16 @@ header.headerPlantilla nav  .dropdown-toggle::after
     color: #000 ;
 }
 
+header.headerPlantilla div
+{
+    width: 21%;
+}
+
+header.headerPlantilla div .btn-primary-personal
+{
+    padding: 12px 24px;
+}
+
 header.headerHome nav .dropdown-toggle:hover::after 
 {
     color: white !important;
@@ -363,14 +373,14 @@ a {
 header.headerPlantilla
 {
     background-color: #fff;
-    color: #7645D9;
+    color: #222;
     margin: 2%;
     border-radius: 10px;
 }
 
 header.headerPlantilla .menu__link, header.headerPlantilla .menu__link::before
 {
-    color: #7645D9;
+    color: #222;
 }
 
 header.headerPlantilla a 
@@ -384,7 +394,7 @@ header.headerPlantilla .menu__link::before
   width: 0;
   height: 2px;
   border-radius: 2px;
-  background-color: #7645D9 !important;
+  background-color: #222 !important;
   position: absolute;
   bottom: -.05rem;
   left: 50%;
