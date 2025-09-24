@@ -608,7 +608,18 @@ $(document).ready(() => {
 
                 $('#nombreInstalacionEditar').val(response.instalacion[0].nombre)
                 $('#categoriasEditar').val(response.instalacion[0].categoria_principal)
-                $('#subcategoriasEditar')
+                let categorias = response.categorias
+
+                $('#subcategoriasEditar').empty();
+
+                categorias.map((categoria)=>{
+                    if(categoria.id_categoria !== response.instalacion[0].categoria_principal){
+
+                        const input = $(`<input value="${categoria.id_categoria}" name="subcategoriaEditar" id="sub-${categoria.id_categoria}" type="radio" ${(response.instalacion[0].categoria_principal && response.instalacion[0].categoria_opcional1 === categoria.id_categoria) ? "checked" : ""}>`);
+                        const label = $(`<label for="sub-${categoria.id_categoria}">${categoria.nombre}</label>`);
+                        $('#subcategoriasEditar').append(input, label);
+                    }
+                })
 
                 $('#categoriasEditar').on('change', function () {
                     $('#subcategoriasEditar').empty();

@@ -161,10 +161,12 @@ class Instalaciones extends BaseController
     {
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
+        $categoriasModel    = new categoriasModel();
 
         if(!empty($post)){
             $id_instalacion = intval($post["id"]);
             $instalacion    = $instalacionesModel->getInstalacion($id_instalacion);
+            $categorias     = $categoriasModel->getCategorias();
 
             if($instalacion){
                 $pistas = $instalacionesModel->getPistasByInstalacion($id_instalacion);
@@ -172,7 +174,8 @@ class Instalaciones extends BaseController
                     "success" => true,
                     "message" => "Instalación encontrada",
                     "instalacion" => $instalacion,
-                    "pistas" => $pistas
+                    "pistas" => $pistas,
+                    "categorias" => $categorias
                 ]);
                 exit;
             }
