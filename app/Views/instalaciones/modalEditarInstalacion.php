@@ -65,12 +65,12 @@
         <div class="row gap-5 mt-3">
           <div class="col">
             <label for="capacidadCompletoEditar">Capacidad completo:</label>
-            <input type="number" id="capacidadCompletoEditar" name="capacidadCompletoEditar" class="form-control" readonly style="color: #ccc">
+            <input type="number" id="capacidadCompletoEditar" name="capacidadCompletoEditar" class="form-control">
           </div>
 
           <div class="col">
             <label for="precioCompletoEditar">Precio completo:</label>
-            <input type="number" id="precioCompletoEditar" name="precioCompletoEditar" class="form-control" readonly style="color: #ccc">
+            <input type="number" id="precioCompletoEditar" name="precioCompletoEditar" class="form-control">
           </div>
         </div>
 
