@@ -34,7 +34,7 @@
           <label for="">Seleccione una categoría secundaria (primero debe seleccionar una categoria principal)</label>
           <div class="radio-input" id="subcategoriasEditar">
             <!-- Aquí se insertarán los radios dinámicamente -->
-             
+
           </div>
         </div>
 
@@ -81,9 +81,18 @@
           </div>
         </div>
 
-        <div class="accordion mt-3" id="accordionEditarPistas">
+        <div style="position: relative; min-height: 70px;" class="contenedor-loader">
+          <!-- Tu loader -->
+          <div id="loader" class="loader" style="display: none;"></div>
+
+          <!-- Acordeones -->
+          <div class="accordion mt-3" id="accordionEditarPistas">
+            <!-- aquí se generan tus acordeones -->
+          </div>
+        </div>
+
         <!-- Meterle logica de programación -->
-  <!-- <div class="accordion-item" data-index="1">
+        <!-- <div class="accordion-item" data-index="1">
     <h2 class="accordion-header">
       <button class="accordion-button nuevaPista collapsed d-flex justify-content-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
         <div>Añadir Pista&nbsp;<i class="bi bi-plus-circle"></i></div>
@@ -127,18 +136,18 @@
       </div>
     </div>
   </div> -->
-</div>
+      </div>
 
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            Cerrar <i class="bi bi-x-lg"></i>
-          </button>
-          <button type="submit" class="btn btn-primary" id="guardarInstalacionEditar">
-            Guardar <i class="bi bi-check-lg"></i>
-          </button>
-        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar <i class="bi bi-x-lg"></i>
+        </button>
+        <button type="submit" class="btn btn-primary" id="guardarInstalacionEditar">
+          Guardar <i class="bi bi-check-lg"></i>
+        </button>
       </div>
     </div>
   </div>
+</div>
 </div>

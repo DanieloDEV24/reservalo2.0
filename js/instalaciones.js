@@ -828,7 +828,7 @@ $(document).ready(() => {
                             </div>
                         </div>
                         <div class="d-flex gap-2 mt-3 justify-content-end botonesPista">
-                            <button class="btn btn-danger borrarPista">Borrar <i class="bi bi-x-lg"></i></button>
+                            <button class="btn btn-danger borrarPistaEditar">Borrar <i class="bi bi-x-lg"></i></button>
                             <button class="btn btn-primary guardarPistaEditar" disabled >Guardar <i class="bi bi-check-lg"></i></button>
                         </div>
                     </div>
@@ -997,6 +997,14 @@ $(document).ready(() => {
             url: "getNewIndexPista",
             data: "",
             dataType: 'json',
+            beforeSend: function () {
+                // Mostrar loader
+                $("#loader").show();
+
+                let headerBtn = $('#accordionEditarPistas .accordion-header .accordion-button');
+
+                headerBtn.css("color", "#ccc", "important")
+            },
             success: function (response) {
 
                 // Obetenemos el nuevo id de la pista, que es el que añadiremos al accordion como data-index
@@ -1091,7 +1099,7 @@ $(document).ready(() => {
                                                 </div>
                                             </div>
                                             <div class="d-flex gap-2 mt-3 justify-content-end botonesPista">
-                                                <button class="btn btn-danger borrarPista">Borrar <i class="bi bi-x-lg"></i></button>
+                                                <button class="btn btn-danger borrarPistaborrarPistaEditar">Borrar <i class="bi bi-x-lg"></i></button>
                                                 <button class="btn btn-primary guardarPistaEditar" disabled >Guardar <i class="bi bi-check-lg"></i></button>
                                             </div>
                                         </div>
@@ -1150,10 +1158,22 @@ $(document).ready(() => {
                     // Lo añadimos al contenedor de los accordions 
                     $('#accordionEditarPistas').append(accordionNuevo);
                 }
+            }, 
+            complete: function () {
+
+                let headerBtn = $('#accordionEditarPistas .accordion-header .accordion-button');
+
+                headerBtn.css("color", "#000", "important")
+
+                // Ocultar loader siempre, éxito o error
+                $("#loader").hide();
             }
         });
 
     });
+
+
+
 
     /***********************************************************************************************************************************
     *******************************************************  FUNCIONES DE AYUDA  *******************************************************
