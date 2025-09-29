@@ -21,3 +21,6 @@ $routes->get('/resetPass', 'Login::resetPass');
 $routes->post('/nuevaInstalacion', 'Instalaciones::nuevaInstalacion');
 $routes->post('/verInstalacion', 'Instalaciones::verInstalacion');
 $routes->post('/editarInstalacion', 'Instalaciones::editarInstalacion');
+$routes->post('/infoPista', 'Instalaciones::infoPista');
+$routes->post('/editarPista', 'Instalaciones::editarPista');
+$routes->post('/getNewIndexPista', 'Instalaciones::getNewIndexPista');

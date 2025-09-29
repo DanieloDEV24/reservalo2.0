@@ -157,6 +157,33 @@ class Instalaciones extends BaseController
         ]);
     }
 
+    public function infoPista()
+    {
+        $post = $this->request->getPost();
+        $instalacionesModel = new instalacionesModel();
+
+        if(!empty($post))
+        {
+            $id_pista = intval($post["id"]);
+            $pista    = $instalacionesModel->getPistasById($id_pista);
+            
+            if($pista)
+            {
+                echo json_encode([
+                    "success" => true,
+                    "pista"   => $pista
+                ]);
+                exit;
+            }
+           
+        }
+
+        echo json_encode([
+            "success" => false,
+            "message" => "No se enviaron datos"
+        ]);
+    }
+
     public function editarInstalacion()
     {
         $post = $this->request->getPost();
@@ -180,5 +207,45 @@ class Instalaciones extends BaseController
                 exit;
             }
         }
+    }
+
+
+    public function editarPista()
+    {
+        $post = $this->request->getPost();
+        $instalacionesModel = new instalacionesModel();
+
+        if(!empty($post))
+        {
+            $id_pista = intval($post["id"]);
+            $data     = $post["data"];
+            $update   = $instalacionesModel->updatePista($id_pista, $data);
+            
+            if($update)
+            {
+                $pista = $instalacionesModel->getPistasById($id_pista);
+                echo json_encode([
+                    "success" => true,
+                    "message" => "Pista editada correctamente",
+                    "pista"   => $pista
+                ]);
+                exit;
+            }
+            
+        }
+    }
+
+
+    public function getNewIndexPista()
+    {
+        $post = $this->request->getPost();
+        $instalacionesModel = new instalacionesModel();
+        $pistas = $instalacionesModel->getPistas();
+        echo json_encode([
+                    "success" => true,
+                    "message" => "Las pistas han sido encontradas",
+                    "pistas"   => $pistas
+        ]);
+        exit;
     }
 }

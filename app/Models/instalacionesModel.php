@@ -118,6 +118,20 @@ class instalacionesModel extends Model
         return $result;
     }
 
+    public function getPistasById(int $id_pista)
+    {
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('pistas');
+
+        $query = $builder->select()->where('id_pista', $id_pista)->get();
+
+        $result = $query->getResultArray();
+        return $result;
+    }
+
     public function getInstalacionesHome ()
     {
        // Conexión a la base de datos
@@ -134,6 +148,38 @@ class instalacionesModel extends Model
         $query = $builder->get();
         $result = $query->getResultArray(); // devuelve array de arrays
 
+        return $result;
+    }
+
+    public function updatePista(int $id_pista, array $data)
+    {
+        // Conexión a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Tabla a actualizar
+        $builder = $db->table('pistas');
+
+        // Aplicar condición
+        $builder->where('id_pista', $id_pista);
+
+        // Ejecutar update
+        $builder->update($data);
+
+        // Retornar true si se afectó alguna fila
+        return $db->affectedRows() > 0;
+    }
+
+    public function getPistas()
+    {
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('pistas');
+
+        $query = $builder->select()->get();
+
+        $result = $query->getResultArray();
         return $result;
     }
 

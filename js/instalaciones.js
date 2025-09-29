@@ -134,7 +134,7 @@ $(document).ready(() => {
             $('.toggle-switch input.puedeCompleto').prop('disabled', true)
             $('#accordionExample').append(buttonFiles)
 
-        } 
+        }
         // En el caso contrario, dejamos los campos de precio completo y capacidad completa para no poder editarlos y añadimos el accordín para poder añadir una pista
         else {
             $('#accordionExample').empty();
@@ -180,7 +180,7 @@ $(document).ready(() => {
 
     // Evento en el que controlamos cuando guardamos una pista. Se realiza este evento al pulsar el btn 
     $(document).on('click', '.guardarPista', function () {
-        
+
         errores = []; // --> Array donde guardaremos los errores a la hora de la creación de pistas
         $('#modalNuevaInstalacion .alertModal').empty();
 
@@ -241,13 +241,13 @@ $(document).ready(() => {
 
         // Si el array de errores está vacío, es decir no hay errores, procedemos a guardar la pista 
         if (errores.length === 0) {
-            
+
             const id = parseInt($(this).closest('.accordion-item').data('index')); // --> Cogemos el id de la instalación a la que pertenece 
-                                                                                   // la pista
+            // la pista
 
             const index = pistas.findIndex(p => p.id === id);  // --> Buscamos índice de la pista existente. 
-                                                               // --> Nos devolverá: --> -1: no existe la pista
-                                                               //                    --> número de la pista
+            // --> Nos devolverá: --> -1: no existe la pista
+            //                    --> número de la pista
 
             if (index !== -1) {
                 // Si existe, modificarla
@@ -319,8 +319,8 @@ $(document).ready(() => {
             </div>`;
 
             // Btns con las distintas funciones de las pistas: --> Crear
-                                                            // --> Editar
-                                                            // --> Borrar
+            // --> Editar
+            // --> Borrar
             if (body.find('.botonesPista .borrarPista').length === 0 && body.find('.botonesPista .editarPista').length === 0) {
                 body.find('.botonesPista').append(`
         <div class="d-flex gap-3">
@@ -333,7 +333,7 @@ $(document).ready(() => {
             }
 
 
-        } 
+        }
 
         // Si ha habido errores, mostramos una alerta con los mensajes de errores
         else {
@@ -367,7 +367,7 @@ $(document).ready(() => {
                 let inputPrecio = accordion.find('.precioPista') // --> Buscamos el precio
 
                 // Hacemos que se puedan editar los campos de la pista
-                inputNombre.prop('readonly', false) 
+                inputNombre.prop('readonly', false)
                 inputCapacidad.prop('readonly', false)
                 inputPrecio.prop('readonly', false)
                 inputNombre.focus();
@@ -472,7 +472,7 @@ $(document).ready(() => {
             // Ahora añadimos las pistas. Para ello primero comprobamos si hay o no, viendo el estado del switch que marca si se puede o no crear pistas para la instalación
             if (noPistas) {
                 pistas = []; // --> Array donde irán las pistas
-                
+
                 //Añadimos una pista única simulando una instalación sin pistas 
                 pistas.push(pista = {
                     id: 1,
@@ -582,7 +582,7 @@ $(document).ready(() => {
             });
 
         }
-        
+
         // Si no se ha podido crear la instalación mostramos el mensaje de error
         else {
 
@@ -608,16 +608,16 @@ $(document).ready(() => {
             data: { id: index },
             dataType: 'json',
             success: function (response) {
-                
+
                 // Ponemos la imagen de la instalación en el "header" del modal
                 $('#imagenVerInstalacion').css('background-image', `url(${base_url}images/${response.pistas[0].imagen1})`);
-                
+
                 // Mostramos los datos
                 $('#nombreVerInstalacion').text(response.instalacion[0].nombre + '.'); // --> Mostramos el nombre
                 $('#categoriaPrincipalVerInstalacion').text(response.instalacion[0].categoria_name) // --> Mostramos la categoría
                 $('#categoriaSecundariaVerInstalacion').text(response.instalacion[0].categoria_opc_name ?? ' '); // --> Mostramos la categoría secundaria
                 $('#descripcionVerInstalacion').text(response.instalacion[0].descripcion); // --> Mostramos la descripción de la instalación
-                
+
                 // Comprobamos si se puede hacer una reserva de la instalación completa
                 if (parseInt(response.instalacion[0].puede_completo) === 1) {
                     $('#capacidadCompletaVerInstalacion').text(response.instalacion[0].capacidad_completo) // --> Si es el caso ponemos la capacidad de la reserva completa
@@ -791,8 +791,10 @@ $(document).ready(() => {
 
                 // Recorremos las pistas
                 pistas.map((pista) => {
+
+                    // Por cada pista creamos un accordion con sus datos
                     let acordion = `
-                    <div class="accordion-item mt-3" data-index="${pista.id_pista}">
+                    <div class="accordion-item mt-3 accordionEditarPista" data-index="${pista.id_pista}">
                 <h2 class="accordion-header">
                     <button class="accordion-button nuevaPista collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${pista.id_pista}" aria-expanded="true" aria-controls="${pista.id_pista}">
                         <div>${pista.nombre_pista}&nbsp;<i class="bi bi-pencil-square"></i></div>
@@ -803,17 +805,17 @@ $(document).ready(() => {
                         <div class="row gap-5">
                             <div class="col">
                                 <label>Nombre:</label>
-                                <input type="text" class="form-control nombrePista" placeholder="Ej: Pista de padel nº 1" value="${pista.nombre_pista}">
+                                <input type="text" class="form-control nombrePistaEditar" placeholder="Ej: Pista de padel nº 1" value="${pista.nombre_pista}">
                             </div>
                         </div>
                         <div class="row gap-5 mt-3">
                             <div class="col">
                                 <label>Capacidad de la Pista:</label>
-                                <input type="text" class="form-control capacidadPista" placeholder="Ej: 4" value="${pista.capacidad_pista}">
+                                <input type="text" class="form-control capacidadPistaEditar" placeholder="Ej: 4" value="${pista.capacidad_pista}">
                             </div>
                             <div class="col">
                                 <label>Precio de la Pista:</label>
-                                <input type="text" class="form-control precioPista" placeholder="Ej: 21" value="${pista.precio_pista}">
+                                <input type="text" class="form-control precioPistaEditar" placeholder="Ej: 21" value="${pista.precio_pista}">
                             </div>
                         </div>
                         <div class="d-flex justify-content-start mt-4">
@@ -821,24 +823,26 @@ $(document).ready(() => {
                                 Selecciona las imágenes de la pista (máx 4)
                                 <label class="btn btn-primary mt-1">
                                     Imagenes
-                                    <input class="imagenes" type="file" name="imagenes[]" multiple accept="image/*" hidden>
+                                    <input class="imagenesEditar" type="file" name="imagenesEditar[]" multiple accept="image/*" hidden>
                                 </label>
                             </div>
                         </div>
                         <div class="d-flex gap-2 mt-3 justify-content-end botonesPista">
                             <button class="btn btn-danger borrarPista">Borrar <i class="bi bi-x-lg"></i></button>
-                            <button class="btn btn-primary guardarPista">Guardar <i class="bi bi-check-lg"></i></button>
+                            <button class="btn btn-primary guardarPistaEditar" disabled >Guardar <i class="bi bi-check-lg"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
                     `
+                    // Los añadimos al modal
                     $('#accordionEditarPistas').append(acordion)
                 })
 
-                let nuevoId = pistas[(pistas.length - 1).id_pista]
+                // Añadimos un accordion para poder crear una nueva pista
+                let nuevoId = parseInt(pistas[(pistas.length - 1)].id_pista) + 1
                 let accordionNuevo = `
-                    <div class="accordion-item mt-3" data-index="${nuevoId}">
+                    <div class="accordion-item mt-3 accordionNuevaPista" data-index="${nuevoId}">
                 <h2 class="accordion-header">
                     <button class="accordion-button nuevaPista collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${nuevoId}" aria-expanded="true" aria-controls="${nuevoId}">
                         <div>Añadir Pista&nbsp;<i class="bi bi-plus-circle"></i></div>
@@ -873,13 +877,14 @@ $(document).ready(() => {
                         </div>
                         <div class="d-flex gap-2 mt-3 justify-content-end botonesPista">
                             <button class="btn btn-danger borrarPista">Borrar <i class="bi bi-x-lg"></i></button>
-                            <button class="btn btn-primary guardarPista">Guardar <i class="bi bi-check-lg"></i></button>
+                            <button class="btn btn-primary guardarPistaNuevaEditar">Guardar <i class="bi bi-check-lg"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
                     `
 
+                // Lo añadimos solo en el caso de que no este seleccionado la opción de solo completo, sin pistas
                 if (parseInt(response.instalacion[0].no_pistas) === 0) {
                     $('#accordionEditarPistas').append(accordionNuevo);
                 }
@@ -901,12 +906,271 @@ $(document).ready(() => {
 
     })
 
+    // Evento en el que mientras escribimos en cualquier campo del accordion, comprobamos si ha habido algún cambio en la información de la pista que queremos editar. En el caso de que si lo haya y no este vacío el campo. estará habilitado el btn de guardar pista, mientras tanto no lo estará
+    $(document).on('input', '#accordionEditarPistas input', function () {
+
+        let $accordionItem = $(this).closest('.accordion-item'); // --> Obtenemos el accordion en el que se encuentra el campo que está siendo editado
+        let idPista = parseInt($(this).closest('.accordion-item').data('index')); // --> Obtenemos el id de la pista
+
+        // Petición ajax en la que obtenemos los datos de la pista
+        $.ajax({
+            url: 'infoPista', // --> URL donde hacemos la petición
+            method: 'POST',
+            data: { id: idPista },
+            dataType: 'json',
+            success: function (response) {
+                let pista = response.pista // --> obtenemos las pistas del response, ya que el response
+                // tiene la siguiente estructura. response: --> succes: bool
+                //                                          --> pista: object    
+
+                // Ahora obtenemos la información
+                let nombrePista = pista[0].nombre_pista // --> nombre de la pista
+                let capacidadPista = pista[0].capacidad_pista // --> capacidad de la pista
+                let precioPista = pista[0].precio_pista // --> precio de la pista 
+
+                // Obetenemos los valores de los input
+                let nombrePistaNuevo = $accordionItem.find('.nombrePistaEditar').val() // --> valor nuevo del nombre de la pista
+                let capacidadPistaNuevo = $accordionItem.find('.capacidadPistaEditar').val() // --> valor nuevo de la capacidad de la pista
+                let precioPistaNuevo = $accordionItem.find('.precioPistaEditar').val() // --> valor nuevo del precio de la pista
+
+                // Comprobamos que el valor nuevo del nombre sea distinto al que teníamos ya guardado y que no esté vacío
+                if (nombrePista !== nombrePistaNuevo && nombrePistaNuevo !== '') {
+                    $accordionItem.find('.guardarPistaEditar').prop('disabled', false) // --> Habilitamos el btn de guardar pista
+                }
+                // Comprobamos que el valor nuevo de la capacidad sea distinta a la que teníamos ya guarada y que no esté vacía
+                else if (capacidadPista !== capacidadPistaNuevo && capacidadPistaNuevo !== '') {
+                    $accordionItem.find('.guardarPistaEditar').prop('disabled', false) // --> Habilitamos el btn de guardar pista
+                }
+                // Comprobamos que el valor nuevo del precio sea distinta a la que teníamos ya guardada y que no esté vacía
+                else if (precioPista !== precioPistaNuevo && precioPistaNuevo !== '') {
+                    $accordionItem.find('.guardarPistaEditar').prop('disabled', false) // --> Habilitamos el btn de guardar pista
+                }
+                // En el caso de que no haya cambio o el elemento esté vacío, deshabilitamos el btn
+                else {
+                    $accordionItem.find('.guardarPistaEditar').prop('disabled', true) // --> Deshabilitamos el btn
+                }
+            }
+        })
+
+    })
 
 
+
+    // Evento en el que controlamos el guardado de las pistas que hayamos editado. 
+    $(document).on('click', '.guardarPistaEditar', function () {
+
+        let $accordionItem = $(this).closest('.accordion-item'); // --> Obtenemos el accordion en el que se encuentra el campo que está siendo editado
+
+        let idPista = parseInt($(this).closest('.accordion-item').data('index')); // --> Obtenemos el id de la pista
+
+        // Obtenemos los valores
+        let nombre = $accordionItem.find('.nombrePistaEditar').val(); // --> nombre nuevo de la pista
+        let capacidad = $accordionItem.find('.capacidadPistaEditar').val(); // --> capacidad nueva de la pista
+        let precio = $accordionItem.find('.precioPistaEditar').val(); // --> precio nuevo de la pista
+        // let imagenes  = $(this).closest('.accordion-body').data('imagenesPistaEditar') --> ver mas tarde con un panel aparte como el gestor de la web del Ayuntamiento de Fuente de Piedra
+
+        // Realizamos una petición ajax al back, donde enviamos la información nueva de las pistas
+        $.ajax({
+            type: "POST",
+            url: "editarPista", // --> url a la que hacemos la petición
+            data: {
+                id: idPista,
+                data: { nombre_pista: nombre, capacidad_pista: capacidad, precio_pista: precio }
+            },
+            success: function (response) {
+
+                // Como hemos editado la pista, deshabilitamos de nuevo el btn de guardar pista
+                $accordionItem.find('.guardarPistaEditar').prop('disabled', true)
+            }
+        });
+
+    })
+
+    let datosPistas = [] // --> Variable donde irán los datos de las pistas hasta que guarde la edición
+    $('#noPistasEditar').on('change', function () {
+
+        // Comprobamos el estado del switch que nos dice si solo se permite la reserva completa (no hay pistas) o se puede reservar por pista
+        let checked = $(this).is(':checked');
+
+        $.ajax({
+            type: "POST",
+            url: "getNewIndexPista",
+            data: "",
+            dataType: 'json',
+            success: function (response) {
+
+                // Obetenemos el nuevo id de la pista, que es el que añadiremos al accordion como data-index
+                let pistas = response.pistas;
+                let nuevoId = parseInt(pistas[(pistas.length - 1)].id_pista) + 1 // --> Obtenemos el nuevo ínidce de la pista nueva
+
+                // Guardamos la informaxción en el array por si le damos al check sin querer
+                // Para ello recorremos los accordion ya creados
+                $('#accordionEditarPistas .accordionEditarPista').each(function (index, element) {
+
+                    let elemento = $(element) // --> elemento de cada accordion
+                    let idPista = elemento.data('index') // --> id de cada pista obtenido del accordion con el atributo "data-index"
+                    let nombre = elemento.find('.nombrePistaEditar').val() // --> nombre de cada pista obtenido del accordion 
+                    let capacidad = elemento.find('.capacidadPistaEditar').val() // --> capacidad de cada pista obtenida del accordion
+                    let precio = elemento.find('.precioPistaEditar').val() // --> precio de cada pista obtenida de cada accordion
+
+
+                    // Comprobamos si existe
+                    let existente = datosPistas.find(p => p.id === idPista);
+
+                    // Si existe remplazamos los datos
+                    if (existente) {
+                        datosPistas[index] = {
+                            id: idPista,
+                            nombre: nombre,
+                            capacidad: capacidad,
+                            precio: precio
+                        }
+                    }
+                    // En el caso de que no exista lo añadimos
+                    else {
+                        datosPistas.push({
+                            id: idPista,
+                            nombre: nombre,
+                            capacidad: capacidad,
+                            precio: precio
+                        })
+                    }
+
+                })
+
+                // Comprobamos el estado del switch que nos dice si se puede hacer solo reserva completa (no hay pistas), o se puede hacer una reserva parcial
+                if (checked) {
+
+                    $('#accordionEditarPistas').empty() // --> Vaciamos el contenedor de los accordion
+
+                }
+                else {
+
+                    // Si está desactivado el switch, volvemos a dibujar las pistas guardadas en datosPistas
+                    $('#accordionEditarPistas').empty(); // --> Vaciamos el contenedor de los accordion para evitar duplicados
+
+                    // Si hay datos, es decir, el array no esta vacía lo recorremos y creamos los accordion
+                    if (datosPistas.length !== 0) {
+
+                        // Recorremos el array con los datos de las pistas
+                        datosPistas.map((pista) => {
+
+                            // Creamos el accordion
+                            let acordion = `
+                                <div class="accordion-item mt-3 accordionEditarPista" data-index="${pista.id}">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button nuevaPista collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${pista.id}" aria-expanded="true" aria-controls="${pista.id}">
+                                            <div>${pista.nombre}&nbsp;<i class="bi bi-pencil-square"></i></div>
+                                        </button>
+                                    </h2>
+                                    <div id="${pista.id}" class="accordion-collapse collapse">
+                                        <div class="accordion-body">
+                                            <div class="row gap-5">
+                                                <div class="col">
+                                                    <label>Nombre:</label>
+                                                    <input type="text" class="form-control nombrePistaEditar" placeholder="Ej: Pista de padel nº 1" value="${pista.nombre}">
+                                                </div>
+                                            </div>
+                                            <div class="row gap-5 mt-3">
+                                                <div class="col">
+                                                    <label>Capacidad de la Pista:</label>
+                                                    <input type="text" class="form-control capacidadPistaEditar" placeholder="Ej: 4" value="${pista.capacidad}">
+                                                </div>
+                                                <div class="col">
+                                                    <label>Precio de la Pista:</label>
+                                                    <input type="text" class="form-control precioPistaEditar" placeholder="Ej: 21" value="${pista.precio}">
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-start mt-4">
+                                                <div class="w-50">
+                                                    Selecciona las imágenes de la pista (máx 4)
+                                                    <label class="btn btn-primary mt-1">
+                                                        Imagenes
+                                                        <input class="imagenesEditar" type="file" name="imagenesEditar[]" multiple accept="image/*" hidden>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex gap-2 mt-3 justify-content-end botonesPista">
+                                                <button class="btn btn-danger borrarPista">Borrar <i class="bi bi-x-lg"></i></button>
+                                                <button class="btn btn-primary guardarPistaEditar" disabled >Guardar <i class="bi bi-check-lg"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `
+                            // Los añadimos al modal
+                            $('#accordionEditarPistas').append(acordion)
+                        })
+                    }
+
+                    // Creamos el accordion de nueva pista para darnos la posibilidad de crear una nueva pista
+                    let accordionNuevo = `
+                        <div class="accordion-item mt-3 accordionNuevaPista" data-index="${nuevoId}">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button nuevaPista collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${nuevoId}" aria-expanded="true" aria-controls="${nuevoId}">
+                                    <div>Añadir Pista&nbsp;<i class="bi bi-plus-circle"></i></div>
+                                </button>
+                            </h2>
+                            <div id="${nuevoId}" class="accordion-collapse collapse">
+                                <div class="accordion-body">
+                                    <div class="row gap-5">
+                                        <div class="col">
+                                            <label>Nombre:</label>
+                                            <input type="text" class="form-control nombrePista" placeholder="Ej: Pista de padel nº 1">
+                                        </div>
+                                    </div>
+                                    <div class="row gap-5 mt-3">
+                                        <div class="col">
+                                            <label>Capacidad de la Pista:</label>
+                                            <input type="text" class="form-control capacidadPista" placeholder="Ej: 4" >
+                                        </div>
+                                        <div class="col">
+                                            <label>Precio de la Pista:</label>
+                                            <input type="text" class="form-control precioPista" placeholder="Ej: 21" >
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-start mt-4">
+                                        <div class="w-50">
+                                            Selecciona las imágenes de la pista (máx 4)
+                                            <label class="btn btn-primary mt-1">
+                                                Imagenes
+                                                <input class="imagenes" type="file" name="imagenes[]" multiple accept="image/*" hidden>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex gap-2 mt-3 justify-content-end botonesPista">
+                                        <button class="btn btn-danger borrarPista">Borrar <i class="bi bi-x-lg"></i></button>
+                                        <button class="btn btn-primary guardarPistaNuevaEditar">Guardar <i class="bi bi-check-lg"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        `
+
+                    // Lo añadimos al contenedor de los accordions 
+                    $('#accordionEditarPistas').append(accordionNuevo);
+                }
+            }
+        });
+
+    });
+
+    /***********************************************************************************************************************************
+    *******************************************************  FUNCIONES DE AYUDA  *******************************************************
+    ***********************************************************************************************************************************/
+
+    /**
+     * camposError() --> Función que al estar mal el campo, le añade la clase "input-error" y borra la clase "input-ok" mostrando de esta manera que en ese campo hay un error
+     * @param {HTMLInputElement} input 
+     */
     function camposError(input) {
         input.addClass('input-error').removeClass('input-ok');
     }
 
+    /**
+     * campoSolucionado() --> Función que al estar bien el campo, le añade la clase "input-ok" y borra la clase "input-error" mostrando de esta manera que ese campo es correcto
+     * @param {HTMLInputElement} input 
+     */
     function campoSolucionado(input) {
         input.removeClass('input-error').addClass('input-ok');
     }
