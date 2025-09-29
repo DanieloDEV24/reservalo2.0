@@ -1001,8 +1001,10 @@ $(document).ready(() => {
                 // Mostrar loader
                 $("#loader").show();
 
+                // Obtenemos los btns de los accordions
                 let headerBtn = $('#accordionEditarPistas .accordion-header .accordion-button');
 
+                // Le ponemos ese color gris para dar efecto carga
                 headerBtn.css("color", "#ccc", "important")
             },
             success: function (response) {
@@ -1161,8 +1163,10 @@ $(document).ready(() => {
             }, 
             complete: function () {
 
+                // Obtenemos los btns de los accordions
                 let headerBtn = $('#accordionEditarPistas .accordion-header .accordion-button');
 
+                // Como ya ha cargado le ponemos el color negro
                 headerBtn.css("color", "#000", "important")
 
                 // Ocultar loader siempre, éxito o error
