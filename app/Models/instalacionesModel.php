@@ -183,4 +183,21 @@ class instalacionesModel extends Model
         return $result;
     }
 
+
+    public function borrarPista($id_pista)
+    {
+        // Conexión a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Seleccionamos la tabla
+        $builder = $db->table('pistas');
+
+        // Borramos el registro cuyo id coincida
+        $builder->where('id_pista', $id_pista);
+        $builder->delete();
+
+        // Puedes devolver true/false según si se borró algo
+        return $db->affectedRows() > 0;
+    }
+
 }

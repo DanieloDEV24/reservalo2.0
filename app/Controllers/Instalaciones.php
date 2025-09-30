@@ -26,8 +26,9 @@ class Instalaciones extends BaseController
 
         $nuevaInstalacion  = view('instalaciones/modalNuevaInstalacion', ["baseUrl" => base_url(), "categorias" => $categorias]);
         $verInstalacion    = view('instalaciones/modalVerInstalacion', ["baseUrl" => base_url()]);
+        $borradoPista      = view('instalaciones/modalBorrarPista', ["baseUrl" => base_url()]);
         $editarInstalacion = view('instalaciones/modalEditarInstalacion', ["baseUrl" => base_url()]);
-        $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "verInstalacion" => $verInstalacion, "editarInstalacion" => $editarInstalacion, "baseUrl" => base_url()]);
+        $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "verInstalacion" => $verInstalacion, "editarInstalacion" => $editarInstalacion, "modalBorrarPista" => $borradoPista, "baseUrl" => base_url()]);
 
         return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
     }
@@ -247,5 +248,29 @@ class Instalaciones extends BaseController
                     "pistas"   => $pistas
         ]);
         exit;
+    }
+
+
+    public function borrarPista()
+    {
+        $post = $this->request->getPost(); // --> Obtenemos el post de la petición
+        $instalacionesModel = new instalacionesModel(); // --> Inicializamos el modelo de instalaciones
+
+        // Comprobamos que el post no este vacío para poder obtener el id de la pista
+        if(!empty($post))
+        {
+            $id_pista = intval($post["id"]); // --> Obtenemos el id de la pista que queremos eliminar
+            $result = $instalacionesModel->borrarPista($id_pista); // --> Llamamos a la función del modelo que elimina la pista
+
+            // Realizamos la respuesta si todo ha id bien 
+            if($result)
+            {
+                echo json_encode([
+                    "succes" => true, 
+                    "result" => $result
+                ]);
+                exit;
+            }
+        }
     }
 }

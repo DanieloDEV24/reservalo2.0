@@ -3,7 +3,7 @@
     
 </script>
 
-<div class="modal" tabindex="-1" id="modalVerInstalacion">
+<div class="modal " tabindex="-1" id="modalVerInstalacion">
 
     <div class="modal-dialog modal-lg">
         <div class="modal-content">

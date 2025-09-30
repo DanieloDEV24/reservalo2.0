@@ -50,15 +50,19 @@ table td .dropdown button i
 .modal textarea
 {
     width: 100%;
-    border: 2px solid #725AC1;
     border-radius: 10px;
     resize: none;
     height: 150px;
+    padding: 15px !important;
 }
 
-.modal input[type=text], .modal select, .modal input[type=number] 
+.modal input, .modal select, .modal textarea
 {
-  border-radius: 0px !important;
+  border: 0px solid #ccc !important;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 4px;
+  padding: 7px;
+  margin-top: 2%;
+  
 }
 
 /* From Uiverse.io by Yaya12085 */ 
@@ -71,7 +75,7 @@ table td .dropdown button i
   color: white;
 }
 
-.radio-input input[type="radio"] {
+.radio-input input[type="checkbox"] {
   display: none;
 }
 
@@ -79,13 +83,13 @@ table td .dropdown button i
   display: flex;
   align-items: center;
   padding: 10px;
-  border: 1px solid #ccc;
   background-color: #212121;
   border-radius: 5px;
   margin-right: 12px;
   cursor: pointer;
   position: relative;
   transition: all 0.3s ease-in-out;
+  box-shadow: rgba(60, 64, 67, 0.6) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
 
 .radio-input label:before {
@@ -99,19 +103,18 @@ table td .dropdown button i
   height: 10px;
   border-radius: 50%;
   background-color: #fff;
-  border: 2px solid #ccc;
   transition: all 0.3s ease-in-out;
+  border: 1px solid #aaa;
 }
 
-.radio-input input[type="radio"]:checked + label:before {
-  background-color: green;
+.radio-input input[type="checkbox"]:checked + label:before {
+  background-color: #fff;
   top: 0;
 }
 
-.radio-input input[type="radio"]:checked + label {
-  background-color: royalblue;
+.radio-input input[type="checkbox"]:checked + label {
+  background-color: #32cccc;
   color: #fff;
-  border-color: rgb(129, 235, 129);
   animation: radio-translate 0.5s ease-in-out;
 }
 
@@ -336,3 +339,43 @@ table td .dropdown button i
 {
   width: 100%;
 }
+
+/* Centrar el texto del modal de borrado */
+#modalBorraPista .pregunta-borrado h2 {
+    text-align: center;
+}
+
+/* Ajustar el backdrop del segundo modal para que cubra todo */
+.modal-backdrop.nested {
+    z-index: 1055; /* Debe estar debajo del modal pero encima del primero */
+}
+
+/* Aseguramos que el modal de borrado esté encima del modal de edición */
+#modalBorraPista {
+    z-index: 1060;
+}
+
+.btns-borrado
+{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3%;
+  width: 100%;
+  margin-top: 3%;
+}
+
+
+/* Estado inicial: pequeño y transparente */
+.modal .modal-dialog {
+  transform: scale(0.9);
+  opacity: 0;
+  transition: transform .2s ease-out, opacity .2s ease-out;
+}
+
+/* Estado visible: escala normal y opacidad 1 */
+.modal.show .modal-dialog {
+  transform: scale(1);
+  opacity: 1;
+}
+

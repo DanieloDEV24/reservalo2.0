@@ -1,4 +1,4 @@
-<div class="modal" tabindex="-1" id="modalNuevaInstalacion">
+<div class="modal " tabindex="-1" id="modalNuevaInstalacion">
 
   <div class="d-flex p-4 pb-0 justify-content-center alertModal">
 

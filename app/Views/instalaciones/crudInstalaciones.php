@@ -51,3 +51,4 @@
 <?=$nuevaInstalacion?>
 <?=$verInstalacion?>
 <?=$editarInstalacion?>
+<?=$modalBorrarPista?>

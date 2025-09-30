@@ -85,7 +85,7 @@ $(document).ready(() => {
             // Comprobamos que haya una categoría principal seleccionada y creamos las categorías secundarias sin seleccionar esta
             if (val != catPrincipal && catPrincipal != -1 && val != -1) {
                 // Creación del nuevo nodo con la categoría secundaria
-                const input = $(`<input value="${val}" name="subcategoria" id="sub-${val}" type="radio">`);
+                const input = $(`<input value="${val}" name="subcategoria" id="sub-${val}" type="checkbox">`);
                 const label = $(`<label for="sub-${val}">${text}</label>`);
                 $('#subcategorias').append(input, label); // --> la añadimos al div de las categorías secundarias
             }
@@ -642,48 +642,48 @@ $(document).ready(() => {
 
                     // Por cada pista creamos un accordion
                     let node = $(`
-  <div class="accordion-item" data-index="${pista["id_pista"]}">
-    <h2 class="accordion-header">
-      <button 
-        class="accordion-button nuevaPista collapsed d-flex justify-content-start" 
-        type="button" 
-        data-bs-toggle="collapse" 
-        data-bs-target="#collapse-${pista["id_pista"]}" 
-        aria-expanded="false" 
-        aria-controls="collapse-${pista["id_pista"]}">
-        <div>${pista["nombre_pista"]}</div>
-      </button>
-    </h2>
-    <div id="collapse-${pista["id_pista"]}" 
-         class="accordion-collapse collapse" 
-         data-bs-parent="#accordionPistas">
-      <div class="accordion-body">
-        <div class="galeria-imagenes-pistas">
-            <img src="${base_url}images/${pista["imagen1"]}" alt="Imagen 1 de ${pista["nombre_pista"]}" class="img-grande">
-            <img src="${base_url}images/${pista["imagen2"]}" alt="Imagen 2 de ${pista["nombre_pista"]}" class="img-pequena">
-            <img src="${base_url}images/${pista["imagen3"]}" alt="Imagen 3 de ${pista["nombre_pista"]}" class="img-pequena">
-            <img src="${base_url}images/${pista["imagen4"]}" alt="Imagen 4 de ${pista["nombre_pista"]}" class="img-pequena">
-        </div>
+                                <div class="accordion-item" data-index="${pista["id_pista"]}">
+                                    <h2 class="accordion-header">
+                                    <button 
+                                        class="accordion-button nuevaPista collapsed d-flex justify-content-start" 
+                                        type="button" 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#collapse-${pista["id_pista"]}" 
+                                        aria-expanded="false" 
+                                        aria-controls="collapse-${pista["id_pista"]}">
+                                        <div>${pista["nombre_pista"]}</div>
+                                    </button>
+                                    </h2>
+                                    <div id="collapse-${pista["id_pista"]}" 
+                                        class="accordion-collapse collapse" 
+                                        data-bs-parent="#accordionPistas">
+                                    <div class="accordion-body">
+                                        <div class="galeria-imagenes-pistas">
+                                            <img src="${base_url}images/${pista["imagen1"]}" alt="Imagen 1 de ${pista["nombre_pista"]}" class="img-grande">
+                                            <img src="${base_url}images/${pista["imagen2"]}" alt="Imagen 2 de ${pista["nombre_pista"]}" class="img-pequena">
+                                            <img src="${base_url}images/${pista["imagen3"]}" alt="Imagen 3 de ${pista["nombre_pista"]}" class="img-pequena">
+                                            <img src="${base_url}images/${pista["imagen4"]}" alt="Imagen 4 de ${pista["nombre_pista"]}" class="img-pequena">
+                                        </div>
 
-        <div class="row gap-5 mt-3">
-          <div class="col">
-            <div class="row">
-                <div class="col-7"><label>Capacidad de la Pista:</label></div>
-                <div class="col-5"><p>${pista["capacidad_pista"]}</p></div>
-            </div>
-          </div>
+                                        <div class="row gap-5 mt-3">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col-7"><label>Capacidad de la Pista:</label></div>
+                                                <div class="col-5"><p>${pista["capacidad_pista"]}</p></div>
+                                            </div>
+                                        </div>
 
-          <div class="col">
-            <div class="row">
-                <div class="col"><label>Precio de la Pista:</label></div>
-                <div class="col"><p>${pista["precio_pista"]}</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-`);
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col"><label>Precio de la Pista:</label></div>
+                                                <div class="col"><p>${pista["precio_pista"]}</p></div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                    `);
 
                     // Guardamos el accordion
                     $('#accordionPistas').append(node);
@@ -708,7 +708,7 @@ $(document).ready(() => {
     })
 
     /***********************************************************************************************************************************
-    **********************************************************  EDITAR PISTA  **********************************************************
+    *******************************************************  EDITAR INSTALACIÓN  *******************************************************
     ***********************************************************************************************************************************/
 
     // Evento en el que manejamos la edición de una instalación
@@ -744,7 +744,7 @@ $(document).ready(() => {
                     if (categoria.id_categoria !== response.instalacion[0].categoria_principal) {
 
                         // Creamos los elementos de las categorías secundarias
-                        const input = $(`<input value="${categoria.id_categoria}" name="subcategoriaEditar" id="sub-${categoria.id_categoria}" type="radio" ${(response.instalacion[0].categoria_principal && response.instalacion[0].categoria_opcional1 === categoria.id_categoria) ? "checked" : ""}>`);
+                        const input = $(`<input value="${categoria.id_categoria}" name="subcategoriaEditar" id="sub-${categoria.id_categoria}" type="checkbox" ${(response.instalacion[0].categoria_principal && response.instalacion[0].categoria_opcional1 === categoria.id_categoria) ? "checked" : ""}>`);
                         const label = $(`<label for="sub-${categoria.id_categoria}">${categoria.nombre}</label>`);
 
                         // La añadimos al div
@@ -768,7 +768,7 @@ $(document).ready(() => {
 
                         // Si el valor no es el mismo que el de la categoría principal y hay una categoria principal seleccionada (catPrincipal !== -1). Creamos el elemento
                         if (val != catPrincipal && catPrincipal != -1 && val != -1) {
-                            const input = $(`<input value="${val}" name="subcategoriaEditar" id="sub-${val}" type="radio">`);
+                            const input = $(`<input value="${val}" name="subcategoriaEditar" id="sub-${val}" type="checkbox">`);
                             const label = $(`<label for="sub-${val}">${text}</label>`);
 
                             // Lo añadimos al div
@@ -986,11 +986,32 @@ $(document).ready(() => {
 
     })
 
+
     let datosPistas = [] // --> Variable donde irán los datos de las pistas hasta que guarde la edición
+    
+    // Evento que controla el estado del switch de manera que en el caso de no poder pistas se eleminen los accordions con las pistas, pero guardandolos en un array hasta que guardemos la instalación
     $('#noPistasEditar').on('change', function () {
 
         // Comprobamos el estado del switch que nos dice si solo se permite la reserva completa (no hay pistas) o se puede reservar por pista
         let checked = $(this).is(':checked');
+
+        // Comprobamos que no este seleccionado ni el no pistas no el puede hacerse reserva solo completa para deshabilitar los campos de precio y capacidad completa
+        if(!checked && !$('#modalEditarInstalacion #puedeCompletoEditar').is(':checked'))
+        {
+           $('#modalEditarInstalacion #capacidadCompletoEditar').prop('readonly', true); // --> Hacemos que el campo de la capacidad completa solo se pueda leer
+           $('#modalEditarInstalacion #capacidadCompletoEditar').css('color', '#ccc'); // --> Hacemos que el campo de la capacidad completa sea de color #ccc para dar sensación de no editable
+
+           $('#modalEditarInstalacion #precioCompletoEditar').prop('readonly', true); // --> Hacemos que el campo del precio completa solo se pueda leer
+           $('#modalEditarInstalacion #precioCompletoEditar').css('color', '#ccc'); // --> Hacemos que el campo del precio completa sea de color #ccc para dar sensación de no editable
+        }
+        else 
+        {
+            $('#modalEditarInstalacion #capacidadCompletoEditar').prop('readonly', false); // --> Hacemos que el campo de la capacidad completa se pueda editar
+            $('#modalEditarInstalacion #capacidadCompletoEditar').css('color', '#000'); // --> Hacemos que el campo de la capacidad completa tenga el color #000 dando la sensación de que ya es editable
+
+            $('#modalEditarInstalacion #precioCompletoEditar').prop('readonly', false); // --> Hacemos que el campo del precio completo se pueda editar
+            $('#modalEditarInstalacion #precioCompletoEditar').css('color', '#000'); // --> Hacemos que el campo del precio completo tenga el color #000 dando la sensación de que ya es editable
+        }
 
         $.ajax({
             type: "POST",
@@ -1101,7 +1122,7 @@ $(document).ready(() => {
                                                 </div>
                                             </div>
                                             <div class="d-flex gap-2 mt-3 justify-content-end botonesPista">
-                                                <button class="btn btn-danger borrarPistaborrarPistaEditar">Borrar <i class="bi bi-x-lg"></i></button>
+                                                <button class="btn btn-danger borrarPistaEditar">Borrar <i class="bi bi-x-lg"></i></button>
                                                 <button class="btn btn-primary guardarPistaEditar" disabled >Guardar <i class="bi bi-check-lg"></i></button>
                                             </div>
                                         </div>
@@ -1178,6 +1199,97 @@ $(document).ready(() => {
 
 
 
+    $('#puedeCompletoEditar').on('change', function (){
+
+        // Comprobamos el estado del switch que nos dice si se puede hacer una reserva completa
+        let checked = $(this).is(':checked');
+
+        // Comprobamos que no este seleccionado ni el no pistas no el puede hacerse reserva solo completa para deshabilitar los campos de precio y capacidad completa
+        if(!checked && !$('#modalEditarInstalacion #noPistasEditar').is(':checked'))
+        {
+           $('#modalEditarInstalacion #capacidadCompletoEditar').prop('readonly', true); // --> Hacemos que el campo de la capacidad completa solo se pueda leer
+           $('#modalEditarInstalacion #capacidadCompletoEditar').css('color', '#ccc'); // --> Hacemos que el campo de la capacidad completa sea de color #ccc para dar sensación de no editable
+
+           $('#modalEditarInstalacion #precioCompletoEditar').prop('readonly', true); // --> Hacemos que el campo del precio completa solo se pueda leer
+           $('#modalEditarInstalacion #precioCompletoEditar').css('color', '#ccc'); // --> Hacemos que el campo del precio completa sea de color #ccc para dar sensación de no editable
+        }
+        else 
+        {
+            $('#modalEditarInstalacion #capacidadCompletoEditar').prop('readonly', false); // --> Hacemos que el campo de la capacidad completa se pueda editar
+            $('#modalEditarInstalacion #capacidadCompletoEditar').css('color', '#000'); // --> Hacemos que el campo de la capacidad completa tenga el color #000 dando la sensación de que ya es editable
+
+            $('#modalEditarInstalacion #precioCompletoEditar').prop('readonly', false); // --> Hacemos que el campo del precio completo se pueda editar
+            $('#modalEditarInstalacion #precioCompletoEditar').css('color', '#000'); // --> Hacemos que el campo del precio completo tenga el color #000 dando la sensación de que ya es editable
+        }
+    })
+
+
+
+    // Evento que cuando pulsamos el btn de borrar una pista, lanzamos una un mensaje para que el usuario se asegure de que quiere elminar la pista
+    $(document).on('click', '.borrarPistaEditar', function () {
+        let idPista = parseInt($(this).closest('.accordion-item').data('index')); // --> Obtenemos el id de la pista
+        $('#modalBorraPista').data('index', idPista) // --> Guardamos el id de la pista en el data-index del modal de borrar la pista 
+
+        // Petición ajax al back con la que obtenemos la información sobre la pista
+        $.ajax({
+            type: "POST",
+            url: "infoPista", // --> URL donde va destinada la peticion
+            data: { id: idPista },
+            dataType: "json",
+            success: function (response) {
+                let pista = response.pista[0]; // --> Obtenemos las pistas
+
+                // Actualizamos el texto
+                $('#modalBorraPista .pregunta-borrado h2').text(
+                    `¿Desea eliminar la instalación ${pista.nombre_pista}?`
+                );
+
+                // Guardamos la posición actual del scroll del modal de fondo para que el modal se abra en esa posicion
+                let scrollTop = $('#modalEditarInstalacion .modal-dialog').scrollTop();
+
+                // Inicializamos el modal de borrado. Para poder abrir dos a la vez lo abrimos por la API de bootstrap
+                let modalBorra = new bootstrap.Modal(document.getElementById('modalBorraPista'), {
+                    backdrop: true
+                });
+
+                // Ajustamos z-index y mostramos
+                let modalBorraEl = document.getElementById('modalBorraPista');
+                modalBorraEl.style.zIndex = 1060;
+                modalBorra.show();
+
+                // Ajustamos el scroll para abrir donde estabas en el modal de fondo
+                modalBorraEl.querySelector('.modal-dialog').scrollTop = scrollTop;
+
+                // Ajustamos backdrop
+                $('.modal-backdrop').last().addClass('nested');
+            }
+        });
+    });
+
+
+     $(document).on('click', '.aceptarBorrarEditar', function () {
+
+        // Obtenemos el id de la pista que queremos eliminar
+        let id = parseInt($('#modalBorraPista').data('index'));
+
+        // Hago una petición ajax al back para eliminar la pista de la base de datos
+        $.ajax({
+            type: "POST",
+            url: "borrarPista",
+            data: {id: id},
+            dataType: "json",
+            success: function (response) {
+                
+                let accordion = $(`#modalEditarInstalacion #accordionEditarPistas .accordion-item[data-index="${id}"]`) // --> Obtenemos el accordion de la pista
+                accordion.remove() // --> Borramos el accordion
+                // Cerramos el modal de borrar pistas 
+                let modal = bootstrap.Modal.getInstance(document.getElementById('modalBorraPista'));
+                modal.hide();
+
+            }
+        });
+     })
+
 
     /***********************************************************************************************************************************
     *******************************************************  FUNCIONES DE AYUDA  *******************************************************
@@ -1197,9 +1309,5 @@ $(document).ready(() => {
      */
     function campoSolucionado(input) {
         input.removeClass('input-error').addClass('input-ok');
-    }
-
-    function guardarPista(accordion) {
-
     }
 });

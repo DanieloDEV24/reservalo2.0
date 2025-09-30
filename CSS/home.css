@@ -150,6 +150,26 @@ header.headerHome nav a, header.headerHome>div a
     font-size: 1.3rem;
 }
 
+.btn-secondary-personal
+{
+    background: linear-gradient(145deg, #1a7d7d, #166666);
+/* degradado para dar profundidad */
+    border-radius: 30px;
+    padding: 12px 24px; /* mejor usar px que % para mantener proporción */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    color: #fff;
+    /* font-weight: bold; */
+    border: none;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2); /* sombra para relieve */
+    text-decoration: none;
+    font-size: 1.3rem; 
+}
+
 /* Efecto hover */
 .btn-primary-personal:hover {
     background: linear-gradient(145deg, #3ddede, #2a9d9d);
@@ -157,19 +177,26 @@ header.headerHome nav a, header.headerHome>div a
     box-shadow: 0 6px 10px rgba(0,0,0,0.25);
 }
 
+.btn-secondary-personal:hover
+{
+    background: linear-gradient(145deg, #259999, #1f7e7e);
+    transform: scale(1.01); /* ligero aumento de tamaño */
+    box-shadow: 0 6px 10px rgba(0,0,0,0.25);
+}
+
 /* Efecto click */
-.btn-primary-personal:active {
+.btn-primary-personal:active, .btn-secondary-personal:active {
     background: linear-gradient(145deg, #28a3a3, #32cccc);
     transform: translateY(1px); /* se hunde un poco al presionar */
     box-shadow: 0 3px 6px rgba(0,0,0,0.2);
 }
 
-header .btn-primary-personal
+header .btn-primary-personal, header .btn-secondary-personal
 {
     width: 100%;
 }
 
-.home .btn-primary-personal
+.home .btn-primary-personal, .homme .btn-secondary-personal
 {
     width: 25%;
     margin-top: 3%;
@@ -193,20 +220,11 @@ header .btn-primary-personal
     padding: 0%;
   }
 
-  .contenedor-btn-busqueda .btn-primary-personal
+  .contenedor-btn-busqueda .btn-primary-personal, .contenedor-btn-busqueda .btn-secondary-personal
   {
     margin: 0%;
     padding: 20% 10%;
     width: 90%;
-  }
-
-  .barraBusqueda input, .barraBusqueda select, .modal input, .modal select
-  {
-    width: 100%;
-    margin: 0%;
-    border: none;
-    border-bottom: 2px solid #000;
-    background-color: transparent;
   }
 
   .mainDivBusqueda
@@ -264,7 +282,7 @@ header .btn-primary-personal
     font-size: 1.5rem !important;
 }
 
-.content .comoFunciona .btn-primary-personal
+.content .comoFunciona .btn-primary-personal, .content .comoFunciona .btn-secondary-personal
 {
     width: 30%;
 }
@@ -580,7 +598,7 @@ html
   transform: translateX(4px);
 }
 
-.top-instalaciones .btn-primary-personal
+.top-instalaciones .btn-primary-personal, .top-instalaciones .btn-secondary-personal
 {
     font-size: 1.1rem;
 }
@@ -594,7 +612,7 @@ html
     width: 100%;
 }
 
-.contenedor-btn-ver-instalaciones .btn-primary-personal
+.contenedor-btn-ver-instalaciones .btn-primary-personal, .contenedor-btn-ver-instalaciones .btn-secondary-personal
 {
     width: 20%;
 }
