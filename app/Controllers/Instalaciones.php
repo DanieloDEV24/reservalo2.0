@@ -273,4 +273,74 @@ class Instalaciones extends BaseController
             }
         }
     }
+
+
+    public function crearPista()
+    {
+        $post = $this->request->getPost();
+        $files = $this->request->getFiles();
+        $instalacionesModel = new instalacionesModel();
+
+        if(!empty($post))
+        {
+            $nombre = $post["nombre_pista"];
+            $capacidad = $post["capacidad_pista"];
+            $precio = $post["precio_pista"];
+            $id_instalacion = $post["id_instalacion"];
+            
+            $rutaDestino = FCPATH . 'images/';
+            if (!is_dir($rutaDestino)) {
+                mkdir($rutaDestino, 0755, true);
+            }
+            
+            $imagenesGuardadas = [];
+            if(isset($files['imagenes']))
+            {
+                foreach ($files['imagenes'] as $imagen) {
+                    
+                    if ($imagen->isValid() && !$imagen->hasMoved()) {
+                        $nombreArchivo = basename($imagen->getClientName());
+                        $rutaFinal = $rutaDestino . $nombreArchivo;
+
+                        // Eliminar si ya existe para sobrescribir
+                        if (file_exists($rutaFinal)) {
+                            unlink($rutaFinal);
+                        }
+
+                        // Mover imagen al destino
+                        $imagen->move($rutaDestino, $nombreArchivo);
+
+                        // Guardar ruta relativa para la base de datos
+                        $imagenesGuardadas[] = $nombreArchivo;
+                    }
+                }
+            }
+
+            $data = [
+                "id_instalacion"  => $id_instalacion, 
+                "nombre_pista"    => $nombre, 
+                "capacidad_pista" => $capacidad, 
+                "precio_pista"    => $precio, 
+                'imagen1'         => $imagenesGuardadas[0] ?? null,
+                'imagen2'         => $imagenesGuardadas[1] ?? null,
+                'imagen3'         => $imagenesGuardadas[2] ?? null,
+                'imagen4'         => $imagenesGuardadas[3] ?? null, 
+            ];
+
+            $nuevaPista = $instalacionesModel->createPistas($data);
+
+            echo json_encode([
+                "succes"   => true, 
+                "message"  => "Pista creada correctamente", 
+                "id_pista" => $nuevaPista
+            ]);
+            exit;
+        }
+
+        echo json_encode([
+                "succes"  => false, 
+                "message" => "Error al crear la pista"
+        ]);
+        exit;
+    }
 }

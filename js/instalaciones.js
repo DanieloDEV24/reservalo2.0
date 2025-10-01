@@ -72,6 +72,8 @@ $(document).ready(() => {
         $('#modalNuevaInstalacion').modal('show');
     });
 
+
+
     // Evento en el que cuando se cambia de categoría principal, automáticamente aparezcan como categorías secundarias las otras categorías no seleccionadas
     $('#categorias').on('change', function () {
         $('#subcategorias').empty(); // --> vaciamos el contenedor de categorias secundarias
@@ -92,6 +94,9 @@ $(document).ready(() => {
         });
     });
 
+
+
+
     // Evento en el que controlamos el switch que muestra si se puede hacer una reserva completa de la instalación. Se comprueba al cambiar el estado del switch.
     $('.toggle-switch input.puedeCompleto').on('change', function () {
         let isChecked = $(this).is(':checked'); // --> Comprobamos si esta seleccionado
@@ -107,6 +112,8 @@ $(document).ready(() => {
             if (!$('.toggle-switch input.noPistas').is(':checked')) $('#capacidadCompleto').attr('readonly', 'readonly').val(0.0).css('color', '#ccc'); // --> comprobamos si esta seleccionado el input de solo completo (no se puede pistas), para hacer lo mismo que con la capacidad de la reserva completa
         }
     });
+
+
 
 
     // Evento en el que controlamos el switch que muestra que solo se puede hacer una reserva completa, es decir, no se pueden crear pistas. Se comprueba al cambiar el estado del switch.
@@ -146,6 +153,8 @@ $(document).ready(() => {
         }
     });
 
+
+
     // Evento en el que controlamos la subida de imágenes. Controlamos cada vez que vayamos a subir o editar los archivos.
     $('#accordionExample').on('change', '.imagenes', function (event) {
         const maxArchivos = 4; // --> Número máximo de imágenes que podemos subir. En este caso 4
@@ -163,6 +172,9 @@ $(document).ready(() => {
         body.data('imagenesPista', archivos);
     });
 
+
+
+
     // Evento en el que controlamos la subida de imágenes de instalaciones sin pistas. Controlamos cada vez que vayamos a subir o editar los archivos.
     $('#accordionExample').on('change', '#imgNoPistas', function (event) {
         const maxArchivos = 4;
@@ -176,6 +188,8 @@ $(document).ready(() => {
 
         imagenesNoPistas = archivos
     });
+
+
 
 
     // Evento en el que controlamos cuando guardamos una pista. Se realiza este evento al pulsar el btn 
@@ -344,12 +358,16 @@ $(document).ready(() => {
     });
 
 
+
+
     // Evento en el que se controla el borrado de las pistas
     $('#accordionExample').on('click', '.borrarPista', function () {
         const index = parseInt($(this).closest('.accordion-item').data('index')); // --> Buscamos el id de la pista que queremos borrar
         pistas = pistas.filter(p => p.id !== index); // --> Filtramos los datos que no tengan ese id
         $(this).closest('.accordion-item').remove(); // --> Borramos también el accordion
     });
+
+
 
 
     // Evento en el que controlamos la edición de las pistas
@@ -382,6 +400,9 @@ $(document).ready(() => {
             }
         });
     });
+
+
+
 
 
     // Evento en el que guardamos la instalación entera con sus pistas
@@ -594,6 +615,8 @@ $(document).ready(() => {
     });
 
 
+
+
     // Evento en el que controlamos la opción de ver instalación. Nos sale la información de la instalación de una manera más técnica, no como le saldría al usuario para verla.
     $('#tabaInstalaciones tbody').on('click', '.btnVerInstalacion', function (e) {
         e.preventDefault();
@@ -717,6 +740,9 @@ $(document).ready(() => {
 
         // Obetenemos el id de la instalación
         let index = $(this).closest('tr').data('index');
+
+        // Añadimos el id al modal 
+        $('#modalEditarInstalacion').data('index', index);
 
         // Hacemos una petición ajax al back para obtener los datos de esa instalación
         $.ajax({
@@ -871,7 +897,7 @@ $(document).ready(() => {
                                 Selecciona las imágenes de la pista (máx 4)
                                 <label class="btn btn-primary mt-1">
                                     Imagenes
-                                    <input class="imagenes" type="file" name="imagenes[]" multiple accept="image/*" hidden>
+                                    <input class="imagenesEditarNuevaPista" type="file" name="imagenesEditarNueva[]" multiple accept="image/*" hidden>
                                 </label>
                             </div>
                         </div>
@@ -905,6 +931,9 @@ $(document).ready(() => {
         })
 
     })
+
+
+
 
     // Evento en el que mientras escribimos en cualquier campo del accordion, comprobamos si ha habido algún cambio en la información de la pista que queremos editar. En el caso de que si lo haya y no este vacío el campo. estará habilitado el btn de guardar pista, mientras tanto no lo estará
     $(document).on('input', '#accordionEditarPistas input', function () {
@@ -956,6 +985,7 @@ $(document).ready(() => {
 
 
 
+
     // Evento en el que controlamos el guardado de las pistas que hayamos editado. 
     $(document).on('click', '.guardarPistaEditar', function () {
 
@@ -985,6 +1015,8 @@ $(document).ready(() => {
         });
 
     })
+
+
 
 
     let datosPistas = [] // --> Variable donde irán los datos de las pistas hasta que guarde la edición
@@ -1199,6 +1231,7 @@ $(document).ready(() => {
 
 
 
+
     $('#puedeCompletoEditar').on('change', function (){
 
         // Comprobamos el estado del switch que nos dice si se puede hacer una reserva completa
@@ -1224,9 +1257,11 @@ $(document).ready(() => {
     })
 
 
+    
 
     // Evento que cuando pulsamos el btn de borrar una pista, lanzamos una un mensaje para que el usuario se asegure de que quiere elminar la pista
     $(document).on('click', '.borrarPistaEditar', function () {
+        
         let idPista = parseInt($(this).closest('.accordion-item').data('index')); // --> Obtenemos el id de la pista
         $('#modalBorraPista').data('index', idPista) // --> Guardamos el id de la pista en el data-index del modal de borrar la pista 
 
@@ -1267,7 +1302,10 @@ $(document).ready(() => {
     });
 
 
-     $(document).on('click', '.aceptarBorrarEditar', function () {
+
+
+    // Evento en el que borramos la pista al aceptar el mensaje. Además se borrará el accordión de la pista
+    $(document).on('click', '.aceptarBorrarEditar', function () {
 
         // Obtenemos el id de la pista que queremos eliminar
         let id = parseInt($('#modalBorraPista').data('index'));
@@ -1275,7 +1313,7 @@ $(document).ready(() => {
         // Hago una petición ajax al back para eliminar la pista de la base de datos
         $.ajax({
             type: "POST",
-            url: "borrarPista",
+            url: "borrarPista", // --> URL a donde va la petición
             data: {id: id},
             dataType: "json",
             success: function (response) {
@@ -1288,7 +1326,133 @@ $(document).ready(() => {
 
             }
         });
-     })
+    })
+
+
+
+    // Evento en el que controlamos la subida de imágenes. Controlamos cada vez que vayamos a subir o editar los archivos.
+    $('#accordionEditarPistas').on('change', '.imagenesEditarNuevaPista', function (event) {
+        const maxArchivos = 4; // --> Número máximo de imágenes que podemos subir. En este caso 4
+        const archivos = this.files; // --> Archivos que hemos subido
+
+        // Comprobamos que no se supere el número máximo de archivos establecido
+        if (archivos.length > maxArchivos) {
+            alert('Solo puedes seleccionar un máximo de 4 imágenes.');
+            this.value = '';
+            return;
+        }
+
+        // Guardamos las imágenes
+        const body = $(this).closest('.accordion-body');
+        body.data('imagenesPistaEditarNueva', archivos);
+    });
+
+
+
+
+    $(document).on('click', '.guardarPistaNuevaEditar', function () { 
+        
+        // Obtenemos el accordion
+        let accordionPistaNueva = $(this).closest('.accordionNuevaPista')
+
+        // Obtenemos los datos de la nueva pista
+        let nombre    = $(this).closest('.accordionNuevaPista').find('.nombrePista').val() // --> nombre de la pista
+        let capacidad = $(this).closest('.accordionNuevaPista').find('.capacidadPista').val() // --> capacidad de la pista
+        let precio    = $(this).closest('.accordionNuevaPista').find('.precioPista').val() // --> precio de la pista
+        let archivos = $(this).closest('.accordion-body').find('.imagenesEditarNuevaPista')[0].files;
+    
+
+        // Obtenemos el id de la instalación
+        let idInstalacion = $(this).closest('#modalEditarInstalacion').data('index')
+
+        // Creamos el formData
+        let formData = new FormData()
+        
+        formData.append('nombre_pista', nombre)
+        formData.append('capacidad_pista', capacidad)
+        formData.append('precio_pista', precio)
+        formData.append('id_instalacion', idInstalacion)
+
+        for (let i = 0; i < archivos.length; i++) {
+            formData.append('imagenes[]', archivos[i]);
+        }
+
+        // Hacemos la petición ajax al back para enviar los datos de la pista a crear
+        $.ajax({
+            type: "POST",
+            url: "crearPista", // --> URL a donde enviaremos la petición
+            data: formData,
+            processData: false, // Importante para enviar FormData
+            contentType: false, // Importante para enviar FormData
+            dataType: 'json', 
+            success: function (response) {
+
+                // Si todo ha ido bien creamos un accordion con los nuevos datos
+
+                    // Obtenemos el id de la nueva pista
+                    let id = parseInt(response.id_pista)
+
+                    // Creamos un nuevo accordion
+                    let acordion = `
+                                <div class="accordion-item mt-3 accordionEditarPista" data-index="${id}">
+                                    <h2 class="accordion-header">
+                                        <button class="accordion-button nuevaPista collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${id}" aria-expanded="true" aria-controls="${id}">
+                                            <div>${nombre}&nbsp;<i class="bi bi-pencil-square"></i></div>
+                                        </button>
+                                    </h2>
+                                    <div id="${id}" class="accordion-collapse collapse">
+                                        <div class="accordion-body">
+                                            <div class="row gap-5">
+                                                <div class="col">
+                                                    <label>Nombre:</label>
+                                                    <input type="text" class="form-control nombrePistaEditar" placeholder="Ej: Pista de padel nº 1" value="${nombre}">
+                                                </div>
+                                            </div>
+                                            <div class="row gap-5 mt-3">
+                                                <div class="col">
+                                                    <label>Capacidad de la Pista:</label>
+                                                    <input type="text" class="form-control capacidadPistaEditar" placeholder="Ej: 4" value="${capacidad}">
+                                                </div>
+                                                <div class="col">
+                                                    <label>Precio de la Pista:</label>
+                                                    <input type="text" class="form-control precioPistaEditar" placeholder="Ej: 21" value="${precio}">
+                                                </div>
+                                            </div>
+                                            <div class="d-flex justify-content-start mt-4">
+                                                <div class="w-50">
+                                                    Selecciona las imágenes de la pista (máx 4)
+                                                    <label class="btn btn-primary mt-1">
+                                                        Imagenes
+                                                        <input class="imagenesEditar" type="file" name="imagenesEditar[]" multiple accept="image/*" hidden>
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="d-flex gap-2 mt-3 justify-content-end botonesPista">
+                                                <button class="btn btn-danger borrarPistaEditar">Borrar <i class="bi bi-x-lg"></i></button>
+                                                <button class="btn btn-primary guardarPistaEditar" disabled >Guardar <i class="bi bi-check-lg"></i></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            `
+
+                    // Lo añadimos delante del accordion de nueva pista
+                    accordionPistaNueva.before(acordion);
+
+                    // Vacimamos los campos del accordion de la pista nueva
+                    accordionPistaNueva.find('.nombrePista').val(''); // --> Vaciamos el campo de nombre
+                    accordionPistaNueva.find('.capacidadPista').val('') // --> Vaciamos el campo de capacidad
+                    accordionPistaNueva.find('.precioPista').val('') // --> Vaciamos el campo de precio
+
+                    // Cerramos el accordion de la pista nueva
+                    accordionPistaNueva.collapse('hide')
+
+            }
+        });
+
+        
+    });
+
 
 
     /***********************************************************************************************************************************

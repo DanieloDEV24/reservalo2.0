@@ -9,19 +9,19 @@
     <div class="mainDivBusqueda w-100">
       <div class="barraBusqueda row">
         <div class="col-4">
-          <label for="">Deporte</label>
+          <label for="">Deporte:</label>
           <select>
             <option value="-1" selected>Seleccionde Deporte</option>
           </select>
         </div>
 
         <div class="col-4">
-          <label for="">Fecha</label>
+          <label for="">Fecha:</label>
           <input type="date">
         </div>
 
         <div class="col-3">
-          <label for="">Hora</label>
+          <label for="">Hora:</label>
           <input type="time">
         </div>
 
