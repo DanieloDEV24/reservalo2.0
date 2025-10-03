@@ -26,3 +26,4 @@ $routes->post('/editarPista', 'Instalaciones::editarPista');
 $routes->post('/getNewIndexPista', 'Instalaciones::getNewIndexPista');
 $routes->post('/borrarPista', 'Instalaciones::borrarPista');
 $routes->post('/crearPista', 'Instalaciones::crearPista');
+$routes->post('/editarInstalacionBD', 'Instalaciones::editarInstalacionBD');

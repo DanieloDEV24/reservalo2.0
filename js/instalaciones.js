@@ -1105,6 +1105,13 @@ $(document).ready(() => {
                 if (checked) {
 
                     $('#accordionEditarPistas').empty() // --> Vaciamos el contenedor de los accordion
+                    $('#accordionEditarPistas').append(`<div class="w-50">
+                                                    Selecciona las imágenes de la pista (máx 4)
+                                                    <label class="btn btn-primary mt-1">
+                                                        Imagenes
+                                                        <input class="imagenesEditarNoPistas" type="file" name="imagenesEditar[]" multiple accept="image/*" hidden>
+                                                    </label>
+                                                </div>`)
 
                 }
                 else {
@@ -1231,7 +1238,7 @@ $(document).ready(() => {
 
 
 
-
+    // Evento que controla el switch que nos indica si se puede hacer una reserva completa o no. En el caso de que si habilita los campos de precio completo y capacidad completa
     $('#puedeCompletoEditar').on('change', function (){
 
         // Comprobamos el estado del switch que nos dice si se puede hacer una reserva completa
@@ -1349,7 +1356,7 @@ $(document).ready(() => {
 
 
 
-
+    // Evento en el que guardamos una pista nueva en el modal de editar instalación. Esta funcionalidad nos permite añadir una pista nueva a una instalación ya creada
     $(document).on('click', '.guardarPistaNuevaEditar', function () { 
         
         // Obtenemos el accordion
@@ -1454,6 +1461,106 @@ $(document).ready(() => {
     });
 
 
+
+    // Evento que se encarga de guardar los datos de la pista editada. Para ello guarda la información nueva de la instalación, hace una peticion ajax al back con la información y guarda esta informacion
+    $(document).on('click', '#guardarInstalacionEditar', function (e) { 
+
+        let errores = [] // --> Array que contendrá los errores 
+        $('#modalEditarInstalacion .alertModal').empty(); // --> Vaciamos el div que contiene los mensajes de error
+        
+        // Obtenemos el id de la instalacion
+        let id = $('#modalEditarInstalacion').data('index');
+
+        let nombre              = $('#nombreInstalacionEditar').val(); // --> Obtenemos el nombre nuevo de la instalación
+        let categoria           = $('#categoriasEditar').val(); // --> Obtenemos la categoria nueva de la instalación
+        let categoriaSecundaria = 0; // --> variable donde guardamos la categoría secundaria
+        let noPistas            = $('#noPistasEditar').is(':checked') // --> Obtenemos el estado del switch que nos muestra si se puede crear pistas o no
+        let puedeCompleta       = $('#puedeCompletoEditar').is(':checked') // --> Obtenemos el estado del switch que nos muestra si se puede hacer una reserva completa
+        let capacidadCompleta   = parseInt($('#capacidadCompletoEditar').val()) // --> Obtenemos el valor de la capacidad de la reserva completa
+        let precioCompleto      = parseFloat($('#precioCompletoEditar').val()) // --> Obtenemos el precio de la reserva completa
+        let descripcion         = $('#descripcionEditar').val() // --> Obtenemos la descripción de la instalación
+
+
+        // Evento donde controlamos la selección de la categoría secundaria. Lo que hacemos es recorrer los inputs con las categorías secundarias
+        $('#subcategoriasEditar input').each(function () {
+            // Comprobamos que esté seleccionada
+            if ($(this).is(':checked')) {
+                categoriaSecundaria = $(this).val(); // --> Obtenemos el valor de la categoría seleccionada
+            }
+        });
+
+        // Controlamos de que la información obtenida sea correcta
+
+        // Comprobamos que el nombre no este vacío
+        if(nombre === "" || !nombre)
+        {
+            errores.push('El nombre no puede estar vacío');
+        }
+
+        // Comprobamos que se haya seleccionado una categoría
+        if(parseInt(categoria)=== -1)
+        {
+            errores.push('Debes seleccionar una categoría');
+        }
+
+        // Comprobamos que la descripcioón no esté vacía
+        if(descripcion === "" || !descripcion)
+        {
+            errores.push('La descripción no puede estar vacía');
+        }
+
+        // Comprobamos que el precio completo no este vacío y sea un valor adecuado, es decir, sea un numero
+        if ((puedeCompleta || noPistas) && (precioCompleto === '' || isNaN(precioCompleto)))
+        {
+            errores.push("Debes seleccionar un precio válido")
+        }
+
+        // Comprobamos que la capacidad no esté vacía y que sea un valor adecuado, es decir, un numero
+        if ((puedeCompleta || noPistas) && (capacidadCompleta === '' || isNaN(capacidadCompleta) || parseInt(capacidadCompleta) === 0))
+        {
+            errores.push("Debes seleccionar una capacidad válida")
+        }
+
+        // Si no hay errores continuamos con el guardado de los datos de la instalación
+        if(errores.length === 0)
+        {
+            // Objeto con los valores nuevos de la instalción
+            let data = {
+                id:                id,
+                nombre:            nombre, 
+                categoria:         categoria, 
+                categoriaSec:      categoriaSecundaria, 
+                noPistas:          noPistas, 
+                puedeCompleta:     puedeCompleta, 
+                capacidadCompleta: capacidadCompleta, 
+                precioCompleto:    precioCompleto,
+                descripcion:       descripcion
+            }
+
+            // Realizamos una peticion ajax al back para editar la instalacion
+            $.ajax({
+                type: "POST",
+                url: "editarInstalacionBD", // --> URL donde ira dirigida la peticion
+                data: data,
+                dataType: "json",
+                success: function (response) {
+                    
+                    $('#modalEditarInstalacion').modal('hide');
+
+                }
+            });
+
+        }
+
+        // En el caso de que si haya errores, recorremos el array de errores y los añadimos al div que muestra los alerts
+        else 
+        {
+            let elementosLista = errores.map(e => `<li>${e}</li>`).join('');
+            alertBox = $(`<div class="alert alert-danger mb-0" role="alert"><ul class="mb-0">${elementosLista}</ul></div>`);
+            $('#modalEditarInstalacion .alertModal').prepend(alertBox);
+        }
+        
+    });
 
     /***********************************************************************************************************************************
     *******************************************************  FUNCIONES DE AYUDA  *******************************************************

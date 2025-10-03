@@ -200,4 +200,40 @@ class instalacionesModel extends Model
         return $db->affectedRows() > 0;
     }
 
+
+    public function updateInstalacion(int $id, array $data)
+    {
+        // Conexión a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Tabla a actualizar
+        $builder = $db->table('instalaciones');
+
+        // Aplicar condición
+        $builder->where('id_instalacion', $id);
+
+        // Ejecutar update
+        $builder->update($data);
+
+        // Retornar true si se afectó alguna fila
+        return $db->affectedRows() > 0;
+    }
+
+    public function borrarPistas(int $id_instalacion)
+    {
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Tabla a borrar
+        $builder = $db->table('pistas');
+
+        // Aplicar condición
+        $builder->where('id_instalacion', $id_instalacion);
+
+        // Ejecutar delete
+        $builder->delete();
+
+        // Retornar true si se afectó alguna fila
+        return $db->affectedRows() > 0;
+    }
+
 }

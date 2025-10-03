@@ -1,0 +1,188 @@
+INFO - 2025-10-03 06:49:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 06:50:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 06:50:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 06:50:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 06:58:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 07:00:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 07:01:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 07:01:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 07:03:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 07:50:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 07:51:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 07:52:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 07:53:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 07:56:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 07:56:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 07:56:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 07:57:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 09:27:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 09:55:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-10-03 09:55:35 --> mysqli_sql_exception: Unknown column 'id_pista' in 'where clause' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instala...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instala...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instala...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(216): CodeIgniter\Database\BaseBuilder->update(Array)
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(377): App\Models\instalacionesModel->updateInstalacion(4, Array)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->editarInstalacionBD()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-10-03 09:55:35 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_pista' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `categoria_principal` = :categoria_principal:, `categoria_opcional1` = :categoria_opcional1:, `precio_completo` = :precio_completo:, `puede_completo` = :puede_completo:, `no_pistas` = :no_pistas:, `capacidad_completo` = :capacidad_completo:
+WHERE `id_pista` = :id_pista:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(216): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 APPPATH\Controllers\Instalaciones.php(377): App\Models\instalacionesModel->updateInstalacion(4, [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->editarInstalacionBD()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-03 09:55:35 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_pista' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `categoria_principal` = :categoria_principal:, `categoria_opcional1` = :categoria_opcional1:, `precio_completo` = :precio_completo:, `puede_completo` = :puede_completo:, `no_pistas` = :no_pistas:, `capacidad_completo` = :capacidad_completo:
+WHERE `id_pista` = :id_pista:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(216): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 APPPATH\Controllers\Instalaciones.php(377): App\Models\instalacionesModel->updateInstalacion(4, [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->editarInstalacionBD()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-03 09:55:35 --> [Caused by] mysqli_sql_exception: Unknown column 'id_pista' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `categoria_principal` = :categoria_principal:, `categoria_opcional1` = :categoria_opcional1:, `precio_completo` = :precio_completo:, `puede_completo` = :puede_completo:, `no_pistas` = :no_pistas:, `capacidad_completo` = :capacidad_completo:
+WHERE `id_pista` = :id_pista:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(216): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\Instalaciones.php(377): App\Models\instalacionesModel->updateInstalacion(4, [...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->editarInstalacionBD()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-10-03 09:55:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-10-03 09:55:49 --> mysqli_sql_exception: Unknown column 'id_pista' in 'where clause' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instala...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instala...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instala...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(216): CodeIgniter\Database\BaseBuilder->update(Array)
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(377): App\Models\instalacionesModel->updateInstalacion(4, Array)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->editarInstalacionBD()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-10-03 09:55:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_pista' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `categoria_principal` = :categoria_principal:, `categoria_opcional1` = :categoria_opcional1:, `precio_completo` = :precio_completo:, `puede_completo` = :puede_completo:, `no_pistas` = :no_pistas:, `capacidad_completo` = :capacidad_completo:
+WHERE `id_pista` = :id_pista:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(216): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 APPPATH\Controllers\Instalaciones.php(377): App\Models\instalacionesModel->updateInstalacion(4, [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->editarInstalacionBD()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-03 09:55:49 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_pista' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `categoria_principal` = :categoria_principal:, `categoria_opcional1` = :categoria_opcional1:, `precio_completo` = :precio_completo:, `puede_completo` = :puede_completo:, `no_pistas` = :no_pistas:, `capacidad_completo` = :capacidad_completo:
+WHERE `id_pista` = :id_pista:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(216): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 APPPATH\Controllers\Instalaciones.php(377): App\Models\instalacionesModel->updateInstalacion(4, [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->editarInstalacionBD()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-03 09:55:49 --> [Caused by] mysqli_sql_exception: Unknown column 'id_pista' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `categoria_principal` = :categoria_principal:, `categoria_opcional1` = :categoria_opcional1:, `precio_completo` = :precio_completo:, `puede_completo` = :puede_completo:, `no_pistas` = :no_pistas:, `capacidad_completo` = :capacidad_completo:
+WHERE `id_pista` = :id_pista:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(216): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\Instalaciones.php(377): App\Models\instalacionesModel->updateInstalacion(4, [...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->editarInstalacionBD()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2025-10-03 09:56:13 --> mysqli_sql_exception: Unknown column 'id_pista' in 'where clause' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instala...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instala...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instala...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(216): CodeIgniter\Database\BaseBuilder->update(Array)
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(377): App\Models\instalacionesModel->updateInstalacion(4, Array)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->editarInstalacionBD()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+INFO - 2025-10-03 09:56:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 09:56:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 09:56:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-03 09:56:52 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_pista' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `categoria_principal` = :categoria_principal:, `categoria_opcional1` = :categoria_opcional1:, `precio_completo` = :precio_completo:, `puede_completo` = :puede_completo:, `no_pistas` = :no_pistas:, `capacidad_completo` = :capacidad_completo:
+WHERE `id_pista` = :id_pista:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(216): CodeIgniter\Database\BaseBuilder->update([...])
+ 3 APPPATH\Controllers\Instalaciones.php(377): App\Models\instalacionesModel->updateInstalacion(4, [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->editarInstalacionBD()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-03 09:56:52 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_pista' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `categoria_principal` = :categoria_principal:, `categoria_opcional1` = :categoria_opcional1:, `precio_completo` = :precio_completo:, `puede_completo` = :puede_completo:, `no_pistas` = :no_pistas:, `capacidad_completo` = :capacidad_completo:
+WHERE `id_pista` = :id_pista:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(216): CodeIgniter\Database\BaseBuilder->update([...])
+ 5 APPPATH\Controllers\Instalaciones.php(377): App\Models\instalacionesModel->updateInstalacion(4, [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->editarInstalacionBD()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-03 09:56:52 --> [Caused by] mysqli_sql_exception: Unknown column 'id_pista' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `instalaciones` SET `nombre` = \'Campo de fútbol\', `descripcion` = \'Disfruta de nuestro campo de fútbol de última generación con césped artificial, ideal para entrenamientos, partidos y torneos. Esta instalación versátil permite reservar el campo completo para Fútbol 11, o dividirlo en dos pistas independientes de Fútbol 7\', `categoria_principal` = 1, `categoria_opcional1` = NULL, `precio_completo` = 22, `puede_completo` = 1, `no_pistas` = 0, `capacidad_completo` = 11
+WHERE `id_pista` = 4')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2474): CodeIgniter\Database\BaseConnection->query('UPDATE `instalaciones` SET `nombre` = :nombre:, `descripcion` = :descripcion:, `categoria_principal` = :categoria_principal:, `categoria_opcional1` = :categoria_opcional1:, `precio_completo` = :precio_completo:, `puede_completo` = :puede_completo:, `no_pistas` = :no_pistas:, `capacidad_completo` = :capacidad_completo:
+WHERE `id_pista` = :id_pista:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(216): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 APPPATH\Controllers\Instalaciones.php(377): App\Models\instalacionesModel->updateInstalacion(4, [...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->editarInstalacionBD()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-10-03 09:57:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 09:57:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 10:32:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 10:37:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 10:37:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-03 11:04:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

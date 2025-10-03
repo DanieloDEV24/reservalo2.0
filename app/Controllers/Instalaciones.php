@@ -343,4 +343,65 @@ class Instalaciones extends BaseController
         ]);
         exit;
     }
+
+
+
+    public function editarInstalacionBD()
+    {
+        $post = $this->request->getPost();
+        $instalaciones = new instalacionesModel();
+
+        if(!empty($post))
+        {
+            $id = intval($post["id"]);
+            $nombre = $post["nombre"];
+            $categoria = intval($post["categoria"]);
+            $catSecundaria = intval($post["categoriaSec"]);
+            $noPistas = filter_var($post["noPistas"], FILTER_VALIDATE_BOOLEAN);
+            $puedeCompleta = filter_var($post["puedeCompleta"], FILTER_VALIDATE_BOOLEAN);
+            $precioCompleto = floatval($post["precioCompleto"]);
+            $capacidadCompleta = intval($post["capacidadCompleta"]);
+            $descripcion = $post["descripcion"];
+
+            $instalacionAntigua = $instalaciones->getInstalacion($id);
+            $noPistasAntigua    = filter_var($instalacionAntigua[0]["no_pistas"], FILTER_VALIDATE_BOOLEAN);
+            
+            if($noPistas && !$noPistasAntigua)
+            {
+                $delete = $instalaciones->borrarPistas($id);
+                
+            }
+
+
+        //     $data = [
+        //         "nombre" => $nombre, 
+        //         "descripcion" => $descripcion, 
+        //         "categoria_principal" => $categoria, 
+        //         "categoria_opcional1" => ($catSecundaria === 0) ? null : $catSecundaria,
+        //         "precio_completo" => ($noPistas || $puedeCompleta) ? $precioCompleto : null, 
+        //         "puede_completo" => $puedeCompleta, 
+        //         "no_pistas" => $noPistas, 
+        //         "capacidad_completo" => ($noPistas || $puedeCompleta) ? $capacidadCompleta : null
+        //     ];
+
+        //     $update = $instalaciones->updateInstalacion($id, $data);
+
+        //    if($update)
+        //    {
+        //         echo json_encode([
+        //             "succes" => true,
+        //             "message" => "La instalación ha sido editada correctamente"
+        //         ]);
+        //         exit;
+        //    }
+        //    else
+        //    {
+        //         echo json_encode([
+        //             "succes" => false,
+        //             "message" => "Se ha producido un error a la hora de editar la instalación"
+        //         ]);
+        //         exit;
+        //    }
+        }
+    }
 }
