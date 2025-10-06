@@ -236,4 +236,21 @@ class instalacionesModel extends Model
         return $db->affectedRows() > 0;
     }
 
+
+    public function getLastIdPistas() 
+    {
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('pistas');
+
+        $query = $builder->selectMax('id_pista')->get();
+
+        $result = $query->getResultArray();
+        return $result;
+    }
+
+    
+
 }

@@ -16,6 +16,7 @@ $(document).ready(() => {
     let pistas = [];
     let contadorAcordeon = 1;
     let imagenesNoPistas
+    let estadoInicial // --> Estado inicial del switch de no pistas
     const item = $(`<div class="accordion-item" data-index="1">
     <h2 class="accordion-header">
       <button class="accordion-button nuevaPista collapsed d-flex justify-content-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -807,6 +808,7 @@ $(document).ready(() => {
                 let puedeCompletoChecked = (parseInt(response.instalacion[0].puede_completo) === 1) ? "checked" : ""; // --> Comprobamos si está marcado el switch que nos indica que se puede hacer una reserva completa en la instalación
 
                 $('#noPistasEditar').prop('checked', noPistasChecked); // --> Lo reflejamos en el switch
+                estadoInicial = noPistasChecked
                 $('#puedeCompletoEditar').prop('checked', puedeCompletoChecked); // --> Lo reflejamos en el switch
 
                 $('#capacidadCompletoEditar').val(response.instalacion[0].capacidad_completo) // --> Añadimos el valor de la capacidad total de la instalación
@@ -816,10 +818,11 @@ $(document).ready(() => {
                 let pistas = response.pistas // --> Obtenemos las pistas
 
                 // Recorremos las pistas
-                pistas.map((pista) => {
+                if (!noPistasChecked) {
+                    pistas.map((pista) => {
 
-                    // Por cada pista creamos un accordion con sus datos
-                    let acordion = `
+                        // Por cada pista creamos un accordion con sus datos
+                        let acordion = `
                     <div class="accordion-item mt-3 accordionEditarPista" data-index="${pista.id_pista}">
                 <h2 class="accordion-header">
                     <button class="accordion-button nuevaPista collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${pista.id_pista}" aria-expanded="true" aria-controls="${pista.id_pista}">
@@ -861,9 +864,19 @@ $(document).ready(() => {
                 </div>
             </div>
                     `
-                    // Los añadimos al modal
-                    $('#accordionEditarPistas').append(acordion)
-                })
+                        // Los añadimos al modal
+                        $('#accordionEditarPistas').append(acordion)
+                    })
+                }
+                else {
+                    $('#accordionEditarPistas').append(`<div class="w-50">
+                                                        Selecciona las imágenes de la pista (máx 4)
+                                                        <label class="btn btn-primary mt-1">
+                                                            Imagenes
+                                                            <input class="imagenesEditarNoPistas" type="file" name="imagenesEditar[]" multiple accept="image/*" hidden>
+                                                        </label>
+                                                    </div>`)
+                }
 
                 // Añadimos un accordion para poder crear una nueva pista
                 let nuevoId = parseInt(pistas[(pistas.length - 1)].id_pista) + 1
@@ -1017,27 +1030,25 @@ $(document).ready(() => {
     })
 
 
-
-
     let datosPistas = [] // --> Variable donde irán los datos de las pistas hasta que guarde la edición
-    
+
     // Evento que controla el estado del switch de manera que en el caso de no poder pistas se eleminen los accordions con las pistas, pero guardandolos en un array hasta que guardemos la instalación
     $('#noPistasEditar').on('change', function () {
 
         // Comprobamos el estado del switch que nos dice si solo se permite la reserva completa (no hay pistas) o se puede reservar por pista
         let checked = $(this).is(':checked');
 
-        // Comprobamos que no este seleccionado ni el no pistas no el puede hacerse reserva solo completa para deshabilitar los campos de precio y capacidad completa
-        if(!checked && !$('#modalEditarInstalacion #puedeCompletoEditar').is(':checked'))
-        {
-           $('#modalEditarInstalacion #capacidadCompletoEditar').prop('readonly', true); // --> Hacemos que el campo de la capacidad completa solo se pueda leer
-           $('#modalEditarInstalacion #capacidadCompletoEditar').css('color', '#ccc'); // --> Hacemos que el campo de la capacidad completa sea de color #ccc para dar sensación de no editable
+        console.log(checked, estadoInicial);
 
-           $('#modalEditarInstalacion #precioCompletoEditar').prop('readonly', true); // --> Hacemos que el campo del precio completa solo se pueda leer
-           $('#modalEditarInstalacion #precioCompletoEditar').css('color', '#ccc'); // --> Hacemos que el campo del precio completa sea de color #ccc para dar sensación de no editable
+        // Comprobamos que no este seleccionado ni el no pistas no el puede hacerse reserva solo completa para deshabilitar los campos de precio y capacidad completa
+        if (!checked && !$('#modalEditarInstalacion #puedeCompletoEditar').is(':checked')) {
+            $('#modalEditarInstalacion #capacidadCompletoEditar').prop('readonly', true); // --> Hacemos que el campo de la capacidad completa solo se pueda leer
+            $('#modalEditarInstalacion #capacidadCompletoEditar').css('color', '#ccc'); // --> Hacemos que el campo de la capacidad completa sea de color #ccc para dar sensación de no editable
+
+            $('#modalEditarInstalacion #precioCompletoEditar').prop('readonly', true); // --> Hacemos que el campo del precio completa solo se pueda leer
+            $('#modalEditarInstalacion #precioCompletoEditar').css('color', '#ccc'); // --> Hacemos que el campo del precio completa sea de color #ccc para dar sensación de no editable
         }
-        else 
-        {
+        else {
             $('#modalEditarInstalacion #capacidadCompletoEditar').prop('readonly', false); // --> Hacemos que el campo de la capacidad completa se pueda editar
             $('#modalEditarInstalacion #capacidadCompletoEditar').css('color', '#000'); // --> Hacemos que el campo de la capacidad completa tenga el color #000 dando la sensación de que ya es editable
 
@@ -1105,13 +1116,14 @@ $(document).ready(() => {
                 if (checked) {
 
                     $('#accordionEditarPistas').empty() // --> Vaciamos el contenedor de los accordion
+
                     $('#accordionEditarPistas').append(`<div class="w-50">
-                                                    Selecciona las imágenes de la pista (máx 4)
-                                                    <label class="btn btn-primary mt-1">
-                                                        Imagenes
-                                                        <input class="imagenesEditarNoPistas" type="file" name="imagenesEditar[]" multiple accept="image/*" hidden>
-                                                    </label>
-                                                </div>`)
+                                                        Selecciona las imágenes de la pista (máx 4)
+                                                        <label class="btn btn-primary mt-1">
+                                                            Imagenes
+                                                            <input class="imagenesEditarNoPistas" type="file" name="imagenesEditarNoPista[]" multiple accept="image/*" hidden>
+                                                        </label>
+                                                    </div>`)
 
                 }
                 else {
@@ -1119,14 +1131,15 @@ $(document).ready(() => {
                     // Si está desactivado el switch, volvemos a dibujar las pistas guardadas en datosPistas
                     $('#accordionEditarPistas').empty(); // --> Vaciamos el contenedor de los accordion para evitar duplicados
 
-                    // Si hay datos, es decir, el array no esta vacía lo recorremos y creamos los accordion
-                    if (datosPistas.length !== 0) {
+                    if (!estadoInicial) {
+                        // Si hay datos, es decir, el array no esta vacía lo recorremos y creamos los accordion
+                        if (datosPistas.length !== 0) {
 
-                        // Recorremos el array con los datos de las pistas
-                        datosPistas.map((pista) => {
+                            // Recorremos el array con los datos de las pistas
+                            datosPistas.map((pista) => {
 
-                            // Creamos el accordion
-                            let acordion = `
+                                // Creamos el accordion
+                                let acordion = `
                                 <div class="accordion-item mt-3 accordionEditarPista" data-index="${pista.id}">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button nuevaPista collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${pista.id}" aria-expanded="true" aria-controls="${pista.id}">
@@ -1168,9 +1181,10 @@ $(document).ready(() => {
                                     </div>
                                 </div>
                             `
-                            // Los añadimos al modal
-                            $('#accordionEditarPistas').append(acordion)
-                        })
+                                // Los añadimos al modal
+                                $('#accordionEditarPistas').append(acordion)
+                            })
+                        }
                     }
 
                     // Creamos el accordion de nueva pista para darnos la posibilidad de crear una nueva pista
@@ -1220,7 +1234,7 @@ $(document).ready(() => {
                     // Lo añadimos al contenedor de los accordions 
                     $('#accordionEditarPistas').append(accordionNuevo);
                 }
-            }, 
+            },
             complete: function () {
 
                 // Obtenemos los btns de los accordions
@@ -1239,22 +1253,20 @@ $(document).ready(() => {
 
 
     // Evento que controla el switch que nos indica si se puede hacer una reserva completa o no. En el caso de que si habilita los campos de precio completo y capacidad completa
-    $('#puedeCompletoEditar').on('change', function (){
+    $('#puedeCompletoEditar').on('change', function () {
 
         // Comprobamos el estado del switch que nos dice si se puede hacer una reserva completa
         let checked = $(this).is(':checked');
 
         // Comprobamos que no este seleccionado ni el no pistas no el puede hacerse reserva solo completa para deshabilitar los campos de precio y capacidad completa
-        if(!checked && !$('#modalEditarInstalacion #noPistasEditar').is(':checked'))
-        {
-           $('#modalEditarInstalacion #capacidadCompletoEditar').prop('readonly', true); // --> Hacemos que el campo de la capacidad completa solo se pueda leer
-           $('#modalEditarInstalacion #capacidadCompletoEditar').css('color', '#ccc'); // --> Hacemos que el campo de la capacidad completa sea de color #ccc para dar sensación de no editable
+        if (!checked && !$('#modalEditarInstalacion #noPistasEditar').is(':checked')) {
+            $('#modalEditarInstalacion #capacidadCompletoEditar').prop('readonly', true); // --> Hacemos que el campo de la capacidad completa solo se pueda leer
+            $('#modalEditarInstalacion #capacidadCompletoEditar').css('color', '#ccc'); // --> Hacemos que el campo de la capacidad completa sea de color #ccc para dar sensación de no editable
 
-           $('#modalEditarInstalacion #precioCompletoEditar').prop('readonly', true); // --> Hacemos que el campo del precio completa solo se pueda leer
-           $('#modalEditarInstalacion #precioCompletoEditar').css('color', '#ccc'); // --> Hacemos que el campo del precio completa sea de color #ccc para dar sensación de no editable
+            $('#modalEditarInstalacion #precioCompletoEditar').prop('readonly', true); // --> Hacemos que el campo del precio completa solo se pueda leer
+            $('#modalEditarInstalacion #precioCompletoEditar').css('color', '#ccc'); // --> Hacemos que el campo del precio completa sea de color #ccc para dar sensación de no editable
         }
-        else 
-        {
+        else {
             $('#modalEditarInstalacion #capacidadCompletoEditar').prop('readonly', false); // --> Hacemos que el campo de la capacidad completa se pueda editar
             $('#modalEditarInstalacion #capacidadCompletoEditar').css('color', '#000'); // --> Hacemos que el campo de la capacidad completa tenga el color #000 dando la sensación de que ya es editable
 
@@ -1264,11 +1276,11 @@ $(document).ready(() => {
     })
 
 
-    
+
 
     // Evento que cuando pulsamos el btn de borrar una pista, lanzamos una un mensaje para que el usuario se asegure de que quiere elminar la pista
     $(document).on('click', '.borrarPistaEditar', function () {
-        
+
         let idPista = parseInt($(this).closest('.accordion-item').data('index')); // --> Obtenemos el id de la pista
         $('#modalBorraPista').data('index', idPista) // --> Guardamos el id de la pista en el data-index del modal de borrar la pista 
 
@@ -1321,10 +1333,10 @@ $(document).ready(() => {
         $.ajax({
             type: "POST",
             url: "borrarPista", // --> URL a donde va la petición
-            data: {id: id},
+            data: { id: id },
             dataType: "json",
             success: function (response) {
-                
+
                 let accordion = $(`#modalEditarInstalacion #accordionEditarPistas .accordion-item[data-index="${id}"]`) // --> Obtenemos el accordion de la pista
                 accordion.remove() // --> Borramos el accordion
                 // Cerramos el modal de borrar pistas 
@@ -1355,26 +1367,56 @@ $(document).ready(() => {
     });
 
 
+    // Evento en el que controlamos la subida de imágenes. Controlamos cada vez que vayamos a subir o editar los archivos.
+    $('#accordionEditarPistas').on('change', '.imagenesEditar', function (event) {
+        const maxArchivos = 4; // --> Número máximo de imágenes que podemos subir. En este caso 4
+        const archivos = this.files; // --> Archivos que hemos subido
+
+        // Comprobamos que no se supere el número máximo de archivos establecido
+        if (archivos.length > maxArchivos) {
+            alert('Solo puedes seleccionar un máximo de 4 imágenes.');
+            this.value = '';
+            return;
+        }
+
+
+        // Guardamos las imágenes
+        const body = $(this).closest('.accordion-body');
+        body.data('imagenesEditar', archivos);
+
+
+        let btnGuardar = $(this).closest('.accordion-body').find('.guardarPistaEditar');
+        if(archivos.length > 0)
+        {
+            btnGuardar.prop('disabled', false);
+        }
+        else
+        {
+            btnGuardar.prop('disabled', true);
+        }
+    });
+
+
 
     // Evento en el que guardamos una pista nueva en el modal de editar instalación. Esta funcionalidad nos permite añadir una pista nueva a una instalación ya creada
-    $(document).on('click', '.guardarPistaNuevaEditar', function () { 
-        
+    $(document).on('click', '.guardarPistaNuevaEditar', function () {
+
         // Obtenemos el accordion
         let accordionPistaNueva = $(this).closest('.accordionNuevaPista')
 
         // Obtenemos los datos de la nueva pista
-        let nombre    = $(this).closest('.accordionNuevaPista').find('.nombrePista').val() // --> nombre de la pista
+        let nombre = $(this).closest('.accordionNuevaPista').find('.nombrePista').val() // --> nombre de la pista
         let capacidad = $(this).closest('.accordionNuevaPista').find('.capacidadPista').val() // --> capacidad de la pista
-        let precio    = $(this).closest('.accordionNuevaPista').find('.precioPista').val() // --> precio de la pista
+        let precio = $(this).closest('.accordionNuevaPista').find('.precioPista').val() // --> precio de la pista
         let archivos = $(this).closest('.accordion-body').find('.imagenesEditarNuevaPista')[0].files;
-    
+
 
         // Obtenemos el id de la instalación
         let idInstalacion = $(this).closest('#modalEditarInstalacion').data('index')
 
         // Creamos el formData
         let formData = new FormData()
-        
+
         formData.append('nombre_pista', nombre)
         formData.append('capacidad_pista', capacidad)
         formData.append('precio_pista', precio)
@@ -1391,16 +1433,16 @@ $(document).ready(() => {
             data: formData,
             processData: false, // Importante para enviar FormData
             contentType: false, // Importante para enviar FormData
-            dataType: 'json', 
+            dataType: 'json',
             success: function (response) {
 
                 // Si todo ha ido bien creamos un accordion con los nuevos datos
 
-                    // Obtenemos el id de la nueva pista
-                    let id = parseInt(response.id_pista)
+                // Obtenemos el id de la nueva pista
+                let id = parseInt(response.id_pista)
 
-                    // Creamos un nuevo accordion
-                    let acordion = `
+                // Creamos un nuevo accordion
+                let acordion = `
                                 <div class="accordion-item mt-3 accordionEditarPista" data-index="${id}">
                                     <h2 class="accordion-header">
                                         <button class="accordion-button nuevaPista collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${id}" aria-expanded="true" aria-controls="${id}">
@@ -1443,124 +1485,132 @@ $(document).ready(() => {
                                 </div>
                             `
 
-                    // Lo añadimos delante del accordion de nueva pista
-                    accordionPistaNueva.before(acordion);
+                // Lo añadimos delante del accordion de nueva pista
+                accordionPistaNueva.before(acordion);
 
-                    // Vacimamos los campos del accordion de la pista nueva
-                    accordionPistaNueva.find('.nombrePista').val(''); // --> Vaciamos el campo de nombre
-                    accordionPistaNueva.find('.capacidadPista').val('') // --> Vaciamos el campo de capacidad
-                    accordionPistaNueva.find('.precioPista').val('') // --> Vaciamos el campo de precio
+                // Vacimamos los campos del accordion de la pista nueva
+                accordionPistaNueva.find('.nombrePista').val(''); // --> Vaciamos el campo de nombre
+                accordionPistaNueva.find('.capacidadPista').val('') // --> Vaciamos el campo de capacidad
+                accordionPistaNueva.find('.precioPista').val('') // --> Vaciamos el campo de precio
 
-                    // Cerramos el accordion de la pista nueva
-                    accordionPistaNueva.collapse('hide')
+                // Cerramos el accordion de la pista nueva
+                accordionPistaNueva.collapse('hide')
 
             }
         });
 
-        
+
     });
 
 
+    $(document).on('click', '#guardarInstalacionEditar', function () {
 
-    // Evento que se encarga de guardar los datos de la pista editada. Para ello guarda la información nueva de la instalación, hace una peticion ajax al back con la información y guarda esta informacion
-    $(document).on('click', '#guardarInstalacionEditar', function (e) { 
+        let errores = [];
+        $('#modalEditarInstalacion .alertModal').empty();
 
-        let errores = [] // --> Array que contendrá los errores 
-        $('#modalEditarInstalacion .alertModal').empty(); // --> Vaciamos el div que contiene los mensajes de error
-        
-        // Obtenemos el id de la instalacion
-        let id = $('#modalEditarInstalacion').data('index');
+        // Variables principales
+        const id = $('#modalEditarInstalacion').data('index');
+        const nombre = $('#nombreInstalacionEditar').val().trim();
+        const categoria = parseInt($('#categoriasEditar').val());
+        let categoriaSecundaria = 0;
+        const noPistas = $('#noPistasEditar').is(':checked');
+        const puedeCompleta = $('#puedeCompletoEditar').is(':checked');
+        const capacidadCompleta = $('#capacidadCompletoEditar').val();
+        const precioCompleto = $('#precioCompletoEditar').val();
+        const descripcion = $('#descripcionEditar').val().trim();
 
-        let nombre              = $('#nombreInstalacionEditar').val(); // --> Obtenemos el nombre nuevo de la instalación
-        let categoria           = $('#categoriasEditar').val(); // --> Obtenemos la categoria nueva de la instalación
-        let categoriaSecundaria = 0; // --> variable donde guardamos la categoría secundaria
-        let noPistas            = $('#noPistasEditar').is(':checked') // --> Obtenemos el estado del switch que nos muestra si se puede crear pistas o no
-        let puedeCompleta       = $('#puedeCompletoEditar').is(':checked') // --> Obtenemos el estado del switch que nos muestra si se puede hacer una reserva completa
-        let capacidadCompleta   = parseInt($('#capacidadCompletoEditar').val()) // --> Obtenemos el valor de la capacidad de la reserva completa
-        let precioCompleto      = parseFloat($('#precioCompletoEditar').val()) // --> Obtenemos el precio de la reserva completa
-        let descripcion         = $('#descripcionEditar').val() // --> Obtenemos la descripción de la instalación
-
-
-        // Evento donde controlamos la selección de la categoría secundaria. Lo que hacemos es recorrer los inputs con las categorías secundarias
-        $('#subcategoriasEditar input').each(function () {
-            // Comprobamos que esté seleccionada
-            if ($(this).is(':checked')) {
-                categoriaSecundaria = $(this).val(); // --> Obtenemos el valor de la categoría seleccionada
-            }
+        // Obtener categoría secundaria
+        $('#subcategoriasEditar input:checked').each(function () {
+            categoriaSecundaria = $(this).val();
         });
 
-        // Controlamos de que la información obtenida sea correcta
+        // Validaciones básicas
+        if (!nombre) errores.push('El nombre no puede estar vacío');
+        if (isNaN(categoria) || categoria === -1) errores.push('Debes seleccionar una categoría');
+        if (!descripcion) errores.push('La descripción no puede estar vacía');
 
-        // Comprobamos que el nombre no este vacío
-        if(nombre === "" || !nombre)
-        {
-            errores.push('El nombre no puede estar vacío');
+        // Validaciones de capacidad y precio
+        if ((puedeCompleta || noPistas) && (isNaN(precioCompleto) || precioCompleto <= 0)) {
+            errores.push("Debes introducir un precio válido");
         }
 
-        // Comprobamos que se haya seleccionado una categoría
-        if(parseInt(categoria)=== -1)
-        {
-            errores.push('Debes seleccionar una categoría');
+        if ((puedeCompleta || noPistas) && (isNaN(capacidadCompleta) || capacidadCompleta <= 0)) {
+            errores.push("Debes introducir una capacidad válida");
         }
 
-        // Comprobamos que la descripcioón no esté vacía
-        if(descripcion === "" || !descripcion)
-        {
-            errores.push('La descripción no puede estar vacía');
+        // Comprobamos número de pistas
+        const numPistas = $('#accordionEditarPistas .accordionEditarPista').length;
+        if (numPistas === 0 && !noPistas) {
+            errores.push("Si no ha seleccionado la opción de 'No tiene pistas', debe crear al menos una pista");
         }
 
-        // Comprobamos que el precio completo no este vacío y sea un valor adecuado, es decir, sea un numero
-        if ((puedeCompleta || noPistas) && (precioCompleto === '' || isNaN(precioCompleto)))
-        {
-            errores.push("Debes seleccionar un precio válido")
-        }
-
-        // Comprobamos que la capacidad no esté vacía y que sea un valor adecuado, es decir, un numero
-        if ((puedeCompleta || noPistas) && (capacidadCompleta === '' || isNaN(capacidadCompleta) || parseInt(capacidadCompleta) === 0))
-        {
-            errores.push("Debes seleccionar una capacidad válida")
-        }
-
-        // Si no hay errores continuamos con el guardado de los datos de la instalación
-        if(errores.length === 0)
-        {
-            // Objeto con los valores nuevos de la instalción
-            let data = {
-                id:                id,
-                nombre:            nombre, 
-                categoria:         categoria, 
-                categoriaSec:      categoriaSecundaria, 
-                noPistas:          noPistas, 
-                puedeCompleta:     puedeCompleta, 
-                capacidadCompleta: capacidadCompleta, 
-                precioCompleto:    precioCompleto,
-                descripcion:       descripcion
+        // Imágenes (solo si noPistas está activado, pero no obligatorias)
+        let imagenesNoPistasEditar = null;
+        if (noPistas) {
+            const inputImagenes = $('#accordionEditarPistas .imagenesEditarNoPistas');
+            if (inputImagenes.length > 0 && inputImagenes[0].files.length > 0) {
+                imagenesNoPistasEditar = inputImagenes[0].files;
             }
-
-            // Realizamos una peticion ajax al back para editar la instalacion
-            $.ajax({
-                type: "POST",
-                url: "editarInstalacionBD", // --> URL donde ira dirigida la peticion
-                data: data,
-                dataType: "json",
-                success: function (response) {
-                    
-                    $('#modalEditarInstalacion').modal('hide');
-
-                }
-            });
-
         }
 
-        // En el caso de que si haya errores, recorremos el array de errores y los añadimos al div que muestra los alerts
-        else 
-        {
-            let elementosLista = errores.map(e => `<li>${e}</li>`).join('');
-            alertBox = $(`<div class="alert alert-danger mb-0" role="alert"><ul class="mb-0">${elementosLista}</ul></div>`);
+        // Mostrar errores si los hay
+        if (errores.length > 0) {
+            const listaErrores = errores.map(e => `<li>${e}</li>`).join('');
+            const alertBox = $(`
+            <div class="alert alert-danger mb-0" role="alert">
+                <ul class="mb-0">${listaErrores}</ul>
+            </div>
+        `);
             $('#modalEditarInstalacion .alertModal').prepend(alertBox);
+            return;
         }
-        
+
+        // ---- Si no hay errores ----
+        const formData = new FormData();
+        formData.append('id', id);
+        formData.append('nombre', nombre);
+        formData.append('categoria', categoria);
+        formData.append('categoriaSec', categoriaSecundaria);
+        formData.append('noPistas', noPistas);
+        formData.append('puedeCompleta', puedeCompleta);
+        formData.append('capacidadCompleta', capacidadCompleta);
+        formData.append('precioCompleto', precioCompleto);
+        formData.append('descripcion', descripcion);
+
+        if (imagenesNoPistasEditar) {
+            for (let i = 0; i < imagenesNoPistasEditar.length; i++) {
+                formData.append('imagenesEditarNoPista[]', imagenesNoPistasEditar[i]);
+            }
+        }
+
+        // Petición AJAX
+        $.ajax({
+            type: "POST",
+            url: "editarInstalacionBD",
+            data: formData,
+            contentType: false,
+            processData: false,
+            dataType: "json",
+            beforeSend: function () {
+                $("#loader").show();
+            },
+            success: function (response) {
+                $("#loader").hide();
+                $('#modalEditarInstalacion').modal('hide');
+            },
+            error: function (xhr, status, error) {
+                $("#loader").hide();
+                console.error("Error al guardar la instalación:", error);
+                const alertBox = $(`
+                <div class="alert alert-danger mb-0" role="alert">
+                    <ul class="mb-0"><li>Ha ocurrido un error al guardar la instalación. Intente nuevamente.</li></ul>
+                </div>
+            `);
+                $('#modalEditarInstalacion .alertModal').prepend(alertBox);
+            }
+        });
     });
+
 
     /***********************************************************************************************************************************
     *******************************************************  FUNCIONES DE AYUDA  *******************************************************
