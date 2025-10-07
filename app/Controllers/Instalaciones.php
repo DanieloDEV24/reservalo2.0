@@ -28,7 +28,8 @@ class Instalaciones extends BaseController
         $verInstalacion    = view('instalaciones/modalVerInstalacion', ["baseUrl" => base_url()]);
         $borradoPista      = view('instalaciones/modalBorrarPista', ["baseUrl" => base_url()]);
         $editarInstalacion = view('instalaciones/modalEditarInstalacion', ["baseUrl" => base_url()]);
-        $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "verInstalacion" => $verInstalacion, "editarInstalacion" => $editarInstalacion, "modalBorrarPista" => $borradoPista, "baseUrl" => base_url()]);
+        $darDeBaja         = view('instalaciones/modalBajaInstalacion', ["baseUrl" => base_url()]);
+        $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "verInstalacion" => $verInstalacion, "editarInstalacion" => $editarInstalacion, "modalBorrarPista" => $borradoPista, "modalBajaInstalacion"=>$darDeBaja, "baseUrl" => base_url()]);
 
         return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
     }
@@ -208,25 +209,82 @@ class Instalaciones extends BaseController
 
     public function editarPista()
     {
-        $post = $this->request->getPost();
+        $post  = $this->request->getPost();
+        $files = $this->request->getFiles();
         $instalacionesModel = new instalacionesModel();
 
         if (!empty($post)) {
             $id_pista = intval($post["id"]);
-            $data     = $post["data"];
-            $update   = $instalacionesModel->updatePista($id_pista, $data);
 
+            $imagenesGuardadas = [];
+            if (isset($files['imagenes'])) {
+                $imagenes = $files['imagenes'];
+
+                // Carpeta general donde se guardarán las imágenes
+                $uploadPath = FCPATH . 'images/';
+
+                // Crear la carpeta si no existe
+                if (!is_dir($uploadPath)) {
+                    mkdir($uploadPath, 0777, true);
+                }
+
+                // Guardar cada imagen
+                foreach ($imagenes as $imagen) {
+                    if ($imagen->isValid() && !$imagen->hasMoved()) {
+                        // Mantiene el nombre original para reconocerlo fácilmente
+                        $nuevoNombre = $imagen->getName();
+
+                        // Movemos la imagen a la carpeta "images"
+                        $imagen->move($uploadPath, $nuevoNombre);
+
+                        // Guardamos la ruta relativa (para la BD)
+                        $imagenesGuardadas[] = $nuevoNombre;
+                    }
+                }
+            }
+
+            // --- 2️⃣ Preparamos los datos a actualizar ---
+            $data = [
+                'nombre_pista'     => $post["nombre_pista"] ?? null,
+                'capacidad_pista'  => $post["capacidad_pista"] ?? null,
+                'precio_pista'     => $post["precio_pista"] ?? null,
+                'imagen1'          => $imagenesGuardadas[0] ?? null,
+                'imagen2'          => $imagenesGuardadas[1] ?? null,
+                'imagen3'          => $imagenesGuardadas[2] ?? null,
+                'imagen4'          => $imagenesGuardadas[3] ?? null,
+            ];
+
+            // --- 3️⃣ Actualizamos la pista ---
+            $update = $instalacionesModel->updatePista($id_pista, $data);
+
+            // --- 4️⃣ Respuesta ---
             if ($update) {
                 $pista = $instalacionesModel->getPistasById($id_pista);
+
                 echo json_encode([
-                    "success" => true,
-                    "message" => "Pista editada correctamente",
-                    "pista"   => $pista
+                    "success"  => true,
+                    "message"  => "Pista editada correctamente",
+                    "pista"    => $pista,
+                    "imagenes" => $imagenesGuardadas
+                ]);
+                exit;
+            } else {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "No se pudo actualizar la pista"
                 ]);
                 exit;
             }
+        } else {
+            echo json_encode([
+                "success" => false,
+                "message" => "Datos no recibidos"
+            ]);
+            exit;
         }
     }
+
+
 
 
     public function getNewIndexPista()
@@ -370,7 +428,7 @@ class Instalaciones extends BaseController
                 foreach ($files as $file) {
                     if ($file->isValid() && !$file->hasMoved()) {
                         $nombreArchivo = $file->getClientName();
-                        $file->move(FCPATH . 'uploads/pistas/', $nombreArchivo);
+                        $file->move(FCPATH . 'images', $nombreArchivo);
                         $imagenesGuardadas["imagen{$i}"] = $nombreArchivo;
                         $i++;
                         if ($i > 4) break;
@@ -449,6 +507,73 @@ class Instalaciones extends BaseController
         }
 
         // Si no llega ningún POST válido
+        echo json_encode([
+            "success" => false,
+            "message" => "No se recibieron datos válidos"
+        ]);
+        exit;
+    }
+
+
+    public function mensajeDarBajaInstalacion()
+    {
+        $post = $this->request->getPost();
+        $instalacionesModel = new instalacionesModel();
+
+        if (!empty($post)) {
+            $id_instalacion = intval($post["id"]);
+            $result = $instalacionesModel->getInstalacion($id_instalacion);
+            if ($result) {
+                echo json_encode([
+                    "success" => true,
+                    "message" => "La instalación ha sido dada de baja correctamente",
+                    "instalacion" => $result
+                ]);
+                exit;
+            } else {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "No se pudo dar de baja la instalación"
+                ]);
+                exit;
+            }
+        }
+
+        echo json_encode([
+            "success" => false,
+            "message" => "No se recibieron datos válidos"
+        ]);
+        exit;
+    }
+
+
+
+    public function darBajaInstalacion()
+    {
+        $post = $this->request->getPost();
+        $instalacionesModel = new instalacionesModel();
+
+        if (!empty($post)) {
+            $id_instalacion = intval($post["id"]);
+            $data = [
+                "estado" => 1
+            ];
+            $result = $instalacionesModel->updateInstalacion($id_instalacion, $data);
+            if ($result) {
+                echo json_encode([
+                    "success" => true,
+                    "message" => "La instalación ha sido dada de baja correctamente"
+                ]);
+                exit;
+            } else {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "No se pudo dar de baja la instalación"
+                ]);
+                exit;
+            }
+        }
+
         echo json_encode([
             "success" => false,
             "message" => "No se recibieron datos válidos"

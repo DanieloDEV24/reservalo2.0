@@ -379,3 +379,14 @@ table td .dropdown button i
   opacity: 1;
 }
 
+#tablaInstalaciones td
+{
+  vertical-align: middle;
+}
+
+#tablaInstalaciones td i
+{
+  font-size: 20px;
+  color: #111;
+}
+

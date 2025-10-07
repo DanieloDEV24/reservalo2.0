@@ -951,6 +951,9 @@ $(document).ready(() => {
     // Evento en el que mientras escribimos en cualquier campo del accordion, comprobamos si ha habido algún cambio en la información de la pista que queremos editar. En el caso de que si lo haya y no este vacío el campo. estará habilitado el btn de guardar pista, mientras tanto no lo estará
     $(document).on('input', '#accordionEditarPistas input', function () {
 
+        // 🚫 Si el input es de tipo file (imagenesEditar), salimos del evento
+        if ($(this).attr('type') === 'file') return;
+
         let $accordionItem = $(this).closest('.accordion-item'); // --> Obtenemos el accordion en el que se encuentra el campo que está siendo editado
         let idPista = parseInt($(this).closest('.accordion-item').data('index')); // --> Obtenemos el id de la pista
 
@@ -1000,34 +1003,58 @@ $(document).ready(() => {
 
 
     // Evento en el que controlamos el guardado de las pistas que hayamos editado. 
+    // Evento: Guardar pista editada (nombre, capacidad, precio e imágenes)
     $(document).on('click', '.guardarPistaEditar', function () {
 
-        let $accordionItem = $(this).closest('.accordion-item'); // --> Obtenemos el accordion en el que se encuentra el campo que está siendo editado
-
-        let idPista = parseInt($(this).closest('.accordion-item').data('index')); // --> Obtenemos el id de la pista
+        let $accordionItem = $(this).closest('.accordion-item');
+        let idPista = parseInt($accordionItem.data('index'));
 
         // Obtenemos los valores
-        let nombre = $accordionItem.find('.nombrePistaEditar').val(); // --> nombre nuevo de la pista
-        let capacidad = $accordionItem.find('.capacidadPistaEditar').val(); // --> capacidad nueva de la pista
-        let precio = $accordionItem.find('.precioPistaEditar').val(); // --> precio nuevo de la pista
-        // let imagenes  = $(this).closest('.accordion-body').data('imagenesPistaEditar') --> ver mas tarde con un panel aparte como el gestor de la web del Ayuntamiento de Fuente de Piedra
+        let nombre = $accordionItem.find('.nombrePistaEditar').val();
+        let capacidad = $accordionItem.find('.capacidadPistaEditar').val();
+        let precio = $accordionItem.find('.precioPistaEditar').val();
 
-        // Realizamos una petición ajax al back, donde enviamos la información nueva de las pistas
+        // Obtenemos las imágenes guardadas en el data del body
+        let body = $accordionItem.find('.accordion-body');
+        let archivos = body.data('imagenesEditar');
+
+        // Creamos el objeto FormData para enviar tanto texto como archivos
+        let formData = new FormData();
+        formData.append('id', idPista);
+        formData.append('nombre_pista', nombre);
+        formData.append('capacidad_pista', capacidad);
+        formData.append('precio_pista', precio);
+
+        // Añadimos las imágenes seleccionadas
+        if (archivos && archivos.length > 0) {
+            for (let i = 0; i < archivos.length; i++) {
+                formData.append('imagenes[]', archivos[i]);
+            }
+        }
+
+        // Petición AJAX al backend
         $.ajax({
             type: "POST",
-            url: "editarPista", // --> url a la que hacemos la petición
-            data: {
-                id: idPista,
-                data: { nombre_pista: nombre, capacidad_pista: capacidad, precio_pista: precio }
-            },
+            url: "editarPista", // <-- tu endpoint en el backend
+            data: formData,
+            processData: false, // <-- importante para que jQuery no lo procese
+            contentType: false, // <-- importante para enviar correctamente los archivos
             success: function (response) {
+                // Deshabilitamos el botón de guardar después de guardar los datos
+                $accordionItem.find('.guardarPistaEditar').prop('disabled', true);
 
-                // Como hemos editado la pista, deshabilitamos de nuevo el btn de guardar pista
-                $accordionItem.find('.guardarPistaEditar').prop('disabled', true)
+                // (Opcional) limpiar input de imágenes si quieres
+                $accordionItem.find('.imagenesEditar').val('');
+
+                alert('Pista guardada correctamente.');
+            },
+            error: function () {
+                alert('Error al guardar la pista.');
             }
         });
 
-    })
+    });
+
 
 
     let datosPistas = [] // --> Variable donde irán los datos de las pistas hasta que guarde la edición
@@ -1385,14 +1412,9 @@ $(document).ready(() => {
         body.data('imagenesEditar', archivos);
 
 
-        let btnGuardar = $(this).closest('.accordion-body').find('.guardarPistaEditar');
-        if(archivos.length > 0)
-        {
+        let btnGuardar = $(this).closest('.accordion-item').find('.guardarPistaEditar');
+        if (archivos.length > 0) {
             btnGuardar.prop('disabled', false);
-        }
-        else
-        {
-            btnGuardar.prop('disabled', true);
         }
     });
 
@@ -1502,11 +1524,11 @@ $(document).ready(() => {
 
     });
 
-
+    // Evento en el que controlamos el guardado de la instalación editada. Cuando hacemos click al btn de editar instalación, obtenemos los valores de los campos y los enviamos al backend. Antes de mandarlos al backend hacemos una serie de comprobaciones para ver si la información es correcta
     $(document).on('click', '#guardarInstalacionEditar', function () {
 
-        let errores = [];
-        $('#modalEditarInstalacion .alertModal').empty();
+        let errores = []; // --> Array donde guardaremos los errores que vayamos encontrando
+        $('#modalEditarInstalacion .alertModal').empty(); // --> Vaciamos el contenedor de alertas
 
         // Variables principales
         const id = $('#modalEditarInstalacion').data('index');
@@ -1583,7 +1605,7 @@ $(document).ready(() => {
             }
         }
 
-        // Petición AJAX
+        // Petición AJAX al backend para guardar los datos de la instalación editada
         $.ajax({
             type: "POST",
             url: "editarInstalacionBD",
@@ -1610,6 +1632,52 @@ $(document).ready(() => {
             }
         });
     });
+
+
+    /***********************************************************************************************************************************
+    ***********************************************************  DAR DE BAJA  **********************************************************
+    ***********************************************************************************************************************************/
+   $(document).on('click', '.btnDarBaja', function () {
+        
+        let index = $(this).closest('tr').data('index');
+
+        $.ajax({
+            type: "POST",
+            url: "mensajeDarBajaInstalacion",
+            data: {id: index},
+            dataType: "json",
+            success: function (response) {
+                
+                $('#modalBajaInstalacion h2').text("¿Está seguro que quiere dar de baja la instalación: "+response.instalacion[0].nombre+"?");
+                $('#modalBajaInstalacion').data('index', index);
+
+                $('#modalBajaInstalacion').modal('show');
+            }
+        });
+   })
+
+
+   $(document).on('click', '.aceptarBajaInstalacion', function(){
+
+        let index = $('#modalBajaInstalacion').data('index');
+        $.ajax({
+            type: "POST",
+            url: "darBajaInstalacion",
+            data: {id: index},
+            dataType: "json",
+            success: function (response) {
+               
+                $(`tr[data-index="${index}"]`).addClass('table-danger');
+                // Suponiendo que `index` está definido
+                $(`tr[data-index="${index}"] td:last`).append(`<i class="bi bi-info-circle"
+                data-bs-toggle="tooltip" data-bs-placement="top"
+                data-bs-custom-class="custom-tooltip"
+                data-bs-title="Esta instalación está dada de baja"
+                ></i>`);
+                $('#modalBajaInstalacion').modal('hide'); 
+            }
+        });
+   })
 
 
     /***********************************************************************************************************************************
