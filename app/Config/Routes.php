@@ -29,3 +29,6 @@ $routes->post('/crearPista', 'Instalaciones::crearPista');
 $routes->post('/editarInstalacionBD', 'Instalaciones::editarInstalacionBD');
 $routes->post('/mensajeDarBajaInstalacion', 'Instalaciones::mensajeDarBajaInstalacion');
 $routes->post('/darBajaInstalacion', 'Instalaciones::darBajaInstalacion');
+$routes->post('/darAlta', 'Instalaciones::darAlta');
+$routes->post('/mensajeBorrarInstalacion', 'Instalaciones::mensajeBorrarInstalacion');
+$routes->post('/borrarInstalacion', 'Instalaciones::borrarInstalacion');

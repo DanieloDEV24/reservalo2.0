@@ -29,7 +29,8 @@ class Instalaciones extends BaseController
         $borradoPista      = view('instalaciones/modalBorrarPista', ["baseUrl" => base_url()]);
         $editarInstalacion = view('instalaciones/modalEditarInstalacion', ["baseUrl" => base_url()]);
         $darDeBaja         = view('instalaciones/modalBajaInstalacion', ["baseUrl" => base_url()]);
-        $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "verInstalacion" => $verInstalacion, "editarInstalacion" => $editarInstalacion, "modalBorrarPista" => $borradoPista, "modalBajaInstalacion"=>$darDeBaja, "baseUrl" => base_url()]);
+        $borrarInstalacion = view('instalaciones/modalBorrarInstalacion', ["baseUrl" => base_url()]);
+        $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "verInstalacion" => $verInstalacion, "editarInstalacion" => $editarInstalacion, "modalBorrarPista" => $borradoPista, "modalBajaInstalacion"=>$darDeBaja, "borrarInstalacion"=>$borrarInstalacion, "baseUrl" => base_url()]);
 
         return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
     }
@@ -579,5 +580,106 @@ class Instalaciones extends BaseController
             "message" => "No se recibieron datos válidos"
         ]);
         exit;
+    }
+
+
+    public function darAlta()
+    {
+        $post = $this->request->getPost();
+        $instalacionesModel = new instalacionesModel();
+
+        if(!empty($post))
+        {
+            $id_instalacion = intval($post["id"]);
+            $data = [
+                "estado" => 0
+            ];
+            $result = $instalacionesModel->updateInstalacion($id_instalacion, $data);
+            if($result)
+            {
+                echo json_encode([
+                    "success" => true,
+                    "message" => "La instalación ha sido dada de alta correctamente"
+                ]);
+                exit;
+            }
+            else
+            {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "No se pudo dar de alta la instalación"
+                ]);
+                exit;
+            } 
+        }
+    }
+
+
+    public function mensajeBorrarInstalacion()
+    {
+        $post = $this->request->getPost();
+        $instalacionesModel = new instalacionesModel();
+
+        if (!empty($post)) {
+            $id_instalacion = intval($post["id"]);
+            $result = $instalacionesModel->getInstalacion($id_instalacion);
+            $pistas = $instalacionesModel->getPistasByInstalacion($id_instalacion);
+            if ($result) {
+                echo json_encode([
+                    "success"     => true,
+                    "message"     => "La instalación ha sido encontrada correctamente",
+                    "instalacion" => $result,
+                    "pistas"      => $pistas,
+                    "base_url"    => base_url()
+                ]);
+                exit;
+            } else {
+                echo json_encode([
+                    "success" => false,
+                    "message" => "No se pudo encontrar la instalación"
+                ]);
+                exit;
+            }
+        }
+
+        echo json_encode([
+            "success" => false,
+            "message" => "No se recibieron datos válidos"
+        ]);
+        exit;
+    }
+
+
+    public function borrarInstalacion()
+    {
+        $post = $this->request->getPost();
+        $instalacionesModel = new instalacionesModel();
+
+        if(!empty($post))
+        {
+            $id_instalacion = intval($post["id"]);
+            $borrarPistas = $instalacionesModel->borrarPistas($id_instalacion);
+
+            if($borrarPistas)
+            {
+                $result = $instalacionesModel->deleteInstalacion($id_instalacion);
+                if($result)
+                {
+                    echo json_encode([
+                        "success" => true,
+                        "message" => "La instalación ha sido borrada correctamente"
+                    ]);
+                    exit;
+                }
+                else
+                {
+                    echo json_encode([
+                        "success" => false,
+                        "message" => "No se pudo borrar la instalación"
+                    ]);
+                    exit;
+                }
+            }
+        }
     }
 }

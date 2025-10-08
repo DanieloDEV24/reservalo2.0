@@ -251,6 +251,20 @@ class instalacionesModel extends Model
         return $result;
     }
 
-    
+    public function deleteInstalacion(int $id)
+    {
+        // Conexión a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Seleccionamos la tabla
+        $builder = $db->table('instalaciones');
+
+        // Borramos el registro cuyo id coincida
+        $builder->where('id_instalacion', $id);
+        $builder->delete();
+
+        // Puedes devolver true/false según si se borró algo
+        return $db->affectedRows() > 0;
+    }
 
 }

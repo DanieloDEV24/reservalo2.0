@@ -302,6 +302,18 @@ table td .dropdown button i
     l20-1 0.8s infinite linear alternate,
     l20-2 1.6s infinite linear;
 }
+
+.loader2 {
+  width: 35px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 5px solid #32cccc;
+  animation:
+    l20-1 0.8s infinite linear alternate,
+    l20-2 1.6s infinite linear;
+}
+
+
 @keyframes l20-1{
    0%    {clip-path: polygon(50% 50%,0       0,  50%   0%,  50%    0%, 50%    0%, 50%    0%, 50%    0% )}
    12.5% {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100%   0%, 100%   0%, 100%   0% )}
@@ -390,3 +402,7 @@ table td .dropdown button i
   color: #111;
 }
 
+#tablaInstalaciones tr.table-danger td
+{
+  color: #666;
+}

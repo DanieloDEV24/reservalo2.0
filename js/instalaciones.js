@@ -76,12 +76,15 @@ $(document).ready(() => {
 
 
     // Evento en el que cuando se cambia de categoría principal, automáticamente aparezcan como categorías secundarias las otras categorías no seleccionadas
-    $('#categorias').on('change', function () {
+    $('#categorias').on('change', function (event) {
+
+        event.preventDefault();
+
         $('#subcategorias').empty(); // --> vaciamos el contenedor de categorias secundarias
         let catPrincipal = $(this).val(); // --> obtenemos el valor de la categoría principal
 
         // Recorremos las categorías del select (los options), para guardar su texto y valor
-        $('#categorias option').each(function () {
+        $('#categorias option').each(function (event) {
             const val = $(this).val(); // --> obtenemos el valor del option
             const text = $(this).text(); // --> obtenemos el texto del option
 
@@ -99,7 +102,10 @@ $(document).ready(() => {
 
 
     // Evento en el que controlamos el switch que muestra si se puede hacer una reserva completa de la instalación. Se comprueba al cambiar el estado del switch.
-    $('.toggle-switch input.puedeCompleto').on('change', function () {
+    $('.toggle-switch input.puedeCompleto').on('change', function (event) {
+
+        event.preventDefault();
+        
         let isChecked = $(this).is(':checked'); // --> Comprobamos si esta seleccionado
 
         // En el caso de que esté seleccionado, borramos el atributo readonly para poder añadir un valor) y ponemos el color del texto del input en negro. Además le añadimos el foco
@@ -118,7 +124,10 @@ $(document).ready(() => {
 
 
     // Evento en el que controlamos el switch que muestra que solo se puede hacer una reserva completa, es decir, no se pueden crear pistas. Se comprueba al cambiar el estado del switch.
-    $('.toggle-switch input.noPistas').on('change', function () {
+    $('.toggle-switch input.noPistas').on('change', function (event) {
+
+        event.preventDefault();
+
         let isChecked = $(this).is(':checked'); // --> comprobamos si está seleccionado
 
         // Creamos un btn general para añadir las imágenes, ya que las imágenes se añaden por pistas
@@ -158,6 +167,9 @@ $(document).ready(() => {
 
     // Evento en el que controlamos la subida de imágenes. Controlamos cada vez que vayamos a subir o editar los archivos.
     $('#accordionExample').on('change', '.imagenes', function (event) {
+
+        event.preventDefault();
+
         const maxArchivos = 4; // --> Número máximo de imágenes que podemos subir. En este caso 4
         const archivos = this.files; // --> Archivos que hemos subido
 
@@ -178,6 +190,9 @@ $(document).ready(() => {
 
     // Evento en el que controlamos la subida de imágenes de instalaciones sin pistas. Controlamos cada vez que vayamos a subir o editar los archivos.
     $('#accordionExample').on('change', '#imgNoPistas', function (event) {
+
+        event.preventDefault();
+
         const maxArchivos = 4;
         const archivos = this.files;
 
@@ -194,7 +209,9 @@ $(document).ready(() => {
 
 
     // Evento en el que controlamos cuando guardamos una pista. Se realiza este evento al pulsar el btn 
-    $(document).on('click', '.guardarPista', function () {
+    $(document).on('click', '.guardarPista', function (event) {
+
+        event.preventDefault();
 
         errores = []; // --> Array donde guardaremos los errores a la hora de la creación de pistas
         $('#modalNuevaInstalacion .alertModal').empty();
@@ -362,7 +379,10 @@ $(document).ready(() => {
 
 
     // Evento en el que se controla el borrado de las pistas
-    $('#accordionExample').on('click', '.borrarPista', function () {
+    $('#accordionExample').on('click', '.borrarPista', function (event) {
+
+        event.preventDefault();
+
         const index = parseInt($(this).closest('.accordion-item').data('index')); // --> Buscamos el id de la pista que queremos borrar
         pistas = pistas.filter(p => p.id !== index); // --> Filtramos los datos que no tengan ese id
         $(this).closest('.accordion-item').remove(); // --> Borramos también el accordion
@@ -372,7 +392,10 @@ $(document).ready(() => {
 
 
     // Evento en el que controlamos la edición de las pistas
-    $('#accordionExample').on('click', '.editarPista', function () {
+    $('#accordionExample').on('click', '.editarPista', function (event) {
+
+        event.preventDefault();
+
         let accordion = $(this).closest('.accordion-item') // --> Obtenemos el accordion de la pista en concreto
         const index = parseInt(accordion.data('index'));   // --> Obtenemos el id de la pista 
 
@@ -407,7 +430,10 @@ $(document).ready(() => {
 
 
     // Evento en el que guardamos la instalación entera con sus pistas
-    $('#guardarInstalacion').on('click', function () {
+    $('#guardarInstalacion').on('click', function (event) {
+
+        event.preventDefault();
+
         $('#modalNuevaInstalacion .alertModal').empty(); // --> Vaciamos el campo de las notificaciones de error
         errores = []; // --> Array donde irán guardados los errores
 
@@ -422,7 +448,10 @@ $(document).ready(() => {
 
 
         // Evento donde controlamos la selección de la categoría secundaria. Lo que hacemos es recorrer los inputs con las categorías secundarias
-        $('#subcategorias input').each(function () {
+        $('#subcategorias input').each(function (event) {
+
+            event.preventDefault();
+
             // Comprobamos que esté seleccionada
             if ($(this).is(':checked')) {
                 categoriaSecundaria = $(this).val(); // --> Obtenemos el valor de la categoría seleccionada
@@ -553,7 +582,7 @@ $(document).ready(() => {
 
                     let data = JSON.parse(response); // --> Respuesta de la petición. La pasamos a un objeto con JSON.parse()
                     let instalaciones = data.instalaciones; // --> Obtenemos las instalaciones que tenemos creadas
-                    let tabla = $('#tabaInstalaciones tbody'); // --> Obetenemos la tabla del crud de las instalaciones
+                    let tabla = $('#tablaInstalaciones tbody'); // --> Obetenemos la tabla del crud de las instalaciones
                     tabla.empty(); // --> La vaciamos
 
                     // Recorremos las instalaciones para hacer un efecto de refresco inmediato, con los nuevos datos
@@ -619,8 +648,9 @@ $(document).ready(() => {
 
 
     // Evento en el que controlamos la opción de ver instalación. Nos sale la información de la instalación de una manera más técnica, no como le saldría al usuario para verla.
-    $('#tabaInstalaciones tbody').on('click', '.btnVerInstalacion', function (e) {
+    $('#tablaInstalaciones tbody').on('click', '.btnVerInstalacion', function (e) {
         e.preventDefault();
+        e.stopPropagation();
 
         // Obtenemos el id de la instalación del atributo data-index del tr de la tabla
         let index = $(this).closest('tr').data('index');
@@ -736,8 +766,9 @@ $(document).ready(() => {
     ***********************************************************************************************************************************/
 
     // Evento en el que manejamos la edición de una instalación
-    $('#tabaInstalaciones tbody').on('click', '.btnEditarInstalacion', function (e) {
+    $('#tablaInstalaciones tbody').on('click', '.btnEditarInstalacion', function (e) {
         e.preventDefault();
+        e.stopPropagation();
 
         // Obetenemos el id de la instalación
         let index = $(this).closest('tr').data('index');
@@ -780,7 +811,9 @@ $(document).ready(() => {
                 })
 
                 // Evento en el que controlamos el cambio de categoría principal para que se vayan cambiado las posibles categorías secuandarias de forma dinámica
-                $('#categoriasEditar').on('change', function () {
+                $('#categoriasEditar').on('change', function (event) {
+
+                    event.preventDefault();
 
                     // Vaciamos el div de las categorias secundarias
                     $('#subcategoriasEditar').empty();
@@ -789,7 +822,10 @@ $(document).ready(() => {
                     let catPrincipal = $(this).val();
 
                     // Obtenemos las opciones del select y la recorremos 
-                    $('#categoriasEditar option').each(function () {
+                    $('#categoriasEditar option').each(function (event) {
+
+                        event.preventDefault();
+
                         const val = $(this).val(); // --> Guardamos el valor del option, es decir, de la categoría
                         const text = $(this).text(); // --> Guardamos el texto del option, es decir, de la categoria
 
@@ -949,7 +985,9 @@ $(document).ready(() => {
 
 
     // Evento en el que mientras escribimos en cualquier campo del accordion, comprobamos si ha habido algún cambio en la información de la pista que queremos editar. En el caso de que si lo haya y no este vacío el campo. estará habilitado el btn de guardar pista, mientras tanto no lo estará
-    $(document).on('input', '#accordionEditarPistas input', function () {
+    $(document).on('input', '#accordionEditarPistas input', function (event) {
+
+        event.preventDefault();
 
         // 🚫 Si el input es de tipo file (imagenesEditar), salimos del evento
         if ($(this).attr('type') === 'file') return;
@@ -1004,7 +1042,9 @@ $(document).ready(() => {
 
     // Evento en el que controlamos el guardado de las pistas que hayamos editado. 
     // Evento: Guardar pista editada (nombre, capacidad, precio e imágenes)
-    $(document).on('click', '.guardarPistaEditar', function () {
+    $(document).on('click', '.guardarPistaEditar', function (event) {
+
+        event.preventDefault();
 
         let $accordionItem = $(this).closest('.accordion-item');
         let idPista = parseInt($accordionItem.data('index'));
@@ -1048,7 +1088,7 @@ $(document).ready(() => {
 
                 alert('Pista guardada correctamente.');
             },
-            error: function () {
+            error: function (event) {
                 alert('Error al guardar la pista.');
             }
         });
@@ -1060,7 +1100,9 @@ $(document).ready(() => {
     let datosPistas = [] // --> Variable donde irán los datos de las pistas hasta que guarde la edición
 
     // Evento que controla el estado del switch de manera que en el caso de no poder pistas se eleminen los accordions con las pistas, pero guardandolos en un array hasta que guardemos la instalación
-    $('#noPistasEditar').on('change', function () {
+    $('#noPistasEditar').on('change', function (event) {
+
+        event.preventDefault();
 
         // Comprobamos el estado del switch que nos dice si solo se permite la reserva completa (no hay pistas) o se puede reservar por pista
         let checked = $(this).is(':checked');
@@ -1088,7 +1130,7 @@ $(document).ready(() => {
             url: "getNewIndexPista",
             data: "",
             dataType: 'json',
-            beforeSend: function () {
+            beforeSend: function (event) {
                 // Mostrar loader
                 $("#loader").show();
 
@@ -1262,7 +1304,7 @@ $(document).ready(() => {
                     $('#accordionEditarPistas').append(accordionNuevo);
                 }
             },
-            complete: function () {
+            complete: function (event) {
 
                 // Obtenemos los btns de los accordions
                 let headerBtn = $('#accordionEditarPistas .accordion-header .accordion-button');
@@ -1280,7 +1322,9 @@ $(document).ready(() => {
 
 
     // Evento que controla el switch que nos indica si se puede hacer una reserva completa o no. En el caso de que si habilita los campos de precio completo y capacidad completa
-    $('#puedeCompletoEditar').on('change', function () {
+    $('#puedeCompletoEditar').on('change', function (event) {
+
+        event.preventDefault();
 
         // Comprobamos el estado del switch que nos dice si se puede hacer una reserva completa
         let checked = $(this).is(':checked');
@@ -1306,7 +1350,9 @@ $(document).ready(() => {
 
 
     // Evento que cuando pulsamos el btn de borrar una pista, lanzamos una un mensaje para que el usuario se asegure de que quiere elminar la pista
-    $(document).on('click', '.borrarPistaEditar', function () {
+    $(document).on('click', '.borrarPistaEditar', function (event) {
+
+        event.preventDefault();
 
         let idPista = parseInt($(this).closest('.accordion-item').data('index')); // --> Obtenemos el id de la pista
         $('#modalBorraPista').data('index', idPista) // --> Guardamos el id de la pista en el data-index del modal de borrar la pista 
@@ -1351,7 +1397,9 @@ $(document).ready(() => {
 
 
     // Evento en el que borramos la pista al aceptar el mensaje. Además se borrará el accordión de la pista
-    $(document).on('click', '.aceptarBorrarEditar', function () {
+    $(document).on('click', '.aceptarBorrarEditar', function (event) {
+
+        event.preventDefault();
 
         // Obtenemos el id de la pista que queremos eliminar
         let id = parseInt($('#modalBorraPista').data('index'));
@@ -1378,6 +1426,9 @@ $(document).ready(() => {
 
     // Evento en el que controlamos la subida de imágenes. Controlamos cada vez que vayamos a subir o editar los archivos.
     $('#accordionEditarPistas').on('change', '.imagenesEditarNuevaPista', function (event) {
+
+        event.preventDefault();
+
         const maxArchivos = 4; // --> Número máximo de imágenes que podemos subir. En este caso 4
         const archivos = this.files; // --> Archivos que hemos subido
 
@@ -1396,6 +1447,9 @@ $(document).ready(() => {
 
     // Evento en el que controlamos la subida de imágenes. Controlamos cada vez que vayamos a subir o editar los archivos.
     $('#accordionEditarPistas').on('change', '.imagenesEditar', function (event) {
+
+        event.preventDefault();
+
         const maxArchivos = 4; // --> Número máximo de imágenes que podemos subir. En este caso 4
         const archivos = this.files; // --> Archivos que hemos subido
 
@@ -1421,7 +1475,9 @@ $(document).ready(() => {
 
 
     // Evento en el que guardamos una pista nueva en el modal de editar instalación. Esta funcionalidad nos permite añadir una pista nueva a una instalación ya creada
-    $(document).on('click', '.guardarPistaNuevaEditar', function () {
+    $(document).on('click', '.guardarPistaNuevaEditar', function (event) {
+
+        event.preventDefault();
 
         // Obtenemos el accordion
         let accordionPistaNueva = $(this).closest('.accordionNuevaPista')
@@ -1525,7 +1581,9 @@ $(document).ready(() => {
     });
 
     // Evento en el que controlamos el guardado de la instalación editada. Cuando hacemos click al btn de editar instalación, obtenemos los valores de los campos y los enviamos al backend. Antes de mandarlos al backend hacemos una serie de comprobaciones para ver si la información es correcta
-    $(document).on('click', '#guardarInstalacionEditar', function () {
+    $(document).on('click', '#guardarInstalacionEditar', function (event) {
+
+        event.preventDefault();
 
         let errores = []; // --> Array donde guardaremos los errores que vayamos encontrando
         $('#modalEditarInstalacion .alertModal').empty(); // --> Vaciamos el contenedor de alertas
@@ -1542,7 +1600,8 @@ $(document).ready(() => {
         const descripcion = $('#descripcionEditar').val().trim();
 
         // Obtener categoría secundaria
-        $('#subcategoriasEditar input:checked').each(function () {
+        $('#subcategoriasEditar input:checked').each(function (event) {
+
             categoriaSecundaria = $(this).val();
         });
 
@@ -1613,7 +1672,7 @@ $(document).ready(() => {
             contentType: false,
             processData: false,
             dataType: "json",
-            beforeSend: function () {
+            beforeSend: function (event) {
                 $("#loader").show();
             },
             success: function (response) {
@@ -1637,47 +1696,227 @@ $(document).ready(() => {
     /***********************************************************************************************************************************
     ***********************************************************  DAR DE BAJA  **********************************************************
     ***********************************************************************************************************************************/
-   $(document).on('click', '.btnDarBaja', function () {
-        
-        let index = $(this).closest('tr').data('index');
+   
+    // Evento que controla el btn de dar de baja una instalación. Lo que hacemos es un "borrado lógico", es decir, cambiar el estado a inactivo. Lo que hace este eneto es abrir el modal de confirmación y mostrar el nombre de la instalación a dar de baja
+    $(document).on('click', '.btnDarBaja', function (event) {
 
+        event.preventDefault();
+        
+        let index = $(this).closest('tr').data('index'); // --> Obtenemos el id de la instalación a dar de baja
+
+        // Petición ajax al back para obtener el nombre de la instalación y mostrarlo en el modal
         $.ajax({
             type: "POST",
-            url: "mensajeDarBajaInstalacion",
+            url: "mensajeDarBajaInstalacion", // --> URL donde va destinada la petición
             data: {id: index},
             dataType: "json",
             success: function (response) {
                 
+                // Ponemos el texto del modal
                 $('#modalBajaInstalacion h2').text("¿Está seguro que quiere dar de baja la instalación: "+response.instalacion[0].nombre+"?");
+                // Guardamos el índice en el modal para usarlo después
                 $('#modalBajaInstalacion').data('index', index);
 
+                // Mostramos el modal
                 $('#modalBajaInstalacion').modal('show');
             }
         });
-   })
+    })
 
+    // Evento que controla el btn de aceptar la baja de una instalación. Aquí es donde hacemos la petición ajax al backend para cambiar el estado de la instalación a inactivo  
+    $(document).on('click', '.aceptarBajaInstalacion', function(event){
 
-   $(document).on('click', '.aceptarBajaInstalacion', function(){
+        event.preventDefault();
 
+        // Petición ajax al back para dar de baja la instalación
         let index = $('#modalBajaInstalacion').data('index');
         $.ajax({
             type: "POST",
-            url: "darBajaInstalacion",
+            url: "darBajaInstalacion", // --> URL donde va destinada la petición
             data: {id: index},
             dataType: "json",
             success: function (response) {
                
+                // Cambiamos el color de la fila a rojo para indicar que está dada de baja
                 $(`tr[data-index="${index}"]`).addClass('table-danger');
-                // Suponiendo que `index` está definido
-                $(`tr[data-index="${index}"] td:last`).append(`<i class="bi bi-info-circle"
-                data-bs-toggle="tooltip" data-bs-placement="top"
-                data-bs-custom-class="custom-tooltip"
-                data-bs-title="Esta instalación está dada de baja"
-                ></i>`);
+
+                // Añadimos el icono de información en la última columna
+                $('tr[data-index="${index}"] td:last').append(
+                    `
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <i class="bi bi-info-circle"
+                        data-bs-toggle="tooltip" data-bs-placement="top"
+                        data-bs-custom-class="custom-tooltip"
+                        data-bs-title="Esta instalación está dada de baja"></i>
+                        <div id="loader${index}>" class="loader2" style="display: none"></div>
+                    </div>
+                    `
+                )
+                
+                // Cambiamos el btn de dar de baja por el de dar de alta
+                $(`tr[data-index="${index}"] .btnDarBaja`).addClass('btnDarAlta').removeClass('btnDarBaja').html('Dar de alta <i class="bi bi-check-lg"></i>');
+
+                // Cerramos el modal
                 $('#modalBajaInstalacion').modal('hide'); 
             }
         });
-   })
+    })
+
+    // Evento que controla el btn de dar de alta una instalación. Aquí es donde hacemos la petición ajax al backend para cambiar el estado de la instalación a activo
+    $(document).on('click', '.btnDarAlta', function (event){
+
+        event.preventDefault();
+
+        let index = $(this).closest('tr').data('index'); // --> Obtenemos el id de la instalación a dar de alta
+
+        // Petición ajax al back para dar de alta la instalación
+        $.ajax({
+            type: "POST", 
+            url: "darAlta", // --> URL donde va destinada la petición
+            data: {id: index},
+            dataType: "json",
+            beforeSend: function (event) {
+
+                // Activamos el loader
+                $(`#loader${index}`).show();
+            },
+            success: function (response) {
+                
+                // Quitamos el loader
+                $(`#loader${index}`).hide();
+
+                // Cambiamos el color de la fila a normal para indicar que está dada de alta
+                $(`tr[data-index="${index}"]`).removeClass('table-danger');
+
+                // Quitamos el icono de información de la última columna
+                $(`tr[data-index="${index}"] td:last i`).remove();
+
+                // Cambiamos el btn de dar de alta por el de dar de baja
+                $(`tr[data-index="${index}"] .btnDarAlta`).addClass('btnDarBaja').removeClass('btnDarAlta').html('Dar de baja <i class="bi bi-x-lg"></i>');
+            },
+            complete: function (event) {
+
+                // Ocultar loader siempre, éxito o error
+                $(`#loader${index}`).hide();
+            }
+        });
+   });
+
+
+    /***********************************************************************************************************************************
+    *******************************************************  BORRAR INSTALACIÓN  *******************************************************
+    ***********************************************************************************************************************************/
+    
+    // Evento que controla el btn de borrar una instalación. Lo que hace este eneto es abrir el modal de confirmación y mostrar el nombre de la instalación a borrar, además de sus datos y pistas
+    $(document).on('click', '.btnBorrarInstalacion', function (event) {
+        
+        event.preventDefault();
+        
+        $('#accordionBorrarPistas').empty()
+
+        let index = $(this).closest('tr').data('index'); // --> Obtenemos el id de la instalación a borrar 
+        $('#modalBorrarInstalacion').data('index', index) // --> Guardamos el id de la instalación en el data-index del modal de borrar la instalación
+
+        console.log(index);
+
+        $.ajax({
+            type: "POST",
+            url: "mensajeBorrarInstalacion",
+            data: {id: index},
+            dataType: "json",
+            success: function (response) {
+                
+                // Ponemos el texto del modal
+                $('#modalBorrarInstalacion h5 span').text(response.instalacion[0].nombre);
+                $('#nombreInstalacionBorrar').val(response.instalacion[0].nombre).prop('readonly', true); 
+                $('#categoriasBorrar').val(response.instalacion[0].categoria_name).prop('readonly', true);
+                $('#categoriaSecundariaBorrar').val((response.instalacion[0].categoria_secundaria_name) ? response.instalacion[0].categoria_secundaria_name : 'No hay ninguna categoría secundaria seleccionada').prop('readonly', true);
+                $('#noPistasBorrar').prop('checked', response.instalacion[0].no_pistas == 1).prop('disabled', true);
+                $('#puedeCompletoBorrar').prop('checked', response.instalacion[0].puede_completo == 1).prop('disabled', true);
+                $('#capacidadCompletoBorrar').val(response.instalacion[0].capacidad_completo).prop('readonly', true);
+                $('#precioCompletoBorrar').val(response.instalacion[0].precio_completo).prop('readonly', true);
+                $('#descripcionBorrar').val(response.instalacion[0].descripcion).prop('readonly', true);
+
+                // Ahora obtenemos las pistas de la instalación y las mostramos 
+                let pistas = response.pistas; // --> Obtenemos las pistas
+
+                pistas.map(pista => {
+                    let accordion = `
+                     <div class="accordion-item" data-index="${pista["id_pista"]}">
+                                    <h2 class="accordion-header">
+                                    <button 
+                                        class="accordion-button nuevaPista collapsed d-flex justify-content-start" 
+                                        type="button" 
+                                        data-bs-toggle="collapse" 
+                                        data-bs-target="#collapse-${pista["id_pista"]}" 
+                                        aria-expanded="false" 
+                                        aria-controls="collapse-${pista["id_pista"]}">
+                                        <div>${pista["nombre_pista"]}</div>
+                                    </button>
+                                    </h2>
+                                    <div id="collapse-${pista["id_pista"]}" 
+                                        class="accordion-collapse collapse" 
+                                        data-bs-parent="#accordionPistas">
+                                    <div class="accordion-body">
+                                        <div class="galeria-imagenes-pistas">
+                                            <img src="${base_url}images/${pista["imagen1"]}" alt="Imagen 1 de ${pista["nombre_pista"]}" class="img-grande">
+                                            <img src="${base_url}images/${pista["imagen2"]}" alt="Imagen 2 de ${pista["nombre_pista"]}" class="img-pequena">
+                                            <img src="${base_url}images/${pista["imagen3"]}" alt="Imagen 3 de ${pista["nombre_pista"]}" class="img-pequena">
+                                            <img src="${base_url}images/${pista["imagen4"]}" alt="Imagen 4 de ${pista["nombre_pista"]}" class="img-pequena">
+                                        </div>
+
+                                        <div class="row gap-5 mt-3">
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col-7"><label>Capacidad de la Pista:</label></div>
+                                                <div class="col-5"><p>${pista["capacidad_pista"]}</p></div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col">
+                                            <div class="row">
+                                                <div class="col"><label>Precio de la Pista:</label></div>
+                                                <div class="col"><p>${pista["precio_pista"]}</p></div>
+                                            </div>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                    `; 
+
+                    $('#accordionBorrarPistas').append(accordion);
+                })
+
+
+
+                $('#modalBorrarInstalacion').modal('show');
+            }
+        });
+
+
+    });
+
+
+    $(document).on('click', '#aceptarBorrarInstalacion', function () {
+        
+        let index = $('#modalBorrarInstalacion').data('index'); // --> Obtenemos el id de la instalación a borrar
+
+        $.ajax({
+            type: "POST",
+            url: "borrarInstalacion", // --> URL donde va destinada la petición
+            data: {id: index},
+            dataType: "json",
+            success: function (response) {
+
+                $('#modalBorrarInstalacion').modal('hide');
+
+                // Cambiamos el color de la fila a rojo para indicar que está dada de baja
+                $(`tr[data-index="${index}"]`).remove()
+            }
+        })
+    });
+
 
 
     /***********************************************************************************************************************************
