@@ -32,3 +32,4 @@ $routes->post('/darBajaInstalacion', 'Instalaciones::darBajaInstalacion');
 $routes->post('/darAlta', 'Instalaciones::darAlta');
 $routes->post('/mensajeBorrarInstalacion', 'Instalaciones::mensajeBorrarInstalacion');
 $routes->post('/borrarInstalacion', 'Instalaciones::borrarInstalacion');
+$routes->get('/instalaciones', 'Instalaciones::instalaciones');

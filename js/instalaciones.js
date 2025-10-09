@@ -93,7 +93,15 @@ $(document).ready(() => {
                 // Creación del nuevo nodo con la categoría secundaria
                 const input = $(`<input value="${val}" name="subcategoria" id="sub-${val}" type="checkbox">`);
                 const label = $(`<label for="sub-${val}">${text}</label>`);
-                $('#subcategorias').append(input, label); // --> la añadimos al div de las categorías secundarias
+
+                // Evento para desmarcar los otros checkboxes
+                input.on('change', function () {
+                    if ($(this).is(':checked')) {
+                        $('#subcategorias input[type="checkbox"]').not(this).prop('checked', false);
+                    }
+                });
+
+                $('#subcategorias').append(input, label);
             }
         });
     });
@@ -105,7 +113,7 @@ $(document).ready(() => {
     $('.toggle-switch input.puedeCompleto').on('change', function (event) {
 
         event.preventDefault();
-        
+
         let isChecked = $(this).is(':checked'); // --> Comprobamos si esta seleccionado
 
         // En el caso de que esté seleccionado, borramos el atributo readonly para poder añadir un valor) y ponemos el color del texto del input en negro. Además le añadimos el foco
@@ -254,7 +262,7 @@ $(document).ready(() => {
         }
 
         // Comprobamos que esté marcado el switch del que se pueda hacer una reserva completa y la capacidad pista sea menor que la capacidad completa
-        else if (puedeTotal && (capacidadPista > capacidadTotal)) {
+        else if (puedeTotal && (parseInt(capacidadPista) > parseInt(capacidadTotal))) {
             errores.push('La capacidad de una pista no puede superar a la total de la instalación'); // --> Guardamos el error en el array de errores
             camposError(body.find('.capacidadPista')) // --> Marcamos el campo como erróneo
         }
@@ -449,8 +457,6 @@ $(document).ready(() => {
 
         // Evento donde controlamos la selección de la categoría secundaria. Lo que hacemos es recorrer los inputs con las categorías secundarias
         $('#subcategorias input').each(function (event) {
-
-            event.preventDefault();
 
             // Comprobamos que esté seleccionada
             if ($(this).is(':checked')) {
@@ -1696,24 +1702,24 @@ $(document).ready(() => {
     /***********************************************************************************************************************************
     ***********************************************************  DAR DE BAJA  **********************************************************
     ***********************************************************************************************************************************/
-   
+
     // Evento que controla el btn de dar de baja una instalación. Lo que hacemos es un "borrado lógico", es decir, cambiar el estado a inactivo. Lo que hace este eneto es abrir el modal de confirmación y mostrar el nombre de la instalación a dar de baja
     $(document).on('click', '.btnDarBaja', function (event) {
 
         event.preventDefault();
-        
+
         let index = $(this).closest('tr').data('index'); // --> Obtenemos el id de la instalación a dar de baja
 
         // Petición ajax al back para obtener el nombre de la instalación y mostrarlo en el modal
         $.ajax({
             type: "POST",
             url: "mensajeDarBajaInstalacion", // --> URL donde va destinada la petición
-            data: {id: index},
+            data: { id: index },
             dataType: "json",
             success: function (response) {
-                
+
                 // Ponemos el texto del modal
-                $('#modalBajaInstalacion h2').text("¿Está seguro que quiere dar de baja la instalación: "+response.instalacion[0].nombre+"?");
+                $('#modalBajaInstalacion h2').text("¿Está seguro que quiere dar de baja la instalación: " + response.instalacion[0].nombre + "?");
                 // Guardamos el índice en el modal para usarlo después
                 $('#modalBajaInstalacion').data('index', index);
 
@@ -1724,7 +1730,7 @@ $(document).ready(() => {
     })
 
     // Evento que controla el btn de aceptar la baja de una instalación. Aquí es donde hacemos la petición ajax al backend para cambiar el estado de la instalación a inactivo  
-    $(document).on('click', '.aceptarBajaInstalacion', function(event){
+    $(document).on('click', '.aceptarBajaInstalacion', function (event) {
 
         event.preventDefault();
 
@@ -1733,10 +1739,10 @@ $(document).ready(() => {
         $.ajax({
             type: "POST",
             url: "darBajaInstalacion", // --> URL donde va destinada la petición
-            data: {id: index},
+            data: { id: index },
             dataType: "json",
             success: function (response) {
-               
+
                 // Cambiamos el color de la fila a rojo para indicar que está dada de baja
                 $(`tr[data-index="${index}"]`).addClass('table-danger');
 
@@ -1752,18 +1758,18 @@ $(document).ready(() => {
                     </div>
                     `
                 )
-                
+
                 // Cambiamos el btn de dar de baja por el de dar de alta
                 $(`tr[data-index="${index}"] .btnDarBaja`).addClass('btnDarAlta').removeClass('btnDarBaja').html('Dar de alta <i class="bi bi-check-lg"></i>');
 
                 // Cerramos el modal
-                $('#modalBajaInstalacion').modal('hide'); 
+                $('#modalBajaInstalacion').modal('hide');
             }
         });
     })
 
     // Evento que controla el btn de dar de alta una instalación. Aquí es donde hacemos la petición ajax al backend para cambiar el estado de la instalación a activo
-    $(document).on('click', '.btnDarAlta', function (event){
+    $(document).on('click', '.btnDarAlta', function (event) {
 
         event.preventDefault();
 
@@ -1771,9 +1777,9 @@ $(document).ready(() => {
 
         // Petición ajax al back para dar de alta la instalación
         $.ajax({
-            type: "POST", 
+            type: "POST",
             url: "darAlta", // --> URL donde va destinada la petición
-            data: {id: index},
+            data: { id: index },
             dataType: "json",
             beforeSend: function (event) {
 
@@ -1781,7 +1787,7 @@ $(document).ready(() => {
                 $(`#loader${index}`).show();
             },
             success: function (response) {
-                
+
                 // Quitamos el loader
                 $(`#loader${index}`).hide();
 
@@ -1800,18 +1806,18 @@ $(document).ready(() => {
                 $(`#loader${index}`).hide();
             }
         });
-   });
+    });
 
 
     /***********************************************************************************************************************************
     *******************************************************  BORRAR INSTALACIÓN  *******************************************************
     ***********************************************************************************************************************************/
-    
+
     // Evento que controla el btn de borrar una instalación. Lo que hace este eneto es abrir el modal de confirmación y mostrar el nombre de la instalación a borrar, además de sus datos y pistas
     $(document).on('click', '.btnBorrarInstalacion', function (event) {
-        
+
         event.preventDefault();
-        
+
         $('#accordionBorrarPistas').empty()
 
         let index = $(this).closest('tr').data('index'); // --> Obtenemos el id de la instalación a borrar 
@@ -1822,13 +1828,13 @@ $(document).ready(() => {
         $.ajax({
             type: "POST",
             url: "mensajeBorrarInstalacion",
-            data: {id: index},
+            data: { id: index },
             dataType: "json",
             success: function (response) {
-                
+
                 // Ponemos el texto del modal
                 $('#modalBorrarInstalacion h5 span').text(response.instalacion[0].nombre);
-                $('#nombreInstalacionBorrar').val(response.instalacion[0].nombre).prop('readonly', true); 
+                $('#nombreInstalacionBorrar').val(response.instalacion[0].nombre).prop('readonly', true);
                 $('#categoriasBorrar').val(response.instalacion[0].categoria_name).prop('readonly', true);
                 $('#categoriaSecundariaBorrar').val((response.instalacion[0].categoria_secundaria_name) ? response.instalacion[0].categoria_secundaria_name : 'No hay ninguna categoría secundaria seleccionada').prop('readonly', true);
                 $('#noPistasBorrar').prop('checked', response.instalacion[0].no_pistas == 1).prop('disabled', true);
@@ -1883,7 +1889,7 @@ $(document).ready(() => {
                                     </div>
                                     </div>
                                 </div>
-                    `; 
+                    `;
 
                     $('#accordionBorrarPistas').append(accordion);
                 })
@@ -1898,14 +1904,15 @@ $(document).ready(() => {
     });
 
 
+    // Evento que controla el btn de aceptar el borrado de una instalación. Aquí es donde hacemos la petición ajax al backend para borrar la instalación de la base de datos
     $(document).on('click', '#aceptarBorrarInstalacion', function () {
-        
+
         let index = $('#modalBorrarInstalacion').data('index'); // --> Obtenemos el id de la instalación a borrar
 
         $.ajax({
             type: "POST",
             url: "borrarInstalacion", // --> URL donde va destinada la petición
-            data: {id: index},
+            data: { id: index },
             dataType: "json",
             success: function (response) {
 

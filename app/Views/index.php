@@ -26,6 +26,7 @@
     <img src="<?= base_url() ?>images/logo-reservalo.png" alt="">
     <nav class="align-items-center">
       <a href="<?= base_url() ?>" class="menu__link"> Home</a>
+      <a href="<?=base_url()?>index.php/instalaciones" class="menu__link"> Instalaciones</a>
       
 
 <div class="dropdown">
@@ -76,7 +77,103 @@
   </header>
    <?=$view?>
   <footer>
-   
+
+    <div class="principal-footer">
+
+      <div class="logo-titulo">
+        <img src="<?= base_url() ?>images/logo-reservalo.png" alt="">
+        <h1>Reservalo</h1>
+      </div>
+
+      <p>Plataforma digital que permite a la ciudadanía reservar fácilmente instalaciones deportivas y espacios municipales. Ofrece información actualizada, gestión de reservas y pagos en línea, facilitando un acceso más ágil, transparente y participativo a los servicios públicos.</p>
+
+      <div class="redes-sociales">
+        <a href=""> <i class="bi bi-instagram"></i></a>
+        <a href=""><i class="bi bi-facebook"></i></a>
+        <a href=""><i class="bi bi-envelope"></i></a>
+      </div>       
+
+    </div>
+
+
+
+    <div class="info">
+
+      <div class="columna-plataforma">
+
+        <div class="titulo-plataforma">
+          <i class="bi bi-phone"></i>
+          <h3>Nuestra Plataforma</h3>
+        </div>
+
+        <a href="">Inicio</a>
+
+        <a href="">Instalaciones</a>
+
+        <a href="">Gestor de Instalaciones</a>
+
+        <a href="">Gestor de Categorías</a>
+
+      </div>
+
+
+      <div class="columna-soporte">
+
+        <div class="titulo-soporte">
+          <i class="bi bi-megaphone"></i>
+          <h3>Soporte</h3>
+        </div>
+
+        <a href="">Manual de Usuario</a>
+        
+        <a href="">Contacto soporte</a>
+
+        <a href=""></a>
+
+        <a href=""></a>
+
+      </div>
+
+
+      <div class="columna-contacto" style="width: 35%;">
+
+        <div class="titulo-contacto">
+          <i class="bi bi-person-circle"></i>
+          <h3>Contacto</h3>
+        </div>
+
+        <div style="margin-bottom: .5em;">
+          <i class="bi bi-telephone-fill"></i>
+          <a href="">952 73 50 16</a>
+        </div>
+
+        <div style="margin-bottom: .5em;">
+          <i class="bi bi-envelope"></i>
+          <a href="">info@fuentedepiedra.es</a>
+        </div>
+
+        <div style="margin-bottom: .5em;">
+          <i class="bi bi-geo-alt-fill"></i>
+          <a href="">C. Ancha, 9, Fuente de Piedra, Málaga, 29520</a>
+        </div>
+
+        <div style="margin-bottom: .5em;">
+          <i class="bi bi-clock"></i>
+          <a href="">Lunes - Viernes: 07:30h - 14:00h</a>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="footer-bottom">
+        <p>© 2025 ReservaMunicipal. Todos los derechos reservados.</p>
+        <div class="footer-legal">
+            <a href="#privacidad">Política de privacidad</a>
+            <a href="#terminos">Términos y condiciones</a>
+            <a href="#cookies">Cookies</a>
+            <a href="#legal">Aviso legal</a>
+        </div>
+      </div>
   </footer>
 </body>
 

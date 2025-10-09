@@ -7,15 +7,6 @@ use App\Models\instalacionesModel;
 
 class Instalaciones extends BaseController
 {
-    /**
-     * Funcion index(). Funcion en la que obtenemos los datos necesarios para mostrar la pagina
-     * principal. 
-     */
-    public function instalaciones(): string
-    {
-
-        return view('index', ["baseUrl" => base_url()]);
-    }
 
     public function crudInstalaciones(): string
     {
@@ -681,5 +672,15 @@ class Instalaciones extends BaseController
                 }
             }
         }
+    }
+
+
+    public function instalaciones()
+    {
+        $instalacionesModel = new instalacionesModel();
+        $instalaciones = $instalacionesModel->getInstalaciones();
+
+        $view = view('instalaciones/instalaciones', ["instalaciones" => $instalaciones, "baseUrl" => base_url()]);
+        return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
     }
 }
