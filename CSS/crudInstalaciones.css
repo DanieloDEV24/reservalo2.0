@@ -1,71 +1,66 @@
-.divTable
-{
-    padding: 2% 3%;
-    background-color: #fff;
-    margin: 2%;
-    border-radius: 10px;
+.divTable {
+  padding: 2% 3%;
+  background-color: #fff;
+  margin: 2%;
+  border-radius: 10px;
 }
 
-table td
-{
-    width: auto;
+table td {
+  width: auto;
 }
 
-table td .dropdown button
-{
-    background-color: transparent;
-    border: 0;
-    border-radius: 100%;
+table td .dropdown button {
+  background-color: transparent;
+  border: 0;
+  border-radius: 100%;
 }
 
-table td .dropdown button:hover, table td .dropdown button:hover .dropdown-menu, table td .dropdown button:focus-within .dropdown-menu
-{
-    background-color: #ccc;
-}
-.btn.show, .btn:first-child:active
-{
-     background-color: #ccc !important;
+table td .dropdown button:hover,
+table td .dropdown button:hover .dropdown-menu,
+table td .dropdown button:focus-within .dropdown-menu {
+  background-color: #ccc;
 }
 
-table td .dropdown button::after
-{
-    display: none;
+.btn.show,
+.btn:first-child:active {
+  background-color: #ccc !important;
 }
 
-table td .dropdown button i 
-{
-    color: #000;
+table td .dropdown button::after {
+  display: none;
 }
 
-.dropdown-item:hover
-{
-    background-color: #ccc !important;
+table td .dropdown button i {
+  color: #000;
 }
 
-.table tr:hover 
-{
-    cursor: pointer;
+.dropdown-item:hover {
+  background-color: #ccc !important;
 }
 
-.modal textarea
-{
-    width: 100%;
-    border-radius: 10px;
-    resize: none;
-    height: 150px;
-    padding: 15px !important;
+.table tr:hover {
+  cursor: pointer;
 }
 
-.modal input, .modal select, .modal textarea
-{
+.modal textarea {
+  width: 100%;
+  border-radius: 10px;
+  resize: none;
+  height: 150px;
+  padding: 15px !important;
+}
+
+.modal input,
+.modal select,
+.modal textarea {
   border: 0px solid #ccc !important;
   box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 4px;
   padding: 7px;
   margin-top: 2%;
-  
+
 }
 
-/* From Uiverse.io by Yaya12085 */ 
+/* From Uiverse.io by Yaya12085 */
 .radio-input {
   display: flex;
   flex-direction: row;
@@ -107,12 +102,12 @@ table td .dropdown button i
   border: 1px solid #aaa;
 }
 
-.radio-input input[type="checkbox"]:checked + label:before {
+.radio-input input[type="checkbox"]:checked+label:before {
   background-color: #fff;
   top: 0;
 }
 
-.radio-input input[type="checkbox"]:checked + label {
+.radio-input input[type="checkbox"]:checked+label {
   background-color: #32cccc;
   color: #fff;
   animation: radio-translate 0.5s ease-in-out;
@@ -132,7 +127,7 @@ table td .dropdown button i
   }
 }
 
-/* From Uiverse.io by ErzenXz */ 
+/* From Uiverse.io by ErzenXz */
 .toggle-switch {
   position: relative;
   display: inline-block;
@@ -181,69 +176,65 @@ table td .dropdown button i
   transition: color 0.3s ease-in-out;
 }
 
-.toggle-switch input[type="checkbox"]:checked + .toggle-switch-handle {
+.toggle-switch input[type="checkbox"]:checked+.toggle-switch-handle {
   transform: translateX(45px);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2), 0 0 0 3px #05c46b;
 }
 
-.toggle-switch input[type="checkbox"]:checked + .toggle-switch-background {
+.toggle-switch input[type="checkbox"]:checked+.toggle-switch-background {
   background-color: #05c46b;
   box-shadow: inset 0 0 0 2px #04b360;
 }
 
-.toggle-switch input[type="checkbox"]:checked + .toggle-switch:before {
+.toggle-switch input[type="checkbox"]:checked+.toggle-switch:before {
   content: "On";
   color: #05c46b;
   right: -15px;
 }
 
-.toggle-switch input[type="checkbox"]:checked + .toggle-switch-background .toggle-switch-handle {
+.toggle-switch input[type="checkbox"]:checked+.toggle-switch-background .toggle-switch-handle {
   transform: translateX(20px);
 }
 
-.accordion-nuevaPista
-{
+.accordion-nuevaPista {
   border: 1px dashed #ccc !important;
 }
 
-.accordion-button.nuevaPista::after
-{
+.accordion-button.nuevaPista::after {
   display: none !important;
 }
 
-.input-error
-{
+.input-error {
   border-color: red !important;
 }
 
-.input-ok
-{
+.input-ok {
   border-color: #725AC1 !important;
 }
 
-#imagenVerInstalacion
-{
+#imagenVerInstalacion {
   height: 250px;
-  background-size: auto;       
-  background-position: center; 
+  background-size: auto;
+  background-position: center;
   background-repeat: no-repeat;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.3); /* color semitransparente */
-  background-blend-mode: darken; /* mezcla oscura */ 
-  
-  -webkit-mask-image: 
+  background-color: rgba(0, 0, 0, 0.3);
+  /* color semitransparente */
+  background-blend-mode: darken;
+  /* mezcla oscura */
+
+  -webkit-mask-image:
     /* linear-gradient(to bottom, transparent 0%, black 10%), */
     linear-gradient(to bottom, black 90%, transparent 100%);
-  mask-image: 
+  mask-image:
     /* linear-gradient(to bottom, transparent 0%, black 10%), */
     linear-gradient(to bottom, black 70%, transparent 100%);
-  
+
   -webkit-mask-composite: destination-in;
-  mask-composite: intersect; 
+  mask-composite: intersect;
 }
 
-.galeria-imagenes-pistas
-{
+.galeria-imagenes-pistas {
   display: flex;
   flex-wrap: wrap;
   gap: 2%;
@@ -251,42 +242,36 @@ table td .dropdown button i
   justify-content: center;
 }
 
-.galeria-imagenes-pistas img
-{
+.galeria-imagenes-pistas img {
   width: 32%;
   height: auto;
   height: 200px;
   object-fit: cover;
 }
 
-.galeria-imagenes-pistas img:first-child
-{
+.galeria-imagenes-pistas img:first-child {
   width: 100%;
   height: 400px;
   object-fit: cover;
   margin-bottom: 2%;
 }
 
-#accordionPistas .accordion-item
-{
+#accordionPistas .accordion-item {
   margin-bottom: 3%;
 }
 
-#categoriasVerInstalacion
-{
+#categoriasVerInstalacion {
   padding-bottom: 2%;
 }
 
-#categoriaPrincipalVerInstalacion
-{
+#categoriaPrincipalVerInstalacion {
   color: #725AC1;
   font-size: 20px;
   font-style: italic;
   margin-right: 1%;
 }
 
-#categoriaSecundariaVerInstalacion
-{
+#categoriaSecundariaVerInstalacion {
   color: #aaa;
   font-size: 20px;
   font-style: italic;
@@ -314,61 +299,94 @@ table td .dropdown button i
 }
 
 
-@keyframes l20-1{
-   0%    {clip-path: polygon(50% 50%,0       0,  50%   0%,  50%    0%, 50%    0%, 50%    0%, 50%    0% )}
-   12.5% {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100%   0%, 100%   0%, 100%   0% )}
-   25%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 100% 100%, 100% 100% )}
-   50%   {clip-path: polygon(50% 50%,0       0,  50%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
-   62.5% {clip-path: polygon(50% 50%,100%    0, 100%   0%,  100%   0%, 100% 100%, 50%  100%, 0%   100% )}
-   75%   {clip-path: polygon(50% 50%,100% 100%, 100% 100%,  100% 100%, 100% 100%, 50%  100%, 0%   100% )}
-   100%  {clip-path: polygon(50% 50%,50%  100%,  50% 100%,   50% 100%,  50% 100%, 50%  100%, 0%   100% )}
+@keyframes l20-1 {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%)
+  }
+
+  12.5% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%)
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%)
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%)
+  }
+
+  62.5% {
+    clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%)
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%)
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%)
+  }
 }
-@keyframes l20-2{ 
-  0%    {transform:scaleY(1)  rotate(0deg)}
-  49.99%{transform:scaleY(1)  rotate(135deg)}
-  50%   {transform:scaleY(-1) rotate(0deg)}
-  100%  {transform:scaleY(-1) rotate(-135deg)}
+
+@keyframes l20-2 {
+  0% {
+    transform: scaleY(1) rotate(0deg)
+  }
+
+  49.99% {
+    transform: scaleY(1) rotate(135deg)
+  }
+
+  50% {
+    transform: scaleY(-1) rotate(0deg)
+  }
+
+  100% {
+    transform: scaleY(-1) rotate(-135deg)
+  }
 }
 
 #loader {
   position: absolute;
-  background: rgba(255,255,255,0.6); /* semitransparente */
+  background: rgba(255, 255, 255, 0.6);
+  /* semitransparente */
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 10; /* encima de los acordeones */
+  z-index: 10;
+  /* encima de los acordeones */
 }
 
-.contenedor-loader
-{
+.contenedor-loader {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
 }
 
-.contenedor-loader #accordionEditarPistas div, .contenedor-loader #accordionEditarPistas
-{
+.contenedor-loader #accordionEditarPistas div,
+.contenedor-loader #accordionEditarPistas {
   width: 100%;
 }
 
 /* Centrar el texto del modal de borrado */
 #modalBorraPista .pregunta-borrado h2 {
-    text-align: center;
+  text-align: center;
 }
 
 /* Ajustar el backdrop del segundo modal para que cubra todo */
 .modal-backdrop.nested {
-    z-index: 1055; /* Debe estar debajo del modal pero encima del primero */
+  z-index: 1055;
+  /* Debe estar debajo del modal pero encima del primero */
 }
 
 /* Aseguramos que el modal de borrado esté encima del modal de edición */
 #modalBorraPista {
-    z-index: 1060;
+  z-index: 1060;
 }
 
-.btns-borrado
-{
+.btns-borrado {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -391,18 +409,161 @@ table td .dropdown button i
   opacity: 1;
 }
 
-#tablaInstalaciones td
-{
+#tablaInstalaciones td {
   vertical-align: middle;
 }
 
-#tablaInstalaciones td i
-{
+#tablaInstalaciones td i {
   font-size: 20px;
   color: #111;
 }
 
-#tablaInstalaciones tr.table-danger td
-{
+#tablaInstalaciones tr.table-danger td {
   color: #666;
+}
+
+.divTable .empty-state {
+  background: white;
+  border-radius: 0 0 12px 12px;
+  padding: 2rem 3rem;
+  text-align: center;
+  animation: fadeIn 0.6s ease-out;
+  width: 100%
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.divTable .icon-wrapper {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 2rem;
+  background: linear-gradient(135deg, #f0f9f9 0%, #e1f5f5 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.divTable .icon-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  border: 2px dashed #c5edec;
+  border-radius: 50%;
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.divTable .icon-wrapper svg {
+  width: 70px;
+  height: 70px;
+  color: #4DD0CE;
+  position: relative;
+  z-index: 1;
+}
+
+.divTable .empty-state h2 {
+  font-size: 2rem;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.divTable .empty-state p {
+  font-size: 1.1rem;
+  color: #718096;
+  line-height: 1.7;
+  max-width: 550px;
+  margin: 0 auto 2.5rem;
+}
+
+.divTable .cta-box {
+  background: linear-gradient(135deg, #f8fdfd 0%, #eef9f9 100%);
+  border: 2px solid #d1f2f1;
+  border-radius: 16px;
+  padding: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.divTable .cta-box h3 {
+  color: #2d3748;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.divTable .features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  text-align: left;
+  margin-bottom: 1.5rem;
+}
+
+.divTable .feature {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: #4a5568;
+  font-size: 0.95rem;
+}
+
+.divTable .feature-icon {
+  width: 24px;
+  height: 24px;
+  background: #4DD0CE;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.divTable .feature-icon svg {
+  width: 14px;
+  height: 14px;
+  color: white;
+}
+
+.divTable .cta-button {
+  background: linear-gradient(135deg, #4DD0CE, #3BBFBD);
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  border: none;
+  font-weight: 600;
+  font-size: 1.05rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s;
+  box-shadow: 0 6px 20px rgba(77, 208, 206, 0.3);
+}
+
+.divTable .cta-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(77, 208, 206, 0.4);
 }

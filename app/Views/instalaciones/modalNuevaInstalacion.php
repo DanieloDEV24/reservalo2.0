@@ -36,6 +36,30 @@
           </div>
         </div>
 
+        <div class="row ">
+          <div class="col-12 d-flex align-items-center gap-2 mt-3">
+            <label for="">Tiene iluminación: </label>
+            <label class="toggle-switch">
+              <input type="checkbox" class="iluminacion">
+              <div class="toggle-switch-background">
+                <div class="toggle-switch-handle"></div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-12 d-flex align-items-center gap-2 mt-3">
+            <label for="">Posibilidad de facilitar: </label>
+            <label class="toggle-switch">
+              <input type="checkbox" class="material">
+              <div class="toggle-switch-background">
+                <div class="toggle-switch-handle"></div>
+              </div>
+            </label>
+          </div>
+        </div>
+
         <div class="row gap-5">
           <div class="col d-flex align-items-center gap-2 mt-3">
             <label for="">La instalacion no tiene pistas, zonas...; es solo completa</label>

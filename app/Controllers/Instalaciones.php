@@ -21,7 +21,7 @@ class Instalaciones extends BaseController
         $editarInstalacion = view('instalaciones/modalEditarInstalacion', ["baseUrl" => base_url()]);
         $darDeBaja         = view('instalaciones/modalBajaInstalacion', ["baseUrl" => base_url()]);
         $borrarInstalacion = view('instalaciones/modalBorrarInstalacion', ["baseUrl" => base_url()]);
-        $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "verInstalacion" => $verInstalacion, "editarInstalacion" => $editarInstalacion, "modalBorrarPista" => $borradoPista, "modalBajaInstalacion"=>$darDeBaja, "borrarInstalacion"=>$borrarInstalacion, "baseUrl" => base_url()]);
+        $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "verInstalacion" => $verInstalacion, "editarInstalacion" => $editarInstalacion, "modalBorrarPista" => $borradoPista, "modalBajaInstalacion" => $darDeBaja, "borrarInstalacion" => $borrarInstalacion, "baseUrl" => base_url()]);
 
         return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
     }
@@ -42,6 +42,8 @@ class Instalaciones extends BaseController
             $catSecundaria     = intval($post["catSecundaria"]);
             $pistas            = json_decode($post["pistas"]);
             $noPistas          = filter_var($post["noPistas"], FILTER_VALIDATE_BOOLEAN);
+            $iluminacion       = filter_var($post["iluminacion"], FILTER_VALIDATE_BOOLEAN);
+            $material          = filter_var($post["material"], FILTER_VALIDATE_BOOLEAN);
             $capacidadCompleto = intval($post["capacidadCompleto"]);
 
             $dataInstalacion = [
@@ -51,6 +53,8 @@ class Instalaciones extends BaseController
                 'categoria_opcional1' => ($catSecundaria !== 0) ? $catSecundaria : null,
                 'puede_completo' => $puedeCompleto,
                 'no_pistas' => $noPistas,
+                'iluminacion' => $iluminacion,
+                'material' => $material,
                 'precio_completo' => ($puedeCompleto || $noPistas) ? $precioCompleto : null,
                 'capacidad_completo' => ($puedeCompleto || $noPistas) ? $capacidadCompleto : null
             ];
@@ -62,28 +66,40 @@ class Instalaciones extends BaseController
                 mkdir($rutaDestino, 0755, true);
             }
 
-            foreach ($pistas as $pista) {
+            // Variable para guardar la primera imagen (para la pista completa)
+            $imagenesDeFirstPista = null;
+            $totalPistas = count($pistas);
+
+            foreach ($pistas as $index => $pista) {
                 $campoImagenes = 'imagenes_pista_' . $pista->id;
                 $imagenesGuardadas = [];
-
                 if (isset($files[$campoImagenes])) {
                     foreach ($files[$campoImagenes] as $imagen) {
                         if ($imagen->isValid() && !$imagen->hasMoved()) {
                             $nombreArchivo = basename($imagen->getClientName());
                             $rutaFinal = $rutaDestino . $nombreArchivo;
-
                             // Eliminar si ya existe para sobrescribir
                             if (file_exists($rutaFinal)) {
                                 unlink($rutaFinal);
                             }
-
                             // Mover imagen al destino
                             $imagen->move($rutaDestino, $nombreArchivo);
-
                             // Guardar ruta relativa para la base de datos
                             $imagenesGuardadas[] = $nombreArchivo;
                         }
                     }
+                }
+
+                // Guardar la primera imagen de la primera pista
+                if ($index === 0 && !empty($imagenesGuardadas)) {
+                    $imagenesDeFirstPista = $imagenesGuardadas;
+                }
+                // Si es la última pista (completa) y hay más de una pista, usar la imagen de la primera
+                $esUltimaPista = ($index === $totalPistas - 1);
+                $esPistaCompleta = ($pista->id === 'completo');
+
+                if ($esUltimaPista && $esPistaCompleta && $totalPistas > 1 && $imagenesDeFirstPista) {
+                    $imagenesGuardadas = $imagenesDeFirstPista;
                 }
 
                 // Insertar en base de datos
@@ -98,7 +114,6 @@ class Instalaciones extends BaseController
                     'imagen4' => $imagenesGuardadas[3] ?? null,
                     'pista_unica' => ($noPistas) ? 1 : 0
                 ];
-
                 $instalacionesModel->createPistas($dataPista);
             }
 
@@ -579,29 +594,25 @@ class Instalaciones extends BaseController
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
 
-        if(!empty($post))
-        {
+        if (!empty($post)) {
             $id_instalacion = intval($post["id"]);
             $data = [
                 "estado" => 0
             ];
             $result = $instalacionesModel->updateInstalacion($id_instalacion, $data);
-            if($result)
-            {
+            if ($result) {
                 echo json_encode([
                     "success" => true,
                     "message" => "La instalación ha sido dada de alta correctamente"
                 ]);
                 exit;
-            }
-            else
-            {
+            } else {
                 echo json_encode([
                     "success" => false,
                     "message" => "No se pudo dar de alta la instalación"
                 ]);
                 exit;
-            } 
+            }
         }
     }
 
@@ -646,24 +657,19 @@ class Instalaciones extends BaseController
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
 
-        if(!empty($post))
-        {
+        if (!empty($post)) {
             $id_instalacion = intval($post["id"]);
             $borrarPistas = $instalacionesModel->borrarPistas($id_instalacion);
 
-            if($borrarPistas)
-            {
+            if ($borrarPistas) {
                 $result = $instalacionesModel->deleteInstalacion($id_instalacion);
-                if($result)
-                {
+                if ($result) {
                     echo json_encode([
                         "success" => true,
                         "message" => "La instalación ha sido borrada correctamente"
                     ]);
                     exit;
-                }
-                else
-                {
+                } else {
                     echo json_encode([
                         "success" => false,
                         "message" => "No se pudo borrar la instalación"

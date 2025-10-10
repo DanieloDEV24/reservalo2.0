@@ -52,9 +52,71 @@
 
 
 <div class="divTable">
-  <h1 style="margin-bottom: 3%;">Gestor Instalaciones</h1>
+  <?php
+    if(count($instalaciones)=== 0){
+  ?>
+    <div class="empty-state">
+            <div class="icon-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+            </div>
 
-  <table class="table table-hover" id="tablaInstalaciones">
+            <h2>Comienza a gestionar tus instalaciones</h2>
+            <p>Aún no has creado ninguna instalación. Crea tu primera instalación deportiva para empezar a recibir reservas y gestionar el uso de tus espacios.</p>
+
+            <div class="cta-box">
+                <h3>¿Qué puedes hacer con el gestor?</h3>
+                <div class="features">
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <span>Crear y editar instalaciones</span>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <span>Gestionar horarios y reservas</span>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <span>Configurar categorías y precios</span>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+                        <span>Ver estadísticas de uso</span>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-center w-100">
+                  <button class="btn-primary-personal" id="crear" style="width: 65%;">
+                    Crear primera instalación
+                    <svg width="30" height="30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                </button>
+                </div>
+            </div>
+  <?php
+  }
+  else 
+  {
+  ?>
+  <h1 style="margin-bottom: 3%;">Gestor Instalaciones</h1>
+    <table class="table table-hover" id="tablaInstalaciones">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -69,7 +131,7 @@
       <?php
       $cont = 0;
       foreach ($instalaciones as $instalacion) {
-        $cont++
+        $cont++;
       ?>
         <tr data-index="<?= $instalacion["id_instalacion"] ?>" <?= ($instalacion["estado"] == 1) ? 'class="table-danger"' : '' ?>>
           <td><?= $cont ?></td>
@@ -125,7 +187,13 @@
     </tbody>
   </table>
   <a href="#" id="crear" class="btn-primary-personal" style="margin-left: 0; width: 20%">Nueva <i class="bi bi-plus-circle"></i></a>
+  <?php
+  }
+  ?>
+    </div>
 </div>
+
+  
 
 <?= $nuevaInstalacion ?>
 <?= $verInstalacion ?>

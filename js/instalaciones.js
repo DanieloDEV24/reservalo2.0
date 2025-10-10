@@ -449,6 +449,8 @@ $(document).ready(() => {
         let categoria = $('#categorias').val(); // --> Obtenemos la categoría 
         let puedeCompleto = $('.toggle-switch input.puedeCompleto').is(':checked'); // --> Obtenemos el estado del switch que indica si se puede hacer la reserva completa de la instalación
         let noPistas = $('.toggle-switch input.noPistas').is(':checked'); // --> Obtenemos el estado del switch que indica si la instalación no tiene pistas
+        let iluminacion = $('.toggle-switch input.iluminacion').is(':checked')
+        let material = $('.toggle-switch input.material').is(':checked')
         let precioCompleto = $('#precioCompleto').val(); // --> Obtenemos el precio de la reserva completa
         let capacidadCompleto = $('#capacidadCompleto').val(); // --> Obtenemos la capacidad completa de la instalación
         let descripcion = $('#descripcion').val(); // --> Obtenemos la descripción de la instalación
@@ -522,6 +524,8 @@ $(document).ready(() => {
             formData.append('descripcion', descripcion); // --> Añadimos la descripción de la instalación al formData
             formData.append('puedeCompleto', puedeCompleto); // --> Añadimos el estado del switch que muestra si se puede hacer una reserva completa de la instalación al formData
             formData.append('noPistas', noPistas) // --> Añadimos el estado del switch que muestra si no se puede crear pistas en la instalación al formData
+            formData.append('iluminacion', iluminacion)
+            formData.append('material', material)
             formData.append('precioCompleto', precioCompleto); // --> Añadimos el precio completo al formData
             formData.append('capacidadCompleto', capacidadCompleto); // --> Añadimos la capacidad completa al formData
             formData.append('catSecundaria', categoriaSecundaria); // --> Añadimos la categoría opcional al formData
@@ -571,6 +575,19 @@ $(document).ready(() => {
                         precioPista: pista.precioPista
                     };
                 });
+
+                if (puedeCompleto) {
+                    // Calculamos la capacidad y precio total sumando todas las pistas
+                    const capacidadTotal = parseInt(capacidadCompleto);
+                    const precioTotal = parseFloat(precioCompleto)
+                    
+                    pistasSinImagenes.push({
+                        id: 'completo',
+                        nombrePista: `Instalación ${nombreInstalacion} completa`,
+                        capacidadPista: capacidadTotal,
+                        precioPista: precioTotal
+                    });
+                }
 
                 // Guardamos las pistas en el formData
                 formData.append('pistas', JSON.stringify(pistasSinImagenes));

@@ -1,17 +1,17 @@
-/* From Uiverse.io by alexmaracinaru */ 
+/* From Uiverse.io by alexmaracinaru */
 .card-instalacion {
   width: 30%;
   background: #fff;
   border-radius: 6px;
   height: auto;
   min-height: 400px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;  
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: all 0.3s ease;
   margin-bottom: 4.7%;
 }
 
-.card-instalacion:hover{
-    transform: scale(1.05);
+.card-instalacion:hover {
+  transform: scale(1.05);
 }
 
 .card-image {
@@ -20,9 +20,8 @@
   border-radius: 6px 6px 0 0;
   background-size: cover !important;
   background-position: center !important;
-  background-repeat: no-repeat !important; 
+  background-repeat: no-repeat !important;
 }
-
 
 .category {
   padding: 0% 7% !important;
@@ -65,27 +64,177 @@
   cursor: pointer;
 }
 
-.instalaciones
-{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5%;
-    justify-content: start;
-    padding: 1% 3%;
+.instalaciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  justify-content: start;
+  padding: 1% 3%;
 }
 
-.card-instalacion .button
-{
-    width: 100%;
-    display: flex;
-    padding: 5%;
-    padding-top: 8%;
+.card-instalacion .button {
+  width: 100%;
+  display: flex;
+  padding: 5%;
+  padding-top: 8%;
 
 }
 
-.card-instalacion .button a
-{
-    padding: 6px 12px;
-    font-size: 1.2em;
-    width: 61%;
+.card-instalacion .button a {
+  padding: 6px 12px;
+  font-size: 1.2em;
+  width: 61%;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.instalaciones .empty-state {
+  background: white;
+  border-radius: 20px;
+  padding: 4rem 3rem;
+  max-width: 600px;
+  text-align: center;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.6s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.instalaciones .icon-container {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 2rem;
+  background: linear-gradient(135deg, #f0f9f9 0%, #e1f5f5 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.instalaciones .icon-container svg {
+  width: 60px;
+  height: 60px;
+  color: #4DD0CE;
+}
+
+.instalaciones .empty-state h2 {
+  font-size: 1.8rem;
+  color: #2d3748;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.instalaciones .empty-state p {
+  font-size: 1.05rem;
+  color: #718096;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.instalaciones .suggestions {
+  background: #f8fafb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  text-align: left;
+}
+
+.instalaciones .suggestions h3 {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.instalaciones .suggestions ul {
+  list-style: none;
+  padding: 0;
+}
+
+.instalaciones .suggestions li {
+  padding: 0.5rem 0;
+  color: #718096;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.instalaciones .suggestions li:before {
+  content: "→";
+  color: #4DD0CE;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.instalaciones .button-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.instalaciones .btn {
+  padding: 0.875rem 2rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.instalaciones .btn-primary {
+  background: linear-gradient(135deg, #4DD0CE, #3BBFBD);
+  color: white;
+  box-shadow: 0 4px 15px rgba(77, 208, 206, 0.3);
+}
+
+.instalaciones .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(77, 208, 206, 0.4);
+}
+
+.instalaciones .btn-secondary {
+  background: white;
+  color: #4DD0CE;
+  border: 2px solid #4DD0CE;
+}
+
+.instalaciones .btn-secondary:hover {
+  background: #f0f9f9;
+  transform: translateY(-2px);
 }
