@@ -3,15 +3,40 @@
     if(!empty($instalaciones))
     {
     ?>
+    <h1 class="title-page">Instalaciones</h1>
+    <p class="description-page">Explora nuestras instalaciones y reserva tu espacio</p>
+    <div class="instalaciones-resumen">
+        <div class="div-numero-instalaciones">
+            <h1><?=$numInstalaciones?></h1>
+            <p>Instalaciones</p>
+        </div>
+
+    <?php foreach($instalacionesCategorias as $instalacionCat): ?>
+        <div class="div-numero-instalaciones">
+            <h1><?=$instalacionCat["num_instalaciones"]?></h1>
+            <p><?=$instalacionCat["nombre"]?></p>
+        </div>
+    <?php endforeach; ?>
+        
+    </div>
+    <div class="instalaciones-container">
     <?php foreach($instalaciones as $instalacion): ?>
         <?php $url = $baseUrl."images/".$instalacion["imagen1"];?>
         <div class="card-instalacion" data-index="<?=$instalacion["id_instalacion"]?>">
             <div class="card-image" style="background: url('<?=$url?>')"></div>
             <div class="category"> <?=$instalacion["categoria_name"]?> </div>
             <div class="heading"> <?=$instalacion["nombre"]?></div>
+            <div class="opciones">
+                <?= ($instalacion["iluminacion"] == 1) ? "<span>Iluminacion</span>" : "" ?>
+                <?= ($instalacion["puede_completo"] == 1) ? "<span>Reserva completa</span>" : "" ?>
+                <?= ($instalacion["no_pistas"] == 1) ? "<span>No tiene pistas</span>" : "" ?>
+                <?= ($instalacion["material"] == 1) ? "<span>Material</span>" : "" ?>
+            </div>
             <div class="button"><a href="" class="btn-primary-personal">Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i></a></div>
+            <span class="estado <?=($instalacion["estado"] == 0) ? "disponible" : "no-disponible" ?>"><?=($instalacion["estado"] == 0) ? "disponible" : "no disponible" ?></span>
         </div>
     <?php endforeach; ?>
+    </div>
     <?php
     } 
     else

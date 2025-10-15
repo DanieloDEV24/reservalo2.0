@@ -3,6 +3,7 @@
   background-color: #fff;
   margin: 2%;
   border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 table td {
@@ -566,4 +567,41 @@ table td .dropdown button i {
 .divTable .cta-button:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(77, 208, 206, 0.4);
+}
+
+.filtrado .accordion-item h2 button{
+  font-size: 1.3rem !important;
+  background-color: #fff;
+  border-radius: 15px !important;
+   border: 1px solid transparent !important;
+}
+
+.filtrado .accordion-item
+{
+  border-radius: 15px !important;
+  border: 1px solid transparent;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.filtrado .accordion-button:focus {
+  z-index: 3;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(50, 204, 204, .5) !important;
+}
+
+.filtrado .accordion-button:hover{
+  box-shadow: 0 0 0 0.25rem rgba(50, 204, 204, .5) !important;
+}
+
+.filtrado .accordion-button {
+  background-color: #fff !important; /* verde Bootstrap */
+}
+
+.filtrado .accordion-button:not(.collapsed) {
+  background-color: rgba(50, 204, 204, .5) !important;
+  box-shadow: 0 0 0 0.25rem rgba(50, 204, 204, .5) !important;
+}
+
+.filtrado .accordion-button {
+  background-color: #fff !important; /* verde Bootstrap */
 }

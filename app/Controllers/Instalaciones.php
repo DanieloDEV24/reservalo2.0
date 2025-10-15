@@ -21,7 +21,7 @@ class Instalaciones extends BaseController
         $editarInstalacion = view('instalaciones/modalEditarInstalacion', ["baseUrl" => base_url()]);
         $darDeBaja         = view('instalaciones/modalBajaInstalacion', ["baseUrl" => base_url()]);
         $borrarInstalacion = view('instalaciones/modalBorrarInstalacion', ["baseUrl" => base_url()]);
-        $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "verInstalacion" => $verInstalacion, "editarInstalacion" => $editarInstalacion, "modalBorrarPista" => $borradoPista, "modalBajaInstalacion" => $darDeBaja, "borrarInstalacion" => $borrarInstalacion, "baseUrl" => base_url()]);
+        $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "verInstalacion" => $verInstalacion, "editarInstalacion" => $editarInstalacion, "modalBorrarPista" => $borradoPista, "modalBajaInstalacion" => $darDeBaja, "borrarInstalacion" => $borrarInstalacion, "categorias"=>$categorias, "baseUrl" => base_url()]);
 
         return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
     }
@@ -409,6 +409,8 @@ class Instalaciones extends BaseController
             $nombre = $post["nombre"];
             $categoria = intval($post["categoria"]);
             $catSecundaria = intval($post["categoriaSec"]);
+            $iluminacion = filter_var($post["iluminacion"], FILTER_VALIDATE_BOOLEAN);
+            $material = filter_var($post["material"], FILTER_VALIDATE_BOOLEAN);
             $noPistas = filter_var($post["noPistas"], FILTER_VALIDATE_BOOLEAN);
             $puedeCompleta = filter_var($post["puedeCompleta"], FILTER_VALIDATE_BOOLEAN);
             $precioCompleto = floatval($post["precioCompleto"]);
@@ -492,6 +494,8 @@ class Instalaciones extends BaseController
                 "categoria_opcional1" => ($catSecundaria === 0) ? null : $catSecundaria,
                 "precio_completo" => ($noPistas || $puedeCompleta) ? $precioCompleto : null,
                 "puede_completo" => $puedeCompleta,
+                "iluminacion" => $iluminacion, 
+                "material" => $material,
                 "no_pistas" => $noPistas,
                 "capacidad_completo" => ($noPistas || $puedeCompleta) ? $capacidadCompleta : null
             ];
@@ -685,8 +689,10 @@ class Instalaciones extends BaseController
     {
         $instalacionesModel = new instalacionesModel();
         $instalaciones = $instalacionesModel->getInstalaciones();
+        $numInstalaciones = $instalacionesModel->getNumInstalaciones();
+        $instalacionesCategorias = $instalacionesModel->getInstalacionesCategorias();
 
-        $view = view('instalaciones/instalaciones', ["instalaciones" => $instalaciones, "baseUrl" => base_url()]);
+        $view = view('instalaciones/instalaciones', ["instalaciones" => $instalaciones, "numInstalaciones"=>$numInstalaciones, "instalacionesCategorias" => $instalacionesCategorias, "baseUrl" => base_url()]);
         return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
     }
 }

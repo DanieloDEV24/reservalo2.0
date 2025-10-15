@@ -26,7 +26,7 @@ class instalacionesModel extends Model
     protected $updatedField = 'updated_at';
     protected $deletedField = 'deleted_at';
 
-    public function getInstalaciones()
+    public function getInstalaciones($filter)
     {
 
         $db = \Config\Database::connect('BDReservalo2');
@@ -268,4 +268,38 @@ class instalacionesModel extends Model
         return $db->affectedRows() > 0;
     }
 
+
+    public function getNumInstalaciones() {
+        
+        // Conexión a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Seleccionamos la tabla
+        $builder = $db->table('instalaciones');
+
+        $query = $builder->countAllResults();
+
+        $result = $query;
+        return $result;
+    }
+
+
+    public function getInstalacionesCategorias()
+    {
+        // Conexión a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Seleccionamos la tabla
+        $builder = $db->table('categorias');
+
+        $query = $builder->select('categorias.nombre, COUNT(instalaciones.id_instalacion) AS num_instalaciones')
+                         ->join('instalaciones', 'categorias.id_categoria = instalaciones.categoria_principal', 'left')
+                         ->groupBy('categorias.nombre')
+                         ->orderBy('num_instalaciones', 'DESC')
+                         ->limit(3)
+                         ->get();
+        
+        $result = $query->getResultArray();
+        return $result;
+    }
 }

@@ -45,6 +45,31 @@
                     </div>
                 </div>
 
+
+                <div class="row gap-5">
+                    <div class="col">
+                        <div class="row">
+                            <div class="col">
+                                <label for="">¿Tiene iluminación?: </label>
+                            </div>
+                            <div class="col">
+                                <p id="iluminacionVerInstalacion"></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-8">
+                                <label for="">¿Se puede prestar material?: </label>
+                            </div>
+                            <div class="col-4">
+                                <p id="materialVerInstalacion"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <h2>Pistas.</h2>
                 <div class="accordion mt-3" id="accordionPistas">
                     <!-- Aquí se insertarán las pistas dinámicamente -->

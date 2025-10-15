@@ -606,6 +606,33 @@ $(document).ready(() => {
                     let data = JSON.parse(response); // --> Respuesta de la petición. La pasamos a un objeto con JSON.parse()
                     let instalaciones = data.instalaciones; // --> Obtenemos las instalaciones que tenemos creadas
                     let tabla = $('#tablaInstalaciones tbody'); // --> Obetenemos la tabla del crud de las instalaciones
+                    let body = $('.divTable')
+                    
+                    if ($('#tablaInstalaciones').length === 0) {
+                    // Crear la tabla completa
+                    const tablaHTML = `
+                        <table class="table table-hover" id="tablaInstalaciones">
+                            <thead>
+                                <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Categoria Principal</th>
+                                <th scope="col">Categoria Secundaria</th>
+                                <th scope="col">Acciones</th>
+                                <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <a href="#" id="crear" class="btn-primary-personal" style="margin-left: 0; width: 20%">Nueva <i class="bi bi-plus-circle"></i></a>
+                        `;
+
+                        body.empty()
+                        body.append(tablaHTML)
+                        tabla = $('#tablaInstalaciones tbody');
+                    }
+
                     tabla.empty(); // --> La vaciamos
 
                     // Recorremos las instalaciones para hacer un efecto de refresco inmediato, con los nuevos datos
@@ -710,6 +737,9 @@ $(document).ready(() => {
                     $('#capacidadCompletaVerInstalacion').text('----')
                     $('#precioCompletoVerInstalacion').text('----')
                 }
+
+                $('#iluminacionVerInstalacion').text((parseInt(response.instalacion[0].iluminacion) === 1)?"Sí":"No")
+                $('#materialVerInstalacion').text((parseInt(response.instalacion[0].material) === 1)?"Sí":"No")
 
                 // Antes de nada vaciamos el div contenedor de los accordión con las pistas
                 $('#accordionPistas').empty();
@@ -863,12 +893,17 @@ $(document).ready(() => {
                     });
                 });
 
+                let iluminacionChecked = (parseInt(response.instalacion[0].iluminacion) === 1) ? "checked" : "";
+                let materialChecked = (parseInt(response.instalacion[0].material) === 1) ? "checked" : "";
                 let noPistasChecked = (parseInt(response.instalacion[0].no_pistas) === 1) ? "checked" : ""; // --> Comprobamos si está marcado el switch que nos indica que no se pueden crear pistas para esa instalación
                 let puedeCompletoChecked = (parseInt(response.instalacion[0].puede_completo) === 1) ? "checked" : ""; // --> Comprobamos si está marcado el switch que nos indica que se puede hacer una reserva completa en la instalación
 
                 $('#noPistasEditar').prop('checked', noPistasChecked); // --> Lo reflejamos en el switch
                 estadoInicial = noPistasChecked
                 $('#puedeCompletoEditar').prop('checked', puedeCompletoChecked); // --> Lo reflejamos en el switch
+
+                $('#iluminacionEditar').prop('checked', iluminacionChecked);
+                $('#materialEditar').prop('checked', materialChecked);
 
                 $('#capacidadCompletoEditar').val(response.instalacion[0].capacidad_completo) // --> Añadimos el valor de la capacidad total de la instalación
                 $('#precioCompletoEditar').val(response.instalacion[0].precio_completo) // --> Añadimos el valor del precio total de la instalación
@@ -1616,6 +1651,8 @@ $(document).ready(() => {
         const nombre = $('#nombreInstalacionEditar').val().trim();
         const categoria = parseInt($('#categoriasEditar').val());
         let categoriaSecundaria = 0;
+        const iluminacionEditar = $('#iluminacionEditar').is(':checked');
+        const materialEditar = $('#materialEditar').is(':checked');
         const noPistas = $('#noPistasEditar').is(':checked');
         const puedeCompleta = $('#puedeCompletoEditar').is(':checked');
         const capacidadCompleta = $('#capacidadCompletoEditar').val();
@@ -1675,6 +1712,10 @@ $(document).ready(() => {
         formData.append('nombre', nombre);
         formData.append('categoria', categoria);
         formData.append('categoriaSec', categoriaSecundaria);
+        formData.append('iluminacion', iluminacionEditar);
+        formData.append('material', materialEditar);
+        formData.append('noPistas', noPistas);
+        formData.append('puedeCompleta', puedeCompleta);
         formData.append('noPistas', noPistas);
         formData.append('puedeCompleta', puedeCompleta);
         formData.append('capacidadCompleta', capacidadCompleta);
@@ -1941,6 +1982,83 @@ $(document).ready(() => {
         })
     });
 
+
+    /***********************************************************************************************************************************
+    **************************************************** FILTRADO CRUD INSTALACIONES  **************************************************
+    ***********************************************************************************************************************************/
+    
+    // Función que desmarca y marca el checkbox del material dependiendo de la opción seleccionada, simulando el comportamiento de un input radio
+    $(document).on('change', '.material input', function(){
+
+        if ($(this).is(':checked')) {
+            // Desmarca todos los demás checkboxes dentro del mismo grupo .material
+            $('.material input').not(this).prop('checked', false);
+        }
+    })
+
+    // Función que desmarca y marca el checkbox de la iluminacion dependiendo de la opción seleccionada, simulando el comportamiento de un input radio
+    $(document).on('change', '.iluminacion input', function(){
+
+        if ($(this).is(':checked')) {
+            // Desmarca todos los demás checkboxes dentro del mismo grupo .iluminacion
+            $('.iluminacion input').not(this).prop('checked', false);
+        }
+    })
+
+
+    // Función que desmarca y marca el checkbox de la reserva completa dependiendo de la opción seleccionada, simulando el comportamiento de un input radio
+    $(document).on('change', '.reservaCompleta input', function(){
+
+        if ($(this).is(':checked')) {
+            // Desmarca todos los demás checkboxes dentro del mismo grupo .reservaCompleta
+            $('.reservaCompleta input').not(this).prop('checked', false);
+        }
+    })
+
+
+    // Función que desmarca y marca el checkbox de las pistas dependiendo de la opción seleccionada, simulando el comportamiento de un input radio
+    $(document).on('change', '.hayPistas input', function(){
+
+        if ($(this).is(':checked')) {
+            // Desmarca todos los demás checkboxes dentro del mismo grupo .hayPistas
+            $('.hayPistas input').not(this).prop('checked', false);
+        }
+    })
+
+
+    $(document).on('click', '#btnFiltrarGestorInstalaciones', function(){
+
+        let nombre = $('#filtradoNombre').val();
+        let categoria = $('#filtradoCategoria').val();
+        
+        let hayPistas = null
+        if($('#siPistas').is(':checked')) hayPistas = 1;
+        if($('#noPistas').is(':checked')) hayPistas = 0;
+
+        let puedeCompleto = null 
+        if($('#siCompleta').is(':checked')) puedeCompleto = 1;
+        if($('#noCompleta').is(':checked')) puedeCompleto = 0;
+
+        let iluminacion = null
+        if($('#siLuz').is(':checked')) iluminacion = 1;
+        if($('#noLuz').is(':checked')) iluminacion = 0;
+
+        let material = null
+        if($('#siMaterial').is(':checked')) material = 1;
+        if($('#noMaterial').is(':checked')) material = 0;
+
+        console.log(nombre, categoria, hayPistas, puedeCompleto, iluminacion, material);
+
+        $.ajax({
+            type: "GET",
+            url: "crudInstalaciones",
+            data: {nombre: nombre, categoria: categoria, hayPistas: hayPistas, puedeCompleto: puedeCompleto, iluminacion: iluminacion, material: material},
+            dataType: "json",
+            success: function (response) {
+                
+            }
+        });
+    })
 
 
     /***********************************************************************************************************************************

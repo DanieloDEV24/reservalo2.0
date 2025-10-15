@@ -40,6 +40,32 @@
 
         <div class="row gap-5">
           <div class="col d-flex align-items-center gap-2 mt-3">
+            <label for="">Tiene iluminación</label>
+            <label class="toggle-switch">
+              <input type="checkbox" id="iluminacionEditar">
+              <div class="toggle-switch-background">
+                <div class="toggle-switch-handle"></div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        
+        <div class="row gap-5">
+          <div class="col d-flex align-items-center gap-2 mt-3">
+            <label for="">Se puede prestar material</label>
+            <label class="toggle-switch">
+              <input type="checkbox" id="materialEditar">
+              <div class="toggle-switch-background">
+                <div class="toggle-switch-handle"></div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+
+        <div class="row gap-5">
+          <div class="col d-flex align-items-center gap-2 mt-3">
             <label for="">La instalacion no tiene pistas, zonas...; es solo completa</label>
             <label class="toggle-switch">
               <input type="checkbox" class="noPistas" id="noPistasEditar">
