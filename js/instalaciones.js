@@ -2028,34 +2028,50 @@ $(document).ready(() => {
 
     $(document).on('click', '#btnFiltrarGestorInstalaciones', function(){
 
+        let filter = null;
+
         let nombre = $('#filtradoNombre').val();
+        if(nombre !== "") filter["nombre"] = nombre;
+
         let categoria = $('#filtradoCategoria').val();
-        
+        if(parseInt(categoria) !== -1) filter["categoria_principal"] = categoria;
+
         let hayPistas = null
         if($('#siPistas').is(':checked')) hayPistas = 1;
         if($('#noPistas').is(':checked')) hayPistas = 0;
+        if(hayPistas !== null) filter["no_pistas"] = hayPistas;
 
         let puedeCompleto = null 
         if($('#siCompleta').is(':checked')) puedeCompleto = 1;
         if($('#noCompleta').is(':checked')) puedeCompleto = 0;
+        if(puedeCompleto !== null) filter["puede_completo"] = puedeCompleto;
 
         let iluminacion = null
         if($('#siLuz').is(':checked')) iluminacion = 1;
         if($('#noLuz').is(':checked')) iluminacion = 0;
+        if(iluminacion !== null) filter["iluminacion"] = iluminacion;
 
         let material = null
         if($('#siMaterial').is(':checked')) material = 1;
         if($('#noMaterial').is(':checked')) material = 0;
+        if(material !== null) filter["material"] = material;
 
-        console.log(nombre, categoria, hayPistas, puedeCompleto, iluminacion, material);
 
         $.ajax({
-            type: "GET",
+            type: "POST",
             url: "crudInstalaciones",
-            data: {nombre: nombre, categoria: categoria, hayPistas: hayPistas, puedeCompleto: puedeCompleto, iluminacion: iluminacion, material: material},
+            data: {filter: filter},
             dataType: "json",
             success: function (response) {
-                
+                let tbody = $('#tablaInstalaciones tbody');
+                tbody.empty()
+
+                let instalaciones = response.instalaciones;
+
+                instalaciones.map(() => {
+
+                    
+                })
             }
         });
     })

@@ -12,7 +12,18 @@ class Instalaciones extends BaseController
     {
 
         $instalacionesModel = new instalacionesModel();
-        $instalaciones = $instalacionesModel->getInstalaciones();
+        $post  = $this->request->getPost();
+        $filter = (!empty($post))? $post["filter"] : null;
+        $instalaciones = $instalacionesModel->getInstalaciones($filter);
+
+        if(!empty($post))
+        {
+            echo json_encode([
+                "instalaciones" => $instalaciones
+            ]);
+            exit;
+        }
+
         $categorias = $instalacionesModel->getCategorias();
 
         $nuevaInstalacion  = view('instalaciones/modalNuevaInstalacion', ["baseUrl" => base_url(), "categorias" => $categorias]);
@@ -120,7 +131,7 @@ class Instalaciones extends BaseController
 
 
             // Carga instalaciones para devolver
-            $instalaciones = $instalacionesModel->getInstalaciones();
+            $instalaciones = $instalacionesModel->getInstalaciones(null);
 
             echo json_encode([
                 "success"       => true,

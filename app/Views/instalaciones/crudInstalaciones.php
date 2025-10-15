@@ -58,14 +58,14 @@
   
   
 
-<div class="accordion filtrado" id="accordionExample" style="padding: 2%;">
+<div class="accordion filtrado" id="accordionFiltro" style="padding: 2%;">
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
         <i class="bi bi-filter"></i>&nbsp;Filtrar
       </button>
     </h2>
-    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFiltro">
       <div class="accordion-body">
         <div class="row">
 

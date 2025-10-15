@@ -26,7 +26,7 @@ class instalacionesModel extends Model
     protected $updatedField = 'updated_at';
     protected $deletedField = 'deleted_at';
 
-    public function getInstalaciones($filter)
+    public function getInstalaciones(?array $filter)
     {
 
         $db = \Config\Database::connect('BDReservalo2');
@@ -40,9 +40,16 @@ class instalacionesModel extends Model
                                 WHERE pistas.id_instalacion = instalaciones.id_instalacion 
                                 ORDER BY id_pista ASC LIMIT 1) as imagen1')
             ->join('categorias as categorias1', 'instalaciones.categoria_principal = categorias1.id_categoria', 'left')
-            ->join('categorias as categorias2', 'instalaciones.categoria_opcional1 = categorias2.id_categoria', 'left')
-            ->get();
-        $result = $query->getResultArray();
+            ->join('categorias as categorias2', 'instalaciones.categoria_opcional1 = categorias2.id_categoria', 'left');
+            if($filter !== null)
+            {
+                $whereSentence = "";
+                foreach($filter as $campo => $valor)
+                {
+                    $query->where("instalaciones.".$campo, $valor);
+                }
+            }
+        $result = $query->get()->getResultArray();
         return $result;
     }
 

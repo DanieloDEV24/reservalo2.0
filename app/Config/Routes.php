@@ -7,6 +7,7 @@ use CodeIgniter\Router\RouteCollection;
  */
 $routes->get('/', 'Home::index');
 $routes->get('/crudInstalaciones', 'Instalaciones::crudInstalaciones', ['filter' => 'auth']);
+$routes->post('/', 'Instalaciones::crudInstalaciones', ['filter' => 'auth']);
 $routes->get('/login', 'Login::login');
 $routes->get('/singIn', 'Login::registrarse');
 $routes->post('/singIn', 'Login::registrarse');
