@@ -43,15 +43,24 @@ class instalacionesModel extends Model
             ->join('categorias as categorias2', 'instalaciones.categoria_opcional1 = categorias2.id_categoria', 'left');
             if($filter !== null)
             {
-                $whereSentence = "";
                 foreach($filter as $campo => $valor)
                 {
-                    $query->where("instalaciones.".$campo, $valor);
+                    if ($campo === "categoria") {
+                        // Buscar en categoría principal o secundaria
+                        $query->groupStart()
+                              ->like('instalaciones.categoria_principal', $valor)
+                              ->orLike('instalaciones.categoria_opcional1', $valor)
+                              ->groupEnd();
+                    } else {
+                        // Otros filtros normales
+                        $query->like("instalaciones.".$campo, $valor);
+                    }
                 }
             }
         $result = $query->get()->getResultArray();
         return $result;
     }
+
 
     public function getCategorias() 
     {

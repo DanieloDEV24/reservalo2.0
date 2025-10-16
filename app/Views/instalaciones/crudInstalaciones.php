@@ -212,7 +212,11 @@
 
         <div class="d-flex gap-2 mt-5 justify-content-end botonesPista">
           <button class="btn-primary-personal" style="width: 17%;" id="btnFiltrarGestorInstalaciones">Filtrar <i class="bi bi-filter"></i></button>
-          <button class="btn-secondary-personal" style="width: 17%";>Borrar filtros <i class="bi bi-trash3"></i></button>
+          <button class="btn-secondary-personal" style="width: 17%" id="btnBorrarFiltrosGestorInstalaciones">Borrar filtros <i class="bi bi-trash3"></i></button>
+        </div>
+
+        <div class="d-flex justify-content-start w-100" id="filtrosGestor">
+
         </div>
 
       </div>

@@ -13,7 +13,8 @@ class Instalaciones extends BaseController
 
         $instalacionesModel = new instalacionesModel();
         $post  = $this->request->getPost();
-        $filter = (!empty($post))? $post["filter"] : null;
+        $filter = (!empty($post) && (isset($post["filter"]) && !empty($post["filter"])))? $post["filter"] : null;
+
         $instalaciones = $instalacionesModel->getInstalaciones($filter);
 
         if(!empty($post))
@@ -699,7 +700,7 @@ class Instalaciones extends BaseController
     public function instalaciones()
     {
         $instalacionesModel = new instalacionesModel();
-        $instalaciones = $instalacionesModel->getInstalaciones();
+        $instalaciones = $instalacionesModel->getInstalaciones(null);
         $numInstalaciones = $instalacionesModel->getNumInstalaciones();
         $instalacionesCategorias = $instalacionesModel->getInstalacionesCategorias();
 

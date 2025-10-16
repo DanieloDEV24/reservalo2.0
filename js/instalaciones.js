@@ -2028,52 +2028,309 @@ $(document).ready(() => {
 
     $(document).on('click', '#btnFiltrarGestorInstalaciones', function(){
 
-        let filter = null;
+    let filter = {};  // <-- objeto, no array
 
-        let nombre = $('#filtradoNombre').val();
-        if(nombre !== "") filter["nombre"] = nombre;
+    let nombre = $('#filtradoNombre').val();
+    if(nombre !== "") filter["nombre"] = nombre;
 
-        let categoria = $('#filtradoCategoria').val();
-        if(parseInt(categoria) !== -1) filter["categoria_principal"] = categoria;
+    let categoria = $('#filtradoCategoria').val();
+    let categoriaNombre = $('#filtradoCategoria option:selected').text();
+    if(parseInt(categoria) !== -1) filter["categoria"] = categoria;
 
-        let hayPistas = null
-        if($('#siPistas').is(':checked')) hayPistas = 1;
-        if($('#noPistas').is(':checked')) hayPistas = 0;
-        if(hayPistas !== null) filter["no_pistas"] = hayPistas;
+    let hayPistas = null;
+    if($('#siPistas').is(':checked')) hayPistas = 0;
+    if($('#noPistas').is(':checked')) hayPistas = 1;
+    if(hayPistas !== null) filter["no_pistas"] = hayPistas;
 
-        let puedeCompleto = null 
-        if($('#siCompleta').is(':checked')) puedeCompleto = 1;
-        if($('#noCompleta').is(':checked')) puedeCompleto = 0;
-        if(puedeCompleto !== null) filter["puede_completo"] = puedeCompleto;
+    let puedeCompleto = null;
+    if($('#siCompleta').is(':checked')) puedeCompleto = 1;
+    if($('#noCompleta').is(':checked')) puedeCompleto = 0;
+    if(puedeCompleto !== null) filter["puede_completo"] = puedeCompleto;
 
-        let iluminacion = null
-        if($('#siLuz').is(':checked')) iluminacion = 1;
-        if($('#noLuz').is(':checked')) iluminacion = 0;
-        if(iluminacion !== null) filter["iluminacion"] = iluminacion;
+    let iluminacion = null;
+    if($('#siLuz').is(':checked')) iluminacion = 1;
+    if($('#noLuz').is(':checked')) iluminacion = 0;
+    if(iluminacion !== null) filter["iluminacion"] = iluminacion;
 
-        let material = null
-        if($('#siMaterial').is(':checked')) material = 1;
-        if($('#noMaterial').is(':checked')) material = 0;
-        if(material !== null) filter["material"] = material;
+    let material = null;
+    if($('#siMaterial').is(':checked')) material = 1;
+    if($('#noMaterial').is(':checked')) material = 0;
+    if(material !== null) filter["material"] = material;
 
+    if(Object.keys(filter).length === 0)
+    {
+        filter = null;
+    }
+    else 
+    {
+        $('#filtrosGestor').empty()
+        for(key in filter)
+        {
+            if (filter.hasOwnProperty(key)) { // recomendable para no iterar propiedades heredadas
+                let campo = "";
+                let valor = ""
+                if(key === "puede_completo")
+                {
+                    campo = "completo";
+
+                    if(filter[key] === 0)
+                        valor = "No"
+                    else 
+                        valor = "Sí"
+                }
+                else if((key === "iluminacion")||(key === "material"))
+                {
+                    if(filter[key] == 0)
+                        valor = "No"
+                    else 
+                        valor = "Sí"
+
+                    campo = key;
+                }
+                else if(key === "no_pistas")
+                {
+                    campo = "pistas";
+                    if(filter[key] == 0)
+                        valor = "Sí"
+                    else 
+                        valor = "No"
+                }
+                else if(key === "categoria")
+                {
+                    valor = categoriaNombre;
+                    campo = key;
+                }
+                else{
+                    campo = key;
+                    valor = filter[key]
+                } 
+
+
+                let div = $(`<div class="filtroSeleccionado" data-index="${key}"><i class="bi bi-filter"></i> <a>${campo}: ${valor}</a> <button><i class="bi bi-x"></i></button></div>`)
+                $('#filtrosGestor').append(div);
+            }
+        }
+    }
+
+
+    $.ajax({
+        type: "POST",
+        url: "crudInstalaciones",
+        data: { filter: filter },
+        dataType: "json",
+        success: function (response) {
+            let tbody = $('#tablaInstalaciones tbody');
+            tbody.empty();
+
+            let instalaciones = response.instalaciones;
+            let cont = 1;
+
+            instalaciones.forEach(instalacion => {
+
+                let estadoClass = (instalacion.estado == 1) ? 'class="table-danger"' : '';
+
+                let tr = $(`
+                    <tr data-index="${instalacion.id_instalacion}" ${estadoClass}>
+                        <td>${cont++}</td>
+                        <td>${instalacion.nombre}</td>
+                        <td>${instalacion.categoria_name}</td>
+                        <td>${(instalacion.categoria_opcional1 === null) ? '----' : instalacion.categoria_opc_name}</td>
+                        <td>
+                            <div class="dropdown" style="max-width: 200px;">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item btnVerInstalacion" href="#">Ver &nbsp;<i class="bi bi-eye"></i></a></li>
+                                    <li><a class="dropdown-item btnEditarInstalacion" href="#">Editar &nbsp;<i class="bi bi-pencil-square"></i></a></li>
+                                    <li><a class="dropdown-item btnBorrarInstalacion" href="#">Borrar &nbsp;<i class="bi bi-trash3"></i></a></li>
+                                    ${
+                                        (instalacion.estado == 0)
+                                        ? `<li><a class="dropdown-item btnDarBaja" href="#">Dar de Baja &nbsp;<i class="bi bi-x-lg"></i></a></li>`
+                                        : `<li><a class="dropdown-item btnDarAlta" href="#">Dar de Alta &nbsp;<i class="bi bi-check-lg"></i></a></li>`
+                                    }
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-between align-items-center w-100">
+                                ${
+                                    (instalacion.estado == 1)
+                                    ? `<i class="bi bi-info-circle"
+                                          data-bs-toggle="tooltip" data-bs-placement="top"
+                                          data-bs-custom-class="custom-tooltip"
+                                          data-bs-title="Esta instalación está dada de baja"></i>`
+                                    : ''
+                                }
+                                <div id="loader${instalacion.id_instalacion}" class="loader2" style="display: none;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                `);
+
+                tbody.append(tr);
+            });
+
+            // Reinicializar tooltips de Bootstrap (si se usan)
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        },
+        error: function() {
+            console.error("Error al obtener las instalaciones.");
+        }
+        });
+    });
+
+
+    $(document).on('click', '.filtroSeleccionado button', function(){
+
+        let index = $(this).closest('.filtroSeleccionado').data('index');
+
+        if(index === "nombre") $('#filtradoNombre').val('');
+        if(index === "categoria") $('#filtradoCategoria').val(-1);
+        
+        if(index === "no_pistas")
+        {
+           $('#siPistas').prop('checked', false)
+           $('#noPistas').prop('checked', false)
+        }
+
+        if(index === "puede_completo")
+        {
+            $('#siCompleta').prop('checked', false)
+            $('#noCompleta').prop('checked', false)
+        }
+
+        if(index === "iluminacion")
+        {
+            $('#siLuz').prop('checked', false)
+            $('#noLuz').prop('checked', false)
+        }
+
+        if(index === "material")
+        {
+            $('#siMaterial').prop('checked', false)
+            $('#noMaterial').prop('checked', false)
+        }
+
+        $(this).closest('.filtroSeleccionado').remove();
+
+    })
+
+
+    $(document).on('click', '#btnBorrarFiltrosGestorInstalaciones', function(){
+
+        $('#filtradoNombre').val('');
+        $('#filtradoCategoria').val(-1);
+        $('#siPistas').prop('checked', false)
+        $('#noPistas').prop('checked', false)
+        $('#siCompleta').prop('checked', false)
+        $('#noCompleta').prop('checked', false)
+        $('#siLuz').prop('checked', false)
+        $('#noLuz').prop('checked', false)
+        $('#siMaterial').prop('checked', false)
+        $('#noMaterial').prop('checked', false)
+
+
+        $('#filtrosGestor').empty();
 
         $.ajax({
-            type: "POST",
-            url: "crudInstalaciones",
-            data: {filter: filter},
-            dataType: "json",
-            success: function (response) {
-                let tbody = $('#tablaInstalaciones tbody');
-                tbody.empty()
+        type: "POST",
+        url: "crudInstalaciones",
+        data: { filter: null },
+        dataType: "json",
+        success: function (response) {
+            let tbody = $('#tablaInstalaciones tbody');
+            tbody.empty();
 
-                let instalaciones = response.instalaciones;
+            let instalaciones = response.instalaciones;
+            let cont = 1;
 
-                instalaciones.map(() => {
+            instalaciones.forEach(instalacion => {
 
-                    
-                })
-            }
+                let estadoClass = (instalacion.estado == 1) ? 'class="table-danger"' : '';
+
+                let tr = $(`
+                    <tr data-index="${instalacion.id_instalacion}" ${estadoClass}>
+                        <td>${cont++}</td>
+                        <td>${instalacion.nombre}</td>
+                        <td>${instalacion.categoria_name}</td>
+                        <td>${(instalacion.categoria_opcional1 === null) ? '----' : instalacion.categoria_opc_name}</td>
+                        <td>
+                            <div class="dropdown" style="max-width: 200px;">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item btnVerInstalacion" href="#">Ver &nbsp;<i class="bi bi-eye"></i></a></li>
+                                    <li><a class="dropdown-item btnEditarInstalacion" href="#">Editar &nbsp;<i class="bi bi-pencil-square"></i></a></li>
+                                    <li><a class="dropdown-item btnBorrarInstalacion" href="#">Borrar &nbsp;<i class="bi bi-trash3"></i></a></li>
+                                    ${
+                                        (instalacion.estado == 0)
+                                        ? `<li><a class="dropdown-item btnDarBaja" href="#">Dar de Baja &nbsp;<i class="bi bi-x-lg"></i></a></li>`
+                                        : `<li><a class="dropdown-item btnDarAlta" href="#">Dar de Alta &nbsp;<i class="bi bi-check-lg"></i></a></li>`
+                                    }
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-between align-items-center w-100">
+                                ${
+                                    (instalacion.estado == 1)
+                                    ? `<i class="bi bi-info-circle"
+                                          data-bs-toggle="tooltip" data-bs-placement="top"
+                                          data-bs-custom-class="custom-tooltip"
+                                          data-bs-title="Esta instalación está dada de baja"></i>`
+                                    : ''
+                                }
+                                <div id="loader${instalacion.id_instalacion}" class="loader2" style="display: none;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                `);
+
+                tbody.append(tr);
+            });
+
+            // Reinicializar tooltips de Bootstrap (si se usan)
+            $('[data-bs-toggle="tooltip"]').tooltip();
+        },
+        error: function() {
+            console.error("Error al obtener las instalaciones.");
+        }
         });
+    })
+
+
+    $(document).on('click', '.filtroSeleccionado', function(){
+
+        let index = $(this).data('index');
+
+        if(index === "nombre") $('#filtradoNombre').focus();
+        if(index === "categoria") $('#filtradoCategoria').focus();
+        
+        if(index === "no_pistas")
+        {
+           if($('#siPistas').is(':checked')) $('#siPistas').focus();
+           if($('#noPistas').is(':checked')) $('#noPistas').focus();
+        }
+
+        if(index === "puede_completo")
+        {
+            if($('#siCompleta').is(':checked')) $('#siCompleta').focus();
+            if($('#noCompleta').is(':checked')) $('#noCompleta').focus();
+        }
+
+        if(index === "iluminacion")
+        {
+            if($('#siLuz').is(':checked')) $('#siLuz').focus();
+            if($('#noLuz').is(':checked')) $('#noLuz').focus();
+        }
+
+        if(index === "material")
+        {
+            if($('#siMaterial').is(':checked')) $('#siMaterial').focus();
+            if($('#noMaterial').is(':checked')) $('#noMaterial').focus();
+        }
     })
 
 

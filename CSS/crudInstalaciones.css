@@ -586,11 +586,11 @@ table td .dropdown button i {
 .filtrado .accordion-button:focus {
   z-index: 3;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(50, 204, 204, .5) !important;
+  box-shadow: 0 0 0 0.25rem rgba(50, 204, 204, .3) !important;
 }
 
 .filtrado .accordion-button:hover{
-  box-shadow: 0 0 0 0.25rem rgba(50, 204, 204, .5) !important;
+  box-shadow: 0 0 0 0.25rem rgba(50, 204, 204, .3) !important;
 }
 
 .filtrado .accordion-button {
@@ -598,10 +598,66 @@ table td .dropdown button i {
 }
 
 .filtrado .accordion-button:not(.collapsed) {
-  background-color: rgba(50, 204, 204, .5) !important;
-  box-shadow: 0 0 0 0.25rem rgba(50, 204, 204, .5) !important;
+  background-color: rgba(50, 204, 204, .15) !important;
+  box-shadow: 0 0 0 0.25rem rgba(50, 204, 204, .3) !important;
 }
 
 .filtrado .accordion-button {
   background-color: #fff !important; /* verde Bootstrap */
+}
+
+#filtrosGestor
+{
+  display: flex;
+  gap: 1%;
+  width: 100% !important;
+  flex-wrap: wrap; /* Permite que los elementos bajen de línea si es necesario */
+  margin-top: 3%;
+}
+
+
+.filtroSeleccionado
+{
+  color: #021b41;
+  background-color: rgba(50, 204, 204, .3);
+  border-radius: 20px;
+  padding: .5% 1%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px; /* Espacio entre el texto y el botón X */
+  white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+  min-width: fit-content; /* Asegura que el contenedor se ajuste al contenido */
+  cursor: pointer;
+  transition: all .2s ease-in;
+}
+
+.filtroSeleccionado:hover
+{
+  transform: scale(1.05);
+
+}
+
+
+.filtroSeleccionado button
+{
+  background: transparent;
+  color: #021b41;
+  border-radius: 5px;
+  border: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 0rem .3rem;
+  transition: all .15s ease-out;
+}
+
+.filtroSeleccionado button:hover
+{
+  background-color: rgba(255, 255, 255, .5);
+}
+
+.filtrado input[type="checkbox"]:focus,
+.filtrado input[type="radio"]:focus {
+  outline: 2px solid #32cccc; /* o cualquier color que quieras */
+  outline-offset: 2px;
 }
