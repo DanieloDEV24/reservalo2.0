@@ -611,6 +611,7 @@ $(document).ready(() => {
                     if ($('#tablaInstalaciones').length === 0) {
                     // Crear la tabla completa
                     const tablaHTML = `
+                    <div style="position: relative; min-height: 70px;" class="contenedor-loader">
                         <table class="table table-hover" id="tablaInstalaciones">
                             <thead>
                                 <tr>
@@ -625,7 +626,8 @@ $(document).ready(() => {
                             <tbody>
                             </tbody>
                         </table>
-                        <a href="#" id="crear" class="btn-primary-personal" style="margin-left: 0; width: 20%">Nueva <i class="bi bi-plus-circle"></i></a>
+                    </div>
+                    <a href="#" id="crear" class="btn-primary-personal" style="margin-left: 0; width: 20%">Nueva <i class="bi bi-plus-circle"></i></a>
                         `;
 
                         body.empty()
@@ -2025,10 +2027,10 @@ $(document).ready(() => {
         }
     })
 
-
+    let filter = {};  
     $(document).on('click', '#btnFiltrarGestorInstalaciones', function(){
-
-    let filter = {};  // <-- objeto, no array
+    
+    if(filter === null) filter = {}
 
     let nombre = $('#filtradoNombre').val();
     if(nombre !== "") filter["nombre"] = nombre;
@@ -2057,6 +2059,7 @@ $(document).ready(() => {
     if($('#noMaterial').is(':checked')) material = 0;
     if(material !== null) filter["material"] = material;
 
+    
     if(Object.keys(filter).length === 0)
     {
         filter = null;
@@ -2109,7 +2112,7 @@ $(document).ready(() => {
                 let div = $(`<div class="filtroSeleccionado" data-index="${key}"><i class="bi bi-filter"></i> <a>${campo}: ${valor}</a> <button><i class="bi bi-x"></i></button></div>`)
                 $('#filtrosGestor').append(div);
             }
-        }
+    }   
     }
 
 
@@ -2118,6 +2121,10 @@ $(document).ready(() => {
         url: "crudInstalaciones",
         data: { filter: filter },
         dataType: "json",
+        beforeSend: function(){
+            $('#loadertablaInstalaciones').show()
+            $('#tablaInstalaciones').addClass('tablaCargando')
+        },
         success: function (response) {
             let tbody = $('#tablaInstalaciones tbody');
             tbody.empty();
@@ -2173,9 +2180,18 @@ $(document).ready(() => {
 
             // Reinicializar tooltips de Bootstrap (si se usan)
             $('[data-bs-toggle="tooltip"]').tooltip();
+
+            $('#loadertablaInstalaciones').hide()
+            $('#tablaInstalaciones').removeClass('tablaCargando')
+        },
+        complete: function(){
+            $('#loadertablaInstalaciones').hide()
+            $('#tablaInstalaciones').removeClass('tablaCargando')
         },
         error: function() {
             console.error("Error al obtener las instalaciones.");
+            $('#loadertablaInstalaciones').hide()
+            $('#tablaInstalaciones').removeClass('tablaCargando')
         }
         });
     });
@@ -2185,34 +2201,123 @@ $(document).ready(() => {
 
         let index = $(this).closest('.filtroSeleccionado').data('index');
 
-        if(index === "nombre") $('#filtradoNombre').val('');
-        if(index === "categoria") $('#filtradoCategoria').val(-1);
-        
-        if(index === "no_pistas")
+        if(index === "nombre")
+        {
+            $('#filtradoNombre').val('');
+            delete filter.nombre;
+        }
+        else if(index === "categoria")
+        {
+            $('#filtradoCategoria').val(-1);
+            delete filter.categoria
+        }
+        else if(index === "no_pistas")
         {
            $('#siPistas').prop('checked', false)
            $('#noPistas').prop('checked', false)
+           delete filter.no_pistas
         }
-
-        if(index === "puede_completo")
+        else if(index === "puede_completo")
         {
             $('#siCompleta').prop('checked', false)
             $('#noCompleta').prop('checked', false)
+            delete filter.puede_completo
         }
-
-        if(index === "iluminacion")
+        else if(index === "iluminacion")
         {
             $('#siLuz').prop('checked', false)
             $('#noLuz').prop('checked', false)
+            delete filter.iluminacion
         }
-
-        if(index === "material")
+        else if(index === "material")
         {
             $('#siMaterial').prop('checked', false)
             $('#noMaterial').prop('checked', false)
+            delete filter.material
         }
 
+        if(Object.keys(filter).length === 0) filter = null
+
         $(this).closest('.filtroSeleccionado').remove();
+
+        $.ajax({
+        type: "POST",
+        url: "crudInstalaciones",
+        data: { filter: filter },
+        dataType: "json",
+        beforeSend: function(){
+            $('#loadertablaInstalaciones').show()
+            $('#tablaInstalaciones').addClass('tablaCargando')
+        },
+        success: function (response) {
+            let tbody = $('#tablaInstalaciones tbody');
+            tbody.empty();
+
+            let instalaciones = response.instalaciones;
+            let cont = 1;
+
+            instalaciones.forEach(instalacion => {
+
+                let estadoClass = (instalacion.estado == 1) ? 'class="table-danger"' : '';
+
+                let tr = $(`
+                    <tr data-index="${instalacion.id_instalacion}" ${estadoClass}>
+                        <td>${cont++}</td>
+                        <td>${instalacion.nombre}</td>
+                        <td>${instalacion.categoria_name}</td>
+                        <td>${(instalacion.categoria_opcional1 === null) ? '----' : instalacion.categoria_opc_name}</td>
+                        <td>
+                            <div class="dropdown" style="max-width: 200px;">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item btnVerInstalacion" href="#">Ver &nbsp;<i class="bi bi-eye"></i></a></li>
+                                    <li><a class="dropdown-item btnEditarInstalacion" href="#">Editar &nbsp;<i class="bi bi-pencil-square"></i></a></li>
+                                    <li><a class="dropdown-item btnBorrarInstalacion" href="#">Borrar &nbsp;<i class="bi bi-trash3"></i></a></li>
+                                    ${
+                                        (instalacion.estado == 0)
+                                        ? `<li><a class="dropdown-item btnDarBaja" href="#">Dar de Baja &nbsp;<i class="bi bi-x-lg"></i></a></li>`
+                                        : `<li><a class="dropdown-item btnDarAlta" href="#">Dar de Alta &nbsp;<i class="bi bi-check-lg"></i></a></li>`
+                                    }
+                                </ul>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-between align-items-center w-100">
+                                ${
+                                    (instalacion.estado == 1)
+                                    ? `<i class="bi bi-info-circle"
+                                          data-bs-toggle="tooltip" data-bs-placement="top"
+                                          data-bs-custom-class="custom-tooltip"
+                                          data-bs-title="Esta instalación está dada de baja"></i>`
+                                    : ''
+                                }
+                                <div id="loader${instalacion.id_instalacion}" class="loader2" style="display: none;"></div>
+                            </div>
+                        </td>
+                    </tr>
+                `);
+
+                tbody.append(tr);
+            });
+
+            // Reinicializar tooltips de Bootstrap (si se usan)
+            $('[data-bs-toggle="tooltip"]').tooltip();
+
+            $('#loadertablaInstalaciones').hide()
+            $('#tablaInstalaciones').removeClass('tablaCargando')
+        },
+        complete: function(){
+            $('#loadertablaInstalaciones').hide()
+            $('#tablaInstalaciones').removeClass('tablaCargando')
+        },
+        error: function() {
+            console.error("Error al obtener las instalaciones.");
+            $('#loadertablaInstalaciones').hide()
+            $('#tablaInstalaciones').removeClass('tablaCargando')
+        }
+        });
 
     })
 
@@ -2238,6 +2343,10 @@ $(document).ready(() => {
         url: "crudInstalaciones",
         data: { filter: null },
         dataType: "json",
+        beforeSend: function(){
+            $('#loadertablaInstalaciones').show()
+            $('#tablaInstalaciones').addClass('tablaCargando')
+        },
         success: function (response) {
             let tbody = $('#tablaInstalaciones tbody');
             tbody.empty();
@@ -2293,9 +2402,17 @@ $(document).ready(() => {
 
             // Reinicializar tooltips de Bootstrap (si se usan)
             $('[data-bs-toggle="tooltip"]').tooltip();
+            $('#loadertablaInstalaciones').hide()
+            $('#tablaInstalaciones').removeClass('tablaCargando')
+        },
+        complete: function(){
+            $('#loadertablaInstalaciones').hide()
+            $('#tablaInstalaciones').removeClass('tablaCargando')
         },
         error: function() {
             console.error("Error al obtener las instalaciones.");
+            $('#loadertablaInstalaciones').hide()
+            $('#tablaInstalaciones').removeClass('tablaCargando')
         }
         });
     })

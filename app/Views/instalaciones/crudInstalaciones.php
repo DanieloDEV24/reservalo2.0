@@ -293,77 +293,81 @@
   else 
   {
   ?>
-  
-    <table class="table table-hover" id="tablaInstalaciones" >
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">Categoria Principal</th>
-        <th scope="col">Categoria Secundaria</th>
-        <th scope="col">Acciones</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php
-      $cont = 0;
-      foreach ($instalaciones as $instalacion) {
-        $cont++;
-      ?>
-        <tr data-index="<?= $instalacion["id_instalacion"] ?>" <?= ($instalacion["estado"] == 1) ? 'class="table-danger"' : '' ?>>
-          <td><?= $cont ?></td>
-          <td><?= $instalacion["nombre"] ?></td>
-          <td><?= $instalacion["categoria_name"] ?></td>
-          <td><?= ($instalacion["categoria_opcional1"] === null) ? "----" : $instalacion["categoria_opc_name"] ?></td>
-          <td>
+    <div style="position: relative; min-height: 70px;" class="contenedor-loader">
+
+     <div id="loadertablaInstalaciones" class="loader" style="display: none;"></div>
+
+      <table class="table table-hover" id="tablaInstalaciones" >
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Categoria Principal</th>
+          <th scope="col">Categoria Secundaria</th>
+          <th scope="col">Acciones</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        $cont = 0;
+        foreach ($instalaciones as $instalacion) {
+          $cont++;
+        ?>
+          <tr data-index="<?= $instalacion["id_instalacion"] ?>" <?= ($instalacion["estado"] == 1) ? 'class="table-danger"' : '' ?>>
+            <td><?= $cont ?></td>
+            <td><?= $instalacion["nombre"] ?></td>
+            <td><?= $instalacion["categoria_name"] ?></td>
+            <td><?= ($instalacion["categoria_opcional1"] === null) ? "----" : $instalacion["categoria_opc_name"] ?></td>
+            <td>
 
 
-            <div class="dropdown" style="max-width: 200px;">
-              <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-three-dots-vertical"></i>
-              </button>
-              <ul class="dropdown-menu">
-                <li><a class="dropdown-item btnVerInstalacion" href="">Ver &nbsp;<i class="bi bi-eye"></i></a></li>
-                <li><a class="dropdown-item btnEditarInstalacion" href="">Editar &nbsp;<i class="bi bi-pencil-square"></i></a></li>
-                <li><a class="dropdown-item btnBorrarInstalacion" href="#">Borrar &nbsp;<i class="bi bi-trash3"></i></a></li>
+              <div class="dropdown" style="max-width: 200px;">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="bi bi-three-dots-vertical"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item btnVerInstalacion" href="">Ver &nbsp;<i class="bi bi-eye"></i></a></li>
+                  <li><a class="dropdown-item btnEditarInstalacion" href="">Editar &nbsp;<i class="bi bi-pencil-square"></i></a></li>
+                  <li><a class="dropdown-item btnBorrarInstalacion" href="#">Borrar &nbsp;<i class="bi bi-trash3"></i></a></li>
+                  <?php
+                  if ($instalacion["estado"] == 0) {
+                  ?>
+                    <li><a class="dropdown-item btnDarBaja" href="#">Dar de Baja &nbsp;<i class="bi bi-x-lg"></i></a></li>
+                  <?php
+                  } else {
+                  ?>
+                    <li><a class="dropdown-item btnDarAlta" href="#">Dar de Alta &nbsp;<i class="bi bi-check-lg"></i></a></li>
+                  <?php
+                  }
+                  ?>
+                </ul>
+              </div>
+
+
+            </td>
+            <td>
+              <div class="d-flex justify-content-between align-items-center w-100">
                 <?php
-                if ($instalacion["estado"] == 0) {
+                if ($instalacion["estado"] == 1) {
                 ?>
-                  <li><a class="dropdown-item btnDarBaja" href="#">Dar de Baja &nbsp;<i class="bi bi-x-lg"></i></a></li>
-                <?php
-                } else {
-                ?>
-                  <li><a class="dropdown-item btnDarAlta" href="#">Dar de Alta &nbsp;<i class="bi bi-check-lg"></i></a></li>
+                  <i class="bi bi-info-circle"
+                    data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-custom-class="custom-tooltip"
+                    data-bs-title="Esta instalación está dada de baja"></i>
                 <?php
                 }
                 ?>
-              </ul>
-            </div>
-
-
-          </td>
-          <td>
-            <div class="d-flex justify-content-between align-items-center w-100">
-              <?php
-              if ($instalacion["estado"] == 1) {
-              ?>
-                <i class="bi bi-info-circle"
-                  data-bs-toggle="tooltip" data-bs-placement="top"
-                  data-bs-custom-class="custom-tooltip"
-                  data-bs-title="Esta instalación está dada de baja"></i>
-              <?php
-              }
-              ?>
-              <div id="loader<?= $instalacion["id_instalacion"] ?>" class="loader2" style="display: none;"></div>
-            </div>
-          </td>
-        </tr>
-      <?php
-      }
-      ?>
-    </tbody>
+                <div id="loader<?= $instalacion["id_instalacion"] ?>" class="loader2" style="display: none;"></div>
+              </div>
+            </td>
+          </tr>
+        <?php
+        }
+        ?>
+      </tbody>
   </table>
+  </div>
   <a href="#" id="crear" class="btn-primary-personal" style="margin-left: 0; width: 20%">Nueva <i class="bi bi-plus-circle"></i></a>
   <?php
   }
