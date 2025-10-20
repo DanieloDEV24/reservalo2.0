@@ -26,40 +26,40 @@ class instalacionesModel extends Model
     protected $updatedField = 'updated_at';
     protected $deletedField = 'deleted_at';
 
-    public function getInstalaciones(?array $filter)
+  public function getInstalaciones(?array $filter)
+{
+    $db = \Config\Database::connect('BDReservalo2');
+    //Obtenemos la tabla en la que vamos a buscar a los usuarios
+    $builder = $db->table('instalaciones');
+    //Realizamos la consulta
+    $query = $builder->select('instalaciones.*,
+                            categorias1.nombre as categoria_name,
+                            categorias2.nombre as categoria_opc_name,
+                            (SELECT imagen1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as imagen1')
+        ->join('categorias as categorias1', 'instalaciones.categoria_principal = categorias1.id_categoria', 'left')
+        ->join('categorias as categorias2', 'instalaciones.categoria_opcional1 = categorias2.id_categoria', 'left');
+        
+    if($filter !== null)
     {
-
-        $db = \Config\Database::connect('BDReservalo2');
-        //Obtenemos la tabla en la que vamos a buscar a los usuarios
-        $builder = $db->table('instalaciones');
-        //Realizamos la consulta
-        $query = $builder->select('instalaciones.*, 
-                                categorias1.nombre as categoria_name, 
-                                categorias2.nombre as categoria_opc_name,
-                                (SELECT imagen1 FROM pistas 
-                                WHERE pistas.id_instalacion = instalaciones.id_instalacion 
-                                ORDER BY id_pista ASC LIMIT 1) as imagen1')
-            ->join('categorias as categorias1', 'instalaciones.categoria_principal = categorias1.id_categoria', 'left')
-            ->join('categorias as categorias2', 'instalaciones.categoria_opcional1 = categorias2.id_categoria', 'left');
-            if($filter !== null)
-            {
-                foreach($filter as $campo => $valor)
-                {
-                    if ($campo === "categoria") {
-                        // Buscar en categoría principal o secundaria
-                        $query->groupStart()
-                              ->like('instalaciones.categoria_principal', $valor)
-                              ->orLike('instalaciones.categoria_opcional1', $valor)
-                              ->groupEnd();
-                    } else {
-                        // Otros filtros normales
-                        $query->like("instalaciones.".$campo, $valor);
-                    }
-                }
+        foreach($filter as $campo => $valor)
+        {
+            if ($campo === "categoria") {
+                // Buscar en categoría principal o secundaria
+                $query->groupStart()
+                      ->like('instalaciones.categoria_principal', $valor)
+                      ->orLike('instalaciones.categoria_opcional1', $valor)
+                      ->groupEnd();
+            } else {
+                // Otros filtros normales
+                $query->like("instalaciones.".$campo, $valor);
             }
-        $result = $query->get()->getResultArray();
-        return $result;
+        }
     }
+    $result = $query->get()->getResultArray();
+    return $result;
+}
 
 
     public function getCategorias() 

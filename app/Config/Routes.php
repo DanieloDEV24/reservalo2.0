@@ -5,21 +5,31 @@ use CodeIgniter\Router\RouteCollection;
 /**
  * @var RouteCollection $routes
  */
+
+/***********************************************************************************************************************************
+************************************************************* RUTAS GET ************************************************************
+***********************************************************************************************************************************/
 $routes->get('/', 'Home::index');
 $routes->get('/crudInstalaciones', 'Instalaciones::crudInstalaciones', ['filter' => 'auth']);
-$routes->post('/crudInstalaciones', 'Instalaciones::crudInstalaciones', ['filter' => 'auth']);
-$routes->post('/', 'Instalaciones::crudInstalaciones', ['filter' => 'auth']);
 $routes->get('/login', 'Login::login');
 $routes->get('/singIn', 'Login::registrarse');
-$routes->post('/singIn', 'Login::registrarse');
 $routes->get('/login', 'Login::login');
-$routes->post('/login', 'Login::login');
 $routes->get('/logout', 'Login::logout');
-$routes->post('/forgotPass', 'Login::forgotPassword');
 $routes->get('/forgotPass', 'Login::forgotPassword');
-$routes->post('/resetPassForm/(:num)', 'Login::resetPassForm/$1');
 $routes->get('/resetPassForm/(:num)', 'Login::resetPassForm/$1');
 $routes->get('/resetPass', 'Login::resetPass');
+$routes->get('/instalaciones', 'Instalaciones::instalaciones');
+
+
+/***********************************************************************************************************************************
+************************************************************* RUTAS POST ***********************************************************
+***********************************************************************************************************************************/
+$routes->post('/crudInstalaciones', 'Instalaciones::crudInstalaciones', ['filter' => 'auth']);
+$routes->post('/', 'Instalaciones::crudInstalaciones', ['filter' => 'auth']);
+$routes->post('/singIn', 'Login::registrarse');
+$routes->post('/login', 'Login::login');
+$routes->post('/forgotPass', 'Login::forgotPassword');
+$routes->post('/resetPassForm/(:num)', 'Login::resetPassForm/$1');
 $routes->post('/nuevaInstalacion', 'Instalaciones::nuevaInstalacion');
 $routes->post('/verInstalacion', 'Instalaciones::verInstalacion');
 $routes->post('/editarInstalacion', 'Instalaciones::editarInstalacion');
@@ -34,4 +44,4 @@ $routes->post('/darBajaInstalacion', 'Instalaciones::darBajaInstalacion');
 $routes->post('/darAlta', 'Instalaciones::darAlta');
 $routes->post('/mensajeBorrarInstalacion', 'Instalaciones::mensajeBorrarInstalacion');
 $routes->post('/borrarInstalacion', 'Instalaciones::borrarInstalacion');
-$routes->get('/instalaciones', 'Instalaciones::instalaciones');
+$routes->post('/instalaciones', 'Instalaciones::instalaciones');

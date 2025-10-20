@@ -457,3 +457,72 @@ span.estado.no-disponible{
     transform: scale(0.9);
   }
 }
+
+.instalaciones-resumen
+{
+  width: 100% !important;
+}
+
+.instalaciones-container
+{
+  width: 100% !important;
+}
+
+#loaderInstalaciones {
+  position: absolute;
+  background: rgba(255, 255, 255, 0);
+  /* semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  /* encima de los acordeones */
+}
+
+
+.card-instalacion.card-cargando .category
+{
+  color: rgba(50, 204, 204, .3) !important;
+}
+
+.card-instalacion.card-cargando .heading
+{
+  color: rgba(88, 87, 87, .3) !important;
+}
+
+
+.card-instalacion.card-cargando .opciones span
+{
+  color: rgba(50, 204, 204, .3) !important;
+  background-color: rgba(50, 204, 204, .05) !important;
+}
+
+
+.card-instalacion.card-cargando .card-image
+{
+  opacity: .3 !important;  
+}
+
+
+.card-instalacion.card-cargando .btn-primary-personal
+{
+  opacity: .3;
+}
+
+.card-instalacion.card-cargando span.estado.disponible{
+  background-color: #84fbbf;
+}
+
+
+.card-instalacion.card-cargando span.estado.no-disponible{
+  background-color: #ff6e75;
+}
+
+#filtrosInstalaciones
+{
+  display: flex;
+  gap: 1%;
+  width: 100% !important;
+  flex-wrap: wrap; /* Permite que los elementos bajen de línea si es necesario */
+  margin-top: 3%;
+}

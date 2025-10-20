@@ -1,0 +1,261 @@
+INFO - 2025-10-20 08:23:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 08:23:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 08:23:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 08:23:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 08:23:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 08:24:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 08:24:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-20 09:24:25 --> ErrorException: Undefined variable $categorias
+in APPPATH\Views\instalaciones\instalaciones.php on line 33.
+ 1 APPPATH\Views\instalaciones\instalaciones.php(33): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $categorias', 'C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php', 33)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalaciones', [], true)
+ 5 APPPATH\Controllers\Instalaciones.php(707): view('instalaciones/instalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->instalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-10-20 09:26:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:36:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:36:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:36:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:37:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:37:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:44:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:45:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:45:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:45:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:45:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:45:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:45:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:45:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:46:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:46:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 09:49:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-10-20 10:42:07 --> mysqli_sql_exception: Reference 'image1' not supported (forward reference in item list) in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `instala...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `instala...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `instala...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(60): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(705): App\Models\instalacionesModel->getInstalaciones(NULL)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->instalaciones()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2025-10-20 10:42:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Reference 'image1' not supported (forward reference in item list)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`, (SELECT image1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as image1
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`', [], false)
+ 2 APPPATH\Models\instalacionesModel.php(60): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Instalaciones.php(705): App\Models\instalacionesModel->getInstalaciones(null)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->instalaciones()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 10:42:08 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Reference 'image1' not supported (forward reference in item list)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`, (SELECT image1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as image1
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`, (SELECT image1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as image1
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`, (SELECT image1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as image1
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`', [], false)
+ 4 APPPATH\Models\instalacionesModel.php(60): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Instalaciones.php(705): App\Models\instalacionesModel->getInstalaciones(null)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->instalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 10:42:08 --> [Caused by] mysqli_sql_exception: Reference 'image1' not supported (forward reference in item list)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`, (SELECT image1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as image1
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`, (SELECT image1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as image1
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`, (SELECT image1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as image1
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`, (SELECT image1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as image1
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`', [], false)
+ 5 APPPATH\Models\instalacionesModel.php(60): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Instalaciones.php(705): App\Models\instalacionesModel->getInstalaciones(null)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->instalaciones()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 10:42:44 --> ErrorException: Undefined array key "imagen1"
+in APPPATH\Views\instalaciones\instalaciones.php on line 194.
+ 1 APPPATH\Views\instalaciones\instalaciones.php(194): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "imagen1"', 'C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php', 194)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalaciones', [], true)
+ 5 APPPATH\Controllers\Instalaciones.php(721): view('instalaciones/instalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->instalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 10:47:03 --> ErrorException: Undefined array key "imagen1"
+in APPPATH\Views\instalaciones\instalaciones.php on line 194.
+ 1 APPPATH\Views\instalaciones\instalaciones.php(194): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "imagen1"', 'C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php', 194)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalaciones', [], true)
+ 5 APPPATH\Controllers\Instalaciones.php(721): view('instalaciones/instalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->instalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 10:47:14 --> ErrorException: Undefined array key "imagen1"
+in APPPATH\Views\instalaciones\instalaciones.php on line 194.
+ 1 APPPATH\Views\instalaciones\instalaciones.php(194): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "imagen1"', 'C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php', 194)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalaciones', [], true)
+ 5 APPPATH\Controllers\Instalaciones.php(721): view('instalaciones/instalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->instalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-10-20 10:47:43 --> ErrorException: Undefined array key "imagen1"
+in APPPATH\Views\instalaciones\instalaciones.php on line 194.
+ 1 APPPATH\Views\instalaciones\instalaciones.php(194): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "imagen1"', 'C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php', 194)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalaciones', [], true)
+ 5 APPPATH\Controllers\Instalaciones.php(721): view('instalaciones/instalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->instalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-10-20 10:47:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 10:47:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-20 10:47:55 --> ErrorException: Undefined array key "imagen1"
+in APPPATH\Views\instalaciones\instalaciones.php on line 194.
+ 1 APPPATH\Views\instalaciones\instalaciones.php(194): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "imagen1"', 'C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php', 194)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalaciones', [], true)
+ 5 APPPATH\Controllers\Instalaciones.php(721): view('instalaciones/instalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->instalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-10-20 10:49:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-10-20 10:49:40 --> ErrorException: Undefined array key "imagen1"
+in APPPATH\Views\instalaciones\instalaciones.php on line 194.
+ 1 APPPATH\Views\instalaciones\instalaciones.php(194): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "imagen1"', 'C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php', 194)
+ 2 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\instalaciones\\instalaciones.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('instalaciones/instalaciones', [], true)
+ 5 APPPATH\Controllers\Instalaciones.php(721): view('instalaciones/instalaciones', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->instalaciones()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-10-20 10:50:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 10:51:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 10:53:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 10:53:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:03:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:03:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:03:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:04:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:04:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:05:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:06:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:09:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:15:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:31:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:33:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:34:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:36:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:38:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:38:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:38:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:39:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:42:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:46:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:47:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:48:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:49:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:49:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 11:50:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 14:09:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 14:15:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 14:15:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 14:16:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 14:19:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 14:46:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 14:50:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 14:52:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 14:52:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 14:54:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 14:57:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 14:58:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:00:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:00:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:00:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:01:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:02:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:03:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:03:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:03:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:04:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:04:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:17:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:18:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:25:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:28:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:30:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:31:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:31:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:31:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:31:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:31:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:31:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:31:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:34:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:35:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:36:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:37:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:44:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:45:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:47:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:47:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:47:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-10-20 15:47:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

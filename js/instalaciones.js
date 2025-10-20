@@ -2452,6 +2452,514 @@ $(document).ready(() => {
 
 
     /***********************************************************************************************************************************
+    ***************************************************** FILTRADO INSTALACIONES  ******************************************************
+    ***********************************************************************************************************************************/
+    
+    // Función que desmarca y marca el checkbox del material dependiendo de la opción seleccionada, simulando el comportamiento de un input radio
+    $(document).on('change', '.materialInstalaciones input', function(){
+
+        if ($(this).is(':checked')) {
+            // Desmarca todos los demás checkboxes dentro del mismo grupo .material
+            $('.materialInstalaciones input').not(this).prop('checked', false);
+        }
+    })
+
+    // Función que desmarca y marca el checkbox de la iluminacion dependiendo de la opción seleccionada, simulando el comportamiento de un input radio
+    $(document).on('change', '.iluminacionInstalaciones input', function(){
+
+        if ($(this).is(':checked')) {
+            // Desmarca todos los demás checkboxes dentro del mismo grupo .iluminacion
+            $('.iluminacionInstalaciones input').not(this).prop('checked', false);
+        }
+    })
+
+
+    // Función que desmarca y marca el checkbox de la reserva completa dependiendo de la opción seleccionada, simulando el comportamiento de un input radio
+    $(document).on('change', '.reservaCompletaInstalaciones input', function(){
+
+        if ($(this).is(':checked')) {
+            // Desmarca todos los demás checkboxes dentro del mismo grupo .reservaCompleta
+            $('.reservaCompletaInstalaciones input').not(this).prop('checked', false);
+        }
+    })
+
+
+    // Función que desmarca y marca el checkbox de las pistas dependiendo de la opción seleccionada, simulando el comportamiento de un input radio
+    $(document).on('change', '.hayPistasInstalaciones input', function(){
+
+        if ($(this).is(':checked')) {
+            // Desmarca todos los demás checkboxes dentro del mismo grupo .hayPistas
+            $('.hayPistasInstalaciones input').not(this).prop('checked', false);
+        }
+    })
+
+    let filterInstalaciones = {};  
+    $(document).on('click', '#btnFiltrarInstalaciones', function(){
+    
+    if(filterInstalaciones === null) filterInstalaciones = {}
+
+    let nombre = $('#filtradoNombreInstalaciones').val();
+    if(nombre !== "") filterInstalaciones["nombre"] = nombre;
+    else if(filterInstalaciones.hasOwnProperty("nombre")) delete filterInstalaciones["nombre"]
+
+    let categoria = $('#filtradoCategoriaInstalaciones').val();
+    let categoriaNombre = $('#filtradoCategoriaInstalaciones option:selected').text();
+    if(parseInt(categoria) !== -1) filterInstalaciones["categoria"] = categoria;
+    else if(filterInstalaciones.hasOwnProperty("categoria")) delete filterInstalaciones["categoria"]
+
+    let hayPistas = null;
+    if($('#siPistasInstalaciones').is(':checked')) hayPistas = 0;
+    if($('#noPistasInstalaciones').is(':checked')) hayPistas = 1;
+    if(hayPistas !== null) filterInstalaciones["no_pistas"] = hayPistas;
+    else if(filterInstalaciones.hasOwnProperty("no_pistas")) delete filterInstalaciones["no_pistas"]
+
+    let puedeCompleto = null;
+    if($('#siCompletaInstalaciones').is(':checked')) puedeCompleto = 1;
+    if($('#noCompletaInstalaciones').is(':checked')) puedeCompleto = 0;
+    if(puedeCompleto !== null) filterInstalaciones["puede_completo"] = puedeCompleto;
+    else if(filterInstalaciones.hasOwnProperty("puede_completo")) delete filterInstalaciones["puede_completo"]
+
+    let iluminacion = null;
+    if($('#siLuzInstalaciones').is(':checked')) iluminacion = 1;
+    if($('#noLuzInstalaciones').is(':checked')) iluminacion = 0;
+    if(iluminacion !== null) filterInstalaciones["iluminacion"] = iluminacion;
+    else if(filterInstalaciones.hasOwnProperty("iluminacion")) delete filterInstalaciones["iluminacion"]
+    
+
+    let material = null;
+    if($('#siMaterialInstalaciones').is(':checked')) material = 1;
+    if($('#noMaterialInstalaciones').is(':checked')) material = 0;
+    if(material !== null) filterInstalaciones["material"] = material;
+    else if(filterInstalaciones.hasOwnProperty("material")) delete filterInstalaciones["material"]
+
+    
+    if(Object.keys(filterInstalaciones).length === 0)
+    {
+        filterInstalaciones = null;
+    }
+    else 
+    {
+        $('#filtrosInstalaciones').empty()
+        for(key in filterInstalaciones)
+        {
+            if (filterInstalaciones.hasOwnProperty(key)) { // recomendable para no iterar propiedades heredadas
+                let campo = "";
+                let valor = ""
+                if(key === "puede_completo")
+                {
+                    campo = "completo";
+
+                    if(filterInstalaciones[key] === 0)
+                        valor = "No"
+                    else 
+                        valor = "Sí"
+                }
+                else if((key === "iluminacion")||(key === "material"))
+                {
+                    if(filterInstalaciones[key] == 0)
+                        valor = "No"
+                    else 
+                        valor = "Sí"
+
+                    campo = key;
+                }
+                else if(key === "no_pistas")
+                {
+                    campo = "pistas";
+                    if(filterInstalaciones[key] == 0)
+                        valor = "Sí"
+                    else 
+                        valor = "No"
+                }
+                else if(key === "categoria")
+                {
+                    valor = categoriaNombre;
+                    campo = key;
+                }
+                else{
+                    campo = key;
+                    valor = filterInstalaciones[key]
+                } 
+
+
+                let div = $(`<div class="filtroSeleccionadoInstalaciones" data-index="${key}"><i class="bi bi-filter"></i> <a>${campo}: ${valor}</a> <button><i class="bi bi-x"></i></button></div>`)
+                $('#filtrosInstalaciones').append(div);
+            }
+    }   
+    }
+
+
+    $.ajax({
+    type: "POST",
+    url: "instalaciones",
+    data: { filterInstalaciones: filterInstalaciones },
+    dataType: "json",
+    beforeSend: function(){
+        $('#loaderInstalaciones').show();
+        $('#contenedor-instalaciones .card-instalacion').addClass('card-cargando');
+    },
+    success: function (response) {
+        let body = $('#contenedor-instalaciones');
+        body.empty();
+        
+        // Verificar si hay instalaciones
+        if (response.instalaciones && response.instalaciones.length > 0) {
+            response.instalaciones.forEach(instalacion => {
+                let card = $(`
+                    <div class="card-instalacion" data-index="${instalacion.id_instalacion}">
+                        <div class="card-image" style="background: url('${response.base_url}images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
+                        <div class="category">${instalacion.categoria_name}</div>
+                        <div class="heading">${instalacion.nombre}</div>
+                        <div class="opciones">
+                            ${instalacion.iluminacion == 1 ? '<span>Iluminación</span>' : ''}
+                            ${instalacion.puede_completo == 1 ? '<span>Reserva completa</span>' : ''}
+                            ${instalacion.no_pistas == 1 ? '<span>No tiene pistas</span>' : ''}
+                            ${instalacion.material == 1 ? '<span>Material</span>' : ''}
+                        </div>
+                        <div class="button">
+                            <a href="instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
+                                Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                        <span class="estado ${instalacion.estado == 0 ? 'disponible' : 'no-disponible'}">
+                            ${instalacion.estado == 0 ? 'disponible' : 'no disponible'}
+                        </span>
+                    </div>
+                `);
+                body.append(card);
+            });
+        } else {
+            // Mostrar mensaje de "sin resultados"
+            body.html(`
+                <div class="empty-state" style="grid-column: 1 / -1; max-width: none; width: 100%">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <h2>No hay instalaciones disponibles</h2>
+                    <p>En este momento no tenemos instalaciones que coincidan con tu búsqueda. Prueba a ajustar los filtros o vuelve más tarde.</p>
+
+                    <div class="d-flex justify-content-center w-100"> 
+                        <div class="suggestions" style="width: 70%">
+                            <h3>Te sugerimos:</h3>
+                            <ul>
+                                <li>Modificar los filtros de búsqueda</li>
+                                <li>Explorar otras categorías</li>
+                                <li>Revisar la disponibilidad en otras fechas</li>
+                                <li>Contactar con el administrador para más información</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary-personal" onclick="window.location.reload()">
+                            <svg width="30" height="30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            Reintentar
+                        </button>
+                        <button class="btn-secondary-personal" style="width: 20%;" id="btnBorrarFiltrosGestorInstalaciones">
+                            <i class="bi bi-trash2"></i> Limpiar filtros
+                        </button>
+                    </div>
+                </div>
+            `);
+        }
+        
+        $('#loaderInstalaciones').hide();
+        $('#contenedor-instalaciones .card-instalacion').removeClass('card-cargando');
+    },
+    complete: function(){
+        $('#loaderInstalaciones').hide();
+        $('#contenedor-instalaciones .card-instalacion').removeClass('card-cargando');
+    },
+    error: function(xhr, status, error) {
+        console.error("Error al obtener las instalaciones:", error);
+        
+        let body = $('#contenedor-instalaciones');
+        body.html(`
+            <div class="empty-state error-state" style="grid-column: 1 / -1; max-width: none; width: 100%">
+                <div class="icon-container">
+                    <i class="bi bi-exclamation-triangle" style="font-size: 3rem; color: #dc3545;"></i>
+                </div>
+                <h2>Error al cargar instalaciones</h2>
+                <p>Ha ocurrido un error al intentar cargar las instalaciones. Por favor, inténtalo de nuevo.</p>
+                <button class="btn-primary-personal" onclick="window.location.reload()">
+                    <i class="bi bi-arrow-clockwise"></i> Reintentar
+                </button>
+            </div>
+        `);
+        
+        $('#loaderInstalaciones').hide();
+        $('#contenedor-instalaciones .card-instalacion').removeClass('card-cargando');
+    }
+});
+    });
+
+
+    $(document).on('click', '.filtroSeleccionadoInstalaciones button', function(){
+
+        let index = $(this).closest('.filtroSeleccionadoInstalaciones').data('index');
+
+        if(index === "nombre")
+        {
+            $('#filtradoNombreInstalaciones').val('');
+            delete filterInstalaciones.nombre;
+        }
+        else if(index === "categoria")
+        {
+            $('#filtradoCategoriaInstalaciones').val(-1);
+            delete filterInstalaciones.categoria
+        }
+        else if(index === "no_pistas")
+        {
+           $('#siPistasInstalaciones').prop('checked', false)
+           $('#noPistasInstalaciones').prop('checked', false)
+           delete filterInstalaciones.no_pistas
+        }
+        else if(index === "puede_completo")
+        {
+            $('#siCompletaInstalaciones').prop('checked', false)
+            $('#noCompletaInstalaciones').prop('checked', false)
+            delete filterInstalaciones.puede_completo
+        }
+        else if(index === "iluminacion")
+        {
+            $('#siLuzInstalaciones').prop('checked', false)
+            $('#noLuzInstalaciones').prop('checked', false)
+            delete filterInstalaciones.iluminacion
+        }
+        else if(index === "material")
+        {
+            $('#siMaterialInstalaciones').prop('checked', false)
+            $('#noMaterialInstalaciones').prop('checked', false)
+            delete filterInstalaciones.material
+        }
+
+        if(Object.keys(filterInstalaciones).length === 0) filterInstalaciones = null
+
+        $(this).closest('.filtroSeleccionadoInstalaciones').remove();
+
+        $.ajax({
+        type: "POST",
+        url: "instalaciones",
+        data: { filterInstalaciones: filterInstalaciones },
+        dataType: "json",
+        beforeSend: function(){
+            $('#loaderInstalaciones').show()
+            $('#contenedor-instalaciones .card-instalacion').addClass('card-cargando');
+        },
+            success: function (response) {
+        let body = $('#contenedor-instalaciones');
+        body.empty();
+        
+        // Verificar si hay instalaciones
+        if (response.instalaciones && response.instalaciones.length > 0) {
+            response.instalaciones.forEach(instalacion => {
+                let card = $(`
+                    <div class="card-instalacion" data-index="${instalacion.id_instalacion}">
+                        <div class="card-image" style="background: url('${response.base_url}images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
+                        <div class="category">${instalacion.categoria_name}</div>
+                        <div class="heading">${instalacion.nombre}</div>
+                        <div class="opciones">
+                            ${instalacion.iluminacion == 1 ? '<span>Iluminación</span>' : ''}
+                            ${instalacion.puede_completo == 1 ? '<span>Reserva completa</span>' : ''}
+                            ${instalacion.no_pistas == 1 ? '<span>No tiene pistas</span>' : ''}
+                            ${instalacion.material == 1 ? '<span>Material</span>' : ''}
+                        </div>
+                        <div class="button">
+                            <a href="instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
+                                Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                        <span class="estado ${instalacion.estado == 0 ? 'disponible' : 'no-disponible'}">
+                            ${instalacion.estado == 0 ? 'disponible' : 'no disponible'}
+                        </span>
+                    </div>
+                `);
+                body.append(card);
+            });
+        } else {
+            // Mostrar mensaje de "sin resultados"
+            body.html(`
+                <div class="empty-state" style="grid-column: 1 / -1; max-width: none; width: 100%">
+                    <div class="icon-container">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                    </div>
+                    <h2>No hay instalaciones disponibles</h2>
+                    <p>En este momento no tenemos instalaciones que coincidan con tu búsqueda. Prueba a ajustar los filtros o vuelve más tarde.</p>
+
+                    <div class="d-flex justify-content-center w-100"> 
+                        <div class="suggestions" style="width: 70%">
+                            <h3>Te sugerimos:</h3>
+                            <ul>
+                                <li>Modificar los filtros de búsqueda</li>
+                                <li>Explorar otras categorías</li>
+                                <li>Revisar la disponibilidad en otras fechas</li>
+                                <li>Contactar con el administrador para más información</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="button-group">
+                        <button class="btn-primary-personal" onclick="window.location.reload()">
+                            <svg width="30" height="30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                            </svg>
+                            Reintentar
+                        </button>
+                        <button class="btn-secondary-personal" style="width: 20%;" id="btnBorrarFiltrosGestorInstalaciones">
+                            <i class="bi bi-trash2"></i> Limpiar filtros
+                        </button>
+                    </div>
+                </div>
+            `);
+        }
+        
+        $('#loaderInstalaciones').hide();
+        $('#contenedor-instalaciones .card-instalacion').removeClass('card-cargando');
+    },
+    complete: function(){
+        $('#loaderInstalaciones').hide();
+        $('#contenedor-instalaciones .card-instalacion').removeClass('card-cargando');
+    },
+    error: function(xhr, status, error) {
+        console.error("Error al obtener las instalaciones:", error);
+        
+        let body = $('#contenedor-instalaciones');
+        body.html(`
+            <div class="empty-state error-state" style="grid-column: 1 / -1; max-width: none; width: 100%">
+                <div class="icon-container">
+                    <i class="bi bi-exclamation-triangle" style="font-size: 3rem; color: #dc3545;"></i>
+                </div>
+                <h2>Error al cargar instalaciones</h2>
+                <p>Ha ocurrido un error al intentar cargar las instalaciones. Por favor, inténtalo de nuevo.</p>
+                <button class="btn-primary-personal" onclick="window.location.reload()">
+                    <i class="bi bi-arrow-clockwise"></i> Reintentar
+                </button>
+            </div>
+        `);
+        
+        $('#loaderInstalaciones').hide();
+        $('#contenedor-instalaciones .card-instalacion').removeClass('card-cargando');
+    }
+        });
+
+    })
+
+
+    $(document).on('click', '#btnBorrarFiltrosInstalaciones', function(){
+
+        $('#filtradoNombreInstalaciones').val('');
+        $('#filtradoCategoriaInstalaciones').val(-1);
+        $('#siPistasInstalaciones').prop('checked', false)
+        $('#noPistasInstalaciones').prop('checked', false)
+        $('#siCompletaInstalaciones').prop('checked', false)
+        $('#noCompletaInstalaciones').prop('checked', false)
+        $('#siLuzInstalaciones').prop('checked', false)
+        $('#noLuzInstalaciones').prop('checked', false)
+        $('#siMaterialInstalaciones').prop('checked', false)
+        $('#noMaterialInstalaciones').prop('checked', false)
+
+
+        $('#filtrosInstalaciones').empty();
+
+        $.ajax({
+        type: "POST",
+        url: "instalaciones",
+        data: { filterInstalaciones: null },
+        dataType: "json",
+        beforeSend: function(){
+            $('#loaderInstalaciones').show()
+            $('#contenedor-instalaciones .card-instalacion').addClass('card-cargando');
+        },
+        success: function (response) {
+            let body = $('#contenedor-instalaciones');
+            body.empty();
+
+            let instalaciones = response.instalaciones;
+
+            instalaciones.forEach(instalacion => {
+
+                let card = $(`
+                    <div class="card-instalacion" data-index="${instalacion.id_instalacion}">
+                        <div class="card-image" style="background: url('${response.base_url}images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
+                        <div class="category">${instalacion.categoria_name}</div>
+                        <div class="heading">${instalacion.nombre}</div>
+                        <div class="opciones">
+                            ${instalacion.iluminacion == 1 ? '<span>Iluminación</span>' : ''}
+                            ${instalacion.puede_completo == 1 ? '<span>Reserva completa</span>' : ''}
+                            ${instalacion.no_pistas == 1 ? '<span>No tiene pistas</span>' : ''}
+                            ${instalacion.material == 1 ? '<span>Material</span>' : ''}
+                        </div>
+                        <div class="button">
+                            <a href="instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
+                                Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                        <span class="estado ${instalacion.estado == 0 ? 'disponible' : 'no-disponible'}">
+                            ${instalacion.estado == 0 ? 'disponible' : 'no disponible'}
+                        </span>
+                    </div>
+                `);
+
+                body.append(card);
+            });
+
+            // Reinicializar tooltips de Bootstrap (si se usan)
+            $('#loaderInstalaciones').hide()
+            $('#contenedor-instalaciones .card-instalacion').removeClass('card-cargando');
+        },
+        complete: function(){
+            $('#loaderInstalaciones').hide()
+            $('#contenedor-instalaciones .card-instalacion').removeClass('card-cargando');
+        },
+        error: function() {
+            console.error("Error al obtener las instalaciones.");
+            $('#loaderInstalaciones').hide()
+            $('#contenedor-instalaciones .card-instalacion').removeClass('card-cargando');
+        }
+        });
+    })
+
+
+    $(document).on('click', '.filtroSeleccionadoInstalaciones', function(){
+
+        let index = $(this).data('index');
+
+        if(index === "nombre") $('#filtradoNombre').focus();
+        if(index === "categoria") $('#filtradoCategoria').focus();
+        
+        if(index === "no_pistas")
+        {
+           if($('#siPistas').is(':checked')) $('#siPistas').focus();
+           if($('#noPistas').is(':checked')) $('#noPistas').focus();
+        }
+
+        if(index === "puede_completo")
+        {
+            if($('#siCompleta').is(':checked')) $('#siCompleta').focus();
+            if($('#noCompleta').is(':checked')) $('#noCompleta').focus();
+        }
+
+        if(index === "iluminacion")
+        {
+            if($('#siLuz').is(':checked')) $('#siLuz').focus();
+            if($('#noLuz').is(':checked')) $('#noLuz').focus();
+        }
+
+        if(index === "material")
+        {
+            if($('#siMaterial').is(':checked')) $('#siMaterial').focus();
+            if($('#noMaterial').is(':checked')) $('#noMaterial').focus();
+        }
+    })
+
+
+    /***********************************************************************************************************************************
     *******************************************************  FUNCIONES DE AYUDA  *******************************************************
     ***********************************************************************************************************************************/
 

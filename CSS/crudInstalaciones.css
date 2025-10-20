@@ -378,6 +378,14 @@ table td .dropdown button i {
   
 }
 
+.contenedor-loader2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
 .contenedor-loader #accordionEditarPistas div,
 .contenedor-loader #accordionEditarPistas, 
 .contenedor-loader table {
@@ -629,7 +637,7 @@ table td .dropdown button i {
 }
 
 
-.filtroSeleccionado
+.filtroSeleccionado, .filtroSeleccionadoInstalaciones
 {
   color: #021b41;
   background-color: rgba(50, 204, 204, .3);
@@ -643,16 +651,17 @@ table td .dropdown button i {
   min-width: fit-content; /* Asegura que el contenedor se ajuste al contenido */
   cursor: pointer;
   transition: all .2s ease-in;
+  margin-top: 1%;
 }
 
-.filtroSeleccionado:hover
+.filtroSeleccionado:hover, .filtroSeleccionadoInstalaciones:hover
 {
   transform: scale(1.05);
 
 }
 
 
-.filtroSeleccionado button
+.filtroSeleccionado button, .filtroSeleccionadoInstalaciones button
 {
   background: transparent;
   color: #021b41;
@@ -664,13 +673,15 @@ table td .dropdown button i {
   transition: all .15s ease-out;
 }
 
-.filtroSeleccionado button:hover
+.filtroSeleccionado button:hover, filtroSeleccionadoInstalaciones button:hover
 {
   background-color: rgba(255, 255, 255, .5);
 }
 
 .filtrado input[type="checkbox"]:focus,
-.filtrado input[type="radio"]:focus {
+.filtrado input[type="radio"]:focus, 
+.filtradoInstalaciones input[type="checkbox"]:focus,
+.filtradoInstalaciones input[type="radio"]:focus {
   outline: 2px solid #32cccc; /* o cualquier color que quieras */
   outline-offset: 2px;
 }

@@ -5,7 +5,177 @@
     ?>
     <h1 class="title-page">Instalaciones</h1>
     <p class="description-page">Explora nuestras instalaciones y reserva tu espacio</p>
-    <div class="instalaciones-resumen">
+
+    <div class="accordion filtrado" id="accordionFiltroInstalaciones" style="padding: 2% 0%;">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        <i class="bi bi-filter"></i>&nbsp;Filtrar
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFiltro">
+      <div class="accordion-body">
+        <div class="row">
+
+          <div class="col-4">
+            <label for="filtradoNombreInstalaciones" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" id="filtradoNombreInstalaciones">
+          </div>
+
+          <div class="col-4">
+            <label for="filtradoCategoriaInstalaciones" class="form-label">Categoría:</label>
+            <select class="form-control" id="filtradoCategoriaInstalaciones" name="filtradoCategoriaInstalaciones">
+                <option value="-1">Seleccione un deporte</option>
+               <?php foreach($categorias as $categoria): ?>
+                <option value="<?=$categoria["id_categoria"]?>"><?=$categoria["nombre"]?></option>
+               <?php endforeach; ?>
+            </select>
+          </div>
+
+          <div class="col-4">
+            <label for="filtradoNoPistasInstalaciones" class="form-label">¿Tiene Pistas?:</label>
+            
+            <div class="checkbox-wrapper-4 hayPistasInstalaciones">
+              <input class="inp-cbx" id="siPistasInstalaciones" type="checkbox">
+              <label class="cbx" for="siPistasInstalaciones"><span>
+              <svg width="20px" height="20px">
+                
+              </svg></span><span>Sí</span></label>
+              <svg class="inline-svg">
+                <symbol id="check-4" viewBox="0 0 12 10">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                </symbol>
+              </svg>
+
+              <input class="inp-cbx" id="noPistasInstalaciones" type="checkbox">
+              <label class="cbx" for="noPistasInstalaciones"><span>
+              <svg width="20px" height="20px">
+                
+              </svg></span><span>No</span></label>
+              <svg class="inline-svg">
+                <symbol id="check-4" viewBox="0 0 12 10">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                </symbol>
+              </svg>
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <br>
+
+        <div class="row">
+          <div class="col-4">
+            <label for="filtradoPuedeCompletaInstalaciones" class="form-label">¿Puede hacerse una reserva completa?:</label>
+            
+            <div class="checkbox-wrapper-4 reservaCompletaInstalaciones">
+              <input class="inp-cbx" id="siCompletaInstalaciones" type="checkbox">
+              <label class="cbx" for="siCompletaInstalaciones"><span>
+              <svg width="20px" height="20px">
+                
+              </svg></span><span>Sí</span></label>
+              <svg class="inline-svg">
+                <symbol id="check-4" viewBox="0 0 12 10">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                </symbol>
+              </svg>
+
+              <input class="inp-cbx" id="noCompletaInstalaciones" type="checkbox">
+              <label class="cbx" for="noCompletaInstalaciones"><span>
+              <svg width="20px" height="20px">
+                
+              </svg></span><span>No</span></label>
+              <svg class="inline-svg">
+                <symbol id="check-4" viewBox="0 0 12 10">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                </symbol>
+              </svg>
+            </div>
+
+          </div>
+
+          <div class="col-4">
+            <label for="filtradoTieneLuzInstalaciones" class="form-label">¿Tiene iluminación?:</label>
+            
+            <div class="checkbox-wrapper-4 iluminacionInstalaciones">
+              <input class="inp-cbx" id="siLuzInstalaciones" type="checkbox">
+              <label class="cbx" for="siLuzInstalaciones"><span>
+              <svg width="20px" height="20px">
+                
+              </svg></span><span>Sí</span></label>
+              <svg class="inline-svg">
+                <symbol id="check-4" viewBox="0 0 12 10">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                </symbol>
+              </svg>
+
+              <input class="inp-cbx" id="noLuzInstalaciones" type="checkbox">
+              <label class="cbx" for="noLuzInstalaciones"><span>
+              <svg width="20px" height="20px">
+                
+              </svg></span><span>No</span></label>
+              <svg class="inline-svg">
+                <symbol id="check-4" viewBox="0 0 12 10">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                </symbol>
+              </svg>
+            </div>
+
+          </div>
+
+
+          <div class="col-4">
+            <label for="filtradoTieneMaterialInstalaciones" class="form-label">¿Se puede prestar material?:</label>
+            
+            <div class="checkbox-wrapper-4 materialInstalaciones">
+              <input class="inp-cbx" id="siMaterialInstalaciones" type="checkbox">
+              <label class="cbx" for="siMaterialInstalaciones"><span>
+              <svg width="20px" height="20px">
+                
+              </svg></span><span>Sí</span></label>
+              <svg class="inline-svg">
+                <symbol id="check-4" viewBox="0 0 12 10">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                </symbol>
+              </svg>
+
+              <input class="inp-cbx" id="noMaterialInstalaciones" type="checkbox">
+              <label class="cbx" for="noMaterialInstalaciones"><span>
+              <svg width="20px" height="20px">
+                
+              </svg></span><span>No</span></label>
+              <svg class="inline-svg">
+                <symbol id="check-4" viewBox="0 0 12 10">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                </symbol>
+              </svg>
+            </div>
+
+          </div>
+
+
+        </div>
+
+        <div class="d-flex gap-2 mt-5 justify-content-end botonesPista">
+          <button class="btn-primary-personal" style="width: 17%;" id="btnFiltrarInstalaciones">Filtrar <i class="bi bi-filter"></i></button>
+          <button class="btn-secondary-personal" style="width: 17%" id="btnBorrarFiltrosInstalaciones">Borrar filtros <i class="bi bi-trash3"></i></button>
+        </div>
+
+        <div class="d-flex justify-content-start w-100" id="filtrosInstalaciones">
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+    
+<div style="position: relative; min-height: 70px;" class="contenedor-loader2">
+
+     <div id="loaderInstalaciones" class="loader" style="display: none;"></div>
+        <div class="instalaciones-resumen">
         <div class="div-numero-instalaciones">
             <h1><?=$numInstalaciones?></h1>
             <p>Instalaciones</p>
@@ -19,7 +189,7 @@
     <?php endforeach; ?>
         
     </div>
-    <div class="instalaciones-container">
+    <div class="instalaciones-container" id="contenedor-instalaciones">
     <?php foreach($instalaciones as $instalacion): ?>
         <?php $url = $baseUrl."images/".$instalacion["imagen1"];?>
         <div class="card-instalacion" data-index="<?=$instalacion["id_instalacion"]?>">
@@ -37,6 +207,7 @@
         </div>
     <?php endforeach; ?>
     </div>
+</div>
     <?php
     } 
     else

@@ -700,11 +700,25 @@ class Instalaciones extends BaseController
     public function instalaciones()
     {
         $instalacionesModel = new instalacionesModel();
-        $instalaciones = $instalacionesModel->getInstalaciones(null);
+        $post  = $this->request->getPost();
+        $filter = (!empty($post) && (isset($post["filterInstalaciones"]) && !empty($post["filterInstalaciones"])))? $post["filterInstalaciones"] : null;
+        $instalaciones = $instalacionesModel->getInstalaciones($filter);
+        $url = base_url(); // ← Aquí está la corrección
+
+        if(!empty($post))
+        {
+            echo json_encode([
+                "instalaciones" => $instalaciones,
+                "base_url" => $url
+            ]);
+            exit;
+        }
+        
         $numInstalaciones = $instalacionesModel->getNumInstalaciones();
         $instalacionesCategorias = $instalacionesModel->getInstalacionesCategorias();
+        $categorias = $instalacionesModel->getCategorias();
 
-        $view = view('instalaciones/instalaciones', ["instalaciones" => $instalaciones, "numInstalaciones"=>$numInstalaciones, "instalacionesCategorias" => $instalacionesCategorias, "baseUrl" => base_url()]);
+        $view = view('instalaciones/instalaciones', ["instalaciones" => $instalaciones, "numInstalaciones"=>$numInstalaciones, "instalacionesCategorias" => $instalacionesCategorias, "categorias" => $categorias, "baseUrl" => base_url()]);
         return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
     }
 }
