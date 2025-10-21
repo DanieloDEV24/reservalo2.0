@@ -2617,7 +2617,7 @@ $(document).ready(() => {
                             ${instalacion.material == 1 ? '<span>Material</span>' : ''}
                         </div>
                         <div class="button">
-                            <a href="instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
+                            <a href="${response.base_url}index.php/instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
                                 Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
@@ -2769,7 +2769,7 @@ $(document).ready(() => {
                             ${instalacion.material == 1 ? '<span>Material</span>' : ''}
                         </div>
                         <div class="button">
-                            <a href="instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
+                            <a href="${response.base_url}index.php/instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
                                 Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
@@ -2896,7 +2896,7 @@ $(document).ready(() => {
                             ${instalacion.material == 1 ? '<span>Material</span>' : ''}
                         </div>
                         <div class="button">
-                            <a href="instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
+                            <a href="${response.base_url}index.php/instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
                                 Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
@@ -2930,31 +2930,31 @@ $(document).ready(() => {
 
         let index = $(this).data('index');
 
-        if(index === "nombre") $('#filtradoNombre').focus();
-        if(index === "categoria") $('#filtradoCategoria').focus();
+        if(index === "nombre") $('#filtradoNombreInstalaciones').focus();
+        if(index === "categoria") $('#filtradoCategoriaInstalaciones').focus();
         
         if(index === "no_pistas")
         {
-           if($('#siPistas').is(':checked')) $('#siPistas').focus();
-           if($('#noPistas').is(':checked')) $('#noPistas').focus();
+           if($('#siPistas').is(':checked')) $('#siPistasInstalaciones').focus();
+           if($('#noPistas').is(':checked')) $('#noPistasInstalaciones').focus();
         }
 
         if(index === "puede_completo")
         {
-            if($('#siCompleta').is(':checked')) $('#siCompleta').focus();
-            if($('#noCompleta').is(':checked')) $('#noCompleta').focus();
+            if($('#siCompleta').is(':checked')) $('#siCompletaInstalaciones').focus();
+            if($('#noCompleta').is(':checked')) $('#noCompletaInstalaciones').focus();
         }
 
         if(index === "iluminacion")
         {
-            if($('#siLuz').is(':checked')) $('#siLuz').focus();
-            if($('#noLuz').is(':checked')) $('#noLuz').focus();
+            if($('#siLuz').is(':checked')) $('#siLuzInstalaciones').focus();
+            if($('#noLuz').is(':checked')) $('#noLuzInstalaciones').focus();
         }
 
         if(index === "material")
         {
-            if($('#siMaterial').is(':checked')) $('#siMaterial').focus();
-            if($('#noMaterial').is(':checked')) $('#noMaterial').focus();
+            if($('#siMaterial').is(':checked')) $('#siMaterialInstalaciones').focus();
+            if($('#noMaterial').is(':checked')) $('#noMaterialInstalaciones').focus();
         }
     })
 

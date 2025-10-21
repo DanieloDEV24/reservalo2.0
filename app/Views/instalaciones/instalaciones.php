@@ -202,7 +202,7 @@
                 <?= ($instalacion["no_pistas"] == 1) ? "<span>No tiene pistas</span>" : "" ?>
                 <?= ($instalacion["material"] == 1) ? "<span>Material</span>" : "" ?>
             </div>
-            <div class="button"><a href="" class="btn-primary-personal">Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i></a></div>
+            <div class="button"><a href="<?=base_url()."index.php/instalacion/".$instalacion["id_instalacion"]?>" class="btn-primary-personal">Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i></a></div>
             <span class="estado <?=($instalacion["estado"] == 0) ? "disponible" : "no-disponible" ?>"><?=($instalacion["estado"] == 0) ? "disponible" : "no disponible" ?></span>
         </div>
     <?php endforeach; ?>

@@ -4,7 +4,19 @@
   background: #fff;
   border-radius: 6px;
   height: auto;
-  min-height: 400px;
+  height: 500px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  transition: all 0.3s ease;
+  margin-bottom: 4.7%;
+  position: relative;
+}
+
+.pistasInstalacion .card-instalacion {
+  width: 30%;
+  background: #fff;
+  border-radius: 6px;
+  height: auto;
+  height: 490px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   transition: all 0.3s ease;
   margin-bottom: 4.7%;
@@ -44,6 +56,7 @@
   color: rgb(88, 87, 87);
   padding: 7px;
   font-size: 1.5em;
+  height: 70px;
 }
 
 .heading:hover {
@@ -70,14 +83,15 @@
   height: 70px;
 }
 
-.opciones span
+.card-instalacion .opciones span
 {
   color: #32cccc;
   background-color: rgba(50, 204, 204, .15);
   border-radius: 20px;
   padding: 1% 3%;
-  margin-bottom: 3%;
   max-height: 30px;
+  margin-top: 0% !important;
+  margin-bottom: 2% !important;
 }
 
 
@@ -106,7 +120,6 @@
   display: flex;
   padding: 5%;
   padding-top: 8%;
-
 }
 
 .card-instalacion .button a {
@@ -525,4 +538,132 @@ span.estado.no-disponible{
   width: 100% !important;
   flex-wrap: wrap; /* Permite que los elementos bajen de línea si es necesario */
   margin-top: 3%;
+}
+
+.infoInstalacion{
+  background-color: #fff;
+  border-radius: 20px;
+  padding: 5%;
+}
+
+.paginaInstalacion
+{
+  padding: 2%;
+}
+
+.categoriasInstalacion
+{
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 2%;
+}
+
+.categoriasInstalacion .categoria-principal
+{
+  background-color: #32cccc;
+  color: #fff;
+  border-radius: 20px;
+  padding: .5% 1.5%;
+}
+
+.categoriasInstalacion .categoria-secundaria
+{
+  background-color: #1a7d7d;
+  color: #fff;
+  border-radius: 20px;
+  padding: .5% 1.5%;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.info-card {
+  background: #f8fafc;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.info-label {
+  font-size: 12px;
+  color: #7e8c9e;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.info-value {
+  font-size: 18px;
+  color: #1e293b;
+}
+
+.pistasInstalacion
+{
+  margin-top: 3%;
+  padding-left: 1%;
+}
+
+.container-pistas-instalacion
+{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 3%;
+  flex-wrap: wrap;
+}
+
+.container-pistas-instalacion .card-instalacion
+{
+  width: 31%;
+}
+
+.container-pistas-instalacion
+{
+  margin-top: 3%;
+}
+
+.card-instalacion span i 
+{
+  color: #32cccc;
+}
+
+
+.card-instalacion span
+{
+  padding-left: 7%;
+  margin-top: 5% !important;
+}
+
+
+.pistasInstalacion .heading 
+{
+  height: 80px;
+}
+
+.precio-pista
+{
+  width: 30%;
+  background-color: #F0FDFA;
+  border-radius: 10px;
+  color: #0F766E;
+  padding: 1%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+
+.precio-pista span 
+{
+  font-size: 25px;
+}
+
+
+.pistasInstalacion .card-instalacion .button
+{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }

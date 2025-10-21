@@ -19,7 +19,7 @@ $routes->get('/forgotPass', 'Login::forgotPassword');
 $routes->get('/resetPassForm/(:num)', 'Login::resetPassForm/$1');
 $routes->get('/resetPass', 'Login::resetPass');
 $routes->get('/instalaciones', 'Instalaciones::instalaciones');
-
+$routes->get('/instalacion/(:num)', 'Instalaciones::instalacion/$1');
 
 /***********************************************************************************************************************************
 ************************************************************* RUTAS POST ***********************************************************

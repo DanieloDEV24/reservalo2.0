@@ -721,4 +721,26 @@ class Instalaciones extends BaseController
         $view = view('instalaciones/instalaciones', ["instalaciones" => $instalaciones, "numInstalaciones"=>$numInstalaciones, "instalacionesCategorias" => $instalacionesCategorias, "categorias" => $categorias, "baseUrl" => base_url()]);
         return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
     }
+
+
+    public function instalacion(?int $id_instalacion = null){
+
+        if($id_instalacion !== null){
+            
+            $id = intval($id_instalacion);
+            
+            $instalacionesModel = new instalacionesModel();
+            
+            $instalacion = $instalacionesModel->getInstalacion($id)[0];
+            $pistas = $instalacionesModel->getPistasByInstalacion($id);
+
+            $view = view('instalaciones/instalacion', ["instalacion" => $instalacion, "pistas" => $pistas]);
+            return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
+        }
+        else
+        {
+            // Aqui va la página de error
+        }
+
+    }
 }
