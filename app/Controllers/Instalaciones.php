@@ -35,7 +35,18 @@ class Instalaciones extends BaseController
         $borrarInstalacion = view('instalaciones/modalBorrarInstalacion', ["baseUrl" => base_url()]);
         $view = view('instalaciones/crudInstalaciones', ["instalaciones" => $instalaciones, "nuevaInstalacion" => $nuevaInstalacion, "verInstalacion" => $verInstalacion, "editarInstalacion" => $editarInstalacion, "modalBorrarPista" => $borradoPista, "modalBajaInstalacion" => $darDeBaja, "borrarInstalacion" => $borrarInstalacion, "categorias"=>$categorias, "baseUrl" => base_url()]);
 
-        return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
+        $assets = [
+            "css" => [
+                'css/crudInstalaciones.css',
+                'css/style.css'
+            ], 
+
+            "js" => [
+                'js/instalaciones.js'
+            ]
+        ];
+
+        return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets]);
     }
 
     public function nuevaInstalacion()
@@ -718,8 +729,19 @@ class Instalaciones extends BaseController
         $instalacionesCategorias = $instalacionesModel->getInstalacionesCategorias();
         $categorias = $instalacionesModel->getCategorias();
 
+        $assets = [
+            "css" => [
+                'css/instalaciones.css', 
+                'css/style.css'
+            ], 
+
+            "js" => [
+                'js/instalaciones.js'
+            ]
+        ];
+
         $view = view('instalaciones/instalaciones', ["instalaciones" => $instalaciones, "numInstalaciones"=>$numInstalaciones, "instalacionesCategorias" => $instalacionesCategorias, "categorias" => $categorias, "baseUrl" => base_url()]);
-        return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
+        return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets]);
     }
 
 
@@ -734,8 +756,19 @@ class Instalaciones extends BaseController
             $instalacion = $instalacionesModel->getInstalacion($id)[0];
             $pistas = $instalacionesModel->getPistasByInstalacion($id);
 
+            $assets = [
+                "css" => [
+                    'css/instalaciones.css', 
+                    'css/style.css'
+                ], 
+
+                "js" => [
+                    'js/instalaciones.js'
+                ]
+            ];
+
             $view = view('instalaciones/instalacion', ["instalacion" => $instalacion, "pistas" => $pistas]);
-            return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url()]);
+            return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets]);
         }
         else
         {
@@ -743,4 +776,5 @@ class Instalaciones extends BaseController
         }
 
     }
+
 }

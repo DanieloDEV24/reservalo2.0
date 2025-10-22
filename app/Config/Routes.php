@@ -9,6 +9,8 @@ use CodeIgniter\Router\RouteCollection;
 /***********************************************************************************************************************************
 ************************************************************* RUTAS GET ************************************************************
 ***********************************************************************************************************************************/
+
+// INSTALACIONES
 $routes->get('/', 'Home::index');
 $routes->get('/crudInstalaciones', 'Instalaciones::crudInstalaciones', ['filter' => 'auth']);
 $routes->get('/login', 'Login::login');
@@ -21,9 +23,14 @@ $routes->get('/resetPass', 'Login::resetPass');
 $routes->get('/instalaciones', 'Instalaciones::instalaciones');
 $routes->get('/instalacion/(:num)', 'Instalaciones::instalacion/$1');
 
+// HORARIOS
+$routes->get('/horario/(:num)', 'Horarios::horario/$1');
+
 /***********************************************************************************************************************************
 ************************************************************* RUTAS POST ***********************************************************
 ***********************************************************************************************************************************/
+
+// INSTALACIONES
 $routes->post('/crudInstalaciones', 'Instalaciones::crudInstalaciones', ['filter' => 'auth']);
 $routes->post('/', 'Instalaciones::crudInstalaciones', ['filter' => 'auth']);
 $routes->post('/singIn', 'Login::registrarse');

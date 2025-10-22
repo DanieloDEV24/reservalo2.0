@@ -1,0 +1,81 @@
+.horario
+{
+  padding: 2%;
+}
+
+.titulo-horario, .ano-horario
+{
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 3% 4%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  margin-bottom: 5%;
+}
+
+.titulo-horario p 
+{
+  margin: 0% !important;
+}
+
+
+.div-ano
+{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  margin-bottom: 2%;
+}
+
+
+.horario button {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.div-ano button:hover {
+  background: #2dd4bf;
+  border-color: #2dd4bf;
+  color: white;
+}
+
+.div-ano span {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1e293b;
+  min-width: 80px;
+  text-align: center;
+}
+
+
+.legend {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.legend-color {
+  width: 20px;
+  height: 20px;
+  border-radius: 6px;
+}
+
+
+.color-selected{background-color: #32cccc;}
+.color-cerrado{background-color: #F54927;}
