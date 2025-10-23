@@ -7,31 +7,80 @@
     <div class="ano-horario">
 
         <div class="div-ano">
-            <button>
+            <button id="btn-previous-year">
                 <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
             </button>
             <span id="anoActual">2025</span>
-            <button>
+            <button id="btn-next-year">
                 <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
             </button>
         </div>
 
-            <div class="legend">
-                <div class="legend-item">
-                    <div class="legend-color color-selected"></div>
-                    <span>Seleccionado</span>
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color color-selected"></div>
+                <span>Seleccionado</span>
+            </div>
+
+            <div class="legend-item">
+                <div class="legend-color color-cerrado"></div>
+                <span>Cerrado</span>
+            </div>
+        </div>
+    
+    </div>
+
+    <div class="calendario" id="calendario"></div>
+   
+   
+   
+    <div class="sidebar" id="sidebar">
+        <button id="btnCerraSidebarCrear" class="close-sidebar">✕</button>
+        <div class="sidebar-header">
+            <h2 id="sidebarTitle1">Crear horario</h2>
+            <p id="sidebarSubtitle1">Crear horarios para poder establecerselo a las instalaciones</p>
+        </div>
+        <div class="sidebar-content">
+            <div class="sidebarForm">
+                <div class="row" style="margin-bottom: 7%;">
+                    <label for="nombreHorario" id="labelNombreHorario">Nombre del horario:</label>
+                    <input type="text" id="nombreHorario" name="nombreHorario" class="form-control">
+                </div>
+                
+                <div class="row" style="margin-bottom: 7%">
+                    <label for="descripcionHorario">Escriba una descripcion</label>
+                    <textarea name="descripcionHorario" id="descripcionHorario" class="mr-3 ml-3"></textarea>
                 </div>
 
-                <div class="legend-item">
-                    <div class="legend-color color-cerrado"></div>
-                    <span>Cerrado</span>
+                <div class="seleccion-horas">
+                    <div class="row" style="margin-bottom: 7%;">
+                        <label for="">Horario de mañana</label>
+                        <div class="col"><label for="horaInicioMananaHorario">Inicio:</label>
+                        <input type="time" id="horaInicioMananaHorario" name="horaInicioMananaHorario" class="form-control"></div>
+
+                        <div class="col"><label for="horaFinMananaHorario">Fin:</label>
+                        <input type="time" id="horaFinMananaHorario" name="horaFinMananaHorario" class="form-control"></div>
+                    </div>
+
+
+                     <div class="row" style="margin-bottom: 7%;">
+                        <label for="">Horario de tarde</label>
+                        <div class="col"><label for="horaInicioTardeHorario">Inicio:</label>
+                        <input type="time" id="horaInicioTardeHorario" name="horaInicioTardeHorario" class="form-control"></div>
+                        <div class="col"><label for="horaFinTardeHorario">Fin:</label>
+                        <input type="time" id="horaFinTardeHorario" name="horaFinTardeHorario" class="form-control"></div>
+                    </div>
+
                 </div>
             </div>
-       
+        </div>
+    </div>
 
+    <div class="button">
+        <a href="" id="btnCrearHorario" class="btn-primary-personal" style="width: 23%;">Crear horario<i class="bi bi-plus-circle"></i></a>
     </div>
 </div>
