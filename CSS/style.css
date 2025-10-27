@@ -393,3 +393,8 @@ footer a, footer i
 {
     transition: all .3s ease-out;
 }
+
+.campo-obligatorio
+{
+  color: red;
+}

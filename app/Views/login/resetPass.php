@@ -7,6 +7,7 @@
     <title>Reservalo 2.0</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/home.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/login.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css" media="screen" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <script src="<?= base_url() ?>js/jquery.js"></script>
@@ -53,12 +54,12 @@
             <form id="emailPasswordForm" class="mb-6" action="" method="post">
 
                 <div class="newPassReset">
-                    <label for="newPassReset" class="form-label">Nueva contraseña</label>
+                    <label for="newPassReset" class="form-label">Nueva contraseña <span class="campo-obligatorio">*</span></label>
                     <input type="password" class="form-control" id="repetPassReset" name="newPassReset" autofocus="">
                 </div>
 
                 <div class="repetPassReset">
-                    <label for="repetPassReset" class="form-label">Repetir contraseña</label>
+                    <label for="repetPassReset" class="form-label">Repetir contraseña <span class="campo-obligatorio">*</span></label>
                     <input type="password" class="form-control" id="repetPassReset" name="repetPassReset">
                 </div>
                 <br>

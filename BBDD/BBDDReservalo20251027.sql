@@ -51,15 +51,32 @@ INSERT INTO `dias_semana` (`id_dia`, `nombre`) VALUES
 	(6, 'Sábado'),
 	(7, 'Domingo');
 
+-- Volcando estructura para tabla reservalo2.excepciones_horario
+CREATE TABLE IF NOT EXISTS `excepciones_horario` (
+  `id_excepciones_horario` int(11) NOT NULL AUTO_INCREMENT,
+  `id_tipo_horario_base` int(11) NOT NULL DEFAULT 0,
+  `id_tipo_horario_excepcion` int(11) NOT NULL DEFAULT 0,
+  `fecha_inicio` date DEFAULT NULL,
+  `fecha_fin` date DEFAULT NULL,
+  PRIMARY KEY (`id_excepciones_horario`),
+  KEY `id_tipo_horario_base` (`id_tipo_horario_base`),
+  KEY `id_tipo_horario_excepcion` (`id_tipo_horario_excepcion`),
+  CONSTRAINT `FK_excepciones_horario_tipo_horario` FOREIGN KEY (`id_tipo_horario_base`) REFERENCES `tipo_horario` (`id_tipo_horario`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  CONSTRAINT `FK_excepciones_horario_tipo_horario_2` FOREIGN KEY (`id_tipo_horario_excepcion`) REFERENCES `tipo_horario` (`id_tipo_horario`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcando datos para la tabla reservalo2.excepciones_horario: ~0 rows (aproximadamente)
+DELETE FROM `excepciones_horario`;
+
 -- Volcando estructura para tabla reservalo2.franjas_dias
 CREATE TABLE IF NOT EXISTS `franjas_dias` (
   `id_franja_dia` int(11) NOT NULL AUTO_INCREMENT,
-  `id_horaria` int(11) NOT NULL DEFAULT 0,
+  `id_franja_horaria` int(11) NOT NULL DEFAULT 0,
   `id_dia_semana` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_franja_dia`),
-  KEY `id_horaria` (`id_horaria`),
   KEY `id_dia_semana` (`id_dia_semana`),
-  CONSTRAINT `FK__franjas_horarias` FOREIGN KEY (`id_horaria`) REFERENCES `franjas_horarias` (`id_franja_horaria`) ON DELETE NO ACTION ON UPDATE CASCADE,
+  KEY `id_horaria` (`id_franja_horaria`) USING BTREE,
+  CONSTRAINT `FK__franjas_horarias` FOREIGN KEY (`id_franja_horaria`) REFERENCES `franjas_horarias` (`id_franja_horaria`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_franjas_dias_dias_semana` FOREIGN KEY (`id_dia_semana`) REFERENCES `dias_semana` (`id_dia`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -185,6 +202,8 @@ CREATE TABLE IF NOT EXISTS `tipo_horario` (
   `id_tipo_horario` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(50) DEFAULT '',
   `color` varchar(50) DEFAULT '',
+  `fecha_inicio` date DEFAULT NULL,
+  `fecha_final` date DEFAULT NULL,
   PRIMARY KEY (`id_tipo_horario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 

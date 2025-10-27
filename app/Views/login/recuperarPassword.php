@@ -7,6 +7,7 @@
     <title>Reservalo 2.0</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/home.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/login.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css" media="screen" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <script src="<?= base_url() ?>js/jquery.js"></script>
@@ -53,7 +54,7 @@
             <form id="emailPasswordForm" class="mb-6" action="" method="post">
 
                 <div class="passwordEmail">
-                    <label for="emailPass" class="form-label">Correo electrónico</label>
+                    <label for="emailPass" class="form-label">Correo electrónico <span class="campo-obligatorio">*</span></label>
                     <input type="text" class="form-control" id="emailPass" name="emailPass" autofocus="">
                 </div>
                 <br>

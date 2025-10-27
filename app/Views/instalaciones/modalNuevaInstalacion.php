@@ -14,12 +14,12 @@
       <div class="modal-body">
         <div class="row gap-5">
           <div class="col">
-            <label for="nombreInstalacion">Nombre:</label>
+            <label for="nombreInstalacion">Nombre: <span class="campo-obligatorio">*</span></label>
             <input type="text" id="nombreInstalacion" name="nombreInstalacion" class="form-control" placeholder="Ej: Pistas de padel">
           </div>
 
           <div class="col">
-            <label for="categorias">Categoria:</label>
+            <label for="categorias">Categoria: <span class="campo-obligatorio">*</span></label>
             <select name="categorias" id="categorias" class="form-select">
               <option value="-1" selected>Seleccione una categoria</option>
               <?php foreach ($categorias as $categoria): ?>
@@ -114,19 +114,19 @@
       <div class="accordion-body">
         <div class="row gap-5">
           <div class="col">
-            <label>Nombre:</label>
+            <label>Nombre: <span class="campo-obligatorio">*</span></label>
             <input type="text" name="nombrePista" class="form-control nombrePista" placeholder="Ej: Pista de padel nº 1">
           </div>
         </div>
 
         <div class="row gap-5 mt-3">
           <div class="col">
-            <label>Capacidad de la Pista:</label>
+            <label>Capacidad de la Pista: <span class="campo-obligatorio">*</span></label>
             <input type="text" name="capacidadPista" class="form-control capacidadPista" placeholder="Ej: 4">
           </div>
 
           <div class="col">
-            <label>Precio de la Pista:</label>
+            <label>Precio de la Pista: <span class="campo-obligatorio">*</span></label>
             <input type="text" name="precioPista" class="form-control precioPista" placeholder="Ej: 21">
           </div>
         </div>

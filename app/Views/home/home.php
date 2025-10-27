@@ -92,28 +92,20 @@
   <div class="top-instalaciones">
   <?php
   foreach ($instalacionesCarrousel as $instalacion) {
+    $url = base_url()."images/".$instalacion["imagen1"];
   ?>
-    <!-- From Uiverse.io by Yaya12085 -->
-    <div class="card">
-      <div class="image"><img src="<?= base_url() ?>images/<?= $instalacion["imagen2"] ?>"></div>
-      <div class="content-card-instalaciones-top">
-        <a href="#">
-          <span class="title">
-            <?= $instalacion["nombre_pista"] ?>
-          </span>
-        </a>
-
-        <p class="desc">
-          <?= $instalacion["descripcion"] ?>
-        </p>
-
-        <a class="btn-primary-personal" href="#">
-          Ver pista
-          <span aria-hidden="true">
-            →
-          </span>
-        </a>
-      </div>
+    <div class="card-instalacion" data-index="<?=$instalacion["id_instalacion"]?>">
+        <div class="card-image" style="background: url('<?=$url?>')"></div>
+        <div class="category"> <?=$instalacion["categoria_name"]?> </div>
+        <div class="heading"> <?=$instalacion["nombre"]?></div>
+        <div class="opciones">
+            <?= ($instalacion["iluminacion"] == 1) ? "<span>Iluminacion</span>" : "" ?>
+            <?= ($instalacion["puede_completo"] == 1) ? "<span>Reserva completa</span>" : "" ?>
+            <?= ($instalacion["no_pistas"] == 1) ? "<span>No tiene pistas</span>" : "" ?>
+            <?= ($instalacion["material"] == 1) ? "<span>Material</span>" : "" ?>
+        </div>
+        <div class="button"><a href="<?=base_url()."index.php/instalacion/".$instalacion["id_instalacion"]?>" class="btn-primary-personal">Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i></a></div>
+        <span class="estado <?=($instalacion["estado"] == 0) ? "disponible" : "no-disponible" ?>"><?=($instalacion["estado"] == 0) ? "disponible" : "no disponible" ?></span>
     </div>
   <?php
   }

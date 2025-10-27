@@ -156,10 +156,14 @@ class instalacionesModel extends Model
 
         $builder = $db->table('instalaciones');
 
-        $builder->select('instalaciones.*, c1.nombre AS categoria_principal, c2.nombre AS categoria_secundaria, p.*');
-        $builder->join('categorias c1', 'instalaciones.categoria_principal = c1.id_categoria', 'inner');
-        $builder->join('categorias c2', 'instalaciones.categoria_opcional1 = c2.id_categoria', 'left'); // LEFT JOIN
-        $builder->join('pistas p', 'instalaciones.id_instalacion = p.id_instalacion', 'inner');
+        $query = $builder->select('instalaciones.*,
+                            categorias1.nombre as categoria_name,
+                            categorias2.nombre as categoria_opc_name,
+                            (SELECT imagen1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as imagen1')
+        ->join('categorias as categorias1', 'instalaciones.categoria_principal = categorias1.id_categoria', 'left')
+        ->join('categorias as categorias2', 'instalaciones.categoria_opcional1 = categorias2.id_categoria', 'left');
         $builder->limit(3);
 
         $query = $builder->get();

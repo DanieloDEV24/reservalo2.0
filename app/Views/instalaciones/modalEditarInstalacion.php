@@ -14,12 +14,12 @@
       <div class="modal-body">
         <div class="row gap-5">
           <div class="col">
-            <label for="nombreInstalacionEditar">Nombre:</label>
+            <label for="nombreInstalacionEditar">Nombre: <span class="campo-obligatorio">*</span></label>
             <input type="text" id="nombreInstalacionEditar" name="nombreInstalacionEditar" class="form-control">
           </div>
 
           <div class="col">
-            <label for="categoriasEditar">Categoria:</label>
+            <label for="categoriasEditar">Categoria: <span class="campo-obligatorio">*</span></label>
             <!-- Aquí debo meter lógica de programación -->
             <select name="categoriasEditar" id="categoriasEditar" class="form-select">
               <?php foreach ($categorias as $categoria): ?>
@@ -102,7 +102,7 @@
 
         <div class="row mt-3 pl-3 pr-3">
           <div class="col">
-            <label for="">Escriba una descripcion</label>
+            <label for="">Escriba una descripcion <span class="campo-obligatorio">*</span></label>
             <textarea name="descripcionEditar" id="descripcionEditar" class="mr-3 ml-3"></textarea>
           </div>
         </div>

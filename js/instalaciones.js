@@ -27,19 +27,19 @@ $(document).ready(() => {
       <div class="accordion-body">
         <div class="row gap-5">
           <div class="col">
-            <label>Nombre:</label>
+            <label>Nombre: <span class="campo-obligatorio">*</span></label>
             <input type="text" name="nombrePista" class="form-control nombrePista" placeholder="Ej: Pista de padel nº 1">
           </div>
         </div>
 
         <div class="row gap-5 mt-3">
           <div class="col">
-            <label>Capacidad de la Pista:</label>
+            <label>Capacidad de la Pista: <span class="campo-obligatorio">*</span></label>
             <input type="text" name="capacidadPista" class="form-control capacidadPista" placeholder="Ej: 4">
           </div>
 
           <div class="col">
-            <label>Precio de la Pista:</label>
+            <label>Precio de la Pista: <span class="campo-obligatorio">*</span></label>
             <input type="text" name="precioPista" class="form-control precioPista" placeholder="Ej: 21">
           </div>
         </div>
@@ -328,17 +328,17 @@ $(document).ready(() => {
                     <div class="accordion-body">
                         <div class="row gap-5">
                             <div class="col">
-                                <label>Nombre:</label>
+                                <label>Nombre: <span class="campo-obligatorio">*</span></label>
                                 <input type="text" class="form-control nombrePista" placeholder="Ej: Pista de padel nº 1">
                             </div>
                         </div>
                         <div class="row gap-5 mt-3">
                             <div class="col">
-                                <label>Capacidad de la Pista:</label>
+                                <label>Capacidad de la Pista: <span class="campo-obligatorio">*</span></label>
                                 <input type="text" class="form-control capacidadPista" placeholder="Ej: 4">
                             </div>
                             <div class="col">
-                                <label>Precio de la Pista:</label>
+                                <label>Precio de la Pista: <span class="campo-obligatorio">*</span></label>
                                 <input type="text" class="form-control precioPista" placeholder="Ej: 21">
                             </div>
                         </div>
@@ -929,17 +929,17 @@ $(document).ready(() => {
                     <div class="accordion-body">
                         <div class="row gap-5">
                             <div class="col">
-                                <label>Nombre:</label>
+                                <label>Nombre: <span class="campo-obligatorio">*</span></label>
                                 <input type="text" class="form-control nombrePistaEditar" placeholder="Ej: Pista de padel nº 1" value="${pista.nombre_pista}">
                             </div>
                         </div>
                         <div class="row gap-5 mt-3">
                             <div class="col">
-                                <label>Capacidad de la Pista:</label>
+                                <label>Capacidad de la Pista: <span class="campo-obligatorio">*</span></label>
                                 <input type="text" class="form-control capacidadPistaEditar" placeholder="Ej: 4" value="${pista.capacidad_pista}">
                             </div>
                             <div class="col">
-                                <label>Precio de la Pista:</label>
+                                <label>Precio de la Pista: <span class="campo-obligatorio">*</span></label>
                                 <input type="text" class="form-control precioPistaEditar" placeholder="Ej: 21" value="${pista.precio_pista}">
                             </div>
                         </div>
@@ -987,17 +987,17 @@ $(document).ready(() => {
                     <div class="accordion-body">
                         <div class="row gap-5">
                             <div class="col">
-                                <label>Nombre:</label>
+                                <label>Nombre: <span class="campo-obligatorio">*</span></label>
                                 <input type="text" class="form-control nombrePista" placeholder="Ej: Pista de padel nº 1">
                             </div>
                         </div>
                         <div class="row gap-5 mt-3">
                             <div class="col">
-                                <label>Capacidad de la Pista:</label>
+                                <label>Capacidad de la Pista: <span class="campo-obligatorio">*</span></label>
                                 <input type="text" class="form-control capacidadPista" placeholder="Ej: 4" >
                             </div>
                             <div class="col">
-                                <label>Precio de la Pista:</label>
+                                <label>Precio de la Pista: <span class="campo-obligatorio">*</span></label>
                                 <input type="text" class="form-control precioPista" placeholder="Ej: 21" >
                             </div>
                         </div>
@@ -1279,17 +1279,17 @@ $(document).ready(() => {
                                         <div class="accordion-body">
                                             <div class="row gap-5">
                                                 <div class="col">
-                                                    <label>Nombre:</label>
+                                                    <label>Nombre: <span class="campo-obligatorio">*</span></label>
                                                     <input type="text" class="form-control nombrePistaEditar" placeholder="Ej: Pista de padel nº 1" value="${pista.nombre}">
                                                 </div>
                                             </div>
                                             <div class="row gap-5 mt-3">
                                                 <div class="col">
-                                                    <label>Capacidad de la Pista:</label>
+                                                    <label>Capacidad de la Pista: <span class="campo-obligatorio">*</span></label>
                                                     <input type="text" class="form-control capacidadPistaEditar" placeholder="Ej: 4" value="${pista.capacidad}">
                                                 </div>
                                                 <div class="col">
-                                                    <label>Precio de la Pista:</label>
+                                                    <label>Precio de la Pista: <span class="campo-obligatorio">*</span></label>
                                                     <input type="text" class="form-control precioPistaEditar" placeholder="Ej: 21" value="${pista.precio}">
                                                 </div>
                                             </div>
@@ -1328,17 +1328,17 @@ $(document).ready(() => {
                                 <div class="accordion-body">
                                     <div class="row gap-5">
                                         <div class="col">
-                                            <label>Nombre:</label>
+                                            <label>Nombre: <span class="campo-obligatorio">*</span></label>
                                             <input type="text" class="form-control nombrePista" placeholder="Ej: Pista de padel nº 1">
                                         </div>
                                     </div>
                                     <div class="row gap-5 mt-3">
                                         <div class="col">
-                                            <label>Capacidad de la Pista:</label>
+                                            <label>Capacidad de la Pista: <span class="campo-obligatorio">*</span></label>
                                             <input type="text" class="form-control capacidadPista" placeholder="Ej: 4" >
                                         </div>
                                         <div class="col">
-                                            <label>Precio de la Pista:</label>
+                                            <label>Precio de la Pista: <span class="campo-obligatorio">*</span></label>
                                             <input type="text" class="form-control precioPista" placeholder="Ej: 21" >
                                         </div>
                                     </div>
@@ -1591,17 +1591,17 @@ $(document).ready(() => {
                                         <div class="accordion-body">
                                             <div class="row gap-5">
                                                 <div class="col">
-                                                    <label>Nombre:</label>
+                                                    <label>Nombre: <span class="campo-obligatorio">*</span></label>
                                                     <input type="text" class="form-control nombrePistaEditar" placeholder="Ej: Pista de padel nº 1" value="${nombre}">
                                                 </div>
                                             </div>
                                             <div class="row gap-5 mt-3">
                                                 <div class="col">
-                                                    <label>Capacidad de la Pista:</label>
+                                                    <label>Capacidad de la Pista: <span class="campo-obligatorio">*</span></label>
                                                     <input type="text" class="form-control capacidadPistaEditar" placeholder="Ej: 4" value="${capacidad}">
                                                 </div>
                                                 <div class="col">
-                                                    <label>Precio de la Pista:</label>
+                                                    <label>Precio de la Pista: <span class="campo-obligatorio">*</span></label>
                                                     <input type="text" class="form-control precioPistaEditar" placeholder="Ej: 21" value="${precio}">
                                                 </div>
                                             </div>

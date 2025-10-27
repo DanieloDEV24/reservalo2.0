@@ -7,6 +7,7 @@
     <title>Reservalo 2.0</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/home.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/login.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css" media="screen" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <script src="<?= base_url() ?>js/jquery.js"></script>
@@ -51,21 +52,21 @@
             <p class="mb-6">Introduzca los datos solicitados</p>
 
             <form id="singInForm" class="mb-6" action="" method="post">
-                <input type="hidden" name="csrfmiddlewaretoken" value="sAH2uGhYD8U3bjDwPpS5SsEXDjRGqyVyGLY41A4VpjK7ea6Kthv1mkRK0HJL6JV7">
+                <!-- <input type="hidden" name="csrfmiddlewaretoken" value="sAH2uGhYD8U3bjDwPpS5SsEXDjRGqyVyGLY41A4VpjK7ea6Kthv1mkRK0HJL6JV7"> -->
 
                 <div class=" loginEmail">
-                    <label for="nombreReg" class="form-label">Correo electrónico</label>
+                    <label for="nombreReg" class="form-label">Nombre <span class="campo-obligatorio">*</span></label>
                     <input type="text" class="form-control" id="nombreReg" name="nombreReg" placeholder="Ej: Rigoberto..." autofocus="">
                 </div>
                 <br>
 
                 <div class=" loginEmail">
-                    <label for="emailReg" class="form-label">Correo electrónico</label>
+                    <label for="emailReg" class="form-label">Correo electrónico <span class="campo-obligatorio">*</span></label>
                     <input type="text" class="form-control" id="emailReg" name="emailReg" placeholder="Ej: email@ejemplo.com" autofocus="">
                 </div>
                 <br>
                 <div class=" form-password-toggle">
-                    <label class="form-label" for="passwordReg">Contraseña</label>
+                    <label class="form-label" for="passwordReg">Contraseña <span class="campo-obligatorio">*</span></label>
                     <div class="input-group input-group-merge loginPassword">
                         <input type="password" id="passwordReg" class="form-control" name="passwordReg" placeholder="············" aria-describedby="password">
                         <span class="input-group-text cursor-pointer botonVer" style="background-color: transparent; border: none"><i class="bi bi-eye"></i></span>

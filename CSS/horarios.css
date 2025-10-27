@@ -174,7 +174,7 @@
 {
   border-radius: 50%;
   border-radius: 8px;
-  /* border-radius: 50%; */
+    /* border-radius: 50%; */
   cursor: pointer;
   transition: all 0.2s ease-out;
   /* border: 2px solid transparent; */
@@ -343,3 +343,225 @@
   border: 1px solid #ccc !important;
   /* box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 4px; */
 }
+
+.contenedor-iconos
+{
+  background-color: rgba(50, 204, 204, .1);
+  border: 2px solid #32cccc;
+  border-radius: 10px;
+  padding: 2% 3%;
+}
+
+.contenedor-iconos i 
+{
+  color: #32cccc;
+}
+
+#sidebarTitle1
+{
+  margin-bottom: 0%;
+  font-size: 2rem;
+}
+
+#sidebarSubtitle1
+{
+  font-size: 1.2rem;
+}
+
+.checkbox-wrapper-4 * {
+  box-sizing: border-box;
+  color: #000;
+}
+
+.checkbox-wrapper-4 .cbx {
+  -webkit-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  padding: 6px 8px;
+  border-radius: 6px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.checkbox-wrapper-4 .cbx:not(:last-child) {
+  margin-right: 6px;
+}
+
+.checkbox-wrapper-4 .cbx span {
+  float: left;
+  vertical-align: middle;
+  transform: translate3d(0, 0, 0);
+}
+
+.checkbox-wrapper-4 .cbx span:first-child {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  transform: scale(1);
+  border: 1px solid #cccfdb;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 1px rgba(0,16,75,0.05);
+}
+
+.checkbox-wrapper-4 .cbx span:first-child svg {
+  position: absolute;
+  top: 3px;
+  left: 2px;
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 16px;
+  stroke-dashoffset: 16px;
+  transition: all 0.3s ease;
+  transition-delay: 0.1s;
+  transform: translate3d(0, 0, 0);
+}
+
+.sidebarForm .checkbox-wrapper-4 .cbx span:last-child {
+  padding-left: 8px;
+  line-height: 17px;
+  font-size: 1rem !important;
+  color: #333;
+}
+
+.checkbox-wrapper-4 .cbx:hover span:first-child {
+  border-color: #32cccc;
+}
+
+.checkbox-wrapper-4 .inp-cbx {
+  position: absolute;
+  visibility: hidden;
+}
+
+.checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child {
+   background: linear-gradient(145deg, #32cccc, #28a3a3);
+  border-color: #32cccc;
+  animation: wave-4 0.4s ease;
+}
+
+.checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child svg {
+  stroke-dashoffset: 0;
+}
+
+.checkbox-wrapper-4 .inline-svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media screen and (max-width: 640px) {
+  .checkbox-wrapper-4 .cbx {
+    width: 100%;
+    display: inline-block;
+  }
+}
+
+@-moz-keyframes wave-4 {
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+@-webkit-keyframes wave-4 {
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+@-o-keyframes wave-4 {
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+@keyframes wave-4 {
+  50% {
+    transform: scale(0.9);
+  }
+}
+
+
+.sidebar .checkbox-wrapper-4 .cbx
+{
+  display: flex !important;
+  gap: 10px;
+  transform: translateX(-10px);
+  width: 100%;
+  padding-left: 0% !important;
+  margin-left: 0% !important;
+  margin-bottom: 5% !important;
+}
+
+
+.sidebar .checkbox-wrapper-4 .cbx span:last-child{
+  padding: 0%;
+  width: 100%;
+}
+
+.sidebar .checkbox-wrapper-4 .cbx span:first-child{
+  width: 23px;
+  height: 20px;
+}
+
+.color-picker-section {
+      margin-bottom: 28px;
+    }
+
+    .color-picker-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .color-picker-label {
+      font-size: 15px;
+      color: #374151;
+      font-weight: 500;
+    }
+
+    /* Estilo del input color */
+    input[type="color"] {
+      width: 48px;
+      height: 48px;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: white;
+    }
+
+    input[type="color"]:hover {
+      border-color: #14b8a6;
+      transform: scale(1.05);
+    }
+
+    input[type="color"]::-webkit-color-swatch-wrapper {
+      padding: 4px;
+    }
+
+    input[type="color"]::-webkit-color-swatch {
+      border: none;
+      border-radius: 6px;
+    }
+
+    input[type="color"]::-moz-color-swatch {
+      border: none;
+      border-radius: 6px;
+    }
+
+    .color-value {
+      font-family: 'Courier New', monospace;
+      font-size: 13px;
+      color: #6b7280;
+      padding: 6px 12px;
+      background: #f9fafb;
+      border-radius: 6px;
+    }
+
+

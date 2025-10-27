@@ -7,6 +7,7 @@
     <title>Reservalo 2.0</title>
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/home.css" media="screen" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/login.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css" media="screen" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <script src="<?= base_url() ?>js/jquery.js"></script>
@@ -52,13 +53,13 @@
             <p class="mb-6">Porfavor, inicie sesión para continuar</p>
 
             <form id="loginForm" class="mb-6" action="" method="post">
-                <input type="hidden" name="csrfmiddlewaretoken" value="sAH2uGhYD8U3bjDwPpS5SsEXDjRGqyVyGLY41A4VpjK7ea6Kthv1mkRK0HJL6JV7">
+                <!-- <input type="hidden" name="csrfmiddlewaretoken" value="sAH2uGhYD8U3bjDwPpS5SsEXDjRGqyVyGLY41A4VpjK7ea6Kthv1mkRK0HJL6JV7"> -->
                 <div class="mb-6 loginEmail">
-                    <label for="email" class="form-label">Correo electrónico</label>
+                    <label for="email" class="form-label">Correo electrónico <span class="campo-obligatorio">*</span></label>
                     <input type="text" class="form-control" id="email" name="emailLogin" placeholder="Ej: email@ejemplo.com" autofocus="">
                 </div>
                 <div class="mb-6 form-password-toggle">
-                    <label class="form-label" for="password">Contraseña</label>
+                    <label class="form-label" for="password">Contraseña <span class="campo-obligatorio">*</span></label>
                     <div class="input-group input-group-merge loginPassword">
                         <input type="password" id="password" class="form-control" name="passwordLogin" placeholder="············" aria-describedby="password">
                         <span class="input-group-text cursor-pointer botonVer" style="background-color: transparent; border: none"><i class="bi bi-eye"></i></span>

@@ -223,6 +223,11 @@ header.headerHome>div a {
     height: 100%;
 }
 
+.contenedor-top-instalaciones .card
+{
+    height: 600px;
+}
+
 .content-card-instalaciones-top {
     padding: 1.1rem;
 }
