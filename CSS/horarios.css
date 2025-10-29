@@ -327,7 +327,7 @@
   color: white;
 }
 
-.sidebarForm label, .sidebarForm .col
+.sidebarForm label, .sidebarForm .col, .sidebarForm .col-6
 {
   padding-left: calc(var(--bs-gutter-x) * .07) !important;
   margin-bottom: 1% !important;
@@ -564,4 +564,45 @@
       border-radius: 6px;
     }
 
+.info-text {
+  background: rgb(50, 204, 204, .1);
+  border-left: 3px solid #32cccc;
+  padding: 12px;
+  margin-top: 10px;
+  margin-bottom: 7%;
+  border-radius: 4px;
+  font-size: 15px;
+  color: #085757;
+  display: none;
+  transform: translateX(-10px);
+}
 
+.info-text.show {
+  display: block;
+}
+
+
+.label-disabled span:last-child
+{
+  color: #aaa !important;
+}
+
+.checkbox-wrapper-4 .cbx.label-disabled:hover span:first-child {
+  border-color: #cccfdb;
+}
+
+#descripcionHorario.is-invalid{
+  border: 1px solid #dc3545 !important;
+}
+
+
+.erroresHorario{
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+}
+
+.erroresHorario ul{
+  margin-bottom: 0%;
+}

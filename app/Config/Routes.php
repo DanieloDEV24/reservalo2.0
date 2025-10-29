@@ -52,3 +52,4 @@ $routes->post('/darAlta', 'Instalaciones::darAlta');
 $routes->post('/mensajeBorrarInstalacion', 'Instalaciones::mensajeBorrarInstalacion');
 $routes->post('/borrarInstalacion', 'Instalaciones::borrarInstalacion');
 $routes->post('/instalaciones', 'Instalaciones::instalaciones');
+$routes->post('/crearHorario', 'Horarios::crearHorario');

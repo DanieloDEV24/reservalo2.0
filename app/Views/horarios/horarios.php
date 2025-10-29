@@ -1,4 +1,9 @@
 <div class="horario">
+<input type="hidden" name="" id="instalacion" value="<?=$id_instalacion?>">
+<div class="p-4 erroresHorario">
+
+</div>
+
     <div class="titulo-horario">
         <h1 class="title-page">Horario <?= $instalacion["nombre"] ?></h1>
         <p class="description-page">Configura los horarios para la instalacion <?= $instalacion["nombre"] ?> para cada temporada del año.</p>
@@ -36,8 +41,6 @@
 
     <div class="calendario" id="calendario"></div>
 
-
-
     <div class="sidebar" id="sidebar">
         <button id="btnCerraSidebarCrear" class="close-sidebar">✕</button>
         <div class="sidebar-header">
@@ -59,14 +62,31 @@
                     <textarea name="descripcionHorario" id="descripcionHorario" class="mr-3 ml-3"></textarea>
                 </div>
 
+                <div class="checkbox-wrapper-4 horarioEspecial">
+              <input class="inp-cbx" id="horarioEspecial" type="checkbox">
+              <label class="cbx" for="horarioEspecial"><span>
+              <svg width="20px" height="20px">
+                
+              </svg></span><span>Horario especial (para días puntuales)</span></label>
+              <svg class="inline-svg">
+                <symbol id="check-4" viewBox="0 0 12 10">
+                  <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                </symbol>
+              </svg>
+            </div>
+
+            <div class="info-text" id="infoText">
+                💡 Selección de horarios especiales. Puede no seleccionar rango de fechas (días puntuales), o seleccionar rango de fechas (semanas...)
+            </div>
+
                 <div class="row" style="margin-bottom: 7%;">
                     <label for="">Seleccione el rango del horario</label>
-                    <div class="col">
+                    <div class="col-6">
                         <label for="fechaInicio">Inicio:</label>
                         <input type="date" id="fechaInicioHorario" name="fechaInicioHorario" class="form-control">
                     </div>
 
-                    <div class="col">
+                    <div class="col-6">
                         <label for="fechaFin">Fin:</label>
                         <input type="date" id="fechaFinHorario" name="fechaFinHorario" class="form-control">
                     </div>
@@ -112,13 +132,13 @@
                 <div class="color-picker-section">
       <div class="color-picker-wrapper">
         <span class="color-picker-label">Seleccione el color del horario</span>
-        <input type="color" id="scheduleColor" value="#000000">
+        <input type="color" id="scheduleColor" value="#000">
         <span class="color-value" id="colorValue">#000000</span>
       </div>
     </div>
 
                 <div class="button">
-                    <a href="" class="btn-primary-personal">Crear horario</a>
+                    <a href="#" class="btn-primary-personal" id="btnGuardarNuevoHorario">Crear horario</a>
                 </div>
             </div>
         </div>

@@ -7,6 +7,195 @@
 ********************************************************************************************************************************************/
 $(document).ready(() => {
 
+    
+    let contenedor = $('.seleccion-horas');
+    let igualNode = $(`
+                <div class="row" style="margin-bottom: 7%;">
+                    <label for="">Horario de mañana</label>
+                    <div class="col"><label for="horaInicioMananaHorario">Inicio:</label>
+                        <input type="time" id="horaInicioMananaHorario" name="horaInicioMananaHorario" class="form-control">
+                    </div>
+
+                    <div class="col"><label for="horaFinMananaHorario">Fin:</label>
+                        <input type="time" id="horaFinMananaHorario" name="horaFinMananaHorario" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom: 7%;">
+                    <label for="">Horario de tarde</label>
+                    <div class="col"><label for="horaInicioTardeHorario">Inicio:</label>
+                        <input type="time" id="horaInicioTardeHorario" name="horaInicioTardeHorario" class="form-control">
+                    </div>
+                    <div class="col"><label for="horaFinTardeHorario">Fin:</label>
+                        <input type="time" id="horaFinTardeHorario" name="horaFinTardeHorario" class="form-control">
+                    </div>
+                </div>
+        `)
+
+    let diferentesNode = $(`
+
+                
+                <div class="row" style="margin-bottom: 7%;">
+                    <label for="">Horario del Lunes</label>
+                    <div class="col"><label for="horaInicioMananaLunesHorario">Inicio mañana:</label>
+                        <input type="time" id="horaInicioMananaLunesHorario" name="horaInicioMananaLunesHorario" class="form-control">
+                    </div>
+
+                    <div class="col"><label for="horaFinMananaLunesHorario">Fin mañana:</label>
+                        <input type="time" id="horaFinMananaLunesHorario" name="horaFinMananaLunesHorario" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom: 7%;">
+                    
+                    <div class="col"><label for="horaInicioTardeLunesHorario">Inicio tarde:</label>
+                        <input type="time" id="horaInicioTardeLunesHorario" name="horaInicioTardeLunesHorario" class="form-control">
+                    </div>
+                    <div class="col"><label for="horaFinTardeLunesHorario">Fin tarde:</label>
+                        <input type="time" id="horaFinTardeLunesHorario" name="horaFinTardeLunesHorario" class="form-control">
+                    </div>
+                </div>
+
+                
+                <div class="row" style="margin-bottom: 7%;">
+                    <label for="">Horario del Martes</label>
+                    <div class="col"><label for="horaInicioMananaMartesHorario">Inicio mañana:</label>
+                        <input type="time" id="horaInicioMananaMartesHorario" name="horaInicioMananaMartesHorario" class="form-control">
+                    </div>
+
+                    <div class="col"><label for="horaFinMananaMartesHorario">Fin mañana:</label>
+                        <input type="time" id="horaFinMananaMartesHorario" name="horaFinMananaMartesHorario" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom: 7%;">
+                    
+                    <div class="col"><label for="horaInicioTardeMartesHorario">Inicio tarde:</label>
+                        <input type="time" id="horaInicioTardeMartesHorario" name="horaInicioTardeMartesHorario" class="form-control">
+                    </div>
+                    <div class="col"><label for="horaFinTardeMartesHorario">Fin tarde:</label>
+                        <input type="time" id="horaFinTardeMartesHorario" name="horaFinTardeMartesHorario" class="form-control">
+                    </div>
+                </div>
+
+                <div class="row" style="margin-bottom: 7%;">
+                    <label for="">Horario del Miércoles</label>
+                    <div class="col"><label for="horaInicioMananaMiercolesHorario">Inicio mañana:</label>
+                        <input type="time" id="horaInicioMananaMiercolesHorario" name="horaInicioMananaMiercolesHorario" class="form-control">
+                    </div>
+
+                    <div class="col"><label for="horaFinMananaMiercolesHorario">Fin mañana:</label>
+                        <input type="time" id="horaFinMananaMiercolesHorario" name="horaFinMananaMiercolesHorario" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom: 7%;">
+                    
+                    <div class="col"><label for="horaInicioTardeMiercolesHorario">Inicio tarde:</label>
+                        <input type="time" id="horaInicioTardeMiercolesHorario" name="horaInicioTardeMiercolesHorario" class="form-control">
+                    </div>
+                    <div class="col"><label for="horaFinTardeMiercolesHorario">Fin tarde:</label>
+                        <input type="time" id="horaFinTardeMiercolesHorario" name="horaFinTardeMiercolesHorario" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom: 7%;">
+                    <label for="">Horario del Jueves</label>
+                    <div class="col"><label for="horaInicioMananaJuevesHorario">Inicio mañana:</label>
+                        <input type="time" id="horaInicioMananaJuevesHorario" name="horaInicioMananaJuevesHorario" class="form-control">
+                    </div>
+
+                    <div class="col"><label for="horaFinMananaJuevesHorario">Fin mañana:</label>
+                        <input type="time" id="horaFinMananaJuevesHorario" name="horaFinMananaJuevesHorario" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom: 7%;">
+                    
+                    <div class="col"><label for="horaInicioTardeJuevesHorario">Inicio tarde:</label>
+                        <input type="time" id="horaInicioTardeJuevesHorario" name="horaInicioTardeJuevesHorario" class="form-control">
+                    </div>
+                    <div class="col"><label for="horaFinTardeJuevesHorario">Fin tarde:</label>
+                        <input type="time" id="horaFinTardeJuevesHorario" name="horaFinTardeJuevesHorario" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom: 7%;">
+                    <label for="">Horario del Viernes</label>
+                    <div class="col"><label for="horaInicioMananaViernesHorario">Inicio mañana:</label>
+                        <input type="time" id="horaInicioMananaViernesHorario" name="horaInicioMananaViernesHorario" class="form-control">
+                    </div>
+
+                    <div class="col"><label for="horaFinMananaViernesHorario">Fin mañana:</label>
+                        <input type="time" id="horaFinMananaViernesHorario" name="horaFinMananaViernesHorario" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom: 7%;">
+                    
+                    <div class="col"><label for="horaInicioTardeViernesHorario">Inicio tarde:</label>
+                        <input type="time" id="horaInicioTardeViernesHorario" name="horaInicioTardeViernesHorario" class="form-control">
+                    </div>
+                    <div class="col"><label for="horaFinTardeViernesHorario">Fin tarde:</label>
+                        <input type="time" id="horaFinTardeViernesHorario" name="horaFinTardeViernesHorario" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom: 7%;">
+                    <label for="">Horario del Sábado</label>
+                    <div class="col"><label for="horaInicioMananaSabadoHorario">Inicio mañana:</label>
+                        <input type="time" id="horaInicioMananaSabadoHorario" name="horaInicioMananaSabadoHorario" class="form-control">
+                    </div>
+
+                    <div class="col"><label for="horaFinMananaSabadoHorario">Fin mañana:</label>
+                        <input type="time" id="horaFinMananaSabadoHorario" name="horaFinMananaSabadoHorario" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom: 7%;">
+                    
+                    <div class="col"><label for="horaInicioTardeSabadoHorario">Inicio tarde:</label>
+                        <input type="time" id="horaInicioTardeSabadoHorario" name="horaInicioTardeSabadoHorario" class="form-control">
+                    </div>
+                    <div class="col"><label for="horaFinTardeSabadoHorario">Fin tarde:</label>
+                        <input type="time" id="horaFinTardeSabadoHorario" name="horaFinTardeSabadoHorario" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom: 7%;">
+                    <label for="">Horario del Domingo</label>
+                    <div class="col"><label for="horaInicioMananaDomingoHorario">Inicio mañana:</label>
+                        <input type="time" id="horaInicioMananaDomingoHorario" name="horaInicioMananaDomingoHorario" class="form-control">
+                    </div>
+
+                    <div class="col"><label for="horaFinMananaDomingoHorario">Fin mañana:</label>
+                        <input type="time" id="horaFinMananaDomingoHorario" name="horaFinMananaDomingoHorario" class="form-control">
+                    </div>
+                </div>
+
+
+                <div class="row" style="margin-bottom: 7%;">
+                    
+                    <div class="col"><label for="horaInicioTardeDomingoHorario">Inicio tarde:</label>
+                        <input type="time" id="horaInicioTardeDomingoHorario" name="horaInicioTardeDomingoHorario" class="form-control">
+                    </div>
+                    <div class="col"><label for="horaFinTardeDomingoHorario">Fin tarde:</label>
+                        <input type="time" id="horaFinTardeDomingoHorario" name="horaFinTardeDomingoHorario" class="form-control">
+                    </div>
+                </div>
+        `)
+
     generarCalendario()
     
     /***********************************************************************************************************************************
@@ -70,200 +259,12 @@ $(document).ready(() => {
     })
 
     /***********************************************************************************************************************************
-    *******************************************************  FUNCIONES DE AYUDA  *******************************************************
+    ******************************************************  CREACIÓN DEL HORARIO  ******************************************************
     ***********************************************************************************************************************************/
 
     $(document).on('click', '#horarioDistinto', function(){
-
-        let checked = $(this).is(':checked');
-        let contenedor = $('.seleccion-horas');
-        let igualNode = $(`
-                    <div class="row" style="margin-bottom: 7%;">
-                        <label for="">Horario de mañana</label>
-                        <div class="col"><label for="horaInicioMananaHorario">Inicio:</label>
-                            <input type="time" id="horaInicioMananaHorario" name="horaInicioMananaHorario" class="form-control">
-                        </div>
-
-                        <div class="col"><label for="horaFinMananaHorario">Fin:</label>
-                            <input type="time" id="horaFinMananaHorario" name="horaFinMananaHorario" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="row" style="margin-bottom: 7%;">
-                        <label for="">Horario de tarde</label>
-                        <div class="col"><label for="horaInicioTardeHorario">Inicio:</label>
-                            <input type="time" id="horaInicioTardeHorario" name="horaInicioTardeHorario" class="form-control">
-                        </div>
-                        <div class="col"><label for="horaFinTardeHorario">Fin:</label>
-                            <input type="time" id="horaFinTardeHorario" name="horaFinTardeHorario" class="form-control">
-                        </div>
-                    </div>
-            `)
-
-        let diferentesNode = $(`
-
-                    
-                    <div class="row" style="margin-bottom: 7%;">
-                        <label for="">Horario del Lunes</label>
-                        <div class="col"><label for="horaInicioMananaLunesHorario">Inicio mañana:</label>
-                            <input type="time" id="horaInicioMananaLunesHorario" name="horaInicioMananaLunesHorario" class="form-control">
-                        </div>
-
-                        <div class="col"><label for="horaFinMananaLunesHorario">Fin mañana:</label>
-                            <input type="time" id="horaFinMananaLunesHorario" name="horaFinMananaLunesHorario" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="row" style="margin-bottom: 7%;">
-                        
-                        <div class="col"><label for="horaInicioTardeLunesHorario">Inicio tarde:</label>
-                            <input type="time" id="horaInicioTardeLunesHorario" name="horaInicioTardeLunesHorario" class="form-control">
-                        </div>
-                        <div class="col"><label for="horaFinTardeLunesHorario">Fin tarde:</label>
-                            <input type="time" id="horaFinTardeLunesHorario" name="horaFinTardeLunesHorario" class="form-control">
-                        </div>
-                    </div>
-
-                    
-                    <div class="row" style="margin-bottom: 7%;">
-                        <label for="">Horario del Martes</label>
-                        <div class="col"><label for="horaInicioMananaMartesHorario">Inicio mañana:</label>
-                            <input type="time" id="horaInicioMananaMartesHorario" name="horaInicioMananaMartesHorario" class="form-control">
-                        </div>
-
-                        <div class="col"><label for="horaFinMananaMartesHorario">Fin mañana:</label>
-                            <input type="time" id="horaFinMananaMartesHorario" name="horaFinMananaMartesHorario" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="row" style="margin-bottom: 7%;">
-                        
-                        <div class="col"><label for="horaInicioTardeMartesHorario">Inicio tarde:</label>
-                            <input type="time" id="horaInicioTardeMartesHorario" name="horaInicioTardeMartesHorario" class="form-control">
-                        </div>
-                        <div class="col"><label for="horaFinTardeMartesHorario">Fin tarde:</label>
-                            <input type="time" id="horaFinTardeMartesHorario" name="horaFinTardeMartesHorario" class="form-control">
-                        </div>
-                    </div>
-
-                    <div class="row" style="margin-bottom: 7%;">
-                        <label for="">Horario del Miércoles</label>
-                        <div class="col"><label for="horaInicioMananaMiercolesHorario">Inicio mañana:</label>
-                            <input type="time" id="horaInicioMananaMiercolesHorario" name="horaInicioMananaMiercolesHorario" class="form-control">
-                        </div>
-
-                        <div class="col"><label for="horaFinMananaMiercolesHorario">Fin mañana:</label>
-                            <input type="time" id="horaFinMananaMiercolesHorario" name="horaFinMananaMiercolesHorario" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="row" style="margin-bottom: 7%;">
-                        
-                        <div class="col"><label for="horaInicioTardeMiercolesHorario">Inicio tarde:</label>
-                            <input type="time" id="horaInicioTardeMiercolesHorario" name="horaInicioTardeMiercolesHorario" class="form-control">
-                        </div>
-                        <div class="col"><label for="horaFinTardeMiercolesHorario">Fin tarde:</label>
-                            <input type="time" id="horaFinTardeMiercolesHorario" name="horaFinTardeMiercolesHorario" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="row" style="margin-bottom: 7%;">
-                        <label for="">Horario del Jueves</label>
-                        <div class="col"><label for="horaInicioMananaJuevesHorario">Inicio mañana:</label>
-                            <input type="time" id="horaInicioMananaJuevesHorario" name="horaInicioMananaJuevesHorario" class="form-control">
-                        </div>
-
-                        <div class="col"><label for="horaFinMananaJuevesHorario">Fin mañana:</label>
-                            <input type="time" id="horaFinMananaJuevesHorario" name="horaFinMananaJuevesHorario" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="row" style="margin-bottom: 7%;">
-                        
-                        <div class="col"><label for="horaInicioTardeJuevesHorario">Inicio tarde:</label>
-                            <input type="time" id="horaInicioTardeJuevesHorario" name="horaInicioTardeJuevesHorario" class="form-control">
-                        </div>
-                        <div class="col"><label for="horaFinTardeJuevesHorario">Fin tarde:</label>
-                            <input type="time" id="horaFinTardeJuevesHorario" name="horaFinTardeJuevesHorario" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="row" style="margin-bottom: 7%;">
-                        <label for="">Horario del Viernes</label>
-                        <div class="col"><label for="horaInicioMananaViernesHorario">Inicio mañana:</label>
-                            <input type="time" id="horaInicioMananaViernesHorario" name="horaInicioMananaViernesHorario" class="form-control">
-                        </div>
-
-                        <div class="col"><label for="horaFinMananaViernesHorario">Fin mañana:</label>
-                            <input type="time" id="horaFinMananaViernesHorario" name="horaFinMananaViernesHorario" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="row" style="margin-bottom: 7%;">
-                        
-                        <div class="col"><label for="horaInicioTardeViernesHorario">Inicio tarde:</label>
-                            <input type="time" id="horaInicioTardeViernesHorario" name="horaInicioTardeViernesHorario" class="form-control">
-                        </div>
-                        <div class="col"><label for="horaFinTardeViernesHorario">Fin tarde:</label>
-                            <input type="time" id="horaFinTardeViernesHorario" name="horaFinTardeViernesHorario" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="row" style="margin-bottom: 7%;">
-                        <label for="">Horario del Sábado</label>
-                        <div class="col"><label for="horaInicioMananaSabadoHorario">Inicio mañana:</label>
-                            <input type="time" id="horaInicioMananaSabadoHorario" name="horaInicioMananaSabadoHorario" class="form-control">
-                        </div>
-
-                        <div class="col"><label for="horaFinMananaSabadoHorario">Fin mañana:</label>
-                            <input type="time" id="horaFinMananaSabadoHorario" name="horaFinMananaSabadoHorario" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="row" style="margin-bottom: 7%;">
-                        
-                        <div class="col"><label for="horaInicioTardeSabadoHorario">Inicio tarde:</label>
-                            <input type="time" id="horaInicioTardeSabadoHorario" name="horaInicioTardeSabadoHorario" class="form-control">
-                        </div>
-                        <div class="col"><label for="horaFinTardeSabadoHorario">Fin tarde:</label>
-                            <input type="time" id="horaFinTardeSabadoHorario" name="horaFinTardeSabadoHorario" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="row" style="margin-bottom: 7%;">
-                        <label for="">Horario del Domingo</label>
-                        <div class="col"><label for="horaInicioMananaDomingoHorario">Inicio mañana:</label>
-                            <input type="time" id="horaInicioMananaDomingoHorario" name="horaInicioMananaDomingoHorario" class="form-control">
-                        </div>
-
-                        <div class="col"><label for="horaFinMananaDomingoHorario">Fin mañana:</label>
-                            <input type="time" id="horaFinMananaDomingoHorario" name="horaFinMananaDomingoHorario" class="form-control">
-                        </div>
-                    </div>
-
-
-                    <div class="row" style="margin-bottom: 7%;">
-                        
-                        <div class="col"><label for="horaInicioTardeDomingoHorario">Inicio tarde:</label>
-                            <input type="time" id="horaInicioTardeDomingoHorario" name="horaInicioTardeDomingoHorario" class="form-control">
-                        </div>
-                        <div class="col"><label for="horaFinTardeDomingoHorario">Fin tarde:</label>
-                            <input type="time" id="horaFinTardeDomingoHorario" name="horaFinTardeDomingoHorario" class="form-control">
-                        </div>
-                    </div>
-            `)
         
+        let checked = $(this).is(':checked');
         contenedor.empty();
         if(checked)
         {
@@ -273,7 +274,154 @@ $(document).ready(() => {
         {
             contenedor.append(igualNode)
         }
+
     })
+
+    $(document).on('click', '#horarioEspecial', function(){
+
+        if($(this).is(':checked')){
+
+            $('#infoText').addClass('show')
+            if($('#horarioDistinto').is(':checked')){
+                
+                $('#horarioDistinto').prop('checked', false)
+                contenedor.empty();
+                contenedor.append(igualNode)
+            }
+           
+            $('#horarioDistinto').prop('disabled', true)
+            $('.horarioDistinto label').addClass('label-disabled')
+        }
+        else{
+            $('#infoText').removeClass('show')
+            $('#horarioDistinto').prop('disabled', false)
+            $('.horarioDistinto label').removeClass('label-disabled')
+        }
+    })
+
+
+$(document).on('click', '#btnGuardarNuevoHorario', function(e) {
+
+    e.preventDefault();
+    let data = {};
+    let errores = [];
+
+    data["instalacion"] = $('#instalacion').val()
+
+    // Obtenemos los datos del formulario
+    let nombre          = $('#nombreHorario').val();
+    let descripcion     = $('#descripcionHorario').val();
+    let horarioEspecial = ($('#horarioEspecial').is(':checked')) ? 1 : 0;
+    let fechaInicio     = $('#fechaInicioHorario').val(); 
+    let fechaFin        = $('#fechaFinHorario').val();
+    let horarioDistinto = $('#horarioDistinto').is(':checked');
+
+    let fechaInicioDate = new Date(fechaInicio)
+    let fechaFinDate = new Date(fechaFin)
+
+    let initialYear = fechaInicioDate.getFullYear()
+    let finishYear  = fechaFinDate.getFullYear();
+
+    let currentYear = new Date().getFullYear()
+    let nextYear = (new Date().getFullYear() + 1)
+
+    let color = $('#scheduleColor').val();
+    data["color"] = color
+
+    // Validaciones básicas
+    if (nombre !== ""){
+        data["nombre"] = nombre;
+        $('#nombreHorario').removeClass('is-invalid')
+    }
+    else{
+        errores.push("Debe escribir un nombre para el horario.");  
+        $('#nombreHorario').addClass('is-invalid');
+    }
+
+    if (descripcion !== ""){
+        data["descripcion"] = descripcion;
+        $('#descripcionHorario').removeClass('is-invalid')
+    }
+    else {
+        errores.push("Debe escribir una descripción para el horario.");
+        $('#descripcionHorario').addClass('is-invalid');
+    }
+
+    if (horarioEspecial === 0 && fechaInicio === ""){
+        errores.push("Si no es un horario especial debe seleccionar la fecha de inicio del horario.");
+        $('#fechaInicioHorario').addClass('is-invalid')
+        $('#fechaFinHorario').removeClass('is-invalid')
+    }
+    else if (horarioEspecial === 0 && fechaFin === ""){
+        errores.push("Si no es un horario especial debe seleccionar la fecha de fin del horario.");
+        $('#fechaInicioHorario').removeClass('is-invalid')
+        $('#fechaFinHorario').addClass('is-invalid')
+    }
+    else if (fechaInicioDate > fechaFinDate ){
+        errores.push("La fecha de inicio no puede ser mayor que la final");
+        $('#fechaInicioHorario').addClass('is-invalid')
+        $('#fechaFinHorario').addClass('is-invalid')
+    }
+    else if((initialYear < currentYear) || (finishYear < currentYear))
+    {
+        errores.push("No se puede crear un horario para años anteriores al " + currentYear + ".");
+        $('#fechaInicioHorario').addClass('is-invalid')
+        $('#fechaFinHorario').removeClass('is-invalid')
+    }
+    else if((finishYear > nextYear) || (initialYear > nextYear))
+    {
+        errores.push("No se puede crear un horario para años anteriores al " + nextYear +".");
+        $('#fechaInicioHorario').removeClass('is-invalid')
+        $('#fechaFinHorario').addClass('is-invalid')
+    }
+    else 
+    {
+        data['fecha_inicio'] = fechaInicio, 
+        data['fecha_fin'] = fechaFin
+         $('#fechaInicioHorario').removeClass('is-invalid')
+        $('#fechaFinHorario').removeClass('is-invalid')
+    }
+      
+    // ✅ Validación de horarios (incluye orden de horas)
+    if (!validarHorarios(horarioDistinto, errores, data)) {
+        console.error("Errores en horarios detectados");
+    }
+
+    $('.erroresHorario').empty();
+    // Si no hay errores, mostramos datos
+    if (errores.length === 0) {
+        // console.log(data);
+        $.ajax({
+            type: "POST",
+            url: "../crearHorario",
+            data: {data: data},
+            dataType: "json",
+            success: function (response) {
+                
+            }
+        });
+    }
+    else {
+
+        let lista = $(`<ul></ul>`)
+        errores.map(function(error){
+            let elemento = $(`<li>${error}</li>`);
+            lista.append(elemento)
+        })
+
+        let alertBox = $(`<div class="alert alert-danger mb-0" role="alert"></div>`);
+        alertBox.append(lista)
+
+        $('.erroresHorario').append(alertBox);
+    }
+});
+
+
+$(document).on('change', '#scheduleColor', function(){
+
+    let color = $(this).val()
+    $('#colorValue').text(color)
+})
 
     /***********************************************************************************************************************************
     *******************************************************  FUNCIONES DE AYUDA  *******************************************************
@@ -366,4 +514,131 @@ $(document).ready(() => {
 
         return mes
     }
+
+
+function validarHorarios(horarioDistinto, errores, dataOpcional) {
+    let valido = true;
+    let dataHorarios = null; // se llenará solo si todo es válido
+
+    // Función auxiliar para comparar horas (HH:mm)
+    function horaMenor(h1, h2) {
+        return h1.localeCompare(h2) < 0;
+    }
+
+    const LIMITE_MANANA = "15:00";
+    const LIMITE_TARDE = "16:00";
+
+    if (horarioDistinto === true) {
+        dataHorarios = {};
+        const dias = ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"];
+        const turnos = ["Manana","Tarde"];
+
+        dias.forEach(dia => {
+            const claveDia = dia.toLowerCase();
+            dataHorarios[claveDia] = { manana: null, tarde: null };
+
+            turnos.forEach(turno => {
+                const inicio = $(`#horaInicio${turno}${dia}Horario`).val();
+                const fin    = $(`#horaFin${turno}${dia}Horario`).val();
+                const campos = $(`#horaInicio${turno}${dia}Horario, #horaFin${turno}${dia}Horario`);
+                campos.removeClass('is-invalid');
+
+                if ((inicio && !fin) || (!inicio && fin)) {
+                    valido = false;
+                    errores.push(`Debe completar ambas horas (${turno.toLowerCase()}) del ${dia}.`);
+                    campos.addClass('is-invalid');
+                } else if (inicio && fin && !horaMenor(inicio, fin)) {
+                    valido = false;
+                    errores.push(`La hora de inicio (${inicio}) debe ser menor que la de fin (${fin}) en ${turno.toLowerCase()} del ${dia}.`);
+                    campos.addClass('is-invalid');
+                } else if (inicio && fin) {
+                    // VALIDADO: guardamos en la estructura local
+                    dataHorarios[claveDia][turno.toLowerCase()] = { inicio, fin };
+
+                    // 🔹 Validaciones adicionales por turno
+                    if (turno === "Manana" && fin > LIMITE_MANANA) {
+                        valido = false;
+                        errores.push(`La hora de fin de la mañana del ${dia} (${fin}) no puede ser posterior a las ${LIMITE_MANANA}.`);
+                        $(`#horaFinManana${dia}Horario`).addClass('is-invalid');
+                    }
+
+                    if (turno === "Tarde" && inicio < LIMITE_TARDE) {
+                        valido = false;
+                        errores.push(`La hora de inicio de la tarde del ${dia} (${inicio}) no puede ser anterior a las ${LIMITE_TARDE}.`);
+                        $(`#horaInicioTarde${dia}Horario`).addClass('is-invalid');
+                    }
+                }
+            });
+
+            // 🔹 Validación entre turnos: mañana debe terminar antes de la tarde
+            const maniana = dataHorarios[claveDia].manana;
+            const tarde = dataHorarios[claveDia].tarde;
+
+            if (maniana && tarde) {
+                if (!horaMenor(maniana.fin, tarde.inicio)) {
+                    valido = false;
+                    errores.push(`El horario de la mañana del ${dia} (${maniana.fin}) debe ser anterior al inicio de la tarde (${tarde.inicio}).`);
+                    $(`#horaFinManana${dia}Horario, #horaInicioTarde${dia}Horario`).addClass('is-invalid');
+                }
+            }
+        });
+
+    } else {
+        dataHorarios = { manana: null, tarde: null };
+        const turnos = ["Manana","Tarde"];
+
+        turnos.forEach(turno => {
+            const inicio = $(`#horaInicio${turno}Horario`).val();
+            const fin    = $(`#horaFin${turno}Horario`).val();
+            const campos = $(`#horaInicio${turno}Horario, #horaFin${turno}Horario`);
+            campos.removeClass('is-invalid');
+
+            if ((inicio && !fin) || (!inicio && fin)) {
+                valido = false;
+                errores.push(`Debe completar ambas horas (${turno.toLowerCase()}) del horario general.`);
+                campos.addClass('is-invalid');
+            } else if (inicio && fin && !horaMenor(inicio, fin)) {
+                valido = false;
+                errores.push(`La hora de inicio (${inicio}) debe ser menor que la de fin (${fin}) en el turno de ${turno.toLowerCase()}.`);
+                campos.addClass('is-invalid');
+            } else if (inicio && fin) {
+                // VALIDADO: guardamos en la estructura local
+                dataHorarios[turno.toLowerCase()] = { inicio, fin };
+
+                // 🔹 Validaciones de límites
+                if (turno === "Manana" && fin > LIMITE_MANANA) {
+                    valido = false;
+                    errores.push(`La hora de fin de la mañana (${fin}) no puede ser posterior a las ${LIMITE_MANANA}.`);
+                    $(`#horaFinMananaHorario`).addClass('is-invalid');
+                }
+
+                if (turno === "Tarde" && inicio < LIMITE_TARDE) {
+                    valido = false;
+                    errores.push(`La hora de inicio de la tarde (${inicio}) no puede ser anterior a las ${LIMITE_TARDE}.`);
+                    $(`#horaInicioTardeHorario`).addClass('is-invalid');
+                }
+            }
+        });
+
+        // 🔹 Validación entre turnos
+        const maniana = dataHorarios.manana;
+        const tarde = dataHorarios.tarde;
+
+        if (maniana && tarde) {
+            if (!horaMenor(maniana.fin, tarde.inicio)) {
+                valido = false;
+                errores.push(`El horario de la mañana (${maniana.fin}) debe ser anterior al inicio de la tarde (${tarde.inicio}) en el horario general.`);
+                $(`#horaFinMananaHorario, #horaInicioTardeHorario`).addClass('is-invalid');
+            }
+        }
+    }
+
+    // Si todo es válido y nos pasaron un objeto `dataOpcional`, lo rellenamos
+    if (valido && dataOpcional && typeof dataOpcional === 'object') {
+        dataOpcional['horarios'] = dataHorarios;
+    }
+
+    return valido;
+}
+
 })
