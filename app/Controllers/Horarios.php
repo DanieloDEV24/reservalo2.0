@@ -60,17 +60,65 @@ class Horarios extends BaseController
             
 
             // Creamos el horario
-            // $horario = $horariosModel->crearHorario($data_tipo_horario);
+            //$horario = $horariosModel->crearHorario($data_tipo_horario);
 
             // Ahora creamos las franjas horarias
             // Obtenemos el horario 
             $horarios = $data["horarios"];
-            if(isset($horarios["lunes"])) {
-                $franjas = $this->obtenerFranjasHorarias($horarios);
-            }
-            else {
+            // if(isset($horarios["lunes"])) {
+            //     $franjas = $this->obtenerFranjasHorarias($horarios);
+                
+            //     foreach ($franjas as $franja) {
+            //         $primerElemento = reset($franja);
+            //         $data_franja = [
+            //             "id_tipo_horario" => $horario,
+            //             "id_instalacion" => $id_instalacion, 
+            //             "hora_inicio_manana" => $primerElemento["manana"]["inicio"],
+            //             "hora_fin_manana" => $primerElemento["manana"]["fin"], 
+            //             "hora_inicio_tarde" => $primerElemento["tarde"]["inicio"], 
+            //             "hora_fin_tarde" => $primerElemento["tarde"]["fin"], 
+            //         ];
 
-            }
+            //         $franja_horaria = $horariosModel->crearFranjaHoraria($data_franja);
+                    
+            //         foreach ($franja as $key => $value) {
+            //             $index = $this->obtenerNumeroDia($key);
+            //             $data_franja_dia = [
+            //                 "id_franja_horaria" => $franja_horaria,
+            //                 "id_dia_semana" => $index
+            //             ];
+            //         }
+
+                    
+
+            //     }
+            // }
+            // else {
+            //     $franjas = "hola";
+            // }
+
+           
+            echo json_encode([
+                "success" => true,
+                "mensaje" => "Se ha creado el horario correctamente"
+            ]);
+            exit;
+        }
+    }
+
+
+    public function comprobarHorarios() {
+
+        $post = $this->request->getPost();
+        $horariosModel = new horariosModel();
+
+        if(!empty($post)){
+
+            $horarios = $horariosModel->comprobarHorarios();
+
+            echo json_encode([
+                "horarios" => $horarios
+            ]);
         }
     }
 
@@ -85,23 +133,41 @@ class Horarios extends BaseController
                 $franjas[][$key] = $value;
             }
             else {
+                $existe = false;
                 foreach($franjas as $clave => $franja){
                     
+
                     foreach($franja as $calve_franja => $valor_franja){
+                        
                         if($valor_franja["manana"]["inicio"] === $value["manana"]["inicio"] && $valor_franja["manana"]["fin"] === $value["manana"]["fin"] &&
                            $valor_franja["tarde"]["inicio"] === $value["tarde"]["inicio"] && $valor_franja["tarde"]["fin"] === $value["tarde"]["fin"]){
                             $franjas[$clave][$key] = $value;
-                           }
-                           else{
-                            $franjas[$clave + 1][$key] = $value;
-                           }
+                            $existe = true;
+                        }
                     }
+                    
                 }
+                if($existe === false) {
+                        
+                        $franjas[$clave + 1][$key] = $value;
+                }
+
             }
             
         }
 
         return $franjas;
+    }
+
+
+    private function obtenerNumeroDia(string $dia) {
+        
+        $DIAS_SEMANA = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
+
+        $index = array_search($dia, $DIAS_SEMANA);
+
+        return ($index + 1);
+        
     }
 
 }

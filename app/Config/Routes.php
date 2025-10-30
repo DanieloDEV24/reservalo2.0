@@ -53,3 +53,4 @@ $routes->post('/mensajeBorrarInstalacion', 'Instalaciones::mensajeBorrarInstalac
 $routes->post('/borrarInstalacion', 'Instalaciones::borrarInstalacion');
 $routes->post('/instalaciones', 'Instalaciones::instalaciones');
 $routes->post('/crearHorario', 'Horarios::crearHorario');
+$routes->post('/comprobarHorarios', 'Horarios::comprobarHorarios');

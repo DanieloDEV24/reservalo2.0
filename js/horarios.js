@@ -378,7 +378,7 @@ $(document).on('click', '#btnGuardarNuevoHorario', function(e) {
     {
         data['fecha_inicio'] = fechaInicio, 
         data['fecha_fin'] = fechaFin
-         $('#fechaInicioHorario').removeClass('is-invalid')
+        $('#fechaInicioHorario').removeClass('is-invalid')
         $('#fechaFinHorario').removeClass('is-invalid')
     }
       
@@ -397,7 +397,10 @@ $(document).on('click', '#btnGuardarNuevoHorario', function(e) {
             data: {data: data},
             dataType: "json",
             success: function (response) {
-                
+               
+                if(response.success === true) {
+                    
+                }                    
             }
         });
     }
@@ -432,10 +435,22 @@ $(document).on('change', '#scheduleColor', function(){
         const fecha = new Date()
         const currentYear = (year === null) ? fecha.getFullYear() : year
 
-        renderizadoCalendario(currentYear)
+        $.ajax({
+            type: "POST",
+            url: "../comprobarHorarios",
+            data: {year: currentYear},
+            dataType: "json",
+            success: function (response) {
+                
+                let horarios = response.horarios;
+                renderizadoCalendario(currentYear, horarios)
+            }
+        });
+
+        
     }
 
-    function renderizadoCalendario(year) {
+    function renderizadoCalendario(year, horarios = null) {
 
         $('#calendario').empty();
 
@@ -468,7 +483,7 @@ $(document).on('change', '#scheduleColor', function(){
                             dia.getMonth() === hoy.getMonth() &&
                             dia.getDate() === hoy.getDate();
 
-                        return `<div class="numero-dia${esHoy ? ' today' : ''} ${(dia.getDay() === 0 || dia.getDay() === 6) ? "weekend" : ""}">${dia.getDate()}</div>`;
+                        return `<div data-day="${dia.getDate()}/${dia.getMonth() + 1}/${dia.getFullYear()}" class="numero-dia${esHoy ? ' today' : ''} ${(dia.getDay() === 0 || dia.getDay() === 6) ? "weekend" : ""}">${dia.getDate()}</div>`;
                     }).join('');
                 }).join('')
                 }
@@ -518,9 +533,8 @@ $(document).on('change', '#scheduleColor', function(){
 
 function validarHorarios(horarioDistinto, errores, dataOpcional) {
     let valido = true;
-    let dataHorarios = null; // se llenará solo si todo es válido
+    let dataHorarios = null;
 
-    // Función auxiliar para comparar horas (HH:mm)
     function horaMenor(h1, h2) {
         return h1.localeCompare(h2) < 0;
     }
@@ -551,11 +565,16 @@ function validarHorarios(horarioDistinto, errores, dataOpcional) {
                     valido = false;
                     errores.push(`La hora de inicio (${inicio}) debe ser menor que la de fin (${fin}) en ${turno.toLowerCase()} del ${dia}.`);
                     campos.addClass('is-invalid');
-                } else if (inicio && fin) {
-                    // VALIDADO: guardamos en la estructura local
-                    dataHorarios[claveDia][turno.toLowerCase()] = { inicio, fin };
+                }
 
-                    // 🔹 Validaciones adicionales por turno
+                // 🔧 CAMBIO: siempre guardamos el objeto, incluso si están vacíos
+                dataHorarios[claveDia][turno.toLowerCase()] = { 
+                    inicio: inicio || "", 
+                    fin: fin || "" 
+                };
+
+                // 🔹 Validaciones adicionales
+                if (inicio && fin) {
                     if (turno === "Manana" && fin > LIMITE_MANANA) {
                         valido = false;
                         errores.push(`La hora de fin de la mañana del ${dia} (${fin}) no puede ser posterior a las ${LIMITE_MANANA}.`);
@@ -570,11 +589,11 @@ function validarHorarios(horarioDistinto, errores, dataOpcional) {
                 }
             });
 
-            // 🔹 Validación entre turnos: mañana debe terminar antes de la tarde
+            // 🔹 Validación entre turnos
             const maniana = dataHorarios[claveDia].manana;
             const tarde = dataHorarios[claveDia].tarde;
 
-            if (maniana && tarde) {
+            if (maniana.inicio && maniana.fin && tarde.inicio && tarde.fin) {
                 if (!horaMenor(maniana.fin, tarde.inicio)) {
                     valido = false;
                     errores.push(`El horario de la mañana del ${dia} (${maniana.fin}) debe ser anterior al inicio de la tarde (${tarde.inicio}).`);
@@ -601,11 +620,16 @@ function validarHorarios(horarioDistinto, errores, dataOpcional) {
                 valido = false;
                 errores.push(`La hora de inicio (${inicio}) debe ser menor que la de fin (${fin}) en el turno de ${turno.toLowerCase()}.`);
                 campos.addClass('is-invalid');
-            } else if (inicio && fin) {
-                // VALIDADO: guardamos en la estructura local
-                dataHorarios[turno.toLowerCase()] = { inicio, fin };
+            }
 
-                // 🔹 Validaciones de límites
+            // 🔧 CAMBIO: siempre guardamos los campos, aunque estén vacíos
+            dataHorarios[turno.toLowerCase()] = { 
+                inicio: inicio || "", 
+                fin: fin || "" 
+            };
+
+            // 🔹 Validaciones de límites
+            if (inicio && fin) {
                 if (turno === "Manana" && fin > LIMITE_MANANA) {
                     valido = false;
                     errores.push(`La hora de fin de la mañana (${fin}) no puede ser posterior a las ${LIMITE_MANANA}.`);
@@ -624,7 +648,7 @@ function validarHorarios(horarioDistinto, errores, dataOpcional) {
         const maniana = dataHorarios.manana;
         const tarde = dataHorarios.tarde;
 
-        if (maniana && tarde) {
+        if (maniana.inicio && maniana.fin && tarde.inicio && tarde.fin) {
             if (!horaMenor(maniana.fin, tarde.inicio)) {
                 valido = false;
                 errores.push(`El horario de la mañana (${maniana.fin}) debe ser anterior al inicio de la tarde (${tarde.inicio}) en el horario general.`);
@@ -633,12 +657,12 @@ function validarHorarios(horarioDistinto, errores, dataOpcional) {
         }
     }
 
-    // Si todo es válido y nos pasaron un objeto `dataOpcional`, lo rellenamos
     if (valido && dataOpcional && typeof dataOpcional === 'object') {
         dataOpcional['horarios'] = dataHorarios;
     }
 
     return valido;
 }
+
 
 })
