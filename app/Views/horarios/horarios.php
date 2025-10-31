@@ -31,10 +31,21 @@
                 <span>Seleccionado</span>
             </div>
 
-            <div class="legend-item">
-                <div class="legend-color color-cerrado"></div>
-                <span>Cerrado</span>
-            </div>
+            <?php
+                    if(isset($horarios) && count($horarios) > 0)
+                    {
+                        foreach($horarios as $horario)
+                        {
+                            ?>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background-color: <?=$horario["color"]?>;"></div>
+                                    <span><?=$horario["nombre"]?></span>
+                                </div>
+                            <?php
+                        }
+                    }
+                ?>
+
         </div>
 
     </div>
@@ -144,7 +155,62 @@
         </div>
     </div>
 
-    <div class="button">
+
+
+
+    <div class="sidebar" id="sidebarMenu">
+        <button id="btnCerraSidebarMenu" class="close-sidebar">✕</button>
+        <div class="sidebar-header">
+            <div style="display: flex; align-items: center; gap:10px; margin-bottom: 2%;">
+                <div class="contenedor-iconos"><i class="bi bi-list"></i></div>
+                <h2 id="sidebarTitle1">Menú de horarios</h2>
+            </div>
+            <p id="sidebarSubtitle1">Gestiona los horarios creados para la instalación</p>
+        </div>
+        <div class="sidebar-content">
+            <div class="menu-content">
+                <?php
+                if (isset($horarios) && count($horarios) > 0) {
+                ?>
+                    <span class="tipo-horarios">Horarios normales</span>
+                    <?php foreach($horarios as $horario): ?>
+                        <div style="background-color: <?=$horario["color"]?>20; color: <?=$horario["color"]?>; border: 2px solid <?=$horario["color"]?>90" class="card-menu-horarios">
+                            <span><?=$horario["nombre"]?></span>
+                            <div class="fechas">
+                                <?php
+                                    $fecha_inicio = DateTime::createFromFormat('Y-m-d', $horario["fecha_inicio"]);
+                                    $fecha_fin = DateTime::createFromFormat('Y-m-d', $horario["fecha_fin"]);
+
+                                    echo $fecha_inicio->format('d/m/Y').' - '.$fecha_fin->format('d/m/Y'); 
+                                ?>
+                            </div>
+
+                            <div class="descripcion">
+                                <?=$horario["descripcion"]?>
+                            </div>
+
+                            <div class="dropdown opciones-horario" style="max-width: 200px;">
+                                <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: <?=$horario["color"]?>;"><i class="bi bi-three-dots-vertical"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href=""><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                    <li><a href="" class="delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    <?php endforeach;?>
+                    
+                <?php    
+                }
+                ?>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="div-button">
         <a href="" id="btnCrearHorario" class="btn-primary-personal" style="width: 23%;">Crear horario<i class="bi bi-plus-circle"></i></a>
+        <a href="" id="btnMenuHorario" class="btn-primary-personal" style="width: 23%;">Menú de horarios<i class="bi bi-list"></i></a>
     </div>
 </div>

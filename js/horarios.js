@@ -249,6 +249,7 @@ $(document).ready(() => {
 
         e.preventDefault()
         $('#sidebar').addClass('active');
+        $('#sidebarMenu').removeClass('active');
     })
 
 
@@ -399,7 +400,15 @@ $(document).on('click', '#btnGuardarNuevoHorario', function(e) {
             success: function (response) {
                
                 if(response.success === true) {
-                    
+                    generarCalendario();
+                    $('.legend').append(`
+                                    <div class="legend-item">
+                                        <div class="legend-color" style="background-color: ${response.infoHorario["color"]}"></div> 
+                                        <span>${response.infoHorario["nombre"]}</span>
+                                    </div>
+                    `)
+
+                    $('#sidebar').removeClass('active');
                 }                    
             }
         });
@@ -425,6 +434,24 @@ $(document).on('change', '#scheduleColor', function(){
     let color = $(this).val()
     $('#colorValue').text(color)
 })
+
+    /***********************************************************************************************************************************
+    *********************************************************  MENÚ DE HORARIOS  *******************************************************
+    ***********************************************************************************************************************************/
+    
+    $(document).on('click', '#btnMenuHorario', function(e){
+
+        e.preventDefault()
+        $('#sidebarMenu').addClass('active');
+        $('#sidebar').removeClass('active');
+    })
+
+
+    $(document).on('click', '#btnCerraSidebarMenu', function(e){
+
+        e.preventDefault()
+        $('#sidebarMenu').removeClass('active');
+    })
 
     /***********************************************************************************************************************************
     *******************************************************  FUNCIONES DE AYUDA  *******************************************************
@@ -482,8 +509,25 @@ $(document).on('change', '#scheduleColor', function(){
                         const esHoy = dia.getFullYear() === hoy.getFullYear() &&
                             dia.getMonth() === hoy.getMonth() &&
                             dia.getDate() === hoy.getDate();
+                            let colorFondo = '';
+                            let nombre = ""
+                            if(horarios && Array.isArray(horarios) && horarios.length > 0) {
+                                
+                                horarios.forEach(function(horario){
+                                    let fechaInicio = new Date(horario.fecha_inicio); 
+                                    let fechaFin    = new Date(horario.fecha_fin);
+                                    let color       = horario.color;
+                                    nombre = horario.nombre
 
-                        return `<div data-day="${dia.getDate()}/${dia.getMonth() + 1}/${dia.getFullYear()}" class="numero-dia${esHoy ? ' today' : ''} ${(dia.getDay() === 0 || dia.getDay() === 6) ? "weekend" : ""}">${dia.getDate()}</div>`;
+                                    if(dia >= fechaInicio && dia <= fechaFin) {
+                                        colorFondo = color;
+                                    }
+                                })
+
+                            }
+                            
+
+                        return `<div data-day="${dia.getDate()}/${dia.getMonth() + 1}/${dia.getFullYear()}" class="numero-dia${esHoy ? ' today' : ''} ${(dia.getDay() === 0 || dia.getDay() === 6) ? "weekend" : ""}" style="background-color: ${colorFondo}20; color: ${colorFondo}">${dia.getDate()}</div>`;
                     }).join('');
                 }).join('')
                 }

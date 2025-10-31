@@ -606,3 +606,90 @@
 .erroresHorario ul{
   margin-bottom: 0%;
 }
+
+.horario .div-button {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+}
+
+.card-menu-horarios
+{
+  padding: 5% !important;
+  border-radius: 10px;
+  margin-bottom: 5%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  position: relative;
+}
+
+.card-menu-horarios span{
+  font-size: 1.3rem;
+}
+
+
+.card-menu-horarios .fechas{
+  font-size: .8rem;
+
+}
+
+.card-menu-horarios .descripcion{
+  font-size: 1rem;
+  margin-top: 3%;
+  opacity: .9;
+}
+
+.card-menu-horarios .opciones-horario {
+  position: absolute;
+  top: 7%;
+  right: 5%;
+}
+
+.card-menu-horarios .opciones-horario-link
+{
+  font-size: 1.2rem;
+}
+
+.card-menu-horarios .opciones-horario-link::after{
+  display: none !important;
+}
+
+.card-menu-horarios .opciones-horario-link:hover
+{
+  opacity: .5;
+}
+
+.card-menu-horarios .dropdown-menu li
+{
+  padding: 2% 5%;
+}
+
+.card-menu-horarios .dropdown-menu li:hover
+{
+  background-color: #eee;
+}
+
+.card-menu-horarios .dropdown-menu
+{
+  width: 7rem !important;
+  min-width: 7rem !important;
+}
+
+.card-menu-horarios .dropdown-menu a
+{
+  text-decoration: none;
+  color: #111;
+  width: 100%;
+  padding-left: 7%;
+}
+
+.card-menu-horarios .dropdown-menu .delete-option
+{
+  color: #F54927;
+}
+
+
+span.tipo-horarios {
+  color: #555;
+  margin-bottom: 10%;
+  text-transform: uppercase;
+}
