@@ -8,7 +8,7 @@
   <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/home.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/instalaciones.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/crudInstalaciones.css" media="screen" /> -->
-
+   <link rel="icon" href="<?php echo base_url();?>images/logo-reservalo.png" type="image/png">
   <?php if(isset($assets['css']) && is_array($assets['css'])): ?>
     <?php foreach($assets['css'] as $archivo_css): ?>
       <link rel="stylesheet" type="text/css" href="<?= base_url($archivo_css) ?>" media="screen" />

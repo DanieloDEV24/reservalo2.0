@@ -23,6 +23,8 @@ class Horarios extends BaseController
             
             $instalacion = $instalacionesModel->getInstalacion($id)[0];
 
+            $modalEditar = view('horarios/modalEditarHorario');
+
             $assets = [
                 "css" => [
                     'css/horarios.css', 
@@ -34,7 +36,7 @@ class Horarios extends BaseController
                 ]
             ];
             
-            $view = view('horarios/horarios', ["instalacion" => $instalacion, "id_instalacion"=>$id_instalacion, "horarios" => $horarios]);
+            $view = view('horarios/horarios', ["instalacion" => $instalacion, "id_instalacion"=>$id_instalacion, "horarios" => $horarios, "modalEditar" => $modalEditar]);
             return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets]);
         }
 
@@ -147,6 +149,38 @@ class Horarios extends BaseController
         }
     }
 
+
+    public function getHorario(){
+
+        $post = $this->request->getPost();
+        $horariosModel = new horariosModel();
+
+        if(!empty($post)){
+
+            $id_horario = intval($post["id"]);
+            $horario = $horariosModel->getHorario($id_horario)[0];
+            $franjas = $horariosModel->getFranjaByIdHorario($id_horario);
+
+           if($horario){
+                echo json_encode([
+                    "succes"  => true, 
+                    "message" => "Se ha localizado el horario con éxito", 
+                    "horario" => $horario,
+                    "franjas" => $franjas
+                ]);
+           }
+           else {
+                echo json_encode([
+                    "succes"  => false, 
+                    "message" => "Se ha producido un error", 
+                ]);
+           }
+        }
+    }
+
+    /***********************************************************************************************************************************
+    *******************************************************  FUNCIONES DE AYUDA  *******************************************************
+    ***********************************************************************************************************************************/
 
     private function obtenerFranjasHorarias (array $dias) {
 

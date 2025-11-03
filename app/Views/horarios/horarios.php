@@ -172,9 +172,9 @@
                 <?php
                 if (isset($horarios) && count($horarios) > 0) {
                 ?>
-                    <span class="tipo-horarios">Horarios normales</span>
+                    <p class="tipo-horarios">Horarios normales</p>
                     <?php foreach($horarios as $horario): ?>
-                        <div style="background-color: <?=$horario["color"]?>20; color: <?=$horario["color"]?>; border: 2px solid <?=$horario["color"]?>90" class="card-menu-horarios">
+                        <div data-index="<?=$horario["id_tipo_horario"]?>" style="background-color: <?=$horario["color"]?>20; color: <?=$horario["color"]?>; border: 2px solid <?=$horario["color"]?>90" class="card-menu-horarios">
                             <span><?=$horario["nombre"]?></span>
                             <div class="fechas">
                                 <?php
@@ -192,7 +192,7 @@
                             <div class="dropdown opciones-horario" style="max-width: 200px;">
                                 <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: <?=$horario["color"]?>;"><i class="bi bi-three-dots-vertical"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href=""><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                    <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
                                     <li><a href="" class="delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
                                 </ul>
                             </div>
@@ -214,3 +214,5 @@
         <a href="" id="btnMenuHorario" class="btn-primary-personal" style="width: 23%;">Menú de horarios<i class="bi bi-list"></i></a>
     </div>
 </div>
+
+<?=$modalEditar?>

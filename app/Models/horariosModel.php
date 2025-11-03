@@ -87,4 +87,34 @@ class horariosModel extends Model
 
         return $query->getResultArray();
     }
+
+
+    public function getHorario(int $id_horario){
+
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('tipo_horario');
+
+        // Creamos el horario
+        $query = $builder->select()->where('id_tipo_horario', $id_horario)->get();
+
+        return $query->getResultArray();
+    }
+
+    
+    public function getFranjaByIdHorario(int $id_horario){
+
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('franjas_horarias');
+
+        // Creamos el horario
+        $query = $builder->select()->where('id_tipo_horario', $id_horario)->get();
+
+        return $query->getResultArray();
+    }
 }

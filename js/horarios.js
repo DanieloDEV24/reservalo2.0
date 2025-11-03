@@ -453,6 +453,49 @@ $(document).on('change', '#scheduleColor', function(){
         $('#sidebarMenu').removeClass('active');
     })
 
+
+    $(document).on('click', '.btnEditarHorario', function(e){
+        
+        e.preventDefault();
+
+        let id = $(this).closest('.card-menu-horarios').data('index');
+        console.log(id)
+        
+        $.ajax({
+            type: "POST",
+            url: "../getHorario",
+            data: {id: id},
+            dataType: "json",
+            success: function (response) {
+                
+                if(response.succes === true){
+
+                    const horario = response.horario;
+
+                    $('#nombreHorarioEditar').val(horario.nombre)
+                    $('#descripcionHorarioEditar').val(horario.descripcion)
+                    $('#fechaIincioHorarioEditar').val(horario.fecha_inicio)
+                    $('#fechaFinHorarioEditar').val(horario.fecha_fin)
+                    $('#horarioDistintoEditar').prop('checked', (response.franjas.length > 1))
+                    
+                    if(response.franjas.lenght > 1) {
+
+                        $('#horaInicioMananaLunesHorario').val()
+                    }
+
+                    $('#modalEditarHorario').show();
+                }
+            }
+        });
+
+    })
+
+    $(document).on('click', '.modal .btn-close', function(e){
+
+        e.preventDefault()
+        $('#modalEditarHorario').hide();
+    })
+
     /***********************************************************************************************************************************
     *******************************************************  FUNCIONES DE AYUDA  *******************************************************
     ***********************************************************************************************************************************/
