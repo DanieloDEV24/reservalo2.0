@@ -110,11 +110,40 @@ class horariosModel extends Model
         $db = \Config\Database::connect('BDReservalo2');
 
         //Obtenemos la tabla de horarios
-        $builder = $db->table('franjas_horarias');
+        $builder = $db->table('franjas_dias');
 
         // Creamos el horario
-        $query = $builder->select()->where('id_tipo_horario', $id_horario)->get();
+        $query = $builder->select('franjas_horarias.id_franja_horaria,
+                                   franjas_horarias.id_tipo_horario,
+                                   franjas_horarias.id_instalacion,
+                                   franjas_horarias.hora_inicio_manana,
+                                   franjas_horarias.hora_fin_manana,
+                                   franjas_horarias.hora_inicio_tarde,
+                                   franjas_horarias.hora_fin_tarde,
+                                   franjas_horarias.franja_unica,
+                                   franjas_dias.id_dia_semana')
+                         ->join('franjas_horarias', 'franjas_dias.id_franja_horaria = franjas_horarias.id_franja_horaria')
+                         ->where('id_tipo_horario', $id_horario)
+                         ->get();
 
         return $query->getResultArray();
     }
+
+
+    public function actualizarHorario(array $data, int $id_horario){
+
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('tipo_horario');
+
+        // Actualizamos el horario
+        $builder->where('id_tipo_horario', $id_horario);
+        $builder->update($data);
+
+        return true;
+    }
+
+    
 }

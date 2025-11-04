@@ -82,6 +82,7 @@ class Horarios extends BaseController
                         "hora_fin_manana" => $primerElemento["manana"]["fin"], 
                         "hora_inicio_tarde" => $primerElemento["tarde"]["inicio"], 
                         "hora_fin_tarde" => $primerElemento["tarde"]["fin"], 
+                        "franja_unica" => 0
                     ];
 
                     $franja_horaria = $horariosModel->crearFranjaHoraria($data_franja);
@@ -107,6 +108,7 @@ class Horarios extends BaseController
                     "hora_fin_manana" => $data["horarios"]["manana"]["fin"], 
                     "hora_inicio_tarde" => $data["horarios"]["tarde"]["inicio"], 
                     "hora_fin_tarde" => $data["horarios"]["tarde"]["fin"], 
+                    "franja_unica" => 1
                 ];
 
                 $franja_horaria = $horariosModel->crearFranjaHoraria($data_franja);
@@ -177,6 +179,31 @@ class Horarios extends BaseController
            }
         }
     }
+
+
+    public function editarHorario(){
+
+        $post = $this->request->getPost();
+        $horariosModel = new horariosModel();
+
+        if(!empty($post)){
+
+            $data = $post["data"];
+            $data_tipo_horario = [
+                "id_tipo_horario" => $data["id_tipo_horario"],
+                "nombre" => $data["nombre"],
+                "descripcion" => $data["descripcion"],
+                "color" => $data["color"],
+                "fecha_inicio" => $data["fecha_inicio"],
+                "fecha_fin" => $data["fecha_fin"]
+            ];
+
+            $horariosModel->actualizarHorario($data_tipo_horario, $data_tipo_horario["id_tipo_horario"]);
+
+            $horarios = 
+        }
+    }
+
 
     /***********************************************************************************************************************************
     *******************************************************  FUNCIONES DE AYUDA  *******************************************************

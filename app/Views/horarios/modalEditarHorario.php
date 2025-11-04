@@ -1,6 +1,6 @@
 <div class="modal" tabindex="-1" id="modalEditarHorario">
-
-  <div class="d-flex p-4 pb-0 justify-content-center alertModal">
+<input type="hidden" name="idHorarioEditar" id="idHorarioEditar" value="">
+  <div class="d-flex p-4 pb-0 justify-content-center alertModal" id="errores-editar-horario">
 
   </div>
 
@@ -57,6 +57,17 @@
             </div>
           </div>
 
+
+          <div id="contenedor-input-horas-editar"></div>
+          <div class="row">
+            <div class="color-picker-section col">
+      <div class="color-picker-wrapper">
+        <span class="color-picker-label">Seleccione el color del horario</span>
+        <input type="color" id="scheduleColorEditar" value="#000">
+        <span class="color-value" id="colorValueEditar">#000000</span>
+      </div>
+    </div>
+          </div>
       </div>
 
 
@@ -64,10 +75,11 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Cerrar <i class="bi bi-x-lg"></i>
         </button>
-        <button type="submit" class="btn btn-primary" id="gurdarHorarioEditar">
+        <button type="submit" class="btn btn-primary" id="btnGurdarHorarioEditar">
           Guardar <i class="bi bi-check-lg"></i>
         </button>
       </div>
+
     </div>
   </div>
 </div>
