@@ -847,7 +847,9 @@ $(document).on('change', '#scheduleColor', function(){
                 dataType: "json",
                 success: function (response) {
                     
-                    $('#modalEditarHorario').hide();
+                    if(response.success === true) {
+                        $('#modalEditarHorario').hide();
+                    }
                 }
             });
         }

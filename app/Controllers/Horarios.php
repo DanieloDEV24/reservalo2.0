@@ -297,6 +297,13 @@ class Horarios extends BaseController
                     }
                 }
             }
+
+            echo json_encode([
+                "success" => true,
+                "mensaje" => "Se ha actualizado el horario correctamente",
+                "infoHorario" => $data_tipo_horario
+            ]);
+            exit;   
         }   
     }
 
