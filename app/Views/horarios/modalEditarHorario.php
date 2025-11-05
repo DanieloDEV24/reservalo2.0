@@ -1,5 +1,6 @@
 <div class="modal" tabindex="-1" id="modalEditarHorario">
 <input type="hidden" name="idHorarioEditar" id="idHorarioEditar" value="">
+<input type="hidden" name="idInstalacion" id="idInstalacion" value="">
   <div class="d-flex p-4 pb-0 justify-content-center alertModal" id="errores-editar-horario">
 
   </div>

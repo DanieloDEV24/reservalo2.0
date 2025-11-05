@@ -145,5 +145,81 @@ class horariosModel extends Model
         return true;
     }
 
+    public function deleteFranjaHorarioByHorario (int $id_tipo_horario){
+        
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('franjas_horarias');
+
+        // Borramos las franjas horarias asociadas al horario
+        $builder->where('id_tipo_horario', $id_tipo_horario);
+        $builder->delete();
+
+        return true;
+    }
+
+    public function borrarFranjaDia(int $id_franja_horaria){
+
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('franjas_dias');
+
+        // Borramos las franjas horarias asociadas al horario
+        $builder->where('id_franja_horaria', $id_franja_horaria);
+        $builder->delete();
+
+        return true;
+    }
+
+    public function borrarFranjaHoraria(int $id_franja_horaria){
+
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('franjas_horarias');
+
+        // Borramos las franjas horarias asociadas al horario
+        $builder->where('id_franja_horaria', $id_franja_horaria);
+        $builder->delete();
+
+        return true;
+    }
+
+
+    public function updateFranjaHoraria(array $data, int $id_tipo_horario, int $id_dia_semana)
+    {
+        // Conexión a la base de datos (usa tu conexión personalizada)
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Subconsulta: obtener el id_franja_horaria del lunes (id_dia_semana = 1, id_instalacion = 8)
+        $subquery = $db->table('franjas_dias fd')
+            ->select('fd.id_franja_horaria')
+            ->join('franjas_horarias fh', 'fd.id_franja_horaria = fh.id_franja_horaria')
+            ->where('fd.id_dia_semana', $id_dia_semana)
+            ->where('fh.id_tipo_horario', $id_tipo_horario)
+            ->get()
+            ->getRow();
+
+        if (!$subquery) {
+            return false; // No se encontró la franja del lunes
+        }
+
+        $id_franja_horaria = $subquery->id_franja_horaria;
+
+        // Obtenemos el builder de la tabla principal
+        $builder = $db->table('franjas_horarias');
+
+        // Actualizamos el registro
+        $builder->where('id_franja_horaria', $id_franja_horaria);
+        $builder->where('id_tipo_horario', $id_tipo_horario);
+        $builder->update($data);
+
+        return $db->affectedRows() > 0;
+    }
     
 }

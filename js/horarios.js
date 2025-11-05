@@ -660,7 +660,9 @@ $(document).on('change', '#scheduleColor', function(){
                 if(response.succes === true){
 
                     const horario = response.horario;
+                    console.log(response)
 
+                    $('#idInstalacion').val(response.franjas[0].id_instalacion)
                     $('#nombreHorarioEditar').val(horario.nombre)
                     $('#descripcionHorarioEditar').val(horario.descripcion)
                     $('#fechaIincioHorarioEditar').val(horario.fecha_inicio)
@@ -824,6 +826,9 @@ $(document).on('change', '#scheduleColor', function(){
             $('#fechaFinHorarioEditar').removeClass('is-invalid')
         }
         
+        data["franja_unica"] = horarioDistinto ? 0 : 1;
+        data["instalacion"] = $('#idInstalacion').val();
+
         // ✅ Validación de horarios (incluye orden de horas)
         if (!validarHorariosEditar(horarioDistinto, errores, data)) {
             console.error("Errores en horarios detectados");
@@ -834,7 +839,7 @@ $(document).on('change', '#scheduleColor', function(){
         $('#errores-editar-horario').empty();
 
         if(errores.length === 0) {
-            
+            console.log(data);
             $.ajax({
                 type: "POST",
                 url: "../editarHorario",
