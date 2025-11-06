@@ -718,3 +718,149 @@
   margin-bottom: .5%;
   margin-top: 1% !important;
 }
+
+
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 8px solid #32cccc;
+  animation:
+    l20-1 0.8s infinite linear alternate,
+    l20-2 1.6s infinite linear;
+}
+
+.loader2 {
+  width: 35px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 5px solid #32cccc;
+  animation:
+    l20-1 0.8s infinite linear alternate,
+    l20-2 1.6s infinite linear;
+}
+
+
+@keyframes l20-1 {
+  0% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%)
+  }
+
+  12.5% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 0%, 100% 0%, 100% 0%)
+  }
+
+  25% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 100% 100%, 100% 100%)
+  }
+
+  50% {
+    clip-path: polygon(50% 50%, 0 0, 50% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%)
+  }
+
+  62.5% {
+    clip-path: polygon(50% 50%, 100% 0, 100% 0%, 100% 0%, 100% 100%, 50% 100%, 0% 100%)
+  }
+
+  75% {
+    clip-path: polygon(50% 50%, 100% 100%, 100% 100%, 100% 100%, 100% 100%, 50% 100%, 0% 100%)
+  }
+
+  100% {
+    clip-path: polygon(50% 50%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 50% 100%, 0% 100%)
+  }
+}
+
+@keyframes l20-2 {
+  0% {
+    transform: scaleY(1) rotate(0deg)
+  }
+
+  49.99% {
+    transform: scaleY(1) rotate(135deg)
+  }
+
+  50% {
+    transform: scaleY(-1) rotate(0deg)
+  }
+
+  100% {
+    transform: scaleY(-1) rotate(-135deg)
+  }
+}
+
+#loader {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  /* semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  /* encima de los acordeones */
+}
+
+#loaderCalendario {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  /* semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  /* encima de los acordeones */
+}
+
+
+#loaderModalEditar {
+  position: absolute;
+  background: rgba(255, 255, 255, 0);
+  /* semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  /* encima de los acordeones */
+}
+
+#loaderNuevoHorario {
+  position: absolute;
+  background: rgba(255, 255, 255, 0);
+  /* semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  /* encima de los acordeones */
+}
+
+.contenedor-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  
+}
+
+.contenedor-loader2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+/* .contenedor-loader #accordionEditarPistas div,
+.contenedor-loader #accordionEditarPistas, 
+.contenedor-loader table {
+  width: 100%;
+} */
+
+button.cargando{
+  opacity: .7;
+}
+
+#modalEditarHorario input.cargando, #modalEditarHorario textarea.cargando, 
+#sidebar input.cargando, #sidebar textarea.cargando{
+  color: #aaa;
+}

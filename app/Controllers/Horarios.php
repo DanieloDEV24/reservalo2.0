@@ -67,6 +67,8 @@ class Horarios extends BaseController
             // Creamos el horario
             $horario = $horariosModel->crearHorario($data_tipo_horario);
 
+            $data_tipo_horario["id_tipo_horario"] = $horario;
+
             // Ahora creamos las franjas horarias
             // Obtenemos el horario 
             $horarios = $data["horarios"];
@@ -191,6 +193,7 @@ class Horarios extends BaseController
         if(!empty($post)){
 
             $data = $post["data"];
+            
             $data_tipo_horario = [
                 "id_tipo_horario" => $data["id_tipo_horario"],
                 "nombre" => $data["nombre"],
@@ -207,17 +210,14 @@ class Horarios extends BaseController
             // Obtenemos el horario de la bbdd para ver las franjas horarias y ver si hay que borrarlas o no
             $horario_bbdd = $horariosModel->getHorario($data_tipo_horario["id_tipo_horario"])[0];
             $unico_bbdd = $horariosModel->getFranjaByIdHorario(intval($horario_bbdd["id_tipo_horario"]))[0];
-
-            if(intval($unico_bbdd["franja_unica"]) !== intval($data["franja_unica"])){
-                
-                $franjas_bbdd = $horariosModel->getFranjaByIdHorario(intval($data_tipo_horario["id_tipo_horario"]));
-                
-                foreach ($franjas_bbdd as $franja) {
-                    $horariosModel->borrarFranjaDia(intval($franja["id_franja_horaria"]));
-                    $horariosModel->borrarFranjaHoraria(intval($franja["id_franja_horaria"]));
-                }
-
-                if(intval($data["franja_unica"]) === 1){
+            $franjas_bbdd = $horariosModel->getFranjaByIdHorario(intval($data_tipo_horario["id_tipo_horario"]));
+            
+            foreach ($franjas_bbdd as $franja) {
+                $horariosModel->borrarFranjaDia(intval($franja["id_franja_horaria"]));
+                $horariosModel->borrarFranjaHoraria(intval($franja["id_franja_horaria"]));
+            }
+            
+            if(intval($data["franja_unica"]) === 0){
                     
                     $franjas = $this->obtenerFranjasHorarias($horarios);
                     foreach ($franjas as $franja) {
@@ -246,57 +246,33 @@ class Horarios extends BaseController
 
                     }
 
-                }
-                else {
-
-                    $data_franja = [
-                        "id_tipo_horario" => $data["id_tipo_horario"],
-                        "id_instalacion" => $data["instalacion"], 
-                        "hora_inicio_manana" => $data["horarios"]["manana"]["inicio"],
-                        "hora_fin_manana" => $data["horarios"]["manana"]["fin"], 
-                        "hora_inicio_tarde" => $data["horarios"]["tarde"]["inicio"], 
-                        "hora_fin_tarde" => $data["horarios"]["tarde"]["fin"], 
-                        "franja_unica" => $data["franja_unica"]
-                    ];
-
-                    $franja_horaria = $horariosModel->crearFranjaHoraria($data_franja);
-                    
-                    for ($i=1; $i <=7 ; $i++) { 
-                        
-                        $data_franja_dia = [
-                            
-                            "id_franja_horaria" => $franja_horaria,
-                            "id_dia_semana" => $i
-                        ];
-
-                        $horariosModel->crearFranjaDia($data_franja_dia);
-                    }
-                }
             }
             else {
+
+                $data_franja = [
+                    "id_tipo_horario" => $data["id_tipo_horario"],
+                    "id_instalacion" => $data["instalacion"], 
+                    "hora_inicio_manana" => $data["horarios"]["manana"]["inicio"],
+                    "hora_fin_manana" => $data["horarios"]["manana"]["fin"], 
+                    "hora_inicio_tarde" => $data["horarios"]["tarde"]["inicio"], 
+                    "hora_fin_tarde" => $data["horarios"]["tarde"]["fin"], 
+                    "franja_unica" => $data["franja_unica"]
+                ];
+
+                $franja_horaria = $horariosModel->crearFranjaHoraria($data_franja);
                 
-                if(intval($data["franja_unica"]) === 0){
+                for ($i=1; $i <=7 ; $i++) { 
                     
-
-                    $diasHorario = $data["horarios"];
-
-                    foreach ($diasHorario as $key => $value) {
+                    $data_franja_dia = [
                         
-                        $index_dia = $this->obtenerNumeroDia($key);
-                        $data_franja = [
-                            "id_tipo_horario" => $data["id_tipo_horario"],
-                            "id_instalacion" => $data["instalacion"], 
-                            "hora_inicio_manana" => $value["manana"]["inicio"],
-                            "hora_fin_manana" => $value["manana"]["fin"],
-                            "hora_inicio_tarde" => $value["tarde"]["inicio"],
-                            "hora_fin_tarde" => $value["tarde"]["fin"],
-                            "franja_unica" => $data["franja_unica"]
-                        ];
+                        "id_franja_horaria" => $franja_horaria,
+                        "id_dia_semana" => $i
+                    ];
 
-                        $horariosModel->updateFranjaHoraria($data_franja, $data["id_tipo_horario"], $index_dia);
-                    }
+                    $horariosModel->crearFranjaDia($data_franja_dia);
                 }
             }
+            
 
             echo json_encode([
                 "success" => true,

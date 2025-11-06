@@ -488,139 +488,186 @@ $(document).ready(() => {
     })
 
 
-$(document).on('click', '#btnGuardarNuevoHorario', function(e) {
+    $(document).on('click', '#btnGuardarNuevoHorario', function(e) {
 
-    e.preventDefault();
-    let data = {};
-    let errores = [];
+        e.preventDefault();
+        let data = {};
+        let errores = [];
 
-    data["instalacion"] = $('#instalacion').val()
+        data["instalacion"] = $('#instalacion').val()
 
-    // Obtenemos los datos del formulario
-    let nombre          = $('#nombreHorario').val();
-    let descripcion     = $('#descripcionHorario').val();
-    let horarioEspecial = ($('#horarioEspecial').is(':checked')) ? 1 : 0;
-    let fechaInicio     = $('#fechaInicioHorario').val(); 
-    let fechaFin        = $('#fechaFinHorario').val();
-    let horarioDistinto = $('#horarioDistinto').is(':checked');
+        // Obtenemos los datos del formulario
+        let nombre          = $('#nombreHorario').val();
+        let descripcion     = $('#descripcionHorario').val();
+        let horarioEspecial = ($('#horarioEspecial').is(':checked')) ? 1 : 0;
+        let fechaInicio     = $('#fechaInicioHorario').val(); 
+        let fechaFin        = $('#fechaFinHorario').val();
+        let horarioDistinto = $('#horarioDistinto').is(':checked');
 
-    let fechaInicioDate = new Date(fechaInicio)
-    let fechaFinDate = new Date(fechaFin)
+        let fechaInicioDate = new Date(fechaInicio)
+        let fechaFinDate = new Date(fechaFin)
 
-    let initialYear = fechaInicioDate.getFullYear()
-    let finishYear  = fechaFinDate.getFullYear();
+        let initialYear = fechaInicioDate.getFullYear()
+        let finishYear  = fechaFinDate.getFullYear();
 
-    let currentYear = new Date().getFullYear()
-    let nextYear = (new Date().getFullYear() + 1)
+        let currentYear = new Date().getFullYear()
+        let nextYear = (new Date().getFullYear() + 1)
 
-    let color = $('#scheduleColor').val();
-    data["color"] = color
+        let color = $('#scheduleColor').val();
+        data["color"] = color
 
-    // Validaciones básicas
-    if (nombre !== ""){
-        data["nombre"] = nombre;
-        $('#nombreHorario').removeClass('is-invalid')
-    }
-    else{
-        errores.push("Debe escribir un nombre para el horario.");  
-        $('#nombreHorario').addClass('is-invalid');
-    }
+        // Validaciones básicas
+        if (nombre !== ""){
+            data["nombre"] = nombre;
+            $('#nombreHorario').removeClass('is-invalid')
+        }
+        else{
+            errores.push("Debe escribir un nombre para el horario.");  
+            $('#nombreHorario').addClass('is-invalid');
+        }
 
-    if (descripcion !== ""){
-        data["descripcion"] = descripcion;
-        $('#descripcionHorario').removeClass('is-invalid')
-    }
-    else {
-        errores.push("Debe escribir una descripción para el horario.");
-        $('#descripcionHorario').addClass('is-invalid');
-    }
+        if (descripcion !== ""){
+            data["descripcion"] = descripcion;
+            $('#descripcionHorario').removeClass('is-invalid')
+        }
+        else {
+            errores.push("Debe escribir una descripción para el horario.");
+            $('#descripcionHorario').addClass('is-invalid');
+        }
 
-    if (horarioEspecial === 0 && fechaInicio === ""){
-        errores.push("Si no es un horario especial debe seleccionar la fecha de inicio del horario.");
-        $('#fechaInicioHorario').addClass('is-invalid')
-        $('#fechaFinHorario').removeClass('is-invalid')
-    }
-    else if (horarioEspecial === 0 && fechaFin === ""){
-        errores.push("Si no es un horario especial debe seleccionar la fecha de fin del horario.");
-        $('#fechaInicioHorario').removeClass('is-invalid')
-        $('#fechaFinHorario').addClass('is-invalid')
-    }
-    else if (fechaInicioDate > fechaFinDate ){
-        errores.push("La fecha de inicio no puede ser mayor que la final");
-        $('#fechaInicioHorario').addClass('is-invalid')
-        $('#fechaFinHorario').addClass('is-invalid')
-    }
-    else if((initialYear < currentYear) || (finishYear < currentYear))
-    {
-        errores.push("No se puede crear un horario para años anteriores al " + currentYear + ".");
-        $('#fechaInicioHorario').addClass('is-invalid')
-        $('#fechaFinHorario').removeClass('is-invalid')
-    }
-    else if((finishYear > nextYear) || (initialYear > nextYear))
-    {
-        errores.push("No se puede crear un horario para años anteriores al " + nextYear +".");
-        $('#fechaInicioHorario').removeClass('is-invalid')
-        $('#fechaFinHorario').addClass('is-invalid')
-    }
-    else 
-    {
-        data['fecha_inicio'] = fechaInicio, 
-        data['fecha_fin'] = fechaFin
-        $('#fechaInicioHorario').removeClass('is-invalid')
-        $('#fechaFinHorario').removeClass('is-invalid')
-    }
-      
-    // ✅ Validación de horarios (incluye orden de horas)
-    if (!validarHorarios(horarioDistinto, errores, data)) {
-        console.error("Errores en horarios detectados");
-    }
+        if (horarioEspecial === 0 && fechaInicio === ""){
+            errores.push("Si no es un horario especial debe seleccionar la fecha de inicio del horario.");
+            $('#fechaInicioHorario').addClass('is-invalid')
+            $('#fechaFinHorario').removeClass('is-invalid')
+        }
+        else if (horarioEspecial === 0 && fechaFin === ""){
+            errores.push("Si no es un horario especial debe seleccionar la fecha de fin del horario.");
+            $('#fechaInicioHorario').removeClass('is-invalid')
+            $('#fechaFinHorario').addClass('is-invalid')
+        }
+        else if (fechaInicioDate > fechaFinDate ){
+            errores.push("La fecha de inicio no puede ser mayor que la final");
+            $('#fechaInicioHorario').addClass('is-invalid')
+            $('#fechaFinHorario').addClass('is-invalid')
+        }
+        else if((initialYear < currentYear) || (finishYear < currentYear))
+        {
+            errores.push("No se puede crear un horario para años anteriores al " + currentYear + ".");
+            $('#fechaInicioHorario').addClass('is-invalid')
+            $('#fechaFinHorario').removeClass('is-invalid')
+        }
+        else if((finishYear > nextYear) || (initialYear > nextYear))
+        {
+            errores.push("No se puede crear un horario para años anteriores al " + nextYear +".");
+            $('#fechaInicioHorario').removeClass('is-invalid')
+            $('#fechaFinHorario').addClass('is-invalid')
+        }
+        else 
+        {
+            data['fecha_inicio'] = fechaInicio, 
+            data['fecha_fin'] = fechaFin
+            $('#fechaInicioHorario').removeClass('is-invalid')
+            $('#fechaFinHorario').removeClass('is-invalid')
+        }
+        
+        // ✅ Validación de horarios (incluye orden de horas)
+        if (!validarHorarios(horarioDistinto, errores, data)) {
+            console.error("Errores en horarios detectados");
+        }
 
-    $('.erroresHorario').empty();
-    // Si no hay errores, mostramos datos
-    if (errores.length === 0) {
-        // console.log(data);
-        $.ajax({
-            type: "POST",
-            url: "../crearHorario",
-            data: {data: data},
-            dataType: "json",
-            success: function (response) {
-               
-                if(response.success === true) {
-                    generarCalendario();
-                    $('.legend').append(`
-                                    <div class="legend-item">
-                                        <div class="legend-color" style="background-color: ${response.infoHorario["color"]}"></div> 
-                                        <span>${response.infoHorario["nombre"]}</span>
-                                    </div>
-                    `)
+        $('.erroresHorario').empty();
+        // Si no hay errores, mostramos datos
+        if (errores.length === 0) {
+            // console.log(data);
+            $.ajax({
+                type: "POST",
+                url: "../crearHorario",
+                data: {data: data},
+                dataType: "json",
+                beforeSend: function() {
+                    $('#loaderNuevoHorario').show();
+                    $('#btnGuardarNuevoHorario').addClass('cargando')
+                    $('#sidebar input').addClass('cargando')
+                    $('#sidebar textarea').addClass('cargando')
+                },
+                success: function (response) {
+                
+                    if(response.success === true) {
 
-                    $('#sidebar').removeClass('active');
-                }                    
-            }
-        });
-    }
-    else {
+                        $('#loaderNuevoHorario').hide();
+                        $('#btnGuardarNuevoHorario').removeClass('cargando')
+                        $('#sidebar input').removeClass('cargando')
+                        $('#sidebar textarea').removeClass('cargando')
 
-        let lista = $(`<ul></ul>`)
-        errores.map(function(error){
-            let elemento = $(`<li>${error}</li>`);
-            lista.append(elemento)
-        })
+                        console.log(response)
 
-        let alertBox = $(`<div class="alert alert-danger mb-0" role="alert"></div>`);
-        alertBox.append(lista)
+                        generarCalendario();
+                        $('.legend').append(`
+                                        <div class="legend-item">
+                                            <div class="legend-color" style="background-color: ${response.infoHorario["color"]}"></div> 
+                                            <span>${response.infoHorario["nombre"]}</span>
+                                        </div>
+                        `)
 
-        $('.erroresHorario').append(alertBox);
-    }
-});
+                        $('#horarios-normailes-menu').append(`
+                            <div data-index="${response.infoHorario["id_tipo_horario"]}" style="background-color: ${response.infoHorario["color"]}20; color: ${response.infoHorario["color"]}; border: 2px solid ${response.infoHorario["color"]}90" class="card-menu-horarios">
+                                <span>${response.infoHorario["nombre"]}</span>
+                                <div class="fechas">
+                                    ${
+                                        new Date(response.infoHorario["fecha_inicio"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+                                    }
+                                    -
+                                    ${
+                                        new Date(response.infoHorario["fecha_fin"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+                                    }
+                                </div>
+
+                                <div class="descripcion">
+                                    ${response.infoHorario["descripcion"]}
+                                </div>
+
+                                <div class="dropdown opciones-horario" style="max-width: 200px;">
+                                    <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: ${response.infoHorario["color"]};"><i class="bi bi-three-dots-vertical"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                        <li><a href="" class="delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        `)
+
+                        $('#sidebar').removeClass('active');
+                    }                    
+                }, 
+                complete: function() {
+                    $('#loaderNuevoHorario').hide();
+                    $('#btnGuardarNuevoHorario').removeClass('cargando')
+                    $('#sidebar input').removeClass('cargando')
+                    $('#sidebar textarea').removeClass('cargando')
+                }
+            });
+        }
+        else {
+
+            let lista = $(`<ul></ul>`)
+            errores.map(function(error){
+                let elemento = $(`<li>${error}</li>`);
+                lista.append(elemento)
+            })
+
+            let alertBox = $(`<div class="alert alert-danger mb-0" role="alert"></div>`);
+            alertBox.append(lista)
+
+            $('.erroresHorario').append(alertBox);
+        }
+    });
 
 
-$(document).on('change', '#scheduleColor', function(){
+    $(document).on('change', '#scheduleColor', function(){
 
-    let color = $(this).val()
-    $('#colorValue').text(color)
-})
+        let color = $(this).val()
+        $('#colorValue').text(color)
+    })
 
     /***********************************************************************************************************************************
     *********************************************************  MENÚ DE HORARIOS  *******************************************************
@@ -664,12 +711,14 @@ $(document).on('change', '#scheduleColor', function(){
 
                     $('#idInstalacion').val(response.franjas[0].id_instalacion)
                     $('#nombreHorarioEditar').val(horario.nombre)
+                    $('#nombre-horario').text(horario.nombre)
                     $('#descripcionHorarioEditar').val(horario.descripcion)
                     $('#fechaIincioHorarioEditar').val(horario.fecha_inicio)
                     $('#fechaFinHorarioEditar').val(horario.fecha_fin)
                     $('#horarioDistintoEditar').prop('checked', (parseInt(response.franjas[0].franja_unica) === 0))
                     
                     $('#contenedor-input-horas-editar').empty
+                    
                     if(parseInt(response.franjas[0].franja_unica) === 0) {
 
                         $('#contenedor-input-horas-editar').append(diferentesNodeEditar)    
@@ -735,6 +784,10 @@ $(document).on('change', '#scheduleColor', function(){
                     }
                     else {
                         $('#contenedor-input-horas-editar').append(igualNodeEditar)
+                        $('#horaInicioMananaHorarioEditar').val(response.franjas[0].hora_inicio_manana === '00:00:00' ? '' : response.franjas[0].hora_inicio_manana);
+                        $('#horaFinMananaHorarioEditar').val(response.franjas[0].hora_fin_manana === '00:00:00' ? '' : response.franjas[0].hora_fin_manana);
+                        $('#horaInicioTardeHorarioEditar').val(response.franjas[0].hora_inicio_tarde === '00:00:00' ? '' : response.franjas[0].hora_inicio_tarde);
+                        $('#horaFinTardeHorarioEditar').val(response.franjas[0].hora_fin_tarde === '00:00:00' ? '' : response.franjas[0].hora_fin_tarde);
                     }
 
                     $('#scheduleColorEditar').val(horario.color);
@@ -845,12 +898,31 @@ $(document).on('change', '#scheduleColor', function(){
                 url: "../editarHorario",
                 data: {data: data},
                 dataType: "json",
+                beforeSend: function () {
+                    $('#loaderModalEditar').show();
+                    $('#modalEditarHorario .modal-footer button').addClass('cargando')
+                    $('#modalEditarHorario input').addClass('cargando')
+                    $('#modalEditarHorario textarea').addClass('cargando')
+                },
                 success: function (response) {
                     
                     if(response.success === true) {
+
+                        $('#loaderModalEditar').hide();
+                        $('#modalEditarHorario .modal-footer button').removeClass('cargando')
+                        $('#modalEditarHorario input').removeClass('cargando')
+                        $('#modalEditarHorario textarea').removeClass('cargando')
+
+                        generarCalendario();
                         $('#modalEditarHorario').hide();
                     }
-                }
+                },
+                complete: function() {
+                    $('#loaderModalEditar').hide();
+                    $('#modalEditarHorario .modal-footer button').removeClass('cargando')
+                    $('#modalEditarHorario input').removeClass('cargando')
+                    $('#modalEditarHorario textarea').removeClass('cargando')
+                } 
             });
         }
         else {
@@ -881,15 +953,35 @@ $(document).on('change', '#scheduleColor', function(){
     })
 
     $(document).on('change', '#scheduleColorEditar', function(){
-
-    let color = $(this).val()
-    $('#colorValueEditar').text(color)
-})
+        let color = $(this).val()
+        $('#colorValueEditar').text(color)
+    })
 
     $(document).on('click', '.modal .btn-close', function(e){
-
         e.preventDefault()
         $('#modalEditarHorario').hide();
+    })
+
+
+    $(document).on('click', '.btnBorrarHorario', function(e){
+        e.preventDefault();
+
+        let id = $(this).closest('.card-menu-horarios').data('index');
+
+        $.ajax({
+            type: "POST",
+            url: "../getHorario",
+            data: {id: id},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.succes === true) {
+
+                    $('#idHorarioBorrar').val(id);
+                   
+                }
+            }
+        });
     })
 
     /***********************************************************************************************************************************
@@ -906,10 +998,20 @@ $(document).on('change', '#scheduleColor', function(){
             url: "../comprobarHorarios",
             data: {year: currentYear},
             dataType: "json",
+            beforeSend: function (event) {
+                
+                // Mostrar loader
+                $("#loaderCalendario").show();
+            },
             success: function (response) {
                 
                 let horarios = response.horarios;
                 renderizadoCalendario(currentYear, horarios)
+            }, 
+            complete: function (event) {
+                
+                // Ocultar loader siempre, éxito o error
+                $("#loaderCalendario").hide();
             }
         });
 
