@@ -823,6 +823,16 @@
   /* encima de los acordeones */
 }
 
+#loaderModalBorrar {
+  position: absolute;
+  background: rgba(255, 255, 255, 0);
+  /* semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
 #loaderNuevoHorario {
   position: absolute;
   background: rgba(255, 255, 255, 0);
@@ -856,11 +866,72 @@
   width: 100%;
 } */
 
-button.cargando{
+button.cargando, p.cargando, div.cargando, span.cargando, i.cargando{
   opacity: .7;
 }
 
 #modalEditarHorario input.cargando, #modalEditarHorario textarea.cargando, 
 #sidebar input.cargando, #sidebar textarea.cargando{
   color: #aaa;
+}
+
+.modal.show::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+
+.modal .iconoModal {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal .iconoModal div 
+{
+  background-color: #32cccc20;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal .iconoModal div i 
+{
+  font-size: 3.2rem;
+  color: #32cccc;
+  transform: translateY(-3px);
+}
+
+.horario-a-borrar{
+  border-radius: 10px;
+  background-color: #32cccc20;
+  padding: 10px;
+  border: 1px solid #32cccc;
+  width: 85%;
+}
+
+.horario-a-borrar p {
+  margin: 0%;
+}
+
+.contenedor-a-borrar{
+  display: flex;
+  justify-content: center;
+  margin-top: 3%;
+  margin-bottom: 2%;
+}
+
+#nombre-horario-borrar{
+  font-weight: bold;
+  font-size: 1.2rem;
 }

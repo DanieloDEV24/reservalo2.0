@@ -56,3 +56,4 @@ $routes->post('/crearHorario', 'Horarios::crearHorario');
 $routes->post('/comprobarHorarios', 'Horarios::comprobarHorarios');
 $routes->post('/getHorario', 'Horarios::getHorario');
 $routes->post('/editarHorario', 'Horarios::editarHorario');
+$routes->post('/borrarHorario', 'Horarios::borrarHorario');

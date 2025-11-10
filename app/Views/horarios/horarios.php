@@ -17,7 +17,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
             </button>
-            <span id="anoActual">2025</span>
+            <span id="anoActual"></span>
             <button id="btn-next-year">
                 <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -37,7 +37,7 @@
                         foreach($horarios as $horario)
                         {
                             ?>
-                                <div class="legend-item">
+                                <div class="legend-item" data-index="<?=$horario["id_tipo_horario"]?>">
                                     <div class="legend-color" style="background-color: <?=$horario["color"]?>;"></div>
                                     <span><?=$horario["nombre"]?></span>
                                 </div>
@@ -195,6 +195,8 @@
                     <div id="horarios-normailes-menu">
                         <p class="tipo-horarios">Horarios normales</p>
                     <?php foreach($horarios as $horario): ?>
+                        
+                      <?php if(intval($horario["es_especial"]) === 0 ): ?>
                         <div data-index="<?=$horario["id_tipo_horario"]?>" style="background-color: <?=$horario["color"]?>20; color: <?=$horario["color"]?>; border: 2px solid <?=$horario["color"]?>90" class="card-menu-horarios">
                             <span><?=$horario["nombre"]?></span>
                             <div class="fechas">
@@ -218,6 +220,7 @@
                                 </ul>
                             </div>
                         </div>
+                      <?php endif; ?>
                     <?php endforeach;?>
                     </div>
                 <?php    
@@ -238,3 +241,4 @@
 </div>
 
 <?=$modalEditar?>
+<?=$modalBorrar?>

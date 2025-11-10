@@ -15,7 +15,7 @@ class horariosModel extends Model
     protected $returnType = 'array'; //object
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['id_tipo_horario', 'nombre', 'descripcion', 'color', 'fecha_inicio', 'fecha_final', 'created_at', 'updated_at', 'deleted_at'];
+    protected $allowedFields = ['id_tipo_horario', 'nombre', 'descripcion', 'color', 'fecha_inicio', 'fecha_final', 'es_especial', 'created_at', 'updated_at', 'deleted_at'];
 
     protected bool $allowEmptyInserts = false;
 
@@ -220,6 +220,21 @@ class horariosModel extends Model
         $builder->update($data);
 
         return $db->affectedRows() > 0;
+    }
+
+    public function borrarHorario(int $id_tipo_horario){
+
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('tipo_horario');
+
+        // Borramos el horario
+        $builder->where('id_tipo_horario', $id_tipo_horario);
+        $builder->delete();
+
+        return true;
     }
     
 }

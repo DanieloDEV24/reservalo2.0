@@ -24,6 +24,7 @@ class Horarios extends BaseController
             $instalacion = $instalacionesModel->getInstalacion($id)[0];
 
             $modalEditar = view('horarios/modalEditarHorario');
+            $modalBorrar = view('horarios/modalBorrarHorario');
 
             $assets = [
                 "css" => [
@@ -36,7 +37,7 @@ class Horarios extends BaseController
                 ]
             ];
             
-            $view = view('horarios/horarios', ["instalacion" => $instalacion, "id_instalacion"=>$id_instalacion, "horarios" => $horarios, "modalEditar" => $modalEditar]);
+            $view = view('horarios/horarios', ["instalacion" => $instalacion, "id_instalacion"=>$id_instalacion, "horarios" => $horarios, "modalEditar" => $modalEditar, "modalBorrar"=>$modalBorrar]);
             return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets]);
         }
 
@@ -59,7 +60,8 @@ class Horarios extends BaseController
                 "descripcion" => $data["descripcion"],
                 "color" => $data["color"],
                 "fecha_inicio" => $data["fecha_inicio"], 
-                "fecha_fin" => $data["fecha_fin"]
+                "fecha_fin" => $data["fecha_fin"],
+                "es_especial" => intval($data["horario_especial"])
             ];
 
             
@@ -188,7 +190,6 @@ class Horarios extends BaseController
         $post = $this->request->getPost();
         $horariosModel = new horariosModel();
 
-        $DIAS_SEMANA = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
 
         if(!empty($post)){
 
@@ -282,6 +283,33 @@ class Horarios extends BaseController
             exit;   
         }   
     }
+
+    public function borrarHorario() {
+
+        $post = $this->request->getPost();
+        $horariosModel = new horariosModel();
+
+        if(!empty($post)) {
+
+            $id_horario = $post["id"];
+
+            $franjas_bbdd = $horariosModel->getFranjaByIdHorario(intval($id_horario));
+            
+            foreach ($franjas_bbdd as $franja) {
+                $horariosModel->borrarFranjaDia(intval($franja["id_franja_horaria"]));
+                $horariosModel->borrarFranjaHoraria(intval($franja["id_franja_horaria"]));
+            }
+
+            $horariosModel->borrarHorario(intval($id_horario));
+
+            echo json_encode([
+                "success" => true,
+                "mensaje" => "Se ha borrado el horario correctamente"
+            ]);
+        }
+
+    }
+
 
 
     /***********************************************************************************************************************************
