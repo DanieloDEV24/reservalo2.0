@@ -540,6 +540,8 @@ $(document).ready(() => {
         let color = $('#scheduleColor').val();
         data["color"] = color
 
+        data["sin_fecha"] = 0;
+
         // Validaciones básicas
         if (nombre !== ""){
             data["nombre"] = nombre;
@@ -569,7 +571,7 @@ $(document).ready(() => {
             $('#fechaInicioHorario').removeClass('is-invalid')
             $('#fechaFinHorario').addClass('is-invalid')
         }
-        else if($horarioEspecial === 1) {
+        else if(horarioEspecial === 1) {
 
             if (fechaInicio !== "" && fechaFin === "") {
                 errores.push("Si ha seleccionado una fecha de inicio, debe seleccionar también una fecha de fin.");
@@ -580,6 +582,9 @@ $(document).ready(() => {
                 errores.push("Si ha seleccionado una fecha de fin, debe seleccionar también una fecha de inicio.");
                 $('#fechaInicioHorario').removeClass('is-invalid')
                 $('#fechaFinHorario').addClass('is-invalid')
+            }
+            else if (fechaInicio === "" && fechaFin === "") {
+                data["sin_fecha"] = 1
             }
         }
         else if (fechaInicioDate > fechaFinDate ){
@@ -658,6 +663,34 @@ $(document).ready(() => {
                         // Añadimos el card del nuevo horario del menu de horarios
                         if(parseInt(response.infoHorario["es_especial"]) === 0) {
                             $('#horarios-normailes-menu').append(`
+                            <div data-index="${response.infoHorario["id_tipo_horario"]}" style="background-color: ${response.infoHorario["color"]}20; color: ${response.infoHorario["color"]}; border: 2px solid ${response.infoHorario["color"]}90" class="card-menu-horarios">
+                                <span>${response.infoHorario["nombre"]}</span>
+                                <div class="fechas">
+                                    ${
+                                        new Date(response.infoHorario["fecha_inicio"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+                                    }
+                                    -
+                                    ${
+                                        new Date(response.infoHorario["fecha_fin"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+                                    }
+                                </div>
+
+                                <div class="descripcion">
+                                    ${response.infoHorario["descripcion"]}
+                                </div>
+
+                                <div class="dropdown opciones-horario" style="max-width: 200px;">
+                                    <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: ${response.infoHorario["color"]};"><i class="bi bi-three-dots-vertical"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                        <li><a href="" class="btnBorrarHorario delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        `)
+                        }
+                        else if (parseInt(response.infoHorario["es_especial"]) === 1) {
+                            $('#horarios-especiales-menu').append(`
                             <div data-index="${response.infoHorario["id_tipo_horario"]}" style="background-color: ${response.infoHorario["color"]}20; color: ${response.infoHorario["color"]}; border: 2px solid ${response.infoHorario["color"]}90" class="card-menu-horarios">
                                 <span>${response.infoHorario["nombre"]}</span>
                                 <div class="fechas">
@@ -1158,16 +1191,19 @@ $(document).ready(() => {
                             dia.getDate() === hoy.getDate();
                             let colorFondo = '';
                             let nombre = ""
-                            if(horarios && Array.isArray(horarios) && horarios.length > 0) {
+                            if(horarios && Array.isArray(horarios) && horarios.length > 0 ) {
                                 
                                 horarios.forEach(function(horario){
-                                    let fechaInicio = new Date(horario.fecha_inicio); 
-                                    let fechaFin    = new Date(horario.fecha_fin);
-                                    let color       = horario.color;
-                                    nombre = horario.nombre
+                                    
+                                    if(parseInt(horario.sin_fecha) === 0) {
+                                        let fechaInicio = new Date(horario.fecha_inicio); 
+                                        let fechaFin    = new Date(horario.fecha_fin);
+                                        let color       = horario.color;
+                                        nombre = horario.nombre
 
-                                    if(dia >= fechaInicio && dia <= fechaFin) {
-                                        colorFondo = color;
+                                        if(dia >= fechaInicio && dia <= fechaFin) {
+                                            colorFondo = color;
+                                        }
                                     }
                                 })
 

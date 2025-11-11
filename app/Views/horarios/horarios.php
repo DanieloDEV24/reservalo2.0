@@ -223,6 +223,37 @@
                       <?php endif; ?>
                     <?php endforeach;?>
                     </div>
+
+                    <div id="horarios-especiales-menu">
+                      <p class="tipo-horarios">Horarios especiales</p>
+                      <?php foreach($horarios as $horario): ?>
+                        <?php if(intval($horario["es_especial"]) === 1 ): ?>
+                          <div data-index="<?=$horario["id_tipo_horario"]?>" style="background-color: <?=$horario["color"]?>20; color: <?=$horario["color"]?>; border: 2px solid <?=$horario["color"]?>90" class="card-menu-horarios">
+                              <span><?=$horario["nombre"]?></span>
+                              <div class="fechas">
+                                  <?php
+                                      $fecha_inicio = DateTime::createFromFormat('Y-m-d', $horario["fecha_inicio"]);
+                                      $fecha_fin = DateTime::createFromFormat('Y-m-d', $horario["fecha_fin"]);
+
+                                      echo $fecha_inicio->format('d/m/Y').' - '.$fecha_fin->format('d/m/Y'); 
+                                  ?>
+                              </div>
+
+                              <div class="descripcion">
+                                  <?=$horario["descripcion"]?>
+                              </div>
+
+                              <div class="dropdown opciones-horario" style="max-width: 200px;">
+                                  <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: <?=$horario["color"]?>;"><i class="bi bi-three-dots-vertical"></i></a>
+                                  <ul class="dropdown-menu">
+                                      <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                      <li><a href="" class="delete-option btnBorrarHorario"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
+                                  </ul>
+                              </div>
+                          </div>
+                        <?php endif; ?>
+                      <?php endforeach;?>
+                    </div>
                 <?php    
                 }
                 ?>

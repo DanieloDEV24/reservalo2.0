@@ -59,9 +59,10 @@ class Horarios extends BaseController
                 "nombre" => $data["nombre"], 
                 "descripcion" => $data["descripcion"],
                 "color" => $data["color"],
-                "fecha_inicio" => $data["fecha_inicio"], 
-                "fecha_fin" => $data["fecha_fin"],
-                "es_especial" => intval($data["horario_especial"])
+                "fecha_inicio" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? date('Y').'-01-01' : $data["fecha_inicio"], 
+                "fecha_fin" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? (date("Y") + 1).'-12-31' : $data["fecha_fin"],
+                "es_especial" => intval($data["horario_especial"]),
+                "sin_fecha" => intval($data["sin_fecha"])
             ];
 
             
