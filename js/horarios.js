@@ -401,10 +401,11 @@ $(document).ready(() => {
     // Función en la que cambiamos al calendario del año siguiente
     $(document).on('click', '#btn-next-year', function(){
 
+        let spanYear = "" 
+        spanYear = parseInt($('#anoActual').text())
         let currentYear = new Date().getFullYear(); // --> Año actual
-        let newYear = currentYear + 1; // --> Año siguiente
+        let newYear = (spanYear === "") ? currentYear + 1 : spanYear + 1 // --> Año siguiente
 
-        console.log(currentYear)
 
         // De esta manera solo podemos mostrar hasta un año más es decir, si estamos en 2025, solo podemos mostrar hasta 2026
         if(newYear > (currentYear + 1)){
@@ -423,8 +424,10 @@ $(document).ready(() => {
     // Función en la que cambiamos al calendario del año pasado
     $(document).on('click', '#btn-previous-year', function(){
 
+   let spanYear = "" 
+    spanYear = parseInt($('#anoActual').text())
     let currentYear = new Date().getFullYear(); // --> Año actual
-    let newYear = currentYear - 1; // --> Año anterior
+    let newYear = (spanYear === "") ? currentYear - 1 : spanYear - 1 // --> Año siguiente
 
     console.log(currentYear)
 
@@ -543,18 +546,26 @@ $(document).ready(() => {
         data["sin_fecha"] = 0;
 
         // Validaciones básicas
-        if (nombre !== ""){
+        if (nombre !== "" && nombre.length < 50){
             data["nombre"] = nombre;
             $('#nombreHorario').removeClass('is-invalid')
+        }
+        else if (nombre.length > 50){
+            errores.push("El nombre un máximo de 50 caracteres");
+            $('#nombreHorario').addClass('is-invalid');
         }
         else{
             errores.push("Debe escribir un nombre para el horario.");  
             $('#nombreHorario').addClass('is-invalid');
         }
 
-        if (descripcion !== ""){
+        if (descripcion !== "" && descripcion.length < 250){
             data["descripcion"] = descripcion;
             $('#descripcionHorario').removeClass('is-invalid')
+        }
+        else if (descripcion.length > 250){
+            errores.push("La descripción tiene un máximo de 250 caracteres");
+            $('#descripcionHorario').addClass('is-invalid');
         }
         else {
             errores.push("Debe escribir una descripción para el horario.");
@@ -585,6 +596,30 @@ $(document).ready(() => {
             }
             else if (fechaInicio === "" && fechaFin === "") {
                 data["sin_fecha"] = 1
+            }
+            else if (fechaInicioDate > fechaFinDate ){
+                errores.push("La fecha de inicio no puede ser mayor que la final");
+                $('#fechaInicioHorario').addClass('is-invalid')
+                $('#fechaFinHorario').addClass('is-invalid')
+            }
+            else if((initialYear < currentYear) || (finishYear < currentYear))
+            {
+                errores.push("No se puede crear un horario para años anteriores al " + currentYear + ".");
+                $('#fechaInicioHorario').addClass('is-invalid')
+                $('#fechaFinHorario').removeClass('is-invalid')
+            }
+            else if((finishYear > nextYear) || (initialYear > nextYear))
+            {
+                errores.push("No se puede crear un horario para años anteriores al " + nextYear +".");
+                $('#fechaInicioHorario').removeClass('is-invalid')
+                $('#fechaFinHorario').addClass('is-invalid')
+            }
+            else 
+            {
+                data['fecha_inicio'] = fechaInicio, 
+                data['fecha_fin'] = fechaFin
+                $('#fechaInicioHorario').removeClass('is-invalid')
+                $('#fechaFinHorario').removeClass('is-invalid')
             }
         }
         else if (fechaInicioDate > fechaFinDate ){
@@ -909,18 +944,26 @@ $(document).ready(() => {
         data["id_tipo_horario"] = $('#idHorarioEditar').val();
 
         // Validaciones básicas
-        if (nombre !== ""){
+        if (nombre !== "" && nombre.length < 50){
             data["nombre"] = nombre;
             $('#nombreHorarioEditar').removeClass('is-invalid')
+        }
+        else if (nombre.length > 50){
+            errores.push("El nombre debe tener un máximo de 50 caracteres");  
+            $('#nombreHorarioEditar').addClass('is-invalid');
         }
         else{
             errores.push("Debe escribir un nombre para el horario.");  
             $('#nombreHorarioEditar').addClass('is-invalid');
         }
 
-        if (descripcion !== ""){
+        if (descripcion !== "" && descripcion.length < 250){
             data["descripcion"] = descripcion;
             $('#descripcionHorarioEditar').removeClass('is-invalid')
+        }
+        else if (descripcion.length > 250) {
+            errores.push("La descripción debe tener como máximo 250 caracteres.");
+            $('#descripcionHorarioEditar').addClass('is-invalid');
         }
         else {
             errores.push("Debe escribir una descripción para el horario.");
@@ -1000,6 +1043,8 @@ $(document).ready(() => {
                         generarCalendario();
                         $('#modalEditarHorario').removeClass('show');
                         $('#modalEditarHorario').hide();
+
+                        $('#sidebarMenu').find((`div.card-menu-horarios[data-index='${id}'] span`)).text(response.infoHorario["nombre"] );
                     }
                 },
                 complete: function() {
