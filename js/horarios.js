@@ -1044,7 +1044,35 @@ $(document).ready(() => {
                         $('#modalEditarHorario').removeClass('show');
                         $('#modalEditarHorario').hide();
 
-                        $('#sidebarMenu').find((`div.card-menu-horarios[data-index='${id}'] span`)).text(response.infoHorario["nombre"] );
+                        $('#sidebarMenu').find((`div.card-menu-horarios[data-index='${response.infoHorario["id_tipo_horario"]}'] span`)).text(response.infoHorario["nombre"]);
+                        
+                        const { fecha_inicio, fecha_fin } = response.infoHorario;
+
+                        const formatDate = (dateString) => {
+                            const date = new Date(dateString);
+                            const day = String(date.getDate()).padStart(2, '0');
+                            const month = String(date.getMonth() + 1).padStart(2, '0');
+                            const year = date.getFullYear();
+                            return `${day}/${month}/${year}`;
+                        };
+
+                        const cadena = `${formatDate(fecha_inicio)} - ${formatDate(fecha_fin)}`;
+
+                        $('#sidebarMenu').find((`div.card-menu-horarios[data-index='${response.infoHorario["id_tipo_horario"]}'] .fechas`)).text(cadena);
+                        $('#sidebarMenu').find((`div.card-menu-horarios[data-index='${response.infoHorario["id_tipo_horario"]}'] .descripcion`)).text(response.infoHorario["descripcion"]);
+                        $('#sidebarMenu').find((`div.card-menu-horarios[data-index='${response.infoHorario["id_tipo_horario"]}']`)).css({
+                              backgroundColor: `${color}20`, // el "20" al final es transparencia en hex (≈ 12%)
+                              color: color,
+                              border: `2px solid ${color}90` // "90" es ≈ 56% de opacidad
+                            }
+                        )
+
+
+                        $('#sidebarMenu').find((`div.card-menu-horarios[data-index='${response.infoHorario["id_tipo_horario"]}'] .opciones-horario-link`)).css({
+                              color: color,
+                            }
+                        )
+
                     }
                 },
                 complete: function() {
@@ -1153,7 +1181,7 @@ $(document).ready(() => {
                     $('#modalBorrarHorario .iconoModal i').removeClass('cargando');
                     $('#modalBorrarHorario').hide();
 
-                    $('#horarios-normailes-menu').find(`div[data-index='${id}']`).remove();
+                    $('#sidebarMenu').find(`div.card-menu-horarios[data-index='${id}']`).remove();
                     $('.legend').find(`div[data-index='${id}']`).remove();
                     generarCalendario();
                 }
@@ -1245,6 +1273,9 @@ $(document).ready(() => {
                                         let fechaFin    = new Date(horario.fecha_fin);
                                         let color       = horario.color;
                                         nombre = horario.nombre
+
+                                        fechaInicio.setHours(0, 0, 0, 0)
+                                        fechaFin.setHours(0, 0, 0, 0)
 
                                         if(dia >= fechaInicio && dia <= fechaFin) {
                                             colorFondo = color;
