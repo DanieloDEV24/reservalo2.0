@@ -754,7 +754,10 @@ $(document).ready(() => {
                         }
 
                         $('#sidebar').removeClass('active');
-                    }                    
+                    }
+                    else {
+                        
+                    }                   
                 }, 
                 complete: function() {
                     $('#loaderNuevoHorario').hide();

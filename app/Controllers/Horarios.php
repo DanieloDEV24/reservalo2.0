@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\categoriasModel;
 use App\Models\instalacionesModel;
 use App\Models\horariosModel;
+use DateTime;
 
 class Horarios extends BaseController
 {
@@ -25,6 +26,7 @@ class Horarios extends BaseController
 
             $modalEditar = view('horarios/modalEditarHorario');
             $modalBorrar = view('horarios/modalBorrarHorario');
+            $modalHorarioExistente = view('horarios/modalHorarioExistente');
 
             $assets = [
                 "css" => [
@@ -37,7 +39,7 @@ class Horarios extends BaseController
                 ]
             ];
             
-            $view = view('horarios/horarios', ["instalacion" => $instalacion, "id_instalacion"=>$id_instalacion, "horarios" => $horarios, "modalEditar" => $modalEditar, "modalBorrar"=>$modalBorrar]);
+            $view = view('horarios/horarios', ["instalacion" => $instalacion, "id_instalacion"=>$id_instalacion, "horarios" => $horarios, "modalEditar" => $modalEditar, "modalBorrar"=>$modalBorrar, "modalHorarioExistente" => $modalHorarioExistente]);
             return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets]);
         }
 
@@ -49,94 +51,114 @@ class Horarios extends BaseController
         $post = $this->request->getPost();
         $horariosModel = new horariosModel();
 
-         if(!empty($post)){
+        if(!empty($post)){
             
             $data = $post["data"];
             $id_instalacion = $data["instalacion"];
 
-            // Creamos el data que irá con la creación de los horarios
-            $data_tipo_horario = [
-                "nombre" => $data["nombre"], 
-                "descripcion" => $data["descripcion"],
-                "color" => $data["color"],
-                "fecha_inicio" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? date('Y').'-01-01' : $data["fecha_inicio"], 
-                "fecha_fin" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? (date("Y") + 1).'-12-31' : $data["fecha_fin"],
-                "es_especial" => intval($data["horario_especial"]),
-                "sin_fecha" => intval($data["sin_fecha"])
-            ];
+            $fecha_inicio_date = DateTime::createFromFormat('d/m/Y', $data["fecha_inicio"]);
+            $fecha_inicio_formatea = $fecha_inicio_date->format('Y-m-d');
 
-            
+            $fecha_fin_date = DateTime::createFromFormat('d/m/Y', $data["fecha_fin"]);
+            $fecha_fin_formatea = $fecha_fin_date->format('Y-m-d');
 
-            // Creamos el horario
-            $horario = $horariosModel->crearHorario($data_tipo_horario);
+            $horarios_existentes = $horariosModel->getHorarioFromFechas($fecha_inicio_formatea, $fecha_fin_formatea);
 
-            $data_tipo_horario["id_tipo_horario"] = $horario;
-
-            // Ahora creamos las franjas horarias
-            // Obtenemos el horario 
-            $horarios = $data["horarios"];
-            if(isset($horarios["lunes"])) {
-                $franjas = $this->obtenerFranjasHorarias($horarios);
+            if(intval($data["es_especial"]) === 0 && count($horarios_existentes) > 0) {
                 
-                foreach ($franjas as $franja) {
-                    $primerElemento = reset($franja);
+                echo json_encode([
+                    "success" => false,
+                    "mensaje" => "Ya existe un horario dentro del rango seleccionado",
+                    "infoHorario" => $horarios_existentes
+                ]);
+                exit;
+
+            }
+            else {
+                // Creamos el data que irá con la creación de los horarios
+                $data_tipo_horario = [
+                    "nombre" => $data["nombre"], 
+                    "descripcion" => $data["descripcion"],
+                    "color" => $data["color"],
+                    "fecha_inicio" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? date('Y').'-01-01' : $data["fecha_inicio"], 
+                    "fecha_fin" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? (date("Y") + 1).'-12-31' : $data["fecha_fin"],
+                    "es_especial" => intval($data["horario_especial"]),
+                    "sin_fecha" => intval($data["sin_fecha"])
+                ];
+
+                
+
+                // Creamos el horario
+                $horario = $horariosModel->crearHorario($data_tipo_horario);
+
+                $data_tipo_horario["id_tipo_horario"] = $horario;
+
+                // Ahora creamos las franjas horarias
+                // Obtenemos el horario 
+                $horarios = $data["horarios"];
+                if(isset($horarios["lunes"])) {
+                    $franjas = $this->obtenerFranjasHorarias($horarios);
+                    
+                    foreach ($franjas as $franja) {
+                        $primerElemento = reset($franja);
+                        $data_franja = [
+                            "id_tipo_horario" => $horario,
+                            "id_instalacion" => $id_instalacion, 
+                            "hora_inicio_manana" => $primerElemento["manana"]["inicio"],
+                            "hora_fin_manana" => $primerElemento["manana"]["fin"], 
+                            "hora_inicio_tarde" => $primerElemento["tarde"]["inicio"], 
+                            "hora_fin_tarde" => $primerElemento["tarde"]["fin"], 
+                            "franja_unica" => 0
+                        ];
+
+                        $franja_horaria = $horariosModel->crearFranjaHoraria($data_franja);
+                        
+                        foreach ($franja as $key => $value) {
+                            $index = $this->obtenerNumeroDia($key);
+                            $data_franja_dia = [
+                                "id_franja_horaria" => $franja_horaria,
+                                "id_dia_semana" => $index
+                            ];
+
+                            $horariosModel->crearFranjaDia($data_franja_dia);
+                        }
+
+                    }
+                }
+                else {
+                
                     $data_franja = [
                         "id_tipo_horario" => $horario,
                         "id_instalacion" => $id_instalacion, 
-                        "hora_inicio_manana" => $primerElemento["manana"]["inicio"],
-                        "hora_fin_manana" => $primerElemento["manana"]["fin"], 
-                        "hora_inicio_tarde" => $primerElemento["tarde"]["inicio"], 
-                        "hora_fin_tarde" => $primerElemento["tarde"]["fin"], 
-                        "franja_unica" => 0
+                        "hora_inicio_manana" => $data["horarios"]["manana"]["inicio"],
+                        "hora_fin_manana" => $data["horarios"]["manana"]["fin"], 
+                        "hora_inicio_tarde" => $data["horarios"]["tarde"]["inicio"], 
+                        "hora_fin_tarde" => $data["horarios"]["tarde"]["fin"], 
+                        "franja_unica" => 1
                     ];
 
                     $franja_horaria = $horariosModel->crearFranjaHoraria($data_franja);
                     
-                    foreach ($franja as $key => $value) {
-                        $index = $this->obtenerNumeroDia($key);
+                    for ($i=1; $i <=7 ; $i++) { 
+                        
                         $data_franja_dia = [
+                            
                             "id_franja_horaria" => $franja_horaria,
-                            "id_dia_semana" => $index
+                            "id_dia_semana" => $i
                         ];
 
                         $horariosModel->crearFranjaDia($data_franja_dia);
                     }
-
                 }
-            }
-            else {
-               
-                $data_franja = [
-                    "id_tipo_horario" => $horario,
-                    "id_instalacion" => $id_instalacion, 
-                    "hora_inicio_manana" => $data["horarios"]["manana"]["inicio"],
-                    "hora_fin_manana" => $data["horarios"]["manana"]["fin"], 
-                    "hora_inicio_tarde" => $data["horarios"]["tarde"]["inicio"], 
-                    "hora_fin_tarde" => $data["horarios"]["tarde"]["fin"], 
-                    "franja_unica" => 1
-                ];
-
-                $franja_horaria = $horariosModel->crearFranjaHoraria($data_franja);
-                
-                for ($i=1; $i <=7 ; $i++) { 
-                    
-                    $data_franja_dia = [
-                        
-                        "id_franja_horaria" => $franja_horaria,
-                        "id_dia_semana" => $i
-                    ];
-
-                    $horariosModel->crearFranjaDia($data_franja_dia);
-                }
-            }
 
            
-            echo json_encode([
-                "success" => true,
-                "mensaje" => "Se ha creado el horario correctamente",
-                "infoHorario" => $data_tipo_horario
-            ]);
-            exit;
+                echo json_encode([
+                    "success" => true,
+                    "mensaje" => "Se ha creado el horario correctamente",
+                    "infoHorario" => $data_tipo_horario
+                ]);
+                exit;
+            }
         }
     }
 

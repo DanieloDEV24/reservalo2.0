@@ -236,5 +236,33 @@ class horariosModel extends Model
 
         return true;
     }
+
+    public function getHorarioFromFechas(string $fecha_inicio, string $fecha_fin) {
+        
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('tipo_horario');
+
+        $builder->where('tipo_horario.es_especial', 0);
+
+        // (fecha_inicio <= fecha1 AND fecha_fin >= fecha1)
+        $builder->groupStart()
+                    ->where('tipo_horario.fecha_inicio <=', $fecha_inicio)
+                    ->where('tipo_horario.fecha_fin >=', $fecha_inicio)
+                ->groupEnd();
+
+        // OR (fecha_inicio <= fecha2 AND fecha_fin >= fecha2)
+        $builder->orGroupStart()
+                    ->where('tipo_horario.fecha_inicio <=', $fecha_fin)
+                    ->where('tipo_horario.fecha_fin >=', $fecha_fin)
+                ->groupEnd();
+
+        $query = $builder->get();
+        $resultado = $query->getResultArray();  
+
+        return $resultado;
+    }
     
 }
