@@ -756,7 +756,15 @@ $(document).ready(() => {
                         $('#sidebar').removeClass('active');
                     }
                     else {
-                        
+                        let divNombres = $('#modalHorarioExistente .nombres-horarios-existentes ul');
+                        divNombres.empty();
+
+                        response.infoHorario.map(function(horario){
+                            
+                            divNombres.append(`<li>${horario.nombre}</li>`)
+                        })
+
+                        $('#modalHorarioExistente').show();
                     }                   
                 }, 
                 complete: function() {

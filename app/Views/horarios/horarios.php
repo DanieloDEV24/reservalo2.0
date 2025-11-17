@@ -273,3 +273,4 @@
 
 <?=$modalEditar?>
 <?=$modalBorrar?>
+<?=$modalHorarioExistente?>

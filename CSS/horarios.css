@@ -935,3 +935,9 @@ button.cargando, p.cargando, div.cargando, span.cargando, i.cargando{
   font-weight: bold;
   font-size: 1.2rem;
 }
+
+
+.nombres-horarios-existentes ul {
+  margin-bottom: 0% !important;
+}
+

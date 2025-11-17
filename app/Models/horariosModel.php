@@ -239,30 +239,45 @@ class horariosModel extends Model
 
     public function getHorarioFromFechas(string $fecha_inicio, string $fecha_fin) {
         
+        $db = \Config\Database::connect('BDReservalo2');
+        $builder = $db->table('tipo_horario');
+
+        $builder->select('tipo_horario.nombre, tipo_horario.fecha_inicio, tipo_horario.fecha_fin, tipo_horario.sin_fecha');
+
+        // condición fija
+        $builder->where('tipo_horario.sin_fecha', 0);
+
+        // agrupar todas las condiciones de fechas
+        $builder->groupStart()
+                    ->groupStart()
+                        ->where('tipo_horario.fecha_inicio <=', $fecha_inicio)
+                        ->where('tipo_horario.fecha_fin >=', $fecha_inicio)
+                    ->groupEnd()
+
+                    ->orGroupStart()
+                        ->where('tipo_horario.fecha_inicio <=', $fecha_fin)
+                        ->where('tipo_horario.fecha_fin >=', $fecha_fin)
+                    ->groupEnd()
+                ->groupEnd();   // <- cierre del grupo general
+
+        $query = $builder->get();
+        return $query->getResultArray();
+    }   
+
+
+    public function crearExcepcion(array $data) {
+        
         //Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
 
         //Obtenemos la tabla de horarios
-        $builder = $db->table('tipo_horario');
+        $builder = $db->table('excepciones_horario');
 
-        $builder->where('tipo_horario.es_especial', 0);
+        // Creamos el horario
+        $builder->insert($data);
 
-        // (fecha_inicio <= fecha1 AND fecha_fin >= fecha1)
-        $builder->groupStart()
-                    ->where('tipo_horario.fecha_inicio <=', $fecha_inicio)
-                    ->where('tipo_horario.fecha_fin >=', $fecha_inicio)
-                ->groupEnd();
-
-        // OR (fecha_inicio <= fecha2 AND fecha_fin >= fecha2)
-        $builder->orGroupStart()
-                    ->where('tipo_horario.fecha_inicio <=', $fecha_fin)
-                    ->where('tipo_horario.fecha_fin >=', $fecha_fin)
-                ->groupEnd();
-
-        $query = $builder->get();
-        $resultado = $query->getResultArray();  
-
-        return $resultado;
+        // Devolvemos el id del horario
+        return $db->insertID();
     }
     
 }

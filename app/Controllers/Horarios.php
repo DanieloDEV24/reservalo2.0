@@ -56,15 +56,9 @@ class Horarios extends BaseController
             $data = $post["data"];
             $id_instalacion = $data["instalacion"];
 
-            $fecha_inicio_date = DateTime::createFromFormat('d/m/Y', $data["fecha_inicio"]);
-            $fecha_inicio_formatea = $fecha_inicio_date->format('Y-m-d');
+            $horarios_existentes = $horariosModel->getHorarioFromFechas($data["fecha_inicio"], $data["fecha_fin"]);
 
-            $fecha_fin_date = DateTime::createFromFormat('d/m/Y', $data["fecha_fin"]);
-            $fecha_fin_formatea = $fecha_fin_date->format('Y-m-d');
-
-            $horarios_existentes = $horariosModel->getHorarioFromFechas($fecha_inicio_formatea, $fecha_fin_formatea);
-
-            if(intval($data["es_especial"]) === 0 && count($horarios_existentes) > 0) {
+            if(intval($data["horario_especial"]) === 0 && count($horarios_existentes) > 0) {
                 
                 echo json_encode([
                     "success" => false,
@@ -73,6 +67,46 @@ class Horarios extends BaseController
                 ]);
                 exit;
 
+            }
+            else if(intval($data["horario_especial"]) === 1 && count($horarios_existentes) > 0) {
+                $data_tipo_horario = [
+                    "nombre" => $data["nombre"], 
+                    "descripcion" => $data["descripcion"],
+                    "color" => $data["color"],
+                    "fecha_inicio" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? date('Y').'-01-01' : $data["fecha_inicio"], 
+                    "fecha_fin" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? (date("Y") + 1).'-12-31' : $data["fecha_fin"],
+                    "es_especial" => intval($data["horario_especial"]),
+                    "sin_fecha" => intval($data["sin_fecha"])
+                ];
+
+                $nuevo_horario   = $horariosModel->crearHorario($data_tipo_horario);
+
+                foreach($horarios_existentes as $horario) {
+                   
+                   if(intval($horario["es_especial"]) === 0) {
+
+                        $fechaInicioBase = new DateTime($horario["fecha_inicio"]);
+                        $fechaInicioExcepcion = new DateTime($data_tipo_horario["fecha_inicio"]);
+                        $fechaFinBase = new DateTime($horario["fecha_fin"]);
+                        $fechaFinExcepcion = new DateTime($data_tipo_horario["fecha_fin"]);
+
+                        $data_excepcion  = [
+                            "id_tipo_horario_base" => intval($horario["id_tipo_horario"]), 
+                            "id_tipo_horario_excepcion" => intval($nuevo_horario), 
+                            "fecha_inicio" => ($fechaInicioBase > $fechaInicioExcepcion) ? $fechaInicioBase->format("Y-m-d") : $fechaInicioExcepcion->format("Y-m-d"),
+                            "fecha_fin" => ($fechaFinBase < $fechaFinExcepcion) ? $fechaFinBase->format("Y-m-d") : $fechaFinExcepcion->format("Y-m-d")
+                        ];
+
+                        $horariosModel->crearExcepcion($data_excepcion);
+                   }
+                }
+
+                echo json_encode([
+                    "success" => true,
+                    "mensaje" => "Se ha creado el horario correctamente",
+                    "infoHorario" => $data_tipo_horario
+                ]);
+                exit;
             }
             else {
                 // Creamos el data que irá con la creación de los horarios

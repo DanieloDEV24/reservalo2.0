@@ -8,7 +8,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Borrar Horario <i class="bi bi-trash3"></i></h5>
+        <h5 class="modal-title">No se ha podido crear el Horario &nbsp;<i class="bi bi-x-lg"></i></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
@@ -24,19 +24,17 @@
 
           <div class="contenedor-a-borrar">
             <div class="horario-a-borrar">
-              <p>Horario a borrar: </p>
-              <span id="nombre-horario-borrar"></span>
+              <p style="font-weight: 700;">Ya existen horarios en las fechas seleccionadas:</p>
+              <div class="nombres-horarios-existentes">
+                <ul></ul>
+              </div>
             </div>
           </div>
-
-          <div class="pregunta-borrado" style="text-align: center;">
-            <p style="font-size: 1.3rem;">¿Estás seguro de que deseas este horario?</p>
-            <p style="color: #aaa; font-size: 1.1rem;">Esta acción no se puede deshacer.</p>
+          <div>
+            <p style="text-align: center; color: #aaa; font-size: 1.1rem;">Al menos que el horario sea especial, no se puede crear un horario encima de otras fechas</p>
           </div>
-
           <div class="btns-borrado" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px;">
-            <button class="btn-primary-personal" id="aceptarBorrarHorario">Borrar Horario</button>
-            <button class="btn-secondary-personal" id="cancelarBorrarHorario" data-bs-dismiss="modal" aria-label="Cancelar">Cancelar</button>
+            <button class="btn-secondary-personal" data-bs-dismiss="modal" aria-label="Cancelar">Cancelar</button>
           </div>
         </div>
         <!-- Cierre -->
