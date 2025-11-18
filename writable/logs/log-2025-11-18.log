@@ -1,0 +1,86 @@
+INFO - 2025-11-18 09:02:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-11-18 09:03:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-11-18 09:03:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-11-18 09:03:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-11-18 09:04:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-11-18 09:04:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-11-18 11:05:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-11-18 11:08:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-11-18 11:27:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-11-18 11:30:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-18 11:36:35 --> ErrorException: Undefined array key "es_especial"
+in APPPATH\Controllers\Horarios.php on line 88.
+ 1 APPPATH\Controllers\Horarios.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "es_especial"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 88)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->crearHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-18 11:36:49 --> ErrorException: Undefined array key "es_especial"
+in APPPATH\Controllers\Horarios.php on line 88.
+ 1 APPPATH\Controllers\Horarios.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "es_especial"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 88)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->crearHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-11-18 11:38:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-18 11:39:27 --> ErrorException: Undefined array key "es_especial"
+in APPPATH\Controllers\Horarios.php on line 88.
+ 1 APPPATH\Controllers\Horarios.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "es_especial"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 88)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->crearHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-11-18 11:40:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-18 12:10:01 --> ErrorException: Undefined array key "es_especial"
+in APPPATH\Controllers\Horarios.php on line 88.
+ 1 APPPATH\Controllers\Horarios.php(88): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "es_especial"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 88)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->crearHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-11-18 12:11:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-18 12:12:27 --> ErrorException: Undefined array key "es_especial"
+in APPPATH\Controllers\Horarios.php on line 89.
+ 1 APPPATH\Controllers\Horarios.php(89): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "es_especial"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 89)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->crearHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-18 12:13:53 --> ErrorException: Undefined array key "es_especial"
+in APPPATH\Controllers\Horarios.php on line 89.
+ 1 APPPATH\Controllers\Horarios.php(89): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "es_especial"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 89)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->crearHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-11-18 12:14:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-18 12:15:53 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Horarios.php on line 89.
+ 1 APPPATH\Controllers\Horarios.php(89): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 89)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->crearHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-18 12:16:56 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Horarios.php on line 89.
+ 1 APPPATH\Controllers\Horarios.php(89): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 89)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->crearHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-11-18 12:17:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-11-18 12:18:57 --> ErrorException: Undefined array key "es_especial"
+in APPPATH\Controllers\Horarios.php on line 89.
+ 1 APPPATH\Controllers\Horarios.php(89): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "es_especial"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 89)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->crearHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-11-18 12:20:13 --> ErrorException: Undefined array key "es_especial"
+in APPPATH\Controllers\Horarios.php on line 89.
+ 1 APPPATH\Controllers\Horarios.php(89): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "es_especial"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 89)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->crearHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-11-18 12:20:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

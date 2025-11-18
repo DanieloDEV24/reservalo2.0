@@ -242,7 +242,7 @@ class horariosModel extends Model
         $db = \Config\Database::connect('BDReservalo2');
         $builder = $db->table('tipo_horario');
 
-        $builder->select('tipo_horario.nombre, tipo_horario.fecha_inicio, tipo_horario.fecha_fin, tipo_horario.sin_fecha');
+        $builder->select();
 
         // condición fija
         $builder->where('tipo_horario.sin_fecha', 0);
@@ -279,5 +279,77 @@ class horariosModel extends Model
         // Devolvemos el id del horario
         return $db->insertID();
     }
+
+
+    public function borrarExcepcion(int $id_horario) {
+        
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('excepciones_horario');
+
+        // Borramos las franjas horarias asociadas al horario
+        $builder->where('id_tipo_horario_base', $id_horario);
+        $builder->orWhere('id_tipo_horario_excepcion', $id_horario);
+        $builder->delete();
+
+        return true;
+    }
     
+
+
+    public function hayExcepcionBase(int $id_horario) {
+       
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('excepciones_horario');
+
+        // Hago el select
+        $query = $builder->select()
+                         ->where("id_tipo_horario_base", $id_horario)
+                         ->get();
+
+        $result = $query->getResultArray();
+
+        return $result;
+    }
+
+
+
+    public function hayExcepcionExcepcion(int $id_horario) {
+        
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('excepciones_horario');
+
+        // Hago el select
+        $query = $builder->select()
+                         ->where("id_tipo_horario_excepcio", $id_horario)
+                         ->get();
+
+        $result = $query->getResultArray();
+
+        return $result;
+    }
+
+
+    public function editarExcepcion (array $data) {
+
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('excepciones_horario');
+
+        // Actualizamos el horario
+        $builder->where('id_excepciones_horario', intval($data["id_excepciones_horario"]));
+        $builder->update($data);
+
+        return true;
+    }
 }
