@@ -463,4 +463,9 @@ class Horarios extends BaseController
 
         return ($index + 1);
     }
+
+    // private function crearHoras () {
+
+    //     $
+    // }
 }

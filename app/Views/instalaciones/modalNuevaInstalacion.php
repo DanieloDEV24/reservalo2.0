@@ -84,6 +84,20 @@
           </div>
         </div>
 
+
+        <div class="row gap-5 align-items-center mt-3">
+          <div class="col d-flex align-items-center gap-2">
+            <label for="">Reserva por día completo()</label>
+            <label class="toggle-switch">
+              <input type="checkbox" class="puedeCompleto">
+              <div class="toggle-switch-background">
+                <div class="toggle-switch-handle"></div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+
         <div class="row gap-5 mt-3">
           <div class="col">
             <label for="capacidadCompleto">Capacidad completo:</label>
