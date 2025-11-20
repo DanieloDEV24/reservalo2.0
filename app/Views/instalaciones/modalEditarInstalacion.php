@@ -88,6 +88,20 @@
           </div>
         </div>
 
+
+        <div class="row gap-5 align-items-center mt-3">
+          <div class="col d-flex align-items-center gap-2">
+           <label for="">Reserva por día completo (no hay horarios)</label>
+            <label class="toggle-switch">
+              <input type="checkbox" class="sinHorario" id="sinHorarioEditar">
+              <div class="toggle-switch-background">
+                <div class="toggle-switch-handle"></div>
+              </div>
+            </label>
+          </div>
+        </div>
+
+
         <div class="row gap-5 mt-3">
           <div class="col">
             <label for="capacidadCompletoEditar">Capacidad completo:</label>

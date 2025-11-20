@@ -16,17 +16,17 @@
 
             <div class="info-card">
                 <div class="info-label">Reserva completa</div>
-                <div class="info-value"><?=($instalacion["no_pistas"] == 1)? "No disponible" : "Sí disponible"?></div>
+                <div class="info-value"><?=($instalacion["puede_completo"] == 0)? "No disponible" : "Sí disponible"?></div>
             </div>
 
             <div class="info-card">
                 <div class="info-label">Iluminación</div>
-                <div class="info-value"><?=($instalacion["no_pistas"] == 1)? "No disponible" : "Sí disponible"?></div>
+                <div class="info-value"><?=($instalacion["iluminacion"] == 0)? "No disponible" : "Sí disponible"?></div>
             </div>
 
             <div class="info-card">
                 <div class="info-label">Material</div>
-                <div class="info-value"><?=($instalacion["no_pistas"] == 1)? "No disponible" : "Sí disponible"?></div>
+                <div class="info-value"><?=($instalacion["material"] == 0)? "No disponible" : "Sí disponible"?></div>
             </div>
 
         </div>

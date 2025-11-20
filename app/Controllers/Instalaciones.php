@@ -67,6 +67,7 @@ class Instalaciones extends BaseController
             $noPistas          = filter_var($post["noPistas"], FILTER_VALIDATE_BOOLEAN);
             $iluminacion       = filter_var($post["iluminacion"], FILTER_VALIDATE_BOOLEAN);
             $material          = filter_var($post["material"], FILTER_VALIDATE_BOOLEAN);
+            $sinHorario        = filter_var($post["sinHorario"], FILTER_VALIDATE_BOOLEAN);
             $capacidadCompleto = intval($post["capacidadCompleto"]);
 
             $dataInstalacion = [
@@ -78,6 +79,7 @@ class Instalaciones extends BaseController
                 'no_pistas' => $noPistas,
                 'iluminacion' => $iluminacion,
                 'material' => $material,
+                'tipo_reserva' => $sinHorario,
                 'precio_completo' => ($puedeCompleto || $noPistas) ? $precioCompleto : null,
                 'capacidad_completo' => ($puedeCompleto || $noPistas) ? $capacidadCompleto : null
             ];
@@ -436,6 +438,7 @@ class Instalaciones extends BaseController
             $material = filter_var($post["material"], FILTER_VALIDATE_BOOLEAN);
             $noPistas = filter_var($post["noPistas"], FILTER_VALIDATE_BOOLEAN);
             $puedeCompleta = filter_var($post["puedeCompleta"], FILTER_VALIDATE_BOOLEAN);
+            $sinHorario = filter_var($post["sinHorario"], FILTER_VALIDATE_BOOLEAN);
             $precioCompleto = floatval($post["precioCompleto"]);
             $capacidadCompleta = intval($post["capacidadCompleta"]);
             $descripcion = $post["descripcion"];
@@ -520,6 +523,7 @@ class Instalaciones extends BaseController
                 "iluminacion" => $iluminacion, 
                 "material" => $material,
                 "no_pistas" => $noPistas,
+                "tipo_reserva" => $sinHorario,
                 "capacidad_completo" => ($noPistas || $puedeCompleta) ? $capacidadCompleta : null
             ];
 

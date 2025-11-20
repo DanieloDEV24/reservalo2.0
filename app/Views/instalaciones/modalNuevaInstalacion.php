@@ -87,9 +87,9 @@
 
         <div class="row gap-5 align-items-center mt-3">
           <div class="col d-flex align-items-center gap-2">
-            <label for="">Reserva por día completo()</label>
+            <label for="">Reserva por día completo (no hay horarios)</label>
             <label class="toggle-switch">
-              <input type="checkbox" class="puedeCompleto">
+              <input type="checkbox" class="sinHorario">
               <div class="toggle-switch-background">
                 <div class="toggle-switch-handle"></div>
               </div>

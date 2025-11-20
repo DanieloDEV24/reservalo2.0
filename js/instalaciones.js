@@ -170,6 +170,7 @@ $(document).ready(() => {
 
         }
     });
+    
 
 
 
@@ -455,6 +456,7 @@ $(document).ready(() => {
         let capacidadCompleto = $('#capacidadCompleto').val(); // --> Obtenemos la capacidad completa de la instalación
         let descripcion = $('#descripcion').val(); // --> Obtenemos la descripción de la instalación
         let categoriaSecundaria = 0; // --> variable donde guardamos la categoría secundaria
+        let sinHorario = $('.toggle-switch input.sinHorario').is(':checked')
 
 
         // Evento donde controlamos la selección de la categoría secundaria. Lo que hacemos es recorrer los inputs con las categorías secundarias
@@ -526,6 +528,7 @@ $(document).ready(() => {
             formData.append('noPistas', noPistas) // --> Añadimos el estado del switch que muestra si no se puede crear pistas en la instalación al formData
             formData.append('iluminacion', iluminacion)
             formData.append('material', material)
+            formData.append('sinHorario', sinHorario)
             formData.append('precioCompleto', precioCompleto); // --> Añadimos el precio completo al formData
             formData.append('capacidadCompleto', capacidadCompleto); // --> Añadimos la capacidad completa al formData
             formData.append('catSecundaria', categoriaSecundaria); // --> Añadimos la categoría opcional al formData
@@ -899,6 +902,7 @@ $(document).ready(() => {
                 let materialChecked = (parseInt(response.instalacion[0].material) === 1) ? "checked" : "";
                 let noPistasChecked = (parseInt(response.instalacion[0].no_pistas) === 1) ? "checked" : ""; // --> Comprobamos si está marcado el switch que nos indica que no se pueden crear pistas para esa instalación
                 let puedeCompletoChecked = (parseInt(response.instalacion[0].puede_completo) === 1) ? "checked" : ""; // --> Comprobamos si está marcado el switch que nos indica que se puede hacer una reserva completa en la instalación
+                let sinHorarioChecked = (parseInt(response.instalacion[0].tipo_reserva) === 1) ? "checked" : ""; // --> 
 
                 $('#noPistasEditar').prop('checked', noPistasChecked); // --> Lo reflejamos en el switch
                 estadoInicial = noPistasChecked
@@ -906,6 +910,8 @@ $(document).ready(() => {
 
                 $('#iluminacionEditar').prop('checked', iluminacionChecked);
                 $('#materialEditar').prop('checked', materialChecked);
+
+                $('#sinHorarioEditar').prop('checked', sinHorarioChecked);
 
                 $('#capacidadCompletoEditar').val(response.instalacion[0].capacidad_completo) // --> Añadimos el valor de la capacidad total de la instalación
                 $('#precioCompletoEditar').val(response.instalacion[0].precio_completo) // --> Añadimos el valor del precio total de la instalación
@@ -1657,6 +1663,7 @@ $(document).ready(() => {
         const materialEditar = $('#materialEditar').is(':checked');
         const noPistas = $('#noPistasEditar').is(':checked');
         const puedeCompleta = $('#puedeCompletoEditar').is(':checked');
+        const sinHorario = $('#sinHorarioEditar').is(':checked');
         const capacidadCompleta = $('#capacidadCompletoEditar').val();
         const precioCompleto = $('#precioCompletoEditar').val();
         const descripcion = $('#descripcionEditar').val().trim();
@@ -1720,6 +1727,7 @@ $(document).ready(() => {
         formData.append('puedeCompleta', puedeCompleta);
         formData.append('noPistas', noPistas);
         formData.append('puedeCompleta', puedeCompleta);
+        formData.append('sinHorario', sinHorario);
         formData.append('capacidadCompleta', capacidadCompleta);
         formData.append('precioCompleto', precioCompleto);
         formData.append('descripcion', descripcion);
