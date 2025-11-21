@@ -341,7 +341,9 @@
                   <?php
                   }
                   ?>
-                   <li><a class="dropdown-item btnGenerarHorario" href="<?=base_url()?>index.php/horario/<?=$instalacion["id_instalacion"]?>">Generar horario&nbsp;<i class="bi bi-calendar-week"></i>  </a></li>
+                  <?php if(intval($instalacion["tipo_reserva"]) === 0) : ?>
+                    <li><a class="dropdown-item btnGenerarHorario" href="<?=base_url()?>index.php/horario/<?=$instalacion["id_instalacion"]?>">Generar horario&nbsp;<i class="bi bi-calendar-week"></i>  </a></li>
+                  <?php endif; ?>
                 </ul>
               </div>
 

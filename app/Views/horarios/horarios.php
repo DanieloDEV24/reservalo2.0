@@ -1,3 +1,4 @@
+
 <div class="horario">
 <input type="hidden" name="" id="instalacion" value="<?=$id_instalacion?>">
 <div class="p-4 erroresHorario">
@@ -9,6 +10,7 @@
         <p class="description-page">Configura los horarios para la instalacion <?= $instalacion["nombre"] ?> para cada temporada del año.</p>
     </div>
 
+    <?php if(intval($instalacion["tipo_reserva"]) === 0) : ?>
     <div class="ano-horario">
 
         <div class="div-ano">
@@ -269,6 +271,23 @@
         <a href="" id="btnCrearHorario" class="btn-primary-personal" style="width: 23%;">Crear horario<i class="bi bi-plus-circle"></i></a>
         <a href="" id="btnMenuHorario" class="btn-primary-personal" style="width: 23%;">Menú de horarios<i class="bi bi-list"></i></a>
     </div>
+
+    <?php else : ?>
+       <div class="container-no-horarios">
+
+        <div class="content-card">
+            <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+            <h2>Esta instalación se reserva por días</h2>
+            <p class="message">
+                Esta instalación está configurada como instalación que se reserva por días, sin horario específico. Para poder asignar horarios, debes ir al gestor de instalaciones y editar esta propiedad de la instalación.
+            </p>
+        </div>
+    </div>
+    <?php endif ; ?>
 </div>
 
 <?=$modalEditar?>

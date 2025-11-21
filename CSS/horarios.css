@@ -1,10 +1,9 @@
-.horario
-{
+.horario {
   padding: 2%;
 }
 
-.titulo-horario, .ano-horario
-{
+.titulo-horario,
+.ano-horario {
   background-color: #fff;
   border-radius: 12px;
   padding: 3% 4%;
@@ -12,14 +11,12 @@
   margin-bottom: 5%;
 }
 
-.titulo-horario p 
-{
+.titulo-horario p {
   margin: 0% !important;
 }
 
 
-.div-ano
-{
+.div-ano {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -76,19 +73,22 @@
   border-radius: 6px;
 }
 
-.color-selected{background-color: #32cccc;}
-.color-cerrado{background-color: #F54927;}
+.color-selected {
+  background-color: #32cccc;
+}
 
-.calendario
-{
+.color-cerrado {
+  background-color: #F54927;
+}
+
+.calendario {
   display: flex;
   align-items: center;
   gap: 2%;
   flex-wrap: wrap;
 }
 
-.calendario .div-mes
-{
+.calendario .div-mes {
   background-color: #fff;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 15px;
@@ -98,42 +98,40 @@
   height: 420px;
 }
 
-.calendario .div-mes .nombre-mes
-{
+.calendario .div-mes .nombre-mes {
   display: flex;
   width: 100%;
   justify-content: center;
 }
 
-.grid-nombres-mes
-{
+.grid-nombres-mes {
   width: 100%;
-  display: grid; /* activa el modo grid */
-  grid-template-columns: repeat(7, 1fr); /* 3 columnas del mismo ancho */
-  gap: 10px; /* espacio entre filas y columnas */
+  display: grid;
+  /* activa el modo grid */
+  grid-template-columns: repeat(7, 1fr);
+  /* 3 columnas del mismo ancho */
+  gap: 10px;
+  /* espacio entre filas y columnas */
   margin-bottom: 3%;
 }
 
-.grid-nombres-mes div
-{
+.grid-nombres-mes div {
   text-align: center;
 }
 
-.calendario-mes
-{
+.calendario-mes {
   padding-top: 5%;
   width: 100%;
 }
 
-.grid-dias-mes
-{
+.grid-dias-mes {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* 7 columnas para los días */
+  grid-template-columns: repeat(7, 1fr);
+  /* 7 columnas para los días */
   gap: 5px;
 }
 
-.grid-dias-mes > div 
-{
+.grid-dias-mes>div {
   text-align: center;
   padding: 20%;
 }
@@ -159,32 +157,28 @@
   color: #F54927;
 }
 
-.weekend::after
-{
+.weekend::after {
   color: #F54927;
 }
 
 
-.nombre-dia
-{
+.nombre-dia {
   opacity: .5;
 }
 
-.numero-dia
-{
+.numero-dia {
   border-radius: 50%;
   border-radius: 8px;
-    /* border-radius: 50%; */
+  /* border-radius: 50%; */
   cursor: pointer;
   transition: all 0.2s ease-out;
   /* border: 2px solid transparent; */
 }
 
-.numero-dia:hover
-{
+.numero-dia:hover {
   /* border: 2px solid #32cccc; */
   background-color: #eee;
-  
+
 }
 
 
@@ -327,14 +321,14 @@
   color: white;
 }
 
-.sidebarForm label, .sidebarForm .col, .sidebarForm .col-6
-{
+.sidebarForm label,
+.sidebarForm .col,
+.sidebarForm .col-6 {
   padding-left: calc(var(--bs-gutter-x) * .07) !important;
   margin-bottom: 1% !important;
 }
 
-#descripcionHorario
-{
+#descripcionHorario {
   width: 100%;
   border-radius: 10px;
   resize: none;
@@ -344,27 +338,23 @@
   /* box-shadow: rgba(0, 0, 0, 0.4) 0px 1px 4px; */
 }
 
-.contenedor-iconos
-{
+.contenedor-iconos {
   background-color: rgba(50, 204, 204, .1);
   border: 2px solid #32cccc;
   border-radius: 10px;
   padding: 2% 3%;
 }
 
-.contenedor-iconos i 
-{
+.contenedor-iconos i {
   color: #32cccc;
 }
 
-#sidebarTitle1
-{
+#sidebarTitle1 {
   margin-bottom: 0%;
   font-size: 2rem;
 }
 
-#sidebarSubtitle1
-{
+#sidebarSubtitle1 {
   font-size: 1.2rem;
 }
 
@@ -402,7 +392,7 @@
   transform: scale(1);
   border: 1px solid #cccfdb;
   transition: all 0.2s ease;
-  box-shadow: 0 1px 1px rgba(0,16,75,0.05);
+  box-shadow: 0 1px 1px rgba(0, 16, 75, 0.05);
 }
 
 .checkbox-wrapper-4 .cbx span:first-child svg {
@@ -437,13 +427,13 @@
   visibility: hidden;
 }
 
-.checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child {
-   background: linear-gradient(145deg, #32cccc, #28a3a3);
+.checkbox-wrapper-4 .inp-cbx:checked+.cbx span:first-child {
+  background: linear-gradient(145deg, #32cccc, #28a3a3);
   border-color: #32cccc;
   animation: wave-4 0.4s ease;
 }
 
-.checkbox-wrapper-4 .inp-cbx:checked + .cbx span:first-child svg {
+.checkbox-wrapper-4 .inp-cbx:checked+.cbx span:first-child svg {
   stroke-dashoffset: 0;
 }
 
@@ -487,8 +477,7 @@
 }
 
 
-.sidebar .checkbox-wrapper-4 .cbx
-{
+.sidebar .checkbox-wrapper-4 .cbx {
   display: flex !important;
   gap: 10px;
   transform: translateX(-10px);
@@ -498,80 +487,80 @@
   margin-bottom: 5% !important;
 }
 
-.modal .checkbox-wrapper-4 .cbx span:first-child{
+.modal .checkbox-wrapper-4 .cbx span:first-child {
   transform: translateY(3px);
   margin-right: 1%;
 }
 
-.modal .checkbox-wrapper-4 .cbx:not(:last-child){
+.modal .checkbox-wrapper-4 .cbx:not(:last-child) {
   width: 100%;
 }
 
 
-.sidebar .checkbox-wrapper-4 .cbx span:last-child{
+.sidebar .checkbox-wrapper-4 .cbx span:last-child {
   padding: 0%;
   width: 100%;
 }
 
-.sidebar .checkbox-wrapper-4 .cbx span:first-child{
+.sidebar .checkbox-wrapper-4 .cbx span:first-child {
   width: 23px;
   height: 20px;
 }
 
 .color-picker-section {
-      margin-bottom: 28px;
-    }
+  margin-bottom: 28px;
+}
 
-    .color-picker-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+.color-picker-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 
-    .color-picker-label {
-      font-size: 15px;
-      color: #374151;
-      font-weight: 500;
-    }
+.color-picker-label {
+  font-size: 15px;
+  color: #374151;
+  font-weight: 500;
+}
 
-    /* Estilo del input color */
-    input[type="color"] {
-      width: 48px;
-      height: 48px;
-      border: 2px solid #e5e7eb;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.2s;
-      background: white;
-    }
+/* Estilo del input color */
+input[type="color"] {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: white;
+}
 
-    input[type="color"]:hover {
-      border-color: #14b8a6;
-      transform: scale(1.05);
-    }
+input[type="color"]:hover {
+  border-color: #14b8a6;
+  transform: scale(1.05);
+}
 
-    input[type="color"]::-webkit-color-swatch-wrapper {
-      padding: 4px;
-    }
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 4px;
+}
 
-    input[type="color"]::-webkit-color-swatch {
-      border: none;
-      border-radius: 6px;
-    }
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 6px;
+}
 
-    input[type="color"]::-moz-color-swatch {
-      border: none;
-      border-radius: 6px;
-    }
+input[type="color"]::-moz-color-swatch {
+  border: none;
+  border-radius: 6px;
+}
 
-    .color-value {
-      font-family: 'Courier New', monospace;
-      font-size: 13px;
-      color: #6b7280;
-      padding: 6px 12px;
-      background: #f9fafb;
-      border-radius: 6px;
-    }
+.color-value {
+  font-family: 'Courier New', monospace;
+  font-size: 13px;
+  color: #6b7280;
+  padding: 6px 12px;
+  background: #f9fafb;
+  border-radius: 6px;
+}
 
 .info-text {
   background: rgb(50, 204, 204, .1);
@@ -591,8 +580,7 @@
 }
 
 
-.label-disabled span:last-child
-{
+.label-disabled span:last-child {
   color: #aaa !important;
 }
 
@@ -600,19 +588,19 @@
   border-color: #cccfdb;
 }
 
-#descripcionHorario.is-invalid{
+#descripcionHorario.is-invalid {
   border: 1px solid #dc3545 !important;
 }
 
 
-.erroresHorario{
+.erroresHorario {
   position: fixed;
   z-index: 1000;
   top: 0;
   left: 0;
 }
 
-.erroresHorario ul{
+.erroresHorario ul {
   margin-bottom: 0%;
 }
 
@@ -622,8 +610,7 @@
   width: 100%;
 }
 
-.card-menu-horarios
-{
+.card-menu-horarios {
   padding: 5% !important;
   border-radius: 10px;
   margin-bottom: 5%;
@@ -631,17 +618,17 @@
   position: relative;
 }
 
-.card-menu-horarios span{
+.card-menu-horarios span {
   font-size: 1.3rem;
 }
 
 
-.card-menu-horarios .fechas{
+.card-menu-horarios .fechas {
   font-size: .8rem;
 
 }
 
-.card-menu-horarios .descripcion{
+.card-menu-horarios .descripcion {
   font-size: 1rem;
   margin-top: 3%;
   opacity: .9;
@@ -653,46 +640,39 @@
   right: 5%;
 }
 
-.card-menu-horarios .opciones-horario-link
-{
+.card-menu-horarios .opciones-horario-link {
   font-size: 1.2rem;
 }
 
-.card-menu-horarios .opciones-horario-link::after{
+.card-menu-horarios .opciones-horario-link::after {
   display: none !important;
 }
 
-.card-menu-horarios .opciones-horario-link:hover
-{
+.card-menu-horarios .opciones-horario-link:hover {
   opacity: .5;
 }
 
-.card-menu-horarios .dropdown-menu li
-{
+.card-menu-horarios .dropdown-menu li {
   padding: 2% 5%;
 }
 
-.card-menu-horarios .dropdown-menu li:hover
-{
+.card-menu-horarios .dropdown-menu li:hover {
   background-color: #eee;
 }
 
-.card-menu-horarios .dropdown-menu
-{
+.card-menu-horarios .dropdown-menu {
   width: 7rem !important;
   min-width: 7rem !important;
 }
 
-.card-menu-horarios .dropdown-menu a
-{
+.card-menu-horarios .dropdown-menu a {
   text-decoration: none;
   color: #111;
   width: 100%;
   padding-left: 7%;
 }
 
-.card-menu-horarios .dropdown-menu .delete-option
-{
+.card-menu-horarios .dropdown-menu .delete-option {
   color: #F54927;
 }
 
@@ -713,8 +693,7 @@
   padding: 15px !important;
 }
 
-.modal label
-{
+.modal label {
   margin-bottom: .5%;
   margin-top: 1% !important;
 }
@@ -849,7 +828,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  
+
 }
 
 .contenedor-loader2 {
@@ -866,12 +845,18 @@
   width: 100%;
 } */
 
-button.cargando, p.cargando, div.cargando, span.cargando, i.cargando{
+button.cargando,
+p.cargando,
+div.cargando,
+span.cargando,
+i.cargando {
   opacity: .7;
 }
 
-#modalEditarHorario input.cargando, #modalEditarHorario textarea.cargando, 
-#sidebar input.cargando, #sidebar textarea.cargando{
+#modalEditarHorario input.cargando,
+#modalEditarHorario textarea.cargando,
+#sidebar input.cargando,
+#sidebar textarea.cargando {
   color: #aaa;
 }
 
@@ -894,8 +879,7 @@ button.cargando, p.cargando, div.cargando, span.cargando, i.cargando{
   justify-content: center;
 }
 
-.modal .iconoModal div 
-{
+.modal .iconoModal div {
   background-color: #32cccc20;
   width: 80px;
   height: 80px;
@@ -905,14 +889,13 @@ button.cargando, p.cargando, div.cargando, span.cargando, i.cargando{
   justify-content: center;
 }
 
-.modal .iconoModal div i 
-{
+.modal .iconoModal div i {
   font-size: 3.2rem;
   color: #32cccc;
   transform: translateY(-3px);
 }
 
-.horario-a-borrar{
+.horario-a-borrar {
   border-radius: 10px;
   background-color: #32cccc20;
   padding: 10px;
@@ -924,14 +907,14 @@ button.cargando, p.cargando, div.cargando, span.cargando, i.cargando{
   margin: 0%;
 }
 
-.contenedor-a-borrar{
+.contenedor-a-borrar {
   display: flex;
   justify-content: center;
   margin-top: 3%;
   margin-bottom: 2%;
 }
 
-#nombre-horario-borrar{
+#nombre-horario-borrar {
   font-weight: bold;
   font-size: 1.2rem;
 }
@@ -941,3 +924,67 @@ button.cargando, p.cargando, div.cargando, span.cargando, i.cargando{
   margin-bottom: 0% !important;
 }
 
+/* .container-no-horarios {
+
+} */
+
+.header-card {
+  background: white;
+  border-radius: 12px;
+  padding: 40px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.header-card h1 {
+  font-size: 36px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1d1d1f;
+}
+
+.header-card p {
+  font-size: 16px;
+  color: #6e6e73;
+  line-height: 1.5;
+}
+
+.content-card {
+  background: white;
+  border-radius: 12px;
+  padding: 60px 40px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.icon-container {
+  width: 80px;
+  height: 80px;
+  background: #32cccc30;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.icon-container svg {
+  width: 40px;
+  height: 40px;
+  color: #32cccc;
+}
+
+.content-card h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 12px;
+}
+
+.content-card .message {
+  font-size: 16px;
+  color: #6e6e73;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto;
+}
