@@ -1207,6 +1207,39 @@ $(document).ready(() => {
         });
     })
 
+
+    /***********************************************************************************************************************************
+    *********************************************************  SELECCIÓN DE DÍA  *******************************************************
+    ***********************************************************************************************************************************/
+    
+    $(document).on('click', '.numero-dia', function(e){
+
+        e.preventDefault();
+        
+        $(this).addClass('dia-seleccionado')
+
+        if($('.dia-seleccionado').length === 1) {
+             $('#sidebar-cambio-horario').addClass('active');
+        }
+
+        $('#dias-seleccionados').text($('.dia-seleccionado').length)
+
+    })
+
+
+    $(document).on('click', '.dia-seleccionado', function(e){
+        
+        e.preventDefault();
+        $(this).removeClass('dia-seleccionado')
+
+        if($('.dia-seleccionado').length < 1) {
+             $('#sidebar-cambio-horario').removeClass('active');
+        }
+
+        $('#dias-seleccionados').text($('.dia-seleccionado').length)
+    })
+
+
     /***********************************************************************************************************************************
     *******************************************************  FUNCIONES DE AYUDA  *******************************************************
     ***********************************************************************************************************************************/
@@ -1274,7 +1307,7 @@ $(document).ready(() => {
                             dia.getMonth() === hoy.getMonth() &&
                             dia.getDate() === hoy.getDate();
                             let colorFondo = '';
-                            let nombre = ""
+                            let nombre = ''
                             if(horarios && Array.isArray(horarios) && horarios.length > 0 ) {
                                 
                                 horarios.forEach(function(horario){
@@ -1283,13 +1316,13 @@ $(document).ready(() => {
                                         let fechaInicio = new Date(horario.fecha_inicio); 
                                         let fechaFin    = new Date(horario.fecha_fin);
                                         let color       = horario.color;
-                                        nombre = horario.nombre
 
                                         fechaInicio.setHours(0, 0, 0, 0)
                                         fechaFin.setHours(0, 0, 0, 0)
 
                                         if(dia >= fechaInicio && dia <= fechaFin) {
                                             colorFondo = color;
+                                            nombre = horario.nombre
                                         }
                                     }
                                 })
@@ -1297,7 +1330,16 @@ $(document).ready(() => {
                             }
                             
 
-                        return `<div data-day="${dia.getDate()}/${dia.getMonth() + 1}/${dia.getFullYear()}" class="numero-dia${esHoy ? ' today' : ''} ${(dia.getDay() === 0 || dia.getDay() === 6) ? "weekend" : ""}" style="background-color: ${colorFondo}20; color: ${colorFondo}">${dia.getDate()}</div>`;
+                        return `
+<div
+  title="${(nombre !== '') ? nombre : ''}"
+  data-day="${dia.getDate()}/${dia.getMonth() + 1}/${dia.getFullYear()}"
+  class="numero-dia${esHoy ? ' today' : ''} ${(dia.getDay() === 0 || dia.getDay() === 6) ? "weekend" : ""} ${nombre !== '' ? 'con-horario' : ''}"
+  style="--colorFondo: ${colorFondo}; color: ${colorFondo};"
+>
+  ${dia.getDate()}
+</div>`;
+
                     }).join('');
                 }).join('')
                 }

@@ -113,7 +113,7 @@ class horariosModel extends Model
         $builder = $db->table('franjas_dias');
 
         // Creamos el horario
-        $query = $builder->select('franjas_horarias.id_franja_horaria,
+            $query = $builder->select('franjas_horarias.id_franja_horaria,
                                    franjas_horarias.id_tipo_horario,
                                    franjas_horarias.id_instalacion,
                                    franjas_horarias.hora_inicio_manana,
@@ -329,7 +329,7 @@ class horariosModel extends Model
 
         // Hago el select
         $query = $builder->select()
-                         ->where("id_tipo_horario_excepcio", $id_horario)
+                         ->where("id_tipo_horario_excepcion", $id_horario)
                          ->get();
 
         $result = $query->getResultArray();

@@ -265,7 +265,24 @@
     </div>
 
 
+    
 
+
+        <div class="sidebar" id="sidebar-cambio-horario">
+  <button id="btnCerraSidebarCrear" class="close-sidebar">✕</button>
+  <div class="sidebar-header">
+    <div style="display: flex; align-items: center; gap:10px; margin-bottom: 2%;">
+      <div class="contenedor-iconos"><i class="bi bi-calendar4-week"></i></div>
+      <h2 id="sidebarTitle1">Cambio de horario</h2>
+    </div>
+    <p id="sidebarSubtitle1">Días seleccionados: <span id="dias-seleccionados"></span></p>
+  </div>
+
+  <div class="sidebar-content">
+      <p>Seleccione el horario que desea establecer en dichas fechas</p>
+  </div>
+  <!-- Cierre sidebar-content -->
+</div>
 
     <div class="div-button">
         <a href="" id="btnCrearHorario" class="btn-primary-personal" style="width: 23%;">Crear horario<i class="bi bi-plus-circle"></i></a>

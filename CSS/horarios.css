@@ -181,6 +181,20 @@
 
 }
 
+.con-horario {
+  background-color: color-mix(in srgb, var(--colorFondo) 20%, transparent);
+  transition: background-color .3s ease;
+}
+
+.con-horario:hover {
+    background-color: color-mix(in srgb, var(--colorFondo) 40%, transparent);
+}
+
+.numero-dia.dia-seleccionado, .con-horario.dia-seleccionado {
+
+  background-color: #32cccc;
+  color: #fff !important;
+}
 
 .sidebar {
   position: fixed;

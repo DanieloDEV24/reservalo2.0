@@ -57,7 +57,7 @@ class Horarios extends BaseController
             $data = $post["data"];
             $id_instalacion = $data["instalacion"];
 
-            $horarios_existentes = $horariosModel->getHorarioFromFechas($data["fecha_inicio"], $data["fecha_fin"]);
+            $horarios_existentes = $horariosModel->getHorarioFromFechas(((intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? date('Y') . '-01-01' : $data["fecha_inicio"]), ((intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? (date("Y") + 1) . '-12-31' : $data["fecha_fin"]));
 
             if (intval($data["horario_especial"]) === 0 && count($horarios_existentes) > 0) {
 
