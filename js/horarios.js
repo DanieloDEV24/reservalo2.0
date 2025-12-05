@@ -199,8 +199,8 @@ $(document).ready(() => {
                 </div>
         `)
 
-        // Campos en los que las horas no cambian según el día
-        let igualNodeEditar = $(`
+    // Campos en los que las horas no cambian según el día
+    let igualNodeEditar = $(`
                 <div class="row" style="margin-bottom: 7%;">
                     <label for="">Horario de mañana</label>
                     <div class="col"><label for="horaInicioMananaHorarioEditar">Inicio:</label>
@@ -389,57 +389,55 @@ $(document).ready(() => {
         `)
 
     // Ponemos el año actual
-    $('#anoActual').text(new Date().getFullYear());   
+    $('#anoActual').text(new Date().getFullYear());
 
     // Al abrir la página de horarios, generamos el calendario del año actual 
     generarCalendario()
-    
+
     /***********************************************************************************************************************************
     ********************************************************  SELECCIÓN DE AÑO *********************************************************
     ***********************************************************************************************************************************/
 
     // Función en la que cambiamos al calendario del año siguiente
-    $(document).on('click', '#btn-next-year', function(){
+    $(document).on('click', '#btn-next-year', function () {
 
-        let spanYear = "" 
+        let spanYear = ""
         spanYear = parseInt($('#anoActual').text())
         let currentYear = new Date().getFullYear(); // --> Año actual
         let newYear = (spanYear === "") ? currentYear + 1 : spanYear + 1 // --> Año siguiente
 
 
         // De esta manera solo podemos mostrar hasta un año más es decir, si estamos en 2025, solo podemos mostrar hasta 2026
-        if(newYear > (currentYear + 1)){
-            return 
+        if (newYear > (currentYear + 1)) {
+            return
         }
-        else
-        {
-            
+        else {
+
             $('#anoActual').text(newYear); // --> // Mostramos el año en el texto
             generarCalendario(newYear); // --> Generamos el calendario de ese año
         }
 
-        
+
     })
 
     // Función en la que cambiamos al calendario del año pasado
-    $(document).on('click', '#btn-previous-year', function(){
+    $(document).on('click', '#btn-previous-year', function () {
 
-   let spanYear = "" 
-    spanYear = parseInt($('#anoActual').text())
-    let currentYear = new Date().getFullYear(); // --> Año actual
-    let newYear = (spanYear === "") ? currentYear - 1 : spanYear - 1 // --> Año siguiente
+        let spanYear = ""
+        spanYear = parseInt($('#anoActual').text())
+        let currentYear = new Date().getFullYear(); // --> Año actual
+        let newYear = (spanYear === "") ? currentYear - 1 : spanYear - 1 // --> Año siguiente
 
-    console.log(currentYear)
+        console.log(currentYear)
 
-    // De esta manera solo podemos mostrar hasta un año menos es decir, si estamos en 2025, solo podemos mostrar hasta 2024
-    if(newYear < (currentYear - 1)){
-        return 
-    }
-    else
-    {
-        $('#anoActual').text(newYear); // --> Mostramos el año en el texto
-        generarCalendario(newYear); // --> Generamos el calendario de este año
-    }    
+        // De esta manera solo podemos mostrar hasta un año menos es decir, si estamos en 2025, solo podemos mostrar hasta 2024
+        if (newYear < (currentYear - 1)) {
+            return
+        }
+        else {
+            $('#anoActual').text(newYear); // --> Mostramos el año en el texto
+            generarCalendario(newYear); // --> Generamos el calendario de este año
+        }
     })
 
 
@@ -448,7 +446,7 @@ $(document).ready(() => {
     ***********************************************************************************************************************************/
 
     // Función el que abrimos el sidebar (menú lateral) para crear un nuevo horario
-    $(document).on('click', '#btnCrearHorario', function(e){
+    $(document).on('click', '#btnCrearHorario', function (e) {
 
         e.preventDefault()
 
@@ -458,7 +456,7 @@ $(document).ready(() => {
 
 
     // Función con la que cerramos el sidebar (menú lateral) para crear un nuevo horario
-    $(document).on('click', '#btnCerraSidebarCrear', function(e){
+    $(document).on('click', '#btnCerraSidebarCrear', function (e) {
 
         e.preventDefault()
 
@@ -470,16 +468,14 @@ $(document).ready(() => {
     ***********************************************************************************************************************************/
 
     // Evento para cambiar los campos de selección de horas si el horario es distinto según el día. 
-    $(document).on('click', '#horarioDistinto', function(){
-        
+    $(document).on('click', '#horarioDistinto', function () {
+
         let checked = $(this).is(':checked'); // --> Comprobamos si está seleccionado o no
         contenedor.empty(); // --> Vaciamos el contenedor de selección de horas
-        if(checked)
-        {
+        if (checked) {
             contenedor.append(diferentesNode) // --> Si está seleccionado ponemos los campos de horario distinto
         }
-        else
-        {
+        else {
             contenedor.append(igualNode) // --> Si no está seleccionado ponemos los campos de horario igual
         }
 
@@ -487,22 +483,22 @@ $(document).ready(() => {
 
     // Evento para seleccionar si el horario es especial, es decir, son horarios pueden no tener fecha inicio y fin, puede ser para un 
     // solo día o unas fechas concretas para festejos como la semana de la juventud...
-    $(document).on('click', '#horarioEspecial', function(){
+    $(document).on('click', '#horarioEspecial', function () {
 
-        if($(this).is(':checked')){
+        if ($(this).is(':checked')) {
 
             $('#infoText').addClass('show')
-            if($('#horarioDistinto').is(':checked')){
-                
+            if ($('#horarioDistinto').is(':checked')) {
+
                 $('#horarioDistinto').prop('checked', false)
                 contenedor.empty();
                 contenedor.append(igualNode)
             }
-           
+
             // $('#horarioDistinto').prop('disabled', true)
             // $('.horarioDistinto label').addClass('label-disabled')
         }
-        else{
+        else {
             $('#infoText').removeClass('show')
             // $('#horarioDistinto').prop('disabled', false)
             // $('.horarioDistinto label').removeClass('label-disabled')
@@ -511,21 +507,21 @@ $(document).ready(() => {
 
     // Evento en el que guardamos el nuevo horario. Para ello recibimos los datos del formulario, los validamos y si todo es correcto
     // los enviamos al servidor para su creación
-    $(document).on('click', '#btnGuardarNuevoHorario', function(e) {
+    $(document).on('click', '#btnGuardarNuevoHorario', function (e) {
 
         e.preventDefault();
         let data = {}; // --> Objeto donde guardamos los datos del nuevo horario
         let errores = []; // --> Array donde guardamos los errores de validacion
 
         // Guardamos el id de la instalación a la que le asignamos el nuevo horario
-        data["instalacion"] = $('#instalacion').val() 
+        data["instalacion"] = $('#instalacion').val()
 
         // Obtenemos los datos del formulario
-        let nombre          = $('#nombreHorario').val();
-        let descripcion     = $('#descripcionHorario').val();
+        let nombre = $('#nombreHorario').val();
+        let descripcion = $('#descripcionHorario').val();
         let horarioEspecial = ($('#horarioEspecial').is(':checked')) ? 1 : 0;
-        let fechaInicio     = $('#fechaInicioHorario').val(); 
-        let fechaFin        = $('#fechaFinHorario').val();
+        let fechaInicio = $('#fechaInicioHorario').val();
+        let fechaFin = $('#fechaFinHorario').val();
         let horarioDistinto = $('#horarioDistinto').is(':checked');
 
         // Creamos los objetos de las fechas de la fecha de inicio y fin
@@ -534,7 +530,7 @@ $(document).ready(() => {
 
         // Obtenemos el año inicial y final
         let initialYear = fechaInicioDate.getFullYear()
-        let finishYear  = fechaFinDate.getFullYear();
+        let finishYear = fechaFinDate.getFullYear();
 
         // Obtenemos el año actual y el siguiente que son los años límites 
         let currentYear = new Date().getFullYear()
@@ -546,24 +542,24 @@ $(document).ready(() => {
         data["sin_fecha"] = 0;
 
         // Validaciones básicas
-        if (nombre !== "" && nombre.length < 50){
+        if (nombre !== "" && nombre.length < 50) {
             data["nombre"] = nombre;
             $('#nombreHorario').removeClass('is-invalid')
         }
-        else if (nombre.length > 50){
+        else if (nombre.length > 50) {
             errores.push("El nombre un máximo de 50 caracteres");
             $('#nombreHorario').addClass('is-invalid');
         }
-        else{
-            errores.push("Debe escribir un nombre para el horario.");  
+        else {
+            errores.push("Debe escribir un nombre para el horario.");
             $('#nombreHorario').addClass('is-invalid');
         }
 
-        if (descripcion !== "" && descripcion.length < 250){
+        if (descripcion !== "" && descripcion.length < 250) {
             data["descripcion"] = descripcion;
             $('#descripcionHorario').removeClass('is-invalid')
         }
-        else if (descripcion.length > 250){
+        else if (descripcion.length > 250) {
             errores.push("La descripción tiene un máximo de 250 caracteres");
             $('#descripcionHorario').addClass('is-invalid');
         }
@@ -572,17 +568,17 @@ $(document).ready(() => {
             $('#descripcionHorario').addClass('is-invalid');
         }
 
-        if (horarioEspecial === 0 && fechaInicio === ""){
+        if (horarioEspecial === 0 && fechaInicio === "") {
             errores.push("Si no es un horario especial debe seleccionar la fecha de inicio del horario.");
             $('#fechaInicioHorario').addClass('is-invalid')
             $('#fechaFinHorario').removeClass('is-invalid')
         }
-        else if (horarioEspecial === 0 && fechaFin === ""){
+        else if (horarioEspecial === 0 && fechaFin === "") {
             errores.push("Si no es un horario especial debe seleccionar la fecha de fin del horario.");
             $('#fechaInicioHorario').removeClass('is-invalid')
             $('#fechaFinHorario').addClass('is-invalid')
         }
-        else if(horarioEspecial === 1) {
+        else if (horarioEspecial === 1) {
 
             if (fechaInicio !== "" && fechaFin === "") {
                 errores.push("Si ha seleccionado una fecha de inicio, debe seleccionar también una fecha de fin.");
@@ -597,56 +593,50 @@ $(document).ready(() => {
             else if (fechaInicio === "" && fechaFin === "") {
                 data["sin_fecha"] = 1
             }
-            else if (fechaInicioDate > fechaFinDate ){
+            else if (fechaInicioDate > fechaFinDate) {
                 errores.push("La fecha de inicio no puede ser mayor que la final");
                 $('#fechaInicioHorario').addClass('is-invalid')
                 $('#fechaFinHorario').addClass('is-invalid')
             }
-            else if((initialYear < currentYear) || (finishYear < currentYear))
-            {
+            else if ((initialYear < currentYear) || (finishYear < currentYear)) {
                 errores.push("No se puede crear un horario para años anteriores al " + currentYear + ".");
                 $('#fechaInicioHorario').addClass('is-invalid')
                 $('#fechaFinHorario').removeClass('is-invalid')
             }
-            else if((finishYear > nextYear) || (initialYear > nextYear))
-            {
-                errores.push("No se puede crear un horario para años anteriores al " + nextYear +".");
+            else if ((finishYear > nextYear) || (initialYear > nextYear)) {
+                errores.push("No se puede crear un horario para años anteriores al " + nextYear + ".");
                 $('#fechaInicioHorario').removeClass('is-invalid')
                 $('#fechaFinHorario').addClass('is-invalid')
             }
-            else 
-            {
-                data['fecha_inicio'] = fechaInicio, 
-                data['fecha_fin'] = fechaFin
+            else {
+                data['fecha_inicio'] = fechaInicio,
+                    data['fecha_fin'] = fechaFin
                 $('#fechaInicioHorario').removeClass('is-invalid')
                 $('#fechaFinHorario').removeClass('is-invalid')
             }
         }
-        else if (fechaInicioDate > fechaFinDate ){
+        else if (fechaInicioDate > fechaFinDate) {
             errores.push("La fecha de inicio no puede ser mayor que la final");
             $('#fechaInicioHorario').addClass('is-invalid')
             $('#fechaFinHorario').addClass('is-invalid')
         }
-        else if((initialYear < currentYear) || (finishYear < currentYear))
-        {
+        else if ((initialYear < currentYear) || (finishYear < currentYear)) {
             errores.push("No se puede crear un horario para años anteriores al " + currentYear + ".");
             $('#fechaInicioHorario').addClass('is-invalid')
             $('#fechaFinHorario').removeClass('is-invalid')
         }
-        else if((finishYear > nextYear) || (initialYear > nextYear))
-        {
-            errores.push("No se puede crear un horario para años anteriores al " + nextYear +".");
+        else if ((finishYear > nextYear) || (initialYear > nextYear)) {
+            errores.push("No se puede crear un horario para años anteriores al " + nextYear + ".");
             $('#fechaInicioHorario').removeClass('is-invalid')
             $('#fechaFinHorario').addClass('is-invalid')
         }
-        else 
-        {
-            data['fecha_inicio'] = fechaInicio, 
-            data['fecha_fin'] = fechaFin
+        else {
+            data['fecha_inicio'] = fechaInicio,
+                data['fecha_fin'] = fechaFin
             $('#fechaInicioHorario').removeClass('is-invalid')
             $('#fechaFinHorario').removeClass('is-invalid')
         }
-        
+
         // ✅ Validación de horarios (incluye orden de horas)
         if (!validarHorarios(horarioDistinto, errores, data)) {
             console.error("Errores en horarios detectados");
@@ -661,10 +651,10 @@ $(document).ready(() => {
             $.ajax({
                 type: "POST",
                 url: "../crearHorario",
-                data: {data: data},
+                data: { data: data },
                 dataType: "json",
                 // Cargamos el loader y desactivamos los botones e inputs
-                beforeSend: function() {
+                beforeSend: function () {
                     $('#loaderNuevoHorario').show();
                     $('#btnGuardarNuevoHorario').addClass('cargando')
                     $('#sidebar input').addClass('cargando')
@@ -672,9 +662,9 @@ $(document).ready(() => {
                 },
                 // Mostramos la respuesta del servidor
                 success: function (response) {
-                
+
                     // Si todo ha ido bien
-                    if(response.success === true) {
+                    if (response.success === true) {
 
                         // Cerramos el loader y desactivamos las clases de carga 
                         $('#loaderNuevoHorario').hide();
@@ -696,18 +686,16 @@ $(document).ready(() => {
                         `)
 
                         // Añadimos el card del nuevo horario del menu de horarios
-                        if(parseInt(response.infoHorario["es_especial"]) === 0) {
+                        if (parseInt(response.infoHorario["es_especial"]) === 0) {
                             $('#horarios-normailes-menu').append(`
                             <div data-index="${response.infoHorario["id_tipo_horario"]}" style="background-color: ${response.infoHorario["color"]}20; color: ${response.infoHorario["color"]}; border: 2px solid ${response.infoHorario["color"]}90" class="card-menu-horarios">
                                 <span>${response.infoHorario["nombre"]}</span>
                                 <div class="fechas">
-                                    ${
-                                        new Date(response.infoHorario["fecha_inicio"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
-                                    }
+                                    ${new Date(response.infoHorario["fecha_inicio"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+                                }
                                     -
-                                    ${
-                                        new Date(response.infoHorario["fecha_fin"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
-                                    }
+                                    ${new Date(response.infoHorario["fecha_fin"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+                                }
                                 </div>
 
                                 <div class="descripcion">
@@ -729,13 +717,11 @@ $(document).ready(() => {
                             <div data-index="${response.infoHorario["id_tipo_horario"]}" style="background-color: ${response.infoHorario["color"]}20; color: ${response.infoHorario["color"]}; border: 2px solid ${response.infoHorario["color"]}90" class="card-menu-horarios">
                                 <span>${response.infoHorario["nombre"]}</span>
                                 <div class="fechas">
-                                    ${
-                                        new Date(response.infoHorario["fecha_inicio"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
-                                    }
+                                    ${new Date(response.infoHorario["fecha_inicio"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+                                }
                                     -
-                                    ${
-                                        new Date(response.infoHorario["fecha_fin"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
-                                    }
+                                    ${new Date(response.infoHorario["fecha_fin"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+                                }
                                 </div>
 
                                 <div class="descripcion">
@@ -759,15 +745,15 @@ $(document).ready(() => {
                         let divNombres = $('#modalHorarioExistente .nombres-horarios-existentes ul');
                         divNombres.empty();
 
-                        response.infoHorario.map(function(horario){
-                            
+                        response.infoHorario.map(function (horario) {
+
                             divNombres.append(`<li>${horario.nombre}</li>`)
                         })
 
                         $('#modalHorarioExistente').show();
-                    }                   
-                }, 
-                complete: function() {
+                    }
+                },
+                complete: function () {
                     $('#loaderNuevoHorario').hide();
                     $('#btnGuardarNuevoHorario').removeClass('cargando')
                     $('#sidebar input').removeClass('cargando')
@@ -778,7 +764,7 @@ $(document).ready(() => {
         else {
 
             let lista = $(`<ul></ul>`)
-            errores.map(function(error){
+            errores.map(function (error) {
                 let elemento = $(`<li>${error}</li>`);
                 lista.append(elemento)
             })
@@ -791,7 +777,7 @@ $(document).ready(() => {
     });
 
     // Evento para actualizar el valor del color seleccionado en la creación de un nuevo horario
-    $(document).on('change', '#scheduleColor', function(){
+    $(document).on('change', '#scheduleColor', function () {
 
         let color = $(this).val()
         $('#colorValue').text(color)
@@ -800,8 +786,8 @@ $(document).ready(() => {
     /***********************************************************************************************************************************
     *********************************************************  MENÚ DE HORARIOS  *******************************************************
     ***********************************************************************************************************************************/
-    
-    $(document).on('click', '#btnMenuHorario', function(e){
+
+    $(document).on('click', '#btnMenuHorario', function (e) {
 
         e.preventDefault()
         $('#sidebarMenu').addClass('active');
@@ -809,30 +795,30 @@ $(document).ready(() => {
     })
 
 
-    $(document).on('click', '#btnCerraSidebarMenu', function(e){
+    $(document).on('click', '#btnCerraSidebarMenu', function (e) {
 
         e.preventDefault()
         $('#sidebarMenu').removeClass('active');
     })
 
 
-    $(document).on('click', '.btnEditarHorario', function(e){
-        
+    $(document).on('click', '.btnEditarHorario', function (e) {
+
         e.preventDefault();
 
         let id = $(this).closest('.card-menu-horarios').data('index');
         console.log(id)
 
         $('#idHorarioEditar').val(id);
-        
+
         $.ajax({
             type: "POST",
             url: "../getHorario",
-            data: {id: id},
+            data: { id: id },
             dataType: "json",
             success: function (response) {
-                
-                if(response.succes === true){
+
+                if (response.succes === true) {
 
                     const horario = response.horario;
                     console.log(response)
@@ -844,16 +830,16 @@ $(document).ready(() => {
                     $('#fechaIincioHorarioEditar').val(horario.fecha_inicio)
                     $('#fechaFinHorarioEditar').val(horario.fecha_fin)
                     $('#horarioDistintoEditar').prop('checked', (parseInt(response.franjas[0].franja_unica) === 0))
-                    
+
                     $('#contenedor-input-horas-editar').empty
-                    
-                    if(parseInt(response.franjas[0].franja_unica) === 0) {
 
-                        $('#contenedor-input-horas-editar').append(diferentesNodeEditar)    
+                    if (parseInt(response.franjas[0].franja_unica) === 0) {
 
-                        response.franjas.map(function(franja){
+                        $('#contenedor-input-horas-editar').append(diferentesNodeEditar)
+
+                        response.franjas.map(function (franja) {
                             let diaSemana = parseInt(franja.id_dia_semana);
-                            
+
                             switch (diaSemana) {
                                 case 1: // Lunes
                                     $('#horaInicioMananaLunesHorarioEditar').val(franja.hora_inicio_manana === '00:00:00' ? '' : franja.hora_inicio_manana);
@@ -929,8 +915,8 @@ $(document).ready(() => {
 
     })
 
-    $(document).on('click', '#btnGurdarHorarioEditar', function(e){
-        
+    $(document).on('click', '#btnGurdarHorarioEditar', function (e) {
+
         e.preventDefault();
         let data = {};
         let errores = [];
@@ -950,25 +936,25 @@ $(document).ready(() => {
         let nextYear = (new Date().getFullYear() + 1);
 
         let initialYear = fechaInicioDate.getFullYear();
-        let finishYear  = fechaFinDate.getFullYear();
+        let finishYear = fechaFinDate.getFullYear();
 
         data["id_tipo_horario"] = $('#idHorarioEditar').val();
 
         // Validaciones básicas
-        if (nombre !== "" && nombre.length < 50){
+        if (nombre !== "" && nombre.length < 50) {
             data["nombre"] = nombre;
             $('#nombreHorarioEditar').removeClass('is-invalid')
         }
-        else if (nombre.length > 50){
-            errores.push("El nombre debe tener un máximo de 50 caracteres");  
+        else if (nombre.length > 50) {
+            errores.push("El nombre debe tener un máximo de 50 caracteres");
             $('#nombreHorarioEditar').addClass('is-invalid');
         }
-        else{
-            errores.push("Debe escribir un nombre para el horario.");  
+        else {
+            errores.push("Debe escribir un nombre para el horario.");
             $('#nombreHorarioEditar').addClass('is-invalid');
         }
 
-        if (descripcion !== "" && descripcion.length < 250){
+        if (descripcion !== "" && descripcion.length < 250) {
             data["descripcion"] = descripcion;
             $('#descripcionHorarioEditar').removeClass('is-invalid')
         }
@@ -981,41 +967,38 @@ $(document).ready(() => {
             $('#descripcionHorarioEditar').addClass('is-invalid');
         }
 
-        if (fechaInicio === ""){
+        if (fechaInicio === "") {
             errores.push("Si no es un horario especial debe seleccionar la fecha de inicio del horario.");
             $('#fechaIincioHorarioEditar').addClass('is-invalid')
             $('#fechaFinHorarioEditar').removeClass('is-invalid')
         }
-        else if (fechaFin === ""){
+        else if (fechaFin === "") {
             errores.push("Si no es un horario especial debe seleccionar la fecha de fin del horario.");
             $('#fechaIincioHorarioEditar').removeClass('is-invalid')
             $('#fechaFinHorarioEditar').addClass('is-invalid')
         }
-        else if (fechaInicioDate > fechaFinDate ){
+        else if (fechaInicioDate > fechaFinDate) {
             errores.push("La fecha de inicio no puede ser mayor que la final");
             $('#fechaIincioHorarioEditar').addClass('is-invalid')
             $('#fechaFinHorarioEditar').addClass('is-invalid')
         }
-        else if((initialYear < currentYear) || (finishYear < currentYear))
-        {
+        else if ((initialYear < currentYear) || (finishYear < currentYear)) {
             errores.push("No se puede crear un horario para años anteriores al " + currentYear + ".");
             $('#fechaIincioHorarioEditar').addClass('is-invalid')
             $('#fechaFinHorarioEditar').removeClass('is-invalid')
         }
-        else if((finishYear > nextYear) || (initialYear > nextYear))
-        {
-            errores.push("No se puede crear un horario para años anteriores al " + nextYear +".");
+        else if ((finishYear > nextYear) || (initialYear > nextYear)) {
+            errores.push("No se puede crear un horario para años anteriores al " + nextYear + ".");
             $('#fechaIincioHorarioEditar').removeClass('is-invalid')
             $('#fechaFinHorarioEditar').addClass('is-invalid')
         }
-        else 
-        {
-            data['fecha_inicio'] = fechaInicio, 
-            data['fecha_fin'] = fechaFin
+        else {
+            data['fecha_inicio'] = fechaInicio,
+                data['fecha_fin'] = fechaFin
             $('#fechaIincioHorarioEditar').removeClass('is-invalid')
             $('#fechaFinHorarioEditar').removeClass('is-invalid')
         }
-        
+
         data["franja_unica"] = horarioDistinto ? 0 : 1;
         data["instalacion"] = $('#idInstalacion').val();
 
@@ -1025,15 +1008,15 @@ $(document).ready(() => {
         }
 
         data["color"] = color;
-        
+
         $('#errores-editar-horario').empty();
 
-        if(errores.length === 0) {
+        if (errores.length === 0) {
             console.log(data);
             $.ajax({
                 type: "POST",
                 url: "../editarHorario",
-                data: {data: data},
+                data: { data: data },
                 dataType: "json",
                 beforeSend: function () {
                     $('#modalEditarHorario').addClass('show');
@@ -1043,8 +1026,8 @@ $(document).ready(() => {
                     $('#modalEditarHorario textarea').addClass('cargando')
                 },
                 success: function (response) {
-                    
-                    if(response.success === true) {
+
+                    if (response.success === true) {
 
                         $('#loaderModalEditar').hide();
                         $('#modalEditarHorario .modal-footer button').removeClass('cargando')
@@ -1056,7 +1039,7 @@ $(document).ready(() => {
                         $('#modalEditarHorario').hide();
 
                         $('#sidebarMenu').find((`div.card-menu-horarios[data-index='${response.infoHorario["id_tipo_horario"]}'] span`)).text(response.infoHorario["nombre"]);
-                        
+
                         const { fecha_inicio, fecha_fin } = response.infoHorario;
 
                         const formatDate = (dateString) => {
@@ -1072,31 +1055,31 @@ $(document).ready(() => {
                         $('#sidebarMenu').find((`div.card-menu-horarios[data-index='${response.infoHorario["id_tipo_horario"]}'] .fechas`)).text(cadena);
                         $('#sidebarMenu').find((`div.card-menu-horarios[data-index='${response.infoHorario["id_tipo_horario"]}'] .descripcion`)).text(response.infoHorario["descripcion"]);
                         $('#sidebarMenu').find((`div.card-menu-horarios[data-index='${response.infoHorario["id_tipo_horario"]}']`)).css({
-                              backgroundColor: `${color}20`, // el "20" al final es transparencia en hex (≈ 12%)
-                              color: color,
-                              border: `2px solid ${color}90` // "90" es ≈ 56% de opacidad
-                            }
+                            backgroundColor: `${color}20`, // el "20" al final es transparencia en hex (≈ 12%)
+                            color: color,
+                            border: `2px solid ${color}90` // "90" es ≈ 56% de opacidad
+                        }
                         )
 
 
                         $('#sidebarMenu').find((`div.card-menu-horarios[data-index='${response.infoHorario["id_tipo_horario"]}'] .opciones-horario-link`)).css({
-                              color: color,
-                            }
+                            color: color,
+                        }
                         )
 
                     }
                 },
-                complete: function() {
+                complete: function () {
                     $('#loaderModalEditar').hide();
                     $('#modalEditarHorario .modal-footer button').removeClass('cargando')
                     $('#modalEditarHorario input').removeClass('cargando')
                     $('#modalEditarHorario textarea').removeClass('cargando')
-                } 
+                }
             });
         }
         else {
             let lista = $(`<ul></ul>`)
-            errores.map(function(error){
+            errores.map(function (error) {
                 let elemento = $(`<li>${error}</li>`);
                 lista.append(elemento)
             })
@@ -1106,14 +1089,14 @@ $(document).ready(() => {
             $('#errores-editar-horario').append(alertBox);
         }
 
-        
+
     })
 
-    $(document).on('change', '#horarioDistintoEditar', function(){
-        
+    $(document).on('change', '#horarioDistintoEditar', function () {
+
         let checked = $(this).is(':checked');
         $('#contenedor-input-horas-editar').empty();
-        if(checked){
+        if (checked) {
             $('#contenedor-input-horas-editar').append(diferentesNodeEditar)
         }
         else {
@@ -1121,25 +1104,25 @@ $(document).ready(() => {
         }
     })
 
-    $(document).on('change', '#scheduleColorEditar', function(){
+    $(document).on('change', '#scheduleColorEditar', function () {
         let color = $(this).val()
         $('#colorValueEditar').text(color)
     })
 
-    $(document).on('click', '.modal .btn-close', function(e){
+    $(document).on('click', '.modal .btn-close', function (e) {
         e.preventDefault()
         $(this).closest('.modal').removeClass('show');
         $(this).closest('.modal').hide();
     })
 
-    $(document).on('click', '.modal .btn-secondary-personal', function(e){
+    $(document).on('click', '.modal .btn-secondary-personal', function (e) {
         e.preventDefault()
         $(this).closest('.modal').removeClass('show');
         $(this).closest('.modal').hide();
     })
 
 
-    $(document).on('click', '.btnBorrarHorario', function(e){
+    $(document).on('click', '.btnBorrarHorario', function (e) {
         e.preventDefault();
 
         let id = $(this).closest('.card-menu-horarios').data('index');
@@ -1147,11 +1130,11 @@ $(document).ready(() => {
         $.ajax({
             type: "POST",
             url: "../getHorario",
-            data: {id: id},
+            data: { id: id },
             dataType: "JSON",
             success: function (response) {
-                
-                if(response.succes === true) {
+
+                if (response.succes === true) {
 
                     $('#idHorarioBorrar').val(id);
                     $('#nombre-horario-borrar').text(response.horario.nombre);
@@ -1165,7 +1148,7 @@ $(document).ready(() => {
     })
 
 
-    $(document).on('click', '#aceptarBorrarHorario', function(e){
+    $(document).on('click', '#aceptarBorrarHorario', function (e) {
         e.preventDefault();
 
         let id = $('#idHorarioBorrar').val();
@@ -1173,9 +1156,9 @@ $(document).ready(() => {
         $.ajax({
             type: "POST",
             url: "../borrarHorario",
-            data: {id: id},
+            data: { id: id },
             dataType: "JSON",
-            beforeSend: function() {
+            beforeSend: function () {
                 $('#loaderModalBorrar').show();
                 $('#modalBorrarHorario button').addClass('cargando');
                 $('#modalBorrarHorario p').addClass('cargando');
@@ -1184,7 +1167,7 @@ $(document).ready(() => {
 
             },
             success: function (response) {
-                if(response.success === true) {
+                if (response.success === true) {
                     $('#loaderModalBorrar').hide();
                     $('#modalBorrarHorario button').removeClass('cargando');
                     $('#modalBorrarHorario p').removeClass('cargando');
@@ -1196,13 +1179,13 @@ $(document).ready(() => {
                     $('.legend').find(`div[data-index='${id}']`).remove();
                     generarCalendario();
                 }
-            }, 
-            complete: function() {
-                    $('#loaderModalBorrar').hide();
-                    $('#modalBorrarHorario button').removeClass('cargando');
-                    $('#modalBorrarHorario p').removeClass('cargando');
-                    $('#modalBorrarHorario span').removeClass('cargando');
-                    $('#modalBorrarHorario .iconoModal i').removeClass('cargando');
+            },
+            complete: function () {
+                $('#loaderModalBorrar').hide();
+                $('#modalBorrarHorario button').removeClass('cargando');
+                $('#modalBorrarHorario p').removeClass('cargando');
+                $('#modalBorrarHorario span').removeClass('cargando');
+                $('#modalBorrarHorario .iconoModal i').removeClass('cargando');
             }
         });
     })
@@ -1211,32 +1194,102 @@ $(document).ready(() => {
     /***********************************************************************************************************************************
     *********************************************************  SELECCIÓN DE DÍA  *******************************************************
     ***********************************************************************************************************************************/
-    
-    $(document).on('click', '.numero-dia', function(e){
+
+    $(document).on('click', '.numero-dia', function (e) {
 
         e.preventDefault();
-        
-        $(this).addClass('dia-seleccionado')
 
-        if($('.dia-seleccionado').length === 1) {
-             $('#sidebar-cambio-horario').addClass('active');
+        if ($(this).text() !== '') {
+
+            $(this).addClass('dia-seleccionado')
+            let div;
+            let colorFondo = $(this).data('color');
+            if(colorFondo === "") {
+                div = $(`<div data-color="#fff" style="width: 40px; height: 40px; border-radius: 5px; background-color: #fff; border: 1px solid #000"></div>`)
+                colorFondo = "#fff"
+            }
+            else {
+                div = $(`<div data-color="${colorFondo}" style="width: 40px; height: 40px; border-radius: 5px; background-color: ${colorFondo}50; color: ${colorFondo}; border: 1px solid ${colorFondo}; display: flex; align-items: center; justify-content: center;">
+                    </div>`)
+            }
+
+            let existe = false
+            
+            $('.horarios-old div').map(function(i, divHorario){
+                let colorHorario = $(divHorario).data('color');
+
+                if(colorFondo === colorHorario) existe = true;
+            })
+
+            if(!existe){
+                $('.horarios-old').append(div);
+            }
+
+            if ($('.dia-seleccionado').length === 1) {
+
+                $.ajax({
+                type: "GET",
+                url: "../getHorariosChange",
+                dataType: "json",
+                success: function (response) {
+
+                    response.horarios.map((horario) => {
+                        let cardHorario = $(`
+                            <div data-index="${horario.id_tipo_horario}" data-color="${horario.color}" 
+                            style="background-color: ${horario.color}20; color: ${horario.color}; border: 2px solid ${horario.color}90" 
+                            class="card-menu-horarios card-cambio-horario">
+
+                                <span>${horario.nombre}</span>
+
+                                <div class="descripcion">
+                                    ${horario.descripcion}
+                                </div>
+
+                            </div>`)
+
+                            $('.contenedor-cambio-horarios-card').empty();
+                            $('.contenedor-cambio-horarios-card').append(cardHorario);
+                        })
+                    }
+                });
+
+
+                $('#sidebar-cambio-horario').addClass('active');
+                $('#calendario').addClass('seleccion-dia')
+                $('#contenedor-loader-horario').addClass('seleccion-dia')
+            }
+
+            $('#dias-seleccionados').text($('.dia-seleccionado').length)
         }
-
-        $('#dias-seleccionados').text($('.dia-seleccionado').length)
 
     })
 
 
-    $(document).on('click', '.dia-seleccionado', function(e){
+    $(document).on('click', '.contenedor-cambio-horarios-card .card-cambio-horario', function(e){
+
+        e.preventDefault();
         
+        $('.horarios-new').empty();
+
+        let colorFondo = $(this).data('color');
+        let div = $(`<div data-color="${colorFondo}" style="width: 40px; height: 40px; border-radius: 5px; background-color: ${colorFondo}"></div>`)
+        
+        $('.horarios-new').append(div)  
+    })
+
+    $(document).on('click', '.dia-seleccionado', function (e) {
+
         e.preventDefault();
         $(this).removeClass('dia-seleccionado')
 
-        if($('.dia-seleccionado').length < 1) {
-             $('#sidebar-cambio-horario').removeClass('active');
+        if ($('.dia-seleccionado').length < 1) {
+            $('#sidebar-cambio-horario').removeClass('active');
+            $('#calendario').removeClass('seleccion-dia')
+            $('#contenedor-loader-horario').removeClass('seleccion-dia')
         }
 
         $('#dias-seleccionados').text($('.dia-seleccionado').length)
+
     })
 
 
@@ -1252,26 +1305,26 @@ $(document).ready(() => {
         $.ajax({
             type: "POST",
             url: "../comprobarHorarios",
-            data: {year: currentYear},
+            data: { year: currentYear },
             dataType: "json",
             beforeSend: function (event) {
-                
+
                 // Mostrar loader
                 $("#loaderCalendario").show();
             },
             success: function (response) {
-                
+
                 let horarios = response.horarios;
                 renderizadoCalendario(currentYear, horarios)
-            }, 
+            },
             complete: function (event) {
-                
+
                 // Ocultar loader siempre, éxito o error
                 $("#loaderCalendario").hide();
             }
         });
 
-        
+
     }
 
     function renderizadoCalendario(year, horarios = null) {
@@ -1306,32 +1359,32 @@ $(document).ready(() => {
                         const esHoy = dia.getFullYear() === hoy.getFullYear() &&
                             dia.getMonth() === hoy.getMonth() &&
                             dia.getDate() === hoy.getDate();
-                            let colorFondo = '';
-                            let nombre = ''
-                            if(horarios && Array.isArray(horarios) && horarios.length > 0 ) {
-                                
-                                horarios.forEach(function(horario){
-                                    
-                                    if(parseInt(horario.sin_fecha) === 0) {
-                                        let fechaInicio = new Date(horario.fecha_inicio); 
-                                        let fechaFin    = new Date(horario.fecha_fin);
-                                        let color       = horario.color;
+                        let colorFondo = '';
+                        let nombre = ''
+                        if (horarios && Array.isArray(horarios) && horarios.length > 0) {
 
-                                        fechaInicio.setHours(0, 0, 0, 0)
-                                        fechaFin.setHours(0, 0, 0, 0)
+                            horarios.forEach(function (horario) {
 
-                                        if(dia >= fechaInicio && dia <= fechaFin) {
-                                            colorFondo = color;
-                                            nombre = horario.nombre
-                                        }
+                                if (parseInt(horario.sin_fecha) === 0) {
+                                    let fechaInicio = new Date(horario.fecha_inicio);
+                                    let fechaFin = new Date(horario.fecha_fin);
+                                    let color = horario.color;
+
+                                    fechaInicio.setHours(0, 0, 0, 0)
+                                    fechaFin.setHours(0, 0, 0, 0)
+
+                                    if (dia >= fechaInicio && dia <= fechaFin) {
+                                        colorFondo = color;
+                                        nombre = horario.nombre
                                     }
-                                })
+                                }
+                            })
 
-                            }
-                            
+                        }
+
 
                         return `
-<div
+<div data-color="${colorFondo}"
   title="${(nombre !== '') ? nombre : ''}"
   data-day="${dia.getDate()}/${dia.getMonth() + 1}/${dia.getFullYear()}"
   class="numero-dia${esHoy ? ' today' : ''} ${(dia.getDay() === 0 || dia.getDay() === 6) ? "weekend" : ""} ${nombre !== '' ? 'con-horario' : ''}"
@@ -1387,270 +1440,270 @@ $(document).ready(() => {
     }
 
 
-function validarHorarios(horarioDistinto, errores, dataOpcional) {
-    let valido = true;
-    let dataHorarios = null;
+    function validarHorarios(horarioDistinto, errores, dataOpcional) {
+        let valido = true;
+        let dataHorarios = null;
 
-    function horaMenor(h1, h2) {
-        return h1.localeCompare(h2) < 0;
-    }
+        function horaMenor(h1, h2) {
+            return h1.localeCompare(h2) < 0;
+        }
 
-    const LIMITE_MANANA = "15:00";
-    const LIMITE_TARDE = "16:00";
+        const LIMITE_MANANA = "15:00";
+        const LIMITE_TARDE = "16:00";
 
-    if (horarioDistinto === true) {
-        dataHorarios = {};
-        const dias = ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"];
-        const turnos = ["Manana","Tarde"];
+        if (horarioDistinto === true) {
+            dataHorarios = {};
+            const dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
+            const turnos = ["Manana", "Tarde"];
 
-        dias.forEach(dia => {
-            const claveDia = dia.toLowerCase();
-            dataHorarios[claveDia] = { manana: null, tarde: null };
+            dias.forEach(dia => {
+                const claveDia = dia.toLowerCase();
+                dataHorarios[claveDia] = { manana: null, tarde: null };
+
+                turnos.forEach(turno => {
+                    const inicio = $(`#horaInicio${turno}${dia}Horario`).val();
+                    const fin = $(`#horaFin${turno}${dia}Horario`).val();
+                    const campos = $(`#horaInicio${turno}${dia}Horario, #horaFin${turno}${dia}Horario`);
+                    campos.removeClass('is-invalid');
+
+                    if ((inicio && !fin) || (!inicio && fin)) {
+                        valido = false;
+                        errores.push(`Debe completar ambas horas (${turno.toLowerCase()}) del ${dia}.`);
+                        campos.addClass('is-invalid');
+                    } else if (inicio && fin && !horaMenor(inicio, fin)) {
+                        valido = false;
+                        errores.push(`La hora de inicio (${inicio}) debe ser menor que la de fin (${fin}) en ${turno.toLowerCase()} del ${dia}.`);
+                        campos.addClass('is-invalid');
+                    }
+
+                    // 🔧 CAMBIO: siempre guardamos el objeto, incluso si están vacíos
+                    dataHorarios[claveDia][turno.toLowerCase()] = {
+                        inicio: inicio || "",
+                        fin: fin || ""
+                    };
+
+                    // 🔹 Validaciones adicionales
+                    if (inicio && fin) {
+                        if (turno === "Manana" && fin > LIMITE_MANANA) {
+                            valido = false;
+                            errores.push(`La hora de fin de la mañana del ${dia} (${fin}) no puede ser posterior a las ${LIMITE_MANANA}.`);
+                            $(`#horaFinManana${dia}Horario`).addClass('is-invalid');
+                        }
+
+                        if (turno === "Tarde" && inicio < LIMITE_TARDE) {
+                            valido = false;
+                            errores.push(`La hora de inicio de la tarde del ${dia} (${inicio}) no puede ser anterior a las ${LIMITE_TARDE}.`);
+                            $(`#horaInicioTarde${dia}Horario`).addClass('is-invalid');
+                        }
+                    }
+                });
+
+                // 🔹 Validación entre turnos
+                const maniana = dataHorarios[claveDia].manana;
+                const tarde = dataHorarios[claveDia].tarde;
+
+                if (maniana.inicio && maniana.fin && tarde.inicio && tarde.fin) {
+                    if (!horaMenor(maniana.fin, tarde.inicio)) {
+                        valido = false;
+                        errores.push(`El horario de la mañana del ${dia} (${maniana.fin}) debe ser anterior al inicio de la tarde (${tarde.inicio}).`);
+                        $(`#horaFinManana${dia}Horario, #horaInicioTarde${dia}Horario`).addClass('is-invalid');
+                    }
+                }
+            });
+
+        } else {
+            dataHorarios = { manana: null, tarde: null };
+            const turnos = ["Manana", "Tarde"];
 
             turnos.forEach(turno => {
-                const inicio = $(`#horaInicio${turno}${dia}Horario`).val();
-                const fin    = $(`#horaFin${turno}${dia}Horario`).val();
-                const campos = $(`#horaInicio${turno}${dia}Horario, #horaFin${turno}${dia}Horario`);
+                const inicio = $(`#horaInicio${turno}Horario`).val();
+                const fin = $(`#horaFin${turno}Horario`).val();
+                const campos = $(`#horaInicio${turno}Horario, #horaFin${turno}Horario`);
                 campos.removeClass('is-invalid');
 
                 if ((inicio && !fin) || (!inicio && fin)) {
                     valido = false;
-                    errores.push(`Debe completar ambas horas (${turno.toLowerCase()}) del ${dia}.`);
+                    errores.push(`Debe completar ambas horas (${turno.toLowerCase()}) del horario general.`);
                     campos.addClass('is-invalid');
                 } else if (inicio && fin && !horaMenor(inicio, fin)) {
                     valido = false;
-                    errores.push(`La hora de inicio (${inicio}) debe ser menor que la de fin (${fin}) en ${turno.toLowerCase()} del ${dia}.`);
+                    errores.push(`La hora de inicio (${inicio}) debe ser menor que la de fin (${fin}) en el turno de ${turno.toLowerCase()}.`);
                     campos.addClass('is-invalid');
                 }
 
-                // 🔧 CAMBIO: siempre guardamos el objeto, incluso si están vacíos
-                dataHorarios[claveDia][turno.toLowerCase()] = { 
-                    inicio: inicio || "", 
-                    fin: fin || "" 
+                // 🔧 CAMBIO: siempre guardamos los campos, aunque estén vacíos
+                dataHorarios[turno.toLowerCase()] = {
+                    inicio: inicio || "",
+                    fin: fin || ""
                 };
 
-                // 🔹 Validaciones adicionales
+                // 🔹 Validaciones de límites
                 if (inicio && fin) {
                     if (turno === "Manana" && fin > LIMITE_MANANA) {
                         valido = false;
-                        errores.push(`La hora de fin de la mañana del ${dia} (${fin}) no puede ser posterior a las ${LIMITE_MANANA}.`);
-                        $(`#horaFinManana${dia}Horario`).addClass('is-invalid');
+                        errores.push(`La hora de fin de la mañana (${fin}) no puede ser posterior a las ${LIMITE_MANANA}.`);
+                        $(`#horaFinMananaHorario`).addClass('is-invalid');
                     }
 
                     if (turno === "Tarde" && inicio < LIMITE_TARDE) {
                         valido = false;
-                        errores.push(`La hora de inicio de la tarde del ${dia} (${inicio}) no puede ser anterior a las ${LIMITE_TARDE}.`);
-                        $(`#horaInicioTarde${dia}Horario`).addClass('is-invalid');
+                        errores.push(`La hora de inicio de la tarde (${inicio}) no puede ser anterior a las ${LIMITE_TARDE}.`);
+                        $(`#horaInicioTardeHorario`).addClass('is-invalid');
                     }
                 }
             });
 
             // 🔹 Validación entre turnos
-            const maniana = dataHorarios[claveDia].manana;
-            const tarde = dataHorarios[claveDia].tarde;
+            const maniana = dataHorarios.manana;
+            const tarde = dataHorarios.tarde;
 
             if (maniana.inicio && maniana.fin && tarde.inicio && tarde.fin) {
                 if (!horaMenor(maniana.fin, tarde.inicio)) {
                     valido = false;
-                    errores.push(`El horario de la mañana del ${dia} (${maniana.fin}) debe ser anterior al inicio de la tarde (${tarde.inicio}).`);
-                    $(`#horaFinManana${dia}Horario, #horaInicioTarde${dia}Horario`).addClass('is-invalid');
+                    errores.push(`El horario de la mañana (${maniana.fin}) debe ser anterior al inicio de la tarde (${tarde.inicio}) en el horario general.`);
+                    $(`#horaFinMananaHorario, #horaInicioTardeHorario`).addClass('is-invalid');
                 }
-            }
-        });
-
-    } else {
-        dataHorarios = { manana: null, tarde: null };
-        const turnos = ["Manana","Tarde"];
-
-        turnos.forEach(turno => {
-            const inicio = $(`#horaInicio${turno}Horario`).val();
-            const fin    = $(`#horaFin${turno}Horario`).val();
-            const campos = $(`#horaInicio${turno}Horario, #horaFin${turno}Horario`);
-            campos.removeClass('is-invalid');
-
-            if ((inicio && !fin) || (!inicio && fin)) {
-                valido = false;
-                errores.push(`Debe completar ambas horas (${turno.toLowerCase()}) del horario general.`);
-                campos.addClass('is-invalid');
-            } else if (inicio && fin && !horaMenor(inicio, fin)) {
-                valido = false;
-                errores.push(`La hora de inicio (${inicio}) debe ser menor que la de fin (${fin}) en el turno de ${turno.toLowerCase()}.`);
-                campos.addClass('is-invalid');
-            }
-
-            // 🔧 CAMBIO: siempre guardamos los campos, aunque estén vacíos
-            dataHorarios[turno.toLowerCase()] = { 
-                inicio: inicio || "", 
-                fin: fin || "" 
-            };
-
-            // 🔹 Validaciones de límites
-            if (inicio && fin) {
-                if (turno === "Manana" && fin > LIMITE_MANANA) {
-                    valido = false;
-                    errores.push(`La hora de fin de la mañana (${fin}) no puede ser posterior a las ${LIMITE_MANANA}.`);
-                    $(`#horaFinMananaHorario`).addClass('is-invalid');
-                }
-
-                if (turno === "Tarde" && inicio < LIMITE_TARDE) {
-                    valido = false;
-                    errores.push(`La hora de inicio de la tarde (${inicio}) no puede ser anterior a las ${LIMITE_TARDE}.`);
-                    $(`#horaInicioTardeHorario`).addClass('is-invalid');
-                }
-            }
-        });
-
-        // 🔹 Validación entre turnos
-        const maniana = dataHorarios.manana;
-        const tarde = dataHorarios.tarde;
-
-        if (maniana.inicio && maniana.fin && tarde.inicio && tarde.fin) {
-            if (!horaMenor(maniana.fin, tarde.inicio)) {
-                valido = false;
-                errores.push(`El horario de la mañana (${maniana.fin}) debe ser anterior al inicio de la tarde (${tarde.inicio}) en el horario general.`);
-                $(`#horaFinMananaHorario, #horaInicioTardeHorario`).addClass('is-invalid');
             }
         }
+
+        if (valido && dataOpcional && typeof dataOpcional === 'object') {
+            dataOpcional['horarios'] = dataHorarios;
+        }
+
+        return valido;
     }
 
-    if (valido && dataOpcional && typeof dataOpcional === 'object') {
-        dataOpcional['horarios'] = dataHorarios;
-    }
-
-    return valido;
-}
 
 
+    function validarHorariosEditar(horarioDistinto, errores, dataOpcional) {
+        let valido = true;
+        let dataHorarios = null;
 
-function validarHorariosEditar(horarioDistinto, errores, dataOpcional) {
-    let valido = true;
-    let dataHorarios = null;
+        function horaMenor(h1, h2) {
+            return h1.localeCompare(h2) < 0;
+        }
 
-    function horaMenor(h1, h2) {
-        return h1.localeCompare(h2) < 0;
-    }
+        const LIMITE_MANANA = "15:00";
+        const LIMITE_TARDE = "16:00";
 
-    const LIMITE_MANANA = "15:00";
-    const LIMITE_TARDE = "16:00";
+        if (horarioDistinto === true) {
+            dataHorarios = {};
+            const dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
+            const turnos = ["Manana", "Tarde"];
 
-    if (horarioDistinto === true) {
-        dataHorarios = {};
-        const dias = ["Lunes","Martes","Miercoles","Jueves","Viernes","Sabado","Domingo"];
-        const turnos = ["Manana","Tarde"];
+            dias.forEach(dia => {
+                const claveDia = dia.toLowerCase();
+                dataHorarios[claveDia] = { manana: null, tarde: null };
 
-        dias.forEach(dia => {
-            const claveDia = dia.toLowerCase();
-            dataHorarios[claveDia] = { manana: null, tarde: null };
+                turnos.forEach(turno => {
+                    const inicio = $(`#horaInicio${turno}${dia}HorarioEditar`).val();
+                    const fin = $(`#horaFin${turno}${dia}HorarioEditar`).val();
+                    const campos = $(`#horaInicio${turno}${dia}HorarioEditar, #horaFin${turno}${dia}HorarioEditar`);
+                    campos.removeClass('is-invalid');
 
-            turnos.forEach(turno => {
-                const inicio = $(`#horaInicio${turno}${dia}HorarioEditar`).val();
-                const fin    = $(`#horaFin${turno}${dia}HorarioEditar`).val();
-                const campos = $(`#horaInicio${turno}${dia}HorarioEditar, #horaFin${turno}${dia}HorarioEditar`);
-                campos.removeClass('is-invalid');
-
-                if ((inicio && !fin) || (!inicio && fin)) {
-                    valido = false;
-                    errores.push(`Debe completar ambas horas (${turno.toLowerCase()}) del ${dia}.`);
-                    campos.addClass('is-invalid');
-                } else if (inicio && fin && !horaMenor(inicio, fin)) {
-                    valido = false;
-                    errores.push(`La hora de inicio (${inicio}) debe ser menor que la de fin (${fin}) en ${turno.toLowerCase()} del ${dia}.`);
-                    campos.addClass('is-invalid');
-                }
-
-                // Guardamos los datos aunque estén vacíos
-                dataHorarios[claveDia][turno.toLowerCase()] = { 
-                    inicio: inicio || "", 
-                    fin: fin || "" 
-                };
-
-                // Validaciones adicionales
-                if (inicio && fin) {
-                    if (turno === "Manana" && fin > LIMITE_MANANA) {
+                    if ((inicio && !fin) || (!inicio && fin)) {
                         valido = false;
-                        errores.push(`La hora de fin de la mañana del ${dia} (${fin}) no puede ser posterior a las ${LIMITE_MANANA}.`);
-                        $(`#horaFinManana${dia}HorarioEditar`).addClass('is-invalid');
+                        errores.push(`Debe completar ambas horas (${turno.toLowerCase()}) del ${dia}.`);
+                        campos.addClass('is-invalid');
+                    } else if (inicio && fin && !horaMenor(inicio, fin)) {
+                        valido = false;
+                        errores.push(`La hora de inicio (${inicio}) debe ser menor que la de fin (${fin}) en ${turno.toLowerCase()} del ${dia}.`);
+                        campos.addClass('is-invalid');
                     }
 
-                    if (turno === "Tarde" && inicio < LIMITE_TARDE) {
+                    // Guardamos los datos aunque estén vacíos
+                    dataHorarios[claveDia][turno.toLowerCase()] = {
+                        inicio: inicio || "",
+                        fin: fin || ""
+                    };
+
+                    // Validaciones adicionales
+                    if (inicio && fin) {
+                        if (turno === "Manana" && fin > LIMITE_MANANA) {
+                            valido = false;
+                            errores.push(`La hora de fin de la mañana del ${dia} (${fin}) no puede ser posterior a las ${LIMITE_MANANA}.`);
+                            $(`#horaFinManana${dia}HorarioEditar`).addClass('is-invalid');
+                        }
+
+                        if (turno === "Tarde" && inicio < LIMITE_TARDE) {
+                            valido = false;
+                            errores.push(`La hora de inicio de la tarde del ${dia} (${inicio}) no puede ser anterior a las ${LIMITE_TARDE}.`);
+                            $(`#horaInicioTarde${dia}HorarioEditar`).addClass('is-invalid');
+                        }
+                    }
+                });
+
+                // Validación entre turnos
+                const maniana = dataHorarios[claveDia].manana;
+                const tarde = dataHorarios[claveDia].tarde;
+
+                if (maniana.inicio && maniana.fin && tarde.inicio && tarde.fin) {
+                    if (!horaMenor(maniana.fin, tarde.inicio)) {
                         valido = false;
-                        errores.push(`La hora de inicio de la tarde del ${dia} (${inicio}) no puede ser anterior a las ${LIMITE_TARDE}.`);
-                        $(`#horaInicioTarde${dia}HorarioEditar`).addClass('is-invalid');
+                        errores.push(`El horario de la mañana del ${dia} (${maniana.fin}) debe ser anterior al inicio de la tarde (${tarde.inicio}).`);
+                        $(`#horaFinManana${dia}HorarioEditar, #horaInicioTarde${dia}HorarioEditar`).addClass('is-invalid');
                     }
                 }
             });
 
-            // Validación entre turnos
-            const maniana = dataHorarios[claveDia].manana;
-            const tarde = dataHorarios[claveDia].tarde;
+        } else {
+            dataHorarios = { manana: null, tarde: null };
+            const turnos = ["Manana", "Tarde"];
+
+            turnos.forEach(turno => {
+                const inicio = $(`#horaInicio${turno}HorarioEditar`).val();
+                const fin = $(`#horaFin${turno}HorarioEditar`).val();
+                const campos = $(`#horaInicio${turno}HorarioEditar, #horaFin${turno}HorarioEditar`);
+                campos.removeClass('is-invalid');
+
+                if ((inicio && !fin) || (!inicio && fin)) {
+                    valido = false;
+                    errores.push(`Debe completar ambas horas (${turno.toLowerCase()}) del horario general.`);
+                    campos.addClass('is-invalid');
+                } else if (inicio && fin && !horaMenor(inicio, fin)) {
+                    valido = false;
+                    errores.push(`La hora de inicio (${inicio}) debe ser menor que la de fin (${fin}) en el turno de ${turno.toLowerCase()}.`);
+                    campos.addClass('is-invalid');
+                }
+
+                dataHorarios[turno.toLowerCase()] = {
+                    inicio: inicio || "",
+                    fin: fin || ""
+                };
+
+                if (inicio && fin) {
+                    if (turno === "Manana" && fin > LIMITE_MANANA) {
+                        valido = false;
+                        errores.push(`La hora de fin de la mañana (${fin}) no puede ser posterior a las ${LIMITE_MANANA}.`);
+                        $(`#horaFinMananaHorarioEditar`).addClass('is-invalid');
+                    }
+
+                    if (turno === "Tarde" && inicio < LIMITE_TARDE) {
+                        valido = false;
+                        errores.push(`La hora de inicio de la tarde (${inicio}) no puede ser anterior a las ${LIMITE_TARDE}.`);
+                        $(`#horaInicioTardeHorarioEditar`).addClass('is-invalid');
+                    }
+                }
+            });
+
+            const maniana = dataHorarios.manana;
+            const tarde = dataHorarios.tarde;
 
             if (maniana.inicio && maniana.fin && tarde.inicio && tarde.fin) {
                 if (!horaMenor(maniana.fin, tarde.inicio)) {
                     valido = false;
-                    errores.push(`El horario de la mañana del ${dia} (${maniana.fin}) debe ser anterior al inicio de la tarde (${tarde.inicio}).`);
-                    $(`#horaFinManana${dia}HorarioEditar, #horaInicioTarde${dia}HorarioEditar`).addClass('is-invalid');
+                    errores.push(`El horario de la mañana (${maniana.fin}) debe ser anterior al inicio de la tarde (${tarde.inicio}) en el horario general.`);
+                    $(`#horaFinMananaHorarioEditar, #horaInicioTardeHorarioEditar`).addClass('is-invalid');
                 }
-            }
-        });
-
-    } else {
-        dataHorarios = { manana: null, tarde: null };
-        const turnos = ["Manana","Tarde"];
-
-        turnos.forEach(turno => {
-            const inicio = $(`#horaInicio${turno}HorarioEditar`).val();
-            const fin    = $(`#horaFin${turno}HorarioEditar`).val();
-            const campos = $(`#horaInicio${turno}HorarioEditar, #horaFin${turno}HorarioEditar`);
-            campos.removeClass('is-invalid');
-
-            if ((inicio && !fin) || (!inicio && fin)) {
-                valido = false;
-                errores.push(`Debe completar ambas horas (${turno.toLowerCase()}) del horario general.`);
-                campos.addClass('is-invalid');
-            } else if (inicio && fin && !horaMenor(inicio, fin)) {
-                valido = false;
-                errores.push(`La hora de inicio (${inicio}) debe ser menor que la de fin (${fin}) en el turno de ${turno.toLowerCase()}.`);
-                campos.addClass('is-invalid');
-            }
-
-            dataHorarios[turno.toLowerCase()] = { 
-                inicio: inicio || "", 
-                fin: fin || "" 
-            };
-
-            if (inicio && fin) {
-                if (turno === "Manana" && fin > LIMITE_MANANA) {
-                    valido = false;
-                    errores.push(`La hora de fin de la mañana (${fin}) no puede ser posterior a las ${LIMITE_MANANA}.`);
-                    $(`#horaFinMananaHorarioEditar`).addClass('is-invalid');
-                }
-
-                if (turno === "Tarde" && inicio < LIMITE_TARDE) {
-                    valido = false;
-                    errores.push(`La hora de inicio de la tarde (${inicio}) no puede ser anterior a las ${LIMITE_TARDE}.`);
-                    $(`#horaInicioTardeHorarioEditar`).addClass('is-invalid');
-                }
-            }
-        });
-
-        const maniana = dataHorarios.manana;
-        const tarde = dataHorarios.tarde;
-
-        if (maniana.inicio && maniana.fin && tarde.inicio && tarde.fin) {
-            if (!horaMenor(maniana.fin, tarde.inicio)) {
-                valido = false;
-                errores.push(`El horario de la mañana (${maniana.fin}) debe ser anterior al inicio de la tarde (${tarde.inicio}) en el horario general.`);
-                $(`#horaFinMananaHorarioEditar, #horaInicioTardeHorarioEditar`).addClass('is-invalid');
             }
         }
-    }
 
-    if (valido && dataOpcional && typeof dataOpcional === 'object') {
-        dataOpcional['horarios'] = dataHorarios;
-    }
+        if (valido && dataOpcional && typeof dataOpcional === 'object') {
+            dataOpcional['horarios'] = dataHorarios;
+        }
 
-    return valido;
-}
+        return valido;
+    }
 
 
 

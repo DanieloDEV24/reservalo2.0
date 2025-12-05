@@ -86,6 +86,7 @@
   align-items: center;
   gap: 2%;
   flex-wrap: wrap;
+  transition: all .3s;
 }
 
 .calendario .div-mes {
@@ -200,7 +201,7 @@
   position: fixed;
   right: 0;
   top: 0;
-  width: 400px;
+  width: 30%;
   height: 100vh;
   background: white;
   box-shadow: -4px 0 24px rgba(0, 0, 0, 0.1);
@@ -842,7 +843,7 @@ input[type="color"]::-moz-color-swatch {
   align-items: center;
   justify-content: center;
   width: 100%;
-
+  transition: all .3s;
 }
 
 .contenedor-loader2 {
@@ -1001,4 +1002,65 @@ i.cargando {
   line-height: 1.6;
   max-width: 800px;
   margin: 0 auto;
+}
+
+#calendario.seleccion-dia {
+  width: 70%;
+  gap: 5%;
+}
+
+#calendario.seleccion-dia .div-mes {
+  width: 45%;
+  margin-bottom: 5%;
+}
+
+#contenedor-loader-horario.seleccion-dia {
+  justify-content: left;
+}
+
+p.seleccion-horario-nuevo {
+  font-size: '14px';
+  color: #64748b;
+}
+
+
+.card-cambio-horario {
+  transition: all .3s;
+}
+
+.card-cambio-horario:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+
+.horarios-old, .flecha-horarios, .horarios-new {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3%;
+}
+
+.horarios-old, .horarios-new {
+  width: 42%;
+}
+
+.horarios-old {
+  justify-content: end;
+}
+
+.horarios-new {
+  justify-content: start;
+}
+
+.flecha-horarios {
+  width: 5%;
+}
+
+.content-confirmar-cambio {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15%;
 }

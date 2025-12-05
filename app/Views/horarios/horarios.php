@@ -53,7 +53,7 @@
     </div>
 
 
-    <div style="position: relative; min-height: 70px;" class="contenedor-loader">
+    <div style="position: relative; min-height: 70px;" class="contenedor-loader" id="contenedor-loader-horario">
         <div id="loaderCalendario" class="loader" style="display: none;"></div>
         <div class="calendario" id="calendario"></div>
     </div>
@@ -279,7 +279,16 @@
   </div>
 
   <div class="sidebar-content">
-      <p>Seleccione el horario que desea establecer en dichas fechas</p>
+      <p class="seleccion-horario-nuevo">Seleccione el horario que desea establecer en dichas fechas</p>
+      <div class="contenedor-cambio-horarios-card">
+            
+      </div>
+
+      <div class="content-confirmar-cambio">
+        <div class="horarios-old"></div>
+        <div class="flecha-horarios"> <i class="bi bi-arrow-right"></i> </div>
+        <div class="horarios-new"></div>
+      </div>
   </div>
   <!-- Cierre sidebar-content -->
 </div>

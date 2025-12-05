@@ -413,6 +413,19 @@ class Horarios extends BaseController
     }
 
 
+    public function getHorariosChange() {
+        
+        $horariosModel = new horariosModel();
+
+        $horarios = $horariosModel->getHorariosChange();
+
+        echo json_encode(
+            [
+                "horarios" => $horarios
+            ]
+        );
+        exit;
+    }
 
     /***********************************************************************************************************************************
      *******************************************************  FUNCIONES DE AYUDA  *******************************************************

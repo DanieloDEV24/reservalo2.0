@@ -25,6 +25,8 @@ $routes->get('/instalacion/(:num)', 'Instalaciones::instalacion/$1');
 
 // HORARIOS
 $routes->get('/horario/(:num)', 'Horarios::horario/$1');
+$routes->get('/getHorariosChange', 'Horarios::getHorariosChange');
+
 
 /***********************************************************************************************************************************
 ************************************************************* RUTAS POST ***********************************************************

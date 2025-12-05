@@ -352,4 +352,20 @@ class horariosModel extends Model
 
         return true;
     }
+
+
+    public function getHorariosChange() {
+        
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('tipo_horario');
+
+        $query = $builder->select()->where('es_especial', 1)->where('sin_fecha', 1)->get();
+
+        $result = $query->getResultArray();
+
+        return $result;
+    }
 }
