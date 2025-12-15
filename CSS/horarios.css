@@ -313,6 +313,7 @@
   border-top: 1px solid #e2e8f0;
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .close-sidebar {
@@ -1063,4 +1064,5 @@ p.seleccion-horario-nuevo {
   justify-content: center;
   align-items: center;
   gap: 15%;
+  width: 100%;
 }

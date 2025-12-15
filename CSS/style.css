@@ -398,3 +398,33 @@ footer a, footer i
 {
   color: red;
 }
+
+.btn-primary-personal-disabled
+{
+    background: linear-gradient(145deg, #32cccc60, #28a3a360);
+    /* degradado para dar profundidad */
+    border-radius: 30px;
+    padding: 12px 24px;
+    /* mejor usar px que % para mantener proporción */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+    color: white;
+    /* font-weight: bold; */
+    border: none;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    /* sombra para relieve */
+    text-decoration: none;
+    font-size: 1.3rem;
+}
+
+.btn-primary-personal-disabled:hover
+{
+    background: linear-gradient(145deg, #32cccc60, #28a3a360);
+    transform: scale(1);
+    /* ligero aumento de tamaño */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}

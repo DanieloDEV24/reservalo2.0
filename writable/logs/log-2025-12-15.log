@@ -1,0 +1,64 @@
+INFO - 2025-12-15 09:05:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 09:28:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 10:04:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 10:04:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 10:14:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 10:14:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 10:14:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 16:42:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 16:45:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 16:52:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 16:54:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 16:55:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-15 16:55:56 --> BadMethodCallException: Call to undefined method App\Models\horariosModel::cambiarHorarioSeleccionado
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\Horarios.php(443): CodeIgniter\Model->__call('cambiarHorarioSeleccionado', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->cambiarHorariosSeleccionados()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-15 16:59:35 --> TypeError: App\Models\horariosModel::cambiarHorariosSeleccionados(): Argument #1 ($cambios) must be of type array, string given, called in C:\Proyectos\reservalo2.0\app\Controllers\Horarios.php on line 443
+in APPPATH\Models\horariosModel.php on line 373.
+ 1 APPPATH\Controllers\Horarios.php(443): App\Models\horariosModel->cambiarHorariosSeleccionados('1/9/2025', '61', '62')
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->cambiarHorariosSeleccionados()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-15 17:00:28 --> TypeError: Cannot access offset of type string on string
+in APPPATH\Models\horariosModel.php on line 383.
+ 1 APPPATH\Controllers\Horarios.php(443): App\Models\horariosModel->cambiarHorariosSeleccionados([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->cambiarHorariosSeleccionados()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-12-15 17:00:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-15 17:03:44 --> TypeError: Cannot access offset of type string on string
+in APPPATH\Models\horariosModel.php on line 383.
+ 1 APPPATH\Controllers\Horarios.php(443): App\Models\horariosModel->cambiarHorariosSeleccionados([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->cambiarHorariosSeleccionados()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2025-12-15 17:03:45 --> TypeError: Cannot access offset of type string on string
+in APPPATH\Models\horariosModel.php on line 383.
+ 1 APPPATH\Controllers\Horarios.php(443): App\Models\horariosModel->cambiarHorariosSeleccionados([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->cambiarHorariosSeleccionados()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-12-15 17:05:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2025-12-15 17:05:07 --> TypeError: Cannot access offset of type string on string
+in APPPATH\Models\horariosModel.php on line 383.
+ 1 APPPATH\Controllers\Horarios.php(443): App\Models\horariosModel->cambiarHorariosSeleccionados([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->cambiarHorariosSeleccionados()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2025-12-15 17:07:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 17:09:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 17:10:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 17:13:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 17:14:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 17:16:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 17:17:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-12-15 17:21:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

@@ -368,4 +368,42 @@ class horariosModel extends Model
 
         return $result;
     }
+
+
+    public function cambiarHorariosSeleccionados(array $cambios) {
+
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        $builder = $db->table('excepciones_horario');
+
+        $fecha_convertida = date("Y-m-d", strtotime($cambios['fecha']));
+
+        $builder->insert([
+            "id_tipo_horario_base" => intval($cambios['horarioAntiguo']),
+            "id_tipo_horario_excepcion" => intval($cambios['horarioNuevo']),
+            "fecha_inicio" => $fecha_convertida,
+            "fecha_fin"=> $fecha_convertida
+
+        ]);
+
+        return true;
+    }
+
+
+    public function comprobarExcepciones(){
+
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('excepciones_horario');
+
+        $builder = $db->table('excepciones_horario');
+        $builder->select('excepciones_horario.*, tipo_horario.nombre, tipo_horario.color');
+        $builder->join('tipo_horario', 'excepciones_horario.id_tipo_horario_excepcion = tipo_horario.id_tipo_horario');
+        $query = $builder->get();
+
+        return $query->getResultArray();
+    }
 }

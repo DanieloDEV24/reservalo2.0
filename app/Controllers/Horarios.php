@@ -28,6 +28,7 @@ class Horarios extends BaseController
             $modalEditar = view('horarios/modalEditarHorario');
             $modalBorrar = view('horarios/modalBorrarHorario');
             $modalHorarioExistente = view('horarios/modalHorarioExistente');
+            $modalCambioHorario = view('horarios/modalCambioHorario');
 
             $assets = [
                 "css" => [
@@ -40,7 +41,7 @@ class Horarios extends BaseController
                 ]
             ];
 
-            $view = view('horarios/horarios', ["instalacion" => $instalacion, "id_instalacion" => $id_instalacion, "horarios" => $horarios, "modalEditar" => $modalEditar, "modalBorrar" => $modalBorrar, "modalHorarioExistente" => $modalHorarioExistente]);
+            $view = view('horarios/horarios', ["instalacion" => $instalacion, "id_instalacion" => $id_instalacion, "horarios" => $horarios, "modalEditar" => $modalEditar, "modalBorrar" => $modalBorrar, "modalHorarioExistente" => $modalHorarioExistente, "modalCambioHorario" => $modalCambioHorario]);
             return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets]);
         }
     }
@@ -199,9 +200,11 @@ class Horarios extends BaseController
         if (!empty($post)) {
 
             $horarios = $horariosModel->comprobarHorarios();
+            $excepciones = $horariosModel->comprobarExcepciones();
 
             echo json_encode([
-                "horarios" => $horarios
+                "horarios" => $horarios, 
+                "excepciones" => $excepciones
             ]);
         }
     }
@@ -425,6 +428,28 @@ class Horarios extends BaseController
             ]
         );
         exit;
+    }
+
+
+    public function cambiarHorariosSeleccionados() {
+
+        $post = $this->request->getPost();
+        $horariosModel = new horariosModel();
+
+        if (!empty($post)) {
+
+            $cambios = $post["cambios"];
+
+            foreach ($cambios as $cambio) {
+                $horariosModel->cambiarHorariosSeleccionados($cambio);
+            }
+
+            echo json_encode([
+                "success" => true,
+                "mensaje" => "Se han cambiado los horarios seleccionados correctamente"
+            ]);
+            exit;
+        }
     }
 
     /***********************************************************************************************************************************

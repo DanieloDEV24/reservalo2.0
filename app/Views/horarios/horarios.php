@@ -284,10 +284,16 @@
             
       </div>
 
-      <div class="content-confirmar-cambio">
-        <div class="horarios-old"></div>
-        <div class="flecha-horarios"> <i class="bi bi-arrow-right"></i> </div>
-        <div class="horarios-new"></div>
+  </div>
+
+  <div class="sidebar-footer">
+        <div class="content-confirmar-cambio">
+          <div class="horarios-old"></div>
+          <div class="flecha-horarios"> <i class="bi bi-arrow-right"></i> </div>
+          <div class="horarios-new"></div>
+      </div>
+      <div class="button" style="width: 100%; padding-top: 3%">
+        <a id="btn-guardar-cambio-seleccion" style="width: 100%" class="btn-primary-personal btn-primary-personal-disabled" >Cambiar Horario</a>
       </div>
   </div>
   <!-- Cierre sidebar-content -->
@@ -319,3 +325,4 @@
 <?=$modalEditar?>
 <?=$modalBorrar?>
 <?=$modalHorarioExistente?>
+<?=$modalCambioHorario?>
