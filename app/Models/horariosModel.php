@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use CodeIgniter\Model;
+use DateTime;
 
 class horariosModel extends Model
 {
@@ -377,7 +378,8 @@ class horariosModel extends Model
 
         $builder = $db->table('excepciones_horario');
 
-        $fecha_convertida = date("Y-m-d", strtotime($cambios['fecha']));
+        $fecha = DateTime::createFromFormat('d/m/Y', $cambios['fecha']);
+        $fecha_convertida = $fecha->format('Y-m-d');
 
         $builder->insert([
             "id_tipo_horario_base" => intval($cambios['horarioAntiguo']),

@@ -1423,7 +1423,7 @@ $(document).ready(() => {
                         let colorFondo = '';
                         let nombre = ''
                         let idHorario = ''
-                        
+                        let hayExcepcion = false;
                         
                         if (excepciones && Array.isArray(excepciones) && excepciones.length > 0) {
                             excepciones.forEach(function (excepcion) {
@@ -1437,10 +1437,12 @@ $(document).ready(() => {
                                     colorFondo = excepcion.color; 
                                     nombre = excepcion.nombre; 
                                     idHorario = excepcion.id_tipo_horario_excepcion;
+                                    hayExcepcion = true;
                                 }
                             })
                         }
-                        else if (horarios && Array.isArray(horarios) && horarios.length > 0) {
+                        
+                        if (!hayExcepcion && horarios && Array.isArray(horarios) && horarios.length > 0) {
 
                             horarios.forEach(function (horario) {
 
