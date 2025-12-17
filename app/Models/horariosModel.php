@@ -408,4 +408,28 @@ class horariosModel extends Model
 
         return $query->getResultArray();
     }
+
+
+    public function getHorariosChangeException(string $fecha) {
+        
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('excepciones_horario');
+
+        $fechaNueva = DateTime::createFromFormat('d/m/Y', $fecha);
+        $fecha_convertida = $fechaNueva->format('Y-m-d');
+
+        $query = $builder->select('tipo_horario.*, excepciones_horario.*')
+                         ->join('tipo_horario', 'excepciones_horario.id_tipo_horario_base = tipo_horario.id_tipo_horario')
+                         ->where('excepciones_horario.fecha_inicio <=', $fecha_convertida)
+                         ->where('excepciones_horario.fecha_fin >=', $fecha_convertida)
+                         ->get();
+
+        $result = $query->getResultArray();
+
+        return $result;
+
+    }
 }

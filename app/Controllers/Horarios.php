@@ -452,6 +452,28 @@ class Horarios extends BaseController
         }
     }
 
+
+    public function getHorariosChangeException() {
+
+        $post = $this->request->getPost();
+        $horariosModel = new horariosModel();
+
+        if (!empty($post)) {
+
+            $data  = $post["data"];
+            $fecha = $data["fecha"];
+            $horario_excepcion = $data["horario-excepcion"];
+
+            $excepcion = $horariosModel->getHorariosChangeException($fecha)[0];
+
+            echo json_encode([
+                "success" => true,
+                "excepcion" => $excepcion
+            ]);
+            exit;
+        }
+    }
+
     /***********************************************************************************************************************************
      *******************************************************  FUNCIONES DE AYUDA  *******************************************************
      ***********************************************************************************************************************************/
