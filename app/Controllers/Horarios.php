@@ -465,10 +465,12 @@ class Horarios extends BaseController
             $horario_excepcion = $data["horario-excepcion"];
 
             $excepcion = $horariosModel->getHorariosChangeException($fecha)[0];
+            $horario_excepcion_data = $horariosModel->getHorario($horario_excepcion)[0];
 
             echo json_encode([
                 "success" => true,
-                "excepcion" => $excepcion
+                "excepcion" => $excepcion,
+                "horario_excepcion" => $horario_excepcion_data
             ]);
             exit;
         }

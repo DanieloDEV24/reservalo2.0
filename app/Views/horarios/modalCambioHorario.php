@@ -16,8 +16,8 @@
           </div>
           <div class="contenedor-mensaje">
             <div class="mensaje-dia-sin-horario">
-              <p style="font-weight: 700; text-align: center;">El día seleccionado no tiene un horario asignado</p>
-              <p style="text-align: center; color: #666; font-size: 1rem; margin-top: 10px;">
+              <p id="mensaje-dia-sin-horario" style="font-weight: 700; text-align: center;">El día seleccionado no tiene un horario asignado</p>
+              <p id="mensaje-opciones" style="text-align: center; color: #666; font-size: 1rem; margin-top: 10px;">
                 Puedes continuar con el cambio de horario o cerrarlo para asignar un horario a este día.
               </p>
             </div>
