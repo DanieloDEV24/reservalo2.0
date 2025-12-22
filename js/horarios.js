@@ -1204,7 +1204,20 @@ $(document).ready(() => {
            ========================= */
         if ($(this).data('exception') === true) {
 
+            if ($('.dia-seleccionado:not([data-exception])').length > 0) {
+
+                $('#modalCambioHorario #mensaje-dia-sin-horario').text('El día seleccionado no tiene un horario normal asignado.')
+                $('#modalCambioHorario #mensaje-opciones').text(' Puedes continuar con el cambio de horario o cerrarlo para asignar un horario normal a este día.')
+                $('#modalCambioHorario').show();
+            return;
+            }
+
             $(this).addClass('dia-seleccionado');
+
+            if($('.dia-seleccionado[data-exception="true"]').length === 1) 
+                $('#sidebar-cambio-horario .contenedor-cambio-horarios-card').empty(); 
+
+            console.log($('.dia-seleccionado[data-exception="true"]').length);
 
             $('#sidebar-cambio-horario p.seleccion-horario-nuevo')
                 .text('¿Desea volver al siguiente horario? :');
@@ -1308,6 +1321,8 @@ $(document).ready(() => {
             return;
         }
 
+        $('#sidebar-cambio-horario p.seleccion-horario-nuevo').text('Seleccione el horario que desea establecer en dichas fechas');
+
         $(this).addClass('dia-seleccionado');
 
         const colorFondo = $(this).data('color');
@@ -1327,14 +1342,14 @@ $(document).ready(() => {
             </div>
         `;
 
-            let existe = false;
-            $('.horarios-old div').each(function () {
-                if ($(this).data('color') === colorFondo) existe = true;
-            });
+            // let existe = false;
+            // $('.horarios-old div').each(function () {
+            //     if ($(this).data('color') === colorFondo) existe = true;
+            // });
 
-            if (!existe) {
+            if (num === 1) {
                 $('.horarios-old').append(div);
-            } else {
+            } else if (num > 1 ) {
                 $(`.horarios-old div[data-name="${nombreHorario}"] span`)
                     .text(num);
             }
