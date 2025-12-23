@@ -251,13 +251,13 @@ class horariosModel extends Model
         // agrupar todas las condiciones de fechas
         $builder->groupStart()
                     ->groupStart()
-                        ->where('tipo_horario.fecha_inicio <=', $fecha_inicio)
+                        ->where('tipo_horario.fecha_inicio >=', $fecha_inicio)
                         ->where('tipo_horario.fecha_fin >=', $fecha_inicio)
                     ->groupEnd()
 
                     ->orGroupStart()
                         ->where('tipo_horario.fecha_inicio <=', $fecha_fin)
-                        ->where('tipo_horario.fecha_fin >=', $fecha_fin)
+                        ->where('tipo_horario.fecha_fin <=', $fecha_fin)
                     ->groupEnd()
                 ->groupEnd();   // <- cierre del grupo general
 

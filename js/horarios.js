@@ -1194,6 +1194,15 @@ $(document).ready(() => {
     /***********************************************************************************************************************************
     *********************************************************  SELECCIÓN DE DÍA  *******************************************************
     ***********************************************************************************************************************************/
+    $(document).on('click', '#btnCerraSidebarCambio', function (e) {
+
+        e.preventDefault()
+
+        $('#sidebar-cambio-horario').removeClass('active'); // --> Desactivamos el menú lateral de nuevo horario
+        $('#calendario').removeClass('seleccion-dia')
+        $(`.numero-dia.dia-seleccionado`).removeClass('dia-seleccionado');
+    })
+
     $(document).on('click', '.numero-dia', function (e) {
         e.preventDefault();
 
@@ -1263,14 +1272,14 @@ $(document).ready(() => {
 
                     }
 
-                    const num = $(`.numero-dia.dia-seleccionado[data-name="${response.horario_excepcion.nombre}"]`).length;
+                    const num2 = $(`.numero-dia.dia-seleccionado[data-name="${response.horario_excepcion.nombre}"]`).length;
                     const div = `
                             <div data-name="${response.horario_excepcion.nombre}" data-color="${response.horario_excepcion.color}"
                                 style="width:40px;height:40px;border-radius:5px;
                                         background-color:${response.horario_excepcion.color}50;color:${response.horario_excepcion.color};
                                         border:1px solid ${response.horario_excepcion.color};
                                         display:flex;align-items:center;justify-content:center;">
-                                <span>${num}</span>
+                                <span>${num2}</span>
                             </div>
                     `;
 
@@ -1280,21 +1289,25 @@ $(document).ready(() => {
                                         background-color:${response.excepcion.color};color:${response.excepcion.color};
                                         border:1px solid ${response.excepcion.color};
                                         display:flex;align-items:center;justify-content:center;">
-                                <span>${num}</span>
+                                <span>${num2}</span>
                             </div>
                     `;
 
-                    let existeLeyenda = false;
+                    
                     $('.horarios-old div').each(function () {
                         if ($(this).data('color') === response.horario_excepcion.color) existeLeyenda = true;
                     });
 
-                    if (!existeLeyenda) {
+                    if (num2 === 1) {
+                        
+                        $('.horarios-new').empty(); 
+                        $('.horarios-old').empty(); 
+
                         $('.horarios-old').append(div);
                         $('.horarios-new').append(div2);
-                    } else {
+                    } else if (num2 > 1 ) {
                         $(`.horarios-old div[data-name="${response.horario_excepcion.nombre}"] span`)
-                            .text(num);
+                            .text(num2);
                     }
                 }
             });
@@ -1328,11 +1341,13 @@ $(document).ready(() => {
         const colorFondo = $(this).data('color');
         const nombreHorario = $(this).data('name');
 
+        let num = 0
+        let div = ''
         if (nombreHorario !== "") {
 
-            const num = $(`.numero-dia.dia-seleccionado[data-name="${nombreHorario}"]`).length;
+           num = $(`.numero-dia.dia-seleccionado[data-name="${nombreHorario}"]`).length;
 
-            const div = `
+            div = `
             <div data-name="${nombreHorario}" data-color="${colorFondo}"
                  style="width:40px;height:40px;border-radius:5px;
                         background-color:${colorFondo}50;color:${colorFondo};
@@ -1360,6 +1375,11 @@ $(document).ready(() => {
             $('#sidebar-cambio-horario .contenedor-cambio-horarios-card').empty();
             $('#sidebar-cambio-horario .horarios-old').empty();
             $('#sidebar-cambio-horario .horarios-new').empty();
+
+            if (num === 1) {
+                $('.horarios-old').append(div);
+
+            }
 
             $.ajax({
                 type: "GET",

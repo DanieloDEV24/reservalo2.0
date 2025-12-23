@@ -58,7 +58,7 @@ class Horarios extends BaseController
             $data = $post["data"];
             $id_instalacion = $data["instalacion"];
 
-            $horarios_existentes = $horariosModel->getHorarioFromFechas(((intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? date('Y') . '-01-01' : $data["fecha_inicio"]), ((intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? (date("Y") + 1) . '-12-31' : $data["fecha_fin"]));
+            $horarios_existentes = $horariosModel->getHorarioFromFechas(((intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? date('Y') . '-01-01' : $data["fecha_inicio"]), ((intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? (date("Y")) . '-12-31' : $data["fecha_fin"]));
 
             if (intval($data["horario_especial"]) === 0 && count($horarios_existentes) > 0) {
 
@@ -85,24 +85,26 @@ class Horarios extends BaseController
 
                 $horario   = $horariosModel->crearHorario($data_tipo_horario);
 
-                foreach ($horarios_existentes as $horario_e) {
+                if(intval($data["sin_fecha"]) === 0){
+                    foreach ($horarios_existentes as $horario_e) {
 
-                    if (intval($horario_e["es_especial"]) === 0) {
+                        if (intval($horario_e["es_especial"]) === 0) {
 
-                        $fechaInicioBase = new DateTime($horario_e["fecha_inicio"]);
-                        $fechaInicioExcepcion = new DateTime($data_tipo_horario["fecha_inicio"]);
-                        $fechaFinBase = new DateTime($horario_e["fecha_fin"]);
-                        $fechaFinExcepcion = new DateTime($data_tipo_horario["fecha_fin"]);
+                            $fechaInicioBase = new DateTime($horario_e["fecha_inicio"]);
+                            $fechaInicioExcepcion = new DateTime($data_tipo_horario["fecha_inicio"]);
+                            $fechaFinBase = new DateTime($horario_e["fecha_fin"]);
+                            $fechaFinExcepcion = new DateTime($data_tipo_horario["fecha_fin"]);
 
-                        $data_excepcion  = [
-                            "id_tipo_horario_base" => intval($horario_e["id_tipo_horario"]),
-                            "id_tipo_horario_excepcion" => intval($horario),
-                            "fecha_inicio" => ($fechaInicioBase > $fechaInicioExcepcion) ? $fechaInicioBase->format("Y-m-d") : $fechaInicioExcepcion->format("Y-m-d"),
-                            "fecha_fin" => ($fechaFinBase < $fechaFinExcepcion) ? $fechaFinBase->format("Y-m-d") : $fechaFinExcepcion->format("Y-m-d")
-                        ];
+                            $data_excepcion  = [
+                                "id_tipo_horario_base" => intval($horario_e["id_tipo_horario"]),
+                                "id_tipo_horario_excepcion" => intval($horario),
+                                "fecha_inicio" => ($fechaInicioBase > $fechaInicioExcepcion) ? $fechaInicioBase->format("Y-m-d") : $fechaInicioExcepcion->format("Y-m-d"),
+                                "fecha_fin" => ($fechaFinBase < $fechaFinExcepcion) ? $fechaFinBase->format("Y-m-d") : $fechaFinExcepcion->format("Y-m-d")
+                            ];
 
-                        $horariosModel->crearExcepcion($data_excepcion);
-                    }
+                            $horariosModel->crearExcepcion($data_excepcion);
+                        }
+                }
                 }
 
             } else {

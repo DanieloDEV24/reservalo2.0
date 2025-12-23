@@ -26,9 +26,9 @@
             <button class="btn-secondary-personal" data-bs-dismiss="modal" aria-label="Continuar" style="width: 69%;">
               <i class="bi bi-arrow-return-left"></i> Continuar
             </button>
-            <button class="btn-primary-personal" id="btnAsignarHorario" aria-label="Asignar horario" style="width: 69%;"> 
+            <!-- <button class="btn-primary-personal" id="btnAsignarHorario" aria-label="Asignar horario" style="width: 69%;"> 
               <i class="bi bi-calendar-plus"></i> Asignar horario a este día
-            </button>
+            </button> -->
           </div>
         </div>
       </div>

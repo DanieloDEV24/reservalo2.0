@@ -269,7 +269,7 @@
 
 
         <div class="sidebar" id="sidebar-cambio-horario">
-  <button id="btnCerraSidebarCrear" class="close-sidebar">✕</button>
+  <button id="btnCerraSidebarCambio" class="close-sidebar">✕</button>
   <div class="sidebar-header">
     <div style="display: flex; align-items: center; gap:10px; margin-bottom: 2%;">
       <div class="contenedor-iconos"><i class="bi bi-calendar4-week"></i></div>
