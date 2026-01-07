@@ -851,10 +851,40 @@ $(document).ready(() => {
             url: "../menuHorario",
             data: {year: $('#anoActual').text(), instalacion: $('#instalacion').val()},
             dataType: "JSON",
+            beforeSend: function () {
+                $('#loaderMenuHorarios').show();
+                $('.card-menu-horarios').addClass('loading');
+            },
             success: function (response) {
                 if(response.succes == true) {
 
-                    // !! ME QUEDA CREAR EL CONTENEDOR ENTERO CON EL TITULITO...
+                    $('#sidebarMenu .menu-content').empty();
+
+                    let hayEspeciales = response.horarios.some(horario => {
+                        return parseInt(horario.es_especial) === 1
+                    })
+
+                    let hayNormal = response.horarios.some(horario => {
+                        return parseInt(horario.es_especial) === 0
+                    })
+
+                    if(hayNormal) {
+                        $('#sidebarMenu .menu-content').append(
+                            `<div id="horarios-normailes-menu">
+                                <p class="tipo-horarios">Horarios normales</p>
+                                <div class="horarios-normales"></div>
+                            </div>`
+                        )
+                    }
+
+                    if(hayEspeciales) {
+                        $('#sidebarMenu .menu-content').append(
+                            `<div id="horarios-especiales-menu">
+                                <p class="tipo-horarios">Horarios especiales</p>
+                                <div class="horarios-especiales"></div>
+                            </div>`
+                        )
+                    }
 
                     $('.horarios-normales').empty();
                     $('.horarios-especiales').empty();
@@ -878,6 +908,12 @@ $(document).ready(() => {
                         }
                     })
                 }
+
+                $('#loaderMenuHorarios').hide();
+            },
+            complete: function () {
+                $('#loaderMenuHorarios').hide();
+                $('.card-menu-horarios').removeClass('loading');
             }
         });
 
@@ -1298,6 +1334,7 @@ $(document).ready(() => {
         e.preventDefault();
 
         if ($(this).text() === '') return;
+        
 
         /* =========================
            🟠 CASO: EXCEPCIÓN
@@ -1483,8 +1520,9 @@ $(document).ready(() => {
             }
 
             $.ajax({
-                type: "GET",
+                type: "POST",
                 url: "../getHorariosChange",
+                data: { year: $('#anoActual').text() },
                 dataType: "json",
                 beforeSend: function () {
                     $('#loaderSidebarCambioHorario').show();

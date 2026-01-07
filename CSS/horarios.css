@@ -807,6 +807,18 @@ input[type="color"]::-moz-color-swatch {
 }
 
 
+#loaderMenuHorarios {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  /* semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  /* encima de los acordeones */
+}
+
+
 #loaderModalEditar {
   position: absolute;
   background: rgba(255, 255, 255, 0);
@@ -876,6 +888,7 @@ input[type="color"]::-moz-color-swatch {
   width: 100%;
   flex-wrap: wrap;
 }
+
 
 /* .contenedor-loader #accordionEditarPistas div,
 .contenedor-loader #accordionEditarPistas, 
@@ -1100,3 +1113,6 @@ p.seleccion-horario-nuevo {
   opacity: .3;
 }
 
+.card-menu-horarios.loading {
+  opacity: .3;
+}

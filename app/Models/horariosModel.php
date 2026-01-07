@@ -446,7 +446,7 @@ class horariosModel extends Model
     }
 
 
-    public function getHorariosChange() {
+    public function getHorariosChange(int $year) {
         
         //Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
@@ -454,7 +454,10 @@ class horariosModel extends Model
         //Obtenemos la tabla de horarios
         $builder = $db->table('tipo_horario');
 
-        $query = $builder->select()->where('es_especial', 1)->where('sin_fecha', 1)->get();
+        $query = $builder->select()->where('es_especial', 1)->where('sin_fecha', 1)
+                 ->where('tipo_horario.fecha_inicio >=', $year.'-01-01')
+                 ->where('tipo_horario.fecha_fin <=', $year.'-12-31')
+                 ->get();   
 
         $result = $query->getResultArray();
 

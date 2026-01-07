@@ -456,17 +456,24 @@ class Horarios extends BaseController
 
 
     public function getHorariosChange() {
-        
+    
+        $post = $this->request->getPost();
         $horariosModel = new horariosModel();
 
-        $horarios = $horariosModel->getHorariosChange();
+        if (!empty($post)) {
 
-        echo json_encode(
-            [
-                "horarios" => $horarios
-            ]
-        );
-        exit;
+            $year = intval($post["year"]);
+
+            $horariosModel = new horariosModel();
+            $horarios = $horariosModel->getHorariosChange($year);
+
+            echo json_encode(
+                [
+                    "horarios" => $horarios
+                ]
+            );
+            exit;
+        }
     }
 
 
