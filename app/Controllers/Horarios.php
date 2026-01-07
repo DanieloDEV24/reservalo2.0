@@ -21,7 +21,7 @@ class Horarios extends BaseController
             $instalacionesModel = new instalacionesModel();
             $horariosModel      = new horariosModel();
 
-            $horarios = $horariosModel->comprobarHorarios();
+            $horarios = $horariosModel->comprobarHorariosLegend($id);
 
             $instalacion = $instalacionesModel->getInstalacion($id)[0];
 
@@ -46,6 +46,24 @@ class Horarios extends BaseController
         }
     }
 
+
+    public function comprobarHorariosAno() {
+        $post = $this->request->getPost();
+        $horariosModel = new horariosModel();
+
+        if (!empty($post)) {
+
+            $year = intval($post["year"]);
+            $instalacion = intval($post["instalacion"]);
+
+            $horarios = $horariosModel->comprobarHorariosAno($year, $instalacion);
+
+            echo json_encode([
+                "horarios" => $horarios
+            ]);
+            exit;
+        }
+    }
 
     public function crearHorario()
     {
@@ -200,9 +218,9 @@ class Horarios extends BaseController
         $horariosModel = new horariosModel();
 
         if (!empty($post)) {
-
-            $horarios = $horariosModel->comprobarHorarios();
-            $excepciones = $horariosModel->comprobarExcepciones();
+            $id = intval($post["instalacion"]);
+            $horarios = $horariosModel->comprobarHorarios($id);
+            $excepciones = $horariosModel->comprobarExcepciones($id);
 
             echo json_encode([
                 "horarios" => $horarios, 
@@ -239,7 +257,26 @@ class Horarios extends BaseController
             }
         }
     }
+    
+    public function menuHorario() {
+        
+        $post = $this->request->getPost();
+        $horariosModel = new horariosModel();
 
+
+        if (!empty($post)) {
+            $year = $post['year'];
+            $instalacion = intval($post["instalacion"]);
+            $horarios = $horariosModel->comprobarHorariosSidebar($instalacion, $year);
+            
+            echo json_encode([
+                "succes" => true, 
+                "horarios" => $horarios 
+            ]);
+        }
+
+
+    }
 
     public function editarHorario()
     {
@@ -443,7 +480,13 @@ class Horarios extends BaseController
             $cambios = $post["cambios"];
 
             foreach ($cambios as $cambio) {
-                $horariosModel->cambiarHorariosSeleccionados($cambio);
+
+                if(isset($cambio["excepcion"]) && filter_var($cambio["excepcion"], FILTER_VALIDATE_BOOLEAN) === true) {
+                    $horariosModel->borrarExcepcionFechaSola($cambio["fecha"]);
+                }
+                else {
+                    $horariosModel->cambiarHorariosSeleccionados($cambio);
+                }
             }
 
             echo json_encode([

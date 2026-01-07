@@ -413,8 +413,35 @@ $(document).ready(() => {
         }
         else {
 
-            $('#anoActual').text(newYear); // --> // Mostramos el año en el texto
-            generarCalendario(newYear); // --> Generamos el calendario de ese año
+            $.ajax({
+                type: "POST",
+                url: "../comprobarHorariosAno",
+                data: { year: newYear, instalacion: $('#instalacion').val() },
+                dataType: "JSON",
+                beforeSend: function () {
+                    $('#loaderAno').show();
+                    $('#anoActual').addClass('loading');
+                    $('.legend-name').addClass('loading');
+                    $('.legend-color').addClass('loading');
+                },
+                success: function (response) {
+                    $('.legend .no-selected').empty();
+                    response.horarios.map(horario => {
+                        let color = `<div class='legend-color' data-index='${horario.id_tipo_horario}' style='background-color: ${horario.color};'></div>`
+                        let nombre = `<div class='legend-name'>${horario.nombre}</div>`
+                        $('.legend .no-selected').append(`<div class='legend-item'>${color}${nombre}</div>`)
+                    })
+
+                    $('#anoActual').text(newYear); // --> Mostramos el año en el texto
+                    generarCalendario(newYear)
+                }, 
+                complete: function () {
+                    $('#loaderAno').hide();
+                    $('#anoActual').removeClass('loading');
+                    $('.legend-name').removeClass('loading');
+                    $('.legend-color').removeClass('loading');
+                }
+            });
         }
 
 
@@ -435,8 +462,36 @@ $(document).ready(() => {
             return
         }
         else {
-            $('#anoActual').text(newYear); // --> Mostramos el año en el texto
-            generarCalendario(newYear); // --> Generamos el calendario de este año
+
+            $.ajax({
+                type: "POST",
+                url: "../comprobarHorariosAno",
+                data: { year: newYear, instalacion: $('#instalacion').val() },
+                dataType: "JSON",
+                beforeSend: function () {
+                    $('#loaderAno').show();
+                    $('#anoActual').addClass('loading');
+                    $('.legend-name').addClass('loading');
+                    $('.legend-color').addClass('loading');
+                },
+                success: function (response) {
+                    $('.legend .no-selected').empty();
+                    response.horarios.map(horario => {
+                        let color = `<div class='legend-color' data-index='${horario.id_tipo_horario}' style='background-color: ${horario.color};'></div>`
+                        let nombre = `<div class='legend-name'>${horario.nombre}</div>`
+                        $('.legend .no-selected').append(`<div class='legend-item'>${color}${nombre}</div>`)
+                    })
+
+                    $('#anoActual').text(newYear); // --> Mostramos el año en el texto
+                    generarCalendario(newYear)
+                }, 
+                complete: function () {
+                    $('#loaderAno').hide();
+                    $('#anoActual').removeClass('loading');
+                    $('.legend-name').removeClass('loading');
+                    $('.legend-color').removeClass('loading');
+                }
+            });
         }
     })
 
@@ -790,6 +845,42 @@ $(document).ready(() => {
     $(document).on('click', '#btnMenuHorario', function (e) {
 
         e.preventDefault()
+
+        $.ajax({
+            type: "POST",
+            url: "../menuHorario",
+            data: {year: $('#anoActual').text(), instalacion: $('#instalacion').val()},
+            dataType: "JSON",
+            success: function (response) {
+                if(response.succes == true) {
+
+                    // !! ME QUEDA CREAR EL CONTENEDOR ENTERO CON EL TITULITO...
+
+                    $('.horarios-normales').empty();
+                    $('.horarios-especiales').empty();
+
+                    response.horarios.map(horario => {
+                        if(parseInt(horario.es_especial) === 0) {
+                            $('.horarios-normales').append(`
+                                <div data-index="${horario.id_tipo_horario}" style="background-color: ${horario.color}20; color: ${horario.color}; border: 2px solid ${horario.color}90" class="card-menu-horarios">
+                                    <span>${horario.nombre}</span>
+                                    <div class="descripcion">${horario.descripcion}</div>
+                                </div>
+                                `)
+                        }
+                        else if(parseInt(horario.es_especial) === 1) {
+                            $('.horarios-especiales').append(`
+                                <div data-index="${horario.id_tipo_horario}" style="background-color: ${horario.color}20; color: ${horario.color}; border: 2px solid ${horario.color}90" class="card-menu-horarios">
+                                    <span>${horario.nombre}</span>
+                                    <div class="descripcion">${horario.descripcion}</div>
+                                </div>
+                            `)
+                        }
+                    })
+                }
+            }
+        });
+
         $('#sidebarMenu').addClass('active');
         $('#sidebar').removeClass('active');
     })
@@ -1236,14 +1327,20 @@ $(document).ready(() => {
                 "fecha": $(this).data('day')
             };
 
+
             $.ajax({
                 type: "POST",
                 url: "../getHorariosChangeException",
                 data: { data },
                 dataType: "JSON",
+                beforeSend: function () {
+                    $('#loaderSidebarCambioHorario').show();
+                },
                 success: function (response) {
 
                     if (!response.success) return;
+
+                    $('#loaderSidebarCambioHorario').hide();
 
                     const idHorarioBase = response.excepcion.id_tipo_horario_base;
                     const $contenedor = $('#sidebar-cambio-horario .contenedor-cambio-horarios-card');
@@ -1268,7 +1365,7 @@ $(document).ready(() => {
                         `;
 
                         $contenedor.append(cardHorario);
-                        $('content-confirmar-cambio .horarios-old').append()
+
 
                     }
 
@@ -1284,7 +1381,7 @@ $(document).ready(() => {
                     `;
 
                     const div2 = `
-                            <div data-name="${response.excepcion.nombre}" data-color="${response.excepcion.color}"
+                            <div data-name="${response.excepcion.nombre}" data-color="${response.excepcion.color}" data-new="${response.excepcion.id_tipo_horario}"
                                 style="width:40px;height:40px;border-radius:5px;
                                         background-color:${response.excepcion.color};color:${response.excepcion.color};
                                         border:1px solid ${response.excepcion.color};
@@ -1309,11 +1406,15 @@ $(document).ready(() => {
                         $(`.horarios-old div[data-name="${response.horario_excepcion.nombre}"] span`)
                             .text(num2);
                     }
+                }, 
+                complete: function () {
+                    $('#loaderSidebarCambioHorario').hide();
                 }
             });
 
             $('#sidebar-cambio-horario').addClass('active');
             $('#calendario, #contenedor-loader-horario').addClass('seleccion-dia');
+            $('#btn-guardar-cambio-seleccion').removeClass('btn-primary-personal-disabled');
             return; // ⛔ NO continúa con la lógica normal
         }
 
@@ -1385,7 +1486,12 @@ $(document).ready(() => {
                 type: "GET",
                 url: "../getHorariosChange",
                 dataType: "json",
+                beforeSend: function () {
+                    $('#loaderSidebarCambioHorario').show();
+                },
                 success: function (response) {
+
+                    $('#loaderSidebarCambioHorario').hide();
 
                     const $contenedor = $('.contenedor-cambio-horarios-card');
                     $contenedor.empty();
@@ -1402,6 +1508,9 @@ $(document).ready(() => {
                         </div>
                     `);
                     });
+                }, 
+                complete: function () {
+                    $('#loaderSidebarCambioHorario').hide();
                 }
             });
 
@@ -1458,6 +1567,8 @@ $(document).ready(() => {
     $(document).on('click', '#btn-guardar-cambio-seleccion', function (e) {
         e.preventDefault();
 
+        console.log('Guardar cambios de selección de días');
+
         if ($(this).hasClass('btn-primary-personal-disabled')) return;
 
         let cambios = []
@@ -1468,6 +1579,7 @@ $(document).ready(() => {
             let nuevoHorario = $('.horarios-new div').attr('data-new');
 
             cambios.push({
+                excepcion: ($('.dia-seleccionado').is('[data-exception="true"]')) ? true : false ,
                 fecha: fecha,
                 horarioAntiguo: idHorario,
                 horarioNuevo: nuevoHorario
@@ -1488,7 +1600,6 @@ $(document).ready(() => {
                     $('.dia-seleccionado').removeClass('dia-seleccionado')
                     $('.horarios-old').empty();
                     $('.horarios-new').empty();
-                    $('#btn-guardar-cambio-seleccion').prop('disabled', true);
                     $('#btn-guardar-cambio-seleccion').addClass('btn-primary-personal-disabled');
                 }
             }
@@ -1510,11 +1621,13 @@ $(document).ready(() => {
 
         const fecha = new Date()
         const currentYear = (year === null) ? fecha.getFullYear() : year
+        const instalacion = $('#instalacion').val();
+        console.log(instalacion)
 
         $.ajax({
             type: "POST",
             url: "../comprobarHorarios",
-            data: { year: currentYear },
+            data: { year: currentYear, instalacion: instalacion },
             dataType: "json",
             beforeSend: function (event) {
 

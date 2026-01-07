@@ -53,7 +53,7 @@
 }
 
 
-.legend {
+.legend, .legend .no-selected {
   display: flex;
   gap: 24px;
   flex-wrap: wrap;
@@ -839,6 +839,28 @@ input[type="color"]::-moz-color-swatch {
   /* encima de los acordeones */
 }
 
+#loaderSidebarCambioHorario {
+  position: absolute;
+  background: rgba(255, 255, 255, 0);
+  /* semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  top: 250px  
+  /* encima de los acordeones */
+}
+
+#loaderAno {
+  background: rgba(255, 255, 255, 0.6);
+  /* semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1%;
+  /* encima de los acordeones */
+}
+
 .contenedor-loader {
   display: flex;
   align-items: center;
@@ -1066,3 +1088,15 @@ p.seleccion-horario-nuevo {
   gap: 15%;
   width: 100%;
 }
+
+.container-year{
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  width: 15%;
+}
+
+#anoActual.loading, .legend-name.loading, .legend-color.loading {
+  opacity: .3;
+}
+

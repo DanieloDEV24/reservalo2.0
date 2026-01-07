@@ -61,3 +61,5 @@ $routes->post('/editarHorario', 'Horarios::editarHorario');
 $routes->post('/borrarHorario', 'Horarios::borrarHorario');
 $routes->post('/cambiarHorariosSeleccionados', 'Horarios::cambiarHorariosSeleccionados');
 $routes->post('/getHorariosChangeException', 'Horarios::getHorariosChangeException');
+$routes->post('/comprobarHorariosAno', 'Horarios::comprobarHorariosAno');
+$routes->post('/menuHorario', 'Horarios::menuHorario');

@@ -13,7 +13,8 @@
     <?php if(intval($instalacion["tipo_reserva"]) === 0) : ?>
     <div class="ano-horario">
 
-        <div class="div-ano">
+        <div class="container-year">
+          <div class="div-ano">
             <button id="btn-previous-year">
                 <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
@@ -26,14 +27,16 @@
                 </svg>
             </button>
         </div>
+          <div id="loaderAno" class="loader2" style="display: none;"></div>
+        </div>
 
-        <div class="legend">
+        <div class="legend">  
             <div class="legend-item">
                 <div class="legend-color color-selected"></div>
-                <span>Seleccionado</span>
+                <div class='legend-name'>Seleccionado</div>
             </div>
-
-            <?php
+            <div class="no-selected">
+              <?php
                     if(isset($horarios) && count($horarios) > 0)
                     {
                         foreach($horarios as $horario)
@@ -41,12 +44,13 @@
                             ?>
                                 <div class="legend-item" data-index="<?=$horario["id_tipo_horario"]?>">
                                     <div class="legend-color" style="background-color: <?=$horario["color"]?>;"></div>
-                                    <span><?=$horario["nombre"]?></span>
+                                    <div class='legend-name'><?=$horario["nombre"]?></div>
                                 </div>
                             <?php
                         }
                     }
                 ?>
+            </div>
 
         </div>
 
@@ -191,75 +195,16 @@
         </div>
         <div class="sidebar-content">
             <div class="menu-content">
-                <?php
-                if (isset($horarios) && count($horarios) > 0) {
-                ?>
                     <div id="horarios-normailes-menu">
                         <p class="tipo-horarios">Horarios normales</p>
-                    <?php foreach($horarios as $horario): ?>
-                        
-                      <?php if(intval($horario["es_especial"]) === 0 ): ?>
-                        <div data-index="<?=$horario["id_tipo_horario"]?>" style="background-color: <?=$horario["color"]?>20; color: <?=$horario["color"]?>; border: 2px solid <?=$horario["color"]?>90" class="card-menu-horarios">
-                            <span><?=$horario["nombre"]?></span>
-                            <div class="fechas">
-                                <?php
-                                    $fecha_inicio = DateTime::createFromFormat('Y-m-d', $horario["fecha_inicio"]);
-                                    $fecha_fin = DateTime::createFromFormat('Y-m-d', $horario["fecha_fin"]);
-
-                                    echo $fecha_inicio->format('d/m/Y').' - '.$fecha_fin->format('d/m/Y'); 
-                                ?>
-                            </div>
-
-                            <div class="descripcion">
-                                <?=$horario["descripcion"]?>
-                            </div>
-
-                            <div class="dropdown opciones-horario" style="max-width: 200px;">
-                                <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: <?=$horario["color"]?>;"><i class="bi bi-three-dots-vertical"></i></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
-                                    <li><a href="" class="delete-option btnBorrarHorario"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                      <?php endif; ?>
-                    <?php endforeach;?>
+                        <div class="horarios-normales"></div>
                     </div>
 
+                    
                     <div id="horarios-especiales-menu">
                       <p class="tipo-horarios">Horarios especiales</p>
-                      <?php foreach($horarios as $horario): ?>
-                        <?php if(intval($horario["es_especial"]) === 1 ): ?>
-                          <div data-index="<?=$horario["id_tipo_horario"]?>" style="background-color: <?=$horario["color"]?>20; color: <?=$horario["color"]?>; border: 2px solid <?=$horario["color"]?>90" class="card-menu-horarios">
-                              <span><?=$horario["nombre"]?></span>
-                              <div class="fechas">
-                                  <?php
-                                      $fecha_inicio = DateTime::createFromFormat('Y-m-d', $horario["fecha_inicio"]);
-                                      $fecha_fin = DateTime::createFromFormat('Y-m-d', $horario["fecha_fin"]);
-
-                                      echo $fecha_inicio->format('d/m/Y').' - '.$fecha_fin->format('d/m/Y'); 
-                                  ?>
-                              </div>
-
-                              <div class="descripcion">
-                                  <?=$horario["descripcion"]?>
-                              </div>
-
-                              <div class="dropdown opciones-horario" style="max-width: 200px;">
-                                  <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: <?=$horario["color"]?>;"><i class="bi bi-three-dots-vertical"></i></a>
-                                  <ul class="dropdown-menu">
-                                      <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
-                                      <li><a href="" class="delete-option btnBorrarHorario"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
-                                  </ul>
-                              </div>
-                          </div>
-                        <?php endif; ?>
-                      <?php endforeach;?>
+                      <div class="horarios-especiales"></div>
                     </div>
-                <?php    
-                }
-                ?>
-                    
             </div>
         </div>
     </div>
@@ -268,36 +213,67 @@
     
 
 
-        <div class="sidebar" id="sidebar-cambio-horario">
+<div class="sidebar" id="sidebar-cambio-horario">
   <button id="btnCerraSidebarCambio" class="close-sidebar">✕</button>
+
   <div class="sidebar-header">
     <div style="display: flex; align-items: center; gap:10px; margin-bottom: 2%;">
       <div class="contenedor-iconos"><i class="bi bi-calendar4-week"></i></div>
       <h2 id="sidebarTitle1">Cambio de horario</h2>
     </div>
-    <p id="sidebarSubtitle1">Días seleccionados: <span id="dias-seleccionados"></span></p>
+    <p id="sidebarSubtitle1">
+      Días seleccionados: <span id="dias-seleccionados"></span>
+    </p>
   </div>
 
   <div class="sidebar-content">
-      <p class="seleccion-horario-nuevo">Seleccione el horario que desea establecer en dichas fechas</p>
-      <div class="contenedor-cambio-horarios-card">
-            
-      </div>
 
-  </div>
+    <!-- 🔹 CONTENEDOR LOADER (igual que Crear horario) -->
+    <div style="position: relative; min-height: 70px;" class="contenedor-loader">
 
-  <div class="sidebar-footer">
-        <div class="content-confirmar-cambio">
-          <div class="horarios-old"></div>
-          <div class="flecha-horarios"> <i class="bi bi-arrow-right"></i> </div>
-          <div class="horarios-new"></div>
+    <br><br>
+
+      <!-- 🔄 LOADER -->
+      <div id="loaderSidebarCambioHorario" class="loader" style="display: none;"></div>
+
+      <!-- 📦 CONTENIDO REAL -->
+      <div class="sidebar-body">
+
+        <p class="seleccion-horario-nuevo">
+          Seleccione el horario que desea establecer en dichas fechas
+        </p>
+
+        <div class="contenedor-cambio-horarios-card"></div>
+
       </div>
-      <div class="button" style="width: 100%; padding-top: 3%">
-        <a id="btn-guardar-cambio-seleccion" style="width: 100%" class="btn-primary-personal btn-primary-personal-disabled" >Cambiar Horario</a>
-      </div>
+      <!-- 🔹 Fin sidebar-body -->
+
+    </div>
+    <!-- 🔹 Fin contenedor-loader -->
+
   </div>
   <!-- Cierre sidebar-content -->
+
+  <div class="sidebar-footer">
+    <div class="content-confirmar-cambio">
+      <div class="horarios-old"></div>
+      <div class="flecha-horarios">
+        <i class="bi bi-arrow-right"></i>
+      </div>
+      <div class="horarios-new"></div>
+    </div>
+
+    <div class="button" style="width: 100%; padding-top: 3%">
+      <a id="btn-guardar-cambio-seleccion"
+         style="width: 100%"
+         class="btn-primary-personal btn-primary-personal-disabled">
+        Cambiar Horario
+      </a>
+    </div>
+  </div>
 </div>
+
+
 
     <div class="div-button">
         <a href="" id="btnCrearHorario" class="btn-primary-personal" style="width: 23%;">Crear horario<i class="bi bi-plus-circle"></i></a>
