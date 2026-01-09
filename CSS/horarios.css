@@ -859,7 +859,7 @@ input[type="color"]::-moz-color-swatch {
   justify-content: center;
   align-items: center;
   z-index: 10;
-  top: 250px  
+  top: 70px  
   /* encima de los acordeones */
 }
 
@@ -878,7 +878,6 @@ input[type="color"]::-moz-color-swatch {
   align-items: center;
   justify-content: center;
   width: 100%;
-  transition: all .3s;
 }
 
 .contenedor-loader2 {
@@ -1115,4 +1114,104 @@ p.seleccion-horario-nuevo {
 
 .card-menu-horarios.loading {
   opacity: .3;
+}
+
+.horarios-new, .horarios-old {
+  flex-direction: column;
+}
+
+.horarios-new div, .horarios-old div
+{
+  margin-bottom: 5%;
+}
+
+/* ========================================
+   🎨 RESIZE HANDLE PARA SIDEBAR-FOOTER
+   ======================================== */
+
+#sidebar-cambio-horario .sidebar-footer {
+    position: relative;
+    height: 200px; /* Altura inicial */
+    min-height: 150px;
+    max-height: 500px;
+    overflow: auto;
+    transition: box-shadow 0.2s;
+}
+
+/* Handle de redimensionar (arriba del footer) */
+.resize-handle-footer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background-color: #33333310;
+    cursor: ns-resize;
+    z-index: 100;
+    transition: background 0.2s, height 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icono del handle */
+.resize-handle-footer::before {
+    content: '⋮⋮⋮';
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: #111;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+}
+
+.resize-handle-footer:hover::before {
+    opacity: 0.7;
+}
+
+/* Estado durante el redimensionamiento */
+#sidebar-cambio-horario .sidebar-footer.resizing-active {
+    transition: none !important;
+}
+
+/* Cursor global durante resize */
+body.resizing-sidebar-footer {
+    cursor: ns-resize !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+body.resizing-sidebar-footer * {
+    cursor: ns-resize !important;
+}
+
+/* Ajustar padding del contenido para el handle */
+#sidebar-cambio-horario .sidebar-footer .content-confirmar-cambio {
+    padding-top: 15px; /* Espacio para el handle */
+}
+
+/* Mejorar el scroll cuando el contenido es mayor */
+#sidebar-cambio-horario .sidebar-footer::-webkit-scrollbar {
+    width: 6px;
+}
+
+#sidebar-cambio-horario .sidebar-footer::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+#sidebar-cambio-horario .sidebar-footer::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+#sidebar-cambio-horario .sidebar-footer::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width:1400px) {
+  .container-year {
+    width: 22%;
+  }
 }

@@ -392,7 +392,7 @@ $(document).ready(() => {
     $('#anoActual').text(new Date().getFullYear());
 
     // Al abrir la página de horarios, generamos el calendario del año actual 
-    generarCalendario()
+    generarCalendario($('#anoActual').text());
 
     /***********************************************************************************************************************************
     ********************************************************  SELECCIÓN DE AÑO *********************************************************
@@ -730,7 +730,7 @@ $(document).ready(() => {
                         console.log(response)
 
                         // Generamos el calendario
-                        generarCalendario();
+                        generarCalendario($('#anoActual').text());
 
                         // Añadimos la leyenda al nuevo horario
                         $('.legend').append(`
@@ -1161,7 +1161,7 @@ $(document).ready(() => {
                         $('#modalEditarHorario input').removeClass('cargando')
                         $('#modalEditarHorario textarea').removeClass('cargando')
 
-                        generarCalendario();
+                        generarCalendario($('#anoActual').text());
                         $('#modalEditarHorario').removeClass('show');
                         $('#modalEditarHorario').hide();
 
@@ -1304,7 +1304,7 @@ $(document).ready(() => {
 
                     $('#sidebarMenu').find(`div.card-menu-horarios[data-index='${id}']`).remove();
                     $('.legend').find(`div[data-index='${id}']`).remove();
-                    generarCalendario();
+                    generarCalendario($('#anoActual').text());
                 }
             },
             complete: function () {
@@ -1321,6 +1321,7 @@ $(document).ready(() => {
     /***********************************************************************************************************************************
     *********************************************************  SELECCIÓN DE DÍA  *******************************************************
     ***********************************************************************************************************************************/
+    
     $(document).on('click', '#btnCerraSidebarCambio', function (e) {
 
         e.preventDefault()
@@ -1330,6 +1331,7 @@ $(document).ready(() => {
         $(`.numero-dia.dia-seleccionado`).removeClass('dia-seleccionado');
     })
 
+    let horariosSeleccionados = [];
     $(document).on('click', '.numero-dia', function (e) {
         e.preventDefault();
 
@@ -1349,17 +1351,24 @@ $(document).ready(() => {
             return;
             }
 
+
+
+
             $(this).addClass('dia-seleccionado');
 
             if($('.dia-seleccionado[data-exception="true"]').length === 1) 
                 $('#sidebar-cambio-horario .contenedor-cambio-horarios-card').empty(); 
 
-            console.log($('.dia-seleccionado[data-exception="true"]').length);
-
             $('#sidebar-cambio-horario p.seleccion-horario-nuevo')
                 .text('¿Desea volver al siguiente horario? :');
 
-            const data = {
+
+            let idHorario = parseInt($(this).data('index'));
+            let existeLeyenda = horariosSeleccionados.includes(idHorario);
+
+            if (!existeLeyenda) {
+                horariosSeleccionados.push(idHorario);
+                const data = {
                 "horario-excepcion": $(this).data('index'),
                 "fecha": $(this).data('day')
             };
@@ -1382,12 +1391,6 @@ $(document).ready(() => {
                     const idHorarioBase = response.excepcion.id_tipo_horario_base;
                     const $contenedor = $('#sidebar-cambio-horario .contenedor-cambio-horarios-card');
 
-                    /* 🔹 Comprobación eficiente */
-                    const existe = $contenedor
-                        .find(`.card-menu-horarios[data-index="${idHorarioBase}"]`)
-                        .length > 0;
-
-                    if (!existe) {
                         const e = response.excepcion;
 
                         const cardHorario = `
@@ -1404,7 +1407,7 @@ $(document).ready(() => {
                         $contenedor.append(cardHorario);
 
 
-                    }
+                    // }
 
                     const num2 = $(`.numero-dia.dia-seleccionado[data-name="${response.horario_excepcion.nombre}"]`).length;
                     const div = `
@@ -1426,28 +1429,21 @@ $(document).ready(() => {
                                 <span>${num2}</span>
                             </div>
                     `;
-
-                    
-                    $('.horarios-old div').each(function () {
-                        if ($(this).data('color') === response.horario_excepcion.color) existeLeyenda = true;
-                    });
-
-                    if (num2 === 1) {
                         
-                        $('.horarios-new').empty(); 
-                        $('.horarios-old').empty(); 
-
                         $('.horarios-old').append(div);
                         $('.horarios-new').append(div2);
-                    } else if (num2 > 1 ) {
-                        $(`.horarios-old div[data-name="${response.horario_excepcion.nombre}"] span`)
-                            .text(num2);
-                    }
                 }, 
                 complete: function () {
                     $('#loaderSidebarCambioHorario').hide();
                 }
-            });
+                });
+            }
+            else {
+                const num2 = $(`.numero-dia.dia-seleccionado[data-name="${$(this).data('name')}"]`).length;
+                $(`.horarios-old div[data-name="${$(this).data('name')}"] span`).text(num2);
+            }
+            
+            
 
             $('#sidebar-cambio-horario').addClass('active');
             $('#calendario, #contenedor-loader-horario').addClass('seleccion-dia');
@@ -1631,7 +1627,7 @@ $(document).ready(() => {
             dataType: "JSON",
             success: function (response) {
                 if (response.success === true) {
-                    generarCalendario();
+                    generarCalendario($('#anoActual').text());
                     $('#sidebar-cambio-horario').removeClass('active');
                     $('#calendario').removeClass('seleccion-dia')
                     $('#contenedor-loader-horario').removeClass('seleccion-dia')
@@ -2088,6 +2084,217 @@ $(document).ready(() => {
         return valido;
     }
 
+/***********************************************************************************************************************************
+*************************************************  RESIZE SIDEBAR FOOTER  **********************************************************
+***********************************************************************************************************************************/
 
+/**
+ * 🚀 Clase para redimensionar el sidebar-footer eficientemente
+ */
+class SidebarFooterResizer {
+    constructor(options = {}) {
+        this.config = {
+            targetSelector: options.targetSelector || '#sidebar-cambio-horario .sidebar-footer',
+            handleClass: 'resize-handle-footer',
+            minHeight: options.minHeight || 150,
+            maxHeight: options.maxHeight || 500,
+            storageKey: options.storageKey || 'sidebar_footer_height',
+            saveToStorage: options.saveToStorage !== false
+        };
+
+        this.state = {
+            isResizing: false,
+            rafId: null,
+            $element: null,
+            startY: 0,
+            startHeight: 0
+        };
+
+        this.init();
+    }
+
+    init() {
+        this.state.$element = $(this.config.targetSelector);
+        
+        if (this.state.$element.length === 0) {
+            console.warn('Sidebar footer no encontrado');
+            return;
+        }
+
+        this.createHandle();
+        this.restoreHeight();
+        this.bindEvents();
+    }
+
+    createHandle() {
+        // Verificar si ya existe el handle
+        if (this.state.$element.find(`.${this.config.handleClass}`).length > 0) {
+            return;
+        }
+
+        const $handle = $(`<div class="${this.config.handleClass}"></div>`);
+        this.state.$element.prepend($handle);
+    }
+
+    bindEvents() {
+        const self = this;
+
+        // MouseDown - Iniciar resize
+        $(document).on('mousedown', `.${this.config.handleClass}`, function(e) {
+            e.preventDefault();
+            self.startResize(e);
+        });
+
+        // MouseMove - Durante resize
+        $(document).on('mousemove', function(e) {
+            if (!self.state.isResizing) return;
+            self.handleMouseMove(e);
+        });
+
+        // MouseUp - Finalizar resize
+        $(document).on('mouseup', function() {
+            if (self.state.isResizing) {
+                self.stopResize();
+            }
+        });
+
+        // Prevenir selección de texto
+        $(document).on('selectstart', function(e) {
+            if ($('body').hasClass('resizing-sidebar-footer')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    }
+
+    startResize(e) {
+        this.state.isResizing = true;
+        this.state.startY = e.clientY;
+        this.state.startHeight = this.state.$element.outerHeight();
+
+        // Añadir clases para estilos
+        $('body').addClass('resizing-sidebar-footer');
+        this.state.$element.addClass('resizing-active');
+    }
+
+    handleMouseMove(e) {
+        // Cancelar frame anterior si existe
+        if (this.state.rafId) {
+            cancelAnimationFrame(this.state.rafId);
+        }
+
+        // Programar nuevo frame con RAF
+        this.state.rafId = requestAnimationFrame(() => {
+            this.resize(e.clientY);
+            this.state.rafId = null;
+        });
+    }
+
+    resize(clientY) {
+        // Calcular nueva altura (invertido porque el handle está arriba)
+        const deltaY = this.state.startY - clientY;
+        let newHeight = this.state.startHeight + deltaY;
+
+        // Aplicar límites
+        newHeight = Math.max(this.config.minHeight, Math.min(this.config.maxHeight, newHeight));
+
+        // Aplicar nueva altura
+        this.state.$element.css('height', newHeight + 'px');
+    }
+
+    stopResize() {
+        this.state.isResizing = false;
+
+        // Cancelar cualquier frame pendiente
+        if (this.state.rafId) {
+            cancelAnimationFrame(this.state.rafId);
+            this.state.rafId = null;
+        }
+
+        // Remover clases
+        $('body').removeClass('resizing-sidebar-footer');
+        this.state.$element.removeClass('resizing-active');
+
+        // Guardar altura en localStorage
+        if (this.config.saveToStorage) {
+            this.saveHeight();
+        }
+    }
+
+    saveHeight() {
+        const height = this.state.$element.outerHeight();
+        try {
+            localStorage.setItem(this.config.storageKey, height);
+        } catch (e) {
+            console.warn('No se pudo guardar la altura en localStorage');
+        }
+    }
+
+    restoreHeight() {
+        if (!this.config.saveToStorage) return;
+
+        try {
+            const savedHeight = localStorage.getItem(this.config.storageKey);
+            if (savedHeight) {
+                const height = parseInt(savedHeight);
+                if (height >= this.config.minHeight && height <= this.config.maxHeight) {
+                    this.state.$element.css('height', height + 'px');
+                }
+            }
+        } catch (e) {
+            console.warn('No se pudo restaurar la altura desde localStorage');
+        }
+    }
+
+    destroy() {
+        // Cancelar RAF si existe
+        if (this.state.rafId) {
+            cancelAnimationFrame(this.state.rafId);
+        }
+
+        // Remover handle
+        this.state.$element.find(`.${this.config.handleClass}`).remove();
+
+        // Unbind events
+        $(document).off('mousedown', `.${this.config.handleClass}`);
+
+        // Limpiar estilos
+        $('body').removeClass('resizing-sidebar-footer');
+        this.state.$element.removeClass('resizing-active');
+    }
+
+    setHeight(height) {
+        height = Math.max(this.config.minHeight, Math.min(this.config.maxHeight, height));
+        this.state.$element.css('height', height + 'px');
+        
+        if (this.config.saveToStorage) {
+            this.saveHeight();
+        }
+    }
+
+    getHeight() {
+        return this.state.$element.outerHeight();
+    }
+}
+
+/***********************************************************************************************************************************
+************************************************  INICIALIZACIÓN DEL RESIZER  ******************************************************
+***********************************************************************************************************************************/
+
+// Inicializar el resizer del sidebar footer
+window.sidebarFooterResizer = new SidebarFooterResizer({
+    targetSelector: '#sidebar-cambio-horario .sidebar-footer',
+    minHeight: 150,
+    maxHeight: 500,
+    storageKey: 'sidebar_cambio_horario_footer_height',
+    saveToStorage: true // Guarda la altura preferida del usuario
+});
+
+// Limpiar cuando se cierra el sidebar (opcional)
+$(document).on('click', '#btnCerraSidebarCambio', function() {
+    // El resizer sigue activo, solo se oculta el sidebar
+    // Si quieres resetear la altura al cerrar, descomenta:
+    // window.sidebarFooterResizer.setHeight(200);
+});
 
 })

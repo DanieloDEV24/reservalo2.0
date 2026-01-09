@@ -288,6 +288,7 @@
     <?php endif ; ?>
 </div>
 
+
 <?=$modalEditar?>
 <?=$modalBorrar?>
 <?=$modalHorarioExistente?>
