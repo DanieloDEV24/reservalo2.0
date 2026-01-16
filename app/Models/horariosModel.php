@@ -116,8 +116,8 @@ class horariosModel extends Model
             'inner'
         )
         ->where('franjas_horarias.id_instalacion', $instalacion)
-        ->where('tipo_horario.fecha_inicio >=', $currentYear.'01-01')
-        ->where('tipo_horario.fecha_fin <=', $currentYear.'12-31')
+        ->where('tipo_horario.fecha_inicio >=', $currentYear.'-01-01')
+        ->where('tipo_horario.fecha_fin <=', $currentYear.'-12-31')
         ->get();
 
         return $query->getResultArray();
@@ -159,7 +159,7 @@ class horariosModel extends Model
         // Buscamos los horarios de ese año e instalación
             $query = $builder
         ->distinct()
-        ->select('tipo_horario.id_tipo_horario, tipo_horario.nombre, tipo_horario.color, franjas_horarias.id_instalacion')
+        ->select('tipo_horario.id_tipo_horario, tipo_horario.nombre, tipo_horario.color, tipo_horario.sin_fecha, tipo_horario.fecha_inicio, tipo_horario.fecha_fin, franjas_horarias.id_instalacion')
         ->join(
             'franjas_horarias',
             'franjas_horarias.id_tipo_horario = tipo_horario.id_tipo_horario',

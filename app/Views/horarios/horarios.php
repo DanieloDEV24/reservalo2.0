@@ -252,15 +252,15 @@
       </div>
       <div class="horarios-new"></div>
     </div>
+  </div>
 
-    <div class="button" style="width: 100%; padding-top: 3%">
+      <div class="button div-btn-cambio-horario" style="width: 100%; padding-top: 3%">
       <a id="btn-guardar-cambio-seleccion"
          style="width: 100%"
          class="btn-primary-personal btn-primary-personal-disabled">
         Cambiar Horario
       </a>
     </div>
-  </div>
 </div>
 
 

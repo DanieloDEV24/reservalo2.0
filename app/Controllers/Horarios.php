@@ -96,7 +96,7 @@ class Horarios extends BaseController
                     "descripcion" => $data["descripcion"],
                     "color" => $data["color"],
                     "fecha_inicio" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? date('Y') . '-01-01' : $data["fecha_inicio"],
-                    "fecha_fin" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? (date("Y") + 1) . '-12-31' : $data["fecha_fin"],
+                    "fecha_fin" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? date("Y") . '-12-31' : $data["fecha_fin"],
                     "es_especial" => intval($data["horario_especial"]),
                     "sin_fecha" => intval($data["sin_fecha"])
                 ];
@@ -219,13 +219,15 @@ class Horarios extends BaseController
 
         if (!empty($post)) {
             $id = intval($post["instalacion"]);
-            $horarios = $horariosModel->comprobarHorarios($id);
+            $year = $post["year"];
+            $horarios = ($year !== "") ? $horariosModel->comprobarHorariosAno(intval($year), $id) : $horariosModel->comprobarHorariosLegend($id);
             $excepciones = $horariosModel->comprobarExcepciones($id);
 
             echo json_encode([
                 "horarios" => $horarios, 
                 "excepciones" => $excepciones
             ]);
+            exit;
         }
     }
 

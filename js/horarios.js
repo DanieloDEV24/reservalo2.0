@@ -423,6 +423,9 @@ $(document).ready(() => {
                     $('#anoActual').addClass('loading');
                     $('.legend-name').addClass('loading');
                     $('.legend-color').addClass('loading');
+                    $('.div-mes h3').addClass('loading');
+                    $('.div-mes .grid-dias-mes').addClass('loading');
+                    $('.div-mes .grid-nombres-mes').addClass('loading');
                 },
                 success: function (response) {
                     $('.legend .no-selected').empty();
@@ -440,6 +443,9 @@ $(document).ready(() => {
                     $('#anoActual').removeClass('loading');
                     $('.legend-name').removeClass('loading');
                     $('.legend-color').removeClass('loading');
+                    $('.div-mes h3').removeClass('loading');
+                    $('.div-mes .grid-dias-mes').removeClass('loading');
+                    $('.div-mes .grid-nombres-mes').removeClass('loading');
                 }
             });
         }
@@ -473,6 +479,9 @@ $(document).ready(() => {
                     $('#anoActual').addClass('loading');
                     $('.legend-name').addClass('loading');
                     $('.legend-color').addClass('loading');
+                    $('.div-mes h3').addClass('loading');
+                    $('.div-mes .grid-dias-mes').addClass('loading');
+                    $('.div-mes .grid-nombres-mes').addClass('loading');
                 },
                 success: function (response) {
                     $('.legend .no-selected').empty();
@@ -490,6 +499,9 @@ $(document).ready(() => {
                     $('#anoActual').removeClass('loading');
                     $('.legend-name').removeClass('loading');
                     $('.legend-color').removeClass('loading');
+                    $('.div-mes h3').removeClass('loading');
+                    $('.div-mes .grid-dias-mes').removeClass('loading');
+                    $('.div-mes .grid-nombres-mes').removeClass('loading');
                 }
             });
         }
@@ -807,12 +819,115 @@ $(document).ready(() => {
 
                         $('#modalHorarioExistente').show();
                     }
+
+                                 $('#loaderNuevoHorario').hide();
+                    $('#btnGuardarNuevoHorario').removeClass('cargando')
+                    $('#sidebar input').removeClass('cargando')
+                    $('#sidebar textarea').removeClass('cargando')
+
+                    $('#nombreHorario').val('');
+                    $('#descripcionHorario').val('');
+                    $('#fechaInicioHorario').val('');
+                    $('#fechaFinHorario').val('');
+                    $('#horarioDistinto').prop('checked', false);
+                    $('#horarioEspecial').prop('checked', false);
+
+                    $('#horaInicioMananaHorario').val('');
+                    $('#horaFinMananaHorario').val('');
+                    $('#horaInicioTardeHorario').val('');
+                    $('#horaFinTardeHorario').val('');
+
+                    $('#horaInicioMananaLunesHorario').val('');
+                    $('#horaFinMananaLunesHorario').val('');
+                    $('#horaInicioTardeLunesHorario').val('');
+                    $('#horaFinTardeLunesHorario').val('');
+
+                    $('#horaInicioMananaMartesHorario').val('');
+                    $('#horaFinMananaMartesHorario').val('');
+                    $('#horaInicioTardeMartesHorario').val('');
+                    $('#horaFinTardeMartesHorario').val('');
+                    
+                    $('#horaInicioMananaMiercolesHorario').val('');
+                    $('#horaFinMananaMiercolesHorario').val('');
+                    $('#horaInicioTardeMiercolesHorario').val('');
+                    $('#horaFinTardeMiercolesHorario').val('');
+
+                    $('#horaInicioMananaJuevesHorario').val('');
+                    $('#horaFinMananaJuevesHorario').val('');
+                    $('#horaInicioTardeJuevesHorario').val('');
+                    $('#horaFinTardeJuevesHorario').val('');
+
+                    $('#horaInicioMananaViernesHorario').val('');
+                    $('#horaFinMananaViernesHorario').val('');
+                    $('#horaInicioTardeViernesHorario').val('');
+                    $('#horaFinTardeViernesHorario').val('');
+
+                    $('#horaInicioMananaSabadoHorario').val('');
+                    $('#horaFinMananaSabadoHorario').val('');
+                    $('#horaInicioTardeSabadoHorario').val('');
+                    $('#horaFinTardeSabadoHorario').val('');
+
+                    $('#horaInicioMananaDomingoHorario').val('');
+                    $('#horaFinMananaDomingoHorario').val('');
+                    $('#horaInicioTardeDomingoHorario').val('');
+                    $('#horaFinTardeDomingoHorario').val('');
+                    
+                    $('#scheduleColor').val('#000000')
                 },
                 complete: function () {
                     $('#loaderNuevoHorario').hide();
                     $('#btnGuardarNuevoHorario').removeClass('cargando')
                     $('#sidebar input').removeClass('cargando')
                     $('#sidebar textarea').removeClass('cargando')
+
+                    $('#nombreHorario').val('');
+                    $('#descripcionHorario').val('');
+                    $('#fechaInicioHorario').val('');
+                    $('#fechaFinHorario').val('');
+                    $('#horarioDistinto').prop('checked', false);
+                    $('#horarioEspecial').prop('checked', false);
+
+                    $('#horaInicioMananaHorario').val('');
+                    $('#horaFinMananaHorario').val('');
+                    $('#horaInicioTardeHorario').val('');
+                    $('#horaFinTardeHorario').val('');
+
+                    $('#horaInicioMananaLunesHorario').val('');
+                    $('#horaFinMananaLunesHorario').val('');
+                    $('#horaInicioTardeLunesHorario').val('');
+                    $('#horaFinTardeLunesHorario').val('');
+
+                    $('#horaInicioMananaMartesHorario').val('');
+                    $('#horaFinMananaMartesHorario').val('');
+                    $('#horaInicioTardeMartesHorario').val('');
+                    $('#horaFinTardeMartesHorario').val('');
+                    
+                    $('#horaInicioMananaMiercolesHorario').val('');
+                    $('#horaFinMananaMiercolesHorario').val('');
+                    $('#horaInicioTardeMiercolesHorario').val('');
+                    $('#horaFinTardeMiercolesHorario').val('');
+
+                    $('#horaInicioMananaJuevesHorario').val('');
+                    $('#horaFinMananaJuevesHorario').val('');
+                    $('#horaInicioTardeJuevesHorario').val('');
+                    $('#horaFinTardeJuevesHorario').val('');
+
+                    $('#horaInicioMananaViernesHorario').val('');
+                    $('#horaFinMananaViernesHorario').val('');
+                    $('#horaInicioTardeViernesHorario').val('');
+                    $('#horaFinTardeViernesHorario').val('');
+
+                    $('#horaInicioMananaSabadoHorario').val('');
+                    $('#horaFinMananaSabadoHorario').val('');
+                    $('#horaInicioTardeSabadoHorario').val('');
+                    $('#horaFinTardeSabadoHorario').val('');
+
+                    $('#horaInicioMananaDomingoHorario').val('');
+                    $('#horaFinMananaDomingoHorario').val('');
+                    $('#horaInicioTardeDomingoHorario').val('');
+                    $('#horaFinTardeDomingoHorario').val('');
+                    
+                    $('#scheduleColor').val('#000000')
                 }
             });
         }
@@ -895,6 +1010,13 @@ $(document).ready(() => {
                                 <div data-index="${horario.id_tipo_horario}" style="background-color: ${horario.color}20; color: ${horario.color}; border: 2px solid ${horario.color}90" class="card-menu-horarios">
                                     <span>${horario.nombre}</span>
                                     <div class="descripcion">${horario.descripcion}</div>
+                                                                <div class="dropdown opciones-horario" style="max-width: 200px;">
+                                <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: <?=$horario["color"]?>;"><i class="bi bi-three-dots-vertical"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href=""><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                    <li><a href="" class="delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
+                                </ul>
+                            </div>
                                 </div>
                                 `)
                         }
@@ -903,6 +1025,13 @@ $(document).ready(() => {
                                 <div data-index="${horario.id_tipo_horario}" style="background-color: ${horario.color}20; color: ${horario.color}; border: 2px solid ${horario.color}90" class="card-menu-horarios">
                                     <span>${horario.nombre}</span>
                                     <div class="descripcion">${horario.descripcion}</div>
+                                                                <div class="dropdown opciones-horario" style="max-width: 200px;">
+                                <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: <?=$horario["color"]?>;"><i class="bi bi-three-dots-vertical"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href=""><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                    <li><a href="" class="delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
+                                </ul>
+                            </div>
                                 </div>
                             `)
                         }
@@ -2081,6 +2210,17 @@ $(document).ready(() => {
             dataOpcional['horarios'] = dataHorarios;
         }
 
+
+        $.ajax({
+            type: "method",
+            url: "url",
+            data: "data",
+            dataType: "dataType",
+            success: function (response) {
+                
+            }
+        });
+
         return valido;
     }
 
@@ -2284,7 +2424,7 @@ class SidebarFooterResizer {
 // Inicializar el resizer del sidebar footer
 window.sidebarFooterResizer = new SidebarFooterResizer({
     targetSelector: '#sidebar-cambio-horario .sidebar-footer',
-    minHeight: 150,
+    minHeight: 100,
     maxHeight: 500,
     storageKey: 'sidebar_cambio_horario_footer_height',
     saveToStorage: true // Guarda la altura preferida del usuario
