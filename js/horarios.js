@@ -1011,10 +1011,10 @@ $(document).ready(() => {
                                     <span>${horario.nombre}</span>
                                     <div class="descripcion">${horario.descripcion}</div>
                                                                 <div class="dropdown opciones-horario" style="max-width: 200px;">
-                                <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: <?=$horario["color"]?>;"><i class="bi bi-three-dots-vertical"></i></a>
+                                <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:${horario.color}"><i class="bi bi-three-dots-vertical"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href=""><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
-                                    <li><a href="" class="delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
+                                    <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                    <li><a href="" class="btnBorrarHorario delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
                                 </ul>
                             </div>
                                 </div>
@@ -1026,10 +1026,10 @@ $(document).ready(() => {
                                     <span>${horario.nombre}</span>
                                     <div class="descripcion">${horario.descripcion}</div>
                                                                 <div class="dropdown opciones-horario" style="max-width: 200px;">
-                                <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: <?=$horario["color"]?>;"><i class="bi bi-three-dots-vertical"></i></a>
+                                <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: ${horario.color}"><i class="bi bi-three-dots-vertical"></i></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href=""><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
-                                    <li><a href="" class="delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
+                                    <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                    <li><a href="" class="btnBorrarHorario delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
                                 </ul>
                             </div>
                                 </div>
@@ -1395,6 +1395,35 @@ $(document).ready(() => {
                     $('#idHorarioBorrar').val(id);
                     $('#nombre-horario-borrar').text(response.horario.nombre);
                     $('#nombre-horario-borrar2').text(response.horario.nombre);
+
+                    if(response.excepciones.length > 0) {
+                        let contenedor = $(`
+                            <div class="horario-a-borrar" style="width: 95%;">
+                                <p>En el horario se encuentran las siguientes excepciones:  </p>
+                                <div class="checks-horarios-excepcion">
+                                ${
+                                    response.excepciones.map(function(exc) {
+                                        return `<div>
+                                                   <div class="checkbox-wrapper">
+                                                    <input checked="" type="checkbox">
+                                                    <svg viewBox="0 0 35.6 35.6">
+                                                        <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+                                                        <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+                                                        <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+                                                    </svg>
+                                                    </div>
+
+                                                    <span>${exc.nombre}</span>
+                                                </div>`
+                                    }).join('')
+                                }
+                                </div>
+                            </div>
+                            `)
+
+                        $('.contenedor-excepciones-horario').append(contenedor);
+                    }
+
                     $('#modalBorrarHorario').addClass('show');
                     $('#modalBorrarHorario').show();
 
@@ -1460,7 +1489,8 @@ $(document).ready(() => {
         $(`.numero-dia.dia-seleccionado`).removeClass('dia-seleccionado');
     })
 
-    let horariosSeleccionados = [];
+
+
     $(document).on('click', '.numero-dia', function (e) {
         e.preventDefault();
 
@@ -1493,79 +1523,99 @@ $(document).ready(() => {
 
 
             let idHorario = parseInt($(this).data('index'));
+
+            let horariosSeleccionados = $('.horarios-old div').map(function() {
+                let id = parseInt($(this).data('new'))
+                return id
+            }).get()
+
             let existeLeyenda = horariosSeleccionados.includes(idHorario);
 
             if (!existeLeyenda) {
-                horariosSeleccionados.push(idHorario);
+                
                 const data = {
-                "horario-excepcion": $(this).data('index'),
-                "fecha": $(this).data('day')
-            };
+                    "horario-excepcion": $(this).data('index'),
+                    "fecha": $(this).data('day')
+                };
 
+                
 
-            $.ajax({
-                type: "POST",
-                url: "../getHorariosChangeException",
-                data: { data },
-                dataType: "JSON",
-                beforeSend: function () {
-                    $('#loaderSidebarCambioHorario').show();
-                },
-                success: function (response) {
+                $.ajax({
+                    type: "POST",
+                    url: "../getHorariosChangeException",
+                    data: { data },
+                    dataType: "JSON",
+                    beforeSend: function () {
+                        $('#loaderSidebarCambioHorario').show();
+                    },
+                    success: function (response) {
 
-                    if (!response.success) return;
+                        if (!response.success) return;
 
-                    $('#loaderSidebarCambioHorario').hide();
+                        $('#loaderSidebarCambioHorario').hide();
 
-                    const idHorarioBase = response.excepcion.id_tipo_horario_base;
-                    const $contenedor = $('#sidebar-cambio-horario .contenedor-cambio-horarios-card');
+                        const idHorarioBase = response.excepcion.id_tipo_horario_base;
+                        const $contenedor = $('#sidebar-cambio-horario .contenedor-cambio-horarios-card');
 
-                        const e = response.excepcion;
+                            const e = response.excepcion;
 
-                        const cardHorario = `
-                            <div data-index="${idHorarioBase}" data-color="${e.color}"
-                                style="background-color:${e.color}20;color:${e.color};
-                                        border:2px solid ${e.color}90"
-                                class="card-menu-horarios">
+                            let cardHorario = ''
 
-                                <span>${e.nombre}</span>
-                                <div class="descripcion">${e.descripcion}</div>
-                            </div>
+                        // }
+
+                        const num2 = $(`.numero-dia.dia-seleccionado[data-name="${response.horario_excepcion.nombre}"]`).length;
+                        const div = `
+                                <div data-name="${response.horario_excepcion.nombre}" data-color="${response.horario_excepcion.color}" data-new="${response.horario_excepcion.id_tipo_horario}"
+                                    style="width:40px;height:40px;border-radius:5px;
+                                            background-color:${response.horario_excepcion.color}50;color:${response.horario_excepcion.color};
+                                            border:1px solid ${response.horario_excepcion.color};
+                                            display:flex;align-items:center;justify-content:center;">
+                                    <span>${num2}</span>
+                                </div>
                         `;
 
-                        $contenedor.append(cardHorario);
+                        let horariosExistentes = $('.horarios-new div').map(function(cardHorario) {
+                            return $(this).data('new')
+                        }).get()
+
+                        let existeLeyenda2 = horariosExistentes.includes(parseInt(response.excepcion.id_tipo_horario));
+
+                        let div2 = ''
+                        if(!existeLeyenda2) {
+                            div2 = `
+                                    <div data-name="${response.excepcion.nombre}" data-color="${response.excepcion.color}" data-new="${response.excepcion.id_tipo_horario}"
+                                        style="width:40px;height:40px;border-radius:5px;
+                                                background-color:${response.excepcion.color};color:${response.excepcion.color};
+                                                border:1px solid ${response.excepcion.color};
+                                                display:flex;align-items:center;justify-content:center;">
+                                        <span>${num2}</span>
+                                    </div>
+                            `;
 
 
-                    // }
+                            cardHorario = `
+                                <div data-index="${idHorarioBase}" data-color="${e.color}"
+                                    style="background-color:${e.color}20;color:${e.color};
+                                            border:2px solid ${e.color}90"
+                                    class="card-menu-horarios">
 
-                    const num2 = $(`.numero-dia.dia-seleccionado[data-name="${response.horario_excepcion.nombre}"]`).length;
-                    const div = `
-                            <div data-name="${response.horario_excepcion.nombre}" data-color="${response.horario_excepcion.color}"
-                                style="width:40px;height:40px;border-radius:5px;
-                                        background-color:${response.horario_excepcion.color}50;color:${response.horario_excepcion.color};
-                                        border:1px solid ${response.horario_excepcion.color};
-                                        display:flex;align-items:center;justify-content:center;">
-                                <span>${num2}</span>
-                            </div>
-                    `;
+                                    <span>${e.nombre}</span>
+                                    <div class="descripcion">${e.descripcion}</div>
+                                </div>
+                            `;
+                        }
+                            
+                            $('.horarios-old').append(div);
 
-                    const div2 = `
-                            <div data-name="${response.excepcion.nombre}" data-color="${response.excepcion.color}" data-new="${response.excepcion.id_tipo_horario}"
-                                style="width:40px;height:40px;border-radius:5px;
-                                        background-color:${response.excepcion.color};color:${response.excepcion.color};
-                                        border:1px solid ${response.excepcion.color};
-                                        display:flex;align-items:center;justify-content:center;">
-                                <span>${num2}</span>
-                            </div>
-                    `;
-                        
-                        $('.horarios-old').append(div);
-                        $('.horarios-new').append(div2);
-                }, 
-                complete: function () {
-                    $('#loaderSidebarCambioHorario').hide();
-                }
-                });
+                            if(!existeLeyenda2) {
+                                $contenedor.append(cardHorario);
+                                $('.horarios-new').append(div2);
+                            }
+                    }, 
+                    complete: function () {
+                        $('#loaderSidebarCambioHorario').hide();
+                    }
+                    });
             }
             else {
                 const num2 = $(`.numero-dia.dia-seleccionado[data-name="${$(this).data('name')}"]`).length;
@@ -1578,6 +1628,10 @@ $(document).ready(() => {
             $('#calendario, #contenedor-loader-horario').addClass('seleccion-dia');
             $('#btn-guardar-cambio-seleccion').removeClass('btn-primary-personal-disabled');
             return; // ⛔ NO continúa con la lógica normal
+        }
+
+        if($(this).data('index') === "") {
+            return;
         }
 
         /* =========================
@@ -1719,6 +1773,9 @@ $(document).ready(() => {
 
             $('#calendario').removeClass('seleccion-dia')
             $('#contenedor-loader-horario').removeClass('seleccion-dia')
+            $('.horarios-old').empty();
+            $('.horarios-new').empty();
+            $('#btn-guardar-cambio-seleccion').addClass('btn-primary-personal-disabled');
         }
 
         $('#dias-seleccionados').text($('.dia-seleccionado').length)

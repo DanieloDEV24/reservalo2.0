@@ -388,21 +388,23 @@ class horariosModel extends Model
 
         return true;
     }
-    
 
 
-    public function hayExcepcionBase(int $id_horario) {
-       
+
+    public function hayExcepcionBase(int $id_horario)
+    {
+
         //Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
 
-        //Obtenemos la tabla de horarios
+        //Obtenemos la tabla de excepciones_horario
         $builder = $db->table('excepciones_horario');
 
-        // Hago el select
-        $query = $builder->select()
-                         ->where("id_tipo_horario_base", $id_horario)
-                         ->get();
+        // Hago el select con join
+        $query = $builder->distinct()->select('tipo_horario.nombre, excepciones_horario.id_tipo_horario_excepcion')
+            ->join('tipo_horario', 'tipo_horario.id_tipo_horario = excepciones_horario.id_tipo_horario_excepcion')
+            ->where('excepciones_horario.id_tipo_horario_base', $id_horario)
+            ->get();
 
         $result = $query->getResultArray();
 

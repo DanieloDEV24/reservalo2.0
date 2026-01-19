@@ -243,13 +243,15 @@ class Horarios extends BaseController
             $id_horario = intval($post["id"]);
             $horario = $horariosModel->getHorario($id_horario)[0];
             $franjas = $horariosModel->getFranjaByIdHorario($id_horario);
+            $excepciones = $horariosModel->hayExcepcionBase($id_horario);
 
             if ($horario) {
                 echo json_encode([
                     "succes"  => true,
                     "message" => "Se ha localizado el horario con éxito",
                     "horario" => $horario,
-                    "franjas" => $franjas
+                    "franjas" => $franjas,
+                    "excepciones" => $excepciones
                 ]);
             } else {
                 echo json_encode([
