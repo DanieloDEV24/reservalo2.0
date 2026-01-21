@@ -1396,34 +1396,6 @@ $(document).ready(() => {
                     $('#nombre-horario-borrar').text(response.horario.nombre);
                     $('#nombre-horario-borrar2').text(response.horario.nombre);
 
-                    if(response.excepciones.length > 0) {
-                        let contenedor = $(`
-                            <div class="horario-a-borrar" style="width: 95%;">
-                                <p>En el horario se encuentran las siguientes excepciones:  </p>
-                                <div class="checks-horarios-excepcion">
-                                ${
-                                    response.excepciones.map(function(exc) {
-                                        return `<div>
-                                                   <div class="checkbox-wrapper">
-                                                    <input checked="" type="checkbox">
-                                                    <svg viewBox="0 0 35.6 35.6">
-                                                        <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
-                                                        <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
-                                                        <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
-                                                    </svg>
-                                                    </div>
-
-                                                    <span>${exc.nombre}</span>
-                                                </div>`
-                                    }).join('')
-                                }
-                                </div>
-                            </div>
-                            `)
-
-                        $('.contenedor-excepciones-horario').append(contenedor);
-                    }
-
                     $('#modalBorrarHorario').addClass('show');
                     $('#modalBorrarHorario').show();
 
@@ -1831,6 +1803,8 @@ $(document).ready(() => {
     // $(document).on('click', '.numero-dia.dia-seleccionado[data-exception="true"]', function(e){
     //     e.preventDefault();
     // })
+
+    
 
 
     /***********************************************************************************************************************************

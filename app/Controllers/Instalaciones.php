@@ -763,15 +763,19 @@ class Instalaciones extends BaseController
             $assets = [
                 "css" => [
                     'css/instalaciones.css', 
+                    'css/reservas.css',
                     'css/style.css'
                 ], 
 
                 "js" => [
-                    'js/instalaciones.js'
+                    'js/instalaciones.js', 
+                    'js/reservas.js'
                 ]
             ];
 
-            $view = view('instalaciones/instalacion', ["instalacion" => $instalacion, "pistas" => $pistas]);
+            $modalReservaPista = view('instalaciones/modalPanelReserva', ["baseUrl" => base_url()]);
+
+            $view = view('instalaciones/instalacion', ["instalacion" => $instalacion, "pistas" => $pistas, "modalReservaPista" => $modalReservaPista, "baseUrl" => base_url()]);
             return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets]);
         }
         else

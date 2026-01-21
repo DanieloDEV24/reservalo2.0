@@ -42,7 +42,7 @@
                     <div class="heading"> <?=$pista["nombre_pista"]?></div>
                     <span id="comunity"><i class="bi bi-people"></i>&nbsp;<?=$pista["capacidad_pista"]?>&nbsp;personas</span>
                     <div class="button">
-                        <a href="" class="btn-primary-personal">Hacer reserva &nbsp;<i class="bi bi-arrow-right"></i></a>
+                        <a href="" class="btn-primary-personal btn-panel-reservas">Hacer reserva &nbsp;<i class="bi bi-arrow-right"></i></a>
                         <div class="precio-pista"><span><?=$pista["precio_pista"]?></span><i class="bi bi-currency-euro"></i>/hora</div>
                     </div>
                     <!-- Aqui debo poner la parte del estado -->
@@ -52,3 +52,5 @@
     </div>
 
 </div>
+
+<?=$modalReservaPista?>

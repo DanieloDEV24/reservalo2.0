@@ -1280,7 +1280,7 @@ body.resizing-sidebar-footer * {
 }
 
 .checkbox-wrapper input[type=checkbox]:checked + svg .background {
-  fill: #421c64;
+  fill: #32cccc;
 }
 
 .checkbox-wrapper input[type=checkbox]:checked + svg .stroke {
@@ -1301,3 +1301,28 @@ body.resizing-sidebar-footer * {
   gap: 12px;
   margin-bottom: 10px;
 }
+
+.checkbox-text {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.checkbox-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #6b7280;
+  transition: width 0.4s ease;
+  transform: translateY(-50%);
+}
+
+.checkbox-wrapper:has(input.task-checkbox:checked) + .checkbox-text {
+  color: #6b7280;
+}
+
+.checkbox-wrapper:has(input.task-checkbox:checked) + .checkbox-text::after {
+  width: 100%;
+} 

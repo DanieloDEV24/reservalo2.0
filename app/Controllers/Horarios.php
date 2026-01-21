@@ -172,6 +172,7 @@ class Horarios extends BaseController
                         ];
 
                         $horariosModel->crearFranjaDia($data_franja_dia);
+
                     }
                 }
             } else {
@@ -199,6 +200,8 @@ class Horarios extends BaseController
                     $horariosModel->crearFranjaDia($data_franja_dia);
                 }
             }
+
+            
 
 
             echo json_encode([

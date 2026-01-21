@@ -63,3 +63,5 @@ $routes->post('/getHorariosChangeException', 'Horarios::getHorariosChangeExcepti
 $routes->post('/comprobarHorariosAno', 'Horarios::comprobarHorariosAno');
 $routes->post('/menuHorario', 'Horarios::menuHorario');
 $routes->post('/getHorariosChange', 'Horarios::getHorariosChange');
+
+$routes->post('/getInfoPistasReserva', 'Reservas::getInfoPistasReserva');

@@ -1,0 +1,190 @@
+/* Carrusel */
+.carousel-pista {
+    border-radius: 12px;
+    overflow: hidden;
+    height: 280px;
+}
+
+.carousel-pista img {
+    height: 280px;
+    object-fit: cover;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    padding: 20px;
+}
+
+.carousel:hover .carousel-control-prev-icon,
+.carousel:hover .carousel-control-next-icon {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.carousel-indicators [data-bs-target] {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.carousel-indicators .active {
+    width: 24px;
+    border-radius: 4px;
+}
+
+/* Cards de disponibilidad */
+.card-disponibilidad {
+    background-color: rgba(13, 202, 240, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+}
+
+.texto-titulo {
+    font-size: 0.7rem;
+    color: #6c757d;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.texto-estado {
+    font-size: 0.875rem;
+    color: #0dcaf0;
+    font-weight: 600;
+    margin-bottom: 0;
+}
+
+/* Calendario personalizado */
+.calendario-container {
+    background-color: #f8f9fa;
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.calendario-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.calendario-mes {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #212529;
+}
+
+.btn-mes {
+    background: none;
+    border: none;
+    color: #0dcaf0;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: all 0.2s;
+}
+
+.btn-mes:hover {
+    color: #0aa2c0;
+    background-color: rgba(13, 202, 240, 0.1);
+    border-radius: 6px;
+}
+
+.calendario-dias-semana {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.dia-semana {
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #6c757d;
+    padding: 8px 0;
+}
+
+.calendario-dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.dia-calendario {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-color: white;
+    border: 2px solid transparent;
+}
+
+.dia-calendario:hover:not(.disabled):not(.otro-mes) {
+    background-color: rgba(13, 202, 240, 0.1);
+    border-color: #0dcaf0;
+}
+
+.dia-calendario.disabled {
+    color: #dee2e6;
+    cursor: not-allowed;
+    background-color: #f8f9fa;
+}
+
+.dia-calendario.otro-mes {
+    color: #adb5bd;
+    cursor: default;
+}
+
+.dia-calendario.seleccionado {
+    background-color: #0dcaf0;
+    color: white;
+    font-weight: 700;
+    border-color: #0dcaf0;
+    box-shadow: 0 2px 8px rgba(13, 202, 240, 0.4);
+}
+
+.dia-calendario.hoy {
+    border-color: #0dcaf0;
+    color: #0dcaf0;
+    font-weight: 700;
+}
+
+/* Grid de horarios */
+.grid-horarios {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.btn-horario {
+    padding: 10px;
+    font-size: 0.875rem;
+    transition: all 0.2s ease;
+    border-radius: 8px;
+}
+
+.btn-horario:hover {
+    background-color: #f8f9fa;
+}
+
+.btn-horario.active {
+    background-color: #0dcaf0;
+    border-color: #0dcaf0;
+    color: white;
+    box-shadow: 0 2px 8px rgba(13, 202, 240, 0.3);
+}
+
+/* Card de precio */
+.card-precio {
+    background: linear-gradient(to right, rgba(13, 202, 240, 0.1), rgba(13, 202, 240, 0.15));
+    border-radius: 12px;
+    padding: 20px;
+}

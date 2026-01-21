@@ -31,15 +31,12 @@
 
           <div class="pregunta-borrado" style="text-align: center;">
             <p style="font-size: 1.3rem;">¿Estás seguro de que deseas este horario?</p>
-              <div class="contenedor-a-borrar">
-                <div class="contenedor-excepciones-horario" style="text-align: start; margin-left: 5%;"></div>
-              </div>
+            <p style="font-size: 0.9rem;">Se borrarán también las excepciones asociadas.</p>
             <p style="color: #aaa; font-size: 1.1rem;">Esta acción no se puede deshacer.</p>
           </div>
 
           <div class="btns-borrado" style="display: flex; justify-content: center; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
-            <button class="btn-primary-personal" id="aceptarBorrarHorario" style="width: 70%;"> Borrar todo</button>
-            <button class="btn-primary-personal" id="borrarSoloHorario">Borrar Horarios</button>
+            <button class="btn-primary-personal" id="aceptarBorrarHorario"> Borrar horario</button>
             <button class="btn-secondary-personal" id="cancelarBorrarHorario" data-bs-dismiss="modal" aria-label="Cancelar">Cancelar</button>
           </div>
         </div>
