@@ -1,13 +1,25 @@
 <div class="modal fade" tabindex="-1" id="modalReservaPista" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+
+  <div class="d-flex justify-content-center p-3 d-none contenedor-alert-reservas">
+    <div class="alert alert-danger alert-dismissible fade alertHoraNoDisponible w-50" role="alert">
+
+      <i class="bi bi-exclamation-triangle fs-5"></i>
+
+      <strong>Ups!!</strong>&nbsp;Ha habido un error. Esa hora ya no está disponible
+
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  </div>
+
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
     <div class="modal-content">
       <input type="hidden" id="pistaId" >
       <!-- Header -->
       <div class="modal-header border-bottom">
         <div>
-          <span class="badge bg-info text-white mb-2">deporte</span>
-          <h5 class="modal-title fw-bold mb-1" id="nombre-pista"></h5>
-          <p class="text-muted mb-0 small">
+          <span class="card-categoria" id="categoria-pista"></span>
+          <h3 class="modal-title fw-bold mb-1" id="nombre-pista"></h3>
+          <p class="text-muted mb-0 fs-6">
             <i class="bi bi-people"></i> <span id="capacidad-pista"></span>
           </p>
         </div>
@@ -15,10 +27,10 @@
       </div>
 
       <!-- Body -->
-      <div class="modal-body">
+      <div class="modal-body" style="padding: 5%;">
         
         <!-- Carrusel de Imágenes -->
-        <div id="carouselPista" class="carousel slide mb-4" data-bs-ride="carousel">
+        <div id="carouselPista" class="carousel slide" style="margin-bottom: 5%;" data-bs-ride="carousel">
           <div class="carousel-inner carousel-pista">
             
             <!-- Imagen 1 -->
@@ -37,7 +49,7 @@
             </div>
 
             <div class="carousel-item">
-              <img id="img4-pista" src="" class="d-block w-100" alt="Pista 3">
+              <img id="img4-pista" src="" class="d-block w-100" alt="Pista 4">
             </div>
 
           </div>
@@ -57,6 +69,7 @@
             <button type="button" data-bs-target="#carouselPista" data-bs-slide-to="0" class="active" aria-current="true"></button>
             <button type="button" data-bs-target="#carouselPista" data-bs-slide-to="1"></button>
             <button type="button" data-bs-target="#carouselPista" data-bs-slide-to="2"></button>
+            <button type="button" data-bs-target="#carouselPista" data-bs-slide-to="3"></button>
           </div>
         </div>
 
@@ -67,8 +80,10 @@
         
 
         <!-- Calendario Visual -->
-        <div class="mb-4">
-          <label class="form-label fw-semibold mb-3">
+        <div class="row mb-4">
+
+           <div class="col-8">
+          <label class="form-label fw-semibold mb-3" style="font-size: 18px; color: #555"> 
             <i class="bi bi-calendar text-info me-2"></i>Selecciona la fecha
           </label>
           <div class="calendario-container">
@@ -99,36 +114,27 @@
         </div>
 
         <!-- Selección de Horario -->
-        <div class="mb-4">
-          <label class="form-label fw-semibold mb-3">
+        <div class="col-4">
+          <label class="form-label fw-semibold mb-3" style="font-size: 18px; color: #555">
             <i class="bi bi-clock text-info me-2"></i>Horarios disponibles
           </label>
-          <div class="grid-horarios">
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="09:00">09:00</button>
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="10:00">10:00</button>
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="11:00">11:00</button>
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="12:00">12:00</button>
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="13:00">13:00</button>
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="14:00">14:00</button>
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="15:00">15:00</button>
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="16:00">16:00</button>
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="17:00">17:00</button>
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="18:00">18:00</button>
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="19:00">19:00</button>
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="20:00">20:00</button>
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="21:00">21:00</button>
-            <button type="button" class="btn btn-outline-secondary btn-horario" data-hora="22:00">22:00</button>
+          <div class="grid-horarios no-ver" id="grid-horas-disponibles">
+            
           </div>
+          <div id="no-hay-horario" class="no-ver"></div>
+        </div>
         </div>
 
         <!-- Precio -->
-        <div class="card-precio mb-3">
-          <p class="text-muted small mb-1">Precio por hora</p>
-          <h2 class="mb-0">
-            <span class="fw-bold">28</span>
-            <span class="fs-5 text-secondary">€</span>
-            <span class="fs-6 text-muted fw-normal">/hora</span>
-          </h2>
+        <div class="card-precio mb-3 w-100">
+          <div>
+            <p class="text-muted small mb-1">Precio por hora</p>
+            <h2 class="mb-0">
+              <span class="fw-bold" id="precio-pista"></span>
+              <span class="fs-5 text-secondary">€</span>
+              <span class="fs-6 text-muted fw-normal">/hora</span>
+            </h2>
+          </div>
         </div>
 
         <!-- Mensaje de éxito -->
@@ -201,11 +207,17 @@ function generarCalendario() {
     
     dia.className = 'dia-calendario';
     dia.textContent = i;
-    dia.dataset.fecha = fechaDia.toISOString().split('T')[0];
+    
+    const year = fechaDia.getFullYear();
+    const month = String(fechaDia.getMonth() + 1).padStart(2, '0');
+    const day = String(fechaDia.getDate()).padStart(2, '0');
+
+    dia.dataset.fecha = `${year}-${month}-${day}`;
+
 
     // Marcar día de hoy
     if (fechaDia.getTime() === hoy.getTime()) {
-      dia.classList.add('hoy');
+      dia.classList.add('seleccionado');
     }
 
     // Deshabilitar días pasados
@@ -218,7 +230,6 @@ function generarCalendario() {
         });
         this.classList.add('seleccionado');
         fechaSeleccionada = this.dataset.fecha;
-        validarFormulario();
       });
     }
 
@@ -235,21 +246,7 @@ function generarCalendario() {
   }
 }
 
-// Validar formulario
-function validarFormulario() {
-  const btnConfirmar = document.getElementById('btnConfirmarReserva');
-  const mensajeSeleccion = document.getElementById('mensajeSeleccion');
-  
-  if (!btnConfirmar || !mensajeSeleccion) return;
-  
-  if (fechaSeleccionada && horaSeleccionada) {
-    btnConfirmar.disabled = false;
-    mensajeSeleccion.style.display = 'none';
-  } else {
-    btnConfirmar.disabled = true;
-    mensajeSeleccion.style.display = 'block';
-  }
-}
+
 
 // Inicializar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', function() {
@@ -284,39 +281,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // Manejo de selección de horario
-  const botonesHorario = document.querySelectorAll('.btn-horario');
-  botonesHorario.forEach(btn => {
-    btn.addEventListener('click', function() {
-      botonesHorario.forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
-      horaSeleccionada = this.dataset.hora;
-      validarFormulario();
-    });
-  });
 
-  // Confirmar reserva
-  const btnConfirmar = document.getElementById('btnConfirmarReserva');
-  if (btnConfirmar) {
-    btnConfirmar.addEventListener('click', function() {
-      const mensajeExito = document.getElementById('mensajeExito');
-      if (mensajeExito) {
-        mensajeExito.classList.remove('d-none');
-        
-        console.log('Reserva confirmada:', {
-          pistaId: document.getElementById('pistaId').value,
-          fecha: fechaSeleccionada,
-          hora: horaSeleccionada
-        });
-
-        setTimeout(() => {
-          mensajeExito.classList.add('d-none');
-          const modal = bootstrap.Modal.getInstance(document.getElementById('modalReservaPista'));
-          if (modal) modal.hide();
-        }, 3000);
-      }
-    });
-  }
+  
 
   // Resetear al cerrar
   const modalElement = document.getElementById('modalReservaPista');
@@ -332,7 +298,6 @@ document.addEventListener('DOMContentLoaded', function() {
       if (mensajeExito) {
         mensajeExito.classList.add('d-none');
       }
-      validarFormulario();
     });
   }
 });
