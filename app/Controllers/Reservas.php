@@ -78,7 +78,8 @@ class Reservas extends BaseController
 
         if(!empty($post)){
 
-            $datos = $post["datos"];
+            $datos  = $post["datos"];
+            $precio = $post["precio"];
             $fecha_hora_actual = date('Y-m-d H:i:s');
 
             $session = session();
@@ -99,7 +100,14 @@ class Reservas extends BaseController
                 exit;
             }
             else {
-                
+            
+
+                $id_pedido = $reservasModel->hacerPedido([
+                    "id_usuario"    => $id_usuario, 
+                    "fecha_pedido"  => $fecha_hora_actual, 
+                    "precio_pedido" => $precio
+                ]);
+
                 // Aqui obtener los datos de la reserva
                 foreach($datos as $dato) {
                         
@@ -109,7 +117,8 @@ class Reservas extends BaseController
                         "hora_inicio"   => $dato["hora"],
                         "hora_final"    => $dato["horaFin"], 
                         "fecha_reserva" => $fecha_hora_actual,
-                        "id_usuario"    => $id_usuario
+                        "id_usuario"    => $id_usuario, 
+                        "id_pedido"     => $id_pedido
                     ];
 
                     $reserva = $reservasModel->hacerReserva($data);

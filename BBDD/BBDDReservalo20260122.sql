@@ -86,9 +86,9 @@ CREATE TABLE IF NOT EXISTS `franjas_dias` (
   KEY `id_horaria` (`id_franja_horaria`) USING BTREE,
   CONSTRAINT `FK__franjas_horarias` FOREIGN KEY (`id_franja_horaria`) REFERENCES `franjas_horarias` (`id_franja_horaria`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_franjas_dias_dias_semana` FOREIGN KEY (`id_dia_semana`) REFERENCES `dias_semana` (`id_dia`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=652 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=666 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla reservalo2.franjas_dias: ~14 rows (aproximadamente)
+-- Volcando datos para la tabla reservalo2.franjas_dias: ~21 rows (aproximadamente)
 DELETE FROM `franjas_dias`;
 INSERT INTO `franjas_dias` (`id_franja_dia`, `id_franja_horaria`, `id_dia_semana`) VALUES
 	(638, 182, 1),
@@ -104,7 +104,14 @@ INSERT INTO `franjas_dias` (`id_franja_dia`, `id_franja_horaria`, `id_dia_semana
 	(648, 186, 4),
 	(649, 186, 5),
 	(650, 187, 6),
-	(651, 187, 7);
+	(651, 187, 7),
+	(659, 189, 1),
+	(660, 189, 3),
+	(661, 190, 2),
+	(662, 190, 4),
+	(663, 191, 5),
+	(664, 192, 6),
+	(665, 192, 7);
 
 -- Volcando estructura para tabla reservalo2.franjas_horarias
 CREATE TABLE IF NOT EXISTS `franjas_horarias` (
@@ -121,9 +128,9 @@ CREATE TABLE IF NOT EXISTS `franjas_horarias` (
   KEY `id_instalacion` (`id_instalacion`),
   CONSTRAINT `FK__tipo_horario` FOREIGN KEY (`id_tipo_horario`) REFERENCES `tipo_horario` (`id_tipo_horario`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_franjas_horarias_instalaciones` FOREIGN KEY (`id_instalacion`) REFERENCES `instalaciones` (`id_instalacion`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=188 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla reservalo2.franjas_horarias: ~6 rows (aproximadamente)
+-- Volcando datos para la tabla reservalo2.franjas_horarias: ~10 rows (aproximadamente)
 DELETE FROM `franjas_horarias`;
 INSERT INTO `franjas_horarias` (`id_franja_horaria`, `id_tipo_horario`, `id_instalacion`, `hora_inicio_manana`, `hora_fin_manana`, `hora_inicio_tarde`, `hora_fin_tarde`, `franja_unica`) VALUES
 	(182, 78, 42, '08:30:00', '14:00:00', '17:00:00', '19:00:00', 0),
@@ -131,7 +138,11 @@ INSERT INTO `franjas_horarias` (`id_franja_horaria`, `id_tipo_horario`, `id_inst
 	(184, 78, 42, '08:30:00', '14:00:00', '00:00:00', '00:00:00', 0),
 	(185, 78, 42, '00:00:00', '00:00:00', '00:00:00', '00:00:00', 0),
 	(186, 79, 42, '08:30:00', '14:00:00', '00:00:00', '00:00:00', 0),
-	(187, 79, 42, '00:00:00', '00:00:00', '00:00:00', '00:00:00', 0);
+	(187, 79, 42, '00:00:00', '00:00:00', '00:00:00', '00:00:00', 0),
+	(189, 80, 42, '09:00:00', '14:00:00', '16:00:00', '19:00:00', 0),
+	(190, 80, 42, '09:00:00', '14:00:00', '16:00:00', '20:00:00', 0),
+	(191, 80, 42, '09:00:00', '14:00:00', '00:00:00', '00:00:00', 0),
+	(192, 80, 42, '00:00:00', '00:00:00', '00:00:00', '00:00:00', 0);
 
 -- Volcando estructura para tabla reservalo2.incidencias
 CREATE TABLE IF NOT EXISTS `incidencias` (
@@ -192,6 +203,22 @@ CREATE TABLE IF NOT EXISTS `mantenimiento` (
 -- Volcando datos para la tabla reservalo2.mantenimiento: ~0 rows (aproximadamente)
 DELETE FROM `mantenimiento`;
 
+-- Volcando estructura para tabla reservalo2.pedido
+CREATE TABLE IF NOT EXISTS `pedido` (
+  `id_pedido` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usuario` int(11) DEFAULT NULL,
+  `fecha_pedido` timestamp NULL DEFAULT NULL,
+  `precio_pedido` float DEFAULT NULL,
+  PRIMARY KEY (`id_pedido`),
+  KEY `id_usuario` (`id_usuario`),
+  CONSTRAINT `FK__usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- Volcando datos para la tabla reservalo2.pedido: ~0 rows (aproximadamente)
+DELETE FROM `pedido`;
+INSERT INTO `pedido` (`id_pedido`, `id_usuario`, `fecha_pedido`, `precio_pedido`) VALUES
+	(1, 5, '2026-01-23 18:28:58', 168);
+
 -- Volcando estructura para tabla reservalo2.pistas
 CREATE TABLE IF NOT EXISTS `pistas` (
   `id_pista` int(11) NOT NULL AUTO_INCREMENT,
@@ -226,6 +253,7 @@ CREATE TABLE IF NOT EXISTS `reservas` (
   `id_reserva` int(11) NOT NULL AUTO_INCREMENT,
   `id_pista` int(11) NOT NULL DEFAULT 0,
   `id_usuario` int(11) NOT NULL DEFAULT 0,
+  `id_pedido` int(11) DEFAULT NULL,
   `fecha` date DEFAULT NULL,
   `hora_inicio` time DEFAULT NULL,
   `hora_final` time DEFAULT NULL,
@@ -233,12 +261,21 @@ CREATE TABLE IF NOT EXISTS `reservas` (
   PRIMARY KEY (`id_reserva`),
   KEY `id_pista` (`id_pista`),
   KEY `id_usuario` (`id_usuario`),
+  KEY `id_pedido` (`id_pedido`),
+  CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_reservas_pistas` FOREIGN KEY (`id_pista`) REFERENCES `pistas` (`id_pista`) ON DELETE NO ACTION ON UPDATE CASCADE,
   CONSTRAINT `FK_reservas_usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla reservalo2.reservas: ~0 rows (aproximadamente)
+-- Volcando datos para la tabla reservalo2.reservas: ~6 rows (aproximadamente)
 DELETE FROM `reservas`;
+INSERT INTO `reservas` (`id_reserva`, `id_pista`, `id_usuario`, `id_pedido`, `fecha`, `hora_inicio`, `hora_final`, `fecha_reserva`) VALUES
+	(16, 89, 5, 1, '2026-01-26', '09:00:00', '10:00:00', '2026-01-23 18:28:58'),
+	(17, 89, 5, 1, '2026-01-26', '10:00:00', '11:00:00', '2026-01-23 18:28:58'),
+	(18, 89, 5, 1, '2026-01-26', '11:00:00', '12:00:00', '2026-01-23 18:28:58'),
+	(19, 89, 5, 1, '2026-01-28', '09:00:00', '10:00:00', '2026-01-23 18:28:58'),
+	(20, 89, 5, 1, '2026-01-28', '10:00:00', '11:00:00', '2026-01-23 18:28:58'),
+	(21, 89, 5, 1, '2026-01-28', '11:00:00', '12:00:00', '2026-01-23 18:28:58');
 
 -- Volcando estructura para tabla reservalo2.roles
 CREATE TABLE IF NOT EXISTS `roles` (
@@ -264,13 +301,14 @@ CREATE TABLE IF NOT EXISTS `tipo_horario` (
   `es_especial` tinyint(4) DEFAULT 0,
   `sin_fecha` tinyint(4) DEFAULT 0,
   PRIMARY KEY (`id_tipo_horario`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=81 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla reservalo2.tipo_horario: ~2 rows (aproximadamente)
+-- Volcando datos para la tabla reservalo2.tipo_horario: ~3 rows (aproximadamente)
 DELETE FROM `tipo_horario`;
 INSERT INTO `tipo_horario` (`id_tipo_horario`, `nombre`, `descripcion`, `color`, `fecha_inicio`, `fecha_fin`, `es_especial`, `sin_fecha`) VALUES
 	(78, 'Horario de primavera 2026', 'Horario para los meses de primavera del año 2026', '#3ed048', '2026-02-01', '2026-06-15', 0, 0),
-	(79, 'Horario solo mañana de primavera 2026', 'Horario para los meses de primavera del año 2026, en los que solo se abrirá por la mañana', '#0c1bed', '2026-01-01', '2026-12-31', 1, 1);
+	(79, 'Horario solo mañana de primavera 2026', 'Horario para los meses de primavera del año 2026, en los que solo se abrirá por la mañana', '#0c1bed', '2026-01-01', '2026-12-31', 1, 1),
+	(80, 'Horario de enero 2026', 'Horario para el mes de enero', '#0ccfe9', '2026-01-01', '2026-01-31', 0, 0);
 
 -- Volcando estructura para tabla reservalo2.usuarios
 CREATE TABLE IF NOT EXISTS `usuarios` (

@@ -213,6 +213,7 @@ $(document).ready(() => {
             $('#btnConfirmarReserva').prop('disabled', true);
         }
 
+
         if ($(this).hasClass('horaSeleccionada')) {
             $(this).removeClass('horaSeleccionada');
 
@@ -250,6 +251,22 @@ $(document).ready(() => {
                         $('.contenedor-alert-reservas').addClass('d-none')
                         $('#btnConfirmarReserva').prop('disabled', false);
                         horasAnt.push({ fecha: fecha, hora: hora, pista: pista })
+
+                        if ($('.card-precio').find('.card-precio-total').length === 0) {
+                            let div = `<div class="card-precio-total">
+                                            <p class="text-muted small mb-1">Precio total</p>
+                                            <h2 class="mb-0">
+                                            <span class="fw-bold" id="precio-total">${$('#precio-pista').text()}</span>
+                                            <span class="fs-5 text-secondary">€</span>
+                                            </h2>
+                                        </div>`;
+
+                            $('.card-precio').append(div)
+                        }
+                        else if($('.card-precio').find('.card-precio-total').length > 0){
+                            let precio = parseInt($('#precio-pista').text() * horasAnt.length)
+                            $('#precio-total').text(precio)
+                        }
                     }
                     else {
                         $(this).removeClass('horaSeleccionada');
@@ -275,14 +292,17 @@ $(document).ready(() => {
             }
         })
 
+        let precio = parseFloat($('#precio-total').text());
+
         $.ajax({
             type: "POST",
             url: "../hacerReserva",
-            data: {datos: data},
+            data: {datos: data, precio: precio},
             dataType: "JSON",
             success: function (response) {
                 if (response.success) {
                     bootstrap.Modal.getInstance(document.getElementById('modalReservaPista'))?.hide();
+                    horasAnt = [];
                 }
             }
         });

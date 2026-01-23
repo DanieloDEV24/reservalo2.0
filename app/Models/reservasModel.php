@@ -169,4 +169,19 @@ class reservasModel extends Model
         $query = $builder->get();
         return $query->getResultArray();
     }
+
+
+    public function hacerPedido(array $data) {
+                
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla en la que vamos a buscar las reservas
+        $builder = $db->table('pedido');
+
+        // Hacemos la sentencia 
+        $builder->insert($data);
+
+        return $db->insertID();
+    }
 }
