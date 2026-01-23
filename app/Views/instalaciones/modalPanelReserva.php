@@ -135,6 +135,16 @@
               <span class="fs-6 text-muted fw-normal">/hora</span>
             </h2>
           </div>
+
+
+          <div>
+            <p class="text-muted small mb-1">Precio total</p>
+            <h2 class="mb-0">
+              <span class="fw-bold" id="precio-total"></span>
+              <span class="fs-5 text-secondary">€</span>
+              <span class="fs-6 text-muted fw-normal"></span>
+            </h2>
+          </div>
         </div>
 
         <!-- Mensaje de éxito -->

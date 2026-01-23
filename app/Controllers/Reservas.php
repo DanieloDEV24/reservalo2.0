@@ -14,31 +14,36 @@ class Reservas extends BaseController
         $post  = $this->request->getPost();
 
        if(!empty($post)){
-         $id_pista = intval($post["pistaId"]);
-        $fecha = $post["fecha"];
 
-        // Obtenemos la informacion de la pista
-        $infoPista = $reservasModel->getInfoPista($id_pista, $fecha);
+            $id_pista = intval($post["pistaId"]);
+            $fecha = $post["fecha"];
 
-        if(empty($infoPista)){
-            $data = $instalacionesModel->getPistasById($id_pista);
-            
+            // Obtenemos la informacion de la pista
+            $infoPista = $reservasModel->getInfoPista($id_pista, $fecha);
+
+
+            if(empty($infoPista)){
+                $data = $instalacionesModel->getPistasById($id_pista);
+                
+                echo json_encode([
+                    "success" => true,
+                    "hayHorarios" => false,
+                    "infoPista" => $data,
+                    "baseUrl" => base_url()
+                ]);
+                return;
+            }
+
+            $reservasPista = $reservasModel->reservasById($id_pista, $fecha);
+
             echo json_encode([
                 "success" => true,
-                "hayHorarios" => false,
-                "infoPista" => $data,
+                "hayHorarios" => true,
+                "infoPista" => $infoPista,
+                "reservas" => $reservasPista,
                 "baseUrl" => base_url()
             ]);
             return;
-        }
-
-        echo json_encode([
-            "success" => true,
-            "hayHorarios" => true,
-            "infoPista" => $infoPista,
-            "baseUrl" => base_url()
-        ]);
-        return;
        }
     }
 
@@ -73,11 +78,50 @@ class Reservas extends BaseController
 
         if(!empty($post)){
 
-            $fecha = $post["fecha"];
-            $horaInicio = $post["horaInicio"];
-            $horaFin = $post["horaFin"];
+            $datos = $post["datos"];
             $fecha_hora_actual = date('Y-m-d H:i:s');
-            
+
+            $session = session();
+            if($session->has('usuario')){
+                $usuario    = $session->get('usuario');
+                $id_usuario = $usuario["id_usuario"];
+            }
+            else {
+                $id_usuario = null;
+            }
+
+            if($id_usuario === null)
+            {
+                echo json_encode([
+                    "success" => false, 
+                    "mensaje" => "Ha habido un error en la reserva de la pista"
+                ]);
+                exit;
+            }
+            else {
+                
+                // Aqui obtener los datos de la reserva
+                foreach($datos as $dato) {
+                        
+                    $data = [
+                        "id_pista"      => $dato["pista"], 
+                        "fecha"         => $dato["fecha"], 
+                        "hora_inicio"   => $dato["hora"],
+                        "hora_final"    => $dato["horaFin"], 
+                        "fecha_reserva" => $fecha_hora_actual,
+                        "id_usuario"    => $id_usuario
+                    ];
+
+                    $reserva = $reservasModel->hacerReserva($data);
+                }
+
+                echo json_encode([
+                    "success" => true, 
+                    "mensaje" => "La reserva se ha hecho de manera satisfactoria"
+                ]);
+                exit;
+            } 
+
         }
     }
 }

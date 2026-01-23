@@ -1,4 +1,8 @@
 $(document).ready(() => {
+
+    let horasAnt = []
+
+
     $(document).on('click', '.btn-panel-reservas', function (e) {
         e.preventDefault();
 
@@ -45,13 +49,30 @@ $(document).ready(() => {
                         $('#no-hay-horario').addClass('no-ver');
 
                         const ahora = new Date();
+                        const year = ahora.getFullYear();
+                        const month = String(ahora.getMonth() + 1).padStart(2, '0');
+                        const day = String(ahora.getDate()).padStart(2, '0');
+
+                        const fecha = `${year}-${month}-${day}`;
                         const minutosAhora = ahora.getHours() * 60 + ahora.getMinutes();
+
+                        const horasOcupadas = new Set(response.reservas.map(reserva => formatearHora(reserva.hora_inicio)));
+                        const diaSeleccionado = $('.dia-calendario.seleccionado').data('fecha')
 
                         horasDisponibles.map(hora => {
 
                             let minutosHora = horaEnMinutos(hora)
+                            let existe = horasOcupadas.has(hora); // O(1) en lugar de O(n)
 
-                            let btn = `<button type="button" class="btn btn-outline-secondary btn-horario ${(minutosHora <= minutosAhora) ? 'hora-pasada' : ''}" data-hora="${hora}">${hora}</button>`
+
+
+                            let btn = `<button type="button" 
+                                            class="btn btn-outline-secondary btn-horario 
+                                            ${((minutosHora <= minutosAhora && (fecha === diaSeleccionado)) || existe) ? 'hora-pasada' : ''}" 
+                                            data-hora="${hora}">
+                                            ${hora}
+                                        </button>`;
+
                             $('#grid-horas-disponibles').append(btn);
                         })
 
@@ -89,6 +110,7 @@ $(document).ready(() => {
         return;
     })
 
+
     $(document).on('click', '.dia-calendario', function () {
 
         if ($(this).hasClass('otro-mes')) return;
@@ -121,15 +143,46 @@ $(document).ready(() => {
                     $('#no-hay-horario').addClass('no-ver');
 
                     const ahora = new Date();
+                    const year = ahora.getFullYear();
+                    const month = String(ahora.getMonth() + 1).padStart(2, '0');
+                    const day = String(ahora.getDate()).padStart(2, '0');
+
+                    const fecha = `${year}-${month}-${day}`;
                     const minutosAhora = ahora.getHours() * 60 + ahora.getMinutes();
+
+                    const horasOcupadas = new Set(response.reservas.map(reserva => formatearHora(reserva.hora_inicio)));
+                    const diaSeleccionado = $('.dia-calendario.seleccionado').data('fecha')
+
+                    console.log(horasAnt)
 
                     horasDisponibles.map(hora => {
 
-                        let minutosHora = horaEnMinutos(hora)
+                        let minutosHora = horaEnMinutos(hora);
+                        let existe = horasOcupadas.has(hora);
 
-                        let btn = `<button type="button" class="btn btn-outline-secondary btn-horario ${(minutosHora <= minutosAhora) ? 'hora-pasada' : ''}" data-hora="${hora}">${hora}</button>`
+                        // 🔁 Reiniciar para cada hora
+                        let horaSeleccionada = false;
+
+                        horasAnt.forEach(horaAnt => {
+                            if (
+                                horaAnt.hora === hora &&
+                                horaAnt.fecha === diaSeleccionado &&
+                                parseInt(horaAnt.pista) === parseInt($('#pistaId').val())
+                            ) {
+                                horaSeleccionada = true;
+                            }
+                        });
+
+                        let btn = `<button type="button"
+        class="btn btn-outline-secondary btn-horario
+        ${horaSeleccionada ? 'horaSeleccionada' : ''}
+        ${((minutosHora <= minutosAhora && fecha === diaSeleccionado) || existe) ? 'hora-pasada' : ''}"
+        data-hora="${hora}">
+        ${hora}
+    </button>`;
+
                         $('#grid-horas-disponibles').append(btn);
-                    })
+                    });
 
                     $('#grid-horas-disponibles').removeClass('no-ver');
 
@@ -152,10 +205,32 @@ $(document).ready(() => {
         });
     })
 
-
     $(document).on('click', '.btn-horario', function (e) {
 
         e.preventDefault()
+
+        if ($('.btn-horario.seleccionado').length === 0) {
+            $('#btnConfirmarReserva').prop('disabled', true);
+        }
+
+        if ($(this).hasClass('horaSeleccionada')) {
+            $(this).removeClass('horaSeleccionada');
+
+            const horaActual = $(this).data('hora');
+            const fechaSeleccionada = $('.dia-calendario.seleccionado').data('fecha');
+            const pistaId = $('#pistaId').val();
+
+            // Filtrar el array excluyendo el elemento que coincide
+            horasAnt = horasAnt.filter(hora =>
+                !(hora.hora === horaActual &&
+                    hora.fecha === fechaSeleccionada &&
+                    hora.pista === pistaId)
+            );
+
+            return
+        }
+
+
 
         let hora = $(this).data('hora');
         let fecha = $('.dia-calendario.seleccionado').data('fecha');
@@ -174,6 +249,7 @@ $(document).ready(() => {
                         $('.alertHoraNoDisponible').hide();
                         $('.contenedor-alert-reservas').addClass('d-none')
                         $('#btnConfirmarReserva').prop('disabled', false);
+                        horasAnt.push({ fecha: fecha, hora: hora, pista: pista })
                     }
                     else {
                         $(this).removeClass('horaSeleccionada');
@@ -188,23 +264,26 @@ $(document).ready(() => {
     })
 
 
-    $(document).on('click', '#btnConfirmarReserva', function(e){
-        
+    $(document).on('click', '#btnConfirmarReserva', function (e) {
+
         e.preventDefault();
 
-        let fecha      = $('.dia-calendario.seleccionado').data('fecha');
-        let horaInicio = $('.horaSeleccionada').data('hora');
-        let horaFin    = sumarHora(horaInicio);
+        let data = horasAnt.map(function(item) {
+            return {
+                ...item, 
+                horaFin: sumarHora(item.hora)
+            }
+        })
 
         $.ajax({
             type: "POST",
             url: "../hacerReserva",
-            data: {fecha: fecha, horaInicio: horaInicio, horaFin: horaFin},
+            data: {datos: data},
             dataType: "JSON",
             success: function (response) {
-               if(response.success){
-                 $('#modalReservaPista').hide();
-               }
+                if (response.success) {
+                    bootstrap.Modal.getInstance(document.getElementById('modalReservaPista'))?.hide();
+                }
             }
         });
     })
@@ -230,10 +309,16 @@ $(document).ready(() => {
     }
 
 
-    function sumarHora(hora){
+    function sumarHora(hora) {
         const [h, m] = hora.split(':').map(Number);
         let nuevaHora = (h + 1) + ":00";
         return nuevaHora;
     }
+
+    function formatearHora(hora) {
+        const partes = hora.split(':');
+        return `${partes[0]}:${partes[1]}`;
+    }
+
 })
 

@@ -139,4 +139,34 @@ class reservasModel extends Model
         return $result;
 
     }
+
+    public function hacerReserva(array $data){
+        
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla en la que vamos a buscar las reservas
+        $builder = $db->table('reservas');
+
+        // Hacemos la sentencia 
+        $builder->insert($data);
+
+        return $db->insertID();
+    }
+
+    public function reservasById(int $id_pista, string $fecha){
+        
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla en la que vamos a buscar las reservas
+        $builder = $db->table('reservas');
+
+        $builder->select();
+        $builder->where("id_pista", $id_pista);
+        $builder->where("fecha", $fecha);
+
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
 }
