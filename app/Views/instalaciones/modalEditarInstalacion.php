@@ -116,6 +116,13 @@
 
         <div class="row mt-3 pl-3 pr-3">
           <div class="col">
+             <label for="">Direccion<span class="campo-obligatorio">*</span></label>
+             <input type="text" id="direccionEditar" name="direccionEditar" class="form-control">
+          </div>
+        </div>
+
+        <div class="row mt-3 pl-3 pr-3">
+          <div class="col">
             <label for="">Escriba una descripcion <span class="campo-obligatorio">*</span></label>
             <textarea name="descripcionEditar" id="descripcionEditar" class="mr-3 ml-3"></textarea>
           </div>

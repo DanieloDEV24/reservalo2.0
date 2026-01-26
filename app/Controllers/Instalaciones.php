@@ -60,6 +60,7 @@ class Instalaciones extends BaseController
             $nombre            = $post["nombreInstalacion"];
             $categoria         = intval($post["categorias"]);
             $descripcion       = $post["descripcion"];
+            $direccion         = $post["direccion"];
             $puedeCompleto     = filter_var($post["puedeCompleto"], FILTER_VALIDATE_BOOLEAN);
             $precioCompleto    = floatval($post["precioCompleto"]);
             $catSecundaria     = intval($post["catSecundaria"]);
@@ -73,6 +74,7 @@ class Instalaciones extends BaseController
             $dataInstalacion = [
                 'nombre' => $nombre,
                 'descripcion' => $descripcion,
+                'direccion' => $direccion, 
                 'categoria_principal' => $categoria,
                 'categoria_opcional1' => ($catSecundaria !== 0) ? $catSecundaria : null,
                 'puede_completo' => $puedeCompleto,
@@ -150,7 +152,8 @@ class Instalaciones extends BaseController
             echo json_encode([
                 "success"       => true,
                 "message"       => "Todo correcto",
-                "instalaciones" => $instalaciones
+                "instalaciones" => $instalaciones,
+                "base_url" => base_url()
             ]);
             exit;
         }
@@ -159,6 +162,7 @@ class Instalaciones extends BaseController
             "success" => false,
             "message" => "No se enviaron datos"
         ]);
+        exit;
     }
 
     public function verInstalacion()
@@ -442,6 +446,7 @@ class Instalaciones extends BaseController
             $precioCompleto = floatval($post["precioCompleto"]);
             $capacidadCompleta = intval($post["capacidadCompleta"]);
             $descripcion = $post["descripcion"];
+            $direccion = $post["direccion"];
 
             $instalacionAntigua = $instalaciones->getInstalacion($id);
             $noPistasAntigua = filter_var($instalacionAntigua[0]["no_pistas"], FILTER_VALIDATE_BOOLEAN);
@@ -516,6 +521,7 @@ class Instalaciones extends BaseController
             $data = [
                 "nombre" => $nombre,
                 "descripcion" => $descripcion,
+                "direccion" => $direccion,
                 "categoria_principal" => $categoria,
                 "categoria_opcional1" => ($catSecundaria === 0) ? null : $catSecundaria,
                 "precio_completo" => ($noPistas || $puedeCompleta) ? $precioCompleto : null,

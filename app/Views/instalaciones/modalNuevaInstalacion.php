@@ -97,6 +97,12 @@
           </div>
         </div>
 
+        <div class="row gap-5 mt-3">
+          <div class="col">
+            <label for="direccion">Dirección</label>
+            <input type="text" id="direccionInstalacion" name="direccionInstalacion" class="form-control">
+          </div>
+        </div>
 
         <div class="row gap-5 mt-3">
           <div class="col">

@@ -184,4 +184,59 @@ class reservasModel extends Model
 
         return $db->insertID();
     }
+
+
+    public function pedidosFromDate(string $date) {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla en la que vamos a buscar las reservas
+        $builder = $db->table('pedido');
+
+        $builder->select();
+        $builder->where('fecha_pedido', $date);
+        
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+
+
+    public function getFullReservasFromPedido(int $id_pedido){
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla en la que vamos a buscar las reservas
+        $builder = $db->table('pedido');
+
+        // Obtenemos la tabla principal 'pedido'
+        $builder = $db->table('pedido');
+
+        // Seleccionamos los campos que necesitamos
+        $builder->select('
+            reservas.fecha AS fecha_reserva,
+            reservas.hora_inicio,
+            reservas.hora_final,
+            pistas.imagen1,
+            pistas.capacidad_pista,
+            pistas.nombre_pista,
+            instalaciones.nombre,
+            instalaciones.direccion,
+            instalaciones.material,
+            instalaciones.iluminacion,
+            categorias.nombre AS categoria
+        ');
+
+        // Hacemos los joins necesarios
+        $builder->join('reservas', 'reservas.id_pedido = pedido.id_pedido');
+        $builder->join('pistas', 'pistas.id_pista = reservas.id_pista');
+        $builder->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion');
+        $builder->join('categorias', 'categorias.id_categoria = instalaciones.categoria_principal');
+
+        $builder->where('id_pedido', $id_pedido);
+
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
 }

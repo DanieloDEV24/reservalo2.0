@@ -4,6 +4,9 @@ namespace App\Controllers;
 
 use App\Models\instalacionesModel;
 use App\Models\reservasModel;
+use App\Models\loginModel;
+use DateTime;
+use App\Libraries\Pdf;
 
 class Reservas extends BaseController
 {
@@ -74,6 +77,7 @@ class Reservas extends BaseController
         
         date_default_timezone_set('Europe/Madrid');
         $reservasModel = new reservasModel();
+        $loginModel    = new loginModel();
         $post  = $this->request->getPost();
 
         if(!empty($post)){
@@ -100,12 +104,26 @@ class Reservas extends BaseController
                 exit;
             }
             else {
-            
+
+                $dt = new DateTime($fecha_hora_actual);
+
+                $anio    = $dt->format('Y');
+                $mes     = $dt->format('m');
+                $dia     = $dt->format('d');
+                $hora    = $dt->format('H');
+                $minuto  = $dt->format('i');
+                $segundo = $dt->format('s');
+
+                $contador_pedido = count($reservasModel->pedidosFromDate($fecha_hora_actual)) + 1;
+                $contador_formateado = str_pad($contador_pedido, 3, '0', STR_PAD_LEFT);
+                $num_pedido = $anio.$mes.$dia."-".$hora.$minuto.$segundo."-".$contador_formateado;
+
 
                 $id_pedido = $reservasModel->hacerPedido([
                     "id_usuario"    => $id_usuario, 
                     "fecha_pedido"  => $fecha_hora_actual, 
-                    "precio_pedido" => $precio
+                    "precio_pedido" => $precio, 
+                    "num_pedido"    => $num_pedido
                 ]);
 
                 // Aqui obtener los datos de la reserva
@@ -123,6 +141,25 @@ class Reservas extends BaseController
 
                     $reserva = $reservasModel->hacerReserva($data);
                 }
+                
+                $datos_usuario = $loginModel->buscaUsuarioPorId($id_usuario);
+                $datos_reserva = $reservasModel->getFullReservasFromPedido($id_pedido);
+
+                $datos_pdf = [
+                    "nombre_usuario" => $datos_usuario["nombre"], 
+                    "email_usuario"  => $datos_usuario["email"], 
+                    "telf_usuario"   => $datos_usuario["telf"],
+                    "fecha_pedido"   => $fecha_hora_actual, 
+                    "precio_pedido"  => $precio, 
+                    "numero_pedido"  => $num_pedido, 
+                    "reservas"       => $datos_reserva
+                ];
+
+                $html = view('reservas/pdf_template', ["datos" => $datos_pdf, "baseUrl"=> base_url()]);
+                $pdf  = new Pdf();
+                $pdf->writeHTML($html);
+
+                $pdf->output('reserva-'.$num_pedido.'.pdf', 'D');
 
                 echo json_encode([
                     "success" => true, 
