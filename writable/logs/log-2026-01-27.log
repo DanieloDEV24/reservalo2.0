@@ -1,0 +1,881 @@
+INFO - 2026-01-27 09:21:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 09:23:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 09:23:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 09:23:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 10:40:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 10:41:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 10:41:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:42:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-01-27 11:42:01 --> mysqli_sql_exception: Column 'id_pedido' in where clause is ambiguous in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `reserva...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `reserva...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `reserva...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `reserva...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\reservasModel.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Reservas.php(146): App\Models\reservasModel->getFullReservasFromPedido(4)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-01-27 11:42:02 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_pedido' in where clause is ambiguous
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = :id_pedido:
+ORDER BY `reservas`.`fecha`', [...], false)
+ 2 APPPATH\Models\reservasModel.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Reservas.php(146): App\Models\reservasModel->getFullReservasFromPedido(4)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-27 11:42:02 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_pedido' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = 4
+ORDER BY `reservas`.`fecha`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = 4
+ORDER BY `reservas`.`fecha`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = :id_pedido:
+ORDER BY `reservas`.`fecha`', [...], false)
+ 4 APPPATH\Models\reservasModel.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Reservas.php(146): App\Models\reservasModel->getFullReservasFromPedido(4)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-27 11:42:02 --> [Caused by] mysqli_sql_exception: Column 'id_pedido' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = 4
+ORDER BY `reservas`.`fecha`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = 4
+ORDER BY `reservas`.`fecha`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = 4
+ORDER BY `reservas`.`fecha`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = :id_pedido:
+ORDER BY `reservas`.`fecha`', [...], false)
+ 5 APPPATH\Models\reservasModel.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Reservas.php(146): App\Models\reservasModel->getFullReservasFromPedido(4)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 11:42:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-01-27 11:42:58 --> mysqli_sql_exception: Column 'id_pedido' in where clause is ambiguous in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `reserva...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `reserva...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `reserva...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `reserva...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\reservasModel.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Reservas.php(146): App\Models\reservasModel->getFullReservasFromPedido(5)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-01-27 11:44:20 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_pedido' in where clause is ambiguous
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = :id_pedido:
+ORDER BY `reservas`.`fecha`', [...], false)
+ 2 APPPATH\Models\reservasModel.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Reservas.php(146): App\Models\reservasModel->getFullReservasFromPedido(5)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-27 11:44:20 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'id_pedido' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = 5
+ORDER BY `reservas`.`fecha`')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = 5
+ORDER BY `reservas`.`fecha`')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = :id_pedido:
+ORDER BY `reservas`.`fecha`', [...], false)
+ 4 APPPATH\Models\reservasModel.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Reservas.php(146): App\Models\reservasModel->getFullReservasFromPedido(5)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-27 11:44:20 --> [Caused by] mysqli_sql_exception: Column 'id_pedido' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = 5
+ORDER BY `reservas`.`fecha`', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = 5
+ORDER BY `reservas`.`fecha`')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = 5
+ORDER BY `reservas`.`fecha`')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `reservas`.`fecha` AS `fecha_reserva`, `reservas`.`hora_inicio`, `reservas`.`hora_final`, `pistas`.`imagen1`, `pistas`.`capacidad_pista`, `pistas`.`nombre_pista`, `pistas`.`precio_pista`, `instalaciones`.`nombre`, `instalaciones`.`direccion`, `instalaciones`.`material`, `instalaciones`.`iluminacion`, `categorias`.`nombre` AS `categoria`
+FROM `pedido`
+JOIN `reservas` ON `reservas`.`id_pedido` = `pedido`.`id_pedido`
+JOIN `pistas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+JOIN `categorias` ON `categorias`.`id_categoria` = `instalaciones`.`categoria_principal`
+WHERE `id_pedido` = :id_pedido:
+ORDER BY `reservas`.`fecha`', [...], false)
+ 5 APPPATH\Models\reservasModel.php(242): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Reservas.php(146): App\Models\reservasModel->getFullReservasFromPedido(5)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 10:44:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:45:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-01-27 11:45:48 --> mysqli_sql_exception: Column 'id_pedido' in where clause is ambiguous in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `reserva...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `reserva...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `reserva...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `reserva...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\reservasModel.php(242): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Reservas.php(146): App\Models\reservasModel->getFullReservasFromPedido(6)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+INFO - 2026-01-27 10:47:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 10:47:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:47:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 11:48:03 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 11:48:03 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 10:49:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 10:49:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:49:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 11:49:52 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 11:49:52 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 11:14:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 12:15:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:15:12 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:15:12 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 11:19:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:19:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 12:19:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:19:49 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:19:49 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-27 12:19:49 --> ErrorException: require_once(C:\Proyectos\reservalo2.0\app\ThirdParty/mpdf/vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Libraries\Pdf.php on line 11.
+ 1 APPPATH\Libraries\Pdf.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(C:\\Proyectos\\reservalo2.0\\app\\ThirdParty/mpdf/vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\Proyectos\\reservalo2.0\\app\\Libraries\\Pdf.php', 11)
+ 2 APPPATH\Libraries\Pdf.php(11): require_once()
+ 3 APPPATH\Controllers\Reservas.php(159): App\Libraries\Pdf->__construct()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 12:20:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:20:11 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:20:11 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-27 12:21:11 --> ErrorException: require_once(C:\Proyectos\reservalo2.0\app\ThirdParty/mpdf/vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Libraries\Pdf.php on line 11.
+ 1 APPPATH\Libraries\Pdf.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(C:\\Proyectos\\reservalo2.0\\app\\ThirdParty/mpdf/vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\Proyectos\\reservalo2.0\\app\\Libraries\\Pdf.php', 11)
+ 2 APPPATH\Libraries\Pdf.php(11): require_once()
+ 3 APPPATH\Controllers\Reservas.php(159): App\Libraries\Pdf->__construct()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 11:21:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:21:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:21:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:21:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:21:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:21:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:21:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:21:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:21:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:21:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:21:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:21:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:21:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 12:21:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:21:42 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:21:42 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-27 12:21:42 --> ErrorException: require_once(C:\Proyectos\reservalo2.0\app\ThirdParty/mpdf/vendor/autoload.php): Failed to open stream: No such file or directory
+in APPPATH\Libraries\Pdf.php on line 11.
+ 1 APPPATH\Libraries\Pdf.php(11): CodeIgniter\Debug\Exceptions->errorHandler(2, 'require_once(C:\\Proyectos\\reservalo2.0\\app\\ThirdParty/mpdf/vendor/autoload.php): Failed to open stream: No such file or directory', 'C:\\Proyectos\\reservalo2.0\\app\\Libraries\\Pdf.php', 11)
+ 2 APPPATH\Libraries\Pdf.php(11): require_once()
+ 3 APPPATH\Controllers\Reservas.php(159): App\Libraries\Pdf->__construct()
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 12:23:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:23:13 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:23:13 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 11:25:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:25:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 12:25:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:25:37 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:25:37 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 11:26:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:26:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 12:26:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:26:29 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:26:29 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 11:28:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 12:29:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:29:22 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:29:22 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 12:29:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:29:24 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:29:24 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(158): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 11:43:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 12:43:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:44:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:44:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 12:45:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-27 11:45:10 --> BadMethodCallException: Call to undefined method App\Models\reservasModel::getPedidoPorId
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\Reservas.php(157): CodeIgniter\Model->__call('getPedidoPorId', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(19)
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 11:50:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:51:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 12:51:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-27 11:51:24 --> ErrorException: Undefined array key "id_usuario"
+in APPPATH\Controllers\Reservas.php on line 163.
+ 1 APPPATH\Controllers\Reservas.php(163): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_usuario"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 163)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(20)
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 11:52:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:52:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 12:53:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-27 11:53:47 --> ErrorException: Undefined array key "fecha_pedido"
+in APPPATH\Controllers\Reservas.php on line 170.
+ 1 APPPATH\Controllers\Reservas.php(170): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "fecha_pedido"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 170)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(21)
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-27 11:54:29 --> BadMethodCallException: Call to undefined method App\Models\reservasModel::getPedidoPorId
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\Reservas.php(157): CodeIgniter\Model->__call('getPedidoPorId', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(21)
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 11:54:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:54:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 12:54:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-27 11:54:46 --> BadMethodCallException: Call to undefined method App\Models\reservasModel::getPedidoPorId
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\Reservas.php(157): CodeIgniter\Model->__call('getPedidoPorId', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(22)
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 11:55:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:55:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 11:55:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 12:55:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 11:55:43 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(23)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 11:55:43 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(23)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 11:59:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 12:59:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 11:59:48 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(24)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 12:01:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 13:02:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:02:11 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(25)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 12:03:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 13:03:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:03:56 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(26)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:03:56 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 350.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(26)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 12:19:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 13:19:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:19:44 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 344.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(27)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:19:44 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 344.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(27)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 12:21:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 13:21:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:21:36 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 344.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(28)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:21:36 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 344.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(28)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 12:22:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 13:22:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:22:36 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 344.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(29)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:22:36 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 344.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(29)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 12:23:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 13:23:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:23:45 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 344.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(30)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:23:45 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 344.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(30)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 12:26:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 13:26:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:26:52 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 345.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(31)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:26:52 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 345.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(31)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 13:29:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:29:52 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 345.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(32)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:29:52 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 345.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(32)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 12:40:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 13:41:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:41:10 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 352.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(33)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:41:10 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 352.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(33)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 12:48:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 13:49:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 12:49:06 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 343.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(34)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 12:49:06 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 343.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(34)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 13:01:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 14:01:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 13:01:53 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 340.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(35)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 13:02:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 14:02:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 13:02:40 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 340.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(36)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 16:01:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 15:01:17 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 342.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(37)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 15:01:17 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 342.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(37)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 15:02:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 16:02:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 15:02:59 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 341.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(38)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 15:02:59 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 341.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(38)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 15:05:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 16:05:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 15:05:58 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 344.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(39)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 15:05:58 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 344.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(39)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 15:28:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 16:29:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 15:29:21 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 371.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(40)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+WARNING - 2026-01-27 15:29:21 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 371.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(40)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-27 15:33:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 16:33:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 15:44:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 15:44:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 16:44:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 15:49:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 16:49:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 15:52:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 15:55:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 16:55:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 15:57:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-27 16:57:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2026-01-27 15:57:42 --> [DEPRECATED] Function strftime() is deprecated in APPPATH\Views\reservas\pdf_template.php on line 340.
+ 1 SYSTEMPATH\View\View.php(228): include('C:\\Proyectos\\reservalo2.0\\app\\Views\\reservas\\pdf_template.php')
+ 2 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('reservas/pdf_template', [], true)
+ 4 APPPATH\Controllers\Reservas.php(176): view('reservas/pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(45)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

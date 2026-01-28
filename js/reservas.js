@@ -281,32 +281,50 @@ $(document).ready(() => {
     })
 
 
-    $(document).on('click', '#btnConfirmarReserva', function (e) {
+  $(document).on('click', '#btnConfirmarReserva', function (e) {
 
-        e.preventDefault();
+    e.preventDefault();
 
-        let data = horasAnt.map(function(item) {
-            return {
-                ...item, 
-                horaFin: sumarHora(item.hora)
-            }
-        })
-
-        let precio = parseFloat($('#precio-total').text());
-
-        $.ajax({
-            type: "POST",
-            url: "../hacerReserva",
-            data: {datos: data, precio: precio},
-            dataType: "JSON",
-            success: function (response) {
-                if (response.success) {
-                    bootstrap.Modal.getInstance(document.getElementById('modalReservaPista'))?.hide();
-                    horasAnt = [];
-                }
-            }
-        });
+    let data = horasAnt.map(function(item) {
+        return {
+            ...item, 
+            horaFin: sumarHora(item.hora)
+        }
     })
+
+    let precio = parseFloat($('#precio-total').text());
+
+    $.ajax({
+        type: "POST",
+        url: "../hacerReserva",
+        data: {datos: data, precio: precio},
+        dataType: "JSON",
+        success: function (response) {
+            if (response.success) {
+                
+                // Mostrar mensaje
+                alert(response.mensaje);
+                
+                // Cerrar modal
+                bootstrap.Modal.getInstance(document.getElementById('modalReservaPista'))?.hide();
+                horasAnt = [];
+                
+                // Descargar PDF (nueva ventana o iframe)
+                window.location.href = '../descargarTicket/' + response.id_pedido;
+                
+                // O en nueva pestaña:
+                // window.open('../descargarTicket/' + response.id_pedido, '_blank');
+                
+            } else {
+                alert(response.mensaje);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error('Error:', error);
+            alert('Ha ocurrido un error al procesar la reserva');
+        }
+    });
+});
 
 
     function generarHoras(inicio, fin) {

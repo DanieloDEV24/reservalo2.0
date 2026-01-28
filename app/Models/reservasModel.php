@@ -30,7 +30,7 @@ class reservasModel extends Model
     public function getInfoPista(int $id_pista, string $fecha)
     {
 
-        $diaSemana = date('N', strtotime($fecha)); // Obtener el día de la semana (1-7)
+            $diaSemana = date('N', strtotime($fecha)); // Obtener el día de la semana (1-7)
 
         // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
@@ -207,9 +207,6 @@ class reservasModel extends Model
         // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
 
-        // Obtenemos la tabla en la que vamos a buscar las reservas
-        $builder = $db->table('pedido');
-
         // Obtenemos la tabla principal 'pedido'
         $builder = $db->table('pedido');
 
@@ -221,6 +218,7 @@ class reservasModel extends Model
             pistas.imagen1,
             pistas.capacidad_pista,
             pistas.nombre_pista,
+            pistas.precio_pista,
             instalaciones.nombre,
             instalaciones.direccion,
             instalaciones.material,
@@ -234,9 +232,30 @@ class reservasModel extends Model
         $builder->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion');
         $builder->join('categorias', 'categorias.id_categoria = instalaciones.categoria_principal');
 
-        $builder->where('id_pedido', $id_pedido);
+        $builder->where('reservas.id_pedido', $id_pedido);
+
+        $builder->orderBy('reservas.fecha');
 
         $query = $builder->get();
         return $query->getResultArray();
+    }
+
+
+    public function getPedidoFromId(int $id_pedido) {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal 'pedido'
+        $builder = $db->table('pedido');
+
+        $builder->select();
+        
+        $builder->where("id_pedido", $id_pedido);
+
+        $query = $builder->get();
+        
+        return $query->getResultArray(); 
+
     }
 }

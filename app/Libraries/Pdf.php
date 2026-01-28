@@ -7,8 +7,8 @@ class Pdf
     
     public function __construct($config = [])
     {
-        // Incluir el autoloader de mPDF
-        require_once APPPATH . 'ThirdParty/mpdf/vendor/autoload.php';
+        // CAMBIA ESTA LÍNEA - El vendor está en la raíz del proyecto
+        require_once ROOTPATH . 'vendor/autoload.php';
         
         $defaultConfig = [
             'mode' => 'utf-8',
@@ -32,7 +32,6 @@ class Pdf
     
     public function output($filename = 'documento.pdf', $dest = 'I')
     {
-        // I = inline (navegador), D = download, F = guardar archivo, S = string
         return $this->mpdf->Output($filename, $dest);
     }
     
