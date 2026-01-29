@@ -149,8 +149,8 @@ class Reservas extends BaseController
 }
 
 // Método separado SOLO para generar y descargar el PDF
-public function descargarTicket(int $id_pedido) {
-    
+public function descargarTicket(int $id_pedido) 
+{
     $reservasModel = new reservasModel();
     $loginModel    = new loginModel();
     
@@ -174,27 +174,104 @@ public function descargarTicket(int $id_pedido) {
         "reservas"       => $datos_reserva
     ];
 
-    $html = view('reservas/pdf_template', ["datos" => $datos_pdf, "baseUrl"=> base_url()]);
+    $html = view('reservas/pdf_template', [
+        "datos" => $datos_pdf, 
+        "baseUrl" => base_url()
+    ]);
     
+    $pdfFilename = 'reserva-' . $pedido['num_pedido'] . '.pdf';
+    
+    // Asegurar que el directorio existe
+    $uploadDir = rtrim(WRITEPATH, '/\\') . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
+    if (!is_dir($uploadDir)) {
+        mkdir($uploadDir, 0755, true);
+    }
+    
+    // Generar PDF
     $pdf = new Pdf();
     $pdf->writeHTML($html);
+    
+    // Guardar temporalmente con ruta normalizada
+    $tempPath = $uploadDir . $pdfFilename;
+    $pdf->output($tempPath, 'F');
+    
+    // VERIFICAR que el archivo se creó correctamente
+    if (!file_exists($tempPath)) {
+        log_message('error', '❌ No se pudo crear el PDF en: ' . $tempPath);
+        return redirect()->back()->with('error', 'Error al generar el PDF');
+    }
+    
+    // Enviar PDF al navegador
+    header('Content-Type: application/pdf');
+    header('Content-Disposition: attachment; filename="' . $pdfFilename . '"');
+    header('Content-Length: ' . filesize($tempPath));
+    readfile($tempPath);
+    
+    // Procesar email en segundo plano
+    if (function_exists('fastcgi_finish_request')) {
+        fastcgi_finish_request();
+        $this->enviarEmailYSMS($datos_pdf, $datos_usuario, $tempPath, $pdfFilename, $id_pedido, $datos_reserva);
+    } else {
+        $this->enviarEmailYSMS($datos_pdf, $datos_usuario, $tempPath, $pdfFilename, $id_pedido, $datos_reserva);
+    }
+    
+    exit;
+}
+private function enviarEmailYSMS($datos_pdf, $datos_usuario, $tempPath, $pdfFilename, $id_pedido, $datos_reserva)
+{
+    try {
+        // Leer el PDF
+        $pdfContent = file_get_contents($tempPath);
+        $pdfBase64 = base64_encode($pdfContent);
+        
+        // Cargar plantilla de email
+        $htmlContent = view('plantillas/emailReserva', [
+            'datos_reserva' => $datos_pdf
+        ]);
+        
+        // API Key de Resend
+        $apiKey = 're_EoU5q6Mw_Hz3ECMQADDxHKz3o3opLeS6e';
+        
+        $curlData = [
+            'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
+            'to' => [$datos_usuario['email']],
+            'subject' => '✅ Confirmación de Reserva #' . $datos_pdf['numero_pedido'],
+            'html' => $htmlContent,
+            'attachments' => [
+                [
+                    'filename' => $pdfFilename,
+                    'content' => $pdfBase64,
+                ]
+            ]
+        ];
 
-            try {
-            $smsService = new SmsService();
-            $resultado = $smsService->notificarConfirmacionReserva($datos_pdf);
-            
-            if ($resultado['success']) {
-                log_message('info', '✅ SMS enviado correctamente a: ' . $data['reserva']['cliente_telefono']);
-                log_message('info', 'SID del mensaje: ' . $resultado['sid']);
-            } else {
-                log_message('error', '❌ Error enviando SMS: ' . $resultado['error']);
-            }
-        } catch (\Exception $e) {
-            log_message('error', '❌ Excepción al enviar SMS: ' . $e->getMessage());
+        $ch = curl_init('https://api.resend.com/emails');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Authorization: Bearer ' . $apiKey,
+            'Content-Type: application/json',
+        ]);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
+        $response  = curl_exec($ch);
+        $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($httpCode === 200 || $httpCode === 202) {
+            log_message('info', '✅ Email enviado a: ' . $datos_usuario['email']);
+        } else {
+            log_message('error', '❌ Error enviando email: ' . $response);
         }
         
-    
-    // Generar al vuelo y forzar descarga (NO se guarda en servidor)
-    $pdf->output('reserva-'.$pedido['num_pedido'].'.pdf', 'D');
+    } catch (\Exception $e) {
+        log_message('error', '❌ Error email: ' . $e->getMessage());
     }
+    
+    
+    // Eliminar archivo temporal
+    if (file_exists($tempPath)) {
+        unlink($tempPath);
+    }
+}
 }
