@@ -48,9 +48,14 @@ a[x-apple-data-detectors], #MessageViewBody a { color:inherit!important; text-de
                           <td valign="top" align="center" style="padding:0;Margin:0;width:540px">
                             <table width="100%" cellspacing="0" cellpadding="0" role="presentation">
                               <tr>
-                                <td align="center" style="padding:0;Margin:0;font-size:0px">
+                                <td align="start" style="padding:0;padding-bottom:10px;Margin:0;font-size:0px">
                                   <a target="_blank" href="<?= base_url() ?>">
-                                    <img src="https://i.imgur.com/YzI6B1v.png" alt="Logo" title="Logo" width="252" class="adapt-img" style="display:block;border:0;outline:none;text-decoration:none">
+                                    <img src="https://i.imgur.com/umDk1CZ.png" alt="Logo Ayuntamiento de Fuente de Piedra" title="Logo" width="200" class="adapt-img" style="display:block;border:0;outline:none;text-decoration:none">
+                                  </a>
+                                </td>
+                                <td align="right" style="padding:0;Margin:0;font-size:0px">
+                                  <a target="_blank" href="<?= base_url() ?>">
+                                    <img src="https://i.imgur.com/YzI6B1v.png" alt="Logo" title="Logo" width="180" class="adapt-img" style="display:block;border:0;outline:none;text-decoration:none">
                                   </a>
                                 </td>
                               </tr>
@@ -138,7 +143,7 @@ a[x-apple-data-detectors], #MessageViewBody a { color:inherit!important; text-de
                               <tr>
                                 <td align="center" style="padding:0;Margin:0">
                                   <span class="es-button-border" style="border-style:solid;border-color:#2CB543;background:#32cccc;border-width:0px;display:inline-block;border-radius:30px;width:auto">
-                                    <a href="<?= base_url() ?>" target="_blank" class="es-button" style="text-decoration:none;color:#FFFFFF;font-size:18px;padding:10px 30px;display:inline-block;background:#FF4A4A;border-radius:30px;font-family:Lexend, Arial, sans-serif;line-height:21.6px;text-align:center">
+                                    <a href="<?= base_url() ?>" target="_blank" class="es-button" style="text-decoration:none;color:#FFFFFF;font-size:18px;padding:10px 30px;display:inline-block;background:#32cccc;border-radius:30px;font-family:Lexend, Arial, sans-serif;line-height:21.6px;text-align:center">
                                       Ver mis reservas
                                     </a>
                                   </span>
@@ -199,18 +204,18 @@ a[x-apple-data-detectors], #MessageViewBody a { color:inherit!important; text-de
                             <table cellpadding="0" cellspacing="0" width="100%" role="presentation">
                               <tr>
                                 <td align="center" style="padding:0;Margin:0;padding-bottom:20px">
-                                  <span class="es-button-border" style="border-style:solid;background:#FF4A4A;border-width:0px;display:inline-block;border-radius:30px;width:auto">
-                                    <a href="tel:+34952735268" target="_blank" class="es-button" style="text-decoration:none;color:#FFFFFF;font-size:18px;padding:10px 30px;display:inline-block;background:#FF4A4A;border-radius:30px;font-family:Lexend, Arial, sans-serif;line-height:21.6px;text-align:center">
-                                      +34 952 735 268
+                                  <span class="es-button-border" style="border-style:solid;background:#32cccc;border-width:0px;display:inline-block;border-radius:30px;width:auto">
+                                    <a href="tel:+34952735016" target="_blank" class="es-button" style="text-decoration:none;color:#fff;font-size:18px;padding:10px 30px;display:inline-block;background:#32cccc;border-radius:30px;font-family:Lexend, Arial, sans-serif;line-height:21.6px;text-align:center">
+                                      +34 952 73 50 16
                                     </a>
                                   </span>
                                 </td>
                               </tr>
                               <tr>
                                 <td align="center" style="padding:0;Margin:0">
-                                  <span class="es-button-border" style="border-style:solid;background:#FF4A4A;border-width:0px;display:inline-block;border-radius:30px;width:auto">
-                                    <a href="mailto:info@reservalo.com" target="_blank" class="es-button" style="text-decoration:none;color:#FFFFFF;font-size:18px;padding:10px 30px;display:inline-block;background:#FF4A4A;border-radius:30px;font-family:Lexend, Arial, sans-serif;line-height:21.6px;text-align:center">
-                                      info@reservalo.com
+                                  <span class="es-button-border" style="border-style:solid;background:#32cccc;border-width:0px;display:inline-block;border-radius:30px;width:auto">
+                                    <a href="mailto:info@fuentedepiedra.es" target="_blank" class="es-button" style="text-decoration:none;color:#FFFFFF;font-size:18px;padding:10px 30px;display:inline-block;background:#32cccc;border-radius:30px;font-family:Lexend, Arial, sans-serif;line-height:21.6px;text-align:center">
+                                      info@fuentedepiedra.es
                                     </a>
                                   </span>
                                 </td>
@@ -227,57 +232,93 @@ a[x-apple-data-detectors], #MessageViewBody a { color:inherit!important; text-de
           </table>
           
           <!-- FOOTER -->
-          <table cellpadding="0" cellspacing="0" align="center" class="es-footer" role="none" style="width:100%">
-            <tr>
-              <td align="center" style="padding:0;Margin:0">
-                <table cellspacing="0" cellpadding="0" bgcolor="#939393" align="center" class="es-footer-body" role="none" style="background-color:#939393;width:600px">
-                  <tr>
-                    <td align="left" style="padding:35px 30px">
-                      <table cellspacing="0" cellpadding="0" width="100%" role="none">
-                        <tr>
-                          <td align="left" style="padding:0;Margin:0;width:235px">
-                            <table width="100%" cellspacing="0" cellpadding="0" role="presentation">
-                              <tr>
-                                <td align="left" style="padding-bottom:5px">
-                                  <h1 style="Margin:0;font-family:Montaga, Arial, serif;font-size:24px;line-height:30px;color:#2C2C2C">
-                                    Contacto
-                                  </h1>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td align="left" style="padding:15px 0 5px 0">
-                                  <p style="Margin:0;font-family:Lexend, Arial, sans-serif;line-height:21px;color:#2C2C2C;font-size:14px">
-                                    <a href="mailto:info@reservalo.com" style="text-decoration:none;color:#2C2C2C">info@reservalo.com</a>
-                                  </p>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td align="left" style="padding:5px 0">
-                                  <p style="Margin:0;font-family:Lexend, Arial, sans-serif;line-height:21px;color:#2C2C2C;font-size:14px">
-                                    <a href="tel:+34952735268" style="text-decoration:none;color:#2C2C2C">+34 952 735 268</a>
-                                  </p>
-                                </td>
-                              </tr>
-                              <tr>
-                                <td align="left" style="padding:5px 0">
-                                  <p style="Margin:0;font-family:Lexend, Arial, sans-serif;line-height:21px;color:#2C2C2C;font-size:14px">
-                                    Fuente de Piedra, Málaga
-                                  </p>
-                                </td>
-                              </tr>
-                            </table>
-                          </td>
-                        </tr>
-                      </table>
-                    </td>
-                  </tr>
-                </table>
-              </td>
-            </tr>
-          </table>
-        </td>
-      </tr>
-    </table>
+<table cellpadding="0" cellspacing="0" align="center" class="es-footer" role="none" style="width:100%">
+  <tr>
+    <td align="center" style="padding:0;Margin:0">
+      <table cellspacing="0" cellpadding="0" bgcolor="#ffffff" align="center" class="es-footer-body" role="none" style="background-color:#ffffff;width:600px">
+        
+        <!-- Línea divisoria sutil -->
+        <tr>
+          <td align="center" style="padding:0;Margin:0">
+            <table width="100%" cellspacing="0" cellpadding="0" role="presentation">
+              <tr>
+                <td style="padding:0 30px">
+                  <hr style="border:none;border-top:1px solid #e8e8e8;margin:0">
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Contenido del footer -->
+        <tr>
+          <td align="center" style="padding:40px 30px 30px">
+            <table cellspacing="0" cellpadding="0" width="100%" role="none">
+              <tr>
+                <td align="center" style="padding:0;Margin:0">
+                  
+                  <!-- Información de contacto en línea -->
+                  <table width="100%" cellspacing="0" cellpadding="0" role="presentation">
+                    <tr>
+                      <td align="center" style="padding-bottom:20px">
+                        <p style="Margin:0;font-family:Lexend, Arial, sans-serif;font-size:16px;line-height:24px;color:#1a1a1a;font-weight:600">
+                          ¿Necesitas ayuda con tu reserva?
+                        </p>
+                      </td>
+                    </tr>
+                    
+                    <!-- Links de contacto con iconos -->
+                    <tr>
+                      <td align="center" style="padding:0 0 25px 0">
+                        <table cellspacing="0" cellpadding="0" role="presentation" style="display:inline-table">
+                          <tr>
+                            <td style="padding:0 15px">
+                              <a href="mailto:info@reservalo.com" style="text-decoration:none;font-family:Lexend, Arial, sans-serif;font-size:14px;color:#666666;display:inline-flex;align-items:center">
+                                📧info@fuentedepiedra.es
+                              </a>
+                            </td>
+                            <td style="padding:0 15px;border-left:1px solid #e8e8e8">
+                              <a href="tel:+34952735268" style="text-decoration:none;font-family:Lexend, Arial, sans-serif;font-size:14px;color:#666666;display:inline-flex;align-items:center">
+                                📞 +34 952 735 016
+                              </a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+
+                    <!-- Dirección -->
+                    <tr>
+                      <td align="center" style="padding-bottom:25px">
+                        <p style="Margin:0;font-family:Lexend, Arial, sans-serif;font-size:13px;line-height:20px;color:#999999">
+                          📍 C/ Ancha nº9. Fuente de Piedra, 29520, Málaga
+                        </p>
+                      </td>
+                    </tr>
+
+                    <!-- Copyright y links legales -->
+                    <tr>
+                      <td align="center" style="padding-top:20px;border-top:1px solid #e8e8e8">
+                        <p style="Margin:0;padding-bottom:8px;font-family:Lexend, Arial, sans-serif;font-size:12px;line-height:18px;color:#999999">
+                          © 2026 Reservalo. Todos los derechos reservados.
+                        </p>
+                        <p style="Margin:0;font-family:Lexend, Arial, sans-serif;font-size:11px;line-height:16px;color:#bbbbbb">
+                          <a href="#" style="color:#bbbbbb;text-decoration:none">Política de Privacidad</a> · 
+                          <a href="#" style="color:#bbbbbb;text-decoration:none">Términos y Condiciones</a>
+                        </p>
+                      </td>
+                    </tr>
+                  </table>
+
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
   </div>
 </body>
 </html>

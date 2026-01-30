@@ -36,14 +36,14 @@
         <h2 class="title-page">Pistas</h1>
         <div class="container-pistas-instalacion">
             <?php foreach($pistas as $pista) : ?>
-                <div class="card-instalacion" data-index="<?=$pista["id_pista"]?>">
+                <div class="card-instalacion" data-index="<?=$pista["id_pista"]?>" data-sinHorario="<?= (intval($instalacion["tipo_reserva"]) === 1) ? 1 : 0 ?>" >
                     <div class="card-image" style="background: url('<?=base_url()."images/".$pista["imagen1"]?>')"></div>
                     <div class="category"> <?=$instalacion["nombre"]?> </div>
                     <div class="heading"> <?=$pista["nombre_pista"]?></div>
                     <span id="comunity"><i class="bi bi-people"></i>&nbsp;<?=$pista["capacidad_pista"]?>&nbsp;personas</span>
                     <div class="button">
                         <a href="" class="btn-primary-personal btn-panel-reservas">Hacer reserva &nbsp;<i class="bi bi-arrow-right"></i></a>
-                        <div class="precio-pista"><span><?=$pista["precio_pista"]?></span><i class="bi bi-currency-euro"></i>/hora</div>
+                        <div class="precio-pista"><span><?=$pista["precio_pista"]?></span><i class="bi bi-currency-euro"></i>/<?= (intval($instalacion["tipo_reserva"]) === 1) ? "dia" : "hora" ?></div>
                     </div>
                     <!-- Aqui debo poner la parte del estado -->
                 </div>

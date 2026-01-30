@@ -312,6 +312,8 @@ $(document).ready(() => {
                 // Descargar PDF (nueva ventana o iframe)
                 window.location.href = '../descargarTicket/' + response.id_pedido;
                 
+                horasAnt = [];
+                $('.btn-horario.horaSeleccionada').removeClass('.horaSeleccionada')
                 // O en nueva pestaña:
                 // window.open('../descargarTicket/' + response.id_pedido, '_blank');
                 
@@ -326,6 +328,22 @@ $(document).ready(() => {
     });
 });
 
+
+$('#modalReservaPista').on('hidden.bs.modal', function () {
+    horasAnt = [];
+    $('.btn-horario.horaSeleccionada').removeClass("horaSeleccionada");
+    $('#btnConfirmarReserva').prop('disabled', true);
+});
+
+
+$(document).on('click', '.dia-calendario', function(){
+    
+    let tipoReserva = parseInt($('.modal-body').data('tiporeserva'));
+    console.log(tipoReserva);
+
+    if($('.dia-calendario.seleccion'))
+
+});
 
     function generarHoras(inicio, fin) {
         const horas = [];

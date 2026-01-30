@@ -779,7 +779,7 @@ class Instalaciones extends BaseController
                 ]
             ];
 
-            $modalReservaPista = view('instalaciones/modalPanelReserva', ["baseUrl" => base_url()]);
+            $modalReservaPista = view('instalaciones/modalPanelReserva', ["baseUrl" => base_url(), "instalacion" => $instalacion]);
 
             $view = view('instalaciones/instalacion', ["instalacion" => $instalacion, "pistas" => $pistas, "modalReservaPista" => $modalReservaPista, "baseUrl" => base_url()]);
             return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets]);
