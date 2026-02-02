@@ -110,6 +110,12 @@
 .calendario-dias {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
+    gap: 8px;
+}
+
+.modal-body[data-tipoReserva="1"] .calendario-dias {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
     gap: 20px;
 }
 
@@ -245,4 +251,12 @@ button.hora-pasada:hover {
     color: #6c757d !important;
     border-color: #6c757d !important;
     cursor: not-allowed;
+}
+
+.fecha-intermedia{
+    background-color: #0dcaf070;
+    color: white;
+    font-weight: 700;
+    /* border-color: #0dcaf080; */
+    box-shadow: 0 2px 8px rgba(13, 202, 240, 0.2);
 }

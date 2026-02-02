@@ -256,7 +256,6 @@
 
       dia.dataset.fecha = `${year}-${month}-${day}`;
 
-
       // Marcar día de hoy
       if (fechaDia.getTime() === hoy.getTime()) {
         dia.classList.add('seleccionado');
@@ -265,15 +264,8 @@
       // Deshabilitar días pasados
       if (fechaDia < hoy) {
         dia.classList.add('disabled');
-      } else {
-        dia.addEventListener('click', function() {
-          document.querySelectorAll('.dia-calendario').forEach(d => {
-            d.classList.remove('seleccionado');
-          });
-          this.classList.add('seleccionado');
-          fechaSeleccionada = this.dataset.fecha;
-        });
       }
+      // NO agregamos addEventListener aquí - se manejará con jQuery
 
       calendarioDias.appendChild(dia);
     }
@@ -300,22 +292,13 @@
         const day = String(fechaDia.getDate()).padStart(2, '0');
 
         dia.dataset.fecha = `${year}-${month}-${day}`;
-
-        // Añadir evento click
-        dia.addEventListener('click', function() {
-          document.querySelectorAll('.dia-calendario').forEach(d => {
-            d.classList.remove('seleccionado');
-          });
-          this.classList.add('seleccionado');
-          fechaSeleccionada = this.dataset.fecha;
-        });
+        
+        // NO agregamos addEventListener aquí - se manejará con jQuery
       }
 
       calendarioDias.appendChild(dia);
     }
   }
-
-
 
   // Inicializar cuando el DOM esté listo
   document.addEventListener('DOMContentLoaded', function() {
@@ -350,9 +333,6 @@
       });
     }
 
-
-
-
     // Resetear al cerrar
     const modalElement = document.getElementById('modalReservaPista');
     if (modalElement) {
@@ -362,7 +342,6 @@
         mesActual = new Date().getMonth();
         añoActual = new Date().getFullYear();
         generarCalendario();
-        botonesHorario.forEach(b => b.classList.remove('active'));
         const mensajeExito = document.getElementById('mensajeExito');
         if (mensajeExito) {
           mensajeExito.classList.add('d-none');
@@ -370,4 +349,4 @@
       });
     }
   });
-</script>
+</script> 

@@ -1,6 +1,7 @@
 $(document).ready(() => {
 
     let horasAnt = []
+    let rangoFechas = []
 
 
     $(document).on('click', '.btn-panel-reservas', function (e) {
@@ -331,19 +332,95 @@ $(document).ready(() => {
 
 $('#modalReservaPista').on('hidden.bs.modal', function () {
     horasAnt = [];
+    rangoFechas = [];
     $('.btn-horario.horaSeleccionada').removeClass("horaSeleccionada");
     $('#btnConfirmarReserva').prop('disabled', true);
 });
 
 
-$(document).on('click', '.dia-calendario', function(){
-    
-    let tipoReserva = parseInt($('.modal-body').data('tiporeserva'));
-    console.log(tipoReserva);
 
-    if($('.dia-calendario.seleccion'))
+
+
+// Manejo de clicks en días del calendario
+$(document).on('click', '.modal-body[data-tipoReserva="0"] .dia-calendario:not(.disabled, .otro-mes)', function(){
+
+        $('.dia-calendario').removeClass('seleccionado');
+        $(this).addClass('seleccionado');
+        fechaSeleccionada = $(this).data('fecha');
+});
+
+$(document).on('click', '.modal-body[data-tipoReserva="1"] .dia-calendario:not(.disabled, .otro-mes)', function(){
+
+            // Modo rango de fechas
+            if($('.dia-calendario.seleccionado').length < 2)
+                $(this).addClass('seleccionado');
+
+            console.log($('.dia-calendario.seleccionado').length)
+            
+            // Si ahora hay 2 seleccionados, marcar intermedios
+            if($('.dia-calendario.seleccionado').length === 2){
+                let fechaInicio = $('.dia-calendario.seleccionado').eq(0).data('fecha');
+                let fechaFin = $('.dia-calendario.seleccionado').eq(1).data('fecha');
+                
+                let inicio = new Date(fechaInicio);
+                let fin = new Date(fechaFin);
+                
+                // Asegurar que inicio sea menor que fin
+                if(inicio > fin) {
+                    [inicio, fin] = [fin, inicio];
+                }
+                
+                let fechaActual = new Date(inicio);
+                while (fechaActual < fin) {
+                    fechaActual.setDate(fechaActual.getDate() + 1);
+                    let fechaStr = fechaActual.toISOString().split('T')[0];
+                    $('.dia-calendario[data-fecha="'+ fechaStr +'"]').addClass('fecha-intermedia');
+                }
+            }
+        
+        fechaSeleccionada = $(this).data('fecha');
+});
+
+
+    
+$(document).on('click', '.modal-body[data-tipoReserva="1"] .dia-calendario', function(){
+    
+    let longitud = $('.dia-calendario.seleccionado').length
+    console.log($('.dia-calendario.seleccionado'))
+
+    if(longitud === 1){
+        rangoFechas = []
+        rangoFechas.push({fecha_inicio: $('.dia-calendario.seleccionado').eq(0).data('fecha')});
+    }
+    else if(longitud === 2){
+        rangoFechas = []
+        rangoFechas.push({fecha_inicio: $('.dia-calendario.seleccionado').eq(0).data('fecha')});
+        rangoFechas.push({fecha_fin: $('.dia-calendario.seleccionado').eq(1).data('fecha')});
+    }
+    else {
+        return;
+    }
 
 });
+
+    $(document).on('click', '.modal-body[data-tipoReserva="1"] .dia-calendario.seleccionado', function(){
+        
+        let fechaClickeada = $(this).data('fecha');
+
+        rangoFechas = rangoFechas.filter(function(fecha){
+            return fecha.fecha_inicio !== fechaClickeada && fecha.fecha_fin !== fechaClickeada;
+        });
+
+        if(rangoFechas.length < 2)
+        {
+            $(this).removeClass("seleccionado");
+            $('.dia-calendario.fecha-intermedia').removeClass('fecha-intermedia');
+
+        }
+
+    });
+
+
 
     function generarHoras(inicio, fin) {
         const horas = [];
