@@ -223,6 +223,7 @@ class reservasModel extends Model
             instalaciones.direccion,
             instalaciones.material,
             instalaciones.iluminacion,
+            instalaciones.tipo_reserva,
             categorias.nombre AS categoria
         ');
 

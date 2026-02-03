@@ -83,8 +83,9 @@ class Reservas extends BaseController
 
     if(!empty($post)){
 
-        $datos  = $post["datos"];
-        $precio = $post["precio"];
+        $datos        = $post["datos"];
+        $precio       = $post["precio"];
+        $tipo_reserva = intval($post["tipo_reserva"]);
         $fecha_hora_actual = date('Y-m-d H:i:s');
 
         $session = session();
@@ -124,19 +125,42 @@ class Reservas extends BaseController
             "num_pedido"    => $num_pedido
         ]);
 
-        foreach($datos as $dato) {
+        if($tipo_reserva === 0){
+            foreach($datos as $dato) {
                 
-            $data = [
-                "id_pista"      => $dato["pista"], 
-                "fecha"         => $dato["fecha"], 
-                "hora_inicio"   => $dato["hora"],
-                "hora_final"    => $dato["horaFin"], 
-                "fecha_reserva" => $fecha_hora_actual,
-                "id_usuario"    => $id_usuario, 
-                "id_pedido"     => $id_pedido
-            ];
+                $data = [
+                    "id_pista"      => $dato["pista"], 
+                    "fecha"         => $dato["fecha"], 
+                    "hora_inicio"   => $dato["hora"],
+                    "hora_final"    => $dato["horaFin"], 
+                    "fecha_reserva" => $fecha_hora_actual,
+                    "id_usuario"    => $id_usuario, 
+                    "id_pedido"     => $id_pedido
+                ];
 
-            $reserva = $reservasModel->hacerReserva($data);
+                $reserva = $reservasModel->hacerReserva($data);
+            }
+        }
+        else {
+            $fecha_inicio = new DateTime($datos[0]["fecha_inicio"]); 
+            $fecha_final  = new DateTime($datos[1]["fecha_fin"]);
+
+            while($fecha_inicio <= $fecha_final){
+
+                $data = [
+                        "id_pista"      => $datos[2]["pista"], 
+                        "fecha"         => $fecha_inicio->format('Y-m-d'), 
+                        "hora_inicio"   => "00:00:00",
+                        "hora_final"    => "23:59:59", 
+                        "fecha_reserva" => $fecha_hora_actual,
+                        "id_usuario"    => $id_usuario, 
+                        "id_pedido"     => $id_pedido
+                ];
+
+                $reserva = $reservasModel->hacerReserva($data);
+
+                $fecha_inicio->modify('+1 day');
+            }
         }
         
         // Devolver solo JSON, SIN generar PDF aquí
@@ -147,6 +171,8 @@ class Reservas extends BaseController
         ]);
     }
 }
+
+    
 
 // Método separado SOLO para generar y descargar el PDF
 public function descargarTicket(int $id_pedido) 

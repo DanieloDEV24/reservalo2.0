@@ -362,6 +362,8 @@
             <h2>Horarios Reservados</h2>
         </div>
         <div class="seccion-body">
+            <?php if(intval($datos["reservas"][0]["tipo_reserva"]) === 0) : ?>
+
             <?php $fecha = ""; ?>
             <?php foreach ($datos["reservas"] as $horario): ?>
                 <?php if($fecha !== $horario["fecha_reserva"]): ?>
@@ -401,6 +403,37 @@
                     </div>
                 <?php endif; ?>
             <?php endforeach; ?>
+            <?php else : ?>
+               <div class="reserva-container-3">
+    <div class="header-reserva-3">
+        <table style="width:100%;" cellpadding="0" cellspacing="0">
+            <tr>
+                <td style="width:70%;font-size:18px;font-weight:600;padding-top: 20px;padding-bottom: 20px;">
+                    <?php
+                    $fecha_inicio = DateTime::createFromFormat('Y-m-d', $datos["reservas"][0]["fecha_reserva"]);
+                    $fecha_final  = DateTime::createFromFormat('Y-m-d', $datos["reservas"][count($datos["reservas"]) - 1]["fecha_reserva"]);
+                    echo $fecha_inicio->format('d/m/Y'). " → ". $fecha_final->format('d/m/Y');
+                    ?>
+                </td>
+                <td style="width:30%;text-align:right;">
+                    <span style="background-color:rgba(255,255,255,0.2);padding:6px 12px;border-radius:15px;font-size:12px;font-weight:500;">
+                        <?= count($datos["reservas"]). " días" ?>
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="body-reserva-3">
+        <div style="margin-top:12px;padding-top:20px;border-top:1px dashed #ddd;text-align:center;">
+            <p style="font-size:12px;color:#667eea;font-weight:500;margin:0;">
+                Las reservas de dicha instalación es del día completo
+            </p>
+        </div>
+    </div>
+</div>
+
+
+            <?php endif; ?>
         </div>
     </div>
     

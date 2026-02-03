@@ -257,8 +257,12 @@
       dia.dataset.fecha = `${year}-${month}-${day}`;
 
       // Marcar día de hoy
-      if (fechaDia.getTime() === hoy.getTime()) {
+      if (fechaDia.getTime() === hoy.getTime() && tipo_reserva === 0) {
         dia.classList.add('seleccionado');
+      }
+
+      if (fechaDia.getTime() === hoy.getTime() && tipo_reserva === 1) {
+         dia.classList.add('disabled');
       }
 
       // Deshabilitar días pasados

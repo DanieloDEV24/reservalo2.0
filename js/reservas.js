@@ -264,7 +264,7 @@ $(document).ready(() => {
 
                             $('.card-precio').append(div)
                         }
-                        else if($('.card-precio').find('.card-precio-total').length > 0){
+                        else if ($('.card-precio').find('.card-precio-total').length > 0) {
                             let precio = parseInt($('#precio-pista').text() * horasAnt.length)
                             $('#precio-total').text(precio)
                         }
@@ -282,140 +282,164 @@ $(document).ready(() => {
     })
 
 
-  $(document).on('click', '#btnConfirmarReserva', function (e) {
+    $(document).on('click', '#btnConfirmarReserva', function (e) {
 
-    e.preventDefault();
+        e.preventDefault();
+        let tipoReserva = parseInt($(this).closest('.modal-content').find('.modal-body').data('tiporeserva'))
+        
+        
+        let data = []
+        let precio
+        if(tipoReserva === 0){
 
-    let data = horasAnt.map(function(item) {
-        return {
-            ...item, 
-            horaFin: sumarHora(item.hora)
+            data = horasAnt.map(function (item) {
+                return {
+                    ...item,
+                    horaFin: sumarHora(item.hora)
+                }
+            })
+
+            precio = parseFloat($('#precio-total').text());
+
+        } else {
+
+            data = [...rangoFechas]
+            data.push({pista: $('#pistaId').val()});
+
+            precio = parseFloat($('#precio-pista').text())
+            
         }
-    })
+        
 
-    let precio = parseFloat($('#precio-total').text());
+       
+        console.log(precio)
 
-    $.ajax({
-        type: "POST",
-        url: "../hacerReserva",
-        data: {datos: data, precio: precio},
-        dataType: "JSON",
-        success: function (response) {
-            if (response.success) {
-                
-                // Mostrar mensaje
-                alert(response.mensaje);
-                
-                // Cerrar modal
-                bootstrap.Modal.getInstance(document.getElementById('modalReservaPista'))?.hide();
-                horasAnt = [];
-                
-                // Descargar PDF (nueva ventana o iframe)
-                window.location.href = '../descargarTicket/' + response.id_pedido;
-                
-                horasAnt = [];
-                $('.btn-horario.horaSeleccionada').removeClass('.horaSeleccionada')
-                // O en nueva pestaña:
-                // window.open('../descargarTicket/' + response.id_pedido, '_blank');
-                
-            } else {
-                alert(response.mensaje);
+        $.ajax({
+            type: "POST",
+            url: "../hacerReserva",
+            data: { datos: data, precio: precio, tipo_reserva: tipoReserva },
+            dataType: "JSON",
+            success: function (response) {
+                if (response.success) {
+
+                    // Mostrar mensaje
+                    alert(response.mensaje);
+
+                    // Cerrar modal
+                    bootstrap.Modal.getInstance(document.getElementById('modalReservaPista'))?.hide();
+                    horasAnt = [];
+
+                    // Descargar PDF (nueva ventana o iframe)
+                    window.location.href = '../descargarTicket/' + response.id_pedido;
+
+                    horasAnt = [];
+                    $('.btn-horario.horaSeleccionada').removeClass('.horaSeleccionada')
+                    // O en nueva pestaña:
+                    // window.open('../descargarTicket/' + response.id_pedido, '_blank');
+
+                } else {
+                    alert(response.mensaje);
+                }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error:', error);
+                alert('Ha ocurrido un error al procesar la reserva');
             }
-        },
-        error: function(xhr, status, error) {
-            console.error('Error:', error);
-            alert('Ha ocurrido un error al procesar la reserva');
-        }
+        });
     });
-});
 
 
-$('#modalReservaPista').on('hidden.bs.modal', function () {
-    horasAnt = [];
-    rangoFechas = [];
-    $('.btn-horario.horaSeleccionada').removeClass("horaSeleccionada");
-    $('#btnConfirmarReserva').prop('disabled', true);
-});
-
-
+    $('#modalReservaPista').on('hidden.bs.modal', function () {
+        horasAnt = [];
+        rangoFechas = [];
+        $('.btn-horario.horaSeleccionada').removeClass("horaSeleccionada");
+        $('#btnConfirmarReserva').prop('disabled', true);
+    });
 
 
 
-// Manejo de clicks en días del calendario
-$(document).on('click', '.modal-body[data-tipoReserva="0"] .dia-calendario:not(.disabled, .otro-mes)', function(){
+
+
+    // Manejo de clicks en días del calendario
+    $(document).on('click', '.modal-body[data-tipoReserva="0"] .dia-calendario:not(.disabled, .otro-mes)', function () {
 
         $('.dia-calendario').removeClass('seleccionado');
         $(this).addClass('seleccionado');
         fechaSeleccionada = $(this).data('fecha');
-});
+    });
 
-$(document).on('click', '.modal-body[data-tipoReserva="1"] .dia-calendario:not(.disabled, .otro-mes)', function(){
+    $(document).on('click', '.modal-body[data-tipoReserva="1"] .dia-calendario:not(.disabled, .otro-mes)', function () {
 
-            // Modo rango de fechas
-            if($('.dia-calendario.seleccionado').length < 2)
-                $(this).addClass('seleccionado');
+        // Modo rango de fechas
+        if ($('.dia-calendario.seleccionado').length < 2)
+            $(this).addClass('seleccionado');
+
+
+       
 
             console.log($('.dia-calendario.seleccionado').length)
-            
+
             // Si ahora hay 2 seleccionados, marcar intermedios
-            if($('.dia-calendario.seleccionado').length === 2){
+            if ($('.dia-calendario.seleccionado').length === 2) {
                 let fechaInicio = $('.dia-calendario.seleccionado').eq(0).data('fecha');
                 let fechaFin = $('.dia-calendario.seleccionado').eq(1).data('fecha');
-                
+
                 let inicio = new Date(fechaInicio);
                 let fin = new Date(fechaFin);
-                
+
                 // Asegurar que inicio sea menor que fin
-                if(inicio > fin) {
+                if (inicio > fin) {
                     [inicio, fin] = [fin, inicio];
                 }
-                
+
                 let fechaActual = new Date(inicio);
                 while (fechaActual < fin) {
                     fechaActual.setDate(fechaActual.getDate() + 1);
                     let fechaStr = fechaActual.toISOString().split('T')[0];
-                    $('.dia-calendario[data-fecha="'+ fechaStr +'"]').addClass('fecha-intermedia');
+                    $('.dia-calendario[data-fecha="' + fechaStr + '"]').addClass('fecha-intermedia');
                 }
+
+                $('#btnConfirmarReserva').prop('disabled', false);
             }
-        
-        fechaSeleccionada = $(this).data('fecha');
-});
+
+            fechaSeleccionada = $(this).data('fecha');
+    });
 
 
-    
-$(document).on('click', '.modal-body[data-tipoReserva="1"] .dia-calendario', function(){
-    
-    let longitud = $('.dia-calendario.seleccionado').length
-    console.log($('.dia-calendario.seleccionado'))
 
-    if(longitud === 1){
-        rangoFechas = []
-        rangoFechas.push({fecha_inicio: $('.dia-calendario.seleccionado').eq(0).data('fecha')});
-    }
-    else if(longitud === 2){
-        rangoFechas = []
-        rangoFechas.push({fecha_inicio: $('.dia-calendario.seleccionado').eq(0).data('fecha')});
-        rangoFechas.push({fecha_fin: $('.dia-calendario.seleccionado').eq(1).data('fecha')});
-    }
-    else {
-        return;
-    }
+    $(document).on('click', '.modal-body[data-tipoReserva="1"] .dia-calendario', function () {
 
-});
+        let longitud = $('.dia-calendario.seleccionado').length
+        console.log($('.dia-calendario.seleccionado'))
 
-    $(document).on('click', '.modal-body[data-tipoReserva="1"] .dia-calendario.seleccionado', function(){
-        
+        if (longitud === 1) {
+            rangoFechas = []
+            rangoFechas.push({ fecha_inicio: $('.dia-calendario.seleccionado').eq(0).data('fecha') });
+        }
+        else if (longitud === 2) {
+            rangoFechas = []
+            rangoFechas.push({ fecha_inicio: $('.dia-calendario.seleccionado').eq(0).data('fecha') });
+            rangoFechas.push({ fecha_fin: $('.dia-calendario.seleccionado').eq(1).data('fecha') });
+            $('#btnConfirmarReserva').prop('disabled', false);
+        }
+        else {
+            return;
+        }
+
+    });
+
+    $(document).on('click', '.modal-body[data-tipoReserva="1"] .dia-calendario.seleccionado', function () {
+
         let fechaClickeada = $(this).data('fecha');
 
-        rangoFechas = rangoFechas.filter(function(fecha){
+        rangoFechas = rangoFechas.filter(function (fecha) {
             return fecha.fecha_inicio !== fechaClickeada && fecha.fecha_fin !== fechaClickeada;
         });
 
-        if(rangoFechas.length < 2)
-        {
+        if (rangoFechas.length < 2) {
             $(this).removeClass("seleccionado");
             $('.dia-calendario.fecha-intermedia').removeClass('fecha-intermedia');
-
+            $('#btnConfirmarReserva').prop('disabled', true);
         }
 
     });
@@ -451,6 +475,15 @@ $(document).on('click', '.modal-body[data-tipoReserva="1"] .dia-calendario', fun
     function formatearHora(hora) {
         const partes = hora.split(':');
         return `${partes[0]}:${partes[1]}`;
+    }
+
+    function esFechaHoy(fechaString) {
+        let hoy = new Date();
+        let year = hoy.getFullYear();
+        let month = String(hoy.getMonth() + 1).padStart(2, '0');
+        let day = String(hoy.getDate()).padStart(2, '0');
+
+        return fechaString === `${year}-${month}-${day}`;
     }
 
 })
