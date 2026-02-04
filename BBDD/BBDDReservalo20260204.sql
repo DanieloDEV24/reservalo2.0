@@ -216,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `pedido` (
   CONSTRAINT `FK__usuarios` FOREIGN KEY (`id_usuario`) REFERENCES `usuarios` (`id_usuario`) ON DELETE NO ACTION ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
--- Volcando datos para la tabla reservalo2.pedido: ~3 rows (aproximadamente)
+-- Volcando datos para la tabla reservalo2.pedido: ~4 rows (aproximadamente)
 DELETE FROM `pedido`;
 INSERT INTO `pedido` (`id_pedido`, `id_usuario`, `fecha_pedido`, `precio_pedido`, `num_pedido`) VALUES
 	(29, 5, '2026-01-30 10:10:04', 56, '20260130-111004-001'),
