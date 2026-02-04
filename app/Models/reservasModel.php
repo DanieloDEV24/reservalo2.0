@@ -268,7 +268,16 @@ class reservasModel extends Model
         // Conexión a la BD
         $db = \Config\Database::connect('BDReservalo2');
 
-        // Construcción de la query
+        // Subconsulta para obtener los id_pedido
+        $subquery = $db->table('pedido')
+            ->distinct()
+            ->select('pedido.id_pedido')
+            ->join('reservas', 'reservas.id_pedido = pedido.id_pedido', 'inner')
+            ->where('reservas.fecha >=', $fechaActual)
+            ->where('pedido.id_usuario', $id_usuario)
+            ->getCompiledSelect();
+
+        // Construcción de la query principal
         $builder = $db->table('reservas');
 
         $builder->select('
@@ -280,16 +289,14 @@ class reservasModel extends Model
             instalaciones.tipo_reserva,
             pedido.precio_pedido
         ')
-        ->join('pistas', 'pistas.id_pista = reservas.id_pista')
-        ->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion')
-        ->join('categorias', 'categorias.id_categoria = instalaciones.categoria_principal')
-        ->join('pedido', 'pedido.id_pedido = reservas.id_pedido')
-        ->where('reservas.fecha >=', $fechaActual)
-        ->where('pedido.id_usuario', $id_usuario)
+        ->join('pistas', 'pistas.id_pista = reservas.id_pista', 'inner')
+        ->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion', 'inner')
+        ->join('categorias', 'categorias.id_categoria = instalaciones.categoria_principal', 'inner')
+        ->join('pedido', 'pedido.id_pedido = reservas.id_pedido', 'inner')
+        ->where("reservas.id_pedido IN ($subquery)", null, false)
         ->orderBy('reservas.fecha', 'ASC');
 
         return $builder->get()->getResultArray();
     }
-
 
 }

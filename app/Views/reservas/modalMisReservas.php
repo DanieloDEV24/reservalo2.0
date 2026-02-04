@@ -17,7 +17,9 @@
       <!-- Header -->
       <div class="modal-header border-bottom">
         <div class="w-100 d-flex gap-2 align-items-center">
-            <i class="bi bi-calendar-check"></i>
+            <div class="icon-modal-header">
+              <i class="bi bi-calendar-check"></i>
+            </div>
             <h5 class="modal-title fw-bold" id="titulo-modal-pista">Mis Reservas</h5>
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>

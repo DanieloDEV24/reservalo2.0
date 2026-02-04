@@ -260,17 +260,15 @@ button.hora-pasada:hover {
     /* border-color: #0dcaf080; */
     box-shadow: 0 2px 8px rgba(13, 202, 240, 0.2);
 }
-
-
 /* ============================================
    MIS RESERVAS MODAL - CUSTOM STYLES
    ============================================ */
 
 /* CSS Variables */
 :root {
-    --reservas-primary: #1fb19f;
-    --reservas-primary-dark: #189082;
-    --reservas-primary-light: #7dd3c7;
+    --reservas-primary: #32cccc;
+    --reservas-primary-dark: #1F9E9E;
+    --reservas-primary-light: #6FE3E3;
     --reservas-background: #f8fafb;
     --reservas-card-bg: #ffffff;
     --reservas-text-primary: #1a2332;
@@ -316,7 +314,7 @@ button.hora-pasada:hover {
 .modal-reservas {
     background: var(--reservas-card-bg);
     border-radius: 24px;
-    max-width: 900px;
+    max-width: 1000px;
     width: 100%;
     max-height: 90vh;
     overflow: hidden;
@@ -566,9 +564,9 @@ button.hora-pasada:hover {
     transform: translateY(-4px);
 }
 
-.reserva-card:hover::before {
+/* .reserva-card:hover::before {
     opacity: 1;
-}
+} */
 
 /* ============================================
    RESERVA CARD HEADER
@@ -585,7 +583,6 @@ button.hora-pasada:hover {
 }
 
 .reserva-instalacion {
-    font-family: 'Playfair Display', serif;
     font-size: 1.4rem;
     font-weight: 700;
     color: var(--reservas-text-primary);
@@ -634,21 +631,24 @@ button.hora-pasada:hover {
 }
 
 /* ============================================
-   RESERVA DETALLES
+   RESERVA IMAGE
    ============================================ */
-
 .reserva-image-container {
     width: 100%;
-    height: 200px;
+    height: 300px;
     background-size: cover;
     background-position: center;
     border-radius: 16px;
     margin-bottom: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* ============================================
+   RESERVA DETALLES BÁSICOS
+   ============================================ */
 .reserva-detalles {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 1.25rem;
     margin-top: 1.25rem;
     padding-top: 1.25rem;
@@ -695,6 +695,216 @@ button.hora-pasada:hover {
 }
 
 /* ============================================
+   SECCIÓN DE DÍAS Y HORARIOS
+   ============================================ */
+.dias-horarios-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid var(--reservas-border);
+}
+
+.dias-horarios-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.dias-horarios-title {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--reservas-text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dias-horarios-title-icon {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, var(--reservas-primary) 0%, var(--reservas-primary-dark) 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1rem;
+}
+
+.total-horas-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.25rem;
+    background: linear-gradient(135deg, #1fb19f 0%, #189082 100%);
+    border-radius: 12px;
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(31, 177, 159, 0.3);
+}
+
+/* Contenedor de días */
+.dias-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Card de cada día */
+.dia-card {
+    background: linear-gradient(135deg, rgba(31, 177, 159, 0.03) 0%, rgba(31, 177, 159, 0.01) 100%);
+    border: 2px solid rgba(31, 177, 159, 0.15);
+    border-radius: 14px;
+    padding: 1.25rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.dia-card:hover {
+    background: linear-gradient(135deg, rgba(31, 177, 159, 0.08) 0%, rgba(31, 177, 159, 0.03) 100%);
+    border-color: var(--reservas-primary);
+    box-shadow: 0 4px 16px rgba(31, 177, 159, 0.15);
+    transform: translateX(4px);
+}
+
+/* Header del día */
+.dia-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px dashed rgba(31, 177, 159, 0.2);
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.dia-fecha-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.dia-fecha-icon {
+    width: 44px;
+    height: 44px;
+    background: white;
+    border: 2px solid var(--reservas-primary);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.dia-fecha-icon-mes {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: white;
+    background: var(--reservas-primary);
+    width: 100%;
+    text-align: center;
+    padding: 2px 0;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.dia-fecha-icon-dia {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--reservas-primary);
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.dia-fecha-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.dia-fecha-completa {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--reservas-text-primary);
+    margin-bottom: 0.15rem;
+}
+
+.dia-nombre {
+    font-size: 0.85rem;
+    color: var(--reservas-text-secondary);
+    font-weight: 500;
+}
+
+.dia-horas-count {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.9rem;
+    background: white;
+    border: 2px solid var(--reservas-primary-light);
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--reservas-primary-dark);
+}
+
+/* Franjas horarias del día */
+.dia-franjas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+    gap: 0.6rem;
+}
+
+.franja-horaria {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.6rem 0.2rem;
+    background: white;
+    border: 2px solid rgba(31, 177, 159, 0.3);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--reservas-primary-dark);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.franja-horaria::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(31, 177, 159, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.franja-horaria:hover::before {
+    left: 100%;
+}
+
+.franja-horaria:hover {
+    background: linear-gradient(135deg, rgba(31, 177, 159, 0.15) 0%, rgba(31, 177, 159, 0.08) 100%);
+    border-color: var(--reservas-primary);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(31, 177, 159, 0.25);
+}
+
+.franja-horaria-icon {
+    font-size: 1rem;
+}
+
+/* ============================================
    RESERVA ACTIONS
    ============================================ */
 .reserva-actions {
@@ -704,6 +914,7 @@ button.hora-pasada:hover {
     display: flex;
     gap: 1rem;
     justify-content: flex-end;
+    flex-wrap: wrap;
 }
 
 .btn-reservas {
@@ -781,8 +992,57 @@ button.hora-pasada:hover {
 }
 
 /* ============================================
+   LOADING STATE
+   ============================================ */
+.reservas-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4rem 2rem;
+}
+
+.reservas-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--reservas-background);
+    border-top: 4px solid var(--reservas-primary);
+    border-radius: 50%;
+    animation: reservasSpin 0.8s linear infinite;
+}
+
+@keyframes reservasSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+.d-none-reservas {
+    display: none !important;
+}
+
+.d-flex-reservas {
+    display: flex !important;
+}
+
+/* ============================================
    RESPONSIVE DESIGN
    ============================================ */
+@media (max-width: 992px) {
+    .modal-reservas {
+        max-width: 95%;
+    }
+
+    .dia-franjas {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+}
+
 @media (max-width: 768px) {
     .modal-overlay-reservas {
         padding: 0;
@@ -856,6 +1116,20 @@ button.hora-pasada:hover {
         width: 100%;
         text-align: center;
     }
+
+    .dias-horarios-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dia-franjas {
+        grid-template-columns: 1fr;
+    }
+
+    .dia-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 @media (max-width: 480px) {
@@ -889,43 +1163,43 @@ button.hora-pasada:hover {
     .detalle-value {
         font-size: 0.9rem;
     }
+
+    .reserva-image-container {
+        height: 150px;
+    }
+
+    .dias-horarios-title {
+        font-size: 0.9rem;
+    }
+
+    .total-horas-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
+    }
+
+    .dia-fecha-completa {
+        font-size: 0.95rem;
+    }
+
+    .franja-horaria {
+        font-size: 0.85rem;
+        padding: 0.5rem 0.7rem;
+    }
 }
 
-/* ============================================
-   UTILITY CLASSES
-   ============================================ */
-.d-none-reservas {
-    display: none !important;
-}
 
-.d-flex-reservas {
-    display: flex !important;
-}
-
-/* ============================================
-   LOADING STATE
-   ============================================ */
-.reservas-loading {
+.icon-modal-header {
+    width: 40px;
+    height: 40px;
+    background-color: #32cccc30;
+    border-radius: 10px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    padding: 4rem 2rem;
-}
-
-.reservas-spinner {
-    width: 48px;
-    height: 48px;
-    border: 4px solid var(--reservas-background);
-    border-top: 4px solid var(--reservas-primary);
-    border-radius: 50%;
-    animation: reservasSpin 0.8s linear infinite;
-}
-
-@keyframes reservasSpin {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+    justify-content: center;
+    color: #000;
+    font-size: 1.5rem;
+    border: 2px solid #32cccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
