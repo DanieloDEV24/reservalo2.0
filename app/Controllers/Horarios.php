@@ -41,8 +41,10 @@ class Horarios extends BaseController
                 ]
             ];
 
+            $modalMisReservas = view('reservas/modalMisReservas');
+
             $view = view('horarios/horarios', ["instalacion" => $instalacion, "id_instalacion" => $id_instalacion, "horarios" => $horarios, "modalEditar" => $modalEditar, "modalBorrar" => $modalBorrar, "modalHorarioExistente" => $modalHorarioExistente, "modalCambioHorario" => $modalCambioHorario]);
-            return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets]);
+            return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas]);
         }
     }
 
@@ -96,7 +98,7 @@ class Horarios extends BaseController
                     "descripcion" => $data["descripcion"],
                     "color" => $data["color"],
                     "fecha_inicio" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? date('Y') . '-01-01' : $data["fecha_inicio"],
-                    "fecha_fin" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? (date("Y") + 1) . '-12-31' : $data["fecha_fin"],
+                    "fecha_fin" => (intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? date("Y") . '-12-31' : $data["fecha_fin"],
                     "es_especial" => intval($data["horario_especial"]),
                     "sin_fecha" => intval($data["sin_fecha"])
                 ];
@@ -172,6 +174,7 @@ class Horarios extends BaseController
                         ];
 
                         $horariosModel->crearFranjaDia($data_franja_dia);
+
                     }
                 }
             } else {
@@ -200,6 +203,8 @@ class Horarios extends BaseController
                 }
             }
 
+            
+
 
             echo json_encode([
                 "success" => true,
@@ -219,13 +224,15 @@ class Horarios extends BaseController
 
         if (!empty($post)) {
             $id = intval($post["instalacion"]);
-            $horarios = $horariosModel->comprobarHorarios($id);
+            $year = $post["year"];
+            $horarios = ($year !== "") ? $horariosModel->comprobarHorariosAno(intval($year), $id) : $horariosModel->comprobarHorariosLegend($id);
             $excepciones = $horariosModel->comprobarExcepciones($id);
 
             echo json_encode([
                 "horarios" => $horarios, 
                 "excepciones" => $excepciones
             ]);
+            exit;
         }
     }
 
@@ -241,13 +248,15 @@ class Horarios extends BaseController
             $id_horario = intval($post["id"]);
             $horario = $horariosModel->getHorario($id_horario)[0];
             $franjas = $horariosModel->getFranjaByIdHorario($id_horario);
+            $excepciones = $horariosModel->hayExcepcionBase($id_horario);
 
             if ($horario) {
                 echo json_encode([
                     "succes"  => true,
                     "message" => "Se ha localizado el horario con éxito",
                     "horario" => $horario,
-                    "franjas" => $franjas
+                    "franjas" => $franjas,
+                    "excepciones" => $excepciones
                 ]);
             } else {
                 echo json_encode([
@@ -456,17 +465,24 @@ class Horarios extends BaseController
 
 
     public function getHorariosChange() {
-        
+    
+        $post = $this->request->getPost();
         $horariosModel = new horariosModel();
 
-        $horarios = $horariosModel->getHorariosChange();
+        if (!empty($post)) {
 
-        echo json_encode(
-            [
-                "horarios" => $horarios
-            ]
-        );
-        exit;
+            $year = intval($post["year"]);
+
+            $horariosModel = new horariosModel();
+            $horarios = $horariosModel->getHorariosChange($year);
+
+            echo json_encode(
+                [
+                    "horarios" => $horarios
+                ]
+            );
+            exit;
+        }
     }
 
 

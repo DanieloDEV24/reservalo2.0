@@ -1,0 +1,51 @@
+INFO - 2026-01-21 09:04:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 09:05:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 11:49:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 11:49:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 11:49:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 11:49:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 11:49:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 11:49:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 11:57:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 11:58:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 11:58:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 15:51:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-21 16:01:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-21 17:18:40 --> Error: Class "App\Models\instalacionesModel" not found
+in APPPATH\Controllers\Instalaciones.php on line 758.
+ 1 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->instalacion(42)
+ 2 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 3 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-21 17:19:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-21 17:19:29 --> ErrorException: Undefined array key "pistaId"
+in APPPATH\Controllers\Reservas.php on line 16.
+ 1 APPPATH\Controllers\Reservas.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "pistaId"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 16)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->getInfoPistasReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-21 17:25:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-21 17:25:12 --> ErrorException: Undefined array key "pistaId"
+in APPPATH\Controllers\Reservas.php on line 16.
+ 1 APPPATH\Controllers\Reservas.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "pistaId"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 16)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->getInfoPistasReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-21 17:26:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-21 17:26:22 --> ErrorException: Undefined array key "pistaId"
+in APPPATH\Controllers\Reservas.php on line 16.
+ 1 APPPATH\Controllers\Reservas.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "pistaId"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 16)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->getInfoPistasReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-21 17:26:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-21 17:26:47 --> ErrorException: Undefined array key "pistaId"
+in APPPATH\Controllers\Reservas.php on line 16.
+ 1 APPPATH\Controllers\Reservas.php(16): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "pistaId"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 16)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->getInfoPistasReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

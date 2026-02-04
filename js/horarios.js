@@ -392,7 +392,7 @@ $(document).ready(() => {
     $('#anoActual').text(new Date().getFullYear());
 
     // Al abrir la página de horarios, generamos el calendario del año actual 
-    generarCalendario()
+    generarCalendario($('#anoActual').text());
 
     /***********************************************************************************************************************************
     ********************************************************  SELECCIÓN DE AÑO *********************************************************
@@ -423,6 +423,9 @@ $(document).ready(() => {
                     $('#anoActual').addClass('loading');
                     $('.legend-name').addClass('loading');
                     $('.legend-color').addClass('loading');
+                    $('.div-mes h3').addClass('loading');
+                    $('.div-mes .grid-dias-mes').addClass('loading');
+                    $('.div-mes .grid-nombres-mes').addClass('loading');
                 },
                 success: function (response) {
                     $('.legend .no-selected').empty();
@@ -440,6 +443,9 @@ $(document).ready(() => {
                     $('#anoActual').removeClass('loading');
                     $('.legend-name').removeClass('loading');
                     $('.legend-color').removeClass('loading');
+                    $('.div-mes h3').removeClass('loading');
+                    $('.div-mes .grid-dias-mes').removeClass('loading');
+                    $('.div-mes .grid-nombres-mes').removeClass('loading');
                 }
             });
         }
@@ -473,6 +479,9 @@ $(document).ready(() => {
                     $('#anoActual').addClass('loading');
                     $('.legend-name').addClass('loading');
                     $('.legend-color').addClass('loading');
+                    $('.div-mes h3').addClass('loading');
+                    $('.div-mes .grid-dias-mes').addClass('loading');
+                    $('.div-mes .grid-nombres-mes').addClass('loading');
                 },
                 success: function (response) {
                     $('.legend .no-selected').empty();
@@ -490,6 +499,9 @@ $(document).ready(() => {
                     $('#anoActual').removeClass('loading');
                     $('.legend-name').removeClass('loading');
                     $('.legend-color').removeClass('loading');
+                    $('.div-mes h3').removeClass('loading');
+                    $('.div-mes .grid-dias-mes').removeClass('loading');
+                    $('.div-mes .grid-nombres-mes').removeClass('loading');
                 }
             });
         }
@@ -730,7 +742,7 @@ $(document).ready(() => {
                         console.log(response)
 
                         // Generamos el calendario
-                        generarCalendario();
+                        generarCalendario($('#anoActual').text());
 
                         // Añadimos la leyenda al nuevo horario
                         $('.legend').append(`
@@ -807,12 +819,115 @@ $(document).ready(() => {
 
                         $('#modalHorarioExistente').show();
                     }
+
+                                 $('#loaderNuevoHorario').hide();
+                    $('#btnGuardarNuevoHorario').removeClass('cargando')
+                    $('#sidebar input').removeClass('cargando')
+                    $('#sidebar textarea').removeClass('cargando')
+
+                    $('#nombreHorario').val('');
+                    $('#descripcionHorario').val('');
+                    $('#fechaInicioHorario').val('');
+                    $('#fechaFinHorario').val('');
+                    $('#horarioDistinto').prop('checked', false);
+                    $('#horarioEspecial').prop('checked', false);
+
+                    $('#horaInicioMananaHorario').val('');
+                    $('#horaFinMananaHorario').val('');
+                    $('#horaInicioTardeHorario').val('');
+                    $('#horaFinTardeHorario').val('');
+
+                    $('#horaInicioMananaLunesHorario').val('');
+                    $('#horaFinMananaLunesHorario').val('');
+                    $('#horaInicioTardeLunesHorario').val('');
+                    $('#horaFinTardeLunesHorario').val('');
+
+                    $('#horaInicioMananaMartesHorario').val('');
+                    $('#horaFinMananaMartesHorario').val('');
+                    $('#horaInicioTardeMartesHorario').val('');
+                    $('#horaFinTardeMartesHorario').val('');
+                    
+                    $('#horaInicioMananaMiercolesHorario').val('');
+                    $('#horaFinMananaMiercolesHorario').val('');
+                    $('#horaInicioTardeMiercolesHorario').val('');
+                    $('#horaFinTardeMiercolesHorario').val('');
+
+                    $('#horaInicioMananaJuevesHorario').val('');
+                    $('#horaFinMananaJuevesHorario').val('');
+                    $('#horaInicioTardeJuevesHorario').val('');
+                    $('#horaFinTardeJuevesHorario').val('');
+
+                    $('#horaInicioMananaViernesHorario').val('');
+                    $('#horaFinMananaViernesHorario').val('');
+                    $('#horaInicioTardeViernesHorario').val('');
+                    $('#horaFinTardeViernesHorario').val('');
+
+                    $('#horaInicioMananaSabadoHorario').val('');
+                    $('#horaFinMananaSabadoHorario').val('');
+                    $('#horaInicioTardeSabadoHorario').val('');
+                    $('#horaFinTardeSabadoHorario').val('');
+
+                    $('#horaInicioMananaDomingoHorario').val('');
+                    $('#horaFinMananaDomingoHorario').val('');
+                    $('#horaInicioTardeDomingoHorario').val('');
+                    $('#horaFinTardeDomingoHorario').val('');
+                    
+                    $('#scheduleColor').val('#000000')
                 },
                 complete: function () {
                     $('#loaderNuevoHorario').hide();
                     $('#btnGuardarNuevoHorario').removeClass('cargando')
                     $('#sidebar input').removeClass('cargando')
                     $('#sidebar textarea').removeClass('cargando')
+
+                    $('#nombreHorario').val('');
+                    $('#descripcionHorario').val('');
+                    $('#fechaInicioHorario').val('');
+                    $('#fechaFinHorario').val('');
+                    $('#horarioDistinto').prop('checked', false);
+                    $('#horarioEspecial').prop('checked', false);
+
+                    $('#horaInicioMananaHorario').val('');
+                    $('#horaFinMananaHorario').val('');
+                    $('#horaInicioTardeHorario').val('');
+                    $('#horaFinTardeHorario').val('');
+
+                    $('#horaInicioMananaLunesHorario').val('');
+                    $('#horaFinMananaLunesHorario').val('');
+                    $('#horaInicioTardeLunesHorario').val('');
+                    $('#horaFinTardeLunesHorario').val('');
+
+                    $('#horaInicioMananaMartesHorario').val('');
+                    $('#horaFinMananaMartesHorario').val('');
+                    $('#horaInicioTardeMartesHorario').val('');
+                    $('#horaFinTardeMartesHorario').val('');
+                    
+                    $('#horaInicioMananaMiercolesHorario').val('');
+                    $('#horaFinMananaMiercolesHorario').val('');
+                    $('#horaInicioTardeMiercolesHorario').val('');
+                    $('#horaFinTardeMiercolesHorario').val('');
+
+                    $('#horaInicioMananaJuevesHorario').val('');
+                    $('#horaFinMananaJuevesHorario').val('');
+                    $('#horaInicioTardeJuevesHorario').val('');
+                    $('#horaFinTardeJuevesHorario').val('');
+
+                    $('#horaInicioMananaViernesHorario').val('');
+                    $('#horaFinMananaViernesHorario').val('');
+                    $('#horaInicioTardeViernesHorario').val('');
+                    $('#horaFinTardeViernesHorario').val('');
+
+                    $('#horaInicioMananaSabadoHorario').val('');
+                    $('#horaFinMananaSabadoHorario').val('');
+                    $('#horaInicioTardeSabadoHorario').val('');
+                    $('#horaFinTardeSabadoHorario').val('');
+
+                    $('#horaInicioMananaDomingoHorario').val('');
+                    $('#horaFinMananaDomingoHorario').val('');
+                    $('#horaInicioTardeDomingoHorario').val('');
+                    $('#horaFinTardeDomingoHorario').val('');
+                    
+                    $('#scheduleColor').val('#000000')
                 }
             });
         }
@@ -851,10 +966,40 @@ $(document).ready(() => {
             url: "../menuHorario",
             data: {year: $('#anoActual').text(), instalacion: $('#instalacion').val()},
             dataType: "JSON",
+            beforeSend: function () {
+                $('#loaderMenuHorarios').show();
+                $('.card-menu-horarios').addClass('loading');
+            },
             success: function (response) {
                 if(response.succes == true) {
 
-                    // !! ME QUEDA CREAR EL CONTENEDOR ENTERO CON EL TITULITO...
+                    $('#sidebarMenu .menu-content').empty();
+
+                    let hayEspeciales = response.horarios.some(horario => {
+                        return parseInt(horario.es_especial) === 1
+                    })
+
+                    let hayNormal = response.horarios.some(horario => {
+                        return parseInt(horario.es_especial) === 0
+                    })
+
+                    if(hayNormal) {
+                        $('#sidebarMenu .menu-content').append(
+                            `<div id="horarios-normailes-menu">
+                                <p class="tipo-horarios">Horarios normales</p>
+                                <div class="horarios-normales"></div>
+                            </div>`
+                        )
+                    }
+
+                    if(hayEspeciales) {
+                        $('#sidebarMenu .menu-content').append(
+                            `<div id="horarios-especiales-menu">
+                                <p class="tipo-horarios">Horarios especiales</p>
+                                <div class="horarios-especiales"></div>
+                            </div>`
+                        )
+                    }
 
                     $('.horarios-normales').empty();
                     $('.horarios-especiales').empty();
@@ -865,6 +1010,13 @@ $(document).ready(() => {
                                 <div data-index="${horario.id_tipo_horario}" style="background-color: ${horario.color}20; color: ${horario.color}; border: 2px solid ${horario.color}90" class="card-menu-horarios">
                                     <span>${horario.nombre}</span>
                                     <div class="descripcion">${horario.descripcion}</div>
+                                                                <div class="dropdown opciones-horario" style="max-width: 200px;">
+                                <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:${horario.color}"><i class="bi bi-three-dots-vertical"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                    <li><a href="" class="btnBorrarHorario delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
+                                </ul>
+                            </div>
                                 </div>
                                 `)
                         }
@@ -873,11 +1025,24 @@ $(document).ready(() => {
                                 <div data-index="${horario.id_tipo_horario}" style="background-color: ${horario.color}20; color: ${horario.color}; border: 2px solid ${horario.color}90" class="card-menu-horarios">
                                     <span>${horario.nombre}</span>
                                     <div class="descripcion">${horario.descripcion}</div>
+                                                                <div class="dropdown opciones-horario" style="max-width: 200px;">
+                                <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: ${horario.color}"><i class="bi bi-three-dots-vertical"></i></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                    <li><a href="" class="btnBorrarHorario delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
+                                </ul>
+                            </div>
                                 </div>
                             `)
                         }
                     })
                 }
+
+                $('#loaderMenuHorarios').hide();
+            },
+            complete: function () {
+                $('#loaderMenuHorarios').hide();
+                $('.card-menu-horarios').removeClass('loading');
             }
         });
 
@@ -1125,7 +1290,7 @@ $(document).ready(() => {
                         $('#modalEditarHorario input').removeClass('cargando')
                         $('#modalEditarHorario textarea').removeClass('cargando')
 
-                        generarCalendario();
+                        generarCalendario($('#anoActual').text());
                         $('#modalEditarHorario').removeClass('show');
                         $('#modalEditarHorario').hide();
 
@@ -1230,6 +1395,7 @@ $(document).ready(() => {
                     $('#idHorarioBorrar').val(id);
                     $('#nombre-horario-borrar').text(response.horario.nombre);
                     $('#nombre-horario-borrar2').text(response.horario.nombre);
+
                     $('#modalBorrarHorario').addClass('show');
                     $('#modalBorrarHorario').show();
 
@@ -1268,7 +1434,7 @@ $(document).ready(() => {
 
                     $('#sidebarMenu').find(`div.card-menu-horarios[data-index='${id}']`).remove();
                     $('.legend').find(`div[data-index='${id}']`).remove();
-                    generarCalendario();
+                    generarCalendario($('#anoActual').text());
                 }
             },
             complete: function () {
@@ -1285,6 +1451,7 @@ $(document).ready(() => {
     /***********************************************************************************************************************************
     *********************************************************  SELECCIÓN DE DÍA  *******************************************************
     ***********************************************************************************************************************************/
+    
     $(document).on('click', '#btnCerraSidebarCambio', function (e) {
 
         e.preventDefault()
@@ -1294,10 +1461,13 @@ $(document).ready(() => {
         $(`.numero-dia.dia-seleccionado`).removeClass('dia-seleccionado');
     })
 
+
+
     $(document).on('click', '.numero-dia', function (e) {
         e.preventDefault();
 
         if ($(this).text() === '') return;
+        
 
         /* =========================
            🟠 CASO: EXCEPCIÓN
@@ -1312,110 +1482,128 @@ $(document).ready(() => {
             return;
             }
 
+
+
+
             $(this).addClass('dia-seleccionado');
 
             if($('.dia-seleccionado[data-exception="true"]').length === 1) 
                 $('#sidebar-cambio-horario .contenedor-cambio-horarios-card').empty(); 
 
-            console.log($('.dia-seleccionado[data-exception="true"]').length);
-
             $('#sidebar-cambio-horario p.seleccion-horario-nuevo')
                 .text('¿Desea volver al siguiente horario? :');
 
-            const data = {
-                "horario-excepcion": $(this).data('index'),
-                "fecha": $(this).data('day')
-            };
 
+            let idHorario = parseInt($(this).data('index'));
 
-            $.ajax({
-                type: "POST",
-                url: "../getHorariosChangeException",
-                data: { data },
-                dataType: "JSON",
-                beforeSend: function () {
-                    $('#loaderSidebarCambioHorario').show();
-                },
-                success: function (response) {
+            let horariosSeleccionados = $('.horarios-old div').map(function() {
+                let id = parseInt($(this).data('new'))
+                return id
+            }).get()
 
-                    if (!response.success) return;
+            let existeLeyenda = horariosSeleccionados.includes(idHorario);
 
-                    $('#loaderSidebarCambioHorario').hide();
+            if (!existeLeyenda) {
+                
+                const data = {
+                    "horario-excepcion": $(this).data('index'),
+                    "fecha": $(this).data('day')
+                };
 
-                    const idHorarioBase = response.excepcion.id_tipo_horario_base;
-                    const $contenedor = $('#sidebar-cambio-horario .contenedor-cambio-horarios-card');
+                
 
-                    /* 🔹 Comprobación eficiente */
-                    const existe = $contenedor
-                        .find(`.card-menu-horarios[data-index="${idHorarioBase}"]`)
-                        .length > 0;
+                $.ajax({
+                    type: "POST",
+                    url: "../getHorariosChangeException",
+                    data: { data },
+                    dataType: "JSON",
+                    beforeSend: function () {
+                        $('#loaderSidebarCambioHorario').show();
+                    },
+                    success: function (response) {
 
-                    if (!existe) {
-                        const e = response.excepcion;
+                        if (!response.success) return;
 
-                        const cardHorario = `
-                            <div data-index="${idHorarioBase}" data-color="${e.color}"
-                                style="background-color:${e.color}20;color:${e.color};
-                                        border:2px solid ${e.color}90"
-                                class="card-menu-horarios">
+                        $('#loaderSidebarCambioHorario').hide();
 
-                                <span>${e.nombre}</span>
-                                <div class="descripcion">${e.descripcion}</div>
-                            </div>
+                        const idHorarioBase = response.excepcion.id_tipo_horario_base;
+                        const $contenedor = $('#sidebar-cambio-horario .contenedor-cambio-horarios-card');
+
+                            const e = response.excepcion;
+
+                            let cardHorario = ''
+
+                        // }
+
+                        const num2 = $(`.numero-dia.dia-seleccionado[data-name="${response.horario_excepcion.nombre}"]`).length;
+                        const div = `
+                                <div data-name="${response.horario_excepcion.nombre}" data-color="${response.horario_excepcion.color}" data-new="${response.horario_excepcion.id_tipo_horario}"
+                                    style="width:40px;height:40px;border-radius:5px;
+                                            background-color:${response.horario_excepcion.color}50;color:${response.horario_excepcion.color};
+                                            border:1px solid ${response.horario_excepcion.color};
+                                            display:flex;align-items:center;justify-content:center;">
+                                    <span>${num2}</span>
+                                </div>
                         `;
 
-                        $contenedor.append(cardHorario);
+                        let horariosExistentes = $('.horarios-new div').map(function(cardHorario) {
+                            return $(this).data('new')
+                        }).get()
+
+                        let existeLeyenda2 = horariosExistentes.includes(parseInt(response.excepcion.id_tipo_horario));
+
+                        let div2 = ''
+                        if(!existeLeyenda2) {
+                            div2 = `
+                                    <div data-name="${response.excepcion.nombre}" data-color="${response.excepcion.color}" data-new="${response.excepcion.id_tipo_horario}"
+                                        style="width:40px;height:40px;border-radius:5px;
+                                                background-color:${response.excepcion.color};color:${response.excepcion.color};
+                                                border:1px solid ${response.excepcion.color};
+                                                display:flex;align-items:center;justify-content:center;">
+                                        <span>${num2}</span>
+                                    </div>
+                            `;
 
 
+                            cardHorario = `
+                                <div data-index="${idHorarioBase}" data-color="${e.color}"
+                                    style="background-color:${e.color}20;color:${e.color};
+                                            border:2px solid ${e.color}90"
+                                    class="card-menu-horarios">
+
+                                    <span>${e.nombre}</span>
+                                    <div class="descripcion">${e.descripcion}</div>
+                                </div>
+                            `;
+                        }
+                            
+                            $('.horarios-old').append(div);
+
+                            if(!existeLeyenda2) {
+                                $contenedor.append(cardHorario);
+                                $('.horarios-new').append(div2);
+                            }
+                    }, 
+                    complete: function () {
+                        $('#loaderSidebarCambioHorario').hide();
                     }
-
-                    const num2 = $(`.numero-dia.dia-seleccionado[data-name="${response.horario_excepcion.nombre}"]`).length;
-                    const div = `
-                            <div data-name="${response.horario_excepcion.nombre}" data-color="${response.horario_excepcion.color}"
-                                style="width:40px;height:40px;border-radius:5px;
-                                        background-color:${response.horario_excepcion.color}50;color:${response.horario_excepcion.color};
-                                        border:1px solid ${response.horario_excepcion.color};
-                                        display:flex;align-items:center;justify-content:center;">
-                                <span>${num2}</span>
-                            </div>
-                    `;
-
-                    const div2 = `
-                            <div data-name="${response.excepcion.nombre}" data-color="${response.excepcion.color}" data-new="${response.excepcion.id_tipo_horario}"
-                                style="width:40px;height:40px;border-radius:5px;
-                                        background-color:${response.excepcion.color};color:${response.excepcion.color};
-                                        border:1px solid ${response.excepcion.color};
-                                        display:flex;align-items:center;justify-content:center;">
-                                <span>${num2}</span>
-                            </div>
-                    `;
-
-                    
-                    $('.horarios-old div').each(function () {
-                        if ($(this).data('color') === response.horario_excepcion.color) existeLeyenda = true;
                     });
-
-                    if (num2 === 1) {
-                        
-                        $('.horarios-new').empty(); 
-                        $('.horarios-old').empty(); 
-
-                        $('.horarios-old').append(div);
-                        $('.horarios-new').append(div2);
-                    } else if (num2 > 1 ) {
-                        $(`.horarios-old div[data-name="${response.horario_excepcion.nombre}"] span`)
-                            .text(num2);
-                    }
-                }, 
-                complete: function () {
-                    $('#loaderSidebarCambioHorario').hide();
-                }
-            });
+            }
+            else {
+                const num2 = $(`.numero-dia.dia-seleccionado[data-name="${$(this).data('name')}"]`).length;
+                $(`.horarios-old div[data-name="${$(this).data('name')}"] span`).text(num2);
+            }
+            
+            
 
             $('#sidebar-cambio-horario').addClass('active');
             $('#calendario, #contenedor-loader-horario').addClass('seleccion-dia');
             $('#btn-guardar-cambio-seleccion').removeClass('btn-primary-personal-disabled');
             return; // ⛔ NO continúa con la lógica normal
+        }
+
+        if($(this).data('index') === "") {
+            return;
         }
 
         /* =========================
@@ -1483,8 +1671,9 @@ $(document).ready(() => {
             }
 
             $.ajax({
-                type: "GET",
+                type: "POST",
                 url: "../getHorariosChange",
+                data: { year: $('#anoActual').text() },
                 dataType: "json",
                 beforeSend: function () {
                     $('#loaderSidebarCambioHorario').show();
@@ -1556,6 +1745,9 @@ $(document).ready(() => {
 
             $('#calendario').removeClass('seleccion-dia')
             $('#contenedor-loader-horario').removeClass('seleccion-dia')
+            $('.horarios-old').empty();
+            $('.horarios-new').empty();
+            $('#btn-guardar-cambio-seleccion').addClass('btn-primary-personal-disabled');
         }
 
         $('#dias-seleccionados').text($('.dia-seleccionado').length)
@@ -1593,7 +1785,7 @@ $(document).ready(() => {
             dataType: "JSON",
             success: function (response) {
                 if (response.success === true) {
-                    generarCalendario();
+                    generarCalendario($('#anoActual').text());
                     $('#sidebar-cambio-horario').removeClass('active');
                     $('#calendario').removeClass('seleccion-dia')
                     $('#contenedor-loader-horario').removeClass('seleccion-dia')
@@ -1611,6 +1803,8 @@ $(document).ready(() => {
     // $(document).on('click', '.numero-dia.dia-seleccionado[data-exception="true"]', function(e){
     //     e.preventDefault();
     // })
+
+    
 
 
     /***********************************************************************************************************************************
@@ -2047,9 +2241,231 @@ $(document).ready(() => {
             dataOpcional['horarios'] = dataHorarios;
         }
 
+
+        $.ajax({
+            type: "method",
+            url: "url",
+            data: "data",
+            dataType: "dataType",
+            success: function (response) {
+                
+            }
+        });
+
         return valido;
     }
 
+/***********************************************************************************************************************************
+*************************************************  RESIZE SIDEBAR FOOTER  **********************************************************
+***********************************************************************************************************************************/
 
+/**
+ * 🚀 Clase para redimensionar el sidebar-footer eficientemente
+ */
+class SidebarFooterResizer {
+    constructor(options = {}) {
+        this.config = {
+            targetSelector: options.targetSelector || '#sidebar-cambio-horario .sidebar-footer',
+            handleClass: 'resize-handle-footer',
+            minHeight: options.minHeight || 150,
+            maxHeight: options.maxHeight || 500,
+            storageKey: options.storageKey || 'sidebar_footer_height',
+            saveToStorage: options.saveToStorage !== false
+        };
+
+        this.state = {
+            isResizing: false,
+            rafId: null,
+            $element: null,
+            startY: 0,
+            startHeight: 0
+        };
+
+        this.init();
+    }
+
+    init() {
+        this.state.$element = $(this.config.targetSelector);
+        
+        if (this.state.$element.length === 0) {
+            console.warn('Sidebar footer no encontrado');
+            return;
+        }
+
+        this.createHandle();
+        this.restoreHeight();
+        this.bindEvents();
+    }
+
+    createHandle() {
+        // Verificar si ya existe el handle
+        if (this.state.$element.find(`.${this.config.handleClass}`).length > 0) {
+            return;
+        }
+
+        const $handle = $(`<div class="${this.config.handleClass}"></div>`);
+        this.state.$element.prepend($handle);
+    }
+
+    bindEvents() {
+        const self = this;
+
+        // MouseDown - Iniciar resize
+        $(document).on('mousedown', `.${this.config.handleClass}`, function(e) {
+            e.preventDefault();
+            self.startResize(e);
+        });
+
+        // MouseMove - Durante resize
+        $(document).on('mousemove', function(e) {
+            if (!self.state.isResizing) return;
+            self.handleMouseMove(e);
+        });
+
+        // MouseUp - Finalizar resize
+        $(document).on('mouseup', function() {
+            if (self.state.isResizing) {
+                self.stopResize();
+            }
+        });
+
+        // Prevenir selección de texto
+        $(document).on('selectstart', function(e) {
+            if ($('body').hasClass('resizing-sidebar-footer')) {
+                e.preventDefault();
+                return false;
+            }
+        });
+    }
+
+    startResize(e) {
+        this.state.isResizing = true;
+        this.state.startY = e.clientY;
+        this.state.startHeight = this.state.$element.outerHeight();
+
+        // Añadir clases para estilos
+        $('body').addClass('resizing-sidebar-footer');
+        this.state.$element.addClass('resizing-active');
+    }
+
+    handleMouseMove(e) {
+        // Cancelar frame anterior si existe
+        if (this.state.rafId) {
+            cancelAnimationFrame(this.state.rafId);
+        }
+
+        // Programar nuevo frame con RAF
+        this.state.rafId = requestAnimationFrame(() => {
+            this.resize(e.clientY);
+            this.state.rafId = null;
+        });
+    }
+
+    resize(clientY) {
+        // Calcular nueva altura (invertido porque el handle está arriba)
+        const deltaY = this.state.startY - clientY;
+        let newHeight = this.state.startHeight + deltaY;
+
+        // Aplicar límites
+        newHeight = Math.max(this.config.minHeight, Math.min(this.config.maxHeight, newHeight));
+
+        // Aplicar nueva altura
+        this.state.$element.css('height', newHeight + 'px');
+    }
+
+    stopResize() {
+        this.state.isResizing = false;
+
+        // Cancelar cualquier frame pendiente
+        if (this.state.rafId) {
+            cancelAnimationFrame(this.state.rafId);
+            this.state.rafId = null;
+        }
+
+        // Remover clases
+        $('body').removeClass('resizing-sidebar-footer');
+        this.state.$element.removeClass('resizing-active');
+
+        // Guardar altura en localStorage
+        if (this.config.saveToStorage) {
+            this.saveHeight();
+        }
+    }
+
+    saveHeight() {
+        const height = this.state.$element.outerHeight();
+        try {
+            localStorage.setItem(this.config.storageKey, height);
+        } catch (e) {
+            console.warn('No se pudo guardar la altura en localStorage');
+        }
+    }
+
+    restoreHeight() {
+        if (!this.config.saveToStorage) return;
+
+        try {
+            const savedHeight = localStorage.getItem(this.config.storageKey);
+            if (savedHeight) {
+                const height = parseInt(savedHeight);
+                if (height >= this.config.minHeight && height <= this.config.maxHeight) {
+                    this.state.$element.css('height', height + 'px');
+                }
+            }
+        } catch (e) {
+            console.warn('No se pudo restaurar la altura desde localStorage');
+        }
+    }
+
+    destroy() {
+        // Cancelar RAF si existe
+        if (this.state.rafId) {
+            cancelAnimationFrame(this.state.rafId);
+        }
+
+        // Remover handle
+        this.state.$element.find(`.${this.config.handleClass}`).remove();
+
+        // Unbind events
+        $(document).off('mousedown', `.${this.config.handleClass}`);
+
+        // Limpiar estilos
+        $('body').removeClass('resizing-sidebar-footer');
+        this.state.$element.removeClass('resizing-active');
+    }
+
+    setHeight(height) {
+        height = Math.max(this.config.minHeight, Math.min(this.config.maxHeight, height));
+        this.state.$element.css('height', height + 'px');
+        
+        if (this.config.saveToStorage) {
+            this.saveHeight();
+        }
+    }
+
+    getHeight() {
+        return this.state.$element.outerHeight();
+    }
+}
+
+/***********************************************************************************************************************************
+************************************************  INICIALIZACIÓN DEL RESIZER  ******************************************************
+***********************************************************************************************************************************/
+
+// Inicializar el resizer del sidebar footer
+window.sidebarFooterResizer = new SidebarFooterResizer({
+    targetSelector: '#sidebar-cambio-horario .sidebar-footer',
+    minHeight: 100,
+    maxHeight: 500,
+    storageKey: 'sidebar_cambio_horario_footer_height',
+    saveToStorage: true // Guarda la altura preferida del usuario
+});
+
+// Limpiar cuando se cierra el sidebar (opcional)
+$(document).on('click', '#btnCerraSidebarCambio', function() {
+    // El resizer sigue activo, solo se oculta el sidebar
+    // Si quieres resetear la altura al cerrar, descomenta:
+    // window.sidebarFooterResizer.setHeight(200);
+});
 
 })

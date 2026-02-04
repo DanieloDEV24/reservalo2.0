@@ -455,6 +455,7 @@ $(document).ready(() => {
         let precioCompleto = $('#precioCompleto').val(); // --> Obtenemos el precio de la reserva completa
         let capacidadCompleto = $('#capacidadCompleto').val(); // --> Obtenemos la capacidad completa de la instalación
         let descripcion = $('#descripcion').val(); // --> Obtenemos la descripción de la instalación
+        let direccion = $('#direccionInstalacion').val()
         let categoriaSecundaria = 0; // --> variable donde guardamos la categoría secundaria
         let sinHorario = $('.toggle-switch input.sinHorario').is(':checked')
 
@@ -495,6 +496,16 @@ $(document).ready(() => {
             campoSolucionado($('#descripcion')) // --> Marcamos el campo como correcto
         }
 
+
+        if (!direccion) {
+            errores.push('Debe añadir una direccion'); // --> Guardamos el mensaje de error en el array de errores
+            camposError($('#direccionInstalacion')) // --> Marcamos el campo como erróneo
+        }
+        else {
+            campoSolucionado($('#direccionInstalacion')) // --> Marcamos el campo como correcto
+        }
+
+
         // Comprobamos que si esta seleccionada la opción de reserva completa o instalación sin pistas, haya un precio de la instalación completa
         if ((puedeCompleto || noPistas) && (precioCompleto === '' || isNaN(precioCompleto))) {
             errores.push('Debe seleccionar un precio válido'); // --> Guardamos la el mensaje de error en el array de errores
@@ -524,6 +535,7 @@ $(document).ready(() => {
             formData.append('nombreInstalacion', nombreInstalacion); // --> Añadimos el nombre de la instalación al formData
             formData.append('categorias', categoria); // --> Añadimos la categoría de la instalación al formData
             formData.append('descripcion', descripcion); // --> Añadimos la descripción de la instalación al formData
+            formData.append('direccion', direccion);
             formData.append('puedeCompleto', puedeCompleto); // --> Añadimos el estado del switch que muestra si se puede hacer una reserva completa de la instalación al formData
             formData.append('noPistas', noPistas) // --> Añadimos el estado del switch que muestra si no se puede crear pistas en la instalación al formData
             formData.append('iluminacion', iluminacion)
@@ -608,6 +620,7 @@ $(document).ready(() => {
 
                     let data = JSON.parse(response); // --> Respuesta de la petición. La pasamos a un objeto con JSON.parse()
                     let instalaciones = data.instalaciones; // --> Obtenemos las instalaciones que tenemos creadas
+                    let baseUrl = data.base_url;
                     let tabla = $('#tablaInstalaciones tbody'); // --> Obetenemos la tabla del crud de las instalaciones
                     let body = $('.divTable')
                     
@@ -646,9 +659,10 @@ $(document).ready(() => {
                         // Comprobamos que haya una categoría secundaria (num | null), para poner el texto en la tabla (nombre | ----)
                         let categoriaSecundaria = instalacion.categoria_opc_name ? instalacion.categoria_opc_name : '----';
 
+                        
                         // Creamos por cada instalación una fila
                         tabla.append(`
-                            <tr data-index="${instalacion.id_instalacion}">
+                            <tr data-index="${instalacion.id_instalacion}" class="${(parseInt(instalacion.estado) === 1) ? "table-danger" : ""}">
                                 <td>${index + 1}</td>
                                 <td>${instalacion.nombre}</td>
                                 <td>${instalacion.categoria_name}</td>
@@ -662,9 +676,20 @@ $(document).ready(() => {
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item btnVerInstalacion" href="#">Ver &nbsp;<i class="bi bi-eye"></i></a></li>
-                    <li><a class="dropdown-item" href="#">Editar &nbsp;<i class="bi bi-pencil-square"></i></a></li>
-                    <li><a class="dropdown-item" href="#">Borrar &nbsp;<i class="bi bi-trash3"></i></a></li>
-                    <li><a class="dropdown-item" href="#">Dar de Baja &nbsp;<i class="bi bi-x-lg        "></i></a></li>
+                    <li><a class="dropdown-item btnEditarInstalacion" href="#">Editar &nbsp;<i class="bi bi-pencil-square"></i></a></li>
+                    <li><a class="dropdown-item btnBorrarInstalacion" href="#">Borrar &nbsp;<i class="bi bi-trash3"></i></a></li>
+                    <li><a class="dropdown-item btnDarBaja" href="#">Dar de Baja &nbsp;<i class="bi bi-x-lg        "></i></a></li>
+                    ${parseInt(instalacion.tipo_reserva) === 0
+  ? `
+    <li>
+      <a class="dropdown-item btnGenerarHorario"
+         href="${baseUrl}index.php/horario/${instalacion.id_instalacion}">
+        Generar horario&nbsp;<i class="bi bi-calendar-week"></i>
+      </a>
+    </li>
+  `
+  : ''
+}
                 </ul>
                 </div>
 
@@ -726,7 +751,7 @@ $(document).ready(() => {
                 $('#categoriaPrincipalVerInstalacion').text(response.instalacion[0].categoria_name) // --> Mostramos la categoría
                 $('#categoriaSecundariaVerInstalacion').text(response.instalacion[0].categoria_opc_name ?? ' '); // --> Mostramos la categoría secundaria
                 $('#descripcionVerInstalacion').text(response.instalacion[0].descripcion); // --> Mostramos la descripción de la instalación
-
+                $('#direccionVerInstalacion').text(response.instalacion[0].direccion);
                 // Comprobamos si se puede hacer una reserva de la instalación completa
                 if (parseInt(response.instalacion[0].puede_completo) === 1) {
                     $('#capacidadCompletaVerInstalacion').text(response.instalacion[0].capacidad_completo) // --> Si es el caso ponemos la capacidad de la reserva completa
@@ -916,6 +941,7 @@ $(document).ready(() => {
                 $('#capacidadCompletoEditar').val(response.instalacion[0].capacidad_completo) // --> Añadimos el valor de la capacidad total de la instalación
                 $('#precioCompletoEditar').val(response.instalacion[0].precio_completo) // --> Añadimos el valor del precio total de la instalación
                 $('#descripcionEditar').val(response.instalacion[0].descripcion) // --> Añadimos el valor de la descripción de la instalación 
+                $('#direccionEditar').val(response.instalacion[0].direccion)
 
                 let pistas = response.pistas // --> Obtenemos las pistas
 
@@ -1667,6 +1693,7 @@ $(document).ready(() => {
         const capacidadCompleta = $('#capacidadCompletoEditar').val();
         const precioCompleto = $('#precioCompletoEditar').val();
         const descripcion = $('#descripcionEditar').val().trim();
+        const direccion = $('#direccionEditar').val();
 
         // Obtener categoría secundaria
         $('#subcategoriasEditar input:checked').each(function (event) {
@@ -1678,9 +1705,10 @@ $(document).ready(() => {
         if (!nombre) errores.push('El nombre no puede estar vacío');
         if (isNaN(categoria) || categoria === -1) errores.push('Debes seleccionar una categoría');
         if (!descripcion) errores.push('La descripción no puede estar vacía');
+        if (!direccion) errores.push('La direccion no puede estar vacía');
 
         // Validaciones de capacidad y precio
-        if ((puedeCompleta || noPistas) && (isNaN(precioCompleto) || precioCompleto <= 0)) {
+        if ((puedeCompleta || noPistas) && (isNaN(parseInt(precioCompleto)) || precioCompleto < 0)) {
             errores.push("Debes introducir un precio válido");
         }
 
@@ -1731,6 +1759,7 @@ $(document).ready(() => {
         formData.append('capacidadCompleta', capacidadCompleta);
         formData.append('precioCompleto', precioCompleto);
         formData.append('descripcion', descripcion);
+        formData.append('direccion', direccion);
 
         if (imagenesNoPistasEditar) {
             for (let i = 0; i < imagenesNoPistasEditar.length; i++) {
@@ -1815,7 +1844,7 @@ $(document).ready(() => {
                 $(`tr[data-index="${index}"]`).addClass('table-danger');
 
                 // Añadimos el icono de información en la última columna
-                $('tr[data-index="${index}"] td:last').append(
+                $(`tr[data-index="${index}"] td:last`).append(
                     `
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <i class="bi bi-info-circle"
@@ -1910,6 +1939,7 @@ $(document).ready(() => {
                 $('#capacidadCompletoBorrar').val(response.instalacion[0].capacidad_completo).prop('readonly', true);
                 $('#precioCompletoBorrar').val(response.instalacion[0].precio_completo).prop('readonly', true);
                 $('#descripcionBorrar').val(response.instalacion[0].descripcion).prop('readonly', true);
+                $('#direccionBorrar').val(response.instalacion[0].direccion).prop('readonly', true);
 
                 // Ahora obtenemos las pistas de la instalación y las mostramos 
                 let pistas = response.pistas; // --> Obtenemos las pistas

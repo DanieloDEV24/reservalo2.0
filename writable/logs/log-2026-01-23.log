@@ -1,0 +1,567 @@
+ERROR - 2026-01-23 07:16:25 --> Error connecting to the database: mysqli_sql_exception: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(117): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(760): App\Models\instalacionesModel->getInstalacion(42)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->instalacion(42)
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#3 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(117): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(760): App\Models\instalacionesModel->getInstalacion(42)
+#5 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->instalacion(42)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2026-01-23 07:16:26 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`
+WHERE `id_instalacion` = :id_instalacion:', [...], false)
+ 3 APPPATH\Models\instalacionesModel.php(117): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Instalaciones.php(760): App\Models\instalacionesModel->getInstalacion(42)
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->instalacion(42)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-01-23 07:18:23 --> Error connecting to the database: ErrorException: mysqli::real_connect(): Error while reading greeting packet. PID=15844 in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\Proyectos\\re...', 184)
+#1 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#5 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(117): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(760): App\Models\instalacionesModel->getInstalacion(42)
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->instalacion(42)
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#9 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next mysqli_sql_exception: MySQL server has gone away in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(117): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(760): App\Models\instalacionesModel->getInstalacion(42)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->instalacion(42)
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: MySQL server has gone away in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#3 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(117): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(760): App\Models\instalacionesModel->getInstalacion(42)
+#5 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->instalacion(42)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2026-01-23 07:18:23 --> Error connecting to the database: ErrorException: mysqli::real_connect(): Error while reading greeting packet. PID=15844 in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\Proyectos\\re...', 184)
+#1 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#5 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(169): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(19): App\Models\instalacionesModel->getInstalacionesHome()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next mysqli_sql_exception: MySQL server has gone away in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(169): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(19): App\Models\instalacionesModel->getInstalacionesHome()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: MySQL server has gone away in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#3 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(169): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(19): App\Models\instalacionesModel->getInstalacionesHome()
+#5 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2026-01-23 07:18:23 --> Error connecting to the database: ErrorException: mysqli::real_connect(): Error while reading greeting packet. PID=15844 in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\Proyectos\\re...', 184)
+#1 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#5 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(169): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(19): App\Models\instalacionesModel->getInstalacionesHome()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next mysqli_sql_exception: MySQL server has gone away in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(169): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(19): App\Models\instalacionesModel->getInstalacionesHome()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: MySQL server has gone away in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#3 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(169): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(19): App\Models\instalacionesModel->getInstalacionesHome()
+#5 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2026-01-23 07:18:23 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: MySQL server has gone away
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`
+WHERE `id_instalacion` = :id_instalacion:', [...], false)
+ 3 APPPATH\Models\instalacionesModel.php(117): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Instalaciones.php(760): App\Models\instalacionesModel->getInstalacion(42)
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->instalacion(42)
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 07:18:23 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: MySQL server has gone away
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`, (SELECT imagen1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as imagen1
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`
+ LIMIT 3', [], false)
+ 3 APPPATH\Models\instalacionesModel.php(169): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Home.php(19): App\Models\instalacionesModel->getInstalacionesHome()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 07:18:23 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: MySQL server has gone away
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`, (SELECT imagen1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as imagen1
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`
+ LIMIT 3', [], false)
+ 3 APPPATH\Models\instalacionesModel.php(169): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Home.php(19): App\Models\instalacionesModel->getInstalacionesHome()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-23 07:24:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:24:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:24:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:25:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:25:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:26:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:26:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:26:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:27:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:27:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:27:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:27:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:28:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:29:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:29:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:29:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-23 07:30:51 --> ParseError: syntax error, unexpected token "}"
+in APPPATH\Controllers\Reservas.php on line 81.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Reservas')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Reservas')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Reservas', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 07:31:01 --> ParseError: syntax error, unexpected token "}"
+in APPPATH\Controllers\Reservas.php on line 81.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Reservas')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Reservas')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Reservas', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 07:31:02 --> ParseError: syntax error, unexpected token "}"
+in APPPATH\Controllers\Reservas.php on line 81.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Reservas')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Reservas')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Reservas', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-23 07:31:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:31:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:31:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:31:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:31:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:31:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-23 07:31:20 --> ParseError: syntax error, unexpected token "}"
+in APPPATH\Controllers\Reservas.php on line 81.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Reservas')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Reservas')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Reservas', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 07:31:24 --> ParseError: syntax error, unexpected token "}"
+in APPPATH\Controllers\Reservas.php on line 81.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Reservas')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Reservas')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Reservas', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 07:31:27 --> ParseError: syntax error, unexpected token "}"
+in APPPATH\Controllers\Reservas.php on line 81.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Reservas')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Reservas')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Reservas', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-23 07:31:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:31:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:31:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-23 07:32:04 --> ParseError: syntax error, unexpected token "}"
+in APPPATH\Controllers\Reservas.php on line 81.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Reservas')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Reservas')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Reservas', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 07:33:12 --> ParseError: syntax error, unexpected token "}"
+in APPPATH\Controllers\Reservas.php on line 81.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(290): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(266): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Reservas')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Reservas')
+ 4 SYSTEMPATH\CodeIgniter.php(899): class_exists('\\App\\Controllers\\Reservas', true)
+ 5 SYSTEMPATH\CodeIgniter.php(489): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-23 07:34:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:35:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:39:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:39:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:39:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:43:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:43:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:43:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 07:44:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 08:44:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 08:34:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 09:35:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-01-23 09:35:08 --> mysqli_sql_exception: Unknown column 'hora_fin' in 'field list' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\reservasModel.php(152): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Reservas.php(116): App\Models\reservasModel->hacerReserva(Array)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-01-23 09:35:08 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'hora_fin' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (:id_pista:, :fecha:, :hora_inicio:, :hora_fin:, :fecha_reserva:, :id_usuario:)', [...], false)
+ 2 APPPATH\Models\reservasModel.php(152): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Reservas.php(116): App\Models\reservasModel->hacerReserva([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 09:35:08 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'hora_fin' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:35:08\', \'5\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:35:08\', \'5\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (:id_pista:, :fecha:, :hora_inicio:, :hora_fin:, :fecha_reserva:, :id_usuario:)', [...], false)
+ 4 APPPATH\Models\reservasModel.php(152): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Reservas.php(116): App\Models\reservasModel->hacerReserva([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 09:35:08 --> [Caused by] mysqli_sql_exception: Unknown column 'hora_fin' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:35:08\', \'5\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:35:08\', \'5\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:35:08\', \'5\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (:id_pista:, :fecha:, :hora_inicio:, :hora_fin:, :fecha_reserva:, :id_usuario:)', [...], false)
+ 5 APPPATH\Models\reservasModel.php(152): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Reservas.php(116): App\Models\reservasModel->hacerReserva([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-23 09:35:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-01-23 09:35:44 --> mysqli_sql_exception: Unknown column 'hora_fin' in 'field list' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\reservasModel.php(152): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Reservas.php(116): App\Models\reservasModel->hacerReserva(Array)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-01-23 09:35:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'hora_fin' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (:id_pista:, :fecha:, :hora_inicio:, :hora_fin:, :fecha_reserva:, :id_usuario:)', [...], false)
+ 2 APPPATH\Models\reservasModel.php(152): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Reservas.php(116): App\Models\reservasModel->hacerReserva([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 09:35:44 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'hora_fin' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:35:44\', \'5\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:35:44\', \'5\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (:id_pista:, :fecha:, :hora_inicio:, :hora_fin:, :fecha_reserva:, :id_usuario:)', [...], false)
+ 4 APPPATH\Models\reservasModel.php(152): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Reservas.php(116): App\Models\reservasModel->hacerReserva([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 09:35:44 --> [Caused by] mysqli_sql_exception: Unknown column 'hora_fin' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:35:44\', \'5\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:35:44\', \'5\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:35:44\', \'5\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (:id_pista:, :fecha:, :hora_inicio:, :hora_fin:, :fecha_reserva:, :id_usuario:)', [...], false)
+ 5 APPPATH\Models\reservasModel.php(152): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Reservas.php(116): App\Models\reservasModel->hacerReserva([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-23 09:36:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-01-23 09:36:17 --> mysqli_sql_exception: Unknown column 'hora_fin' in 'field list' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `re...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `re...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `re...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `re...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\reservasModel.php(152): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Reservas.php(116): App\Models\reservasModel->hacerReserva(Array)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-01-23 09:37:23 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'hora_fin' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (:id_pista:, :fecha:, :hora_inicio:, :hora_fin:, :fecha_reserva:, :id_usuario:)', [...], false)
+ 2 APPPATH\Models\reservasModel.php(152): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Reservas.php(116): App\Models\reservasModel->hacerReserva([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 09:37:23 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'hora_fin' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:36:00\', \'5\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:36:00\', \'5\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (:id_pista:, :fecha:, :hora_inicio:, :hora_fin:, :fecha_reserva:, :id_usuario:)', [...], false)
+ 4 APPPATH\Models\reservasModel.php(152): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Reservas.php(116): App\Models\reservasModel->hacerReserva([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 09:37:23 --> [Caused by] mysqli_sql_exception: Unknown column 'hora_fin' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:36:00\', \'5\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:36:00\', \'5\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (\'89\', \'2026-01-23\', \'12:00\', \'13:00\', \'2026-01-23 09:36:00\', \'5\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `reservas` (`id_pista`, `fecha`, `hora_inicio`, `hora_fin`, `fecha_reserva`, `id_usuario`) VALUES (:id_pista:, :fecha:, :hora_inicio:, :hora_fin:, :fecha_reserva:, :id_usuario:)', [...], false)
+ 5 APPPATH\Models\reservasModel.php(152): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Reservas.php(116): App\Models\reservasModel->hacerReserva([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-23 08:37:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 08:38:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 09:38:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 08:39:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 08:41:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 08:44:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 08:44:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 08:48:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 08:50:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 09:27:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 09:28:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 09:33:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 09:36:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 10:38:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 09:43:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 10:43:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 09:43:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 09:48:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 09:56:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 10:14:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 10:18:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 10:31:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 10:32:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 10:32:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 10:32:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 10:42:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 10:43:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 10:57:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 11:42:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 11:45:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 11:48:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 11:55:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 11:55:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 12:56:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 11:56:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 12:03:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 12:09:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 12:10:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 12:10:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 12:12:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 12:13:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 12:13:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 12:14:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 12:15:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 12:41:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 13:41:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 12:52:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 17:59:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 17:59:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 17:59:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 17:59:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 17:59:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 18:00:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 18:03:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 18:04:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 18:06:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 18:07:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 18:07:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 18:27:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 19:27:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-01-23 19:27:57 --> mysqli_sql_exception: Unknown column 'id_usuario' in 'field list' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `pi...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pi...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pi...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pi...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\reservasModel.php(183): CodeIgniter\Database\BaseBuilder->insert(Array)
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Reservas.php(105): App\Models\reservasModel->hacerPedido(Array)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-01-23 19:27:57 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_usuario' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pistas` (`id_usuario`, `fecha_pedido`, `precio_pedido`) VALUES (:id_usuario:, :fecha_pedido:, :precio_pedido:)', [...], false)
+ 2 APPPATH\Models\reservasModel.php(183): CodeIgniter\Database\BaseBuilder->insert([...])
+ 3 APPPATH\Controllers\Reservas.php(105): App\Models\reservasModel->hacerPedido([...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 19:27:57 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'id_usuario' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pistas` (`id_usuario`, `fecha_pedido`, `precio_pedido`) VALUES (\'5\', \'2026-01-23 19:27:57\', \'168\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pistas` (`id_usuario`, `fecha_pedido`, `precio_pedido`) VALUES (\'5\', \'2026-01-23 19:27:57\', \'168\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pistas` (`id_usuario`, `fecha_pedido`, `precio_pedido`) VALUES (:id_usuario:, :fecha_pedido:, :precio_pedido:)', [...], false)
+ 4 APPPATH\Models\reservasModel.php(183): CodeIgniter\Database\BaseBuilder->insert([...])
+ 5 APPPATH\Controllers\Reservas.php(105): App\Models\reservasModel->hacerPedido([...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-01-23 19:27:57 --> [Caused by] mysqli_sql_exception: Unknown column 'id_usuario' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `pistas` (`id_usuario`, `fecha_pedido`, `precio_pedido`) VALUES (\'5\', \'2026-01-23 19:27:57\', \'168\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `pistas` (`id_usuario`, `fecha_pedido`, `precio_pedido`) VALUES (\'5\', \'2026-01-23 19:27:57\', \'168\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `pistas` (`id_usuario`, `fecha_pedido`, `precio_pedido`) VALUES (\'5\', \'2026-01-23 19:27:57\', \'168\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2307): CodeIgniter\Database\BaseConnection->query('INSERT INTO `pistas` (`id_usuario`, `fecha_pedido`, `precio_pedido`) VALUES (:id_usuario:, :fecha_pedido:, :precio_pedido:)', [...], false)
+ 5 APPPATH\Models\reservasModel.php(183): CodeIgniter\Database\BaseBuilder->insert([...])
+ 6 APPPATH\Controllers\Reservas.php(105): App\Models\reservasModel->hacerPedido([...])
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->hacerReserva()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-23 18:28:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 19:28:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-23 18:47:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

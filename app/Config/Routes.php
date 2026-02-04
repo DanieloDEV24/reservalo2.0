@@ -21,11 +21,12 @@ $routes->get('/forgotPass', 'Login::forgotPassword');
 $routes->get('/resetPassForm/(:num)', 'Login::resetPassForm/$1');
 $routes->get('/resetPass', 'Login::resetPass');
 $routes->get('/instalaciones', 'Instalaciones::instalaciones');
-$routes->get('/instalacion/(:num)', 'Instalaciones::instalacion/$1');
+$routes->get('/instalacion/(:num)', 'Instalaciones::instalacion/$1', ['filter' => 'auth']);
+$routes->get('/descargarTicket/(:num)', 'Reservas::descargarTicket/$1', );
 
 // HORARIOS
 $routes->get('/horario/(:num)', 'Horarios::horario/$1');
-$routes->get('/getHorariosChange', 'Horarios::getHorariosChange');
+$routes->get('/misReservas', 'Reservas::misReservas');
 
 
 /***********************************************************************************************************************************
@@ -63,3 +64,8 @@ $routes->post('/cambiarHorariosSeleccionados', 'Horarios::cambiarHorariosSelecci
 $routes->post('/getHorariosChangeException', 'Horarios::getHorariosChangeException');
 $routes->post('/comprobarHorariosAno', 'Horarios::comprobarHorariosAno');
 $routes->post('/menuHorario', 'Horarios::menuHorario');
+$routes->post('/getHorariosChange', 'Horarios::getHorariosChange');
+
+$routes->post('/getInfoPistasReserva', 'Reservas::getInfoPistasReserva');
+$routes->post('/comprobarReservas', 'Reservas::comprobarReservas');
+$routes->post('/hacerReserva', 'Reservas::hacerReserva');

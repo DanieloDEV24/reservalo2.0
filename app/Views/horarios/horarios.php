@@ -194,18 +194,10 @@
             <p id="sidebarSubtitle1">Gestiona los horarios creados para la instalación</p>
         </div>
         <div class="sidebar-content">
-            <div class="menu-content">
-                    <div id="horarios-normailes-menu">
-                        <p class="tipo-horarios">Horarios normales</p>
-                        <div class="horarios-normales"></div>
-                    </div>
-
-                    
-                    <div id="horarios-especiales-menu">
-                      <p class="tipo-horarios">Horarios especiales</p>
-                      <div class="horarios-especiales"></div>
-                    </div>
-            </div>
+          <div style="position: relative; min-height: 70px;" class="contenedor-loader" >
+            <div id="loaderMenuHorarios" class="loader" style="display: none;"></div>
+            <div class="menu-content"></div>
+          </div>
         </div>
     </div>
 
@@ -230,8 +222,6 @@
 
     <!-- 🔹 CONTENEDOR LOADER (igual que Crear horario) -->
     <div style="position: relative; min-height: 70px;" class="contenedor-loader">
-
-    <br><br>
 
       <!-- 🔄 LOADER -->
       <div id="loaderSidebarCambioHorario" class="loader" style="display: none;"></div>
@@ -262,15 +252,15 @@
       </div>
       <div class="horarios-new"></div>
     </div>
+  </div>
 
-    <div class="button" style="width: 100%; padding-top: 3%">
+      <div class="button div-btn-cambio-horario" style="width: 100%; padding-top: 3%">
       <a id="btn-guardar-cambio-seleccion"
          style="width: 100%"
          class="btn-primary-personal btn-primary-personal-disabled">
         Cambiar Horario
       </a>
     </div>
-  </div>
 </div>
 
 
@@ -297,6 +287,7 @@
     </div>
     <?php endif ; ?>
 </div>
+
 
 <?=$modalEditar?>
 <?=$modalBorrar?>

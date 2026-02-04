@@ -69,6 +69,13 @@
 
         <div class="row mt-3 pl-3 pr-3">
           <div class="col">
+            <label for="">Direccion</label>
+            <input type="text" id="direccionBorrar" name="direccionBorrar" class="form-control">
+          </div>
+        </div>
+
+        <div class="row mt-3 pl-3 pr-3">
+          <div class="col">
             <label for="">Escriba una descripcion</label>
             <textarea name="descripcionBorrar" id="descripcionBorrar" class="mr-3 ml-3 form-control"></textarea>
           </div>

@@ -19,6 +19,7 @@
                     <span id="categoriaPrincipalVerInstalacion"></span>
                     <span id="categoriaSecundariaVerInstalacion"></span>
                 </div>
+                <p id="direccionVerInstalacion"></p>
                 <p id="descripcionVerInstalacion"></p>
 
                 <div class="row gap-5">

@@ -807,6 +807,18 @@ input[type="color"]::-moz-color-swatch {
 }
 
 
+#loaderMenuHorarios {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  /* semitransparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  /* encima de los acordeones */
+}
+
+
 #loaderModalEditar {
   position: absolute;
   background: rgba(255, 255, 255, 0);
@@ -847,7 +859,7 @@ input[type="color"]::-moz-color-swatch {
   justify-content: center;
   align-items: center;
   z-index: 10;
-  top: 250px  
+  top: 70px  
   /* encima de los acordeones */
 }
 
@@ -866,7 +878,6 @@ input[type="color"]::-moz-color-swatch {
   align-items: center;
   justify-content: center;
   width: 100%;
-  transition: all .3s;
 }
 
 .contenedor-loader2 {
@@ -876,6 +887,7 @@ input[type="color"]::-moz-color-swatch {
   width: 100%;
   flex-wrap: wrap;
 }
+
 
 /* .contenedor-loader #accordionEditarPistas div,
 .contenedor-loader #accordionEditarPistas, 
@@ -1096,7 +1108,221 @@ p.seleccion-horario-nuevo {
   width: 15%;
 }
 
-#anoActual.loading, .legend-name.loading, .legend-color.loading {
+#anoActual.loading, .legend-name.loading, .legend-color.loading, .div-mes h3.loading, .div-mes .grid-dias-mes.loading, .div-mes .grid-nombres-mes.loading{
   opacity: .3;
 }
 
+.card-menu-horarios.loading {
+  opacity: .3;
+}
+
+.horarios-new, .horarios-old {
+  flex-direction: column;
+}
+
+.horarios-new div, .horarios-old div
+{
+  margin-bottom: 5%;
+}
+
+/* ========================================
+   🎨 RESIZE HANDLE PARA SIDEBAR-FOOTER
+   ======================================== */
+
+#sidebar-cambio-horario .sidebar-footer {
+    position: relative;
+    height: 100px; /* Altura inicial */
+    min-height: 100px;  
+    max-height: 500px;
+    overflow: auto;
+    transition: box-shadow 0.2s;
+}
+
+/* Handle de redimensionar (arriba del footer) */
+.resize-handle-footer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 15px;
+    background-color: #33333310;
+    cursor: ns-resize;
+    z-index: 100;
+    transition: background 0.2s, height 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Icono del handle */
+.resize-handle-footer::before {
+    content: '⋮⋮⋮';
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: #111;
+    opacity: 0.4;
+    transition: opacity 0.2s;
+}
+
+.resize-handle-footer:hover::before {
+    opacity: 0.7;
+}
+
+/* Estado durante el redimensionamiento */
+#sidebar-cambio-horario .sidebar-footer.resizing-active {
+    transition: none !important;
+}
+
+/* Cursor global durante resize */
+body.resizing-sidebar-footer {
+    cursor: ns-resize !important;
+    user-select: none !important;
+    -webkit-user-select: none !important;
+    -moz-user-select: none !important;
+    -ms-user-select: none !important;
+}
+
+body.resizing-sidebar-footer * {
+    cursor: ns-resize !important;
+}
+
+/* Ajustar padding del contenido para el handle */
+#sidebar-cambio-horario .sidebar-footer .content-confirmar-cambio {
+    padding-top: 15px; /* Espacio para el handle */
+}
+
+/* Mejorar el scroll cuando el contenido es mayor */
+#sidebar-cambio-horario .sidebar-footer::-webkit-scrollbar {
+    width: 6px;
+}
+
+#sidebar-cambio-horario .sidebar-footer::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 3px;
+}
+
+#sidebar-cambio-horario .sidebar-footer::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+#sidebar-cambio-horario .sidebar-footer::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
+
+@media screen and (max-width:1400px) {
+  .container-year {
+    width: 22%;
+  }
+}
+
+
+.div-btn-cambio-horario {
+  padding: 5%;
+}
+
+
+/* From Uiverse.io by PriyanshuGupta28 */ 
+.checkbox-wrapper:hover .check {
+  stroke-dashoffset: 0;
+}
+
+.checkbox-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+}
+
+.checkbox-wrapper .background {
+  fill: #32cccc;
+  transition: ease all 0.6s;
+  -webkit-transition: ease all 0.6s;
+}
+
+.checkbox-wrapper .stroke {
+  fill: none;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  stroke-width: 2px;
+  stroke-dashoffset: 100;
+  stroke-dasharray: 100;
+  transition: ease all 0.6s;
+  -webkit-transition: ease all 0.6s;
+}
+
+.checkbox-wrapper .check {
+  fill: none;
+  stroke: #fff;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2px;
+  stroke-dashoffset: 22;
+  stroke-dasharray: 22;
+  transition: ease all 0.6s;
+  -webkit-transition: ease all 0.6s;
+}
+
+.checkbox-wrapper input[type=checkbox] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  margin: 0;
+  opacity: 0;
+  -appearance: none;
+  -webkit-appearance: none;
+}
+
+.checkbox-wrapper input[type=checkbox]:hover {
+  cursor: pointer;
+}
+
+.checkbox-wrapper input[type=checkbox]:checked + svg .background {
+  fill: #32cccc;
+}
+
+.checkbox-wrapper input[type=checkbox]:checked + svg .stroke {
+  stroke-dashoffset: 0;
+}
+
+.checkbox-wrapper input[type=checkbox]:checked + svg .check {
+  stroke-dashoffset: 0;
+}
+
+.checks-horarios-excepcion {
+  margin-top: 2%;
+}
+
+.checks-horarios-excepcion > div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.checkbox-text {
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.checkbox-text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #6b7280;
+  transition: width 0.4s ease;
+  transform: translateY(-50%);
+}
+
+.checkbox-wrapper:has(input.task-checkbox:checked) + .checkbox-text {
+  color: #6b7280;
+}
+
+.checkbox-wrapper:has(input.task-checkbox:checked) + .checkbox-text::after {
+  width: 100%;
+} 

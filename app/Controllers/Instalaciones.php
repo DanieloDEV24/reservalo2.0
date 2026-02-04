@@ -46,7 +46,8 @@ class Instalaciones extends BaseController
             ]
         ];
 
-        return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets]);
+        $modalMisReservas = view('reservas/modalMisReservas');
+        return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas]);
     }
 
     public function nuevaInstalacion()
@@ -60,6 +61,7 @@ class Instalaciones extends BaseController
             $nombre            = $post["nombreInstalacion"];
             $categoria         = intval($post["categorias"]);
             $descripcion       = $post["descripcion"];
+            $direccion         = $post["direccion"];
             $puedeCompleto     = filter_var($post["puedeCompleto"], FILTER_VALIDATE_BOOLEAN);
             $precioCompleto    = floatval($post["precioCompleto"]);
             $catSecundaria     = intval($post["catSecundaria"]);
@@ -73,6 +75,7 @@ class Instalaciones extends BaseController
             $dataInstalacion = [
                 'nombre' => $nombre,
                 'descripcion' => $descripcion,
+                'direccion' => $direccion, 
                 'categoria_principal' => $categoria,
                 'categoria_opcional1' => ($catSecundaria !== 0) ? $catSecundaria : null,
                 'puede_completo' => $puedeCompleto,
@@ -150,7 +153,8 @@ class Instalaciones extends BaseController
             echo json_encode([
                 "success"       => true,
                 "message"       => "Todo correcto",
-                "instalaciones" => $instalaciones
+                "instalaciones" => $instalaciones,
+                "base_url" => base_url()
             ]);
             exit;
         }
@@ -159,6 +163,7 @@ class Instalaciones extends BaseController
             "success" => false,
             "message" => "No se enviaron datos"
         ]);
+        exit;
     }
 
     public function verInstalacion()
@@ -442,6 +447,7 @@ class Instalaciones extends BaseController
             $precioCompleto = floatval($post["precioCompleto"]);
             $capacidadCompleta = intval($post["capacidadCompleta"]);
             $descripcion = $post["descripcion"];
+            $direccion = $post["direccion"];
 
             $instalacionAntigua = $instalaciones->getInstalacion($id);
             $noPistasAntigua = filter_var($instalacionAntigua[0]["no_pistas"], FILTER_VALIDATE_BOOLEAN);
@@ -516,6 +522,7 @@ class Instalaciones extends BaseController
             $data = [
                 "nombre" => $nombre,
                 "descripcion" => $descripcion,
+                "direccion" => $direccion,
                 "categoria_principal" => $categoria,
                 "categoria_opcional1" => ($catSecundaria === 0) ? null : $catSecundaria,
                 "precio_completo" => ($noPistas || $puedeCompleta) ? $precioCompleto : null,
@@ -744,8 +751,9 @@ class Instalaciones extends BaseController
             ]
         ];
 
+        $modalMisReservas = view('reservas/modalMisReservas');
         $view = view('instalaciones/instalaciones', ["instalaciones" => $instalaciones, "numInstalaciones"=>$numInstalaciones, "instalacionesCategorias" => $instalacionesCategorias, "categorias" => $categorias, "baseUrl" => base_url()]);
-        return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets]);
+        return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas]);
     }
 
 
@@ -763,16 +771,22 @@ class Instalaciones extends BaseController
             $assets = [
                 "css" => [
                     'css/instalaciones.css', 
+                    'css/reservas.css',
                     'css/style.css'
                 ], 
 
                 "js" => [
-                    'js/instalaciones.js'
+                    'js/instalaciones.js', 
+                    'js/reservas.js'
                 ]
             ];
 
-            $view = view('instalaciones/instalacion', ["instalacion" => $instalacion, "pistas" => $pistas]);
-            return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets]);
+            $modalReservaPista = view('instalaciones/modalPanelReserva', ["baseUrl" => base_url(), "instalacion" => $instalacion]);
+
+            $modalMisReservas = view('reservas/modalMisReservas');
+
+            $view = view('instalaciones/instalacion', ["instalacion" => $instalacion, "pistas" => $pistas, "modalReservaPista" => $modalReservaPista, "baseUrl" => base_url()]);
+            return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas]);
         }
         else
         {

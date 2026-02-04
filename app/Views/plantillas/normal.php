@@ -19,6 +19,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <script src="<?= base_url() ?>js/jquery.js"></script>
+    <script src="<?= base_url() ?>js/plantilla.js"></script>
+  
   <!-- <script src="<?= base_url() ?>js/movimiento.js"></script>
   <script src="<?= base_url() ?>js/instalaciones.js"></script> -->
 
@@ -79,8 +81,16 @@
                         <span class="align-middle">Cerrar Sesión</span>
                       </a>
                     </li>
+
+                    <li style="width: 100%" class="d-flex justify-content-center">
+                      <a class="dropdown-item d-flex justify-content-center iconoAvatar" id="btnMisReservas" href="#">
+                        <i class="bi bi-calendar-check me-2"></i>
+                        <span class="align-middle">Mis Reservas</span>
+                      </a>
+                    </li>
                   </ul>
-                </li>
+                  
+          </li>
           <?php
         }
         else 
@@ -196,3 +206,5 @@
 </body>
 
 </html>
+
+<?= $modalMisReservas ?>

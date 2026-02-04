@@ -15,7 +15,9 @@
         "ext-json": "*",
         "ext-mbstring": "*",
         "laminas/laminas-escaper": "^2.9",
-        "psr/log": "^1.1"
+        "mpdf/mpdf": "^8.2",
+        "psr/log": "^1.1",
+        "twilio/sdk": "^8.10"
     },
     "require-dev": {
         "codeigniter/coding-standard": "^1.7",

@@ -1,0 +1,101 @@
+INFO - 2026-01-29 09:05:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-29 09:17:09 --> ErrorException: Maximum execution time of 120 seconds exceeded
+in SYSTEMPATH\Debug\Exceptions.php on line 202.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+INFO - 2026-01-29 09:17:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 09:17:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 09:19:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 09:19:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 09:19:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 09:19:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 09:20:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 11:57:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 11:58:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 11:58:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 11:59:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 11:59:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 11:59:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:59:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 11:59:44 --> ✅ Email enviado a: danielruizdeveloper@gmail.com
+CRITICAL - 2026-01-29 11:59:45 --> ErrorException: filesize(): stat failed for C:\Proyectos\reservalo2.0\writable\uploads/reserva-20260129-125931-001.pdf
+in APPPATH\Controllers\Reservas.php on line 217.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'filesize(): stat failed for C:\\Proyectos\\reservalo2.0\\writable\\uploads/reserva-20260129-125931-001.pdf', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 217)
+ 2 APPPATH\Controllers\Reservas.php(217): filesize('C:\\Proyectos\\reservalo2.0\\writable\\uploads/reserva-20260129-125931-001.pdf')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(12)
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-29 11:59:50 --> ✅ Email enviado a: danielruizdeveloper@gmail.com
+CRITICAL - 2026-01-29 11:59:50 --> ErrorException: filesize(): stat failed for C:\Proyectos\reservalo2.0\writable\uploads/reserva-20260129-125931-001.pdf
+in APPPATH\Controllers\Reservas.php on line 217.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'filesize(): stat failed for C:\\Proyectos\\reservalo2.0\\writable\\uploads/reserva-20260129-125931-001.pdf', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 217)
+ 2 APPPATH\Controllers\Reservas.php(217): filesize('C:\\Proyectos\\reservalo2.0\\writable\\uploads/reserva-20260129-125931-001.pdf')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(12)
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-29 11:59:58 --> ✅ Email enviado a: danielruizdeveloper@gmail.com
+CRITICAL - 2026-01-29 11:59:59 --> ErrorException: filesize(): stat failed for C:\Proyectos\reservalo2.0\writable\uploads/reserva-20260129-125931-001.pdf
+in APPPATH\Controllers\Reservas.php on line 217.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'filesize(): stat failed for C:\\Proyectos\\reservalo2.0\\writable\\uploads/reserva-20260129-125931-001.pdf', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 217)
+ 2 APPPATH\Controllers\Reservas.php(217): filesize('C:\\Proyectos\\reservalo2.0\\writable\\uploads/reserva-20260129-125931-001.pdf')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(12)
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-29 12:00:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:00:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:00:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:09:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 13:09:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:09:50 --> ✅ Email enviado a: danielruizdeveloper@gmail.com
+CRITICAL - 2026-01-29 12:09:50 --> ErrorException: filesize(): stat failed for C:\Proyectos\reservalo2.0\writable\uploads/reserva-20260129-130914-001.pdf
+in APPPATH\Controllers\Reservas.php on line 217.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'filesize(): stat failed for C:\\Proyectos\\reservalo2.0\\writable\\uploads/reserva-20260129-130914-001.pdf', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 217)
+ 2 APPPATH\Controllers\Reservas.php(217): filesize('C:\\Proyectos\\reservalo2.0\\writable\\uploads/reserva-20260129-130914-001.pdf')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(13)
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-29 12:10:10 --> ✅ Email enviado a: danielruizdeveloper@gmail.com
+CRITICAL - 2026-01-29 12:10:10 --> ErrorException: filesize(): stat failed for C:\Proyectos\reservalo2.0\writable\uploads/reserva-20260129-130914-001.pdf
+in APPPATH\Controllers\Reservas.php on line 217.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'filesize(): stat failed for C:\\Proyectos\\reservalo2.0\\writable\\uploads/reserva-20260129-130914-001.pdf', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 217)
+ 2 APPPATH\Controllers\Reservas.php(217): filesize('C:\\Proyectos\\reservalo2.0\\writable\\uploads/reserva-20260129-130914-001.pdf')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(13)
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-29 12:10:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:10:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:10:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:10:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 13:12:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:13:14 --> ✅ Email enviado a: danielruizdeveloper@gmail.com
+INFO - 2026-01-29 12:16:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-01-29 12:16:15 --> ErrorException: filesize(): stat failed for C:\Proyectos\reservalo2.0\writable\uploads/reserva-20260129-131202-001.pdf
+in APPPATH\Controllers\Reservas.php on line 217.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'filesize(): stat failed for C:\\Proyectos\\reservalo2.0\\writable\\uploads/reserva-20260129-131202-001.pdf', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 217)
+ 2 APPPATH\Controllers\Reservas.php(217): filesize('C:\\Proyectos\\reservalo2.0\\writable\\uploads/reserva-20260129-131202-001.pdf')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->descargarTicket(14)
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-01-29 12:17:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 13:18:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:18:34 --> ✅ Email enviado a: danielruizdeveloper@gmail.com
+INFO - 2026-01-29 12:40:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 13:40:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:40:39 --> ✅ Email enviado a: danielruizdeveloper@gmail.com
+INFO - 2026-01-29 12:48:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:48:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 13:48:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:48:40 --> ✅ Email enviado a: danielruizdeveloper@gmail.com
+INFO - 2026-01-29 12:52:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 13:53:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:53:10 --> ✅ Email enviado a: danielruizdeveloper@gmail.com
+INFO - 2026-01-29 12:58:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:58:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:58:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 13:58:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-01-29 12:58:26 --> ✅ Email enviado a: danielruizdeveloper@gmail.com
