@@ -9,7 +9,7 @@ $(document).ready(() => {
     
        $.ajax({
         type: "GET",
-        url: "../misReservas",
+        url: "../index.php/misReservas",
         dataType: "JSON",
         success: function (response) {
             if(response.success === true){
@@ -65,16 +65,20 @@ $(document).ready(() => {
                             const nombreDia = fechaObj.toLocaleDateString('es-ES', { weekday: 'long' });
                             const fechaCompleta = formatearFecha(fecha);
                             
+                            console.log(fecha, franjas)
+                            let hoy = new Date();
+                            let fechaReserva = new Date(fecha);
+
                             // Generar franjas horarias
                             let franjasHTML = franjas.map(franja => `
-                                <div class="franja-horaria">
+                                <div class="franja-horaria ${(hoy > fechaReserva || (hoy.toDateString() === fechaReserva.toDateString() && hoy.getHours() >= parseInt(franja.hora_inicio.split(':')[0]))) ? 'hora-disabled' : ''}">
                                     <span class="franja-horaria-icon">⏰</span>
                                     <span>${franja.hora_inicio} - ${franja.hora_final}</span>
                                 </div>
                             `).join('');
                             
                             diasHTML += `
-                                <div class="dia-card">
+                                <div class="dia-card" data-fecha="${fecha}">
                                     <div class="dia-header">
                                         <div class="dia-fecha-info">
                                             <div class="dia-fecha-icon">
@@ -99,7 +103,7 @@ $(document).ready(() => {
                         });
                     }
 
-                    let div = $(`<div class="reserva-card">
+                    let div = $(`<div class="reserva-card" data-pedido="${reserva.id_pedido}">
                                
                                <div class="reserva-image-container" style="background-image: url('${response.baseUrl}images/${reserva.imagen1}')">
                                </div>
@@ -179,7 +183,7 @@ $(document).ready(() => {
                                </div>
 
                                <div class="reserva-actions">
-                                    <button class="btn btn-danger btn-anular-reserva" data-pedido="${reserva.id_pedido}">Anular</button>
+                                    <button class="btn btn-danger btn-anular-reserva" data-pedido="${reserva.id_pedido}" data-tipoReserva="${reserva.tipo_reserva}">Anular</button>
                                 </div>
                             </div>`);
 
@@ -192,6 +196,133 @@ $(document).ready(() => {
        });
     });
 
+
+    $(document).on('click', '.btn-anular-reserva', function(){
+        const idPedido = $(this).data('pedido');
+        const tipoReserva = $(this).data('tiporeserva');
+
+        if(parseInt(tipoReserva) === 0){
+            $('.reserva-card[data-pedido="' + idPedido + '"] .dias-container .franja-horaria:not(.hora-disabled)').append(`<button class="icono-borrar-reserva"><i class="bi bi-x-lg icon-borrar"></i></button>`)
+        }
+
+        $('.reserva-card[data-pedido="' + idPedido + '"] .reserva-actions').empty();
+
+        if(parseInt(tipoReserva) === 0){
+            let confirmarHoras = `<button class="btn btn-danger btn-confirmar-anulacion-horas" data-pedido="${idPedido}" data-tipoReserva="${tipoReserva}">Anular Horas Seleccionadas</button>`;
+            let confirmarPedido = `<button class="btn btn-danger btn-confirmar-anulacion-pedido" data-pedido="${idPedido}" data-tipoReserva="${tipoReserva}">Anular Reserva Completa</button>`;
+            let cancelar = `<button class="btn btn-secondary btn-cancelar-anulacion" data-pedido="${idPedido}" data-tipoReserva="${tipoReserva}">Cancelar</button>`;
+
+            $('.reserva-card[data-pedido="' + idPedido + '"] .reserva-actions').append(confirmarHoras + confirmarPedido + cancelar);
+        }
+    })
+
+
+    $(document).on('click', '.icono-borrar-reserva', function () {
+        if ($(this).closest('.hora-seleccionada-borrar').length) {
+            return; // está dentro del padre → no hacer nada
+        }
+
+        $(this).closest('.franja-horaria').addClass('hora-seleccionada-borrar');
+        $(this).empty();
+        $(this).append(`<i class="bi bi-arrow-clockwise"></i>`)
+        
+    });
+
+
+    $(document).on('click', '.hora-seleccionada-borrar .icono-borrar-reserva', function () {
+
+        $(this).closest('.franja-horaria').removeClass('hora-seleccionada-borrar');
+        $(this).empty();
+        $(this).append(`<i class="bi bi-x-lg icon-borrar"></i>`)
+        
+    });
+
+
+    $(document).on('click', '.btn-cancelar-anulacion', function(){
+
+        $(this).closest('#modalMisReservas').find('.hora-seleccionada-borrar').removeClass('hora-seleccionada-borrar');
+        $(this).closest('#modalMisReservas').find('.icono-borrar-reserva').remove();
+        $(this).closest('.reserva-actions').empty().append(`<button class="btn btn-danger btn-anular-reserva" data-pedido="${$(this).data('pedido')}" data-tipoReserva="${$(this).data('tiporeserva')}">Anular</button>`);
+        console.log($(this).closest('.reserva-actions'))
+    })
+
+    $(document).on('click', '.btn-confirmar-anulacion-horas', function(){
+
+        $idPedido = $(this).data('pedido');
+        $tipoReserva = $(this).data('tiporeserva');
+        let horasAnular = [];
+
+        if(horasAnular.length === 0){
+            $('.contenedor-alert-anular-horas').removeClass('d-none');
+            $('.alertHoraNoDisponible').fadeIn(); // Usa fadeIn() en lugar de show()
+            return;
+        }
+        else {
+            $('.contenedor-alert-anular-horas').addClass('d-none');
+            $('.alertHoraNoDisponible').fadeOut(); // Usa fadeOut() en lugar de hide()
+        }
+
+        $(this).closest('#modalMisReservas').find('.hora-seleccionada-borrar').each(function(){
+            const fecha = $(this).closest('.dia-card').data('fecha');
+            const hora  = $(this).find('span:nth-child(2)').text();
+
+            horasAnular.push({fecha: fecha, hora: hora});
+        })
+
+        $('#modalAnularHoras').data('pedido', $idPedido);
+        $('#modalAnularHoras .horas h1.hora').text(horasAnular.length);
+        let cont  = 0;
+        let fecha = ""
+        horasAnular.forEach(item => {
+            if(item.fecha !== fecha){
+                cont++;
+                fecha = item.fecha;
+            }
+        })
+        $('#modalAnularHoras .dias h1.dia').text(cont);
+        $('#modalAnularHoras .total h1.total').text(horasAnular.length);
+
+        $('#modalAnularHoras .contenedor-horas').empty();
+
+        $('#modalAnularHoras .contenedor-horas').append(`<span id="span-horas-text">HORAS A ANULAR: </span>`);
+        
+        let fechaActual = "";
+
+        horasAnular.forEach(item => {
+           if(item.fecha !== fechaActual){
+
+            fechaActual = item.fecha;
+
+             let dia = $(`
+                <div class="contenedor-dia-anular">
+                    <div class="dia-hora-anular">
+                        <div class="num-dia">${item.fecha.split('-')[2]}</div>
+                        <div class="fecha-formateada">${formatearFecha(item.fecha)}</div>
+                    </div>
+                    <div class="horas-anular-modal">${
+                            horasAnular.filter(h => h.fecha === item.fecha).map(h => `<div class="franja-horaria">
+                                <span class="franja-horaria-icon">⏰</span>
+                                <span>${h.hora}</span>
+                            </div>`).join('')
+                        }</div>
+                </div>
+                `)
+
+            $('#modalAnularHoras .contenedor-horas').append(dia);
+
+           }
+        })
+
+        $('#modalMisReservas').modal('hide');
+        $('#modalAnularHoras').modal('show');
+    })
+
+    function sumarHora(hora) {
+        let [horas, minutos] = hora.split(":");
+        let nuevaHora = (parseInt(horas) + 1).toString().padStart(2, '0');
+        return `${nuevaHora}:${minutos}`;
+    }
+
     function formatearFecha(fechaStr) {
         const d = new Date(fechaStr);
         return d.toLocaleDateString('es-ES', {
@@ -202,7 +333,7 @@ $(document).ready(() => {
     }
 
     function formatearFechaPeriodo(fechas) {
-        if (fechas.length === 1) {
+        if (fechas.length === 0) {
             return formatearFecha(fechas[0]);
         }
         // Ordenar fechas

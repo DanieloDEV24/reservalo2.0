@@ -41,7 +41,8 @@ class Horarios extends BaseController
                 ]
             ];
 
-            $modalMisReservas = view('reservas/modalMisReservas');
+            $modalAnularHoras = view('reservas/modalAnularHoras');
+            $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
 
             $view = view('horarios/horarios', ["instalacion" => $instalacion, "id_instalacion" => $id_instalacion, "horarios" => $horarios, "modalEditar" => $modalEditar, "modalBorrar" => $modalBorrar, "modalHorarioExistente" => $modalHorarioExistente, "modalCambioHorario" => $modalCambioHorario]);
             return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas]);

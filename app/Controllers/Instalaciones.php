@@ -46,7 +46,8 @@ class Instalaciones extends BaseController
             ]
         ];
 
-        $modalMisReservas = view('reservas/modalMisReservas');
+        $modalAnularHoras = view('reservas/modalAnularHoras');
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
         return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas]);
     }
 
@@ -751,7 +752,8 @@ class Instalaciones extends BaseController
             ]
         ];
 
-        $modalMisReservas = view('reservas/modalMisReservas');
+        $modalAnularHoras = view('reservas/modalAnularHoras');
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
         $view = view('instalaciones/instalaciones', ["instalaciones" => $instalaciones, "numInstalaciones"=>$numInstalaciones, "instalacionesCategorias" => $instalacionesCategorias, "categorias" => $categorias, "baseUrl" => base_url()]);
         return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas]);
     }
@@ -783,7 +785,8 @@ class Instalaciones extends BaseController
 
             $modalReservaPista = view('instalaciones/modalPanelReserva', ["baseUrl" => base_url(), "instalacion" => $instalacion]);
 
-            $modalMisReservas = view('reservas/modalMisReservas');
+            $modalAnularHoras = view('reservas/modalAnularHoras');
+            $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
 
             $view = view('instalaciones/instalacion', ["instalacion" => $instalacion, "pistas" => $pistas, "modalReservaPista" => $modalReservaPista, "baseUrl" => base_url()]);
             return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas]);
