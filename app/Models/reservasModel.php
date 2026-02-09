@@ -299,4 +299,63 @@ class reservasModel extends Model
         return $builder->get()->getResultArray();
     }
 
+
+    public function anularReservaByHourAndDate(string $fecha, string $hora, int $id_pedido) {
+
+        // Conexión a la BD
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Construcción de la query para anular la reserva
+        $builder = $db->table('reservas');
+
+        $builder->where('fecha', $fecha)
+                ->where('hora_inicio', $hora)
+                ->where('id_pedido', $id_pedido);
+
+        return $builder->delete();
+    }
+
+
+    public function anularPedido(int $id_pedido) {
+
+        // Conexión a la BD
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Construcción de la query para anular el pedido
+        $builder = $db->table('pedido');
+
+        $builder->where('id_pedido', $id_pedido);
+
+        return $builder->delete();
+    }
+
+
+    public function numReservasFromPedido(int $id_pedido) {
+
+        // Conexión a la BD
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Construcción de la query
+        $builder = $db->table('reservas');
+        
+        $builder->join('pedido', 'pedido.id_pedido = reservas.id_pedido', 'inner');
+        $builder->where('pedido.id_pedido', $id_pedido);
+
+        return count($builder->get()->getResultArray());
+
+    }
+
+    public function anularReservasByPedido(int $id_pedido) {
+
+        // Conexión a la BD
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Construcción de la query para anular la reserva
+        $builder = $db->table('reservas');
+
+        $builder->where('id_pedido', $id_pedido);
+
+        return $builder->delete();
+    }
+
 }

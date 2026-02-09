@@ -15,6 +15,9 @@
     <?php endforeach; ?>
   <?php endif; ?>
 
+    <script>
+    const BASE_URL = "<?= base_url() ?>";
+  </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 

@@ -13,6 +13,10 @@
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/instalaciones.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
+  <script>
+    const BASE_URL = "<?= base_url() ?>";
+  </script>
+
   <script src="<?= base_url() ?>js/jquery.js"></script>
   <script src="<?= base_url() ?>js/movimiento.js"></script>
 

@@ -9,7 +9,7 @@ $(document).ready(() => {
     
        $.ajax({
         type: "GET",
-        url: "../index.php/misReservas",
+        url: `${BASE_URL}index.php/misReservas`,
         dataType: "JSON",
         success: function (response) {
             if(response.success === true){
@@ -68,10 +68,11 @@ $(document).ready(() => {
                             console.log(fecha, franjas)
                             let hoy = new Date();
                             let fechaReserva = new Date(fecha);
+                            fechaReserva.setHours(parseInt(franjas[0].hora_inicio.split(':')[0]), parseInt(franjas[0].hora_inicio.split(':')[1]), 0, 0);
 
                             // Generar franjas horarias
                             let franjasHTML = franjas.map(franja => `
-                                <div class="franja-horaria ${(hoy > fechaReserva || (hoy.toDateString() === fechaReserva.toDateString() && hoy.getHours() >= parseInt(franja.hora_inicio.split(':')[0]))) ? 'hora-disabled' : ''}">
+                                <div class="franja-horaria ${(hoy > fechaReserva || (hoy.toDateString() === fechaReserva.toDateString() && hoy.getHours() >= parseInt(franja.hora_inicio.split(':')[0]))) ? 'hora-disabled' : ''}" data-hora="${franja.hora_inicio}">
                                     <span class="franja-horaria-icon">⏰</span>
                                     <span>${franja.hora_inicio} - ${franja.hora_final}</span>
                                 </div>
@@ -201,18 +202,31 @@ $(document).ready(() => {
         const idPedido = $(this).data('pedido');
         const tipoReserva = $(this).data('tiporeserva');
 
-        if(parseInt(tipoReserva) === 0){
-            $('.reserva-card[data-pedido="' + idPedido + '"] .dias-container .franja-horaria:not(.hora-disabled)').append(`<button class="icono-borrar-reserva"><i class="bi bi-x-lg icon-borrar"></i></button>`)
-        }
 
-        $('.reserva-card[data-pedido="' + idPedido + '"] .reserva-actions').empty();
 
         if(parseInt(tipoReserva) === 0){
+            $('.reserva-card[data-pedido="' + idPedido + '"] .dias-container .franja-horaria:not(.hora-disabled)').each(function(){
+                
+                let hora = $(this).find('span:nth-child(2)').text().split(' - ')[0];
+                let fechaString = $(this).closest('.dia-card').data('fecha');
+                let fechaReserva = new Date(fechaString);
+
+                if(horasPasadasDesde(fechaReserva, hora)){
+                    $(this).append(`<button class="icono-borrar-reserva"><i class="bi bi-x-lg icon-borrar"></i></button>`)
+                }
+            })
+            // $('.reserva-card[data-pedido="' + idPedido + '"] .dias-container .franja-horaria:not(.hora-disabled)').append(`<button class="icono-borrar-reserva"><i class="bi bi-x-lg icon-borrar"></i></button>`)
+
+            $('.reserva-card[data-pedido="' + idPedido + '"] .reserva-actions').empty();
+
             let confirmarHoras = `<button class="btn btn-danger btn-confirmar-anulacion-horas" data-pedido="${idPedido}" data-tipoReserva="${tipoReserva}">Anular Horas Seleccionadas</button>`;
             let confirmarPedido = `<button class="btn btn-danger btn-confirmar-anulacion-pedido" data-pedido="${idPedido}" data-tipoReserva="${tipoReserva}">Anular Reserva Completa</button>`;
             let cancelar = `<button class="btn btn-secondary btn-cancelar-anulacion" data-pedido="${idPedido}" data-tipoReserva="${tipoReserva}">Cancelar</button>`;
 
             $('.reserva-card[data-pedido="' + idPedido + '"] .reserva-actions').append(confirmarHoras + confirmarPedido + cancelar);
+        }
+        else {
+            $(this).addClass('btn-anular-reserva-especial')
         }
     })
 
@@ -248,19 +262,9 @@ $(document).ready(() => {
 
     $(document).on('click', '.btn-confirmar-anulacion-horas', function(){
 
-        $idPedido = $(this).data('pedido');
-        $tipoReserva = $(this).data('tiporeserva');
+        let idPedido = $(this).data('pedido');
+        let tipoReserva = $(this).data('tiporeserva');
         let horasAnular = [];
-
-        if(horasAnular.length === 0){
-            $('.contenedor-alert-anular-horas').removeClass('d-none');
-            $('.alertHoraNoDisponible').fadeIn(); // Usa fadeIn() en lugar de show()
-            return;
-        }
-        else {
-            $('.contenedor-alert-anular-horas').addClass('d-none');
-            $('.alertHoraNoDisponible').fadeOut(); // Usa fadeOut() en lugar de hide()
-        }
 
         $(this).closest('#modalMisReservas').find('.hora-seleccionada-borrar').each(function(){
             const fecha = $(this).closest('.dia-card').data('fecha');
@@ -269,7 +273,19 @@ $(document).ready(() => {
             horasAnular.push({fecha: fecha, hora: hora});
         })
 
-        $('#modalAnularHoras').data('pedido', $idPedido);
+        
+        if(horasAnular.length === 0){
+            $('.contenedor-alert-anular-horas').removeClass('d-none');
+            $('.alertHoraNoDisponible').fadeIn(); // Usa fadeIn() en lugar de show()
+            return;
+        }
+        else {
+            $('.contenedor-alert-anular-horas').addClass('d-none');
+            $('.alertHoraNoDisponible').fadeOut(); // Usa fadeOut() en lugar de hide()
+            $('#modalAnularHoras').data('pedido', );
+        }
+
+        $('#modalAnularHoras').data('pedido', idPedido);
         $('#modalAnularHoras .horas h1.hora').text(horasAnular.length);
         let cont  = 0;
         let fecha = ""
@@ -294,14 +310,15 @@ $(document).ready(() => {
             fechaActual = item.fecha;
 
              let dia = $(`
-                <div class="contenedor-dia-anular">
+                <div class="contenedor-dia-anular" data-fecha="${item.fecha}">
                     <div class="dia-hora-anular">
                         <div class="num-dia">${item.fecha.split('-')[2]}</div>
                         <div class="fecha-formateada">${formatearFecha(item.fecha)}</div>
                     </div>
                     <div class="horas-anular-modal">${
-                            horasAnular.filter(h => h.fecha === item.fecha).map(h => `<div class="franja-horaria">
-                                <span class="franja-horaria-icon">⏰</span>
+                            horasAnular.filter(h => h.fecha === item.fecha).map(h => `<div class="franja-horaria" data-hora="${h.hora.split(' - ')[0]}">
+        
+                            <span class="franja-horaria-icon">⏰</span>
                                 <span>${h.hora}</span>
                             </div>`).join('')
                         }</div>
@@ -315,6 +332,88 @@ $(document).ready(() => {
 
         $('#modalMisReservas').modal('hide');
         $('#modalAnularHoras').modal('show');
+    })
+
+
+    $(document).on('click', '#btn-anular-horas', function(){
+
+        let datos = []
+        
+        $('#modalAnularHoras .contenedor-horas .franja-horaria').each(function(){
+            datos.push({fecha: $(this).closest('.contenedor-dia-anular').data('fecha'), hora: $(this).data('hora'), pedido: $('#modalAnularHoras').data('pedido')})
+        })
+
+        $.ajax({
+            url: `${BASE_URL}index.php/anularHora`,
+            method: 'POST',
+            data: {
+                datos: datos
+            },
+            dataType: 'JSON',
+            success: function(response) {
+                if(response.success == true){
+                    $('#modalAnularHoras').modal('hide');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al anular hora:', error);
+            }
+        })
+
+    })
+
+
+    $(document).on('click', '.btn-confirmar-anulacion-pedido', function(){
+
+        let datos = []
+        
+        $('#modalMisReservas .dias-horarios-section .franja-horaria').each(function(){
+
+            let fechaObj = new Date($(this).closest('.dia-card').data('fecha')); 
+
+            if(!$(this).hasClass('hora-disabled') && horasPasadasDesde(fechaObj, $(this).data('hora'))){
+                datos.push({fecha: $(this).closest('.dia-card').data('fecha'), hora: $(this).data('hora'), pedido: $(this).closest('.reserva-card').data('pedido')})
+            }
+        })
+
+        $.ajax({
+            url: `${BASE_URL}index.php/anularHora`,
+            method: 'POST',
+            data: {
+                datos: datos
+            },
+            dataType: 'JSON',
+            success: function(response) {
+                if(response.success){
+                    $('#modalMisReservas').modal('hide');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al anular hora:', error);
+            }
+        })
+
+    })
+
+    $(document).on('click', '.btn-anular-reserva-especial', function(){
+        let idPedido = $(this).data('pedido');
+
+        $.ajax({
+            url: `${BASE_URL}index.php/anularReservaEspecial`,
+            method: 'POST',
+            data: {
+                idPedido: idPedido
+            },
+            dataType: 'JSON',
+            success: function(response) {
+                if(response.success == true){
+                    $('#modalMisReservas').modal('hide');
+                }
+            },
+            error: function(xhr, status, error) {
+                console.error('Error al anular reserva especial:', error);
+            }
+        })
     })
 
     function sumarHora(hora) {
@@ -346,4 +445,21 @@ $(document).ready(() => {
     function capitalizar(str) {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
+
+function horasPasadasDesde(fechaReserva, horaString) {
+    const [horas, minutos] = horaString.split(':').map(Number);
+    
+    const fechaCompleta = new Date(fechaReserva);
+    fechaCompleta.setHours(horas, minutos, 0, 0);
+    
+    const ahora = new Date();
+    
+    // Calcular diferencia ABSOLUTA en milisegundos
+    const diferencia = Math.abs(ahora - fechaCompleta);
+    
+    // Convertir a horas
+    const horasPasadas = diferencia / (1000 * 60 * 60);
+    
+    return horasPasadas >= 24;
+}
 });

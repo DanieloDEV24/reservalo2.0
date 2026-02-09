@@ -69,3 +69,6 @@ $routes->post('/getHorariosChange', 'Horarios::getHorariosChange');
 $routes->post('/getInfoPistasReserva', 'Reservas::getInfoPistasReserva');
 $routes->post('/comprobarReservas', 'Reservas::comprobarReservas');
 $routes->post('/hacerReserva', 'Reservas::hacerReserva');
+
+$routes->post('/anularHora', 'Reservas::anularHora');
+$routes->post('/anularReservaEspecial', 'Reservas::anularReservaEspecial');

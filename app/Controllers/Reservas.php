@@ -276,6 +276,59 @@ public function misReservas() {
     ]);
     return;
 }
+
+
+public function anularHora() {
+    
+    $reservasModel = new reservasModel();
+    $post = $this->request->getPost();
+
+    if(!empty($post)){
+        
+        $datos = $post["datos"];
+
+        foreach($datos as $dato) {
+
+            $anularReserva = $reservasModel->anularReservaByHourAndDate($dato["fecha"], $dato["hora"], $dato["pedido"]);
+            $num_pedidos   = $reservasModel->numReservasFromPedido($dato["pedido"]);
+
+            if($num_pedidos === 0){
+                $reservasModel->anularPedido($dato["pedido"]);
+            }
+        }
+        
+        echo json_encode([
+            "success" => true, 
+            "mensaje" => "La hora ha sido anulada correctamente"
+        ]);
+
+        
+    }
+
+}
+
+
+public function anularReservaEspecial() {
+    
+    $reservasModel = new reservasModel();
+    $post = $this->request->getPost();
+
+    if(!empty($post)){
+        
+        $id_pedido = intval($post["idPedido"]);
+
+        $anularReservas = $reservasModel->anularReservasByPedido($id_pedido);
+        $anularPedido   = $reservasModel->anularPedido($id_pedido);
+        
+        echo json_encode([
+            "success" => true, 
+            "mensaje" => "La reserva ha sido anulada correctamente"
+        ]);
+  
+    }
+}
+
+
 private function enviarEmailYSMS($datos_pdf, $datos_usuario, $tempPath, $pdfFilename, $id_pedido, $datos_reserva)
 {
     try {
