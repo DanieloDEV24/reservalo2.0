@@ -30,7 +30,7 @@ class reservasModel extends Model
     public function getInfoPista(int $id_pista, string $fecha)
     {
 
-            $diaSemana = date('N', strtotime($fecha)); // Obtener el día de la semana (1-7)
+        $diaSemana = date('N', strtotime($fecha)); // Obtener el día de la semana (1-7)
 
         // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
@@ -116,7 +116,8 @@ class reservasModel extends Model
     }
 
 
-    public function hayReserva (int $id_pista, string $fecha, string $hora){
+    public function hayReserva(int $id_pista, string $fecha, string $hora)
+    {
 
         // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
@@ -127,7 +128,7 @@ class reservasModel extends Model
         // Hacemos la sentencia
         $builder->select();
         $builder->where('id_pista', $id_pista);
-        $builder->where('fecha', $fecha); 
+        $builder->where('fecha', $fecha);
         $builder->where('hora_inicio', $hora);
 
         // Obtenemos el resultado
@@ -137,11 +138,11 @@ class reservasModel extends Model
         $result = $query->getResultArray();
 
         return $result;
-
     }
 
-    public function hacerReserva(array $data){
-        
+    public function hacerReserva(array $data)
+    {
+
         // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
 
@@ -154,8 +155,9 @@ class reservasModel extends Model
         return $db->insertID();
     }
 
-    public function reservasById(int $id_pista, string $fecha){
-        
+    public function reservasById(int $id_pista, string $fecha)
+    {
+
         // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
 
@@ -171,8 +173,9 @@ class reservasModel extends Model
     }
 
 
-    public function hacerPedido(array $data) {
-                
+    public function hacerPedido(array $data)
+    {
+
         // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
 
@@ -186,7 +189,8 @@ class reservasModel extends Model
     }
 
 
-    public function pedidosFromDate(string $date) {
+    public function pedidosFromDate(string $date)
+    {
 
         // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
@@ -196,13 +200,14 @@ class reservasModel extends Model
 
         $builder->select();
         $builder->where('fecha_pedido', $date);
-        
+
         $query = $builder->get();
         return $query->getResultArray();
     }
 
 
-    public function getFullReservasFromPedido(int $id_pedido){
+    public function getFullReservasFromPedido(int $id_pedido)
+    {
 
         // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
@@ -242,7 +247,8 @@ class reservasModel extends Model
     }
 
 
-    public function getPedidoFromId(int $id_pedido) {
+    public function getPedidoFromId(int $id_pedido)
+    {
 
         // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
@@ -251,13 +257,12 @@ class reservasModel extends Model
         $builder = $db->table('pedido');
 
         $builder->select();
-        
+
         $builder->where("id_pedido", $id_pedido);
 
         $query = $builder->get();
-        
-        return $query->getResultArray(); 
 
+        return $query->getResultArray();
     }
 
 
@@ -289,18 +294,19 @@ class reservasModel extends Model
             instalaciones.tipo_reserva,
             pedido.precio_pedido
         ')
-        ->join('pistas', 'pistas.id_pista = reservas.id_pista', 'inner')
-        ->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion', 'inner')
-        ->join('categorias', 'categorias.id_categoria = instalaciones.categoria_principal', 'inner')
-        ->join('pedido', 'pedido.id_pedido = reservas.id_pedido', 'inner')
-        ->where("reservas.id_pedido IN ($subquery)", null, false)
-        ->orderBy('reservas.fecha', 'ASC');
+            ->join('pistas', 'pistas.id_pista = reservas.id_pista', 'inner')
+            ->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion', 'inner')
+            ->join('categorias', 'categorias.id_categoria = instalaciones.categoria_principal', 'inner')
+            ->join('pedido', 'pedido.id_pedido = reservas.id_pedido', 'inner')
+            ->where("reservas.id_pedido IN ($subquery)", null, false)
+            ->orderBy('reservas.fecha', 'ASC');
 
         return $builder->get()->getResultArray();
     }
 
 
-    public function anularReservaByHourAndDate(string $fecha, string $hora, int $id_pedido) {
+    public function anularReservaByHourAndDate(string $fecha, string $hora, int $id_pedido)
+    {
 
         // Conexión a la BD
         $db = \Config\Database::connect('BDReservalo2');
@@ -309,14 +315,15 @@ class reservasModel extends Model
         $builder = $db->table('reservas');
 
         $builder->where('fecha', $fecha)
-                ->where('hora_inicio', $hora)
-                ->where('id_pedido', $id_pedido);
+            ->where('hora_inicio', $hora)
+            ->where('id_pedido', $id_pedido);
 
         return $builder->delete();
     }
 
 
-    public function anularPedido(int $id_pedido) {
+    public function anularPedido(int $id_pedido)
+    {
 
         // Conexión a la BD
         $db = \Config\Database::connect('BDReservalo2');
@@ -330,22 +337,23 @@ class reservasModel extends Model
     }
 
 
-    public function numReservasFromPedido(int $id_pedido) {
+    public function numReservasFromPedido(int $id_pedido)
+    {
 
         // Conexión a la BD
         $db = \Config\Database::connect('BDReservalo2');
 
         // Construcción de la query
         $builder = $db->table('reservas');
-        
+
         $builder->join('pedido', 'pedido.id_pedido = reservas.id_pedido', 'inner');
         $builder->where('pedido.id_pedido', $id_pedido);
 
         return count($builder->get()->getResultArray());
-
     }
 
-    public function anularReservasByPedido(int $id_pedido) {
+    public function anularReservasByPedido(int $id_pedido)
+    {
 
         // Conexión a la BD
         $db = \Config\Database::connect('BDReservalo2');
@@ -358,4 +366,47 @@ class reservasModel extends Model
         return $builder->delete();
     }
 
+
+
+    public function getReservasByFecha(string $fecha)
+    {
+        // Conexión a la BD
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Construcción del query builder
+        $builder = $db->table('reservas');
+
+        $builder->select('
+        pistas.nombre_pista,
+        pistas.imagen1,
+        pistas.capacidad_pista,
+        pistas.precio_pista,
+        usuarios.nombre AS nombre_usuario,
+        usuarios.email,
+        usuarios.telf,
+        pedido.fecha_pedido,
+        pedido.num_pedido,
+        pedido.precio_pedido,
+        categorias.nombre AS categoria,
+        instalaciones.material,
+        instalaciones.iluminacion,
+        instalaciones.tipo_reserva,
+        reservas.fecha,
+        reservas.hora_inicio,
+        reservas.hora_final, 
+        reservas.pagadas
+    ');
+
+        $builder->join('pedido', 'pedido.id_pedido = reservas.id_pedido');
+        $builder->join('usuarios', 'usuarios.id_usuario = pedido.id_usuario');
+        $builder->join('pistas', 'pistas.id_pista = reservas.id_pista');
+        $builder->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion');
+        $builder->join('categorias', 'categorias.id_categoria = instalaciones.categoria_principal');
+
+        $builder->where('reservas.fecha', $fecha);
+
+        
+
+        return $builder->get()->getResultArray(); // Devuelve un array de objetos
+    }
 }

@@ -51,20 +51,22 @@
       <a href="<?= base_url() ?>" class="menu__link"> Home</a>
       <a href="<?=base_url()?>index.php/instalaciones" class="menu__link"> Instalaciones</a>
       
-
-<div class="dropdown">
+<?php $session = session(); ?>
+<?php if ($session->has('usuario') && intval($session->get('usuario')['rol']) === 2): ?>
+  <div class="dropdown">
   <a class="dropdown-toggle menu__link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
      Gestores
   </a>
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudInstalaciones"> Gestor Instalaciones</a></li>
     <li><a class="dropdown-item" style="color: #000;" type="button"> Gestor categorias</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudReservas"> Gestor Reservas</a></li>
   </ul>
 </div>
+<?php endif; ?>
     </nav>
     <div style="text-align: end; display: flex; justify-content: end">
       <?php
-        $session = session();
         if ($session->has('usuario')) {
           // La sesión 'usuario' existe
           $usuario = $session->get('usuario');
@@ -210,4 +212,4 @@
 
 </html>
 
-<?= $modalMisReservas ?>
+<?= isset($modalMisReservas) ? $modalMisReservas : '' ?>

@@ -328,6 +328,32 @@ public function anularReservaEspecial() {
     }
 }
 
+public function crudReservas() {
+
+    $reservasModel = new reservasModel();
+
+    $assets = [
+                "css" => [
+                    'css/instalaciones.css', 
+                    'css/reservas.css',
+                    'css/style.css', 
+                    'css/crudReservas.css'
+                ], 
+
+                "js" => [ 
+                    'js/reservas.js', 
+                    'js/crudReservas.js'
+                ]
+    ];
+
+    $fecha_hoy = date("Y-m-d");
+
+    $reservas = $reservasModel->getReservasByFecha($fecha_hoy);
+
+    $view = view('reservas/reservas', ["reservas" => $reservas]);
+    return view("plantillas/normal", ["view" => $view, "assets" => $assets]);
+}
+
 
 private function enviarEmailYSMS($datos_pdf, $datos_usuario, $tempPath, $pdfFilename, $id_pedido, $datos_reserva)
 {
