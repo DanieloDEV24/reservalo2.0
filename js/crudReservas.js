@@ -1,14 +1,12 @@
 // Mini Calendar Implementation
-let currentDate = new Date(2026, 1, 10); // Febrero 10, 2026
-let selectedDate = new Date(2026, 1, 10);
-let currentMonth = 1; // Febrero (0-indexed)
-let currentYear = 2026;
+let currentDate = new Date(); // Febrero 10, 2026
+let selectedDate = new Date();
+let currentMonth = currentDate.getMonth(); // Febrero (0-indexed)
+let currentYear = currentDate.getFullYear();
 
 const monthNames = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio',
     'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
 
-// Días con reservas (ejemplo)
-const daysWithReservations = [5, 8, 10, 12, 15, 18, 20, 22, 25];
 
 $(document).ready(function () {
     const $calendarTrigger = $('#calendarTrigger');
@@ -59,67 +57,105 @@ $(document).ready(function () {
         renderCalendar();
     });
 
+
     function renderCalendar() {
-        $calendarDays.empty();
-        $calendarMonth.text(`${monthNames[currentMonth]} ${currentYear}`);
 
-        const firstDay = new Date(currentYear, currentMonth, 1);
-        const lastDay = new Date(currentYear, currentMonth + 1, 0);
-        const prevLastDay = new Date(currentYear, currentMonth, 0);
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/getFechasReservas`,
+            data: {
+                mes : currentMonth, 
+                year: currentYear
+            },
+            dataType: "JSON",
+            success: function (response) {
 
-        const firstDayWeekday = firstDay.getDay() === 0 ? 7 : firstDay.getDay(); // Monday = 1
-        const lastDayDate = lastDay.getDate();
-        const prevLastDayDate = prevLastDay.getDate();
-        const today = new Date();
+                if (response.success == true) {
+                    $calendarDays.empty();
+                    $calendarMonth.text(`${monthNames[currentMonth]} ${currentYear}`);
 
-        // Previous month days
-        for (let i = firstDayWeekday - 1; i > 0; i--) {
-            const $dayBtn = $('<button>')
-                .addClass('calendar-day other-month disabled')
-                .text(prevLastDayDate - i + 1);
-            $calendarDays.append($dayBtn);
-        }
+                    const firstDay = new Date(currentYear, currentMonth, 1);
+                    const lastDay = new Date(currentYear, currentMonth + 1, 0);
+                    const prevLastDay = new Date(currentYear, currentMonth, 0);
 
-        // Current month days
-        for (let day = 1; day <= lastDayDate; day++) {
-            const $dayBtn = $('<button>')
-                .addClass('calendar-day')
-                .text(day);
+                    const firstDayWeekday = firstDay.getDay() === 0 ? 7 : firstDay.getDay(); // Monday = 1
+                    const lastDayDate = lastDay.getDate();
+                    const prevLastDayDate = prevLastDay.getDate();
+                    const today = new Date();
 
-            // Today
-            if (day === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear()) {
-                $dayBtn.addClass('today');
-            }
+                    // Previous month days
+                    for (let i = firstDayWeekday - 1; i > 0; i--) {
+                        const $dayBtn = $('<button>')
+                            .addClass('calendar-day other-month disabled')
+                            .text(prevLastDayDate - i + 1);
+                        $calendarDays.append($dayBtn);
+                    }
 
-            // Selected
-            if (day === selectedDate.getDate() && currentMonth === selectedDate.getMonth() && currentYear === selectedDate.getFullYear()) {
-                $dayBtn.addClass('selected');
-            }
+                    // Current month days
+                    for (let day = 1; day <= lastDayDate; day++) {
+                        const $dayBtn = $('<button>')
+                            .addClass('calendar-day')
+                            .attr('data-fecha', `${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`)
+                            .text(day);
 
-            // Days with reservations
-            if (currentMonth === selectedDate.getMonth() && currentYear === selectedDate.getFullYear()) {
-                if (daysWithReservations.includes(day)) {
-                    $dayBtn.addClass('has-reservations');
+                        // Today
+                        if (day === today.getDate() && currentMonth === today.getMonth() && currentYear === today.getFullYear()) {
+                            $dayBtn.addClass('today');
+                        }
+
+                        // Selected
+                        if (day === selectedDate.getDate() && currentMonth === selectedDate.getMonth() && currentYear === selectedDate.getFullYear()) {
+                            $dayBtn.addClass('selected');
+                        }
+
+                        let existe = response.fechasReservas.some(item => item.fecha === $dayBtn.data("fecha"));
+
+                        if(existe) {
+                            $dayBtn.addClass('has-reservations');
+                        }
+
+                        // Click handler
+                        $dayBtn.on('click', function () {
+                            
+                            selectDate(day);
+                            
+                            if($(this).hasClass('has-reservations')){
+
+                                let fecha = $(this).data('fecha');
+                                console.log(fecha)
+
+                                $.ajax({
+                                    type: "POST",
+                                    url: `${BASE_URL}index.php/getReservasByDate`,
+                                    data: {
+                                        fecha: fecha
+                                    },
+                                    dataType: "JSON",
+                                    success: function (response) {
+                                        
+                                    }
+                                });
+                            }
+                            
+                            
+                            
+                        });
+
+                        $calendarDays.append($dayBtn);
+                    }
+
+                    // Next month days to complete the grid
+                    const totalCells = $calendarDays.children().length;
+                    const remainingCells = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
+                    for (let i = 1; i <= remainingCells; i++) {
+                        const $dayBtn = $('<button>')
+                            .addClass('calendar-day other-month disabled')
+                            .text(i);
+                        $calendarDays.append($dayBtn);
+                    }
                 }
             }
-
-            // Click handler
-            $dayBtn.on('click', function () {
-                selectDate(day);
-            });
-
-            $calendarDays.append($dayBtn);
-        }
-
-        // Next month days to complete the grid
-        const totalCells = $calendarDays.children().length;
-        const remainingCells = totalCells % 7 === 0 ? 0 : 7 - (totalCells % 7);
-        for (let i = 1; i <= remainingCells; i++) {
-            const $dayBtn = $('<button>')
-                .addClass('calendar-day other-month disabled')
-                .text(i);
-            $calendarDays.append($dayBtn);
-        }
+        });
     }
 
     function selectDate(day) {
@@ -133,7 +169,6 @@ $(document).ready(function () {
         $miniCalendar.removeClass('show');
         $calendarTrigger.removeClass('active');
 
-        console.log('Fecha seleccionada:', selectedDate);
         // Aquí cargarías reservas de la nueva fecha
     }
 
@@ -161,4 +196,5 @@ $(document).ready(function () {
     $('.action-btn.check').on('click', function () {
         alert('Asistencia marcada');
     });
+
 });

@@ -73,3 +73,5 @@ $routes->post('/hacerReserva', 'Reservas::hacerReserva');
 $routes->post('/anularHora', 'Reservas::anularHora');
 $routes->post('/anularReservaEspecial', 'Reservas::anularReservaEspecial');
 $routes->get('/crudReservas', 'Reservas::crudReservas', ['filter' => 'auth']);
+
+$routes->post('/getFechasReservas', 'Reservas::getFechasReservas');

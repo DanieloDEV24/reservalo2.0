@@ -409,4 +409,24 @@ class reservasModel extends Model
 
         return $builder->get()->getResultArray(); // Devuelve un array de objetos
     }
+
+
+    public function getReservasByMonthAndYear(int $mes, int $year){
+
+        $mes++;
+
+        // Conexión a la BD
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Construcción del query builder
+        $builder = $db->table('reservas');
+
+        $builder->distinct();
+        $builder->select('fecha');
+        $builder->where('fecha >= ', $year."-".$mes."-01");
+        $builder->where('fecha < ', $year."-".($mes + 1)."-01");
+
+        return $builder->get()->getResultArray();
+
+    }
 }

@@ -9,7 +9,17 @@
         <div class="calendar-container">
             <div class="calendar-trigger" id="calendarTrigger">
                 <span class="calendar-icon">📅</span>
-                <span id="selectedDate">10 de febrero de 2026</span>
+                <?php
+                $formatter = new IntlDateFormatter(
+                    'es_ES',
+                    IntlDateFormatter::LONG,
+                    IntlDateFormatter::NONE,
+                    'Europe/Madrid',
+                    IntlDateFormatter::GREGORIAN
+                );
+                ?>
+
+                <span id="selectedDate"><?= $formatter->format(new DateTime()) ?></span>
             </div>
 
             <div class="mini-calendar" id="miniCalendar">
@@ -43,15 +53,15 @@
                 <div class="stat-label">Total reservas</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number"><?= count(array_filter($reservas, function($reserva){
-                    return intval($reserva["pagadas"]) === 1;
-                })); ?></div>
+                <div class="stat-number"><?= count(array_filter($reservas, function ($reserva) {
+                                                return intval($reserva["pagadas"]) === 1;
+                                            })); ?></div>
                 <div class="stat-label">Confirmadas</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number"><?= count(array_filter($reservas, function($reserva){
-                    return intval($reserva["pagadas"]) === 0;
-                })); ?></div>
+                <div class="stat-number"><?= count(array_filter($reservas, function ($reserva) {
+                                                return intval($reserva["pagadas"]) === 0;
+                                            })); ?></div>
                 <div class="stat-label">Pendientes</div>
             </div>
         </div>

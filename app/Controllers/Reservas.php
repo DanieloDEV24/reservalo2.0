@@ -301,7 +301,7 @@ public function anularHora() {
             "success" => true, 
             "mensaje" => "La hora ha sido anulada correctamente"
         ]);
-
+        return;
         
     }
 
@@ -324,7 +324,7 @@ public function anularReservaEspecial() {
             "success" => true, 
             "mensaje" => "La reserva ha sido anulada correctamente"
         ]);
-  
+        return;
     }
 }
 
@@ -354,6 +354,40 @@ public function crudReservas() {
     return view("plantillas/normal", ["view" => $view, "assets" => $assets]);
 }
 
+
+public function getFechasReservas() {
+
+    $reservasModel = new reservasModel();
+    $post = $this->request->getPost();
+
+    if(!empty($post)){
+
+        $mes  = intval($post["mes"]);
+        $year = intval($post["year"]);
+
+        $fechas_reservas = $reservasModel->getReservasByMonthAndYear($mes, $year);
+
+        echo json_encode([
+            "success" => true, 
+            "fechasReservas" => $fechas_reservas
+        ]);
+        return;
+    }
+}
+
+
+public function getReservasByDate() {
+
+    $reservasModel = new reservasModel();
+    $post = $this->request->getPost();
+
+    if(!empty($post)){
+
+        $fecha = $post["fecha"];
+        
+    }
+
+}
 
 private function enviarEmailYSMS($datos_pdf, $datos_usuario, $tempPath, $pdfFilename, $id_pedido, $datos_reserva)
 {
