@@ -56,7 +56,7 @@ $(document).ready(() => {
         let email      = $('#email').val().trim()
         let password   = $('#password').val().trim()
         let salida     = {}
-        let regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+        let regexEmail = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
         let errores    = []
 
         if(email === "")

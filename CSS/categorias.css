@@ -1,0 +1,51 @@
+.divTable {
+  padding: 2% 3%;
+  background-color: #fff;
+  margin: 2%;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.desglosamiento {
+    color: #555;
+    font-weight: lighter;
+    font-size: .9rem;
+}
+
+.btn-gestor-categorias {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+}
+
+.btn-crud-categorias {
+    border-radius: 7px !important;
+    background-color: #32cccc !important;
+    color: #fff !important;
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.2rem !important;
+}
+
+.btn-crud-categorias:hover {
+    background-color: #269b9b !important;
+}
+
+.contenedor-alert-reservas{
+    position: sticky !important;
+    top: 0;
+    z-index: 9999;
+}
+
+.contenedor-alert-editar-categoria-success {
+    position: fixed !important;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: auto;
+}

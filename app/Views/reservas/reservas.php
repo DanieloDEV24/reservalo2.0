@@ -49,17 +49,17 @@
 
         <div class="stats-summary">
             <div class="stat-card">
-                <div class="stat-number"><?= count($reservas) ?></div>
+                <div class="stat-number stat-total"><?= count($reservas) ?></div>
                 <div class="stat-label">Total reservas</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number"><?= count(array_filter($reservas, function ($reserva) {
+                <div class="stat-number stat-confirmadas"><?= count(array_filter($reservas, function ($reserva) {
                                                 return intval($reserva["pagadas"]) === 1;
                                             })); ?></div>
                 <div class="stat-label">Confirmadas</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number"><?= count(array_filter($reservas, function ($reserva) {
+                <div class="stat-number stat-no-confirmadas"><?= count(array_filter($reservas, function ($reserva) {
                                                 return intval($reserva["pagadas"]) === 0;
                                             })); ?></div>
                 <div class="stat-label">Pendientes</div>
@@ -69,14 +69,16 @@
 
     </div>
 
-    <?php if (isset($reservas) && count($reservas) > 0) : ?>
-        <div class="contenedor-reservas">
+    <div class="contenedor-reservas">
+        <?php if (isset($reservas) && count($reservas) > 0) : ?>
+
             <?php foreach ($reservas as $reserva) : ?>
-                <div class="card-reserva">
+                <div class="card-reserva" data-index="<?= $reserva["id_reserva"] ?>" data-pedido="<?= $reserva["id_pedido"] ?>" data-tipo="<?= $reserva["tipo_reserva"] ?>">
                     <div class="contenedor-img-reserva" style="background-image: url('<?= base_url() ?>images/<?= $reserva["imagen1"] ?>');"></div>
                     <div class="contenedor-card-reserva">
                         <span class="categoria-instalacion-reserva"><?= $reserva["categoria"] ?></span>
                         <h1 class="title-pista-reserva"><?= $reserva["nombre_pista"] ?></h1>
+                        <p class="instalacionDireccion"><?= $reserva["nombre_instalacion"] ?> · <?= $reserva["direccion"] ?></p>
 
                         <div class="contenedor-usuario">
                             <div class="logo-img"><?= mb_strtoupper(mb_substr($reserva["nombre_usuario"], 0, 1, 'UTF-8')); ?></div>
@@ -100,19 +102,32 @@
                                     <?php endif; ?>
 
                                 </div>
+
+                                <div class="estado-reserva <?= (intval($reserva["pagadas"]) === 1) ? "estado-confirmado" : "estado-tramite" ?>"><?= (intval($reserva["pagadas"]) === 1) ? "Confirmada" : "En trámite" ?></div>
                             </div>
 
                             <div class="precio-hora-reserva">
-                                <p class="hora-reserva"><?= substr($reserva["hora_inicio"], 0, 5) ?> <span class="duracion-reserva">• 1h</span></p>
+                                <?php if(intval($reserva["tipo_reserva"]) === 0) : ?>
+                                    <p class="hora-reserva"><?= substr($reserva["hora_inicio"], 0, 5) ?> <span class="duracion-reserva">• 1h</span></p>
+                                <?php endif ; ?>
                                 <div class="precio-reserva">
                                     <p class="precio-reserva-text"><?= $reserva["precio_pista"] ?>€</p>
                                     <span class="texto-precio">por reserva</span>
                                 </div>
                             </div>
                         </div>
+
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-danger" id="btn-anular-admin"><i class="bi bi-x-lg"></i>&nbsp;Anular</button>
+                            <?= (intval($reserva["pagadas"]) === 1) ? '<button type="button" class="btn btn-secondary" id="btn-deshacer-check-in"><i class="bi bi-arrow-counterclockwise"></i>&nbsp;Deshacer Check-In</button>' : '<button type="button" class="btn btn-success" id="btn-checkIn"><i class="bi bi-check-lg"></i>&nbsp;Check-In</button>' ?>
+                        </div>
                     </div>
+                    
                 </div>
             <?php endforeach; ?>
-        </div>
-    <?php endif; ?>
+    </div>
+<?php endif; ?>
 </div>
+                                </div>  
+
+<?= $modalAnularReserva ?>

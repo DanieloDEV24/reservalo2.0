@@ -369,7 +369,7 @@ class CodeIgniter
         } catch (PageNotFoundException $e) {
             $this->response = $this->display404errors($e);
         } catch (Throwable $e) {
-            $this->outputBufferingEnd();
+                $this->outputBufferingEnd();
 
             throw $e;
         }

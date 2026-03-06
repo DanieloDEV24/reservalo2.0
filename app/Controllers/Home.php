@@ -19,8 +19,12 @@ class Home extends BaseController
         $instalacionesCarrousel = $instalacionesModel->getInstalacionesHome();
 
         $view = view('home/home', ["baseUrl" => base_url(), "instalacionesCarrousel" => $instalacionesCarrousel]);
+        
+        $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
+        $modalAnularHoras = view('reservas/modalAnularHoras');
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
 
        //Devolvemos la vista
-        return view('index', ["view" => $view, "baseUrl" => base_url()]);
+        return view('index', ["view" => $view, "baseUrl" => base_url(), "modalInformacionPersonal" => $modalInformacionPersonal, "modalMisReservas" => $modalMisReservas]);
     }
 }

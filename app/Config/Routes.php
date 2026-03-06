@@ -75,3 +75,24 @@ $routes->post('/anularReservaEspecial', 'Reservas::anularReservaEspecial');
 $routes->get('/crudReservas', 'Reservas::crudReservas', ['filter' => 'auth']);
 
 $routes->post('/getFechasReservas', 'Reservas::getFechasReservas');
+$routes->post('/getReservasByDate', 'Reservas::getReservasByDate');
+$routes->post('/getInfoReserva', 'Reservas::getInfoReserva');
+$routes->post('/anularReservasById', 'Reservas::anularReservasById');
+$routes->post('/checkIn', 'Reservas::checkIn');
+$routes->post('/deshacerCheckIn', 'Reservas::deshacerCheckIn');
+
+$routes->get('/gestorUsuarios', 'Usuarios::gestorUsuarios', ['filter' => 'auth']);
+$routes->post('/getUsuario', 'Usuarios::getUsuario', ['filter' => 'auth']);
+$routes->post('/borrarUsuario', 'Usuarios::borrarUsuario', ['filter' => 'auth']);
+$routes->post('/getReservasUsuario', 'Usuarios::getReservasUsuario', ['filter' => 'auth']);
+$routes->post('/editarUsuario', 'Usuarios::editarUsuario', ['filter' => 'auth']);
+$routes->post('/darBaja', 'Usuarios::darBaja', ['filter' => 'auth']);
+$routes->post('/darAltaUsuario', 'Usuarios::darAlta', ['filter' => 'auth']);
+$routes->post('/filtroUsuarios', 'Usuarios::filtroUsuarios', ['filter' => 'auth']);
+$routes->post('/editarUsuarioPersonal', 'Usuarios::editarUsuarioPersonal', ['filter' => 'auth']);
+$routes->post('/getReservasByPedido', 'Reservas::getReservasByPedido', ['filter' => 'auth']);
+$routes->post('/borrarReservasDia', 'Reservas::borrarReservasDia', ['filter' => 'auth']);
+
+$routes->get('/gestorCategorias', 'Categorias::gestorCategorias', ['filter' => 'auth']);
+$routes->post('/getCategoria', 'Categorias::getCategoria', ['filter' => 'auth']);
+$routes->post('/editarCategorias', 'Categorias::editarCategorias', ['filter' => 'auth']);

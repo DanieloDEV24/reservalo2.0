@@ -1,6 +1,7 @@
 <div class="modal fade" tabindex="-1" id="modalMisReservas" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
 
   <div class="d-flex justify-content-center p-3 d-none contenedor-alert-anular-horas">
+    
     <div class="alert alert-danger alert-dismissible fade show alertHoraNoDisponible w-50" role="alert">
 
       <i class="bi bi-exclamation-triangle fs-5"></i>
@@ -9,6 +10,7 @@
 
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+
   </div>
 
 

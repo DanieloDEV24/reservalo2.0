@@ -415,7 +415,7 @@ $(document).ready(() => {
 
             $.ajax({
                 type: "POST",
-                url: "../comprobarHorariosAno",
+                url: `${BASE_URL}index.php/comprobarHorariosAno`,
                 data: { year: newYear, instalacion: $('#instalacion').val() },
                 dataType: "JSON",
                 beforeSend: function () {
@@ -471,7 +471,7 @@ $(document).ready(() => {
 
             $.ajax({
                 type: "POST",
-                url: "../comprobarHorariosAno",
+                url: `${BASE_URL}index.php/comprobarHorariosAno`,
                 data: { year: newYear, instalacion: $('#instalacion').val() },
                 dataType: "JSON",
                 beforeSend: function () {
@@ -717,7 +717,7 @@ $(document).ready(() => {
             // console.log(data);
             $.ajax({
                 type: "POST",
-                url: "../crearHorario",
+                url: `${BASE_URL}index.php/crearHorario`,
                 data: { data: data },
                 dataType: "json",
                 // Cargamos el loader y desactivamos los botones e inputs
@@ -963,7 +963,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: "../menuHorario",
+            url: `${BASE_URL}index.php/menuHorario`,
             data: {year: $('#anoActual').text(), instalacion: $('#instalacion').val()},
             dataType: "JSON",
             beforeSend: function () {
@@ -1069,7 +1069,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: "../getHorario",
+            url: `${BASE_URL}index.php/getHorario`,
             data: { id: id },
             dataType: "json",
             success: function (response) {
@@ -1271,7 +1271,7 @@ $(document).ready(() => {
             console.log(data);
             $.ajax({
                 type: "POST",
-                url: "../editarHorario",
+                url: `${BASE_URL}index.php/editarHorario`,
                 data: { data: data },
                 dataType: "json",
                 beforeSend: function () {
@@ -1385,7 +1385,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: "../getHorario",
+            url: `${BASE_URL}index.php/getHorario`,
             data: { id: id },
             dataType: "JSON",
             success: function (response) {
@@ -1412,7 +1412,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: "../borrarHorario",
+            url: `${BASE_URL}index.php/borrarHorario`,
             data: { id: id },
             dataType: "JSON",
             beforeSend: function () {
@@ -1514,7 +1514,7 @@ $(document).ready(() => {
 
                 $.ajax({
                     type: "POST",
-                    url: "../getHorariosChangeException",
+                    url: `${BASE_URL}index.php/getHorariosChangeException`,
                     data: { data },
                     dataType: "JSON",
                     beforeSend: function () {
@@ -1672,7 +1672,7 @@ $(document).ready(() => {
 
             $.ajax({
                 type: "POST",
-                url: "../getHorariosChange",
+                url: `${BASE_URL}index.php/getHorariosChange`,
                 data: { year: $('#anoActual').text() },
                 dataType: "json",
                 beforeSend: function () {
@@ -1780,7 +1780,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: "../cambiarHorariosSeleccionados",
+            url: `${BASE_URL}index.php/cambiarHorariosSeleccionados`,
             data: { cambios: cambios },
             dataType: "JSON",
             success: function (response) {
@@ -1820,7 +1820,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: "../comprobarHorarios",
+            url: `${BASE_URL}index.php/comprobarHorarios`,
             data: { year: currentYear, instalacion: instalacion },
             dataType: "json",
             beforeSend: function (event) {
@@ -2240,17 +2240,6 @@ $(document).ready(() => {
         if (valido && dataOpcional && typeof dataOpcional === 'object') {
             dataOpcional['horarios'] = dataHorarios;
         }
-
-
-        $.ajax({
-            type: "method",
-            url: "url",
-            data: "data",
-            dataType: "dataType",
-            success: function (response) {
-                
-            }
-        });
 
         return valido;
     }

@@ -1,3 +1,37 @@
+<div class="d-flex justify-content-center d-none contenedor-alert-instalacion pt-2">
+    <div class="alert alert-danger alert-dismissible fade show alert-instalacion-no-disponible w-40 d-flex align-items-center justify-content-center gap-2 m-0" role="alert">
+
+      <i class="bi bi-exclamation-triangle fs-5"></i>
+
+      <p class="mb-0"><strong>Ups!!</strong>&nbsp;Esta instalación no está disponible en estos momentos</p>
+
+    </div>
+</div>
+
+<div class="d-flex justify-content-center d-none contenedor-alert-errores pt-2">
+    <div class="alert alert-danger alert-dismissible fade show alert-error-reserva w-40 d-flex align-items-center justify-content-center gap-2 m-0" role="alert">
+
+      <i class="bi bi-exclamation-triangle fs-5"></i>
+
+      <p class="mb-0"><strong>Ups!!</strong>&nbsp;Se ha producido un error interno</p>
+
+       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+    </div>
+</div>
+
+<div class="d-flex justify-content-center d-none contenedor-alert-reservas-success pt-2">
+    <div class="alert alert-success alert-dismissible fade show alert-reserva-hecha w-100 m-0" role="alert">
+
+      <i class="bi bi-bookmark-check-fill fs-5"></i>
+
+      <span>Se ha realizado la reserva <strong>correctamente</strong></span>
+
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+    </div>
+</div>
+
 <div class="paginaInstalacion">
     <div class="infoInstalacion">
         <div class="categoriasInstalacion">

@@ -65,6 +65,14 @@
                     <input type="text" class="form-control" id="emailReg" name="emailReg" placeholder="Ej: email@ejemplo.com" autofocus="">
                 </div>
                 <br>
+
+                <div class=" loginEmail">
+                    <label for="telfReg" class="form-label">Teléfono <span class="campo-obligatorio">*</span></label>
+                    <input type="tel" class="form-control" id="telfReg" name="telfReg" placeholder="Ej: 666111333"  pattern="[0-9]{9}" autofocus="">
+                </div>
+                <br>
+
+
                 <div class=" form-password-toggle">
                     <label class="form-label" for="passwordReg">Contraseña <span class="campo-obligatorio">*</span></label>
                     <div class="input-group input-group-merge loginPassword">

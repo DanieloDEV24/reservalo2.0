@@ -58,6 +58,7 @@ class Login extends BaseController
                         "id_usuario" => $datosUsuario["id_usuario"]
                     ];
 
+
                     $this->accesoUsuario($data);
 
                     return redirect()->to('/'); 
@@ -107,6 +108,7 @@ class Login extends BaseController
             // Recojo los datos del formulario
             $nombre   = $post['nombreReg'];
             $email    = $post['emailReg'];
+            $telf     = $post['telfReg'];
             $password = $post['passwordReg'];
 
             // Comprobamos los email existentes para no repetirse
@@ -127,8 +129,8 @@ class Login extends BaseController
             }
             else 
             {
-                $idInsert = $loginModel->registrar($nombre, $email, $password);
-                $usuario  = $loginModel->buscaUsuarioPorId($idInsert);
+                $idInsert = $loginModel->registrar($nombre, $email, $telf, $password);
+                $usuario  = $loginModel->buscaUsuarioPorId($idInsert);  
 
                 $data = [
                     "nombre"     => $usuario["nombre"],
@@ -350,6 +352,7 @@ $fecha_formateada = $formatter->format($date);
     {
         // Se obtiene la instancia de la sesión
         $session = session();
+        $loginModel = new loginModel();
 
         $dataSesion = [
             "nombre"     => $data["nombre"],
@@ -359,6 +362,8 @@ $fecha_formateada = $formatter->format($date);
         ];
 
         $session->set("usuario", $dataSesion);
+        $loginModel->setUltimoAcceso(intval($data["id_usuario"]));
+
        
     }
 

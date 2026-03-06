@@ -19,6 +19,7 @@
 
   <script src="<?= base_url() ?>js/jquery.js"></script>
   <script src="<?= base_url() ?>js/movimiento.js"></script>
+  <script src="<?= base_url() ?>js/plantilla.js"></script>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
@@ -27,6 +28,13 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+  <!-- CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2-bootstrap-5-theme@1.3.0/dist/select2-bootstrap-5-theme.min.css" rel="stylesheet" />
+
+<!-- JS (después de jQuery) -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
 </head>
 
@@ -46,9 +54,9 @@
   </a>
   <ul class="dropdown-menu">
     <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudInstalaciones"> Gestor Instalaciones</a></li>
-    <li><a class="dropdown-item" style="color: #000;" type="button"> Gestor categorias</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/gestorCategorias"> Gestor Categorias</a></li>
     <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudReservas"> Gestor Reservas</a></li>
-
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/gestorUsuarios"> Gestor Usuarios</a></li>
   </ul>
 </div>
 
@@ -69,14 +77,31 @@
                       <span><?= $session->get('usuario')["nombre"];?></span>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end iconoAvatar" style="background-color: #111">
-                    <li style="width: 100%" class="d-flex justify-content-center">
-                      <a class="dropdown-item d-flex justify-content-center iconoAvatar" href="<?=site_url('/logout')?>">
+                    <li style="width: 100%" class="d-flex justify-content-start">
+                      <a class="dropdown-item d-flex justify-content-start iconoAvatar" href="<?=site_url('/logout')?>">
                         <i class="bi bi-door-open me-2"></i>
                         <span class="align-middle">Cerrar Sesión</span>
                       </a>
                     </li>
+
+                    <?php if ($session->has('usuario') && intval($session->get('usuario')['rol']) === 1): ?>
+                    <li style="width: 100%" class="d-flex justify-content-start">
+                      <a class="dropdown-item d-flex justify-content-start iconoAvatar" id="btnMisReservas" href="#">
+                        <i class="bi bi-calendar-check me-2"></i>
+                        <span class="align-middle">Mis Reservas</span>
+                      </a>
+                    </li>
+
+                    <li style="width: 100%" class="d-flex justify-content-start">
+                      <a class="dropdown-item d-flex justify-content-start iconoAvatar" id="btnMiPerfil" href="#" data-index="<?= intval($session->get('usuario')["id_usuario"]) ?>">
+                        <i class="bi bi-person-fill"></i>
+                        <span class="align-middle">Mi perfil</span>
+                      </a>
+                    </li>
+                    <?php endif; ?>
                   </ul>
-                </li>
+                  
+          </li>
           <?php
         }
         else 
@@ -190,5 +215,8 @@
       </div>
   </footer>
 </body>
+
+<?= isset($modalInformacionPersonal) ? $modalInformacionPersonal : '' ?>
+<?= isset($modalMisReservas) ? $modalMisReservas : '' ?>
 
 </html>

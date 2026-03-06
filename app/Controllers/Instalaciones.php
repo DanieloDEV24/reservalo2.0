@@ -38,6 +38,7 @@ class Instalaciones extends BaseController
         $assets = [
             "css" => [
                 'css/crudInstalaciones.css',
+                'css/instalaciones.css',
                 'css/style.css'
             ], 
 
@@ -48,7 +49,10 @@ class Instalaciones extends BaseController
 
         $modalAnularHoras = view('reservas/modalAnularHoras');
         $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
-        return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas]);
+        $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
+
+
+        return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas, "modalInformacionPersonal" => $modalInformacionPersonal]);
     }
 
     public function nuevaInstalacion()
@@ -754,8 +758,10 @@ class Instalaciones extends BaseController
 
         $modalAnularHoras = view('reservas/modalAnularHoras');
         $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
+        $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
+
         $view = view('instalaciones/instalaciones', ["instalaciones" => $instalaciones, "numInstalaciones"=>$numInstalaciones, "instalacionesCategorias" => $instalacionesCategorias, "categorias" => $categorias, "baseUrl" => base_url()]);
-        return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas]);
+        return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas, "modalInformacionPersonal" => $modalInformacionPersonal]);
     }
 
 
@@ -787,9 +793,10 @@ class Instalaciones extends BaseController
 
             $modalAnularHoras = view('reservas/modalAnularHoras');
             $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
+            $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
             $view = view('instalaciones/instalacion', ["instalacion" => $instalacion, "pistas" => $pistas, "modalReservaPista" => $modalReservaPista, "baseUrl" => base_url()]);
-            return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas]);
+            return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas, "modalInformacionPersonal" => $modalInformacionPersonal]);
         }
         else
         {

@@ -137,13 +137,17 @@ class instalacionesModel extends Model
 
     public function getPistasById(int $id_pista)
     {
-        //Conexion a la base de datos
+        // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
 
-        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        // Tabla principal
         $builder = $db->table('pistas');
 
-        $query = $builder->select()->where('id_pista', $id_pista)->get();
+        $query = $builder
+            ->select('pistas.*, instalaciones.estado')
+            ->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion', 'inner')
+            ->where('pistas.id_pista', $id_pista)
+            ->get();
 
         $result = $query->getResultArray();
         return $result;

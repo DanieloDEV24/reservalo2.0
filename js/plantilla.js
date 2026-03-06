@@ -103,6 +103,9 @@ $(document).ready(() => {
                             `;
                         });
                     }
+                    else {
+
+                    }
 
                     let div = $(`<div class="reserva-card" data-pedido="${reserva.id_pedido}">
                                
@@ -123,7 +126,7 @@ $(document).ready(() => {
                                        <div class="detalle-icon">📅</div>
                                        <div class="detalle-content">
                                           <div class="detalle-label">Fecha</div>
-                                          <div class="detalle-value">${formatearFecha(response.reservas[0].fecha) + " → " + formatearFecha(response.reservas[response.reservas.length - 1].fecha)}</div>
+                                          <div class="detalle-value info-fechas">${formatearFecha(response.reservas[0].fecha) + " → " + formatearFecha(response.reservas[response.reservas.length - 1].fecha)}</div>
                                         </div>
                                     </div>
 
@@ -181,10 +184,13 @@ $(document).ready(() => {
                                       </div>
                                   </div>
                                   ` : ''}
+
+                                  ${(parseInt(reserva.tipo_reserva) === 1) ? "<div id='días-anular-reserva'></div>" : ""}
                                </div>
 
                                <div class="reserva-actions">
                                     <button class="btn btn-danger btn-anular-reserva" data-pedido="${reserva.id_pedido}" data-tipoReserva="${reserva.tipo_reserva}">Anular</button>
+                                    ${(parseInt(reserva.tipo_reserva) === 1) ? `<button class="btn btn-danger btn-anular-reserva-dia" data-pedido="${reserva.id_pedido}" data-tipoReserva="${reserva.tipo_reserva}" data-reserva="${reserva.id_reserva}">Anular Día </button>` : ''}
                                 </div>
                             </div>`);
 
@@ -196,7 +202,6 @@ $(document).ready(() => {
         }
        });
     });
-
 
     $(document).on('click', '.btn-anular-reserva', function(){
         const idPedido = $(this).data('pedido');
@@ -230,7 +235,6 @@ $(document).ready(() => {
         }
     })
 
-
     $(document).on('click', '.icono-borrar-reserva', function () {
         if ($(this).closest('.hora-seleccionada-borrar').length) {
             return; // está dentro del padre → no hacer nada
@@ -250,7 +254,6 @@ $(document).ready(() => {
         $(this).append(`<i class="bi bi-x-lg icon-borrar"></i>`)
         
     });
-
 
     $(document).on('click', '.btn-cancelar-anulacion', function(){
 
@@ -334,7 +337,6 @@ $(document).ready(() => {
         $('#modalAnularHoras').modal('show');
     })
 
-
     $(document).on('click', '#btn-anular-horas', function(){
 
         let datos = []
@@ -361,7 +363,6 @@ $(document).ready(() => {
         })
 
     })
-
 
     $(document).on('click', '.btn-confirmar-anulacion-pedido', function(){
 
@@ -416,6 +417,278 @@ $(document).ready(() => {
         })
     })
 
+    $(document).on('click', '#btnMiPerfil', function(){
+
+        let idUsuario = $(this).data('index');
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/getUsuario`,
+            data: {id_usuario: idUsuario},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true){
+
+                    $('#modalInformacionPersonal').data('usuario', idUsuario);
+
+                    $('#modalInformacionPersonal .datos-usuario-editar .logo-usuario').text(response.usuario.nombre[0])
+                    $('#modalInformacionPersonal .datos-usuario-editar .info-usuario .nombre-usuario').text(response.usuario.nombre)
+                    $('#modalInformacionPersonal .datos-usuario-editar .info-usuario .registro-ultm-acceso').text(`Fecha Registro: ${formatearFecha(response.usuario.fecha_registro)} · Último Acceso: ${tiempoTranscurrido(response.usuario.ultimo_inicio)}`)
+
+                    $('#modalInformacionPersonal #nombre-usuario-personal').val(response.usuario.nombre)
+                    $('#modalInformacionPersonal #telf-usuario-personal').val(response.usuario.telf)
+                    $('#modalInformacionPersonal #email-usuario-personal').val(response.usuario.email)
+
+                    $('#modalInformacionPersonal').modal('show')
+                }
+            }
+        });
+    })
+
+    $(document).on('click', '.boton-password-usuario-personal', function () {
+
+        if ($(this).closest('div').find('input').attr("type") === "password") {
+
+            $(this).find('i').replaceWith('<i class="bi bi-eye-slash"></i>');
+            $(this).closest('div').find('input').attr("type", "text")
+        }
+        else {
+
+            $(this).find('i').replaceWith('<i class="bi bi-eye"></i>');
+            $(this).closest('div').find('input').attr("type", "password")
+        }
+
+    })
+
+    $(document).on('click', '#btn-guardar-info-usuario-personal', function() {
+        let errores = []
+
+        let idUsuario = $('#modalInformacionPersonal').data('usuario')
+        let nombre = $('#nombre-usuario-personal').val();
+        let telf = $('#telf-usuario-personal').val().trim();
+        let email = $('#email-usuario-personal').val();
+        let passwordActual = $('#password-actual-usuario-personal').val();
+        let passwordNueva  = $('#password-usuario-personal').val();
+
+        if (nombre === "") {
+            errores.push({ campo: "Nombre", message: "El campo de nombre no puede estar vacío" })
+        }
+
+        if (telf === "") {
+            errores.push({ campo: "Telf", message: "El campo de telefono no puede estar vacío" })
+        }
+        else if (isNaN(telf) || telf === "e") {
+            errores.push({ campo: "Telf", message: "El telefono debe ser un numero" })
+        }
+        else if (!/^[6789]\d{8}$/.test(telf)) {
+            errores.push({ campo: "Telf", message: "El telefono tener 9 dígitos y estar con el formato correcto" })
+        }
+
+        if (email === "") {
+            errores.push({ campo: "Email", message: "El campo de email no puede estar vacío" })
+        }
+        else if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(email)) {
+            errores.push({ campo: "Email", message: "El email debe tener un formato correcto" })
+        }
+
+        if(passwordActual !== "" && passwordNueva === "") {
+            errores.push({ campo: "Contraseña", message: "Debe introducir una contraseña nueva" })
+        }
+        else if (passwordActual === "" && passwordNueva !== ""){
+            errores.push({ campo: "Contraseña", message: "Debe introducir la contraseña actual" })
+        }
+
+
+        if (errores.length === 0) {
+            $.ajax({
+                type: "POST",
+                url: `${BASE_URL}index.php/editarUsuarioPersonal`,
+                data: { id_usuario: idUsuario, nombre: nombre, email: email, telf: telf, password_vieja: passwordActual, password_nueva: passwordNueva },
+                dataType: "JSON",
+                success: function (response) {
+
+                    if (response.success == true) {
+                        $('#modalInfoUsuario').modal('hide')
+                    }
+                }
+            });
+        }
+        else {
+
+            $('#modalInfoUsuario .alert-errores-editar-usuario .errores ul').empty()
+
+            errores.map(e => {
+                $('#modalInfoUsuario .alert-errores-editar-usuario .errores ul').append(`<li>${e.message}</li>`)
+            })
+
+            $('#modalInfoUsuario .contenedor-alert-editar-usuario').removeClass('d-none');
+            $('#modalInfoUsuario .alert-errores-editar-usuario').show();
+        }
+    })
+
+    $(document).on('click', '#btn-guardar-info-usuario-personal', function() {
+        let errores = []
+
+        let idUsuario = $('#modalInformacionPersonal').data('usuario')
+        let nombre = $('#nombre-usuario-personal').val();
+        let telf = $('#telf-usuario-personal').val().trim();
+        let email = $('#email-usuario-personal').val();
+        let passwordActual = $('#password-actual-usuario-personal').val();
+        let passwordNueva  = $('#password-usuario-personal').val();
+
+        if (nombre === "") {
+            errores.push({ campo: "Nombre", message: "El campo de nombre no puede estar vacío" })
+        }
+
+        if (telf === "") {
+            errores.push({ campo: "Telf", message: "El campo de telefono no puede estar vacío" })
+        }
+        else if (isNaN(telf) || telf === "e") {
+            errores.push({ campo: "Telf", message: "El telefono debe ser un numero" })
+        }
+        else if (!/^[6789]\d{8}$/.test(telf)) {
+            errores.push({ campo: "Telf", message: "El telefono tener 9 dígitos y estar con el formato correcto" })
+        }
+
+        if (email === "") {
+            errores.push({ campo: "Email", message: "El campo de email no puede estar vacío" })
+        }
+        else if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(email)) {
+            errores.push({ campo: "Email", message: "El email debe tener un formato correcto" })
+        }
+
+        if(passwordActual !== "" && passwordNueva === "") {
+            errores.push({ campo: "Contraseña", message: "Debe introducir una contraseña nueva" })
+        }
+        else if (passwordActual === "" && passwordNueva !== ""){
+            errores.push({ campo: "Contraseña", message: "Debe introducir la contraseña actual" })
+        }
+
+
+        if (errores.length === 0) {
+            $.ajax({
+                type: "POST",
+                url: `${BASE_URL}index.php/editarUsuarioPersonal`,
+                data: { id_usuario: idUsuario, nombre: nombre, email: email, telf: telf, password_vieja: passwordActual, password_nueva: passwordNueva },
+                dataType: "JSON",
+                success: function (response) {
+
+                    if (response.success == true) {
+                        $('#modalInformacionPersonal').modal('hide')
+                        $('#modalInformacionPersonal #password-actual-usuario-personal').val('')
+                        $('#modalInformacionPersonal #password-usuario-personal').val('')
+                    }
+                    else {
+                        $('#modalInformacionPersonal .alert-errores-editar-usuario .errores ul').empty()
+                        $('#modalInformacionPersonal .alert-errores-editar-usuario .errores ul').append(`<li>${response.message}</li>`)
+                        $('#modalInformacionPersonal .contenedor-alert-editar-usuario').removeClass('d-none');
+                        $('#modalInformacionPersonal .alert-errores-editar-usuario').show();    
+                    }
+                }
+            });
+        }
+        else {
+
+            $('#modalInformacionPersonal .alert-errores-editar-usuario .errores ul').empty()
+
+            errores.map(e => {
+                $('#modalInformacionPersonal .alert-errores-editar-usuario .errores ul').append(`<li>${e.message}</li>`)
+            })
+
+            $('#modalInformacionPersonal .contenedor-alert-editar-usuario').removeClass('d-none');
+            $('#modalInformacionPersonal .alert-errores-editar-usuario').show();
+        }
+    })
+
+    $(document).on('input', '#password-actual-usuario-personal', function() {
+
+        let valor = $(this).val();
+        if(valor !== "") {
+            $('#password-usuario-personal').prop('readonly', false);
+        }
+        else {
+            $('#password-usuario-personal').val("")
+            $('#password-usuario-personal').prop('readonly', true);
+        }
+    })
+
+    $(document).on('click', '.btn-anular-reserva-dia', function(){
+
+        let idReserva   = parseInt($(this).data("reserva"))
+        let idPedido    = parseInt($(this).data("pedido"))
+        let tipoReserva = parseInt($(this).data("tipoReserva"))
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/getReservasByPedido`,
+            data: {id_pedido: idPedido,},
+            dataType: "JSON",
+            success: function (response) {
+
+                if(response.success == true) {
+
+                    if(response.reservas.length > 0){
+                        
+                        $('#días-anular-reserva').empty();
+                        $('.reserva-actions').empty();
+                        $('.reserva-actions').append(`<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                         Cancelar <i class="bi bi-x-lg"></i>
+                                                      </button>`)
+
+                        $('.reserva-actions').append(`<button type="button" class="btn btn-danger btn-borrar-dia" >
+                                                         Borrar <i class="bi bi-trash3"></i>
+                                                      </button>`)
+
+                        response.reservas.map(r => {
+                            
+                            let cardDia = $(`<div class="franja-horaria" data-reserva="${r.id_reserva}">
+                                                <span class="franja-horaria-icon"><i class="bi bi-calendar-check"></i></span>
+                                                <span>${formatearFecha(r.fecha)}</span>
+                                                <button class="icono-borrar-reserva"><i class="bi bi-x-lg icon-borrar"></i></button>
+                                            </div>`);
+
+                            $('#días-anular-reserva').append(cardDia)
+                        })
+                    }
+                }
+            }
+        });
+    })
+
+    $(document).on('click', '.btn-borrar-dia', function(){
+
+        let datos = []; 
+        let idPedido = $(this).closest('.reserva-card').data('pedido');
+
+        $('#días-anular-reserva .franja-horaria.hora-seleccionada-borrar').map(function(i, el) {
+            datos.push({ id_reserva: $(el).data("reserva"), id_pedido: idPedido });
+        });
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/borrarReservasDia`,
+            data: {data: datos},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true) {
+
+                    if(response.reservas.length > 0) {
+                        datos.map(d => {
+                            $(`#días-anular-reserva .franja-horaria.hora-seleccionada-borrar[data-reserva="${parseInt(d.id_reserva)}"]`).remove();
+                        })
+
+                        $(`.detalle-value.info-fechas`).text(formatearFecha(response.reservas[0].fecha) + " → " + formatearFecha(response.reservas[response.reservas.length - 1].fecha))
+                    }
+                    else {
+                        $(`.reserva-card[data-pedido="${idPedido}"]`).remove();
+                    }
+                }
+            }
+        });
+    })
+
     function sumarHora(hora) {
         let [horas, minutos] = hora.split(":");
         let nuevaHora = (parseInt(horas) + 1).toString().padStart(2, '0');
@@ -423,12 +696,12 @@ $(document).ready(() => {
     }
 
     function formatearFecha(fechaStr) {
-        const d = new Date(fechaStr);
-        return d.toLocaleDateString('es-ES', {
-            day: '2-digit',
-            month: 'short',
-            year: 'numeric'
-        });
+            const d = new Date(fechaStr);
+            return d.toLocaleDateString('es-ES', {
+                day: '2-digit',
+                month: 'short',
+                year: 'numeric'
+            });
     }
 
     function formatearFechaPeriodo(fechas) {
@@ -446,7 +719,7 @@ $(document).ready(() => {
         return str.charAt(0).toUpperCase() + str.slice(1);
     }
 
-function horasPasadasDesde(fechaReserva, horaString) {
+    function horasPasadasDesde(fechaReserva, horaString) {
     const [horas, minutos] = horaString.split(':').map(Number);
     
     const fechaCompleta = new Date(fechaReserva);
@@ -461,5 +734,30 @@ function horasPasadasDesde(fechaReserva, horaString) {
     const horasPasadas = diferencia / (1000 * 60 * 60);
     
     return horasPasadas >= 24;
-}
+    }
+
+    function tiempoTranscurrido(fechaString) {
+
+        // Convertimos a formato válido para Date
+        const fecha = new Date(fechaString.replace(" ", "T"));
+        const ahora = new Date();
+
+        const diferenciaMs = ahora - fecha;
+        const segundos = Math.floor(diferenciaMs / 1000);
+        const minutos = Math.floor(segundos / 60);
+        const horas = Math.floor(minutos / 60);
+        const dias = Math.floor(horas / 24);
+
+        if (segundos < 60) {
+            return "Hace un momento";
+        } else if (minutos < 60) {
+            return `Hace ${minutos} min`;
+        } else if (horas < 24) {
+            return `Hace ${horas} hora${horas > 1 ? "s" : ""}`;
+        } else {
+            return `Hace ${dias} día${dias > 1 ? "s" : ""}`;
+        }
+    }
+
+    
 });

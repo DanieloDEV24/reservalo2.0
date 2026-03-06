@@ -204,7 +204,7 @@
 
 .contenedor-img-reserva {
     width: 100%;
-    height: 30vh;
+    height: 33vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover; /* ¡Esto asegura que la imagen cubra todo el contenedor! */
@@ -227,7 +227,7 @@
 .contenedor-reservas {
     display: grid;
     gap: 2rem; /* Espacio entre celdas */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
     /* Cada columna mínimo 250px y máximo 1fr (espacio disponible) */
     padding: 1rem;
 }
@@ -244,6 +244,7 @@
 
 .contenedor-card-reserva .title-pista-reserva {
     font-size: 2rem;
+    margin-bottom: 0%;
 }
 
 .paginaReservas .title-page, .paginaReservas .description-page {
@@ -331,4 +332,104 @@
     align-items: start;
     justify-content: space-between;
     margin-top: 10%;
+}
+
+.estado-reserva {
+    color: #fff;
+    border-radius: 20px;
+    padding: .5% 2%;
+    margin-top: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 1.05rem;
+}
+
+.estado-reserva.estado-confirmado {background-color: #18B92B;}
+.estado-reserva.estado-tramite {background-color: #F2A413;}
+.estado-reserva.estado-no-pagada{background-color: #F54927;}
+
+.card-reserva {
+    max-width: 35rem;
+    transition: all .15s ease-in;
+}
+
+.card-reserva:hover{
+    transform: scale(1.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-footer {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 3%;
+    padding-top: 10% !important;
+    /* padding-right: 5% !important; */
+}
+
+.instalacionDireccion {
+    padding-top: 0%;
+    color: #aaa;
+    font-size: 1rem;
+}
+
+
+#modalAnularReservaAdmin .nombrePista {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    margin-bottom: 0%;
+}
+
+#modalAnularReservaAdmin .instalacionDireccion{
+    color: #aaa;
+    margin-bottom: 0%;
+}
+
+.datos-reserva-anular-admin{
+    border: 2px solid #aaa;
+    padding: 0%;
+    border-radius: 10px;
+}
+
+#modalAnularReservaAdmin .info-principal {
+    background-color: #eeeeee80;
+    border-radius: 10px 10px 0px 0px;
+    padding: 2%;
+    border-bottom: 1px solid #aaa;
+}
+
+#modalAnularReservaAdmin .fecha-anular-reserva-admin, 
+#modalAnularReservaAdmin .horario-anular-reserva-admin, 
+#modalAnularReservaAdmin .pedido-anular-reserva-admin, 
+#modalAnularReservaAdmin .precio-anular-reserva-admin {
+    display: flex;
+    align-items: center;
+    gap: 25%;
+    padding: 2% 5%;
+    border-bottom: 1px solid #ddd;
+}
+
+#modalAnularReservaAdmin .horario-anular-reserva-admin {
+    gap: 23.5%;
+}
+
+#modalAnularReservaAdmin .pedido-anular-reserva-admin {
+    gap: 13%;
+}
+
+#modalAnularReservaAdmin .fecha-anular-reserva-admin .title-anular-admin, 
+#modalAnularReservaAdmin .horario-anular-reserva-admin .title-anular-admin, 
+#modalAnularReservaAdmin .pedido-anular-reserva-admin .title-anular-admin, 
+#modalAnularReservaAdmin .precio-anular-reserva-admin .title-anular-admin{
+    color: #444;
+    font-size: 1.1rem;
+}
+
+#modalAnularReservaAdmin .fecha-anular-reserva-admin .texto-anular-admin,
+#modalAnularReservaAdmin .horario-anular-reserva-admin .texto-anular-admin,
+#modalAnularReservaAdmin .pedido-anular-reserva-admin .texto-anular-admin, 
+#modalAnularReservaAdmin .precio-anular-reserva-admin .texto-anular-admin{
+    font-size: 1.2rem;
 }

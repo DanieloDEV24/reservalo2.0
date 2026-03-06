@@ -611,7 +611,7 @@ $(document).ready(() => {
 
             // Petición Ajax al back en la que enviamos los datos para crear la instalación y guardarlas en la base de datos
             $.ajax({
-                url: 'nuevaInstalacion', // --> URL a la que enviamos la petición
+                url: `${BASE_URL}index.php/nuevaInstalacion`, // --> URL a la que enviamos la petición
                 type: 'POST',
                 data: formData,
                 processData: false, // Importante para enviar FormData
@@ -737,7 +737,7 @@ $(document).ready(() => {
 
         // Reaclizamos una petición ajax al back para obtener la información de la instalación con el id anteriormente guardado
         $.ajax({
-            url: 'verInstalacion', // --> URL donde hacemos la petición
+            url: `${BASE_URL}index.php/verInstalacion`, // --> URL donde hacemos la petición
             method: 'POST',
             data: { id: index },
             dataType: 'json',
@@ -861,7 +861,7 @@ $(document).ready(() => {
 
         // Hacemos una petición ajax al back para obtener los datos de esa instalación
         $.ajax({
-            url: 'editarInstalacion', // --> URL a la que se hace la petición
+            url: `${BASE_URL}index.php/editarInstalacion`, // --> URL a la que se hace la petición
             method: 'POST',
             data: { id: index },
             dataType: 'json',
@@ -1089,7 +1089,7 @@ $(document).ready(() => {
 
         // Petición ajax en la que obtenemos los datos de la pista
         $.ajax({
-            url: 'infoPista', // --> URL donde hacemos la petición
+            url: `${BASE_URL}index.php/infoPista`, // --> URL donde hacemos la petición
             method: 'POST',
             data: { id: idPista },
             dataType: 'json',
@@ -1167,7 +1167,7 @@ $(document).ready(() => {
         // Petición AJAX al backend
         $.ajax({
             type: "POST",
-            url: "editarPista", // <-- tu endpoint en el backend
+            url: `${BASE_URL}index.php/editarPista`, // <-- tu endpoint en el backend
             data: formData,
             processData: false, // <-- importante para que jQuery no lo procese
             contentType: false, // <-- importante para enviar correctamente los archivos
@@ -1219,7 +1219,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: "getNewIndexPista",
+            url: `${BASE_URL}index.php/getNewIndexPista`,
             data: "",
             dataType: 'json',
             beforeSend: function (event) {
@@ -1452,7 +1452,7 @@ $(document).ready(() => {
         // Petición ajax al back con la que obtenemos la información sobre la pista
         $.ajax({
             type: "POST",
-            url: "infoPista", // --> URL donde va destinada la peticion
+            url: `${BASE_URL}index.php/infoPista`, // --> URL donde va destinada la peticion
             data: { id: idPista },
             dataType: "json",
             success: function (response) {
@@ -1499,7 +1499,7 @@ $(document).ready(() => {
         // Hago una petición ajax al back para eliminar la pista de la base de datos
         $.ajax({
             type: "POST",
-            url: "borrarPista", // --> URL a donde va la petición
+            url: `${BASE_URL}index.php/borrarPista`, // --> URL a donde va la petición
             data: { id: id },
             dataType: "json",
             success: function (response) {
@@ -1599,7 +1599,7 @@ $(document).ready(() => {
         // Hacemos la petición ajax al back para enviar los datos de la pista a crear
         $.ajax({
             type: "POST",
-            url: "crearPista", // --> URL a donde enviaremos la petición
+            url: `${BASE_URL}index.php/crearPista`, // --> URL a donde enviaremos la petición
             data: formData,
             processData: false, // Importante para enviar FormData
             contentType: false, // Importante para enviar FormData
@@ -1770,7 +1770,7 @@ $(document).ready(() => {
         // Petición AJAX al backend para guardar los datos de la instalación editada
         $.ajax({
             type: "POST",
-            url: "editarInstalacionBD",
+            url: `${BASE_URL}index.php/editarInstalacionBD`,
             data: formData,
             contentType: false,
             processData: false,
@@ -1810,7 +1810,7 @@ $(document).ready(() => {
         // Petición ajax al back para obtener el nombre de la instalación y mostrarlo en el modal
         $.ajax({
             type: "POST",
-            url: "mensajeDarBajaInstalacion", // --> URL donde va destinada la petición
+            url: `${BASE_URL}index.php/mensajeDarBajaInstalacion`, // --> URL donde va destinada la petición
             data: { id: index },
             dataType: "json",
             success: function (response) {
@@ -1835,7 +1835,7 @@ $(document).ready(() => {
         let index = $('#modalBajaInstalacion').data('index');
         $.ajax({
             type: "POST",
-            url: "darBajaInstalacion", // --> URL donde va destinada la petición
+            url: `${BASE_URL}index.php/darBajaInstalacion`, // --> URL donde va destinada la petición
             data: { id: index },
             dataType: "json",
             success: function (response) {
@@ -1875,7 +1875,7 @@ $(document).ready(() => {
         // Petición ajax al back para dar de alta la instalación
         $.ajax({
             type: "POST",
-            url: "darAlta", // --> URL donde va destinada la petición
+            url: `${BASE_URL}index.php/darAlta`, // --> URL donde va destinada la petición
             data: { id: index },
             dataType: "json",
             beforeSend: function (event) {
@@ -1924,7 +1924,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: "mensajeBorrarInstalacion",
+            url: `${BASE_URL}index.php/mensajeBorrarInstalacion`,
             data: { id: index },
             dataType: "json",
             success: function (response) {
@@ -2009,7 +2009,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: "borrarInstalacion", // --> URL donde va destinada la petición
+            url: `${BASE_URL}index.php/borrarInstalacion`, // --> URL donde va destinada la petición
             data: { id: index },
             dataType: "json",
             success: function (response) {
@@ -2156,7 +2156,7 @@ $(document).ready(() => {
 
     $.ajax({
         type: "POST",
-        url: "crudInstalaciones",
+        url: `${BASE_URL}index.php/crudInstalaciones`,
         data: { filter: filter },
         dataType: "json",
         beforeSend: function(){
@@ -2280,7 +2280,7 @@ $(document).ready(() => {
 
         $.ajax({
         type: "POST",
-        url: "crudInstalaciones",
+        url: `${BASE_URL}index.php/crudInstalaciones`,
         data: { filter: filter },
         dataType: "json",
         beforeSend: function(){
@@ -2378,7 +2378,7 @@ $(document).ready(() => {
 
         $.ajax({
         type: "POST",
-        url: "crudInstalaciones",
+        url: `${BASE_URL}index.php/crudInstalaciones`,
         data: { filter: null },
         dataType: "json",
         beforeSend: function(){
@@ -2629,7 +2629,7 @@ $(document).ready(() => {
 
     $.ajax({
     type: "POST",
-    url: "instalaciones",
+    url: `${BASE_URL}index.php/instalaciones`,
     data: { filterInstalaciones: filterInstalaciones },
     dataType: "json",
     beforeSend: function(){
@@ -2781,7 +2781,7 @@ $(document).ready(() => {
 
         $.ajax({
         type: "POST",
-        url: "instalaciones",
+        url: `${BASE_URL}index.php/instalaciones`,
         data: { filterInstalaciones: filterInstalaciones },
         dataType: "json",
         beforeSend: function(){
@@ -2907,7 +2907,7 @@ $(document).ready(() => {
 
         $.ajax({
         type: "POST",
-        url: "instalaciones",
+        url: `${BASE_URL}index.php/instalaciones`,
         data: { filterInstalaciones: null },
         dataType: "json",
         beforeSend: function(){

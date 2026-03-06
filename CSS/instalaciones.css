@@ -1873,3 +1873,18 @@ span.estado.no-disponible{
 .contenedor-dia-anular{
   margin-top: 5% !important;
 }
+
+.contenedor-alert-reservas{
+    position: sticky !important;
+    top: 0;
+    z-index: 9999;
+}
+
+.contenedor-alert-instalacion, .contenedor-alert-reservas-success {
+    position: fixed !important;
+    top: 3%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 9999;
+    width: auto;
+}

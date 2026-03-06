@@ -1,15 +1,25 @@
 <div class="modal fade" tabindex="-1" id="modalReservaPista" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
 
-  <div class="d-flex justify-content-center p-3 d-none contenedor-alert-reservas">
-    <div class="alert alert-danger alert-dismissible fade alertHoraNoDisponible w-50" role="alert">
+  <div class="d-flex justify-content-center d-none contenedor-alert-reservas pt-2">
+    
+    <div class="alert alert-danger alert-dismissible fade alertHoraNoDisponible w-50 m-0" role="alert">
 
       <i class="bi bi-exclamation-triangle fs-5"></i>
 
       <strong>Ups!!</strong>&nbsp;Ha habido un error. Esa hora ya no está disponible
 
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
+
+    <div class="alert alert-danger alert-dismissible fade show alert-no-usuario w-40 d-flex align-items-center justify-content-center gap-2 m-0" role="alert">
+
+      <i class="bi bi-exclamation-triangle fs-5"></i>
+
+      <p class="mb-0"><strong>Ups!!</strong>&nbsp;Debe seleccionar un usuario</p>
+
+    </div>
+
   </div>
+
 
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
     <div class="modal-content">
@@ -161,7 +171,11 @@
           </div>
         <?php endif; ?>
 
+        <?php $session = session(); ?>
 
+        <div class="contenedor-usuarios-admin pb-4">
+
+        </div>
 
         <!-- Precio -->
         <div class="card-precio mb-3 w-100">
@@ -262,7 +276,7 @@
       }
 
       if (fechaDia.getTime() === hoy.getTime() && tipo_reserva === 1) {
-         dia.classList.add('disabled');
+        dia.classList.add('disabled');
       }
 
       // Deshabilitar días pasados
@@ -296,7 +310,7 @@
         const day = String(fechaDia.getDate()).padStart(2, '0');
 
         dia.dataset.fecha = `${year}-${month}-${day}`;
-        
+
         // NO agregamos addEventListener aquí - se manejará con jQuery
       }
 
@@ -353,4 +367,4 @@
       });
     }
   });
-</script> 
+</script>

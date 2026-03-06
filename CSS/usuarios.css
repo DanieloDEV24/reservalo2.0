@@ -1,0 +1,234 @@
+.divTable {
+  padding: 2% 3%;
+  background-color: #fff;
+  margin: 2%;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+table td .dropdown button {
+  background-color: transparent;
+  border: 0;
+  border-radius: 100%;
+}
+
+table td .dropdown button:hover,
+table td .dropdown button:hover .dropdown-menu,
+table td .dropdown button:focus-within .dropdown-menu {
+  background-color: #ccc;
+}
+
+.btn.show,
+.btn:first-child:active {
+  background-color: #ccc !important;
+}
+
+table td .dropdown button::after {
+  display: none;
+}
+
+table td .dropdown button i {
+  color: #000;
+}
+
+.divTable .dropdown .dropdown-menu .li .dropdown-item:hover {
+  background-color: #ccc !important;
+}
+
+
+#tabla-usuarios td {
+  vertical-align: middle !important;
+}
+
+.contenedor-datos-usuario {
+  padding: 5%;
+  border-radius: 20px;
+  background-color: #eeeeee70;
+}
+
+.contenedor-datos-usuario .info-personal-usuario {
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  padding-bottom: 2%;
+}
+
+#modalReservasUsuario .datos-usuario-reservas .info-personal-usuario, 
+#modalInfoUsuario .datos-usuario-editar {
+  display: flex;
+  align-items: center;
+  gap: 2%;
+}
+
+
+.contenedor-datos-usuario .info-personal-usuario .logo-usuario, 
+#modalReservasUsuario .datos-usuario-reservas .info-personal-usuario .logo-usuario, 
+#modalInfoUsuario .datos-usuario-editar .logo-usuario {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #32cccc 0%, #1f6f6f 100%);
+  color: #fff;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.contenedor-datos-usuario .info-personal-usuario .info-usuario p, 
+#modalReservasUsuario .datos-usuario-reservas .info-personal-usuario .info-usuario p,
+#modalInfoUsuario .datos-usuario-editar p{
+  padding: 0%;
+  margin: 0%;
+}
+
+.contenedor-datos-usuario .info-personal-usuario .info-usuario .nombre-usuario, 
+#modalReservasUsuario .datos-usuario-reservas .info-personal-usuario .info-usuario .nombre-usuario, 
+#modalInfoUsuario .datos-usuario-editar .nombre-usuario {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.contenedor-datos-usuario .info-registro-usuario table {
+  width: 100%;
+  vertical-align: middle;
+}
+
+.contenedor-datos-usuario .info-registro-usuario td {
+  padding: 2%;
+}
+
+.contenedor-datos-usuario .info-registro-usuario  {
+  width: 35%;
+}
+
+#modalReservasUsuario .stats-usuario {
+  display: flex;
+  align-items: center;
+  gap: 10%;
+  justify-content: end;
+}
+
+#modalReservasUsuario .stats-usuario h3{
+  margin-bottom: 0%;
+  font-weight: 600;
+  color: #1db2b2;
+}
+
+
+#modalReservasUsuario .datos-usuario-reservas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2%;
+  border-bottom: 1px solid #ccc;
+}
+
+
+#modalReservasUsuario .datos-usuario-reservas .info-personal-usuario {
+  width: 50%;
+}
+
+#modalReservasUsuario .datos-usuario-reservas .stats-usuario {
+  width: 45%;
+}
+
+#modalReservasUsuario .contenedor-reservas .card-reserva-usuario-gestor {
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  background-color: #eeeeee50;
+  padding: 3%;
+  margin-top: 3%;
+}
+
+
+#modalReservasUsuario .contenedor-reservas .card-reserva-usuario-gestor .categoria-precio {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2%;
+}
+
+#modalReservasUsuario .contenedor-reservas .card-reserva-usuario-gestor .categoria-precio .categoria {
+  color: #fff;
+  background-color: #32cccc;
+  border-radius: 20px;
+  padding: .5% 1.5%;
+}
+
+#modalReservasUsuario .contenedor-reservas .card-reserva-usuario-gestor .categoria-precio .precio {
+  color: #1db2b2;
+}
+
+#modalReservasUsuario .contenedor-reservas .card-reserva-usuario-gestor .info-reserva p {
+  font-weight: lighter;
+  font-size: 1rem;
+  color: #666;
+}
+
+#modalReservasUsuario .contenedor-reservas .card-reserva-usuario-gestor .info-reserva h4 {
+  font-weight: bold;
+}
+
+#modalReservasUsuario .contenedor-reservas .card-reserva-usuario-gestor .info-reserva {
+  border-bottom: 1px solid #ccc;
+}
+
+#modalReservasUsuario .contenedor-reservas .card-reserva-usuario-gestor .extras-reserva {
+  display: flex;
+  align-items: center;
+  gap: 5%;
+  margin-top: 2%;
+}
+
+#modalReservasUsuario .contenedor-reservas .card-reserva-usuario-gestor .contenedor-estado-reserva {
+  margin-top: 3%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.estado-reserva {
+    color: #fff;
+    border-radius: 20px;
+    padding: .5% 2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    width: 25%;
+}
+
+.estado-reserva.estado-confirmado {background-color: #18B92B;}
+.estado-reserva.estado-tramite {background-color: #F2A413;}
+.estado-reserva.estado-no-pagada{background-color: #F54927;}
+
+.datos-usuario-reservas {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fff;
+  padding-top: 4%;
+}
+
+
+#modalInfoUsuario .datos-usuario-editar {
+  border-radius: 15px;
+  background-color: #eeeeee70;
+  padding: 3%;
+}
+
+#modalInfoUsuario .boton-password-usuario {
+  cursor: pointer;
+}
+
+#filtro-usuarios  {
+  background-color: #fff;
+  border-right: 0px solid #fff;
+}
+
+#input-filtro-usuarios {
+  border-left: 0px solid #fff;
+}

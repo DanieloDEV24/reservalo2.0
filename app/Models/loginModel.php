@@ -14,7 +14,7 @@ class loginModel extends Model
     protected $returnType = 'array'; //object
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['id_usuario', 'email', 'password'];
+    protected $allowedFields = ['id_usuario', 'email', 'password', 'id_rol', 'nombre', 'telf', 'token', 'token_date', 'usuario_baja', 'fecha_registro', 'ultimo_inicio', 'created_at', 'updated_at', 'deleted_at'];
 
     protected bool $allowEmptyInserts = false;
 
@@ -25,7 +25,7 @@ class loginModel extends Model
     protected $updatedField = 'updated_at';
     protected $deletedField = 'deleted_at';
 
-    public function registrar(string $nombre, string $email, string $password)
+    public function registrar(string $nombre, string $email, int $telf, string $password)
     {
 
         //En primer lugar añadimos el usuario a la tabla de usuarios
@@ -40,8 +40,12 @@ class loginModel extends Model
         $dataInsert = [
             "nombre"=>$nombre,
             "email"=> $email,
+            "telf" => $telf,
             "password"=> sha1($password),
-            "id_rol" =>1
+            "id_rol" =>1, 
+            "usuario_baja" => 0, 
+            "fecha_registro" => date('Y-m-d'),
+            "ultimo_inicio" => date('Y-m-d H:i:s')
         ];
 
         //Realizamos la consulta
@@ -179,6 +183,35 @@ class loginModel extends Model
 
         // Cambiamos el usuario
         $builder->where("id_usuario", $id_usuario)->update(["password" => $newPass]);
+    }
+
+    public function getUsuarios(){
+
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('usuarios');
+
+        $builder->select();
+
+        $query  = $builder->get();
+        $result = $query->getResultArray();
+
+        return $result;
+    }
+
+    public function setUltimoAcceso(int $id_usuario){
+
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla en la que vamos a buscar a los usuarios
+        $builder = $db->table('usuarios');
+
+        $builder->where("id_usuario", $id_usuario); 
+        $builder->set("ultimo_inicio", date('Y-m-d H:i:s'));
+        $builder->update();
     }
 
 }
