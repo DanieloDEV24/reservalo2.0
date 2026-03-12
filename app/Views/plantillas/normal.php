@@ -20,6 +20,7 @@
   </script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script src="<?= base_url() ?>js/jquery.js"></script>
   <script src="<?= base_url() ?>js/plantilla.js"></script>
@@ -71,6 +72,7 @@
     <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/gestorUsuarios"> Gestor Usuarios</a></li>
   </ul>
 </div>
+<a href="<?=base_url()?>index.php/dashboard" class="menu__link"> Estadística</a>
 <?php endif; ?>
     </nav>
     <div style="text-align: end; display: flex; justify-content: end" id="menu-usuario" data-rol="<?= ($session->has('usuario') ? $session->get('usuario')["rol"] : "" ) ?>">

@@ -96,3 +96,9 @@ $routes->post('/borrarReservasDia', 'Reservas::borrarReservasDia', ['filter' => 
 $routes->get('/gestorCategorias', 'Categorias::gestorCategorias', ['filter' => 'auth']);
 $routes->post('/getCategoria', 'Categorias::getCategoria', ['filter' => 'auth']);
 $routes->post('/editarCategorias', 'Categorias::editarCategorias', ['filter' => 'auth']);
+$routes->post('/borrarCategoria', 'Categorias::borrarCategoria', ['filter' => 'auth']);
+$routes->post('/crearCategoria', 'Categorias::crearCategoria', ['filter' => 'auth']);
+
+$routes->get('/dashboard', 'Dashboard::dashboard', ['filter' => 'auth']);
+$routes->get('/reservasMes', 'Dashboard::reservasMes', ['filter' => 'auth']);
+$routes->get('/reservasCategoria', 'Dashboard::reservasCategoria', ['filter' => 'auth']);

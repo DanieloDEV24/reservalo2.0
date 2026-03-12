@@ -59,7 +59,7 @@
     <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/gestorUsuarios"> Gestor Usuarios</a></li>
   </ul>
 </div>
-
+<a href="<?=base_url()?>index.php/dashboard" class="menu__link"> Estadística</a>
 <?php endif; ?>
     </nav>
     <div style="text-align: end; display: flex; justify-content: end">

@@ -9,6 +9,7 @@ use App\Models\usuariosModel;
 use DateTime;
 use App\Libraries\Pdf;
 use App\Libraries\SmsService;
+use App\Models\actividadModel;
 
 class Usuarios extends BaseController
 {
@@ -59,9 +60,17 @@ class Usuarios extends BaseController
     public function borrarUsuario() {
 
         $usuariosModel = new usuariosModel();
+        $actividadModel = new actividadModel();
         $post  = $this->request->getPost();
 
         if(!empty($post)) {
+
+            $actividad = $actividadModel->crearActividad([
+                "tipo" => 5,
+                "descripcion" => "Se ha eliminado el usuario ". session()->get('usuario')["email"], 
+                "fecha" => date("Y-m-d H:i:s"), 
+                "id_usuario" => session()->get('usuario')["id_usuario"]
+            ]);
 
             $id_usuario = intval($post["id_usuario"]);
             $usuariosModel->borrarUsuario($id_usuario);
@@ -100,6 +109,7 @@ class Usuarios extends BaseController
     public function editarUsuario() {
 
         $usuariosModel = new usuariosModel();
+        $actividadModel = new actividadModel();
         $post  = $this->request->getPost();
 
         if(!empty($post)) {
@@ -134,6 +144,12 @@ class Usuarios extends BaseController
 
 
             $usuariosModel->modificarUsuario($data_usuario);
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 15,
+                    "descripcion" => "Modificación del usuario ". session()->get('usuario')["email"], 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => session()->get('usuario')["id_usuario"]
+            ]);
 
             echo json_encode([
                 "success" => true,
@@ -146,6 +162,7 @@ class Usuarios extends BaseController
     public function editarUsuarioPersonal() {
 
         $usuariosModel = new usuariosModel();
+        $actividadModel = new actividadModel();
         $post  = $this->request->getPost();
 
         if(!empty($post)) {
@@ -197,6 +214,12 @@ class Usuarios extends BaseController
 
 
             $usuariosModel->modificarUsuario($data_usuario);
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 15,
+                    "descripcion" => "Modificación del usuario ". session()->get('usuario')["email"], 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => session()->get('usuario')["id_usuario"]
+            ]);
 
             echo json_encode([
                 "success" => true,
@@ -209,6 +232,7 @@ class Usuarios extends BaseController
     public function darBaja() {
 
         $usuariosModel = new usuariosModel();
+        $actividadModel = new actividadModel();
         $post  = $this->request->getPost();
 
         if(!empty($post)) {
@@ -216,6 +240,13 @@ class Usuarios extends BaseController
             $id_usuario = intval($post["id_usuario"]);
             $usuariosModel->setEstadoUsuario($id_usuario, 1);
             $num_reservas = intval($usuariosModel->getReservasPasadas($id_usuario));
+            
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 20,
+                    "descripcion" => "Baja del usuario ". session()->get('usuario')["email"], 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => session()->get('usuario')["id_usuario"]
+            ]);
 
             echo json_encode([
                 "success" => true,
@@ -229,6 +260,7 @@ class Usuarios extends BaseController
     public function darAlta() {
 
         $usuariosModel = new usuariosModel();
+        $actividadModel = new actividadModel();
         $post  = $this->request->getPost();
 
         if(!empty($post)) {
@@ -236,6 +268,13 @@ class Usuarios extends BaseController
             $id_usuario = intval($post["id_usuario"]);
             $usuariosModel->setEstadoUsuario($id_usuario, 0);
             $num_reservas = intval($usuariosModel->getReservasPasadas($id_usuario));
+
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 21,
+                    "descripcion" => "Alta del usuario ". session()->get('usuario')["email"], 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => session()->get('usuario')["id_usuario"]
+            ]);
 
             echo json_encode([
                 "success" => true,

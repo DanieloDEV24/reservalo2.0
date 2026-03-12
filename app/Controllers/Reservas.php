@@ -8,6 +8,7 @@ use App\Models\loginModel;
 use DateTime;
 use App\Libraries\Pdf;
 use App\Libraries\SmsService;
+use App\Models\actividadModel;
 
 class Reservas extends BaseController
 {
@@ -18,17 +19,22 @@ class Reservas extends BaseController
         $loginModel = new loginModel();
         $post  = $this->request->getPost();
 
-       if(!empty($post)){
+        if(!empty($post)){
 
             $id_pista = intval($post["pistaId"]);
             $fecha = $post["fecha"];
             $rolUsuario = intval($post["rol"]);
+            $tipo_reserva = intval($post["tipo_reserva"]);
 
+
+            $infoPista = [];
+            
+            
             // Obtenemos la informacion de la pista
             $infoPista = $reservasModel->getInfoPista($id_pista, $fecha);
             
 
-            if(empty($infoPista)){
+            if(empty($infoPista) && $tipo_reserva === 0){
                 $data = $instalacionesModel->getPistasById($id_pista);
                 
                 echo json_encode([
@@ -38,6 +44,13 @@ class Reservas extends BaseController
                     "baseUrl" => base_url()
                 ]);
                 return;
+            }
+
+            if($tipo_reserva === 1) {
+                $reservasAllPista = $reservasModel->getAllReservasById($id_pista);
+            }
+            else {
+                $reservasAllPista = [];
             }
 
             $reservasPista = $reservasModel->reservasById($id_pista, $fecha);
@@ -53,6 +66,7 @@ class Reservas extends BaseController
                 "infoPista" => $infoPista,
                 "reservas" => $reservasPista,
                 "usuarios" => $usuarios,
+                "allReservas" => $reservasAllPista,
                 "baseUrl" => base_url()
             ]);
             return;
@@ -84,8 +98,10 @@ class Reservas extends BaseController
     public function hacerReserva() {
 
         date_default_timezone_set('Europe/Madrid');
-        $reservasModel = new reservasModel();
-        $loginModel    = new loginModel();
+        $reservasModel  = new reservasModel();
+        $loginModel     = new loginModel();
+        $actividadModel = new actividadModel();
+        $instalacionesModel = new instalacionesModel();
         $post  = $this->request->getPost();
 
         if(!empty($post)){
@@ -140,6 +156,7 @@ class Reservas extends BaseController
                 "num_pedido"    => $num_pedido
             ]);
 
+            $nombre_pista = "";
             if($tipo_reserva === 0){
                 foreach($datos as $dato) {
                     
@@ -154,6 +171,8 @@ class Reservas extends BaseController
                         "pagadas"        => 0, 
                         "precio_reserva" => $precio_reserva
                     ];
+
+                    $nombre_pista = $instalacionesModel->getPistasById(intval($dato["pista"]))[0]["nombre_pista"];
 
                     $reserva = $reservasModel->hacerReserva($data);
                 }
@@ -176,11 +195,20 @@ class Reservas extends BaseController
                             "precio_reserva" => $precio_reserva
                     ];
 
+                    $nombre_pista = $instalacionesModel->getPistasById(intval($datos[2]["pista"]))[0]["nombre_pista"];
+
                     $reserva = $reservasModel->hacerReserva($data);
 
                     $fecha_inicio->modify('+1 day');
                 }
             }
+
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 1,
+                    "descripcion" => "Reserva de la pista ". $nombre_pista, 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => session()->get('usuario')["id_usuario"]
+            ]);
             
             // Devolver solo JSON, SIN generar PDF aquí
             return $this->response->setJSON([
@@ -295,6 +323,8 @@ class Reservas extends BaseController
     public function anularHora() {
         
         $reservasModel = new reservasModel();
+        $actividadModel = new actividadModel();
+        $instalacionesModel = new instalacionesModel();
         $post = $this->request->getPost();
 
         if(!empty($post)){
@@ -310,6 +340,16 @@ class Reservas extends BaseController
                     $reservasModel->anularPedido($dato["pedido"]);
                 }
             }
+
+            $id_pista = intval($reservasModel->getReservasByPedido($datos[0])[0]["id_pedido"]);
+            $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
+
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 2,
+                    "descripcion" => "Anulación de una reserva de la pista ". $nombre_pista, 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => session()->get('usuario')["id_usuario"]
+            ]);
             
             echo json_encode([
                 "success" => true, 
@@ -324,6 +364,8 @@ class Reservas extends BaseController
     public function anularReservaEspecial() {
         
         $reservasModel = new reservasModel();
+        $actividadModel = new actividadModel();
+        $instalacionesModel = new instalacionesModel();
         $post = $this->request->getPost();
 
         if(!empty($post)){
@@ -332,6 +374,16 @@ class Reservas extends BaseController
 
             $anularReservas = $reservasModel->anularReservasByPedido($id_pedido);
             $anularPedido   = $reservasModel->anularPedido($id_pedido);
+
+            $id_pista = intval($reservasModel->getReservasByPedido($id_pedido)[0]["id_pista"]);
+            $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
+
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 2,
+                    "descripcion" => "Anulación de una reserva de la pista ". $nombre_pista, 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => session()->get('usuario')["id_usuario"]
+            ]);
             
             echo json_encode([
                 "success" => true, 
@@ -414,6 +466,8 @@ class Reservas extends BaseController
     public function anularReservasById() {
         
         $reservasModel = new reservasModel();
+        $actividadModel = new actividadModel(); 
+        $instalacionesModel = new instalacionesModel();
         $post = $this->request->getPost();
 
         if(!empty($post)){
@@ -421,19 +475,29 @@ class Reservas extends BaseController
             $id_reserva = intval($post["idReserva"]);
             $id_pedido  = intval($post["idPedido"]);
 
-                $fecha = $reservasModel->getDateReserva($id_reserva)[0]["fecha"];
-                $id_usuario = intval($reservasModel->getUsuarioReserva($id_reserva)[0]["id_usuario"]);
-                $borrar_pago = $reservasModel->deshacerPago($id_reserva);
-                $anularReserva = $reservasModel->anularReservaById($id_reserva);
-                $num_pedidos   = $reservasModel->numReservasFromPedido($id_pedido);
-                $cont_reservas = count($reservasModel->getReservasByDate($fecha));
-                $cont_reservas_pagadas = count($reservasModel->getReservasPagadasByDate($fecha));
-                $cont_reservas_no_pagadas = count($reservasModel->getReservasNoPagadasByDate($fecha));
-                $todas_reservas = $reservasModel->getTodasReservasByUsuario($id_usuario);
+            $fecha = $reservasModel->getDateReserva($id_reserva)[0]["fecha"];
+            $id_usuario = intval($reservasModel->getUsuarioReserva($id_reserva)[0]["id_usuario"]);
+            $borrar_pago = $reservasModel->deshacerPago($id_reserva);
+            $anularReserva = $reservasModel->anularReservaById($id_reserva);
+            $num_pedidos   = $reservasModel->numReservasFromPedido($id_pedido);
+            $cont_reservas = count($reservasModel->getReservasByDate($fecha));
+            $cont_reservas_pagadas = count($reservasModel->getReservasPagadasByDate($fecha));
+            $cont_reservas_no_pagadas = count($reservasModel->getReservasNoPagadasByDate($fecha));
+            $todas_reservas = $reservasModel->getTodasReservasByUsuario($id_usuario);
 
-                if($num_pedidos === 0){
-                    $reservasModel->anularPedido($id_pedido);
-                }
+            if($num_pedidos === 0){
+                $reservasModel->anularPedido($id_pedido);
+            }
+
+            $id_pista = intval($reservasModel->getReservasByPedido($id_pedido)[0]["id_pista"]);
+            $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
+
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 2,
+                    "descripcion" => "Anulación de una reserva de la pista ". $nombre_pista, 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => session()->get('usuario')["id_usuario"]
+            ]);
             
             echo json_encode([
                 "success" => true, 
@@ -471,6 +535,8 @@ class Reservas extends BaseController
     public function checkIn() {
 
         $reservasModel = new reservasModel();
+        $actividadModel = new actividadModel(); 
+        $instalacionesModel = new instalacionesModel();
         $post = $this->request->getPost();
 
         if(!empty($post)){
@@ -489,6 +555,16 @@ class Reservas extends BaseController
 
             $pago = $reservasModel->hacerPago($data);
 
+            $id_pista = intval($reservasModel->getReservaById($id_reserva))[0]["id_pista"];
+            $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
+
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 3,
+                    "descripcion" => "Confirmación de la reserva ". $nombre_pista, 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => session()->get('usuario')["id_usuario"]
+            ]);
+
             $cont_reservas_pagadas = count($reservasModel->getReservasPagadasByDate($reserva[0]["fecha"]));
             $cont_reservas_no_pagadas = count($reservasModel->getReservasNoPagadasByDate($reserva[0]["fecha"]));
 
@@ -506,6 +582,8 @@ class Reservas extends BaseController
     public function deshacerCheckIn(){
 
         $reservasModel = new reservasModel();
+        $actividadModel = new actividadModel(); 
+        $instalacionesModel = new instalacionesModel();
         $post = $this->request->getPost();
 
         if(!empty($post)){
@@ -514,6 +592,17 @@ class Reservas extends BaseController
 
             $reservasModel->setPagadas($id_reserva, 0);
             $reservasModel->deshacerPago($id_reserva);
+
+            $id_pista = intval($reservasModel->getReservaById($id_reserva))[0]["id_pista"];
+            $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
+
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 24,
+                    "descripcion" => "Anulación del CheckIn de la reserva de la pista ". $nombre_pista, 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => session()->get('usuario')["id_usuario"]
+            ]);
+
 
             $reserva = $reservasModel->getReservaById($id_reserva);
             $cont_reservas_pagadas = count($reservasModel->getReservasPagadasByDate($reserva[0]["fecha"]));
@@ -552,12 +641,25 @@ class Reservas extends BaseController
     public function borrarReservasDia() {
 
         $reservasModel = new reservasModel();
+        $actividadModel = new actividadModel(); 
+        $instalacionesModel = new instalacionesModel();
         $post = $this->request->getPost();
 
         if(!empty($post)) {
 
             $data = $post["data"];
             
+            $id_pista = intval($reservasModel->getReservaById(intval($data[0]["id_pedido"])))[0]["id_pista"];
+            $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
+
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 2,
+                    "descripcion" => "Cancelación de una reserva de la pista ". $nombre_pista, 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => session()->get('usuario')["id_usuario"]
+            ]);
+
+
             foreach($data as $dia){
 
                 $reservasModel->anularReservaById(intval($dia["id_reserva"]));

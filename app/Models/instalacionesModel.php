@@ -326,4 +326,24 @@ class instalacionesModel extends Model
         $result = $query->getResultArray();
         return $result;
     }
+
+
+    public function getReservasInstalacionSolo()
+    {
+        // Conexión a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Seleccionamos la tabla
+        $builder = $db->table('reservas');
+
+        $query = $builder->select('reservas.fecha')
+                        ->join('pistas', 'pistas.id_pista = reservas.id_pista')
+                        ->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion')
+                        ->where('instalaciones.id_instalacion', 51)
+                        ->where('instalaciones.tipo_reserva', 1)
+                        ->get();
+        
+        $result = $query->getResultArray();
+        return $result;
+    }
 }

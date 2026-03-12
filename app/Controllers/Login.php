@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\actividadModel;
 use App\Models\categoriasModel;
 use App\Models\instalacionesModel;
 use App\Models\loginModel;
@@ -15,16 +16,15 @@ class Login extends BaseController
      * Funcion index(). Funcion en la que obtenemos los datos necesarios para mostrar la pagina
      * principal. 
      */
-    public function login()
-    {
-        $loginModel = new loginModel(); 
+    public function login(){
+        $loginModel = new loginModel();
+        $actividadModel = new actividadModel();
 
         //Recogemos post
         $request = $this->request;
         $post    = $request->getPost();
 
-        if(!empty($post))
-        {
+        if (!empty($post)) {
             $email    = $post["emailLogin"];
             $password = $post["passwordLogin"];
 
@@ -32,19 +32,16 @@ class Login extends BaseController
             $emailExistentes = $loginModel->existeEmail($email);
 
             $existeEmail = false;
-            foreach($emailExistentes as $emailE)
-            {
-                if($emailE["email"] === $email) $existeEmail = true;
+            foreach ($emailExistentes as $emailE) {
+                if ($emailE["email"] === $email) $existeEmail = true;
             }
 
-            if($existeEmail)
-            {
+            if ($existeEmail) {
                 $passwordBD = $loginModel->passwordEmail($email);
-                if(sha1($password) === $passwordBD["password"])
-                {
+                if (sha1($password) === $passwordBD["password"]) {
                     $salida = [
-                        "mensaje" => "Inicio de sesión correcto", 
-                        "succes"  => true, 
+                        "mensaje" => "Inicio de sesión correcto",
+                        "succes"  => true,
                         "type"    => "success"
                     ];
 
@@ -60,51 +57,50 @@ class Login extends BaseController
 
 
                     $this->accesoUsuario($data);
+                    
+                    $actividad = $actividadModel->crearActividad([
+                        "tipo" => 6,
+                        "descripcion" => "Inicio de sesión del usuario " . $datosUsuario['email'],
+                        "fecha" => date("Y-m-d H:i:s"),
+                        "id_usuario" => $datosUsuario["id_usuario"]
+                    ]);
 
-                    return redirect()->to('/'); 
 
-                }
-                else 
-                {
+                    return redirect()->to('/');
+                } else {
                     $salida = [
-                        "mensaje" => "Contraseña incorrecta ", 
-                        "succes"  => false, 
+                        "mensaje" => "Contraseña incorrecta ",
+                        "succes"  => false,
                         "type"    => "danger"
                     ];
                 }
-            }
-            else 
-            {
+            } else {
                 $salida = [
-                    "mensaje" => "Esa dirección de correo no existe", 
-                    "succes"  => false, 
+                    "mensaje" => "Esa dirección de correo no existe",
+                    "succes"  => false,
                     "type"    => "danger"
                 ];
             }
         }
 
-        if(isset($salida))
-        {
+        if (isset($salida)) {
             return view('login/loginPage', ["baseUrl" => base_url(), "salida" => $salida]);
-        }
-        else 
-        {
+        } else {
             return view('login/loginPage', ["baseUrl" => base_url()]);
         }
     }
 
-    public function registrarse()
-    {
+    public function registrarse(){
 
         // Modelo login
         $loginModel = new loginModel();
+        $actividadModel = new actividadModel();
 
         //Recogemos post
         $request = $this->request;
         $post    = $request->getPost();
 
-        if(!empty($post))
-        {
+        if (!empty($post)) {
             // Recojo los datos del formulario
             $nombre   = $post['nombreReg'];
             $email    = $post['emailReg'];
@@ -114,23 +110,27 @@ class Login extends BaseController
             // Comprobamos los email existentes para no repetirse
             $emailExistentes = $loginModel->existeEmail($email);
             $existeEmail     = false;
-            foreach($emailExistentes as $emailE)
-            {
-                if($emailE["email"] === $email) $existeEmail = true;
+            foreach ($emailExistentes as $emailE) {
+                if ($emailE["email"] === $email) $existeEmail = true;
             }
 
-            if($existeEmail)
-            {
+            if ($existeEmail) {
                 $salida = [
-                    "mensaje" => "Ese email ya esta en uso", 
-                    "succes"  => false, 
+                    "mensaje" => "Ese email ya esta en uso",
+                    "succes"  => false,
                     "type"    => "danger"
                 ];
-            }
-            else 
-            {
+            } else {
                 $idInsert = $loginModel->registrar($nombre, $email, $telf, $password);
-                $usuario  = $loginModel->buscaUsuarioPorId($idInsert);  
+
+                $actividad = $actividadModel->crearActividad([
+                    "tipo" => 4,
+                    "descripcion" => "Registro del usuario " . $nombre,
+                    "fecha" => date("Y-m-d H:i:s"),
+                    "id_usuario" => $idInsert
+                ]);
+
+                $usuario  = $loginModel->buscaUsuarioPorId($idInsert);
 
                 $data = [
                     "nombre"     => $usuario["nombre"],
@@ -146,25 +146,29 @@ class Login extends BaseController
             }
         }
 
-        if(isset($salida))
-        {
+        if (isset($salida)) {
             return view('login/singInPage', ["baseUrl" => base_url(), "salida" => $salida]);
-        }
-        else 
-        {
+        } else {
             return view('login/singInPage', ["baseUrl" => base_url()]);
         }
     }
 
+    public function logout(){
 
-    public function logout()
-    {
+        $actividadModel = new actividadModel();
+
+        $actividad = $actividadModel->crearActividad([
+            "tipo" => 22,
+            "descripcion" => "Cerrado de sesión del usuario" . session()->get('usuario')["email"],
+            "fecha" => date("Y-m-d H:i:s"),
+            "id_usuario" => session()->get('usuario')["id_usuario"]
+        ]);
         session()->remove('usuario');
+
         return redirect()->to('/');
     }
 
-    public function forgotPassword()
-    {
+    public function forgotPassword() {
         $loginModel = new loginModel();
         $request    = $this->request;
         $post       = $request->getPost();
@@ -197,19 +201,19 @@ class Login extends BaseController
                 $urlRecuperacion = base_url("/index.php/resetPass?token=$token");
 
                 $locale = 'es_ES'; // o 'es_ES.UTF-8'
-$date = new DateTime();
+                $date = new DateTime();
 
-// Formato similar a: "martes 11 de junio, 2025"
-$formatter = new IntlDateFormatter(
-    $locale,
-    IntlDateFormatter::FULL,
-    IntlDateFormatter::NONE,
-    'Europe/Madrid', // Ajusta según tu zona horaria
-    IntlDateFormatter::GREGORIAN,
-    "EEEE d 'de' MMMM, yyyy"
-);
+                // Formato similar a: "martes 11 de junio, 2025"
+                $formatter = new IntlDateFormatter(
+                    $locale,
+                    IntlDateFormatter::FULL,
+                    IntlDateFormatter::NONE,
+                    'Europe/Madrid', // Ajusta según tu zona horaria
+                    IntlDateFormatter::GREGORIAN,
+                    "EEEE d 'de' MMMM, yyyy"
+                );
 
-$fecha_formateada = $formatter->format($date);
+                $fecha_formateada = $formatter->format($date);
 
                 $htmlContent = view('plantillas/emailRecuPass', ["baseUrl" => base_url(), "url" => $urlRecuperacion, "fecha_hoy" => $fecha_formateada]);
 
@@ -230,7 +234,7 @@ $fecha_formateada = $formatter->format($date);
                 ]);
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                 curl_setopt($ch, CURLOPT_POST, true);
-                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData , JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
 
                 $response  = curl_exec($ch);
                 $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -259,23 +263,19 @@ $fecha_formateada = $formatter->format($date);
             }
         }
 
-        if(isset($salida))
-        {
+        if (isset($salida)) {
             return view('login/recuperarPassword', [
                 "baseUrl" => base_url(),
                 "salida"  => $salida
             ]);
-        }
-        else 
-        {
+        } else {
             return view('login/recuperarPassword', [
                 "baseUrl" => base_url()
             ]);
         }
     }
 
-    public function resetPass()
-    {
+    public function resetPass(){
         $request     = $this->request;
         $token       = $request->getGet('token');
         $modeloLogin = new loginModel();
@@ -286,8 +286,7 @@ $fecha_formateada = $formatter->format($date);
         $fecha_actual = new DateTime();
         $diferencia   = $fecha_actual->getTimestamp() - $fecha_token->getTimestamp();
 
-        if($diferencia >= 0)
-        {
+        if ($diferencia >= 0) {
             $salida = [
                 "mensaje" => "Ha expirado el plazo de 1h",
                 "success" => false,
@@ -298,58 +297,53 @@ $fecha_formateada = $formatter->format($date);
                 "baseUrl" => base_url(),
                 "salida"  => $salida
             ]);
-        }
-        else 
-        {
-            
-            return redirect()->to('/resetPassForm/'.$usuario["id_usuario"]); 
-        }
+        } else {
 
-
+            return redirect()->to('/resetPassForm/' . $usuario["id_usuario"]);
+        }
     }
 
-    public function resetPassForm($user = null)
-    {
+    public function resetPassForm($user = null){
         $modeloLogin = new loginModel();
+        $actividadModel = new actividadModel();
         $request     = $this->request;
         $post        = $request->getPost();
 
-        if(!empty($post))
-        {
+        if (!empty($post)) {
             $newPass   = $post["newPassReset"];
             $repetPass = $post["repetPassReset"];
-            
-            if($newPass !== $repetPass)
-            {
+
+            if ($newPass !== $repetPass) {
                 $salida = [
                     "mensaje" => "Las contraseñas no coinciden",
                     "success" => false,
                     "type"    => "danger"
                 ];
-            }
-            else 
-            {
+            } else {
                 $passwordEncrypt = sha1($newPass);
 
                 // Cambiamos la contraseña y nos vamos al inicio
                 $modeloLogin->cambioPass($passwordEncrypt, $user);
                 
-                return redirect()->to('/'); 
+                $actividad = $actividadModel->crearActividad([
+                    "tipo" => 23,
+                    "descripcion" => "Cambio de contraseña del usuario ". session()->get('usuario')["email"], 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => session()->get('usuario')["id_usuario"]
+                ]);
+
+                return redirect()->to('/');
             }
         }
 
-        if(isset($salida))
-        {
-             return view('login/resetPass', ["baseUrl" => base_url(), "salida" => $salida]);
-        }
-        else 
-        {
-             return view('login/resetPass', ["baseUrl" => base_url()]);
+        if (isset($salida)) {
+            return view('login/resetPass', ["baseUrl" => base_url(), "salida" => $salida]);
+        } else {
+            return view('login/resetPass', ["baseUrl" => base_url()]);
         }
     }
 
-    private function accesoUsuario($data)
-    {
+    private function accesoUsuario($data) {
         // Se obtiene la instancia de la sesión
         $session = session();
         $loginModel = new loginModel();
@@ -363,12 +357,5 @@ $fecha_formateada = $formatter->format($date);
 
         $session->set("usuario", $dataSesion);
         $loginModel->setUltimoAcceso(intval($data["id_usuario"]));
-
-       
     }
-
-
-    
 }
-
-

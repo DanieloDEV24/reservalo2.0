@@ -1,0 +1,94 @@
+.div-dashboard {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 1.5rem; /* Cambia % por rem */
+    overflow: hidden; /* Evita desbordamientos internos */
+    min-width: 0; /* Importante: evita que los hijos expandan la celda del grid */
+}
+
+.pagina-dashboard {
+    padding: 2%;
+}
+
+.chart-container{
+    position: relative;
+    width: 100%;
+    height: clamp(300px, 25vh, 320px);
+}
+
+.grafico-reservas {grid-area: grafico-reservas;}
+.grafico-donut {grid-area: grafico-donut;}
+.tabla-reservas {grid-area: tabla-reservas;}
+.tabla-actividad-reciente {grid-area: tabla-actividad-reciente;}
+
+.grid-dashboard {
+    display: grid;
+    gap: 3rem; /* Cambia % por rem */
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+        "grafico-reservas grafico-donut"
+        "tabla-reservas tabla-reservas"
+        "tabla-actividad-reciente tabla-actividad-reciente";
+}
+
+.span-estado {
+    border-radius: 25px;
+    padding: .1rem .2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: .9rem;
+    max-width: 70px;
+}
+
+.span-estado.estado-activa {
+    background-color: #27F561;
+    color: #fff;
+}
+
+.span-estado.estado-baja {
+    background-color: #F54927;
+    color: #fff;
+}
+
+.actividad-reciente {
+    display: flex;
+    gap: 1.5%;
+    margin-bottom: 1.5%;
+}
+
+.actividad-reciente p {
+    margin: 0%;
+}
+
+.actividad-reciente .fecha {
+    color: #bbb;
+    font-weight: lighter;
+    font-size: .8rem;
+    margin-left: 3%;
+}
+
+.leyenda-actividad {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+}
+
+.tabla-actividad-reciente i:hover {
+    cursor: pointer;
+}
+
+.pagina-dashboard h3::before {
+  content: '';
+  width: 6px;
+  height: 25px;
+  background: #32cccc;
+  border-radius:5px;
+}
+
+.pagina-dashboard h3 {
+    display: flex;
+    gap: 1%;
+    align-items: center;
+    width: 100%;
+}

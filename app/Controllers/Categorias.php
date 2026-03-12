@@ -31,8 +31,9 @@ class Categorias extends BaseController
 
         $modalEditarCategoria = view('categorias/modalEditarCategoria');
         $modalBorrarCategoria = view('categorias/modalBorrarCategoria');
+        $modalCrearCategoria  = view('categorias/modalCrearCategoria'); 
 
-        $view = view('categorias/gestorCategorias', ["categorias" => $categorias, "modalBorrarUsuario" => $modalBorrarUsuario, "modalReservasUsuario" => $modalReservasUsuario, "modalInfoUsuario" => $modalInfoUsuario, "modalEditarCategoria" => $modalEditarCategoria, "modalBorrarCategoria" => $modalBorrarCategoria]);
+        $view = view('categorias/gestorCategorias', ["categorias" => $categorias, "modalBorrarUsuario" => $modalBorrarUsuario, "modalReservasUsuario" => $modalReservasUsuario, "modalInfoUsuario" => $modalInfoUsuario, "modalEditarCategoria" => $modalEditarCategoria, "modalBorrarCategoria" => $modalBorrarCategoria, "modalCrearCategoria" => $modalCrearCategoria]);
         return view('plantillas/normal', ["view" => $view, "assets" => $assets]);
     }
 
@@ -75,6 +76,46 @@ class Categorias extends BaseController
                 "success"   => true,
                 "message"   => "La categoria se ha editado correctamente", 
                 "categoria" => $categoria[0]
+            ]);
+            return;
+        }
+    }
+
+    public function borrarCategoria() {
+
+        $categoriasModel = new categoriasModel();
+        $post  = $this->request->getPost();
+
+        if(!empty($post)){
+            
+            $id_categoria = intval($post["id_categoria"]);
+
+            $categoriasModel->deleteCategoria($id_categoria);
+
+            echo json_encode([
+                "success"   => true,
+                "message"   => "La categoria se ha borrado correctamente"
+            ]);
+            return;
+        }
+    }
+
+    public function crearCategoria() {
+
+        $categoriasModel = new categoriasModel();
+        $post  = $this->request->getPost();
+
+        if(!empty($post)){
+            
+            $nombre = $post["nombre"];
+
+            $id_categoria = $categoriasModel->createCategoria($nombre);
+            $categoria = $categoriasModel->getCategoria(intval($id_categoria))[0];
+
+            echo json_encode([
+                "success"   => true,
+                "message"   => "La categoria se ha creado correctamente",
+                "categoria" => $categoria
             ]);
             return;
         }

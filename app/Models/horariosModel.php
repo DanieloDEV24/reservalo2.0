@@ -322,17 +322,26 @@ class horariosModel extends Model
         return true;
     }
 
-    public function getHorarioFromFechas(string $fecha_inicio, string $fecha_fin)
+    public function getHorarioFromFechas(string $fecha_inicio, string $fecha_fin, int $id_instalacion)
 {
     $db = \Config\Database::connect('BDReservalo2');
     $builder = $db->table('tipo_horario');
 
     $builder->select('*');
+    
+    $builder->join(
+            'franjas_horarias',
+            'franjas_horarias.id_tipo_horario = tipo_horario.id_tipo_horario',
+            'inner'
+    );
+
     $builder->where('tipo_horario.sin_fecha', 0);
 
     // Detecta cualquier solapamiento
     $builder->where('tipo_horario.fecha_inicio <=', $fecha_fin);
     $builder->where('tipo_horario.fecha_fin >=', $fecha_inicio);
+    $builder->where('franjas_horarias.id_instalacion', $id_instalacion);
+    
 
     return $builder->get()->getResultArray();
 }

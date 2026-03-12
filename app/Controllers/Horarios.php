@@ -5,14 +5,14 @@ namespace App\Controllers;
 use App\Models\categoriasModel;
 use App\Models\instalacionesModel;
 use App\Models\horariosModel;
+use App\Models\actividadModel;
 use DateTime;
 
 class Horarios extends BaseController
 {
 
 
-    public function horario(?int $id_instalacion = null)
-    {
+    public function horario(?int $id_instalacion = null){
 
         if ($id_instalacion !== null) {
 
@@ -50,7 +50,6 @@ class Horarios extends BaseController
         }
     }
 
-
     public function comprobarHorariosAno() {
         $post = $this->request->getPost();
         $horariosModel = new horariosModel();
@@ -69,18 +68,19 @@ class Horarios extends BaseController
         }
     }
 
-    public function crearHorario()
-    {
+    public function crearHorario(){
 
         $post = $this->request->getPost();
         $horariosModel = new horariosModel();
+        $actividadModel = new actividadModel();
+        $session = session();
 
         if (!empty($post)) {
 
             $data = $post["data"];
-            $id_instalacion = $data["instalacion"];
+            $id_instalacion = intval($data["instalacion"]);
 
-            $horarios_existentes = $horariosModel->getHorarioFromFechas(((intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? date('Y') . '-01-01' : $data["fecha_inicio"]), ((intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? (date("Y")) . '-12-31' : $data["fecha_fin"]));
+            $horarios_existentes = $horariosModel->getHorarioFromFechas(((intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? date('Y') . '-01-01' : $data["fecha_inicio"]), ((intval($data["horario_especial"]) === 1 && intval($data["sin_fecha"]) === 1) ? (date("Y")) . '-12-31' : $data["fecha_fin"]), $id_instalacion);
 
             if (intval($data["horario_especial"]) === 0 && count($horarios_existentes) > 0) {
 
@@ -106,6 +106,12 @@ class Horarios extends BaseController
                 ];
 
                 $horario   = $horariosModel->crearHorario($data_tipo_horario);
+                $actividad = $actividadModel->crearActividad([
+                    "tipo" => 10,
+                    "descripcion" => "Creación del horario ". $data_tipo_horario["nombre"], 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => $session->get('usuario')["id_usuario"]
+                ]);
 
                 if(intval($data["sin_fecha"]) === 0){
                     foreach ($horarios_existentes as $horario_e) {
@@ -217,9 +223,7 @@ class Horarios extends BaseController
         }
     }
 
-
-    public function comprobarHorarios()
-    {
+    public function comprobarHorarios(){
 
         $post = $this->request->getPost();
         $horariosModel = new horariosModel();
@@ -238,9 +242,7 @@ class Horarios extends BaseController
         }
     }
 
-
-    public function getHorario()
-    {
+    public function getHorario(){
 
         $post = $this->request->getPost();
         $horariosModel = new horariosModel();
@@ -289,11 +291,12 @@ class Horarios extends BaseController
 
     }
 
-    public function editarHorario()
-    {
+    public function editarHorario(){
 
         $post = $this->request->getPost();
         $horariosModel = new horariosModel();
+        $actividadModel = new actividadModel();
+        $session = session();
 
 
         if (!empty($post)) {
@@ -310,6 +313,12 @@ class Horarios extends BaseController
             ];
 
             $horariosModel->actualizarHorario($data_tipo_horario, $data_tipo_horario["id_tipo_horario"]);
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 12,
+                    "descripcion" => "Modificación del horario ". $data_tipo_horario["nombre"], 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => $session->get('usuario')["id_usuario"]
+            ]);
 
             $horarios = $data["horarios"];
 
@@ -437,11 +446,12 @@ class Horarios extends BaseController
         }
     }
 
-    public function borrarHorario()
-    {
+    public function borrarHorario(){
 
         $post = $this->request->getPost();
         $horariosModel = new horariosModel();
+        $actividadModel = new actividadModel(); 
+        $session = session();
 
         if (!empty($post)) {
 
@@ -456,7 +466,17 @@ class Horarios extends BaseController
 
             $horariosModel->borrarExcepcion($id_horario);
 
+            $nombre_horario = $horariosModel->getHorario($id_horario)[0]["nombre"];
+
             $horariosModel->borrarHorario(intval($id_horario));
+
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 11,
+                    "descripcion" => "Modificación del horario ". $nombre_horario, 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => $session->get('usuario')["id_usuario"]
+            ]);
+            
 
             echo json_encode([
                 "success" => true,
@@ -464,7 +484,6 @@ class Horarios extends BaseController
             ]);
         }
     }
-
 
     public function getHorariosChange() {
     
@@ -487,11 +506,12 @@ class Horarios extends BaseController
         }
     }
 
-
     public function cambiarHorariosSeleccionados() {
 
         $post = $this->request->getPost();
         $horariosModel = new horariosModel();
+        $actividadModel = new actividadModel();
+        $session = session();
 
         if (!empty($post)) {
 
@@ -504,6 +524,12 @@ class Horarios extends BaseController
                 }
                 else {
                     $horariosModel->cambiarHorariosSeleccionados($cambio);
+                    $actividad = $actividadModel->crearActividad([
+                        "tipo" => 14,
+                        "descripcion" => "Cambio de horarios", 
+                        "fecha" => date("Y-m-d H:i:s"), 
+                        "id_usuario" => $session->get('usuario')["id_usuario"]
+                    ]);
                 }
             }
 
@@ -514,7 +540,6 @@ class Horarios extends BaseController
             exit;
         }
     }
-
 
     public function getHorariosChangeException() {
 
@@ -543,8 +568,7 @@ class Horarios extends BaseController
      *******************************************************  FUNCIONES DE AYUDA  *******************************************************
      ***********************************************************************************************************************************/
 
-    private function obtenerFranjasHorarias(array $dias)
-    {
+    private function obtenerFranjasHorarias(array $dias) {
 
         $franjas = [];
 
@@ -578,9 +602,7 @@ class Horarios extends BaseController
         return $franjas;
     }
 
-
-    private function obtenerNumeroDia(string $dia)
-    {
+    private function obtenerNumeroDia(string $dia){
 
         $DIAS_SEMANA = ["lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo"];
 

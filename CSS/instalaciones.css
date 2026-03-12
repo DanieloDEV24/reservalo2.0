@@ -319,12 +319,12 @@
   gap: 8px;
 }
 
-.title-page::before {
-  content: '';
-  width: 6px;
-  height: 36px;
-  background: #32cccc;
-  border-radius: 2px;
+  .title-page::before {
+    content: '';
+    width: 6px;
+    height: 36px;
+    background: #32cccc;
+    border-radius: 2px;
 }
 
 .description-page

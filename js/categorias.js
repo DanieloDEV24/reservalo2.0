@@ -91,4 +91,112 @@ $(document).ready(function () {
             }
         });
     })
+
+    $(document).on('click', '#btn-confirmar-borrar-categoria', function(){
+
+        let idCategoria = $('#modalBorrarCategoria').data('categoria')
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/borrarCategoria`,
+            data: {id_categoria: idCategoria},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true) {
+
+                    $('#modalBorrarCategoria').modal('hide');
+                    $('.contenedor-alert-borrar-categoria-success').removeClass('d-none')
+                    $('.contenedor-alert-borrar-categoria-success .alert-editar-categoria-hecha').show()
+                    $(`#tabla-categorias tbody tr[data-index="${idCategoria}"]`).remove()
+
+                    let cont = 0;
+                    $(`#tabla-categorias tbody tr`).each(function(tr){
+
+                        cont++
+
+                        tr.eq(0).text(cont)
+                    })
+
+                    setTimeout(() => {
+                        $('.contenedor-alert-borrar-categoria-success').hide();
+                        $('.contenedor-alert-borrar-categoria-success .alert-editar-categoria-hecha').addClass('d-none');
+                    }, 3000); // 3 segundos
+                }
+            }
+        });
+    })
+
+    $(document).on('click', '#btn-nueva-categoria', function(e){
+
+        e.preventDefault();
+
+        $('#modalCrearCategoria').modal('show');
+    })
+
+    $(document).on('click', '#btn-guardar-crear-categoria', function(e){
+
+        e.preventDefault();
+
+        let errores = []
+        let nombre = $('#nombre-categoria-crear').val();
+
+        if(nombre === "") {
+            errores.push({campo: "nombre", mensaje: "El nombre de la categoría no puede estar vacío"});
+        }
+
+        if(errores.length === 0) {
+
+            $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/crearCategoria`,
+            data: {nombre: nombre},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true) {
+
+                    let tr = $(`<tr data-index="${response.categoria.id_categoria}">
+                                    <td style="width: 10%;">${parseInt($('#tabla-categorias tbody tr').length + 1)}</td>
+                                    <td style="width: 40%;">${response.categoria.nombre}</td>
+                                    <td style="width: 40%;">
+                                        <div>${response.categoria.total_instalaciones+" instalaciones"}</div>
+                                        <div class="desglosamiento">${response.categoria.instalaciones_principal+" instalaciones"} · ${response.categoria.instalaciones_secundaria+" instalaciones"}</div>
+                                    </td>
+                                    <td>
+                                        <div class="btn-gestor-categorias">
+                                            <button type="button" class="btn btn-crud-categorias btn-editar-categoria" title="Editar categoría"><i class="bi bi-pencil-square"></i></button>
+                                            <button type="button" class="btn btn-crud-categorias btn-borrar-categoria" title="${ (parseInt(response.categoria.total_instalaciones) > 0) ? "La categoría no se puede borrar porque está asociada a una instalación" : "Borrar categoría" }" ${ (parseInt(response.categoria.total_instalaciones) > 0) ? "disabled" : "" } ><i class="bi bi-trash3"></i></button>
+                                        </div>
+                                    </td>
+                                </tr>`)
+
+                    $(`#tabla-categorias tbody`).append(tr)
+
+                    $('#modalCrearCategoria').modal('hide')
+                    $('.contenedor-alert-crear-categoria-success').removeClass('d-none')
+                    $('.contenedor-alert-crear-categoria-success .alert-editar-categoria-hecha').show()
+
+                    setTimeout(() => {
+                        $('.contenedor-alert-crear-categoria-success').hide();
+                        $('.contenedor-alert-crear-categoria-success .alert-crear-categoria-hecha').addClass('d-none');
+                    }, 3000); // 3 segundos
+
+                }
+            }
+        });
+        }
+        else {
+
+            $('#modalCrearCategoria .alert-errores-crear-categoria .errores ul').empty()
+
+            errores.map(e => {
+                $('#modalCrearCategoria .alert-errores-crear-categoria .errores ul').append(`<li>${e.mensaje}</li>`)
+            })
+
+            $('#modalCrearCategoria .contenedor-alert-crear-categoria').removeClass('d-none');
+            $('#modalCrearCategoria .alert-errores-crear-categoria').show();
+        }
+        
+    })
 })

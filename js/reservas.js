@@ -9,7 +9,8 @@ $(document).ready(() => {
 
         // Obtenemos el id de la pista de la que queremos hacer la reserva
         let pistaId = $(this).closest('.card-instalacion').data('index');
-        let rolUsuario = parseInt($("#menu-usuario").data('rol'))
+        let rolUsuario  = parseInt($("#menu-usuario").data('rol'))
+        let tipoReserva = parseInt($(this).closest('.card-instalacion').data('sinhorario'))
 
         // Guardar el pistaId en el input hidden del modal
         $('#pistaId').val(pistaId);
@@ -19,13 +20,22 @@ $(document).ready(() => {
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/getInfoPistasReserva`,
-            data: { pistaId: pistaId, "fecha": fechaFormateada, rol: rolUsuario },
+            data: { pistaId: pistaId, "fecha": fechaFormateada, rol: rolUsuario, tipo_reserva: tipoReserva },
             dataType: "json",
             success: function (response) {
 
                 if (response.success === true) {
 
-                    console.log(response.infoPista[0].estado)
+                    if(tipoReserva === 1){
+
+                        response.allReservas.map(function(r) {
+                            $('#calendarioDias .dia-calendario').each(function() {
+                                if($(this).data('fecha') === r.fecha){
+                                    $(this).addClass('disabled')
+                                }
+                            })
+                        })
+                    }
                     if (response.infoPista.length > 0 && parseInt(response.infoPista[0].estado) === 0) {
 
                         $("#nombre-pista").text(response.infoPista[0].nombre_pista);
@@ -40,16 +50,22 @@ $(document).ready(() => {
 
                         if (response.hayHorarios === true) {
 
-                            // Obtenemos los margenes de horas
-                            let horaInicioManana = response.infoPista[0].hora_inicio_manana;
-                            let horaFinManana = response.infoPista[0].hora_fin_manana;
-                            let horaInicioTarde = response.infoPista[0].hora_inicio_tarde;
-                            let horaFinTarde = response.infoPista[0].hora_fin_tarde;
+                            let horasDisponibles = [];
+                            if(tipoReserva === 0) {
+                                // Obtenemos los margenes de horas
+                                let horaInicioManana = response.infoPista[0].hora_inicio_manana;
+                                let horaFinManana = response.infoPista[0].hora_fin_manana;
+                                let horaInicioTarde = response.infoPista[0].hora_inicio_tarde;
+                                let horaFinTarde = response.infoPista[0].hora_fin_tarde;
 
-                            let horasDisponibles = [
-                                ...generarHoras(horaInicioManana, horaFinManana),
-                                ...generarHoras(horaInicioTarde, horaFinTarde)
-                            ]
+                                horasDisponibles = [
+                                    ...generarHoras(horaInicioManana, horaFinManana),
+                                    ...generarHoras(horaInicioTarde, horaFinTarde)
+                                ]
+                            }
+                            else {
+                                horasDisponibles = []
+                            }
 
                             $('#grid-horas-disponibles').empty();
                             $('#no-hay-horario').addClass('no-ver');
@@ -65,22 +81,24 @@ $(document).ready(() => {
                             const horasOcupadas = new Set(response.reservas.map(reserva => formatearHora(reserva.hora_inicio)));
                             const diaSeleccionado = $('.dia-calendario.seleccionado').data('fecha')
 
-                            horasDisponibles.map(hora => {
+                            if(tipoReserva === 0) {
+                                horasDisponibles.map(hora => {
 
-                                let minutosHora = horaEnMinutos(hora)
-                                let existe = horasOcupadas.has(hora); // O(1) en lugar de O(n)
+                                    let minutosHora = horaEnMinutos(hora)
+                                    let existe = horasOcupadas.has(hora); // O(1) en lugar de O(n)
 
 
 
-                                let btn = `<button type="button" 
-                                            class="btn btn-outline-secondary btn-horario 
-                                            ${((minutosHora <= minutosAhora && (fecha === diaSeleccionado)) || existe) ? 'hora-pasada' : ''}" 
-                                            data-hora="${hora}">
-                                            ${hora}
-                                        </button>`;
+                                    let btn = `<button type="button" 
+                                                class="btn btn-outline-secondary btn-horario 
+                                                ${((minutosHora <= minutosAhora && (fecha === diaSeleccionado)) || existe) ? 'hora-pasada' : ''}" 
+                                                data-hora="${hora}">
+                                                ${hora}
+                                            </button>`;
 
-                                $('#grid-horas-disponibles').append(btn);
-                            })
+                                    $('#grid-horas-disponibles').append(btn);
+                                })
+                            }
 
                             $('#grid-horas-disponibles').removeClass('no-ver');
 

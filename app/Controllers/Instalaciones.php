@@ -2,14 +2,14 @@
 
 namespace App\Controllers;
 
+use App\Models\actividadModel;
 use App\Models\categoriasModel;
 use App\Models\instalacionesModel;
 
 class Instalaciones extends BaseController
 {
 
-    public function crudInstalaciones(): string
-    {
+    public function crudInstalaciones(): string {
 
         $instalacionesModel = new instalacionesModel();
         $post  = $this->request->getPost();
@@ -55,12 +55,13 @@ class Instalaciones extends BaseController
         return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas, "modalInformacionPersonal" => $modalInformacionPersonal]);
     }
 
-    public function nuevaInstalacion()
-    {
+    public function nuevaInstalacion() {
         $post  = $this->request->getPost();
         $files = $this->request->getFiles();
+        $session = session();
 
         $instalacionesModel = new instalacionesModel();
+        $actividadModel = new actividadModel();
 
         if (!empty($post)) {
             $nombre            = $post["nombreInstalacion"];
@@ -93,6 +94,12 @@ class Instalaciones extends BaseController
             ];
 
             $id_instalacion = $instalacionesModel->createInstalacion($dataInstalacion);
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 7,
+                    "descripcion" => "Creación de la instalación ". $nombre, 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => $session->get('usuario')["id_usuario"]
+            ]);
 
             $rutaDestino = FCPATH . 'images/';
             if (!is_dir($rutaDestino)) {
@@ -171,8 +178,7 @@ class Instalaciones extends BaseController
         exit;
     }
 
-    public function verInstalacion()
-    {
+    public function verInstalacion() {
 
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
@@ -199,8 +205,7 @@ class Instalaciones extends BaseController
         ]);
     }
 
-    public function infoPista()
-    {
+    public function infoPista() {
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
 
@@ -223,8 +228,8 @@ class Instalaciones extends BaseController
         ]);
     }
 
-    public function editarInstalacion()
-    {
+    public function editarInstalacion(){
+        
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
         $categoriasModel    = new categoriasModel();
@@ -248,12 +253,13 @@ class Instalaciones extends BaseController
         }
     }
 
-
-    public function editarPista()
-    {
+    public function editarPista(){
         $post  = $this->request->getPost();
         $files = $this->request->getFiles();
         $instalacionesModel = new instalacionesModel();
+        $actividadModel = new actividadModel();
+
+        $session = session();
 
         if (!empty($post)) {
             $id_pista = intval($post["id"]);
@@ -298,6 +304,13 @@ class Instalaciones extends BaseController
 
             // --- 3️⃣ Actualizamos la pista ---
             $update = $instalacionesModel->updatePista($id_pista, $data);
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 17,
+                    "descripcion" => "Modificación de la pista ". $data['nombre_pista'], 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => $session->get('usuario')["id_usuario"]
+            ]);
+
 
             // --- 4️⃣ Respuesta ---
             if ($update) {
@@ -326,11 +339,7 @@ class Instalaciones extends BaseController
         }
     }
 
-
-
-
-    public function getNewIndexPista()
-    {
+    public function getNewIndexPista(){
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
         $pistas = $instalacionesModel->getPistas();
@@ -342,16 +351,26 @@ class Instalaciones extends BaseController
         exit;
     }
 
-
-    public function borrarPista()
-    {
+    public function borrarPista() {
         $post = $this->request->getPost(); // --> Obtenemos el post de la petición
         $instalacionesModel = new instalacionesModel(); // --> Inicializamos el modelo de instalaciones
+        $actividadModel = new actividadModel(); 
+
+        $session = session();
 
         // Comprobamos que el post no este vacío para poder obtener el id de la pista
         if (!empty($post)) {
             $id_pista = intval($post["id"]); // --> Obtenemos el id de la pista que queremos eliminar
+
+            $pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
+
             $result = $instalacionesModel->borrarPista($id_pista); // --> Llamamos a la función del modelo que elimina la pista
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 18,
+                    "descripcion" => "Borrado de la pista ". $pista, 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => $session->get('usuario')["id_usuario"]
+            ]);
 
             // Realizamos la respuesta si todo ha id bien 
             if ($result) {
@@ -364,12 +383,13 @@ class Instalaciones extends BaseController
         }
     }
 
-
-    public function crearPista()
-    {
+    public function crearPista() {
         $post = $this->request->getPost();
         $files = $this->request->getFiles();
         $instalacionesModel = new instalacionesModel();
+        $actividadModel = new actividadModel();
+
+        $session = session();
 
         if (!empty($post)) {
             $nombre = $post["nombre_pista"];
@@ -416,6 +436,12 @@ class Instalaciones extends BaseController
             ];
 
             $nuevaPista = $instalacionesModel->createPistas($data);
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 17,
+                    "descripcion" => "Creación de la pista ". $data['nombre_pista'], 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => $session->get('usuario')["id_usuario"]
+            ]);
 
             echo json_encode([
                 "succes"   => true,
@@ -432,11 +458,12 @@ class Instalaciones extends BaseController
         exit;
     }
 
-
-    public function editarInstalacionBD()
-    {
+    public function editarInstalacionBD(){
         $post = $this->request->getPost();
         $instalaciones = new instalacionesModel();
+        $actividadModel = new actividadModel();
+
+        $session = session();
 
         if (!empty($post)) {
 
@@ -540,6 +567,12 @@ class Instalaciones extends BaseController
             ];
 
             $update = $instalaciones->updateInstalacion($id, $data);
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 9,
+                    "descripcion" => "Modificación de la instalación ". $data['nombre'], 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => $session->get('usuario')["id_usuario"]
+            ]);
 
             if ($update) {
                 echo json_encode([
@@ -564,9 +597,7 @@ class Instalaciones extends BaseController
         exit;
     }
 
-
-    public function mensajeDarBajaInstalacion()
-    {
+    public function mensajeDarBajaInstalacion(){
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
 
@@ -596,19 +627,29 @@ class Instalaciones extends BaseController
         exit;
     }
 
-
-
-    public function darBajaInstalacion()
-    {
+    public function darBajaInstalacion(){
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
+        $actividadModel = new actividadModel();
+
+        $session = session();
 
         if (!empty($post)) {
             $id_instalacion = intval($post["id"]);
             $data = [
                 "estado" => 1
             ];
+
+            $instalacion = $instalacionesModel->getInstalacion($id_instalacion)[0];
+
             $result = $instalacionesModel->updateInstalacion($id_instalacion, $data);
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 13,
+                    "descripcion" => "Baja de la instalación ". $instalacion["nombre"], 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => $session->get('usuario')["id_usuario"]
+            ]);
+
             if ($result) {
                 echo json_encode([
                     "success" => true,
@@ -631,18 +672,28 @@ class Instalaciones extends BaseController
         exit;
     }
 
-
-    public function darAlta()
-    {
+    public function darAlta() {
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
+        $actividadModel = new actividadModel();
+
+        $session = session();
 
         if (!empty($post)) {
             $id_instalacion = intval($post["id"]);
             $data = [
                 "estado" => 0
             ];
+
+            $instalacion = $instalacionesModel->getInstalacion($id_instalacion)[0];
+            
             $result = $instalacionesModel->updateInstalacion($id_instalacion, $data);
+            $actividad = $actividadModel->crearActividad([
+                    "tipo" => 19,
+                    "descripcion" => "Alta de la instalación ". $instalacion["nombre"], 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => $session->get('usuario')["id_usuario"]
+            ]);
             if ($result) {
                 echo json_encode([
                     "success" => true,
@@ -659,9 +710,7 @@ class Instalaciones extends BaseController
         }
     }
 
-
-    public function mensajeBorrarInstalacion()
-    {
+    public function mensajeBorrarInstalacion(){
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
 
@@ -694,18 +743,28 @@ class Instalaciones extends BaseController
         exit;
     }
 
-
-    public function borrarInstalacion()
-    {
+    public function borrarInstalacion() {
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
+        $actividadModel = new actividadModel();
+
+        $session = session();
 
         if (!empty($post)) {
             $id_instalacion = intval($post["id"]);
+
+            $instalacion = $instalacionesModel->getInstalacion($id_instalacion);
+
             $borrarPistas = $instalacionesModel->borrarPistas($id_instalacion);
 
             if ($borrarPistas) {
                 $result = $instalacionesModel->deleteInstalacion($id_instalacion);
+                $actividad = $actividadModel->crearActividad([
+                    "tipo" => 8,
+                    "descripcion" => "Borrado de la instalación ". $instalacion['nombre'], 
+                    "fecha" => date("Y-m-d H:i:s"), 
+                    "id_usuario" => $session->get('usuario')["id_usuario"]
+                ]);
                 if ($result) {
                     echo json_encode([
                         "success" => true,
@@ -723,9 +782,7 @@ class Instalaciones extends BaseController
         }
     }
 
-
-    public function instalaciones()
-    {
+    public function instalaciones() {
         $instalacionesModel = new instalacionesModel();
         $post  = $this->request->getPost();
         $filter = (!empty($post) && (isset($post["filterInstalaciones"]) && !empty($post["filterInstalaciones"])))? $post["filterInstalaciones"] : null;
@@ -764,7 +821,6 @@ class Instalaciones extends BaseController
         return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas, "modalInformacionPersonal" => $modalInformacionPersonal]);
     }
 
-
     public function instalacion(?int $id_instalacion = null){
 
         if($id_instalacion !== null){
@@ -775,6 +831,7 @@ class Instalaciones extends BaseController
             
             $instalacion = $instalacionesModel->getInstalacion($id)[0];
             $pistas = $instalacionesModel->getPistasByInstalacion($id);
+            
 
             $assets = [
                 "css" => [

@@ -10,6 +10,30 @@
     </div>
 </div>
 
+<div class="d-flex justify-content-center d-none contenedor-alert-borrar-categoria-success pt-2">
+    <div class="alert alert-success alert-dismissible fade show alert-borrar-categoria-hecha w-100 m-0" role="alert">
+
+      <i class="bi bi-bookmark-check-fill fs-5"></i>
+
+      <span>Se ha borrado la categoria <strong>correctamente</strong></span>
+
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+    </div>
+</div>
+
+<div class="d-flex justify-content-center d-none contenedor-alert-crear-categoria-success pt-2">
+    <div class="alert alert-success alert-dismissible fade show alert-crear-categoria-hecha w-100 m-0" role="alert">
+
+      <i class="bi bi-bookmark-check-fill fs-5"></i>
+
+      <span>Se ha creado la categoria <strong>correctamente</strong></span>
+
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
+    </div>
+</div>
+
 <div class="pagina-gestor-categorias">
 
     <div style="padding-left: 3%; padding-top: 1%; padding-bottom: .5%;">
@@ -71,6 +95,9 @@
         <?php endif; ?>
     </div>
 
+    <div class="div-btn-gestor-categorias">
+      <a href="#" id="btn-nueva-categoria" class="btn-primary-personal" style="margin-left: 0; width: 20%">Nueva categoría <i class="bi bi-plus-circle"></i></a>
+    </div>
 </div>
 
 <?= $modalBorrarUsuario ?>
@@ -78,3 +105,4 @@
 <?= $modalInfoUsuario ?>
 <?= $modalEditarCategoria ?>
 <?= $modalBorrarCategoria ?>
+<?= $modalCrearCategoria ?>

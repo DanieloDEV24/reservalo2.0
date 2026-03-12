@@ -35,17 +35,23 @@
     background-color: #269b9b !important;
 }
 
-.contenedor-alert-reservas{
+.contenedor-alert-reservas, .contenedor-alert-crear-categoria{
     position: sticky !important;
     top: 0;
     z-index: 9999;
 }
 
-.contenedor-alert-editar-categoria-success {
+.contenedor-alert-editar-categoria-success, .contenedor-alert-borrar-categoria-success, .contenedor-alert-crear-categoria-success  {
     position: fixed !important;
     top: 3%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 9999;
     width: auto;
+}
+
+.div-btn-gestor-categorias {
+    display: flex;
+    justify-content: end;
+    margin-right: 2%;
 }
