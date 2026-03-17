@@ -539,4 +539,47 @@ class horariosModel extends Model
         return $result;
 
     }
+
+    public function getHorariosFromPista(int $id_pista) {
+        
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Builder principal
+        $builder = $db->table('franjas_horarias');
+
+        // Query
+        $builder->select('*');
+        $builder->join(
+            'pistas',
+            'pistas.id_instalacion = franjas_horarias.id_instalacion',
+            'inner'
+        );
+        $builder->where('pistas.id_pista', $id_pista);
+
+        // Ejecutar y devolver resultados
+        $query = $builder->get();
+
+        return $query->getResult();
+    }
+
+    public function getHorarioByInstalacion(int $id_instalacion) {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        $builder = $db->table('tipo_horario')->where('id_instalacion', $id_instalacion);
+
+        return $builder->get()->getResultArray();
+    }
+
+    public function getFranjaHorariaByIdHorario(int $id_tipo_horario) {
+        
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        $builder = $db->table('tipo_horario')->where('id_tipo_horario', $id_tipo_horario);
+
+        return $builder->get()->getResultArray();
+    }
 }

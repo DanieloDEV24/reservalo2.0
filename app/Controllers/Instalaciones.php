@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\actividadModel;
 use App\Models\categoriasModel;
+use App\Models\horariosModel;
 use App\Models\instalacionesModel;
 
 class Instalaciones extends BaseController
@@ -746,6 +747,7 @@ class Instalaciones extends BaseController
     public function borrarInstalacion() {
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
+        $horariosModel = new horariosModel();
         $actividadModel = new actividadModel();
 
         $session = session();
@@ -756,12 +758,19 @@ class Instalaciones extends BaseController
             $instalacion = $instalacionesModel->getInstalacion($id_instalacion);
 
             $borrarPistas = $instalacionesModel->borrarPistas($id_instalacion);
+        
+            // Lo nuevo - 17/03/2026
+            $getHorario = (count($horariosModel->getHorarioByInstalacion($id_instalacion))) ? intval($horariosModel->getHorarioByInstalacion($id_instalacion)[0]["id_tipo_horario"]) : [];
+            $getFranjaDia = intval($horariosModel->getFranjaByIdHorario($getHorario));
+            $getFranjaHoraria = $horariosModel->getFranjaHorariaByIdHorario($getHorario);
+
+            // $getReservas = $reservasModel->
 
             if ($borrarPistas) {
                 $result = $instalacionesModel->deleteInstalacion($id_instalacion);
                 $actividad = $actividadModel->crearActividad([
                     "tipo" => 8,
-                    "descripcion" => "Borrado de la instalación ". $instalacion['nombre'], 
+                    "descripcion" => "Borrado de la instalación ". $instalacion[0]['nombre'], 
                     "fecha" => date("Y-m-d H:i:s"), 
                     "id_usuario" => $session->get('usuario')["id_usuario"]
                 ]);

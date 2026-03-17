@@ -346,4 +346,5 @@ class instalacionesModel extends Model
         $result = $query->getResultArray();
         return $result;
     }
+
 }

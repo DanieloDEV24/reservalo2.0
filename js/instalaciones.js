@@ -695,6 +695,14 @@ $(document).ready(() => {
 
 
           </td>
+          <td>
+          ${(parseInt(instalacion.estado) === 1) ? `<i class="bi bi-info-circle"
+                    data-bs-toggle="tooltip" data-bs-placement="top"
+                    data-bs-custom-class="custom-tooltip"
+                    data-bs-title="Esta instalación está dada de baja"></i>
+                    
+                    <div id="loader${instalacion.id_instalacion}" class="loader2" style="display: none;"></div>` : ''}
+          </td>
                             </tr>`);
                     });
 
@@ -1841,10 +1849,10 @@ $(document).ready(() => {
             success: function (response) {
 
                 // Cambiamos el color de la fila a rojo para indicar que está dada de baja
-                $(`tr[data-index="${index}"]`).addClass('table-danger');
+                $(`#tablaInstalaciones tr[data-index="${index}"]`).addClass('table-danger');
 
                 // Añadimos el icono de información en la última columna
-                $(`tr[data-index="${index}"] td:last`).append(
+                $(`#tablaInstalaciones tr[data-index="${index}"] td:last`).append(
                     `
                     <div class="d-flex justify-content-between align-items-center w-100">
                         <i class="bi bi-info-circle"
@@ -1940,6 +1948,8 @@ $(document).ready(() => {
                 $('#precioCompletoBorrar').val(response.instalacion[0].precio_completo).prop('readonly', true);
                 $('#descripcionBorrar').val(response.instalacion[0].descripcion).prop('readonly', true);
                 $('#direccionBorrar').val(response.instalacion[0].direccion).prop('readonly', true);
+
+                $('#modalBorrarInstalacion').data('index', response.instalacion[0].id_instalacion);
 
                 // Ahora obtenemos las pistas de la instalación y las mostramos 
                 let pistas = response.pistas; // --> Obtenemos las pistas

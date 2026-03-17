@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\horariosModel;
 use App\Models\instalacionesModel;
 use App\Models\reservasModel;
 use App\Models\loginModel;
@@ -17,6 +18,7 @@ class Reservas extends BaseController
         $instalacionesModel = new instalacionesModel();
         $reservasModel = new reservasModel();
         $loginModel = new loginModel();
+        $horariosModel = new horariosModel();
         $post  = $this->request->getPost();
 
         if(!empty($post)){
@@ -29,19 +31,15 @@ class Reservas extends BaseController
 
             $infoPista = [];
             
-            
             // Obtenemos la informacion de la pista
             $infoPista = $reservasModel->getInfoPista($id_pista, $fecha);
             
+            $hay_horarios = $horariosModel->getHorariosFromPista($id_pista);
 
-            if(empty($infoPista) && $tipo_reserva === 0){
-                $data = $instalacionesModel->getPistasById($id_pista);
+            if(count($hay_horarios) === 0 && $tipo_reserva === 0) {
                 
                 echo json_encode([
-                    "success" => true,
-                    "hayHorarios" => false,
-                    "infoPista" => $data,
-                    "baseUrl" => base_url()
+                    "success" => false,
                 ]);
                 return;
             }

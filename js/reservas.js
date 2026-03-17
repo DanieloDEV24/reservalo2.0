@@ -36,6 +36,7 @@ $(document).ready(() => {
                             })
                         })
                     }
+
                     if (response.infoPista.length > 0 && parseInt(response.infoPista[0].estado) === 0) {
 
                         $("#nombre-pista").text(response.infoPista[0].nombre_pista);
@@ -51,6 +52,7 @@ $(document).ready(() => {
                         if (response.hayHorarios === true) {
 
                             let horasDisponibles = [];
+                            
                             if(tipoReserva === 0) {
                                 // Obtenemos los margenes de horas
                                 let horaInicioManana = response.infoPista[0].hora_inicio_manana;
@@ -104,6 +106,7 @@ $(document).ready(() => {
 
 
                         }
+
                         else {
                             let div = $(`
                                <div class="d-flex justify-content-center align-items-center gap-1 flex-column p-2" >
@@ -149,6 +152,11 @@ $(document).ready(() => {
                         $('.alert-instalacion-no-disponible').show()
                         return;
                     }
+                }
+                else {
+                    $('.contenedor-alert-instalacion').removeClass('d-none')
+                    $('.alert-instalacion-no-disponible').show()
+                    return;
                 }
             }
         });
