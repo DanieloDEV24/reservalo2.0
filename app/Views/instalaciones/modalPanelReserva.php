@@ -1,4 +1,4 @@
-<div class="modal fade" tabindex="-1" id="modalReservaPista" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
+<div class="modal fade" tabindex="-1" id="modalReservaPista" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" data-tipoReserva="">
 
   <div class="d-flex justify-content-center d-none contenedor-alert-reservas pt-2">
     

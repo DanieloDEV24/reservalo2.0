@@ -1,4 +1,4 @@
-<div class="modal fade" tabindex="-1" id="modalInformacionPersonal" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" data-usuario="">  
+<div class="modal fade" tabindex="-1" id="modalInformacionPersonal" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" data-usuario="" style="z-index: 999999;">  
 
     <div class="d-flex justify-content-center p-3 pb-0 d-none contenedor-alert-editar-usuario">
         <div class="alert alert-danger alert-dismissible mb-0 fade show alert-errores-editar-usuario w-50" role="alert">

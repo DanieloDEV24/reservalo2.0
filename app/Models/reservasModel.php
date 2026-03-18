@@ -767,4 +767,33 @@ class reservasModel extends Model
 
         return $builder->get()->getResultArray();
     }
+
+    public function deletePedidoByPista($id_pista) {
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Primero obtenemos los ids de pedido relacionados con la pista
+        $builder = $db->table('reservas');
+        $builder->select('id_pedido');
+        $builder->where('id_pista', $id_pista);
+        $ids = array_column($builder->get()->getResultArray(), 'id_pedido');
+
+        // Luego borramos los pedidos con esos ids
+        if (!empty($ids)) {
+            $db->table('pedido')->whereIn('id_pedido', $ids)->delete();
+        }
+
+        return true;
+    }
+
+    public function anularReservaByPista (int $id_pista) {
+        
+        // Conexión a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Tabla principal
+        $builder = $db->table('reservas');
+        $builder->where('id_pista', $id_pista)->delete(); 
+        
+        return true;
+    }
 }

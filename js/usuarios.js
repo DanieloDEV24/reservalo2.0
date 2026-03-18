@@ -252,6 +252,15 @@ $(document).ready(() => {
 
                     if (response.success == true) {
                         $('#modalInfoUsuario').modal('hide')
+                        $(`#tabla-usuarios tbody tr[data-index="${idUsuario}"] td:nth-of-type(2)`).text(response.usuario.nombre)
+                        $(`#tabla-usuarios tbody tr[data-index="${idUsuario}"] td:nth-of-type(3)`).text(response.usuario.email)
+                        $(`#tabla-usuarios tbody tr[data-index="${idUsuario}"] td:nth-of-type(4)`).text(response.usuario.telf)
+                    }
+                    else {
+                        $('.contenedor-alert-editar-usuario .alert-errores-editar-usuario .errores ul').append(`<li>${response.message}</li>`)
+
+                        $('.contenedor-alert-editar-usuario').removeClass('d-none')
+                        $('.alert-errores-editar-usuario').show();
                     }
                 }
             });

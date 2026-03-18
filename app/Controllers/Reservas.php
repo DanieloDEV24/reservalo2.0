@@ -473,6 +473,9 @@ class Reservas extends BaseController
             $id_reserva = intval($post["idReserva"]);
             $id_pedido  = intval($post["idPedido"]);
 
+            $id_pista = intval($reservasModel->getReservasByPedido($id_pedido)[0]["id_pista"]);
+            $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
+
             $fecha = $reservasModel->getDateReserva($id_reserva)[0]["fecha"];
             $id_usuario = intval($reservasModel->getUsuarioReserva($id_reserva)[0]["id_usuario"]);
             $borrar_pago = $reservasModel->deshacerPago($id_reserva);
@@ -486,9 +489,6 @@ class Reservas extends BaseController
             if($num_pedidos === 0){
                 $reservasModel->anularPedido($id_pedido);
             }
-
-            $id_pista = intval($reservasModel->getReservasByPedido($id_pedido)[0]["id_pista"]);
-            $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
 
             $actividad = $actividadModel->crearActividad([
                     "tipo" => 2,

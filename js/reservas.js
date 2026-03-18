@@ -143,7 +143,8 @@ $(document).ready(() => {
                                 dropdownParent: $('#modalReservaPista') // ⚠️ importante cuando está dentro de un modal
                             });
                         }
-
+                        
+                        $('#modalReservaPista').data('tipoReserva', tipoReserva)
                         $('#modalReservaPista').modal('show');
                     }
                     else {
@@ -180,11 +181,12 @@ $(document).ready(() => {
         let fecha = $(this).data('fecha');
         let pista = parseInt($('#pistaId').val())
         let rolUsuario = parseInt($("#menu-usuario").data('rol'))
+        let tipoReserva = parseInt($('#modalReservaPista').data('tipoReserva'))
 
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/getInfoPistasReserva`,
-            data: { "pistaId": pista, "fecha": fecha, rol: rolUsuario },
+            data: { "pistaId": pista, "fecha": fecha, rol: rolUsuario, tipo_reserva: tipoReserva },
             dataType: "JSON",
             success: function (response) {
 

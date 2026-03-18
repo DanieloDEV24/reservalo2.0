@@ -161,7 +161,7 @@ $(document).ready(function () {
                                     <td style="width: 40%;">${response.categoria.nombre}</td>
                                     <td style="width: 40%;">
                                         <div>${response.categoria.total_instalaciones+" instalaciones"}</div>
-                                        <div class="desglosamiento">${response.categoria.instalaciones_principal+" instalaciones"} · ${response.categoria.instalaciones_secundaria+" instalaciones"}</div>
+                                        <div class="desglosamiento">${response.categoria.instalaciones_principal+" principal"} · ${response.categoria.instalaciones_secundaria+" secundaria"}</div>
                                     </td>
                                     <td>
                                         <div class="btn-gestor-categorias">
