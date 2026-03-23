@@ -763,6 +763,7 @@ class Instalaciones extends BaseController
             $getHorario = (count($horariosModel->getHorarioByInstalacion($id_instalacion))) ? intval($horariosModel->getHorarioByInstalacion($id_instalacion)[0]["id_tipo_horario"]) : [];
             $getFranjaDia = intval($horariosModel->getFranjaByIdHorario($getHorario));
             $getFranjaHoraria = $horariosModel->getFranjaHorariaByIdHorario($getHorario);
+            
 
             // $getReservas = $reservasModel->
 
