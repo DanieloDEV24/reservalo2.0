@@ -708,6 +708,8 @@ $(document).ready(() => {
 
                     // Cerramos el modal de crear una nueva instalación
                     $('#modalNuevaInstalacion').modal('hide');
+
+                    window.animarFilasGestor();
                 },
                 error: function (xhr, status, error) {
                     console.error('Error al guardar instalación');
@@ -2028,6 +2030,8 @@ $(document).ready(() => {
 
                 // Cambiamos el color de la fila a rojo para indicar que está dada de baja
                 $(`tr[data-index="${index}"]`).remove()
+
+                window.animarFilasGestor();
             }
         })
     });
@@ -3023,7 +3027,24 @@ $(document).ready(() => {
      * campoSolucionado() --> Función que al estar bien el campo, le añade la clase "input-ok" y borra la clase "input-error" mostrando de esta manera que ese campo es correcto
      * @param {HTMLInputElement} input 
      */
+    
     function campoSolucionado(input) {
         input.removeClass('input-error').addClass('input-ok');
     }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    window.animarFilasGestor = () => {
+    gsap.fromTo("#tablaInstalaciones tbody tr",
+      { opacity: 0, x: -15 },
+      {
+        opacity: 1,
+        x: 0,
+        duration: 0.35,
+        stagger: 0.05,
+        ease: "power2.out",
+        clearProps: "transform"
+      }
+    );
+  };
 });

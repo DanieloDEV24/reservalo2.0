@@ -45,7 +45,8 @@ class Instalaciones extends BaseController
             ], 
 
             "js" => [
-                'js/instalaciones.js'
+                'js/instalaciones.js', 
+                'js/movimiento.js'
             ]
         ];
 
@@ -842,7 +843,8 @@ class Instalaciones extends BaseController
             ], 
 
             "js" => [
-                'js/instalaciones.js'
+                'js/instalaciones.js',
+                'js/movimiento.js'
             ]
         ];
 
@@ -875,7 +877,8 @@ class Instalaciones extends BaseController
 
                 "js" => [
                     'js/instalaciones.js', 
-                    'js/reservas.js'
+                    'js/reservas.js', 
+                    'js/movimiento.js'
                 ]
             ];
 

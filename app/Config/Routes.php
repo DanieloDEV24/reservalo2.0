@@ -102,3 +102,5 @@ $routes->post('/crearCategoria', 'Categorias::crearCategoria', ['filter' => 'aut
 $routes->get('/dashboard', 'Dashboard::dashboard', ['filter' => 'auth']);
 $routes->get('/reservasMes', 'Dashboard::reservasMes', ['filter' => 'auth']);
 $routes->get('/reservasCategoria', 'Dashboard::reservasCategoria', ['filter' => 'auth']);
+
+$routes->post('/getInstalacionesCategoriaHome', 'Home::getInstalacionesCategoriaHome');

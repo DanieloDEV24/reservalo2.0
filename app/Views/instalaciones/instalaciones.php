@@ -251,3 +251,24 @@
     }
     ?>
 </div>  
+<script>
+    $(document).ready(function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const paramCategoria   = urlParams.get('categoria');
+        const paramInstalacion = urlParams.get('instalacion');
+        const paramReserva     = urlParams.get('reservaCompleta');
+
+        if (paramCategoria || paramInstalacion || paramReserva) {
+
+            if (paramCategoria)   $('#filtradoCategoriaInstalaciones').val(paramCategoria);
+            if (paramInstalacion) $('#filtradoNombreInstalaciones').val(paramInstalacion);
+            if (paramReserva)     $('#siCompletaInstalaciones').prop('checked', true);
+
+            // Abrimos el accordion para que el usuario vea los filtros aplicados
+            $('#collapseOne').addClass('show');
+            $('#accordionFiltroInstalaciones .accordion-button').removeClass('collapsed');
+
+            $('#btnFiltrarInstalaciones').trigger('click');
+        }
+    });
+</script>

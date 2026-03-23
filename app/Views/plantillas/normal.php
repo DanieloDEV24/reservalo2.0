@@ -75,7 +75,7 @@
 <a href="<?=base_url()?>index.php/dashboard" class="menu__link"> Estadística</a>
 <?php endif; ?>
     </nav>
-    <div style="text-align: end; display: flex; justify-content: end" id="menu-usuario" data-rol="<?= ($session->has('usuario') ? $session->get('usuario')["rol"] : "" ) ?>">
+    <div style="text-align: end; display: flex; justify-content: end" id="menu-usuario" class="inicio-sesion" data-rol="<?= ($session->has('usuario') ? $session->get('usuario')["rol"] : "" ) ?>">
       <?php
         if ($session->has('usuario')) {
           // La sesión 'usuario' existe

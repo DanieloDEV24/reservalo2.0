@@ -7,10 +7,10 @@
 
   <div class="contenedor-busq">
     <div class="mainDivBusqueda w-100">
-      <div class="barraBusqueda row">
-        <div class="col-4">
+      <div class="barraBusqueda">
+        <div class="contenedor-categorias-busqueda">
           <label for="">Categoria:</label>
-          <select>
+          <select id="categorias-home">
             <option value="-1" selected>Seleccione una categoría</option>
             <?php foreach($categorias as $categoria) : ?>
               <option value="<?= $categoria["id_categoria"] ?>"><?= $categoria["nombre"] ?></option>
@@ -18,18 +18,28 @@
           </select>
         </div>
 
-        <div class="col-4">
-          <label for="">Fecha:</label>
-          <input type="date">
+        <div class="contenedor-instalaciones-busqueda">
+          <label for="">Instalacion:</label>
+          <select name="" id="todas-instalaciones-home">
+            <option value="-1" selected>Seleccione una instalación</option>
+              <?php foreach($instalacionesTodas as $inst) : ?>
+                <option value="<?= $inst["id_instalacion"] ?>"><?= $inst["nombre"] ?></option>
+              <?php endforeach ; ?>
+          </select>
         </div>
 
-        <div class="col-3">
-          <label for="">Hora:</label>
-          <input type="time">
+        <div class="contenedor-reservas-completas-busqueda">
+          <label for="">Reserva completa:</label>
+          <label class="toggle-switch">
+              <input type="checkbox" class="iluminacion" id="reserva-completa-home">
+              <div class="toggle-switch-background">
+                <div class="toggle-switch-handle"></div>
+              </div>
+          </label>
         </div>
 
-        <div class="contenedor-btn-busqueda col-1">
-          <a href="" class="btn-primary-personal">
+        <div class="contenedor-btn-busqueda">
+          <a href="" class="btn-primary-personal" id="busqueda-home">
             <i class="bi bi-search"></i>
           </a>
         </div>
@@ -48,26 +58,34 @@
   <div class="datos-gif">
     <div class="dato-gif">
       <img src="<?= base_url() ?>/images/GIF/estadio.gif" class="" alt="...">
-      <h2>+1500</h2>
-      <p>Instalaciones</p>
+      <div class="texto-dato-gif">
+        <h2>+10</h2>
+        <p>Instalaciones</p>
+      </div>
     </div>
 
     <div class="dato-gif">
       <img src="<?= base_url() ?>/images/GIF/categoria.gif" class="" alt="...">
-      <h2>+5</h2>
-      <p>Categorías distintas</p>
+      <div class="texto-dato-gif">
+        <h2>+5</h2>
+        <p>Categorías distintas</p>
+      </div>
     </div>
 
     <div class="dato-gif">
       <img src="<?= base_url() ?>/images/GIF/agregar-usuario.gif" class="" alt="...">
-      <h2>+3000</h2>
-      <p>Usuarios registrados</p>
+      <div class="texto-dato-gif">
+        <h2>+30</h2>
+        <p>Usuarios registrados</p>
+      </div>
     </div>
 
     <div class="dato-gif">
       <img src="<?= base_url() ?>/images/GIF/reloj.gif" class="" alt="...">
-      <h2>24h</h2>
-      <p>Sistema de reservas</p>
+      <div class="texto-dato-gif">
+        <h2>24h</h2>
+        <p>Sistema de reservas</p>
+      </div>
     </div>
   </div>
 

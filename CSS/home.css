@@ -63,10 +63,33 @@ header.headerHome>div a {
 
 .barraBusqueda {
     background-color: #fff;
-    padding: .5% 2%;
     width: 85.5%;
     border-radius: 50px;
     padding-right: 0%;
+    display: flex;
+    align-items: center;
+    gap: 3%;
+    padding-top: .5%;
+    padding-bottom: .5%;
+    justify-content: center;
+    padding-left: 1%; 
+    padding-right: 1%;
+}
+
+.barraBusqueda .contenedor-categorias-busqueda {
+    width: 37%;
+}
+
+.barraBusqueda .contenedor-instalaciones-busqueda {
+    width: 41%;
+} 
+
+.barraBusqueda .contenedor-reservas-completas-busqueda {
+    width: 22%;
+}
+
+.barraBusqueda .contenedor-btn-busqueda {
+    width: 8%;
 }
 
 .contenedor-btn-busqueda {
@@ -162,7 +185,7 @@ header.headerHome>div a {
 
 .contenedor-datos-gif {
     width: 100%;
-    padding: 0% 10%;
+    padding: 0% 6%;
     margin: 5% 0% 5% 0%;
 }
 
@@ -188,12 +211,25 @@ header.headerHome>div a {
 }
 
 .datos-gif div {
-    width: 15%;
+    width: 17%;
     text-align: center;
 }
 
 .datos-gif div img {
     width: 100%;
+}
+
+.texto-dato-gif {
+    width: 100% !important;
+}
+
+.texto-dato-gif p, .texto-dato-gif h2{
+    width: 100% !important;
+    text-align: center;
+}
+
+.texto-dato-gif p{
+    font-size: 1.2rem;
 }
 
 .top-instalaciones {
