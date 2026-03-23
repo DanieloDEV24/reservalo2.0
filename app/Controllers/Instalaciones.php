@@ -6,6 +6,7 @@ use App\Models\actividadModel;
 use App\Models\categoriasModel;
 use App\Models\horariosModel;
 use App\Models\instalacionesModel;
+use App\Models\reservasModel;
 
 class Instalaciones extends BaseController
 {
@@ -748,6 +749,7 @@ class Instalaciones extends BaseController
         $post = $this->request->getPost();
         $instalacionesModel = new instalacionesModel();
         $horariosModel = new horariosModel();
+        $reservasModel = new reservasModel();
         $actividadModel = new actividadModel();
 
         $session = session();
@@ -756,16 +758,37 @@ class Instalaciones extends BaseController
             $id_instalacion = intval($post["id"]);
 
             $instalacion = $instalacionesModel->getInstalacion($id_instalacion);
-
-            $borrarPistas = $instalacionesModel->borrarPistas($id_instalacion);
         
             // Lo nuevo - 17/03/2026
-            $getHorario = (count($horariosModel->getHorarioByInstalacion($id_instalacion))) ? intval($horariosModel->getHorarioByInstalacion($id_instalacion)[0]["id_tipo_horario"]) : [];
-            $getFranjaDia = intval($horariosModel->getFranjaByIdHorario($getHorario));
-            $getFranjaHoraria = $horariosModel->getFranjaHorariaByIdHorario($getHorario);
-            
+            $getHorario = $horariosModel->getHorarioByInstalacion($id_instalacion);
 
-            // $getReservas = $reservasModel->
+            if(count($getHorario) > 0) {
+
+                foreach($getHorario as $horario) {
+                    
+                    $getFranjasHoraria = $horariosModel->getFranjaHorariaByIdHorario(intval($horario["id_tipo_horario"]));
+
+                    foreach($getFranjasHoraria as $franja){
+
+                        $borrarFranjaDia = $horariosModel->borrarFranjaDia(intval($franja["id_franja_horaria"]));
+                        $borrarFranjaHoraria = $horariosModel->borrarFranjaHoraria(intval($franja["id_franja_horaria"]));
+                    }
+                    
+                    $borrarExcepcion = $horariosModel->borrarExcepcion(intval($horario["id_tipo_horario"]));
+                    $borrarHorario = $horariosModel->borrarHorario(intval($horario["id_tipo_horario"]));
+                }
+                
+                $pistas = $instalacionesModel->getPistasByInstalacion($id_instalacion);
+                
+                foreach($pistas as $pista) {
+                    $borrarReservas = $reservasModel->anularReservaByPista(intval($pista["id_pista"]));
+                    $borrarPedido = $reservasModel->deletePedidoByPista(intval($pista["id_pista"]));
+                }
+                
+
+            }
+
+            $borrarPistas = $instalacionesModel->borrarPistas($id_instalacion);
 
             if ($borrarPistas) {
                 $result = $instalacionesModel->deleteInstalacion($id_instalacion);

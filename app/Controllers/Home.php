@@ -15,10 +15,12 @@ class Home extends BaseController
     {
 
         $instalacionesModel = new instalacionesModel();
+        $categoriasModel = new categoriasModel();
 
         $instalacionesCarrousel = $instalacionesModel->getInstalacionesHome();
+        $categorias = $categoriasModel->getCategoriasConInstalacion();
 
-        $view = view('home/home', ["baseUrl" => base_url(), "instalacionesCarrousel" => $instalacionesCarrousel]);
+        $view = view('home/home', ["baseUrl" => base_url(), "instalacionesCarrousel" => $instalacionesCarrousel, "categorias" => $categorias]);
         
         $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
         $modalAnularHoras = view('reservas/modalAnularHoras');

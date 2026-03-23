@@ -9,9 +9,12 @@
     <div class="mainDivBusqueda w-100">
       <div class="barraBusqueda row">
         <div class="col-4">
-          <label for="">Deporte:</label>
+          <label for="">Categoria:</label>
           <select>
-            <option value="-1" selected>Seleccionde Deporte</option>
+            <option value="-1" selected>Seleccione una categoría</option>
+            <?php foreach($categorias as $categoria) : ?>
+              <option value="<?= $categoria["id_categoria"] ?>"><?= $categoria["nombre"] ?></option>
+            <?php endforeach ; ?>
           </select>
         </div>
 

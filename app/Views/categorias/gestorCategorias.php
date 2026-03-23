@@ -80,7 +80,7 @@
                             <td style="width: 40%;"><?= $categoria["nombre"] ?></td>
                             <td style="width: 40%;">
                               <div><?= $categoria["total_instalaciones"]." instalaciones"?></div>
-                              <div class="desglosamiento"><?= $categoria["instalaciones_principal"]." instalaciones"?> · <?= $categoria["instalaciones_secundaria"]." instalaciones"?></div>
+                              <div class="desglosamiento"><?= $categoria["instalaciones_principal"]." principal"?> · <?= $categoria["instalaciones_secundaria"]." secundaria"?></div>
                             </td>
                             <td>
                               <div class="btn-gestor-categorias">

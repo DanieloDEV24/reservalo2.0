@@ -511,6 +511,12 @@ $(document).ready(() => {
                     if (response.success == true) {
                         $('#modalInfoUsuario').modal('hide')
                     }
+                    else {
+                        $('.contenedor-alert-editar-usuario .alert-errores-editar-usuario .errores ul').append(`<li>${response.message}</li>`)
+
+                        $('.contenedor-alert-editar-usuario').removeClass('d-none')
+                        $('.alert-errores-editar-usuario').show();
+                    }
                 }
             });
         }

@@ -40,6 +40,22 @@ class categoriasModel extends Model
         return $result;
     }
 
+    public function getCategoriasConInstalacion() {
+
+        $db = \Config\Database::connect('BDReservalo2');
+        $builder = $db->table('categorias');
+
+        $builder->distinct()->select('categorias.*');
+        $builder->join('instalaciones i1', 'i1.categoria_principal = categorias.id_categoria', 'left');
+        $builder->join('instalaciones i2', 'i2.categoria_opcional1 = categorias.id_categoria', 'left');
+
+        $builder->where('i1.id_instalacion IS NOT NULL', null, false);
+        $builder->orWhere('i2.id_instalacion IS NOT NULL', null, false);
+
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+
     public function getFullCategorias() {
         
         $db = \Config\Database::connect('BDReservalo2');
@@ -53,6 +69,7 @@ class categoriasModel extends Model
         $query = $builder->get();
         return $query->getResultArray();
     }
+
 
     public function getCategoria(int $id_categoria) {
 

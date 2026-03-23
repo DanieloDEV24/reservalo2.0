@@ -565,10 +565,16 @@ class horariosModel extends Model
 
     public function getHorarioByInstalacion(int $id_instalacion) {
 
-        // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
 
-        $builder = $db->table('tipo_horario')->where('id_instalacion', $id_instalacion);
+        $builder = $db->table('tipo_horario');
+
+        $builder->select('*');
+        $builder->distinct();
+
+        $builder->join('franjas_horarias', 'franjas_horarias.id_tipo_horario = tipo_horario.id_tipo_horario');
+
+        $builder->where('id_instalacion', $id_instalacion);
 
         return $builder->get()->getResultArray();
     }
@@ -578,8 +584,10 @@ class horariosModel extends Model
         // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
 
-        $builder = $db->table('tipo_horario')->where('id_tipo_horario', $id_tipo_horario);
+        $builder = $db->table('franjas_horarias');
+        $builder->select()->where('id_tipo_horario', $id_tipo_horario);
 
         return $builder->get()->getResultArray();
     }
+
 }

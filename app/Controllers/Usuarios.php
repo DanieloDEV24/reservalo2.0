@@ -122,6 +122,16 @@ class Usuarios extends BaseController
 
             $data_usuario = [];
 
+            $usuarios = $usuariosModel->getUsuarios();
+            if(in_array($email, array_column($usuarios, 'email'))) {
+
+                echo json_encode([
+                "success" => false,
+                "message" => "El email nuevo está en uso" 
+            ]);
+            return;
+            }
+
             if($password === "") {
                 
                 $data_usuario = [
@@ -153,7 +163,8 @@ class Usuarios extends BaseController
 
             echo json_encode([
                 "success" => true,
-                "message" => "Usuario modificado correctamente" 
+                "message" => "Usuario modificado correctamente", 
+                "usuario" => $data_usuario
             ]);
             return;
         }
@@ -175,6 +186,16 @@ class Usuarios extends BaseController
             $password_nueva = $post["password_nueva"];
 
             $data_usuario = [];
+
+            $usuarios = $usuariosModel->getUsuarios();
+            if(in_array($email, array_column($usuarios, 'email'))) {
+
+                echo json_encode([
+                "success" => false,
+                "message" => "El email nuevo está en uso" 
+                ]);
+                return;
+            }
 
             if($password_vieja === "" && $password_nueva === "") {
                 
