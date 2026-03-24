@@ -405,7 +405,8 @@ class Reservas extends BaseController
 
                     "js" => [ 
                         'js/reservas.js', 
-                        'js/crudReservas.js'
+                        'js/crudReservas.js', 
+                        'js/movimiento.js'
                     ]
         ];
 

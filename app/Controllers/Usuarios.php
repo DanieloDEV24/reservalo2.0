@@ -27,7 +27,8 @@ class Usuarios extends BaseController
             ], 
 
             "js" => [
-                "js/usuarios.js"
+                "js/usuarios.js", 
+                "js/movimiento.js"
             ]
         ];
         

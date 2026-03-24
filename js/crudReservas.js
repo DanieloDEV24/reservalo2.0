@@ -220,6 +220,8 @@ $(document).ready(function () {
                 </div>`
 
                                                 $('.paginaReservas .contenedor-reservas').append(card)
+                                                 window.animarCardsReservas(); 
+                                                
                                             })
                                         }
                                     }

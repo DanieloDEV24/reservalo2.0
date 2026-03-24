@@ -25,7 +25,8 @@ class Dashboard extends BaseController
             ], 
 
             "js" => [
-                "js/dashboard.js"
+                "js/dashboard.js",
+                "js/movimiento.js"
             ]
         ];
 

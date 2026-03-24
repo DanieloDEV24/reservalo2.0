@@ -21,7 +21,8 @@ class Categorias extends BaseController
             ], 
 
             "js" => [
-                "js/categorias.js"
+                "js/categorias.js", 
+                "js/movimiento.js"
             ]
         ];
         
