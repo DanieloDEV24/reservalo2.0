@@ -41,7 +41,8 @@ class Instalaciones extends BaseController
             "css" => [
                 'css/crudInstalaciones.css',
                 'css/instalaciones.css',
-                'css/style.css'
+                'css/style.css', 
+                'css/responsive.css'
             ], 
 
             "js" => [
@@ -839,7 +840,8 @@ class Instalaciones extends BaseController
         $assets = [
             "css" => [
                 'css/instalaciones.css', 
-                'css/style.css'
+                'css/style.css', 
+                'css/responsive.css'
             ], 
 
             "js" => [

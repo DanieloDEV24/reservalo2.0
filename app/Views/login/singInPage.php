@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservalo 2.0</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/home.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/login.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/home.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/login.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/responsive.css" media="screen" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <script src="<?= base_url() ?>js/jquery.js"></script>
@@ -25,7 +26,7 @@
 
 </head>
 
-<body class="d-flex justify-content-center align-items-center flex-wrap bodyLogin">
+<body class="d-flex justify-content-center align-items-center flex-wrap bodyLogin bodyRegistro">
 
     <div id="mensaje" style="width: 100%; padding: 1%; padding-bottom: 0%; display: flex; justify-content: center;">
     <?php
@@ -44,7 +45,7 @@
             <!-- Logo -->
             <div class="app-brand justify-content-center">
                 <a href="/sneat-html-django-admin-template-free/" class="app-brand-link gap-2 d-flex justify-content-center">
-                    <img src="<?=base_url()?>/images/logo-reservalo-largo.png" alt="" style="width: 60%;">
+                    <img src="<?= base_url() ?>images/logo-reservalo-largo.png" alt="" style="width: 60%;">
                 </a>
             </div>
             <!-- /Logo -->
@@ -90,7 +91,7 @@
     <br>
             <p class="text-center">
                 <span>¿Ya tienes cuenta?</span>
-                <a href="<?=base_url()?>index.php/login">
+                <a href="<?= base_url() ?>index.php/login">
                     <span>Iniciar Sesión</span>
                 </a>
             </p>

@@ -19,7 +19,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/getInfoPistasReserva`,
+            url: `/reservalo2.0/index.php/getInfoPistasReserva`,
             data: { pistaId: pistaId, "fecha": fechaFormateada, rol: rolUsuario, tipo_reserva: tipoReserva },
             dataType: "json",
             success: function (response) {
@@ -41,10 +41,10 @@ $(document).ready(() => {
 
                         $("#nombre-pista").text(response.infoPista[0].nombre_pista);
                         $("#capacidad-pista").text(response.infoPista[0].capacidad_pista + " personas");
-                        $("#img1-pista").attr("src", response.baseUrl + "images/" + response.infoPista[0].imagen1);
-                        $("#img2-pista").attr("src", response.baseUrl + "images/" + response.infoPista[0].imagen2);
-                        $("#img3-pista").attr("src", response.baseUrl + "images/" + response.infoPista[0].imagen3);
-                        $("#img4-pista").attr("src", response.baseUrl + "images/" + response.infoPista[0].imagen4);
+                        $("#img1-pista").attr("src", BASE_URL +  "images/" + response.infoPista[0].imagen1);
+                        $("#img2-pista").attr("src", BASE_URL +  "images/" + response.infoPista[0].imagen2);
+                        $("#img3-pista").attr("src", BASE_URL +  "images/" + response.infoPista[0].imagen3);
+                        $("#img4-pista").attr("src", BASE_URL +  "images/" + response.infoPista[0].imagen4);
                         $("#categoria-pista").text(response.infoPista[0].categoria);
                         $("#precio-pista").text(response.infoPista[0].precio_pista)
 
@@ -185,7 +185,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/getInfoPistasReserva`,
+            url: `/reservalo2.0/index.php/getInfoPistasReserva`,
             data: { "pistaId": pista, "fecha": fecha, rol: rolUsuario, tipo_reserva: tipoReserva },
             dataType: "JSON",
             success: function (response) {
@@ -329,7 +329,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/comprobarReservas`,
+            url: `/reservalo2.0/index.php/comprobarReservas`,
             data: { fecha: fecha, hora: hora, pista: pista },
             dataType: "JSON",
             success: function (response) {
@@ -439,7 +439,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/hacerReserva`,
+            url: `/reservalo2.0/index.php/hacerReserva`,
             data: { datos: data, precio: precio, tipo_reserva: tipoReserva, precio_reserva: precioReserva, id_usuario: idUsuario },
             dataType: "JSON",
             success: function (response) {
@@ -459,7 +459,7 @@ $(document).ready(() => {
                     horasAnt = [];
 
                     // Descargar PDF (nueva ventana o iframe)
-                    window.location.href = '../descargarTicket/' + response.id_pedido;
+                    window.location.href = '/reservalo2.0/index.php/descargarTicket/' + response.id_pedido;
 
                     horasAnt = [];
                     $('.btn-horario.horaSeleccionada').removeClass('.horaSeleccionada')

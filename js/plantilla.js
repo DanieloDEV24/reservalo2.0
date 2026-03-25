@@ -9,7 +9,7 @@ $(document).ready(() => {
     
        $.ajax({
         type: "GET",
-        url: `${BASE_URL}index.php/misReservas`,
+        url: `/reservalo2.0/index.php/misReservas`,
         dataType: "JSON",
         success: function (response) {
             if(response.success === true){
@@ -346,7 +346,7 @@ $(document).ready(() => {
         })
 
         $.ajax({
-            url: `${BASE_URL}index.php/anularHora`,
+            url: `/reservalo2.0/index.php/anularHora`,
             method: 'POST',
             data: {
                 datos: datos
@@ -378,7 +378,7 @@ $(document).ready(() => {
         })
 
         $.ajax({
-            url: `${BASE_URL}index.php/anularHora`,
+            url: `/reservalo2.0/index.php/anularHora`,
             method: 'POST',
             data: {
                 datos: datos
@@ -400,7 +400,7 @@ $(document).ready(() => {
         let idPedido = $(this).data('pedido');
 
         $.ajax({
-            url: `${BASE_URL}index.php/anularReservaEspecial`,
+            url: `/reservalo2.0/index.php/anularReservaEspecial`,
             method: 'POST',
             data: {
                 idPedido: idPedido
@@ -423,7 +423,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/getUsuario`,
+            url: `/reservalo2.0/index.php/getUsuario`,
             data: {id_usuario: idUsuario},
             dataType: "JSON",
             success: function (response) {
@@ -503,7 +503,7 @@ $(document).ready(() => {
         if (errores.length === 0) {
             $.ajax({
                 type: "POST",
-                url: `${BASE_URL}index.php/editarUsuarioPersonal`,
+                url: `/reservalo2.0/index.php/editarUsuarioPersonal`,
                 data: { id_usuario: idUsuario, nombre: nombre, email: email, telf: telf, password_vieja: passwordActual, password_nueva: passwordNueva },
                 dataType: "JSON",
                 success: function (response) {
@@ -575,7 +575,7 @@ $(document).ready(() => {
         if (errores.length === 0) {
             $.ajax({
                 type: "POST",
-                url: `${BASE_URL}index.php/editarUsuarioPersonal`,
+                url: `/reservalo2.0/index.php/editarUsuarioPersonal`,
                 data: { id_usuario: idUsuario, nombre: nombre, email: email, telf: telf, password_vieja: passwordActual, password_nueva: passwordNueva },
                 dataType: "JSON",
                 success: function (response) {
@@ -627,7 +627,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/getReservasByPedido`,
+            url: `/reservalo2.0/index.php/getReservasByPedido`,
             data: {id_pedido: idPedido,},
             dataType: "JSON",
             success: function (response) {
@@ -673,7 +673,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/borrarReservasDia`,
+            url: `/reservalo2.0/index.php/borrarReservasDia`,
             data: {data: datos},
             dataType: "JSON",
             success: function (response) {

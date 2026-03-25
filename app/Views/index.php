@@ -6,11 +6,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Reservalo 2.0</title>
 
-  <link rel="icon" href="<?php echo base_url();?>images/logo-reservalo.png" type="image/png">
+  <link rel="icon" href="<?= base_url() ?>images/logo-reservalo.png" type="image/png">
 
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css"/>
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/home.css"/>
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/instalaciones.css"/>
+  <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/style.css"/>
+  <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/home.css"/>
+  <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/instalaciones.css"/>
+  <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/responsive.css"/>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <script>
@@ -44,7 +45,7 @@
     <img src="<?= base_url() ?>images/logo-reservalo.png" alt="">
     <nav class="align-items-center">
       <a href="<?= base_url() ?>" class="menu__link"> Home</a>
-      <a href="<?=base_url()?>index.php/instalaciones" class="menu__link"> Instalaciones</a>
+      <a href="<?= base_url() ?>index.php/instalaciones" class="menu__link"> Instalaciones</a>
       
 
 <?php $session = session(); ?>
@@ -54,13 +55,13 @@
      Gestores
   </a>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudInstalaciones"> Gestor Instalaciones</a></li>
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/gestorCategorias"> Gestor Categorias</a></li>
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudReservas"> Gestor Reservas</a></li>
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/gestorUsuarios"> Gestor Usuarios</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/crudInstalaciones"> Gestor Instalaciones</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/gestorCategorias"> Gestor Categorias</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/crudReservas"> Gestor Reservas</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/gestorUsuarios"> Gestor Usuarios</a></li>
   </ul>
 </div>
-<a href="<?=base_url()?>index.php/dashboard" class="menu__link"> Estadística</a>
+<a href="<?= base_url() ?>index.php/dashboard" class="menu__link"> Estadística</a>
 <?php endif; ?>
     </nav>
     <div style="text-align: end; display: flex; justify-content: end" class="inicio-sesion">
@@ -109,7 +110,7 @@
         {
           // No existe la sesión 'usuario'
           ?>
-            <a href="<?=base_url()?>index.php/login" class="btn-primary-personal"><i class="bi bi-person"></i> Iniciar Sesión</a>
+            <a href="<?= base_url() ?>index.php/login" class="btn-primary-personal"><i class="bi bi-person"></i> Iniciar Sesión</a>
           <?php
         }
       ?>

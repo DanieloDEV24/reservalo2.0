@@ -6,6 +6,7 @@ use App\Models\actividadModel;
 use App\Models\categoriasModel;
 use App\Models\instalacionesModel;
 use App\Models\loginModel;
+use App\Models\usuariosModel;
 use CodeIgniter\HTTP\ResponseInterface;
 use IntlDateFormatter;
 use DateTime;
@@ -308,6 +309,7 @@ class Login extends BaseController
         $actividadModel = new actividadModel();
         $request     = $this->request;
         $post        = $request->getPost();
+        $usuarioModel = new usuariosModel();
 
         if (!empty($post)) {
             $newPass   = $post["newPassReset"];
@@ -319,17 +321,38 @@ class Login extends BaseController
                     "success" => false,
                     "type"    => "danger"
                 ];
+               
+
+            return view('login/resetPass', [
+                "baseUrl" => base_url(),
+                "salida" => $salida
+            ]);
+
+            }
+            else if ($newPass === "") {
+                $salida = [
+                    "mensaje" => "Debe seleccionar una contraseña",
+                    "success" => false,
+                    "type"    => "danger"
+                ];
+                
+                return view('login/resetPass', [
+                    "baseUrl" => base_url(),
+                    "salida" => $salida
+                ]);
             } else {
                 $passwordEncrypt = sha1($newPass);
 
                 // Cambiamos la contraseña y nos vamos al inicio
                 $modeloLogin->cambioPass($passwordEncrypt, $user);
                 
+                $datosUsuario = $usuarioModel->getUsuarioById(intval($user))[0];
+
                 $actividad = $actividadModel->crearActividad([
                     "tipo" => 23,
-                    "descripcion" => "Cambio de contraseña del usuario ". session()->get('usuario')["email"], 
+                    "descripcion" => "Cambio de contraseña ". $datosUsuario["email"], 
                     "fecha" => date("Y-m-d H:i:s"), 
-                    "id_usuario" => session()->get('usuario')["id_usuario"]
+                    "id_usuario" => intval($user)
                 ]);
 
                 return redirect()->to('/');

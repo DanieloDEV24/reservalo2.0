@@ -611,7 +611,7 @@ $(document).ready(() => {
 
             // Petición Ajax al back en la que enviamos los datos para crear la instalación y guardarlas en la base de datos
             $.ajax({
-                url: `${BASE_URL}index.php/nuevaInstalacion`, // --> URL a la que enviamos la petición
+                url: `/reservalo2.0/index.php/nuevaInstalacion`, // --> URL a la que enviamos la petición
                 type: 'POST',
                 data: formData,
                 processData: false, // Importante para enviar FormData
@@ -620,7 +620,6 @@ $(document).ready(() => {
 
                     let data = JSON.parse(response); // --> Respuesta de la petición. La pasamos a un objeto con JSON.parse()
                     let instalaciones = data.instalaciones; // --> Obtenemos las instalaciones que tenemos creadas
-                    let baseUrl = data.base_url;
                     let tabla = $('#tablaInstalaciones tbody'); // --> Obetenemos la tabla del crud de las instalaciones
                     let body = $('.divTable')
                     
@@ -683,7 +682,7 @@ $(document).ready(() => {
   ? `
     <li>
       <a class="dropdown-item btnGenerarHorario"
-         href="${baseUrl}index.php/horario/${instalacion.id_instalacion}">
+         href="${BASE_URL}index.php/horario/${instalacion.id_instalacion}">
         Generar horario&nbsp;<i class="bi bi-calendar-week"></i>
       </a>
     </li>
@@ -747,14 +746,14 @@ $(document).ready(() => {
 
         // Reaclizamos una petición ajax al back para obtener la información de la instalación con el id anteriormente guardado
         $.ajax({
-            url: `${BASE_URL}index.php/verInstalacion`, // --> URL donde hacemos la petición
+            url: `/reservalo2.0/index.php/verInstalacion`, // --> URL donde hacemos la petición
             method: 'POST',
             data: { id: index },
             dataType: 'json',
             success: function (response) {
 
                 // Ponemos la imagen de la instalación en el "header" del modal
-                $('#imagenVerInstalacion').css('background-image', `url(${base_url}images/${response.pistas[0].imagen1})`);
+                $('#imagenVerInstalacion').css('background-image', `url(images/${response.pistas[0].imagen1})`);
 
                 // Mostramos los datos
                 $('#nombreVerInstalacion').text(response.instalacion[0].nombre + '.'); // --> Mostramos el nombre
@@ -806,10 +805,10 @@ $(document).ready(() => {
                                         data-bs-parent="#accordionPistas">
                                     <div class="accordion-body">
                                         <div class="galeria-imagenes-pistas">
-                                            <img src="${base_url}images/${pista["imagen1"]}" alt="Imagen 1 de ${pista["nombre_pista"]}" class="img-grande">
-                                            <img src="${base_url}images/${pista["imagen2"]}" alt="Imagen 2 de ${pista["nombre_pista"]}" class="img-pequena">
-                                            <img src="${base_url}images/${pista["imagen3"]}" alt="Imagen 3 de ${pista["nombre_pista"]}" class="img-pequena">
-                                            <img src="${base_url}images/${pista["imagen4"]}" alt="Imagen 4 de ${pista["nombre_pista"]}" class="img-pequena">
+                                            <img src="${BASE_URL}images/${pista["imagen1"]}" alt="Imagen 1 de ${pista["nombre_pista"]}" class="img-grande">
+                                            <img src="${BASE_URL}images/${pista["imagen2"]}" alt="Imagen 2 de ${pista["nombre_pista"]}" class="img-pequena">
+                                            <img src="${BASE_URL}images/${pista["imagen3"]}" alt="Imagen 3 de ${pista["nombre_pista"]}" class="img-pequena">
+                                            <img src="${BASE_URL}images/${pista["imagen4"]}" alt="Imagen 4 de ${pista["nombre_pista"]}" class="img-pequena">
                                         </div>
 
                                         <div class="row gap-5 mt-3">
@@ -871,7 +870,7 @@ $(document).ready(() => {
 
         // Hacemos una petición ajax al back para obtener los datos de esa instalación
         $.ajax({
-            url: `${BASE_URL}index.php/editarInstalacion`, // --> URL a la que se hace la petición
+            url: `/reservalo2.0/index.php/editarInstalacion`, // --> URL a la que se hace la petición
             method: 'POST',
             data: { id: index },
             dataType: 'json',
@@ -1099,7 +1098,7 @@ $(document).ready(() => {
 
         // Petición ajax en la que obtenemos los datos de la pista
         $.ajax({
-            url: `${BASE_URL}index.php/infoPista`, // --> URL donde hacemos la petición
+            url: `/reservalo2.0/index.php/infoPista`, // --> URL donde hacemos la petición
             method: 'POST',
             data: { id: idPista },
             dataType: 'json',
@@ -1177,7 +1176,7 @@ $(document).ready(() => {
         // Petición AJAX al backend
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/editarPista`, // <-- tu endpoint en el backend
+            url: `/reservalo2.0/index.php/editarPista`, // <-- tu endpoint en el backend
             data: formData,
             processData: false, // <-- importante para que jQuery no lo procese
             contentType: false, // <-- importante para enviar correctamente los archivos
@@ -1229,7 +1228,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/getNewIndexPista`,
+            url: `/reservalo2.0/index.php/getNewIndexPista`,
             data: "",
             dataType: 'json',
             beforeSend: function (event) {
@@ -1462,7 +1461,7 @@ $(document).ready(() => {
         // Petición ajax al back con la que obtenemos la información sobre la pista
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/infoPista`, // --> URL donde va destinada la peticion
+            url: `/reservalo2.0/index.php/infoPista`, // --> URL donde va destinada la peticion
             data: { id: idPista },
             dataType: "json",
             success: function (response) {
@@ -1509,7 +1508,7 @@ $(document).ready(() => {
         // Hago una petición ajax al back para eliminar la pista de la base de datos
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/borrarPista`, // --> URL a donde va la petición
+            url: `/reservalo2.0/index.php/borrarPista`, // --> URL a donde va la petición
             data: { id: id },
             dataType: "json",
             success: function (response) {
@@ -1609,7 +1608,7 @@ $(document).ready(() => {
         // Hacemos la petición ajax al back para enviar los datos de la pista a crear
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/crearPista`, // --> URL a donde enviaremos la petición
+            url: `/reservalo2.0/index.php/crearPista`, // --> URL a donde enviaremos la petición
             data: formData,
             processData: false, // Importante para enviar FormData
             contentType: false, // Importante para enviar FormData
@@ -1780,7 +1779,7 @@ $(document).ready(() => {
         // Petición AJAX al backend para guardar los datos de la instalación editada
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/editarInstalacionBD`,
+            url: `/reservalo2.0/index.php/editarInstalacionBD`,
             data: formData,
             contentType: false,
             processData: false,
@@ -1820,7 +1819,7 @@ $(document).ready(() => {
         // Petición ajax al back para obtener el nombre de la instalación y mostrarlo en el modal
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/mensajeDarBajaInstalacion`, // --> URL donde va destinada la petición
+            url: `/reservalo2.0/index.php/mensajeDarBajaInstalacion`, // --> URL donde va destinada la petición
             data: { id: index },
             dataType: "json",
             success: function (response) {
@@ -1845,7 +1844,7 @@ $(document).ready(() => {
         let index = $('#modalBajaInstalacion').data('index');
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/darBajaInstalacion`, // --> URL donde va destinada la petición
+            url: `/reservalo2.0/index.php/darBajaInstalacion`, // --> URL donde va destinada la petición
             data: { id: index },
             dataType: "json",
             success: function (response) {
@@ -1885,7 +1884,7 @@ $(document).ready(() => {
         // Petición ajax al back para dar de alta la instalación
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/darAlta`, // --> URL donde va destinada la petición
+            url: `/reservalo2.0/index.php/darAlta`, // --> URL donde va destinada la petición
             data: { id: index },
             dataType: "json",
             beforeSend: function (event) {
@@ -1934,7 +1933,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/mensajeBorrarInstalacion`,
+            url: `/reservalo2.0/index.php/mensajeBorrarInstalacion`,
             data: { id: index },
             dataType: "json",
             success: function (response) {
@@ -1975,10 +1974,10 @@ $(document).ready(() => {
                                         data-bs-parent="#accordionPistas">
                                     <div class="accordion-body">
                                         <div class="galeria-imagenes-pistas">
-                                            <img src="${base_url}images/${pista["imagen1"]}" alt="Imagen 1 de ${pista["nombre_pista"]}" class="img-grande">
-                                            <img src="${base_url}images/${pista["imagen2"]}" alt="Imagen 2 de ${pista["nombre_pista"]}" class="img-pequena">
-                                            <img src="${base_url}images/${pista["imagen3"]}" alt="Imagen 3 de ${pista["nombre_pista"]}" class="img-pequena">
-                                            <img src="${base_url}images/${pista["imagen4"]}" alt="Imagen 4 de ${pista["nombre_pista"]}" class="img-pequena">
+                                            <img src="${BASE_URL}images/${pista["imagen1"]}" alt="Imagen 1 de ${pista["nombre_pista"]}" class="img-grande">
+                                            <img src="${BASE_URL}images/${pista["imagen2"]}" alt="Imagen 2 de ${pista["nombre_pista"]}" class="img-pequena">
+                                            <img src="${BASE_URL}images/${pista["imagen3"]}" alt="Imagen 3 de ${pista["nombre_pista"]}" class="img-pequena">
+                                            <img src="${BASE_URL}images/${pista["imagen4"]}" alt="Imagen 4 de ${pista["nombre_pista"]}" class="img-pequena">
                                         </div>
 
                                         <div class="row gap-5 mt-3">
@@ -2021,7 +2020,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/borrarInstalacion`, // --> URL donde va destinada la petición
+            url: `/reservalo2.0/index.php/borrarInstalacion`, // --> URL donde va destinada la petición
             data: { id: index },
             dataType: "json",
             success: function (response) {
@@ -2170,7 +2169,7 @@ $(document).ready(() => {
 
     $.ajax({
         type: "POST",
-        url: `${BASE_URL}index.php/crudInstalaciones`,
+        url: `/reservalo2.0/index.php/crudInstalaciones`,
         data: { filter: filter },
         dataType: "json",
         beforeSend: function(){
@@ -2294,7 +2293,7 @@ $(document).ready(() => {
 
         $.ajax({
         type: "POST",
-        url: `${BASE_URL}index.php/crudInstalaciones`,
+        url: `/reservalo2.0/index.php/crudInstalaciones`,
         data: { filter: filter },
         dataType: "json",
         beforeSend: function(){
@@ -2392,7 +2391,7 @@ $(document).ready(() => {
 
         $.ajax({
         type: "POST",
-        url: `${BASE_URL}index.php/crudInstalaciones`,
+        url: `/reservalo2.0/index.php/crudInstalaciones`,
         data: { filter: null },
         dataType: "json",
         beforeSend: function(){
@@ -2643,7 +2642,7 @@ $(document).ready(() => {
 
     $.ajax({
     type: "POST",
-    url: `${BASE_URL}index.php/instalaciones`,
+    url: `/reservalo2.0/index.php/instalaciones`,
     data: { filterInstalaciones: filterInstalaciones },
     dataType: "json",
     beforeSend: function(){
@@ -2659,7 +2658,7 @@ $(document).ready(() => {
             response.instalaciones.forEach(instalacion => {
                 let card = $(`
                     <div class="card-instalacion" data-index="${instalacion.id_instalacion}">
-                        <div class="card-image" style="background: url('${response.base_url}images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
+                        <div class="card-image" style="background: url('images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
                         <div class="category">${instalacion.categoria_name}</div>
                         <div class="heading">${instalacion.nombre}</div>
                         <div class="opciones">
@@ -2669,7 +2668,7 @@ $(document).ready(() => {
                             ${instalacion.material == 1 ? '<span>Material</span>' : ''}
                         </div>
                         <div class="button">
-                            <a href="${response.base_url}index.php/instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
+                            <a href="${BASE_URL}index.php/instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
                                 Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
@@ -2795,7 +2794,7 @@ $(document).ready(() => {
 
         $.ajax({
         type: "POST",
-        url: `${BASE_URL}index.php/instalaciones`,
+        url: `/reservalo2.0/index.php/instalaciones`,
         data: { filterInstalaciones: filterInstalaciones },
         dataType: "json",
         beforeSend: function(){
@@ -2811,7 +2810,7 @@ $(document).ready(() => {
             response.instalaciones.forEach(instalacion => {
                 let card = $(`
                     <div class="card-instalacion" data-index="${instalacion.id_instalacion}">
-                        <div class="card-image" style="background: url('${response.base_url}images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
+                        <div class="card-image" style="background: url('images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
                         <div class="category">${instalacion.categoria_name}</div>
                         <div class="heading">${instalacion.nombre}</div>
                         <div class="opciones">
@@ -2821,7 +2820,7 @@ $(document).ready(() => {
                             ${instalacion.material == 1 ? '<span>Material</span>' : ''}
                         </div>
                         <div class="button">
-                            <a href="${response.base_url}index.php/instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
+                            <a href="${BASE_URL}index.php/instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
                                 Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i>
                             </a>
                         </div>
@@ -2921,7 +2920,7 @@ $(document).ready(() => {
 
         $.ajax({
         type: "POST",
-        url: `${BASE_URL}index.php/instalaciones`,
+        url: `/reservalo2.0/index.php/instalaciones`,
         data: { filterInstalaciones: null },
         dataType: "json",
         beforeSend: function(){
@@ -2938,7 +2937,7 @@ $(document).ready(() => {
 
                 let card = $(`
                     <div class="card-instalacion" data-index="${instalacion.id_instalacion}">
-                        <div class="card-image" style="background: url('${response.base_url}images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
+                        <div class="card-image" style="background: url('images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
                         <div class="category">${instalacion.categoria_name}</div>
                         <div class="heading">${instalacion.nombre}</div>
                         <div class="opciones">
@@ -2948,7 +2947,7 @@ $(document).ready(() => {
                             ${instalacion.material == 1 ? '<span>Material</span>' : ''}
                         </div>
                         <div class="button">
-                            <a href="${response.base_url}index.php/instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
+                            <a href="<?= base_url() ?>index.php/instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
                                 Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i>
                             </a>
                         </div>

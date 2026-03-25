@@ -2,7 +2,7 @@
 <div class="home">
   <div class="textoPortada">
     <h1>Reserva tu espacio, disfruta el deporte — instalaciones municipales a tu alcance.</h1>
-    <a href="" class="btn-primary-personal">Instalaciones</a>
+    <a href="<?= base_url() ?>index.php/instalaciones" class="btn-primary-personal">Instalaciones</a>
   </div>
 
   <div class="contenedor-busq">
@@ -57,7 +57,7 @@
 
   <div class="datos-gif">
     <div class="dato-gif">
-      <img src="<?= base_url() ?>/images/GIF/estadio.gif" class="" alt="...">
+      <img src="<?= base_url() ?>images/GIF/estadio.gif" class="" alt="...">
       <div class="texto-dato-gif">
         <h2>+10</h2>
         <p>Instalaciones</p>
@@ -65,7 +65,7 @@
     </div>
 
     <div class="dato-gif">
-      <img src="<?= base_url() ?>/images/GIF/categoria.gif" class="" alt="...">
+      <img src="<?= base_url() ?>images/GIF/categoria.gif" class="" alt="...">
       <div class="texto-dato-gif">
         <h2>+5</h2>
         <p>Categorías distintas</p>
@@ -73,7 +73,7 @@
     </div>
 
     <div class="dato-gif">
-      <img src="<?= base_url() ?>/images/GIF/agregar-usuario.gif" class="" alt="...">
+      <img src="<?= base_url() ?>images/GIF/agregar-usuario.gif" class="" alt="...">
       <div class="texto-dato-gif">
         <h2>+30</h2>
         <p>Usuarios registrados</p>
@@ -81,7 +81,7 @@
     </div>
 
     <div class="dato-gif">
-      <img src="<?= base_url() ?>/images/GIF/reloj.gif" class="" alt="...">
+      <img src="<?= base_url() ?>images/GIF/reloj.gif" class="" alt="...">
       <div class="texto-dato-gif">
         <h2>24h</h2>
         <p>Sistema de reservas</p>
@@ -100,7 +100,7 @@
       <li>Reserva en segundos</li>
     </ol>
     <p><em>"El deporte más cerca que nunca"</em></p><br>
-    <a href="" class="btn-primary-personal" style="margin-left: 0; margin-top: 0">Instalaciones</a>
+    <a href="<?= base_url() ?>index.php/instalaciones" class="btn-primary-personal" style="margin-left: 0; margin-top: 0">Instalaciones</a>
   </div>
 
   <div class="divImagenes">
@@ -113,7 +113,7 @@
   <div class="top-instalaciones">
   <?php
   foreach ($instalacionesCarrousel as $instalacion) {
-    $url = base_url()."images/".$instalacion["imagen1"];
+    $url = "/reservalo2.0/images/".$instalacion["imagen1"];
   ?>
     <div class="card-instalacion" data-index="<?=$instalacion["id_instalacion"]?>">
         <div class="card-image" style="background: url('<?=$url?>')"></div>
@@ -125,7 +125,7 @@
             <?= ($instalacion["no_pistas"] == 1) ? "<span>No tiene pistas</span>" : "" ?>
             <?= ($instalacion["material"] == 1) ? "<span>Material</span>" : "" ?>
         </div>
-        <div class="button"><a href="<?=base_url()."index.php/instalacion/".$instalacion["id_instalacion"]?>" class="btn-primary-personal">Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i></a></div>
+        <div class="button"><a href="<?="index.php/instalacion/".$instalacion["id_instalacion"]?>" class="btn-primary-personal">Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i></a></div>
         <span class="estado <?=($instalacion["estado"] == 0) ? "disponible" : "no-disponible" ?>"><?=($instalacion["estado"] == 0) ? "disponible" : "no disponible" ?></span>
     </div>
   <?php

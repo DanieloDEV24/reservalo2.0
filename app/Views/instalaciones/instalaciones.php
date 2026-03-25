@@ -191,7 +191,7 @@
     </div>
     <div class="instalaciones-container" id="contenedor-instalaciones">
     <?php foreach($instalaciones as $instalacion): ?>
-        <?php $url = $baseUrl."images/".$instalacion["imagen1"];?>
+        <?php $url = "/reservalo2.0/images/".$instalacion["imagen1"];?>
         <div class="card-instalacion" data-index="<?=$instalacion["id_instalacion"]?>">
             <div class="card-image" style="background: url('<?=$url?>')"></div>
             <div class="category"> <?=$instalacion["categoria_name"]?> </div>
@@ -202,7 +202,7 @@
                 <?= ($instalacion["no_pistas"] == 1) ? "<span>No tiene pistas</span>" : "" ?>
                 <?= ($instalacion["material"] == 1) ? "<span>Material</span>" : "" ?>
             </div>
-            <div class="button"><a href="<?=base_url()."index.php/instalacion/".$instalacion["id_instalacion"]?>" class="btn-primary-personal">Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i></a></div>
+            <div class="button"><a href="<?="/reservalo2.0/index.php/instalacion/".$instalacion["id_instalacion"]?>" class="btn-primary-personal">Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i></a></div>
             <span class="estado <?=($instalacion["estado"] == 0) ? "disponible" : "no-disponible" ?>"><?=($instalacion["estado"] == 0) ? "disponible" : "no disponible" ?></span>
         </div>
     <?php endforeach; ?>

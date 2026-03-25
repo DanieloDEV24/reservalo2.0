@@ -33,7 +33,8 @@ class Horarios extends BaseController
             $assets = [
                 "css" => [
                     'css/horarios.css',
-                    'css/style.css'
+                    'css/style.css', 
+                    'css/responsive.css'
                 ],
 
                 "js" => [

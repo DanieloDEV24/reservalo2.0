@@ -1,0 +1,62 @@
+@media screen and (min-width: 1400px) {
+    .home .textoPortada {
+        padding-top: 15%;
+        margin-bottom: 7%;
+    }
+
+    /* .barraBusqueda {
+        padding-top: 0%;
+        padding-bottom: 0%;
+    } */
+
+    .contenedor-btn-busqueda .btn-primary-personal {
+        width: 80%;
+        border-radius: 50%;
+    }
+
+    .card-instalacion {
+        height: auto !important;
+    }
+
+    .category {
+        padding: 0% 10% !important;
+        padding-top: 10% !important;
+    }
+
+    .heading {
+        padding: 1% 10% !important;
+    }
+
+    .opciones {
+        padding: 0% 10% !important;
+    }
+
+    .card-instalacion .button {
+        padding: 10% !important;
+        padding-top: 8% !important;
+    }
+
+    .bodyLogin {
+        min-height: 90vh;
+    }
+
+    .bodyReset {
+        min-height: 80vh;
+    }
+
+    .bodyRegistro {
+        min-height: 97vh;
+    }
+
+    .bodyNuevaPass {
+        min-height: 85vh;
+    }
+
+    .calendario .div-mes {
+        height: 490px;
+    }
+
+    .grid-nombres-mes {
+        margin-bottom: 10%;
+    }
+}

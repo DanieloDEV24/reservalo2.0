@@ -273,10 +273,10 @@
 <body>
 
 <div class="logos-header">
-    <img src="<?= esc($baseUrl . 'images/logoFuenteDePiedraGrande.png') ?>" 
+    <img src="<?= esc('/reservalo2.0/images/logoFuenteDePiedraGrande.png') ?>" 
          alt="Escudo de Fuente de Piedra" 
          class="logo-izquierdo">
-    <img src="<?= esc($baseUrl . 'images/logo-reservalo-largo.png') ?>" 
+    <img src="<?= esc('/reservalo2.0/images/logo-reservalo-largo.png') ?>" 
          alt="Logo de la app reservalo" 
          class="logo-derecho">
     <div style="clear: both;"></div>

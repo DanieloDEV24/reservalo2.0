@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reservalo 2.0</title>
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/home.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/login.css" media="screen" />
-    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/home.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/login.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/responsive.css" media="screen" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
     <script src="<?= base_url() ?>js/jquery.js"></script>
@@ -44,7 +45,7 @@
             <!-- Logo -->
             <div class="app-brand justify-content-center">
                 <a href="/sneat-html-django-admin-template-free/" class="app-brand-link gap-2 d-flex justify-content-center">
-                    <img src="<?=base_url()?>/images/logo-reservalo-largo.png" alt="" style="width: 60%;">
+                    <img src="<?= base_url() ?>images/logo-reservalo-largo.png" alt="" style="width: 60%;">
                 </a>
             </div>
             <!-- /Logo -->
@@ -74,7 +75,7 @@
                                Recuérdame
                             </label>
                         </div>
-                        <a href="<?=base_url()?>index.php/forgotPass">
+                        <a href="<?= base_url() ?>index.php/forgotPass">
                             <span>¿Has olvidado la contraseña?</span>
                         </a>
                     </div>
@@ -87,7 +88,7 @@
 
             <p class="text-center">
                 <span>¿Eres nuevo?</span>
-                <a href="<?=base_url()?>index.php/singIn">
+                <a href="<?= base_url() ?>index.php/singIn">
                     <span>Crear una cuenta</span>
                 </a>
             </p>

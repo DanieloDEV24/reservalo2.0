@@ -4,12 +4,13 @@
     background-color: #fff;
     border-radius: 10px;
     padding: 1% 2%;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
 }
 
 .bodyLogin
 {
-    min-height: 100vh;
+    min-height: 97vh;
 }
 
 .loginPassword input

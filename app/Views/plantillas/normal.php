@@ -8,10 +8,10 @@
   <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/home.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/instalaciones.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/crudInstalaciones.css" media="screen" /> -->
-   <link rel="icon" href="<?php echo base_url();?>images/logo-reservalo.png" type="image/png">
+   <link rel="icon" href="<?= base_url() ?>images/logo-reservalo.png" type="image/png">
   <?php if(isset($assets['css']) && is_array($assets['css'])): ?>
     <?php foreach($assets['css'] as $archivo_css): ?>
-      <link rel="stylesheet" type="text/css" href="<?= base_url($archivo_css) ?>" media="screen" />
+      <link rel="stylesheet" type="text/css" href="<?= "/reservalo2.0/".$archivo_css ?>" media="screen" />
     <?php endforeach; ?>
   <?php endif; ?>
 
@@ -30,7 +30,7 @@
 
   <?php if(isset($assets['js']) && is_array($assets['js'])): ?>
     <?php foreach($assets['js'] as $archivo_js): ?>
-      <script src="<?= base_url($archivo_js) ?>"></script>
+      <script src="<?= base_url() ?><?= $archivo_js ?>"></script>
     <?php endforeach; ?>
   <?php endif; ?>
 
@@ -56,8 +56,8 @@
   <header class="headerPlantilla">
     <img src="<?= base_url() ?>images/logo-reservalo.png" alt="">
        <nav class="align-items-center">
-      <a href="<?= base_url() ?>" class="menu__link"> Home</a>
-      <a href="<?=base_url()?>index.php/instalaciones" class="menu__link"> Instalaciones</a>
+      <a href="/" class="menu__link"> Home</a>
+      <a href="<?= base_url() ?>index.php/instalaciones" class="menu__link"> Instalaciones</a>
       
 <?php $session = session(); ?>
 <?php if ($session->has('usuario') && intval($session->get('usuario')['rol']) === 2): ?>
@@ -66,13 +66,13 @@
      Gestores
   </a>
   <ul class="dropdown-menu">
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudInstalaciones"> Gestor Instalaciones</a></li>
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/gestorCategorias"> Gestor Categorias</a></li>
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/crudReservas"> Gestor Reservas</a></li>
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?=base_url()?>index.php/gestorUsuarios"> Gestor Usuarios</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/crudInstalaciones"> Gestor Instalaciones</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/gestorCategorias"> Gestor Categorias</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/crudReservas"> Gestor Reservas</a></li>
+    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/gestorUsuarios"> Gestor Usuarios</a></li>
   </ul>
 </div>
-<a href="<?=base_url()?>index.php/dashboard" class="menu__link"> Estadística</a>
+<a href="<?= base_url() ?>index.php/dashboard" class="menu__link"> Estadística</a>
 <?php endif; ?>
     </nav>
     <div style="text-align: end; display: flex; justify-content: end" id="menu-usuario" class="inicio-sesion" data-rol="<?= ($session->has('usuario') ? $session->get('usuario')["rol"] : "" ) ?>">
@@ -121,7 +121,7 @@
         {
           // No existe la sesión 'usuario'
           ?>
-            <a href="<?=base_url()?>index.php/login" class="btn-primary-personal"><i class="bi bi-person"></i> Iniciar Sesión</a>
+            <a href="<?= base_url() ?>index.php/login" class="btn-primary-personal"><i class="bi bi-person"></i> Iniciar Sesión</a>
           <?php
         }
       ?>

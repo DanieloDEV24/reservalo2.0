@@ -49,12 +49,12 @@ a[x-apple-data-detectors], #MessageViewBody a { color:inherit!important; text-de
                             <table width="100%" cellspacing="0" cellpadding="0" role="presentation">
                               <tr>
                                 <td align="start" style="padding:0;padding-bottom:10px;Margin:0;font-size:0px">
-                                  <a target="_blank" href="<?= base_url() ?>">
+                                  <a target="_blank" href="/">
                                     <img src="https://i.imgur.com/umDk1CZ.png" alt="Logo Ayuntamiento de Fuente de Piedra" title="Logo" width="200" class="adapt-img" style="display:block;border:0;outline:none;text-decoration:none">
                                   </a>
                                 </td>
                                 <td align="right" style="padding:0;Margin:0;font-size:0px">
-                                  <a target="_blank" href="<?= base_url() ?>">
+                                  <a target="_blank" href="/">
                                     <img src="https://i.imgur.com/YzI6B1v.png" alt="Logo" title="Logo" width="180" class="adapt-img" style="display:block;border:0;outline:none;text-decoration:none">
                                   </a>
                                 </td>
@@ -143,7 +143,7 @@ a[x-apple-data-detectors], #MessageViewBody a { color:inherit!important; text-de
                               <tr>
                                 <td align="center" style="padding:0;Margin:0">
                                   <span class="es-button-border" style="border-style:solid;border-color:#2CB543;background:#32cccc;border-width:0px;display:inline-block;border-radius:30px;width:auto">
-                                    <a href="<?= base_url() ?>" target="_blank" class="es-button" style="text-decoration:none;color:#FFFFFF;font-size:18px;padding:10px 30px;display:inline-block;background:#32cccc;border-radius:30px;font-family:Lexend, Arial, sans-serif;line-height:21.6px;text-align:center">
+                                    <a href="#" target="_blank" class="es-button" style="text-decoration:none;color:#FFFFFF;font-size:18px;padding:10px 30px;display:inline-block;background:#32cccc;border-radius:30px;font-family:Lexend, Arial, sans-serif;line-height:21.6px;text-align:center">
                                       Ver mis reservas
                                     </a>
                                   </span>

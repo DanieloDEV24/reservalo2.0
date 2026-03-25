@@ -6,7 +6,7 @@ $(document).ready(function () {
         
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/getCategoria`,
+            url: `/reservalo2.0/index.php/getCategoria`,
             data: {id_categoria: idCategoria},
             dataType: "JSON",
             success: function (response) {
@@ -37,7 +37,7 @@ $(document).ready(function () {
 
             $.ajax({
                 type: "POST",
-                url: `${BASE_URL}index.php/editarCategorias`,
+                url: `/reservalo2.0/index.php/editarCategorias`,
                 data: {id_categoria: idCategoria, nombre: nombre},
                 dataType: "JSON",
                 success: function (response) {
@@ -76,7 +76,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/getCategoria`,
+            url: `/reservalo2.0/index.php/getCategoria`,
             data: {id_categoria: idCategoria},
             dataType: "JSON",
             success: function (response) {
@@ -98,7 +98,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/borrarCategoria`,
+            url: `/reservalo2.0/index.php/borrarCategoria`,
             data: {id_categoria: idCategoria},
             dataType: "JSON",
             success: function (response) {
@@ -149,7 +149,7 @@ $(document).ready(function () {
 
             $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/crearCategoria`,
+            url: `/reservalo2.0/index.php/crearCategoria`,
             data: {nombre: nombre},
             dataType: "JSON",
             success: function (response) {
