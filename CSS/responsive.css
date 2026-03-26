@@ -59,4 +59,105 @@
     .grid-nombres-mes {
         margin-bottom: 10%;
     }
+
+    .contenedor-reservas {
+        grid-template-columns: repeat(auto-fill, 428px);
+    }
 }
+
+@media screen and (max-width: 1399px) {
+
+    .contenedor-btn-busqueda .btn-primary-personal {
+        width: 80%;
+        border-radius: 50%;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+
+    .contenedor-btn-busqueda .btn-primary-personal {
+        width: 85%;
+        border-radius: 50%;
+    }
+
+    header {
+        padding-top: 3% !important;
+        padding-right: 3% !important;
+    }
+
+    header img {
+        width: 5.5%;
+    }
+
+    .textoPortada {
+        width: 75% !important;
+        padding-top: 14% !important;
+    }
+}
+
+@media screen and (max-width: 1175px) {
+
+    .textoPortada {
+        width: 80% !important;
+        padding-top: 17% !important;
+    }
+
+    .barraBusqueda {
+        gap: 2% !important;
+    }
+}
+
+@media screen and (max-width: 1117px) {
+    .barraBusqueda .contenedor-reservas-completas-busqueda {
+        display: none !important;
+    }
+
+    .barraBusqueda .contenedor-btn-busqueda {
+        width: 20%;
+    }
+
+    #busqueda-home {
+        width: 100%;
+        padding: 7%;
+        border-radius: 50px;
+    }
+
+    .barraBusqueda {
+        padding-left: 2% !important ;
+        padding-right: 1%;
+    }
+
+    .barraBusqueda .contenedor-categorias-busqueda {
+        width: 40% !important;
+    }
+
+    .barraBusqueda .contenedor-instalaciones-busqueda {
+        width: 40% !important;
+    }
+}
+
+@media screen and (max-width: 1098px) {
+    .textoPortada {
+        padding-top: 18% !important;
+        width: 85% !important;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+
+    header .nav-grande, header .inicio-sesion {
+        display: none !important
+    }
+
+    header .menu-movil {
+        display: flex !important;
+        padding: 0% !important;
+    }
+
+
+    header.headerHome {
+        position: absolute;
+        background-color: transparent !important;
+    }
+}
+

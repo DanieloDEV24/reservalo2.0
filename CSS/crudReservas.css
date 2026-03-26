@@ -227,7 +227,7 @@
 .contenedor-reservas {
     display: grid;
     gap: 2rem; /* Espacio entre celdas */
-    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    grid-template-columns: repeat(auto-fill, 450px);
     /* Cada columna mínimo 250px y máximo 1fr (espacio disponible) */
     padding: 1rem;
 }

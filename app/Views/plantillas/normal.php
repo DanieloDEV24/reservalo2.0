@@ -56,7 +56,7 @@
   <header class="headerPlantilla">
     <img src="<?= base_url() ?>images/logo-reservalo.png" alt="">
        <nav class="align-items-center">
-      <a href="/" class="menu__link"> Home</a>
+      <a href="<?= base_url() ?>" class="menu__link"> Home</a>
       <a href="<?= base_url() ?>index.php/instalaciones" class="menu__link"> Instalaciones</a>
       
 <?php $session = session(); ?>

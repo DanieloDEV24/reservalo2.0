@@ -113,7 +113,7 @@
   <div class="top-instalaciones">
   <?php
   foreach ($instalacionesCarrousel as $instalacion) {
-    $url = "/reservalo2.0/images/".$instalacion["imagen1"];
+    $url = base_url()."images/".$instalacion["imagen1"];
   ?>
     <div class="card-instalacion" data-index="<?=$instalacion["id_instalacion"]?>">
         <div class="card-image" style="background: url('<?=$url?>')"></div>

@@ -47,9 +47,9 @@ $(document).ready(() => {
 
     // Contadores numéricos
     const contadores = [
-      { selector: ".dato-gif:nth-child(1) h2", target: 1500, prefix: "+", suffix: "" },
+      { selector: ".dato-gif:nth-child(1) h2", target: 10, prefix: "+", suffix: "" },
       { selector: ".dato-gif:nth-child(2) h2", target: 5,    prefix: "+", suffix: "" },
-      { selector: ".dato-gif:nth-child(3) h2", target: 3000, prefix: "+", suffix: "" },
+      { selector: ".dato-gif:nth-child(3) h2", target: 30, prefix: "+", suffix: "" },
     ];
     contadores.forEach(({ selector, target, prefix }) => {
       const el = document.querySelector(selector);

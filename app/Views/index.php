@@ -43,7 +43,7 @@
 <body>
   <header class="headerHome">
     <img src="<?= base_url() ?>images/logo-reservalo.png" alt="">
-    <nav class="align-items-center">
+    <nav class="align-items-center nav-grande">
       <a href="<?= base_url() ?>" class="menu__link"> Home</a>
       <a href="<?= base_url() ?>index.php/instalaciones" class="menu__link"> Instalaciones</a>
       
@@ -115,6 +115,21 @@
         }
       ?>
     </div>
+
+    <label class="menu-movil" style="display: none;">
+       <input class="inp" checked="" type="checkbox" />
+  <div class="bar">
+    <span class="top bar-list"></span>
+    <span class="middle bar-list"></span>
+    <span class="bottom bar-list"></span>
+  </div>
+  <section class="menu-container">
+    <div class="menu-list">Food</div>
+    <div class="menu-list">Entertainment</div>
+    <div class="menu-list">Blog</div>
+    <div class="menu-list">Location</div>
+  </section>
+</label>
   </header>
    <?=$view?>
   <footer>

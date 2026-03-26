@@ -400,7 +400,8 @@ class Reservas extends BaseController
                         'css/instalaciones.css', 
                         'css/reservas.css',
                         'css/style.css', 
-                        'css/crudReservas.css'
+                        'css/crudReservas.css', 
+                        'css/responsive.css'
                     ], 
 
                     "js" => [ 
