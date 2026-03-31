@@ -389,11 +389,11 @@ header.headerHome>div a {
 
 .menu-container {
   background-color: white;
-  color: darkviolet;
+  color: #000 !important;
   border-radius: 10px;
   position: absolute;
-  width: 100%;
-  left: 0;
+  width: 21.5rem;
+  right: 0%;
   top: 130%;
   overflow: hidden;
   clip-path: inset(0% 0% 0% 0% round 10px);
@@ -403,12 +403,28 @@ header.headerHome>div a {
 .menu-list {
   --delay: 0.4s;
   --trdelay: 0.15s;
-  padding: 8px 10px;
+  padding: 15px;
   border-radius: inherit;
   transition: background-color 0.2s 0s;
   position: relative;
   transform: translateY(30px);
   opacity: 0;
+  text-align: left;     /* Añade esto */
+  width: 100%;          /* Añade esto */
+  box-sizing: border-box; /* Añade esto */
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 1%;
+}
+
+.menu-list i {
+    font-size: 1.1rem;
+}
+
+.menu-list a {
+    color: #111 !important;
+    font-size: 1.1rem !important;
 }
 
 .menu-list::after {
@@ -418,7 +434,7 @@ header.headerHome>div a {
   left: 50%;
   transform: translateX(-50%);
   height: 1px;
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
   width: 95%;
 }
 
@@ -435,29 +451,11 @@ header.headerHome>div a {
   opacity: 1;
 }
 
-.inp:not(:checked) ~ .menu-container .menu-list:nth-child(1) {
+.menu-list:nth-child(n) {
   transition:
-    transform 0.4s var(--delay),
-    opacity 0.4s var(--delay);
-}
-
-.inp:not(:checked) ~ .menu-container .menu-list:nth-child(2) {
-  transition:
-    transform 0.4s calc(var(--delay) + (var(--trdelay) * 1)),
-    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 1));
-}
-
-.inp:not(:checked) ~ .menu-container .menu-list:nth-child(3) {
-  transition:
-    transform 0.4s calc(var(--delay) + (var(--trdelay) * 2)),
-    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 2));
-}
-
-.inp:not(:checked) ~ .menu-container .menu-list:nth-child(4) {
-  transition:
-    transform 0.4s calc(var(--delay) + (var(--trdelay) * 3)),
-    opacity 0.4s calc(var(--delay) + (var(--trdelay) * 3));
-}
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * (var(--i, 0)))),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * (var(--i, 0))));
+}   
 
 .bar-inp {
   -webkit-appearance: none;
@@ -470,7 +468,7 @@ header.headerHome>div a {
   height: 50%;
   width: 4rem;
   flex-direction: column;
-  gap: 7px;
+  gap: 8px;
   justify-content: center;
 }
 
@@ -478,7 +476,7 @@ header.headerHome>div a {
   --transform: -25%;
   display: block;
   width: 100%;
-  height: 5px;
+  height: 7px;
   border-radius: 50px;
   background-color: white;
   transition: all 0.4s;
@@ -487,7 +485,7 @@ header.headerHome>div a {
 
 .inp:not(:checked) ~ .bar > .top {
   transform-origin: top right;
-  transform: translateY(var(--transform)) rotate(-45deg);
+  transform: translateY(var(--transform)) rotate(-35deg);
 }
 
 .inp:not(:checked) ~ .bar > .middle {
@@ -497,5 +495,5 @@ header.headerHome>div a {
 
 .inp:not(:checked) ~ .bar > .bottom {
   transform-origin: bottom right;
-  transform: translateY(calc(var(--transform) * -1)) rotate(45deg);
+  transform: translateY(calc(var(--transform) * -1)) rotate(35deg);
 }

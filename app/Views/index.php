@@ -64,7 +64,9 @@
 <a href="<?= base_url() ?>index.php/dashboard" class="menu__link"> Estadística</a>
 <?php endif; ?>
     </nav>
-    <div style="text-align: end; display: flex; justify-content: end" class="inicio-sesion">
+
+    <div class="div-contacto-menu-movil">
+        <div style="text-align: end; display: flex; justify-content: end" class="inicio-sesion <?= ($session->has('usuario')) ? "sesion-iniciada" : "sesion-no-iniciada" ?>">
       <?php
         if ($session->has('usuario')) {
           // La sesión 'usuario' existe
@@ -76,7 +78,6 @@
           <li class="navbar-dropdown dropdown-user dropdown mainLi">
                   <a class="btn-primary-personal dropdown-toggle hide-arrow d-flex align-items-center justify-content-end gap-2" href="javascript:void(0);" data-bs-toggle="dropdown" style="padding: 5%;">
                       <i class="bi bi-person" style="font-size: 25px;"></i>
-                      <span><?= $session->get('usuario')["nombre"];?></span>
                   </a>
                   <ul class="dropdown-menu dropdown-menu-end iconoAvatar" style="background-color: #111">
                     <li style="width: 100%" class="d-flex justify-content-start">
@@ -124,12 +125,47 @@
     <span class="bottom bar-list"></span>
   </div>
   <section class="menu-container">
-    <div class="menu-list">Food</div>
-    <div class="menu-list">Entertainment</div>
-    <div class="menu-list">Blog</div>
-    <div class="menu-list">Location</div>
+    <div class="menu-list">
+      <i class="bi bi-house"></i>
+      <a href="<?= base_url() ?>">Home</a>
+    </div>
+    <div class="menu-list">
+      <i class="bi bi-buildings"></i>
+      <a href="<?= base_url() ?>index.php/instalaciones">Instalaciones</a>
+    </div>
+
+    <?php if ($session->has('usuario') && intval($session->get('usuario')['rol']) === 2): ?>
+      
+      <div class="menu-list">
+        <i class="bi bi-building-gear"></i>
+        <a href="<?= base_url() ?>index.php/crudInstalaciones" style="--i: 1">Gestor instalaciones</a>
+      </div>
+
+      <div class="menu-list">
+        <i class="bi bi-tag"></i>
+        <a href="<?= base_url() ?>index.php/gestorCategorias" style="--i: 2">Gestor categorías</a>
+      </div>
+
+      <div class="menu-list">
+        <i class="bi bi-bookmark-check"></i>
+        <a href="<?= base_url() ?>index.php/crudReservas" style="--i: 3">Gestor reservas</a>
+      </div>
+
+      <div class="menu-list">
+        <i class="bi bi-people"></i>
+        <a href="<?= base_url() ?>index.php/gestorUsuarios" style="--i: 4">Gestor usuarios</a>
+      </div>
+
+      <div class="menu-list">
+        <i class="bi bi-graph-down"></i>
+        <a href="<?= base_url() ?>index.php/dashboard" style="--i: 5">Estadísticas</a>
+      </div>
+    <?php endif; ?>
+
   </section>
 </label>
+    </div>
+
   </header>
    <?=$view?>
   <footer>

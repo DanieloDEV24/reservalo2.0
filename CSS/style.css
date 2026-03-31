@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Satoshi";
-    src: url('../fonts/Satoshi/Fonts/WEB/fonts/Satoshi-Medium.ttf');
+    src: url('../fonts/Satoshi/Fonts/WEB/fonts/Satoshi-Variable.ttf');
 }
 
 * {
@@ -51,6 +51,11 @@ header div {
     display: flex;
     justify-content: end;
     padding-right: 2%;
+}
+
+.home .textoPortada h1 span {
+    font-weight: 200 !important;
+    font-style: italic;
 }
 
 .btn-primary-personal {
@@ -616,6 +621,10 @@ header .mainLi ul a {
   transform: translateX(20px);
 }
 
-header .inicio-sesion {
-    width: 25% !important;
+.sesion-iniciada {
+    width: 40% !important;
+}
+
+.sesion-no-iniciada {
+    width: 100%;
 }

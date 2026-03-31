@@ -145,7 +145,7 @@
 
 @media screen and (max-width: 1100px) {
 
-    header .nav-grande, header .inicio-sesion {
+    header .nav-grande {
         display: none !important
     }
 
@@ -154,10 +154,121 @@
         padding: 0% !important;
     }
 
-
     header.headerHome {
         position: absolute;
         background-color: transparent !important;
+    }
+
+    header .div-contacto-menu-movil {
+        width: 40%;
+        display: flex;
+        align-items: center;
+        gap: 10%;
+    }
+
+    header .sesion-iniciada {
+        width: 30% !important;
+    }
+
+    header .sesion-no-iniciada {
+        width: 60% !important;
+    }
+
+}
+
+
+@media screen and (max-width: 1027px) {
+    .textoPortada {
+        width: 90% !important;
+    }
+}
+
+@media screen and (max-width: 964px) {
+    .textoPortada {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 801px) {
+    header .sesion-iniciada {
+        width: 40% !important;
+    }
+
+    .textoPortada {
+        width: 90% !important;
+        padding-top: 25% !important;
+    }
+
+    .textoPortada h1{
+        font-size: 2.5rem !important;
+    }
+
+}
+
+
+@media screen and (max-width: 801px) {
+    .contenedor-btn-busqueda {
+        width: 12% !important;
+        margin-left: 7%;
+    }
+
+    .contenedor-btn-busqueda a {
+        padding-top: 20% !important;
+        padding-bottom: 20% !important;
+    }
+
+
+}
+
+@media screen and (max-width: 742px) {
+    .barraBusqueda .contenedor-instalaciones-busqueda, 
+    .barraBusqueda .contenedor-categorias-busqueda {
+        width: 45% !important;
+    }
+
+    .contenedor-btn-busqueda {
+        margin-left: 3%;
+    }
+
+    .contenedor-btn-busqueda a {
+        padding-top: 25% !important;
+        padding-bottom: 25% !important;
+    }
+
+    .home .textoPortada .btn-primary-personal {
+        width: 40%;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+
+    .contenedor-btn-busqueda {
+        margin-left: 0% !important;
+    }
+
+    .barraBusqueda .contenedor-categorias-busqueda {
+        width: 40% !important;
+    }
+
+    .home .textoPortada .btn-primary-personal {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 670px) {
+
+    .contenedor-busq {
+        display: none;
+    }
+
+    .home .textoPortada {
+        padding-top: 35% !important;
+    }
+
+    .home .textoPortada .btn-primary-personal {
+        width: 100%;
+        margin-top: 5%;
     }
 }
 

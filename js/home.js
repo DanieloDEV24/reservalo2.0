@@ -17,7 +17,7 @@ $(document).ready(function () {
 
                     $('#todas-instalaciones-home').empty();
                     
-                    $('#todas-instalaciones-home').append($(`<option value="-1">Seleccione una instalación</option>`))
+                    $('#todas-instalaciones-home').append($(`<option value="-1">Seleccione una</option>`))
                     response.instalaciones.map(function(i) {
                         $('#todas-instalaciones-home').append($(`<option value="${i.id_instalacion}">${i.nombre}</option>`))
                     })
@@ -43,7 +43,7 @@ $(document).ready(function () {
 
                     $('#todas-instalaciones-home').empty();
                     
-                    $('#todas-instalaciones-home').append($(`<option value="-1">Seleccione una instalación</option>`))
+                    $('#todas-instalaciones-home').append($(`<option value="-1">Seleccione una</option>`))
                     response.instalaciones.map(function(i) {
                         $('#todas-instalaciones-home').append($(`<option value="${i.id_instalacion}">${i.nombre}</option>`))
                     })

@@ -1,7 +1,7 @@
 <html>
 <div class="home">
   <div class="textoPortada">
-    <h1>Reserva tu espacio, disfruta el deporte — instalaciones municipales a tu alcance.</h1>
+    <h1>Reserva tu espacio, disfruta el deporte — <span>instalaciones municipales a tu alcance.</span></h1>
     <a href="<?= base_url() ?>index.php/instalaciones" class="btn-primary-personal">Instalaciones</a>
   </div>
 
@@ -11,7 +11,7 @@
         <div class="contenedor-categorias-busqueda">
           <label for="">Categoria:</label>
           <select id="categorias-home">
-            <option value="-1" selected>Seleccione una categoría</option>
+            <option value="-1" selected>Seleccione una</option>
             <?php foreach($categorias as $categoria) : ?>
               <option value="<?= $categoria["id_categoria"] ?>"><?= $categoria["nombre"] ?></option>
             <?php endforeach ; ?>
@@ -21,7 +21,7 @@
         <div class="contenedor-instalaciones-busqueda">
           <label for="">Instalacion:</label>
           <select name="" id="todas-instalaciones-home">
-            <option value="-1" selected>Seleccione una instalación</option>
+            <option value="-1" selected>Seleccione una</option>
               <?php foreach($instalacionesTodas as $inst) : ?>
                 <option value="<?= $inst["id_instalacion"] ?>"><?= $inst["nombre"] ?></option>
               <?php endforeach ; ?>
