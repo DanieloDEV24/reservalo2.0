@@ -13,7 +13,7 @@ body {
 }
 
 body {
-    background-color: #d8e9eb !important;
+    background-color: #F0F4F8 !important;
 }
 
 header.headerPlantilla nav .dropdown-toggle::after {
@@ -32,7 +32,8 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2% 6.5%;
+    padding: 3% 6.5%;
+    padding-top: 4% !important;
 }
 
 header img {
@@ -622,9 +623,13 @@ header .mainLi ul a {
 }
 
 .sesion-iniciada {
-    width: 40% !important;
+    width: 60% !important;
 }
 
 .sesion-no-iniciada {
-    width: 100%;
+    width: 100%;;
+}
+
+.sesion-no-iniciada a {
+    min-width: 250px !important;
 }

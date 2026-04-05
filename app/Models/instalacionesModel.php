@@ -168,7 +168,6 @@ class instalacionesModel extends Model
                             ORDER BY id_pista ASC LIMIT 1) as imagen1')
         ->join('categorias as categorias1', 'instalaciones.categoria_principal = categorias1.id_categoria', 'left')
         ->join('categorias as categorias2', 'instalaciones.categoria_opcional1 = categorias2.id_categoria', 'left');
-        $builder->limit(3);
 
         $query = $builder->get();
         $result = $query->getResultArray(); // devuelve array de arrays

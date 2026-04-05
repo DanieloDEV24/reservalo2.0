@@ -89,10 +89,7 @@ $(document).ready(() => {
       scrollTrigger: { trigger: ".contenedor-top-instalaciones", start: "top 80%", toggleActions: "play none none none" }
     });
 
-    gsap.from(".contenedor-btn-ver-instalaciones", {
-      opacity: 0, y: 20, duration: 0.6, ease: "power2.out",
-      scrollTrigger: { trigger: ".contenedor-btn-ver-instalaciones", start: "top 90%", toggleActions: "play none none none" }
-    });
+
   }
 
   // ════════════════════════════════════════════════════════

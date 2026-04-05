@@ -69,4 +69,75 @@ $(document).ready(function () {
 
         window.location.href = `/reservalo2.0/index.php/instalaciones?${params.toString()}`;
     })
+
+
+    function construirCarousel() {
+
+    const inner = document.getElementById("carousel-inner-instalaciones");
+
+    // guardar cards originales
+    const cards = Array.from(inner.querySelectorAll(".card-instalacion"));
+
+    const indicators = document.getElementById("carousel-indicators-instalaciones");
+
+    // limpiar carousel
+    inner.innerHTML = "";
+
+    // 👇 BREAKPOINT
+    let cardsPorSlide
+    if (window.innerWidth <= 969) {
+        cardsPorSlide = 1;
+    } 
+    else if (window.innerWidth < 1350) {
+        cardsPorSlide = 2;
+    } 
+    else {
+        cardsPorSlide = 3;
+    }
+
+    let slideIndex = 0;
+    indicators.innerHTML = ""; // limpiar indicadores
+    for (let i = 0; i < cards.length; i += cardsPorSlide) {
+
+        // slide
+        let carouselItem = document.createElement("div");
+        carouselItem.className = "carousel-item";
+        if (i === 0) carouselItem.classList.add("active");
+
+        let wrapper = document.createElement("div");
+        wrapper.className = "top-instalaciones d-flex justify-content-center gap-4";
+
+        cards.slice(i, i + cardsPorSlide).forEach(card => {
+            wrapper.appendChild(card);
+        });
+
+        carouselItem.appendChild(wrapper);
+        inner.appendChild(carouselItem);
+
+        // ✅ crear puntito
+        let button = document.createElement("button");
+        button.type = "button";
+        button.setAttribute("data-bs-target", "#instalacionesCarousel");
+        button.setAttribute("data-bs-slide-to", slideIndex);
+
+        if (slideIndex === 0) {
+            button.classList.add("active");
+            button.setAttribute("aria-current", "true");
+        }
+
+        indicators.appendChild(button);
+
+        slideIndex++;
+    }
+}
+
+// construir al cargar
+window.addEventListener("load", construirCarousel);
+
+// reconstruir al cambiar tamaño
+let resizeTimer;
+window.addEventListener("resize", () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(construirCarousel, 300);
+});
 })

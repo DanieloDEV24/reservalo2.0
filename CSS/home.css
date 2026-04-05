@@ -238,6 +238,7 @@ header.headerHome>div a {
     gap: 5%;
     margin: 5%;
     margin-bottom: 0%;
+    padding: 0% 3%;
 }
 
 /* From Uiverse.io by Yaya12085 */
@@ -496,4 +497,41 @@ header.headerHome>div a {
 .inp:not(:checked) ~ .bar > .bottom {
   transform-origin: bottom right;
   transform: translateY(calc(var(--transform) * -1)) rotate(35deg);
+}
+
+.contenedor-top-instalaciones .btn-prev-top-instalaciones, .contenedor-top-instalaciones .btn-next-top-instalaciones {
+
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    background-color: #32cccc !important;
+    top: 50% !important;
+}
+
+.contenedor-top-instalaciones .btn-prev-top-instalaciones {
+    left: 5% !important;
+}
+
+.contenedor-top-instalaciones .btn-next-top-instalaciones {
+    right: 5% !important;
+}
+
+#carousel-indicators-instalaciones {
+    transform: translateY(10px) !important;
+}
+
+.contenedor-btn-ver-instalaciones a, 
+.contenedor-top-instalaciones .card-instalacion .button a {
+    min-width: 240px !important;
+}
+
+.carousel-indicators button {
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 50% !important;
+  background-color: #32cccc70 !important;
+}
+
+.carousel-indicators .active {
+  background-color: #32cccc !important;
 }
