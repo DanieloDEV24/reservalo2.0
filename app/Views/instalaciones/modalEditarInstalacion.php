@@ -31,7 +31,7 @@
 
         <div class="row gap-3 mt-3">
           <!-- Aquí debo meter lógica de programación -->
-          <label for="">Seleccione una categoría secundaria (primero debe seleccionar una categoria principal)</label>
+          <label for="" class="label-ediar-instalacion">Seleccione una categoría secundaria (primero debe seleccionar una categoria principal)</label>
           <div class="radio-input" id="subcategoriasEditar">
             <!-- Aquí se insertarán los radios dinámicamente -->
 

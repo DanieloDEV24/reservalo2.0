@@ -19,7 +19,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/getInfoPistasReserva`,
+            url: `${BASE_URL}index.php/getInfoPistasReserva`,
             data: { pistaId: pistaId, "fecha": fechaFormateada, rol: rolUsuario, tipo_reserva: tipoReserva },
             dataType: "json",
             success: function (response) {
@@ -185,7 +185,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/getInfoPistasReserva`,
+            url: `${BASE_URL}index.php/getInfoPistasReserva`,
             data: { "pistaId": pista, "fecha": fecha, rol: rolUsuario, tipo_reserva: tipoReserva },
             dataType: "JSON",
             success: function (response) {
@@ -329,7 +329,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/comprobarReservas`,
+            url: `${BASE_URL}index.php/comprobarReservas`,
             data: { fecha: fecha, hora: hora, pista: pista },
             dataType: "JSON",
             success: function (response) {
@@ -439,7 +439,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/hacerReserva`,
+            url: `${BASE_URL}index.php/hacerReserva`,
             data: { datos: data, precio: precio, tipo_reserva: tipoReserva, precio_reserva: precioReserva, id_usuario: idUsuario },
             dataType: "JSON",
             success: function (response) {
@@ -459,12 +459,12 @@ $(document).ready(() => {
                     horasAnt = [];
 
                     // Descargar PDF (nueva ventana o iframe)
-                    window.location.href = '/reservalo2.0/index.php/descargarTicket/' + response.id_pedido;
+                    window.location.href = `${BASE_URL}index.php/descargarTicket/${response.id_pedido}`;
 
                     horasAnt = [];
-                    $('.btn-horario.horaSeleccionada').removeClass('.horaSeleccionada')
+                    $('.btn-horario.horaSeleccionada').removeClass('horaSeleccionada')
                     // O en nueva pestaña:
-                    // window.open('../descargarTicket/' + response.id_pedido, '_blank');
+                    // window.open(`${BASE_URL}index.php/descargarTicket/${response.id_pedido}`, '_blank');
 
                 } else {
                     $('.contenedor-alert-errores').removeClass('d-none')

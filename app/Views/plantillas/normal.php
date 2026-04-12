@@ -11,7 +11,7 @@
    <link rel="icon" href="<?= base_url() ?>images/logo-reservalo.png" type="image/png">
   <?php if(isset($assets['css']) && is_array($assets['css'])): ?>
     <?php foreach($assets['css'] as $archivo_css): ?>
-      <link rel="stylesheet" type="text/css" href="<?= "/reservalo2.0/".$archivo_css ?>" media="screen" />
+      <link rel="stylesheet" type="text/css" href="<?= base_url().$archivo_css ?>" media="screen" />
     <?php endforeach; ?>
   <?php endif; ?>
 
@@ -52,79 +52,126 @@
 
 </head>
 
-<body>
+<body class="body-normal">
   <header class="headerPlantilla">
     <img src="<?= base_url() ?>images/logo-reservalo.png" alt="">
-       <nav class="align-items-center">
-      <a href="<?= base_url() ?>" class="menu__link"> Home</a>
-      <a href="<?= base_url() ?>index.php/instalaciones" class="menu__link"> Instalaciones</a>
+       <nav class="align-items-center nav-grande">
+        <a href="<?= base_url() ?>" class="menu__link"> Home</a>
+        <a href="<?= base_url() ?>index.php/instalaciones" class="menu__link"> Instalaciones</a>
       
-<?php $session = session(); ?>
-<?php if ($session->has('usuario') && intval($session->get('usuario')['rol']) === 2): ?>
-  <div class="dropdown">
-  <a class="dropdown-toggle menu__link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-     Gestores
-  </a>
-  <ul class="dropdown-menu">
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/crudInstalaciones"> Gestor Instalaciones</a></li>
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/gestorCategorias"> Gestor Categorias</a></li>
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/crudReservas"> Gestor Reservas</a></li>
-    <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/gestorUsuarios"> Gestor Usuarios</a></li>
-  </ul>
-</div>
-<a href="<?= base_url() ?>index.php/dashboard" class="menu__link"> Estadística</a>
-<?php endif; ?>
-    </nav>
-    <div style="text-align: end; display: flex; justify-content: end" id="menu-usuario" class="inicio-sesion" data-rol="<?= ($session->has('usuario') ? $session->get('usuario')["rol"] : "" ) ?>">
-      <?php
-        if ($session->has('usuario')) {
-          // La sesión 'usuario' existe
-          $usuario = $session->get('usuario');
-          ?>
-          <!-- <li class="nav-item">
-            <a  class="nav-link" href=<?=site_url('/logout')?>><span>Cerrar Sesión</span><i class="bi bi-arrow-right"></i></a>
-          </li> -->
-          <li class="navbar-dropdown dropdown-user dropdown mainLi">
-                  <a class="btn-primary-personal dropdown-toggle hide-arrow d-flex align-items-center justify-content-end gap-2" href="javascript:void(0);" data-bs-toggle="dropdown" style="padding: 5%;">
-                      <i class="bi bi-person" style="font-size: 25px;"></i>
-                      <span><?= $session->get('usuario')["nombre"];?></span>
-                  </a>
-                  <ul class="dropdown-menu dropdown-menu-end iconoAvatar" style="background-color: #111">
-                    <li style="width: 100%" class="d-flex justify-content-start">
-                      <a class="dropdown-item d-flex justify-content-start iconoAvatar" href="<?=site_url('/logout')?>">
-                        <i class="bi bi-door-open me-2"></i>
-                        <span class="align-middle">Cerrar Sesión</span>
-                      </a>
-                    </li>
-
-                    <?php if ($session->has('usuario') && intval($session->get('usuario')['rol']) === 1): ?>
-                    <li style="width: 100%" class="d-flex justify-content-start">
-                      <a class="dropdown-item d-flex justify-content-start iconoAvatar" id="btnMisReservas" href="#">
-                        <i class="bi bi-calendar-check me-2"></i>
-                        <span class="align-middle">Mis Reservas</span>
-                      </a>
-                    </li>
-
-                    <li style="width: 100%" class="d-flex justify-content-start">
-                      <a class="dropdown-item d-flex justify-content-start iconoAvatar" id="btnMiPerfil" href="#" data-index="<?= intval($session->get('usuario')["id_usuario"]) ?>">
-                        <i class="bi bi-person-fill"></i>
-                        <span class="align-middle">Mi perfil</span>
-                      </a>
-                    </li>
-                    <?php endif; ?>
-                  </ul>
-                  
-          </li>
+        <?php $session = session(); ?>
+        <?php if ($session->has('usuario') && intval($session->get('usuario')['rol']) === 2): ?>
+        <div class="dropdown">
+          <a class="dropdown-toggle menu__link" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Gestores
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/crudInstalaciones"> Gestor Instalaciones</a></li>
+            <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/gestorCategorias"> Gestor Categorias</a></li>
+            <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/crudReservas"> Gestor Reservas</a></li>
+            <li><a class="dropdown-item" style="color: #000;" type="button" href="<?= base_url() ?>index.php/gestorUsuarios"> Gestor Usuarios</a></li>
+          </ul>
+        </div>
+        <a href="<?= base_url() ?>index.php/dashboard" class="menu__link"> Estadística</a>
+        <?php endif; ?>
+      </nav>
+      <div class="div-contacto-menu-movil">
+        <div style="text-align: end; display: flex; justify-content: end" class="inicio-sesion <?= ($session->has('usuario')) ? "sesion-iniciada" : "sesion-no-iniciada" ?>" id="menu-usuario" data-rol="<?= $session->has('usuario') ? $session->get('usuario')['rol'] : '' ?>">
           <?php
-        }
-        else 
-        {
-          // No existe la sesión 'usuario'
+          if ($session->has('usuario')) {
+            // La sesión 'usuario' existe
+            $usuario = $session->get('usuario');
+          ?>
+            <!-- <li class="nav-item">
+              <a  class="nav-link" href=<?= site_url('/logout') ?>><span>Cerrar Sesión</span><i class="bi bi-arrow-right"></i></a>
+            </li> -->
+            <li class="navbar-dropdown dropdown-user dropdown mainLi">
+              <a class="btn-primary-personal dropdown-toggle hide-arrow d-flex align-items-center justify-content-end gap-2" href="javascript:void(0);" data-bs-toggle="dropdown" style="padding: 5%;">
+                <i class="bi bi-person" style="font-size: 25px;"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end iconoAvatar" style="background-color: #111">
+                <li style="width: 100%" class="d-flex justify-content-start">
+                  <a class="dropdown-item d-flex justify-content-start iconoAvatar" href="<?= site_url('/logout') ?>">
+                    <i class="bi bi-door-open me-2"></i>
+                    <span class="align-middle">Cerrar Sesión</span>
+                  </a>
+                </li>
+
+                <?php if ($session->has('usuario') && intval($session->get('usuario')['rol']) === 1): ?>
+                  <li style="width: 100%" class="d-flex justify-content-start">
+                    <a class="dropdown-item d-flex justify-content-start iconoAvatar" id="btnMisReservas" href="#">
+                      <i class="bi bi-calendar-check me-2"></i>
+                      <span class="align-middle">Mis Reservas</span>
+                    </a>
+                  </li>
+
+                  <li style="width: 100%" class="d-flex justify-content-start">
+                    <a class="dropdown-item d-flex justify-content-start iconoAvatar" id="btnMiPerfil" href="#" data-index="<?= intval($session->get('usuario')["id_usuario"]) ?>">
+                      <i class="bi bi-person-fill"></i>
+                      <span class="align-middle">Mi perfil</span>
+                    </a>
+                  </li>
+                <?php endif; ?>
+              </ul>
+
+            </li>
+          <?php
+          } else {
+            // No existe la sesión 'usuario'
           ?>
             <a href="<?= base_url() ?>index.php/login" class="btn-primary-personal"><i class="bi bi-person"></i> Iniciar Sesión</a>
           <?php
-        }
-      ?>
+          }
+          ?>
+        </div>
+
+      <label class="menu-movil" style="display: none;">
+        <input class="inp" checked="" type="checkbox" />
+        <div class="bar">
+          <span class="top bar-list"></span>
+          <span class="middle bar-list"></span>
+          <span class="bottom bar-list"></span>
+        </div>
+        <section class="menu-container">
+          <div class="menu-list">
+            <i class="bi bi-house"></i>
+            <a href="<?= base_url() ?>">Home</a>
+          </div>
+          <div class="menu-list">
+            <i class="bi bi-buildings"></i>
+            <a href="<?= base_url() ?>index.php/instalaciones">Instalaciones</a>
+          </div>
+
+          <?php if ($session->has('usuario') && intval($session->get('usuario')['rol']) === 2): ?>
+
+            <div class="menu-list">
+              <i class="bi bi-building-gear"></i>
+              <a href="<?= base_url() ?>index.php/crudInstalaciones" style="--i: 1">Gestor instalaciones</a>
+            </div>
+
+            <div class="menu-list">
+              <i class="bi bi-tag"></i>
+              <a href="<?= base_url() ?>index.php/gestorCategorias" style="--i: 2">Gestor categorías</a>
+            </div>
+
+            <div class="menu-list">
+              <i class="bi bi-bookmark-check"></i>
+              <a href="<?= base_url() ?>index.php/crudReservas" style="--i: 3">Gestor reservas</a>
+            </div>
+
+            <div class="menu-list">
+              <i class="bi bi-people"></i>
+              <a href="<?= base_url() ?>index.php/gestorUsuarios" style="--i: 4">Gestor usuarios</a>
+            </div>
+
+            <div class="menu-list">
+              <i class="bi bi-graph-down"></i>
+              <a href="<?= base_url() ?>index.php/dashboard" style="--i: 5">Estadísticas</a>
+            </div>
+          <?php endif; ?>
+
+        </section>
+      </label>
     </div>
   </header>
    <?=$view?>
@@ -179,10 +226,6 @@
         <a href="">Manual de Usuario</a>
         
         <a href="">Contacto soporte</a>
-
-        <a href=""></a>
-
-        <a href=""></a>
 
       </div>
 

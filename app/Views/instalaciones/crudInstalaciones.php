@@ -51,7 +51,8 @@
 <?php
   if(count($instalaciones)!== 0){
 ?>
-  <div style="padding-left: 3%; padding-top: 1%; padding-bottom: .5%;">
+  <div class="pagina-crud-instalaciones">
+    <div style="padding-left: 3%; padding-top: 1%; padding-bottom: .5%;">
     <h1 class="title-page">Gestor Instalaciones</h1>
     <p class="description-page">Gestiona fácilmente todas las instalaciones municipales: crea, edita y organiza tus espacios de forma rápida y sencilla.</p>
   </div>
@@ -377,6 +378,7 @@
   ?>
     </div>
 </div>
+  </div>
 
   
 

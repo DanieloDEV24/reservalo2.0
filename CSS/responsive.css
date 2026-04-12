@@ -88,6 +88,9 @@
         padding-left: 5% !important;
     }
     
+    footer .logo-titulo img{
+        width: 3% !important;
+    }
 }
 
 @media screen and (min-width: 1600px) {
@@ -312,7 +315,7 @@
 
     .textoPortada {
         width: 80% !important;
-        padding-top: 18% !important;
+        padding-top: 15% !important;
     }
 
    .barraBusqueda .contenedor-btn-busqueda {
@@ -338,7 +341,7 @@
     }
 
     header nav a{
-        font-size: 1.5rem !important;
+        font-size: 1.3rem !important;
     }
 
 
@@ -391,6 +394,22 @@
         height: 540px !important;
     }
 
+    .instalaciones .card-instalacion {
+        height: auto !important;
+        width: 31% !important;
+        margin-bottom: 3% !important;
+    }
+
+    .instalaciones .card-instalacion .button {
+        height: auto !important;
+        padding-bottom: 7% !important;
+        padding-top: 15% !important;
+    }
+
+    .instalaciones-container {
+        gap: 3% !important;
+    }
+
     .card-instalacion .button {
         padding-top: 5% !important;
     }
@@ -406,6 +425,9 @@
         padding: 1% 4% !important;
     }
     
+    .card-instalacion .button {
+        padding-top: 10% !important;
+    }
 
     .contenedor-top-instalaciones .btn-prev-top-instalaciones {
         left: 0% !important;
@@ -425,6 +447,22 @@
 
     .contenedor-btn-ver-instalaciones {
         padding-top: 5% !important;
+    }
+
+    footer .logo-titulo img {
+        width: 3.5% !important;
+    }
+
+    .accordion-body button {
+        width: 25% !important;
+    }
+
+}
+
+@media screen and (max-width: 1300px) {
+
+    .textoPortada {
+        padding-top: 18% !important;
     }
 }
 
@@ -453,6 +491,20 @@
     .contenedor-btn-ver-instalaciones a {
         width: 40% !important;
     }
+
+    .card-instalacion .button {
+        padding-top: 12% !important;
+    }
+
+    footer .logo-titulo img {
+        width: 4% !important;
+    }
+}
+
+@media screen and (max-width: 1220px) {
+    .instalaciones .accordion-item .botonesPista button, .pagina-crud-instalaciones .accordion-item .botonesPista button{
+        width: 25% !important;
+    }
 }
 
 @media screen and (max-width: 1175px) {
@@ -468,6 +520,12 @@
 
     .barraBusqueda {
         gap: 2% !important;
+    }
+}
+
+@media screen and (max-width: 1130px) {
+    .instalaciones .accordion-item .botonesPista button, .pagina-crud-instalaciones .accordion-item .botonesPista button{
+        width: 27% !important;
     }
 }
 
@@ -507,6 +565,8 @@
     .datos-gif {
         margin-top: 5% !important;
     }
+
+    
 }
 
 @media screen and (max-width: 1098px) {
@@ -517,6 +577,11 @@
 
     header img {
         width: 8% !important;
+    }
+
+    .card-instalacion .button {
+        padding-top: 15% !important;
+        padding-bottom: 2% !important;
     }
 }
 
@@ -537,7 +602,7 @@
     }
 
     header .div-contacto-menu-movil {
-        width: 40%;
+        width: 40% !important;
         display: flex;
         align-items: center;
         gap: 10%;
@@ -559,12 +624,46 @@
     .textoPortada {
         width: 85% !important;
     }
+
+    footer .logo-titulo img {
+        width: 4.5% !important;
+    }
 }
 
 @media screen and (max-width: 1000px) {
     .home .textoPortada .btn-primary-personal {
         width: 30% !important;
         min-width: 225px !important;
+    }
+
+    .instalaciones .accordion-item .row, .pagina-crud-instalaciones .accordion-item .row {
+        flex-wrap: wrap !important;
+        margin-bottom: 0% !important;
+    }
+
+    .instalaciones .accordion-item br, .pagina-crud-instalaciones .accordion-item br {
+        display: none !important;
+    }
+
+    .instalaciones .accordion-item .row .col-4, .pagina-crud-instalaciones .accordion-item .row .col-4 {
+        width: 50% !important;
+        margin-bottom: 2% !important;
+    }
+
+    .instalaciones .accordion-item .botonesPista, .pagina-crud-instalaciones .accordion-item .botonesPista {
+        width: 100% !important;
+    }
+
+    .instalaciones .accordion-item .botonesPista button, .pagina-crud-instalaciones .accordion-item .botonesPista button {
+        width: 50% !important;
+    }
+
+    #modalNuevaInstalacion .modal-footer button, #modalEditarInstalacion .modal-footer button {
+        width: 47% !important;
+    }
+
+    #modalNuevaInstalacion .modal-footer, #modalEditarInstalacion .modal-footer{
+        justify-content: center;
     }
 }
 
@@ -598,6 +697,11 @@
     .top-instalaciones .card-instalacion {
         width: 70% !important;
     }
+
+    
+    .card-instalacion .button {
+        padding-top: 9% !important;
+    }
 }
 
 @media screen and (max-width: 900px) {
@@ -619,6 +723,13 @@
     }
 }
 
+@media screen and (max-width: 830px) {
+    
+    .card-instalacion .button {
+        padding-top: 12% !important;
+    }
+}
+
 @media screen and (max-width: 870px) {
 
     .contenedor-btn-ver-instalaciones a {
@@ -636,14 +747,11 @@
         padding-top: 25% !important;
     }
 
-    .textoPortada h1{
-        font-size: 2.5rem !important;
-    }
-
     header img {
         width: 12% !important;
     }
     
+
 }
 
 
@@ -685,11 +793,16 @@
     } */
 
     .textoPortada {
-        padding-top: 25% !important;
+        padding-top: 28% !important;
     }
 
     .textoPortada h1 {
-        font-size: 5rem !important;
+        font-size: 5.5rem !important;
+    }
+
+    .home .textoPortada .btn-primary-personal {
+        width: 50% !important;
+        font-size: 1.2rem !important;
     }
 
     .datos-gif {
@@ -745,6 +858,52 @@
     .contenedor-top-instalaciones .card-instalacion .button {
         margin-top: 5% !important;
     }
+
+    footer .info {
+        flex-wrap: wrap !important;
+        gap: 5% !important;
+    }
+
+    footer .info > div {
+        width: 100% !important;
+    }
+
+    footer .info > div:nth-child(1), footer .info > div:nth-child(2) {
+        width: 45% !important;
+    }
+
+    footer .logo-titulo img{
+        width: 7% !important;
+    }
+
+    footer {
+        padding: 5% !important;
+    }
+
+    .menu-container {
+        width: 28rem !important;
+    }
+
+    .menu-list {
+        padding: 20px !important;
+    }
+
+    .menu-list a {
+        font-size: 1.5rem !important;
+    }
+
+    
+    .card-instalacion .button {
+        padding-top: 5% !important;
+    }
+
+    .contenedor-top-instalaciones {
+        margin-top: 7% !important;
+    }
+
+    .containerComoFunciona {
+        margin-bottom: 5% !important;
+    }
 }
 
 @media screen and (max-width: 762px) {
@@ -789,28 +948,60 @@
     }
 }
 
+@media screen and (max-width: 680px) {
+    
+    .card-instalacion .button {
+        padding-top: 10% !important;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    
+    .instalaciones .accordion-item .row, .pagina-crud-instalaciones .accordion-item .row {
+        flex-wrap: wrap !important;
+        margin-bottom: 0% !important;
+    }
+
+    .instalaciones .accordion-item .row .col-4, .pagina-crud-instalaciones .accordion-item .row .col-4 {
+        width: 100% !important;
+        margin-bottom: 5% !important;
+    }
+
+    .instalaciones .accordion-item .botonesPista, .pagina-crud-instalaciones .accordion-item .botonesPista {
+        width: 100% !important;
+        flex-wrap: wrap !important;
+        margin-top: 2% !important;
+    }
+
+    .instalaciones .accordion-body, .pagina-crud-instalaciones .accordion-body {
+         padding-top: 5% !important;
+    }
+
+    .instalaciones .accordion-item .botonesPista button, .pagina-crud-instalaciones .accordion-item .botonesPista button {
+        width: 100% !important;
+    }
+}
+
 @media screen and (max-width: 610px) {
     .textoPortada h1 {
-        font-size: 4rem !important;
+        font-size: 3.5rem !important;
     }
 
     .home .textoPortada {
-        padding-top: 30% !important;
+        padding-top: 35% !important;
     }
 
-    .sesion-no-iniciada a{
-        min-width: 150px !important;
-        width: 100% !important;
-        font-size: 1.1rem !important;
-        max-width: 180px !important;
+    .contenedor-top-instalaciones .top-instalaciones {
+        padding: 0% !important;
+        margin: 0% !important;
     }
-
-    header .sesion-no-iniciada {
-        width: 100% !important;
-    }
-
-    header .div-contacto-menu-movil {
+    
+    .contenedor-btn-ver-instalaciones a{
         width: 80% !important;
+    }
+
+    .card-instalacion .button {
+        padding-top: 8% !important;
     }
 }
 
@@ -829,6 +1020,18 @@
     }
 }
 
+
+@media screen and (max-width: 680px) {
+
+    footer .info > div:nth-child(1) {
+        width: 55% !important;
+    }
+
+    footer .info > div:nth-child(2) {
+        width: 35% !important;
+    }
+}
+
 @media screen and (max-width: 670px) {
 
     .contenedor-busq {
@@ -841,9 +1044,16 @@
 
     .home .textoPortada .btn-primary-personal {
         width: 100% !important; 
-        margin-top: 5%;
+        margin-top: 10%;
     }
     
+    footer .info > div:nth-child(1) {
+        width: 55% !important;
+    }
+
+    footer .info > div:nth-child(2) {
+        width: 40% !important;
+    }
 }
 
 @media screen and (max-width: 620px) {
@@ -861,7 +1071,7 @@
     }
 
     .containerComoFunciona .comoFunciona h1{
-        font-size: 2.9rem !important;
+        font-size: 2.7rem !important;
     }
 
     .containerComoFunciona .divImagenes img:last-of-type {
@@ -879,6 +1089,20 @@
     .contenedor-top-instalaciones .top-instalaciones .card-instalacion {
         width: 100% !important;
     }
+
+    .card-instalacion .button {
+        padding-top: 5% !important;
+    }
+}
+
+@media screen and (max-width: 556px) {
+    footer .info > div:nth-child(1) {
+        width: 60% !important;
+    }
+
+    footer .info > div:nth-child(2) {
+        width: 35% !important;
+    }
 }
 
 @media screen and (max-width: 540px) {
@@ -886,6 +1110,1415 @@
     header img {
         width: 16% !important;
     }
+
+    .containerComoFunciona .comoFunciona h1{
+        font-size: 2.2rem !important;
+    }
     
+    .contenedor-top-instalaciones .card-instalacion .button {
+        margin-top: 7% !important;
+    }
+
+    footer .info > div:nth-child(1), footer .info > div:nth-child(2), footer .info > div:nth-child(3) {
+        width: 100% !important;
+        margin-bottom: 5% !important;
+    } 
+
+    footer .principal-footer {
+        margin-bottom: 5% !important;
+    }
 }
 
+
+@media screen and (max-width: 460px) {
+    
+    .card-instalacion .button {
+        padding-top: 8% !important;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    
+    .card-instalacion .button {
+        padding-top: 10% !important;
+    }
+}
+
+@media screen and (max-width: 350px) {xº
+    
+    .card-instalacion .button {
+        padding-top: 12% !important;
+    }
+}
+
+@media screen and (max-width: 1065px) {
+    
+    .instalaciones .instalaciones-container .card-instalacion {
+        width: 47% !important;
+        margin-bottom: 5% !important;
+    }
+
+    .instalaciones .instalaciones-container {
+        gap: 5% !important;
+    }
+    
+    header.headerPlantilla {
+        margin-top: 5% !important;
+        margin-left: 4% !important;
+        margin-right: 4% !important;
+    }
+
+    .instalaciones {
+        padding: 4% !important;
+    }
+
+    .pagina-crud-instalaciones, .pagina-gestor-categorias {
+        padding: 3% !important;
+    }
+
+    .paginaReservas {
+        padding: 6% !important;
+    }
+
+    .accordion-body button {
+        width: 30% !important;
+        padding: 1.3% 0% 1.3% 0% !important;
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 717px) {
+
+    .instalaciones .instalaciones-resumen {
+        flex-wrap: wrap !important;
+         gap: 5% !important;
+    }
+
+    .instalaciones .instalaciones-resumen > div {
+        width: 47% !important;
+        margin-bottom: 5% !important;
+    }
+
+    .instalaciones .instalaciones-container .card-instalacion {
+        width: 100% !important;
+        margin-bottom: 5% !important;
+    }
+
+    header.headerPlantilla {
+        margin-left: 6% !important;
+        margin-right: 6% !important;
+    }
+
+    .instalaciones {
+        padding: 6% !important;
+    }
+
+    .instalaciones .instalaciones-container .card-instalacion {
+        margin-bottom: 10% !important;
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .inp:not(:checked) ~ .bar > .top {
+        transform-origin: top right;
+        transform: translateY(var(--transform)) rotate(-29deg);
+    }
+
+    .inp:not(:checked) ~ .bar > .middle {
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+
+    .inp:not(:checked) ~ .bar > .bottom {
+        transform-origin: bottom right;
+        transform: translateY(calc(var(--transform) * -1)) rotate(29deg);
+    }
+
+    .sesion-no-iniciada a{
+        min-width: 150px !important;
+        width: 100% !important;
+        font-size: 1.1rem !important;
+        max-width: 180px !important;
+    }
+
+    header .sesion-no-iniciada {
+        width: 100% !important;
+    }
+
+    header .div-contacto-menu-movil {
+        width: 80% !important;
+    }
+
+    .menu-container {
+        width: 21rem !important;
+    }
+
+    header .menu-movil {
+        width: 3rem !important;
+        height: 3rem !important;
+    }
+
+    .bar-list {
+        height: 25px !important;
+    }
+
+    .bar {
+        height: 50% !important;
+        gap: 5px !important;
+    }
+
+    .menu-list a{
+        font-size: 1.2rem !important;
+    }
+
+    
+    .menu-list i {
+        font-size: 1.2rem !important;
+    }
+
+    header .div-contacto-menu-movil {
+        gap: 3% !important;
+    }
+
+
+    .headerPlantilla .menu-container {
+        background-color: #fff;
+        color: #333 !important;
+        border-radius: 10px;
+        position: absolute;
+        width: 30rem;
+        right: -50%;
+        top: 180%;
+        overflow: hidden;
+        clip-path: inset(0% 0% 0% 0% round 10px);
+        transition: all 0.4s;
+        z-index: 9999;
+        box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    .bodyLogin .login {
+        width: 40% !important;
+    }
+}
+
+@media screen and (max-width: 1450px) {
+    .bodyLogin .login {
+        width: 45% !important;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    .bodyLogin .login {
+        width: 55% !important;
+    }
+}
+
+
+@media screen and (max-width: 900px) {
+    .bodyLogin .login {
+        width: 70% !important;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .bodyLogin .login {
+        width: 80% !important;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    .bodyLogin .login {
+        width: 80% !important;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .bodyLogin .login {
+        width: 80% !important;
+    }
+}
+
+
+@media screen and (max-width: 525px) {
+    .bodyLogin .login {
+        width: 100% !important;
+        height: 90vh !important;
+        border-radius: 35px !important;
+        padding-left: 5% !important;
+        padding-right: 5% !important;
+        padding-top: 5% !important;
+    }
+
+    .bodyLogin .login form .loginEmail, .bodyLogin .login form .form-password-toggle {
+        margin-bottom: 5% !important;
+    }
+
+    .bodyLogin .login form > div:last-of-type {
+        margin-top: 5% !important;
+    }
+
+    .bodyLogin .login form .app-brand-link {
+        margin-bottom: 5% !important;
+    }
+
+    .bodyLogin {
+        display: flex !important;
+        align-items: end !important;
+        height: 100vh !important;
+    }
+
+    .bodyRegistro .login form .loginEmail, .bodyRegistro .login form .form-password-toggle {
+        margin-bottom: 5% !important;
+    }
+
+    .bodyRegistro .login form > div:last-of-type {
+        margin-top: 10% !important;
+    }
+
+    .bodyRegistro .login br {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .bodyLogin {
+        min-height: 75vh;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    
+    .paginaInstalacion .card-instalacion .button a {
+        width: 61% !important;
+    }
+}
+
+@media screen and (max-width: 1230px) {
+    
+    .paginaInstalacion .card-instalacion .button .precio-pista {
+        width: 35% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: end !important;
+    }
+
+    .paginaInstalacion .card-instalacion .button .precio-pista span {
+        margin: 0% !important;
+        transform: translateY(3px) !important;
+    }
+
+    .paginaInstalacion .card-instalacion .button .precio-pista {
+        padding-bottom: 2% !important;
+    }
+
+}
+
+@media screen and (max-width: 1100px) {
+    .paginaInstalacion .container-pistas-instalacion {
+        flex-wrap: wrap !important;
+        gap: 5% !important;
+    }
+
+    .paginaInstalacion .container-pistas-instalacion .card-instalacion {
+        width: 47% !important;
+        margin-bottom: 5% !important;
+        height: auto !important;
+    }
+
+    .paginaInstalacion .card-instalacion .button .precio-pista {
+        width: 30% !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: end !important;
+    }
+
+    .paginaInstalacion .card-instalacion .button .precio-pista span {
+        margin: 0% !important;
+    }
+
+    .paginaInstalacion .card-instalacion .button {
+        gap: 2% !important;
+    }
+
+    .paginaInstalacion .card-instalacion .button a {
+        width: 65% !important
+    }
+
+    .paginaInstalacion .card-instalacion .button {
+        padding-bottom: 5% !important;
+        padding-top: 8% !important;
+    }
+
+    .pistasInstalacion {
+        padding-top: 4% !important;
+    }
+
+    .categoriasInstalacion .categoria-principal {
+        padding: 1% 4% !important;
+        margin-bottom: 2% !important;
+    }
+
+    #modalReservaPista .card-categoria {
+            padding: 2% 7%;
+            margin-bottom: 30% !important;
+    }
+
+    #modalReservaPista .row.mb-4 {
+        margin-bottom: 0% !important;
+    }
+
+    #modalReservaPista .select2-container--bootstrap-5 .select2-selection {
+        
+        min-height: 50px !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+
+    .paginaInstalacion .container-pistas-instalacion .card-instalacion {
+        width: 100% !important;
+        margin-bottom: 10% !important;
+        height: auto !important;
+    }
+
+    .categoriasInstalacion .categoria-principal {
+        padding: 1.5% 4% !important;
+        margin-bottom: 5% !important;
+    }
+
+    .pistasInstalacion {
+        padding-top: 5% !important;
+    }
+}
+
+@media screen and (max-width: 1065px) {
+    .paginaInstalacion {
+        padding: 2% 5% 0% 5% !important;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .pistasInstalacion {
+        padding-top: 3% !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .pistasInstalacion {
+        padding-top: 7% !important;
+    }
+
+    .pistasInstalacion > h2 {
+        padding-bottom: 3% !important;
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+
+    #modalReservaPista .modal-dialog, #modalNuevaInstalacion .modal-dialog, #modalVerInstalacion .modal-dialog, #modalEditarInstalacion .modal-dialog {
+        max-width: none !important;
+        width: 90% !important;
+    }
+
+
+    #modalReservaPista .row > .col-8, #modalReservaPista .row > .col-4, #modalNuevaInstalacion .row > .col, #modalNuevaInstalacion .row > .col-12, #modalEditarInstalacion .row > .col {
+        width: 100% !important;
+        flex: 0 0 100% !important; /* 👈 esto fuerza el .col */
+        max-width: 100% !important;
+        margin-bottom: 5% !important;
+        flex-wrap: wrap !important;
+    }
+
+    #modalEditarInstalacion .row{
+        gap: 0% !important;
+        margin-top: 0% !important;
+    }
+
+    #modalEditarInstalacion .label-ediar-instalacion {
+        margin-bottom: 2% !important;
+    }
+
+    #subcategoriasEditar {
+        margin-bottom: 4% !important;
+    }
+
+    #modalReservaPista .grid-horarios {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 5% !important;
+    }
+
+    #modalReservaPista .grid-horarios button {
+        width: 30% !important;
+        margin-bottom: 5% !important;
+        padding-top : 2% !important;
+        padding-bottom: 2% !important;
+        font-size: 1.2rem !important;
+    }
+
+    #modalNuevaInstalacion .gap-5 {
+        gap: 2% !important;
+    }
+
+    #modalNuevaInstalacion .col input {
+        width: 100% !important;
+    }
+
+    .radio-input label {
+        padding: 3% !important;
+        font-size: 1.2rem;
+    }
+
+    .toggle-switch {
+        position: relative;
+        display: inline-block;
+        width: 60px;
+        height: 27px;
+        cursor: pointer;
+    }
+
+    .toggle-switch-handle {
+        position: absolute;
+        top: -2px;
+        left: 0px;
+        width: 30px;
+        height: 30px;
+        background-color: #fff;
+        border-radius: 50%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .toggle-switch input[type="checkbox"]:checked+.toggle-switch-background .toggle-switch-handle {
+        transform: translateX(35px);
+    }
+
+    #modalEditarInstalacion .w-50 {
+        width: 100% !important;
+        margin-bottom: 5%;
+    }
+
+    #modalEditarInstalacion .w-50 .btn-primary {
+        padding: 1.5% !important;
+        font-size: 1.2rem;
+        width: 25% ;
+    }
+}
+
+
+@media screen and (max-width: 1055px) {
+        
+    header.headerPlantilla img {
+        width: 8% !important;
+    }   
+}
+
+@media screen and (max-width: 710px) {
+    
+    header.headerPlantilla {
+        padding: 3% 4% !important;
+    }
+}
+
+@media screen and (max-width: 716px) {
+
+    header.headerPlantilla img {
+        width: 10% !important;
+    }  
+}
+
+
+@media screen and (max-width: 750px) {
+
+    #modalReservaPista .modal-dialog, #modalNuevaInstalacion .modal-dialog, #modalVerInstalacion .modal-dialog, #modalEditarInstalacion .modal-dialog {
+        max-width: none !important;
+        width: 95% !important;
+    }
+
+    .radio-input label {
+        padding: 5% !important;
+        font-size: 1.2rem;
+    }
+
+    .radio-input {
+        margin-bottom: 5% !important;
+    }
+}
+
+
+@media screen and (max-width: 1351px) {
+
+    #crear {
+        width: 30% !important;
+    }
+}
+
+@media screen and (max-width: 1101px) {
+
+    #crear {
+        width: 35% !important;
+    }
+}
+
+@media screen and (max-width: 992px) {
+
+    #crear {
+        width: 50% !important;
+    }
+}
+
+@media screen and (max-width: 900px) {
+
+    #crear {
+        width: 50% !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+
+    #crear {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    #crear {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 861px) {
+
+    #tablaInstalaciones tr td:nth-of-type(4),  #tablaInstalaciones tr th:nth-of-type(4){
+        display: none !important;
+    }
+
+    #tablaInstalaciones tr th {
+        vertical-align: middle !important;
+    }
+
+    .pagina-crud-instalaciones .divTable {
+        padding-bottom: 2.5% !important;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    table {
+        font-size: 1.2rem !important;
+    }
+
+    .dropdown-menu {
+        font-size: 1.2rem !important;
+        width: 15rem !important;
+    }
+
+    .modal-footer button, #modalNuevaInstalacion .w-50 label, #modalNuevaInstalacion .accordion-body button{
+        width: 25% !important;
+        font-size: 1.2rem !important;
+        padding-bottom: 1% !important;
+        padding-top: 1% !important;
+    }
+
+    #modalReservaPista .modal-footer button {
+        width: 100% !important;
+    }
+
+    #modalNuevaInstalacion, #modalVerInstalacion, #modalEditarInstalacion {
+        font-size: 1.2rem !important;
+    }
+
+    #modalNuevaInstalacion .w-50 {
+        width: 100% !important;
+        display: flex;
+        align-items: center;
+        gap: 2% !important;
+        margin-bottom: 5% !important;
+    }
+
+    .accordion-body  {
+        font-size: 1.2rem !important;
+    }
+}
+
+@media screen and (max-width: 651px) {
+
+
+    .pagina-crud-instalaciones .divTable {
+        padding-bottom: 3.5% !important;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+
+    #tablaInstalaciones tr td:last-of-type, #tablaInstalaciones tr th:last-of-type{
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 410px) {
+
+    #tablaInstalaciones tr td:nth-of-type(3), #tablaInstalaciones tr th:nth-of-type(3){
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #tabla-categorias tr td:nth-of-type(2), #tabla-categorias tr th:nth-of-type(2){
+        width: 25% !important;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    #tabla-categorias tr td:nth-of-type(3), #tabla-categorias tr th:nth-of-type(3){
+        display: none !important;
+    }
+
+    #tabla-categorias tr td:nth-of-type(2), #tabla-categorias tr th:nth-of-type(2){
+        width: 60% !important;
+    }
+}
+
+
+@media screen and (max-width: 1200px) {
+    #btn-nueva-categoria {
+        width: 30% !important;
+    }
+}
+
+@media screen and (max-width: 905px) {
+    #btn-nueva-categoria {
+        width: 35% !important;
+    }
+}
+
+@media screen and (max-width: 790px) {
+    #btn-nueva-categoria {
+        width: 40% !important;
+    }
+}
+
+@media screen and (max-width: 635px) {
+    #btn-nueva-categoria {
+        width: 45% !important;
+        margin-top: 2% !important;
+    }
+}
+
+
+@media screen and (max-width: 570px) {
+    #btn-nueva-categoria {
+        width: 60% !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    #btn-nueva-categoria {
+        width: 100% !important;
+
+    }
+}
+
+
+@media screen and (max-width: 945px) {
+    .date-selector {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+
+    .stats-summary {
+        width: 100% !important;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .contenedor-reservas {
+        grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+        padding: 0% !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .contenedor-reservas {
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .contenedor-reservas {
+        grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+    }
+}
+
+@media screen and (max-width: 445px) {
+    .contenedor-reservas {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .contenedor-reservas {
+        grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    }
+}
+
+
+@media screen and (max-width: 858px) {
+    
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:first-child{
+        flex: 0 0 60% !important;
+        max-width: 60% !important;
+    }
+
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:last-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion .row > .col:last-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:last-child {
+        flex: 0 0 40% !important;
+        max-width: 40% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-4:last-child {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-8:first-child{
+        flex: 0 0 80% !important;
+        max-width: 80% !important;
+    }
+}
+
+
+@media screen and (max-width: 687px) {
+    
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:first-child{
+        flex: 0 0 70% !important;
+        max-width: 70% !important;
+    }
+
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:last-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion .row > .col:last-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:last-child {
+        flex: 0 0 30% !important;
+        max-width: 30% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-4:last-child {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-8:first-child{
+        flex: 0 0 80% !important;
+        max-width: 80% !important;
+    }
+}
+
+
+@media screen and (max-width: 650px) {
+    
+    #modalVerInstalacion .modal-body > .row {
+        gap: 2% !important;
+    } 
+}
+
+@media screen and (max-width: 611px) {
+    
+    #modalVerInstalacion .modal-body > .row {
+        gap: 1% !important;
+    } 
+}
+
+
+@media screen and (max-width: 607px) {
+    
+    #modalVerInstalacion .modal-body > .row div {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    } 
+
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:first-child{
+        flex: 0 0 40% !important;
+        max-width: 40% !important;
+    }
+
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:last-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion .row > .col:last-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:last-child {
+        flex: 0 0 60% !important;
+        max-width: 60% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-4:last-child {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-8:first-child{
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+}
+
+
+@media screen and (max-width: 507px) {
+    
+    #modalVerInstalacion .modal-body > .row div {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    } 
+
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:first-child{
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:last-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion .row > .col:last-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:last-child {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-4:last-child {
+        flex: 0 0 40% !important;
+        max-width: 40% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-8:first-child{
+        flex: 0 0 60% !important;
+        max-width: 60% !important;
+    }
+}
+
+@media screen and (max-width: 429px) {
+    
+    #modalVerInstalacion .modal-body > .row div {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    } 
+
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:first-child{
+        flex: 0 0 60% !important;
+        max-width: 60% !important;
+    }
+
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:last-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion .row > .col:last-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:last-child {
+        flex: 0 0 40% !important;
+        max-width: 40% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-4:last-child {
+        flex: 0 0 30% !important;
+        max-width: 30% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-8:first-child{
+        flex: 0 0 70% !important;
+        max-width: 70% !important;
+    }
+}
+
+
+@media screen and (max-width: 372px) {
+    
+    #modalVerInstalacion .modal-body > .row div {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    } 
+
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:first-child{
+        flex: 0 0 70% !important;
+        max-width: 70% !important;
+    }
+
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:last-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion .row > .col:last-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:last-child {
+        flex: 0 0 30% !important;
+        max-width: 30% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-4:last-child {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-8:first-child{
+        flex: 0 0 80% !important;
+        max-width: 80% !important;
+    }
+}
+
+@media screen and (max-width: 332px) {
+    
+    #modalVerInstalacion .modal-body > .row div {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    } 
+
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion 
+    .row > .col:first-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:first-child{
+        flex: 0 0 80% !important;
+        max-width: 80% !important;
+    }
+
+    #modalVerInstalacion 
+    .capacidad-completo-ver-instalacion 
+    .row > .col:last-child, #modalVerInstalacion 
+    .precio-completo-ver-instalacion .row > .col:last-child, #modalVerInstalacion 
+    .iluminacion-ver-instalacion 
+    .row > .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-4:last-child {
+        flex: 0 0 10% !important;
+        max-width: 10% !important;
+    }
+
+    #modalVerInstalacion 
+    .material-ver-instalacion 
+    .row > .col-8:first-child{
+        flex: 0 0 90% !important;
+        max-width: 90% !important;
+    }
+
+}
+
+
+@media screen and (max-width: 850px) {
+    
+   .galeria-imagenes-pistas img {
+        height: 350px;
+        object-fit: cover;
+    }
+}
+
+
+@media screen and (max-width: 700px) {
+    
+   .galeria-imagenes-pistas img {
+        height: 330px;
+        object-fit: cover;
+    }
+}
+
+
+@media screen and (max-width: 600px) {
+    
+   .galeria-imagenes-pistas img {
+        height: 300px;
+        object-fit: cover;
+    }
+}
+
+
+@media screen and (max-width: 520px) {
+    
+   .galeria-imagenes-pistas img {
+        height: 270px;
+        object-fit: cover;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    
+   .galeria-imagenes-pistas img {
+        height: 230px;
+        object-fit: cover;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    
+   .galeria-imagenes-pistas img {
+        height: 190px;
+        object-fit: cover;
+    }
+}
+
+
+@media screen and (max-width: 898px) {
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-7 {
+        flex: 0 0 65% !important;
+        max-width: 65% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-3 {
+        flex: 0 0 35% !important;
+        max-width: 35% !important;
+    }
+
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 60% !important;
+        max-width: 60% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 40% !important;
+        max-width: 40% !important;
+    }
+}
+
+@media screen and (max-width: 801px) {
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-7 {
+        flex: 0 0 70% !important;
+        max-width: 70% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-3 {
+        flex: 0 0 30% !important;
+        max-width: 30% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 60% !important;
+        max-width: 60% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 30% !important;
+        max-width: 30% !important;
+    }
+}
+
+
+
+@media screen and (max-width: 710px) {
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-7 {
+        flex: 0 0 75% !important;
+        max-width: 75% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-3 {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 75% !important;
+        max-width: 75% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+}
+
+
+@media screen and (max-width: 667px) {
+    
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion, #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-7 {
+        flex: 0 0 40% !important;
+        max-width: 40% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-3 {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 38.5% !important;
+        max-width: 38.5% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+}
+
+
+@media screen and (max-width: 638px) {
+    
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-7 {
+        flex: 0 0 45% !important;
+        max-width: 45% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-3 {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 43.5% !important;
+        max-width: 43.5% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+}
+
+
+@media screen and (max-width: 576px) {
+    
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-7 {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-3 {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 48.5% !important;
+        max-width: 48.5% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+}
+
+
+@media screen and (max-width: 527px) {
+    
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-7 {
+        flex: 0 0 55% !important;
+        max-width: 55% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-3 {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 53.5% !important;
+        max-width: 53.5% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+}
+
+
+@media screen and (max-width: 486px) {
+    
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-7 {
+        flex: 0 0 60% !important;
+        max-width: 60% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-3 {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 58.5% !important;
+        max-width: 58.5% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+}
+
+
+@media screen and (max-width: 486px) {
+    
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-7 {
+        flex: 0 0 65% !important;
+        max-width: 65% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-3 {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 61.5% !important;
+        max-width: 61.5% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+}
+
+
+@media screen and (max-width: 424px) {
+    
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-7 {
+        flex: 0 0 70% !important;
+        max-width: 70% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-3 {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 66.5% !important;
+        max-width: 66.5% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+}
+
+
+@media screen and (max-width: 401px) {
+    
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-7 {
+        flex: 0 0 90% !important;
+        max-width: 90% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .capacidad-pista-ver-instalacion .col-3 {
+        flex: 0 0 10% !important;
+        max-width: 10% !important;
+    }
+
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 80.5% !important;
+        max-width: 80.5% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 10% !important;
+        max-width: 10% !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    #modalVerInstalacion .modal-footer button {
+        width: 100% !important;
+    }
+}

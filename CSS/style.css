@@ -20,7 +20,7 @@ header.headerPlantilla nav .dropdown-toggle::after {
     color: #000;
 }
 
-header.headerPlantilla div {
+header.headerPlantilla > div {
     width: 21%;
 }
 
@@ -36,9 +36,19 @@ header {
     padding-top: 4% !important;
 }
 
+header.headerPlantilla {
+    padding: 1% 3% !important;
+}
+
+
 header img {
     width: 6%;
 }
+
+header.headerPlantilla img {
+    width: 6% !important;
+}
+
 
 header nav {
     display: flex;
@@ -46,6 +56,11 @@ header nav {
     width: 60%;
     justify-content: center;
 }
+
+header.headerPlantilla nav {
+    justify-content: end;
+}
+
 
 header div {
     width: 20%;
@@ -632,4 +647,188 @@ header .mainLi ul a {
 
 .sesion-no-iniciada a {
     min-width: 250px !important;
+}
+
+.menu-movil > .inp {
+  display: none;
+}
+
+.menu-movil {
+  font-weight: 600;
+  color: white;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  justify-content: center;
+  font-size: 1.5rem !important;
+  width: 5rem;
+  height: 5rem;
+}
+
+.arrow {
+  height: 34%;
+  aspect-ratio: 1;
+  margin-block: auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.arrow::after,
+.arrow::before {
+  content: "";
+  position: absolute;
+  background-color: white;
+  height: 100%;
+  width: 2.5px;
+  border-radius: 500px;
+  transform-origin: bottom;
+}
+
+.arrow::after {
+  transform: rotate(35deg) translateX(-0.5px);
+}
+.arrow::before {
+  transform: rotate(-35deg) translateX(0.5px);
+}
+
+.menu-movil > .inp:checked + .arrow {
+  transform: rotateX(180deg);
+}
+
+.menu-container {
+  background-color: white;
+  color: #000 !important;
+  border-radius: 10px;
+  position: absolute;
+  width: 30rem;
+  right: 0%;
+  top: 130%;
+  overflow: hidden;
+  clip-path: inset(0% 0% 0% 0% round 10px);
+  transition: all 0.4s;
+  padding-bottom: 2%;
+  padding-top: 2%;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.menu-list {
+  --delay: 0.4s;
+  --trdelay: 0.15s;
+  padding: 15px;
+  border-radius: inherit;
+  transition: background-color 0.2s 0s;
+  position: relative;
+  transform: translateY(30px);
+  opacity: 0;
+  text-align: left;     /* Añade esto */
+  width: 100%;          /* Añade esto */
+  box-sizing: border-box; /* Añade esto */
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 2%;
+}
+
+.menu-list i {
+    font-size: 1.5rem;
+}
+
+.menu-list a {
+    color: #111 !important;
+    font-size: 1.5rem !important;
+}
+
+.menu-list::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 95%;
+}
+
+.menu-list:hover {
+  background-color: rgb(223, 223, 223);
+}
+
+.inp:checked ~ .menu-container {
+  clip-path: inset(10% 50% 90% 50% round 10px);
+}
+
+.inp:not(:checked) ~ .menu-container .menu-list {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.menu-list:nth-child(n) {
+  transition:
+    transform 0.4s calc(var(--delay) + (var(--trdelay) * (var(--i, 0)))),
+    opacity 0.4s calc(var(--delay) + (var(--trdelay) * (var(--i, 0))));
+}   
+
+.bar-inp {
+  -webkit-appearance: none;
+  display: none;
+  visibility: hidden;
+}
+
+.bar {
+  display: flex;
+  height: 50%;
+  width: 4rem;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+}
+
+.bar-list {
+  --transform: -25%;
+  display: block;
+  width: 100%;
+  height: 7px;
+  border-radius: 50px;
+  background-color: white;
+  transition: all 0.4s;
+  position: relative;
+}
+
+.inp:not(:checked) ~ .bar > .top {
+  transform-origin: top right;
+  transform: translateY(var(--transform)) rotate(-34deg);
+}
+
+.inp:not(:checked) ~ .bar > .middle {
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.inp:not(:checked) ~ .bar > .bottom {
+  transform-origin: bottom right;
+  transform: translateY(calc(var(--transform) * -1)) rotate(34deg);
+}
+
+.headerPlantilla .bar-list {
+    background-color: #333;
+}
+
+
+.headerPlantilla .menu-container {
+    background-color: #fff;
+    color: #333 !important;
+    border-radius: 10px;
+    position: absolute;
+    width: 30rem;
+    right: -50%;
+    top: 160%;
+    overflow: hidden;
+    clip-path: inset(0% 0% 0% 0% round 10px);
+    transition: all 0.4s;
+    z-index: 9999;
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }

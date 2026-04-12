@@ -874,7 +874,8 @@ class Instalaciones extends BaseController
                 "css" => [
                     'css/instalaciones.css', 
                     'css/reservas.css',
-                    'css/style.css'
+                    'css/style.css', 
+                    'css/responsive.css'
                 ], 
 
                 "js" => [

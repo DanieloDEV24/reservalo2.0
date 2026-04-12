@@ -8,7 +8,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/getUsuario`,
+            url: `${BASE_URL}index.php/getUsuario`,
             data: { id_usuario: idUsuario },
             dataType: "json",
             success: function (response) {
@@ -43,7 +43,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/borrarUsuario`,
+            url: `${BASE_URL}index.php/borrarUsuario`,
             data: { id_usuario: idUsuario },
             dataType: "json",
             success: function (response) {
@@ -66,7 +66,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/getReservasUsuario`,
+            url: `${BASE_URL}index.php/getReservasUsuario`,
             data: { id_usuario: idUsuario },
             dataType: "JSON",
             success: function (response) {
@@ -146,7 +146,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/anularReservasById`,
+            url: `${BASE_URL}index.php/anularReservasById`,
             data: { idReserva: idReserva, idPedido: idPedido },
             dataType: "JSON",
             success: function (response) {
@@ -171,7 +171,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/getUsuario`,
+            url: `${BASE_URL}index.php/getUsuario`,
             data: { id_usuario: idUsuario },
             dataType: "JSON",
             success: function (response) {
@@ -245,7 +245,7 @@ $(document).ready(() => {
         if (errores.length === 0) {
             $.ajax({
                 type: "POST",
-                url: `/reservalo2.0/index.php/editarUsuario`,
+                url: `${BASE_URL}index.php/editarUsuario`,
                 data: { id_usuario: idUsuario, nombre: nombre, email: email, telf: telf, password: password },
                 dataType: "JSON",
                 success: function (response) {
@@ -287,7 +287,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/darBaja`,
+            url: `${BASE_URL}index.php/darBaja`,
             data: { id_usuario: idUsuario },
             dataType: "JSON",
             success: function (response) {
@@ -320,7 +320,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/darAltaUsuario`,
+            url: `${BASE_URL}index.php/darAltaUsuario`,
             data: { id_usuario: idUsuario },
             dataType: "JSON",
             success: function (response) {
@@ -355,7 +355,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/filtroUsuarios`,
+            url: `${BASE_URL}index.php/filtroUsuarios`,
             data: {valor: valor, estado: estado},
             dataType: "JSON",
             success: function (response) {
@@ -416,7 +416,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/filtroUsuarios`,
+            url: `${BASE_URL}index.php/filtroUsuarios`,
             data: {valor: valor, estado: estado},
             dataType: "JSON",
             success: function (response) {

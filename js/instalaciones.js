@@ -611,7 +611,7 @@ $(document).ready(() => {
 
             // Petición Ajax al back en la que enviamos los datos para crear la instalación y guardarlas en la base de datos
             $.ajax({
-                url: `/reservalo2.0/index.php/nuevaInstalacion`, // --> URL a la que enviamos la petición
+                url: `${BASE_URL}index.php/nuevaInstalacion`, // --> URL a la que enviamos la petición
                 type: 'POST',
                 data: formData,
                 processData: false, // Importante para enviar FormData
@@ -746,14 +746,16 @@ $(document).ready(() => {
 
         // Reaclizamos una petición ajax al back para obtener la información de la instalación con el id anteriormente guardado
         $.ajax({
-            url: `/reservalo2.0/index.php/verInstalacion`, // --> URL donde hacemos la petición
+            url: `${BASE_URL}index.php/verInstalacion`, // --> URL donde hacemos la petición
             method: 'POST',
             data: { id: index },
             dataType: 'json',
             success: function (response) {
 
                 // Ponemos la imagen de la instalación en el "header" del modal
-                $('#imagenVerInstalacion').css('background-image', `url(images/${response.pistas[0].imagen1})`);
+                $('#imagenVerInstalacion').css('background-image', `url(/reservalo2.0/images/${response.pistas[0].imagen1})`);
+
+                console.log(response)
 
                 // Mostramos los datos
                 $('#nombreVerInstalacion').text(response.instalacion[0].nombre + '.'); // --> Mostramos el nombre
@@ -805,21 +807,43 @@ $(document).ready(() => {
                                         data-bs-parent="#accordionPistas">
                                     <div class="accordion-body">
                                         <div class="galeria-imagenes-pistas">
-                                            <img src="${BASE_URL}images/${pista["imagen1"]}" alt="Imagen 1 de ${pista["nombre_pista"]}" class="img-grande">
-                                            <img src="${BASE_URL}images/${pista["imagen2"]}" alt="Imagen 2 de ${pista["nombre_pista"]}" class="img-pequena">
-                                            <img src="${BASE_URL}images/${pista["imagen3"]}" alt="Imagen 3 de ${pista["nombre_pista"]}" class="img-pequena">
-                                            <img src="${BASE_URL}images/${pista["imagen4"]}" alt="Imagen 4 de ${pista["nombre_pista"]}" class="img-pequena">
+                                            
+
+                                            <div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="${BASE_URL}images/${pista["imagen1"]}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="${BASE_URL}images/${pista["imagen2"]}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="${BASE_URL}images/${pista["imagen3"]}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="${BASE_URL}images/${pista["imagen4"]}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
                                         </div>
 
-                                        <div class="row gap-5 mt-3">
+                                        <div class="row gap-3 mt-3">
                                         <div class="col">
-                                            <div class="row">
+                                            <div class="row capacidad-pista-ver-instalacion">
                                                 <div class="col-7"><label>Capacidad de la Pista:</label></div>
-                                                <div class="col-5"><p>${pista["capacidad_pista"]}</p></div>
+                                                <div class="col-3"><p>${pista["capacidad_pista"]}</p></div>
                                             </div>
                                         </div>
 
-                                        <div class="col">
+                                        <div class="col precio-pista-ver-instalacion">
                                             <div class="row">
                                                 <div class="col"><label>Precio de la Pista:</label></div>
                                                 <div class="col"><p>${pista["precio_pista"]}</p></div>
@@ -870,7 +894,7 @@ $(document).ready(() => {
 
         // Hacemos una petición ajax al back para obtener los datos de esa instalación
         $.ajax({
-            url: `/reservalo2.0/index.php/editarInstalacion`, // --> URL a la que se hace la petición
+            url: `${BASE_URL}index.php/editarInstalacion`, // --> URL a la que se hace la petición
             method: 'POST',
             data: { id: index },
             dataType: 'json',
@@ -914,9 +938,7 @@ $(document).ready(() => {
                     let catPrincipal = $(this).val();
 
                     // Obtenemos las opciones del select y la recorremos 
-                    $('#categoriasEditar option').each(function (event) {
-
-                        event.preventDefault();
+                    $('#categoriasEditar option').each(function () {
 
                         const val = $(this).val(); // --> Guardamos el valor del option, es decir, de la categoría
                         const text = $(this).text(); // --> Guardamos el texto del option, es decir, de la categoria
@@ -1098,7 +1120,7 @@ $(document).ready(() => {
 
         // Petición ajax en la que obtenemos los datos de la pista
         $.ajax({
-            url: `/reservalo2.0/index.php/infoPista`, // --> URL donde hacemos la petición
+            url: `${BASE_URL}index.php/infoPista`, // --> URL donde hacemos la petición
             method: 'POST',
             data: { id: idPista },
             dataType: 'json',
@@ -1176,7 +1198,7 @@ $(document).ready(() => {
         // Petición AJAX al backend
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/editarPista`, // <-- tu endpoint en el backend
+            url: `${BASE_URL}index.php/editarPista`, // <-- tu endpoint en el backend
             data: formData,
             processData: false, // <-- importante para que jQuery no lo procese
             contentType: false, // <-- importante para enviar correctamente los archivos
@@ -1228,7 +1250,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/getNewIndexPista`,
+            url: `${BASE_URL}index.php/getNewIndexPista`,
             data: "",
             dataType: 'json',
             beforeSend: function (event) {
@@ -1461,7 +1483,7 @@ $(document).ready(() => {
         // Petición ajax al back con la que obtenemos la información sobre la pista
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/infoPista`, // --> URL donde va destinada la peticion
+            url: `${BASE_URL}index.php/infoPista`, // --> URL donde va destinada la peticion
             data: { id: idPista },
             dataType: "json",
             success: function (response) {
@@ -1508,7 +1530,7 @@ $(document).ready(() => {
         // Hago una petición ajax al back para eliminar la pista de la base de datos
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/borrarPista`, // --> URL a donde va la petición
+            url: `${BASE_URL}index.php/borrarPista`, // --> URL a donde va la petición
             data: { id: id },
             dataType: "json",
             success: function (response) {
@@ -1608,7 +1630,7 @@ $(document).ready(() => {
         // Hacemos la petición ajax al back para enviar los datos de la pista a crear
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/crearPista`, // --> URL a donde enviaremos la petición
+            url: `${BASE_URL}index.php/crearPista`, // --> URL a donde enviaremos la petición
             data: formData,
             processData: false, // Importante para enviar FormData
             contentType: false, // Importante para enviar FormData
@@ -1779,7 +1801,7 @@ $(document).ready(() => {
         // Petición AJAX al backend para guardar los datos de la instalación editada
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/editarInstalacionBD`,
+            url: `${BASE_URL}index.php/editarInstalacionBD`,
             data: formData,
             contentType: false,
             processData: false,
@@ -1819,7 +1841,7 @@ $(document).ready(() => {
         // Petición ajax al back para obtener el nombre de la instalación y mostrarlo en el modal
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/mensajeDarBajaInstalacion`, // --> URL donde va destinada la petición
+            url: `${BASE_URL}index.php/mensajeDarBajaInstalacion`, // --> URL donde va destinada la petición
             data: { id: index },
             dataType: "json",
             success: function (response) {
@@ -1844,7 +1866,7 @@ $(document).ready(() => {
         let index = $('#modalBajaInstalacion').data('index');
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/darBajaInstalacion`, // --> URL donde va destinada la petición
+            url: `${BASE_URL}index.php/darBajaInstalacion`, // --> URL donde va destinada la petición
             data: { id: index },
             dataType: "json",
             success: function (response) {
@@ -1884,7 +1906,7 @@ $(document).ready(() => {
         // Petición ajax al back para dar de alta la instalación
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/darAlta`, // --> URL donde va destinada la petición
+            url: `${BASE_URL}index.php/darAlta`, // --> URL donde va destinada la petición
             data: { id: index },
             dataType: "json",
             beforeSend: function (event) {
@@ -1933,7 +1955,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/mensajeBorrarInstalacion`,
+            url: `${BASE_URL}index.php/mensajeBorrarInstalacion`,
             data: { id: index },
             dataType: "json",
             success: function (response) {
@@ -2020,7 +2042,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/borrarInstalacion`, // --> URL donde va destinada la petición
+            url: `${BASE_URL}index.php/borrarInstalacion`, // --> URL donde va destinada la petición
             data: { id: index },
             dataType: "json",
             success: function (response) {
@@ -2169,7 +2191,7 @@ $(document).ready(() => {
 
     $.ajax({
         type: "POST",
-        url: `/reservalo2.0/index.php/crudInstalaciones`,
+        url: `${BASE_URL}index.php/crudInstalaciones`,
         data: { filter: filter },
         dataType: "json",
         beforeSend: function(){
@@ -2293,7 +2315,7 @@ $(document).ready(() => {
 
         $.ajax({
         type: "POST",
-        url: `/reservalo2.0/index.php/crudInstalaciones`,
+        url: `${BASE_URL}index.php/crudInstalaciones`,
         data: { filter: filter },
         dataType: "json",
         beforeSend: function(){
@@ -2391,7 +2413,7 @@ $(document).ready(() => {
 
         $.ajax({
         type: "POST",
-        url: `/reservalo2.0/index.php/crudInstalaciones`,
+        url: `${BASE_URL}index.php/crudInstalaciones`,
         data: { filter: null },
         dataType: "json",
         beforeSend: function(){
@@ -2642,7 +2664,7 @@ $(document).ready(() => {
 
     $.ajax({
     type: "POST",
-    url: `/reservalo2.0/index.php/instalaciones`,
+    url: `${BASE_URL}index.php/instalaciones`,
     data: { filterInstalaciones: filterInstalaciones },
     dataType: "json",
     beforeSend: function(){
@@ -2794,7 +2816,7 @@ $(document).ready(() => {
 
         $.ajax({
         type: "POST",
-        url: `/reservalo2.0/index.php/instalaciones`,
+        url: `${BASE_URL}index.php/instalaciones`,
         data: { filterInstalaciones: filterInstalaciones },
         dataType: "json",
         beforeSend: function(){
@@ -2920,7 +2942,7 @@ $(document).ready(() => {
 
         $.ajax({
         type: "POST",
-        url: `/reservalo2.0/index.php/instalaciones`,
+        url: `${BASE_URL}index.php/instalaciones`,
         data: { filterInstalaciones: null },
         dataType: "json",
         beforeSend: function(){

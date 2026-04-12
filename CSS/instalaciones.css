@@ -444,13 +444,6 @@ span.estado.no-disponible{
   user-select: none;
 }
 
-@media screen and (max-width: 640px) {
-  .checkbox-wrapper-4 .cbx {
-    width: 100%;
-    display: inline-block;
-  }
-}
-
 @-moz-keyframes wave-4 {
   50% {
     transform: scale(0.9);

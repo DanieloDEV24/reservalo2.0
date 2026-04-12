@@ -62,7 +62,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/getFechasReservas`,
+            url: `${BASE_URL}index.php/getFechasReservas`,
             data: {
                 mes: currentMonth,
                 year: currentYear
@@ -126,7 +126,7 @@ $(document).ready(function () {
 
                                 $.ajax({
                                     type: "POST",
-                                    url: `/reservalo2.0/index.php/getReservasByDate`,
+                                    url: `${BASE_URL}index.php/getReservasByDate`,
                                     data: {
                                         fecha: fecha
                                     },
@@ -286,7 +286,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/getInfoReserva`,
+            url: `${BASE_URL}index.php/getInfoReserva`,
             data: {idReserva: idReserva},
             dataType: "JSON",
             success: function (response) {
@@ -317,7 +317,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url: `/reservalo2.0/index.php/anularReservasById`,
+            url: `${BASE_URL}index.php/anularReservasById`,
             data: {idReserva: idReserva, idPedido: idPedido, tipoReserva: tipoReserva},
             dataType: "JSON",
             success: function (response) {
@@ -343,7 +343,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "POST",
-            url:  `/reservalo2.0/index.php/checkIn`,
+            url:  `${BASE_URL}index.php/checkIn`,
             data: {idReserva: idReserva},
             dataType: "json",
             success: function (response) {
@@ -373,7 +373,7 @@ $(document).ready(function () {
 
         $.ajax({
             type: "post",
-            url: `/reservalo2.0/index.php/deshacerCheckIn`,
+            url: `${BASE_URL}index.php/deshacerCheckIn`,
             data: {idReserva: idReserva},
             dataType: "json",
             success: function (response) {

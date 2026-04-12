@@ -428,4 +428,16 @@ $(document).ready(() => {
     );
   }
 
+// ════════════════════════════════════════════════════════
+// LOGIN - Animación slide-up en móvil (≤525px)
+// ════════════════════════════════════════════════════════
+if (window.matchMedia("(max-width: 525px)").matches) {
+  gsap.from(".login", {
+    y: "100%",
+    duration: 0.8,
+    ease: "power2.out",
+    clearProps: "transform"
+  });
+}
+
 });

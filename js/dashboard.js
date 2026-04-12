@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   $.ajax({
     type: 'GET',
-    url: `/reservalo2.0/index.php/reservasMes`,
+    url: `${BASE_URL}index.php/reservasMes`,
     dataType: "JSON",
     success: function (response) {
 
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   $.ajax({
     type: "GET",
-    url: `/reservalo2.0/index.php/reservasCategoria`,
+    url: `${BASE_URL}index.php/reservasCategoria`,
     dataType: "JSON",
     success: function (response) {
 

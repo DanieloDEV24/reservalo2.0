@@ -23,7 +23,7 @@
                 <p id="descripcionVerInstalacion"></p>
 
                 <div class="row gap-5">
-                    <div class="col">
+                    <div class="col capacidad-completo-ver-instalacion">
                         <div class="row">
                             <div class="col">
                                 <label for="">Capacidad Completo: </label>
@@ -34,7 +34,7 @@
                         </div>
                     </div>
 
-                    <div class="col">
+                    <div class="col precio-completo-ver-instalacion">
                         <div class="row">
                             <div class="col">
                                 <label for="">Precio Completo: </label>
@@ -48,7 +48,7 @@
 
 
                 <div class="row gap-5">
-                    <div class="col">
+                    <div class="col iluminacion-ver-instalacion">
                         <div class="row">
                             <div class="col">
                                 <label for="">¿Tiene iluminación?: </label>
@@ -59,7 +59,7 @@
                         </div>
                     </div>
 
-                    <div class="col">
+                    <div class="col material-ver-instalacion">
                         <div class="row">
                             <div class="col-8">
                                 <label for="">¿Se puede prestar material?: </label>

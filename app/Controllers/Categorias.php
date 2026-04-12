@@ -17,7 +17,8 @@ class Categorias extends BaseController
             "css" => [
                 'css/instalaciones.css',
                 'css/categorias.css', 
-                'css/style.css'
+                'css/style.css', 
+                'css/responsive.css'
             ], 
 
             "js" => [
