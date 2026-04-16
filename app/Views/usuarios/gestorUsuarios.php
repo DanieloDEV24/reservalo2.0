@@ -55,7 +55,7 @@
         <p class="description-page">Gestiona fácilmente todas los usuarios que pueden acceder a las instalaciones del municipio: crea, da de baja y organiza a todos los usuarios de forma rápida y sencilla.</p>
     </div>
 
-      <div class="row d-flex justify-content-end align-items-center p-4 pb-0 pt-0">
+      <div class="row d-flex justify-content-end align-items-center p-4 pb-0 pt-0 filtrado-gestor-usuarios">
         <div class="col-3 d-flex align-items-center gap-2 justify-content-end">
           <label for="">Baja </label>
             <label class="toggle-switch">
@@ -96,7 +96,7 @@
                             <tr data-index="<?= $usuario["id_usuario"] ?>" class="<?= (intval($usuario["reservas_pasadas"]) >= 3) ? "table-warning" : "" ?> <?= (intval($usuario["usuario_baja"]) === 1) ? "table-danger" : "" ?>">
                             <td><?= $cont ?></td>
                             <td><?= $usuario["nombre"] ?></td>
-                            <td><?= $usuario["email"] ?></td>
+                            <td title="<?= $usuario["email"] ?>"><?= $usuario["email"] ?></td>
                             <td><?= $usuario["telf"] ?></td>
                             <td><?= ($usuario["token_date"] === null) ? "---" : date("d/m/Y H:i:s", strtotime($usuario["token_date"]));  ?></td>
                             <td>

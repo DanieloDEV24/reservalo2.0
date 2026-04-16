@@ -23,7 +23,8 @@ class Usuarios extends BaseController
             "css" => [
                 'css/instalaciones.css',
                 'css/usuarios.css', 
-                'css/style.css'
+                'css/style.css', 
+                'css/responsive.css'
             ], 
 
             "js" => [

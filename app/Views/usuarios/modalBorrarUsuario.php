@@ -21,6 +21,7 @@
             <div class="info-usuario">
               <p class="nombre-usuario"></p>
               <p class="email-telf-usuario"></p>
+              <p class="email-telf-usuario-movil" style="display: none;"></p>
             </div>
           </div>
 

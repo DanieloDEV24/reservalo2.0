@@ -1,9 +1,5 @@
 <div class="modal" tabindex="-1" id="modalBajaInstalacion">
 
-  <div class="d-flex p-4 pb-0 justify-content-center alertModal">
-
-  </div>
-
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">

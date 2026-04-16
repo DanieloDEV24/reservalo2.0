@@ -18,6 +18,7 @@ $(document).ready(() => {
                     $('#modalBorrarUsuario .contenedor-datos-usuario .info-personal-usuario .logo-usuario').text(response.usuario.nombre[0]);
                     $('#modalBorrarUsuario .contenedor-datos-usuario .info-personal-usuario .info-usuario .nombre-usuario').text(response.usuario.nombre);
                     $('#modalBorrarUsuario .contenedor-datos-usuario .info-personal-usuario .info-usuario .email-telf-usuario').text(response.usuario.email + " · " + response.usuario.telf);
+                    $('#modalBorrarUsuario .contenedor-datos-usuario .info-personal-usuario .info-usuario .email-telf-usuario-movil').text(response.usuario.email);
 
                     $('#modalBorrarUsuario .contenedor-datos-usuario .info-registro-usuario .fecha-registro-usuario').text(new Date(response.usuario.fecha_registro).toLocaleDateString("es-ES", {
                         day: "2-digit",
@@ -78,6 +79,7 @@ $(document).ready(() => {
                     $('#modalReservasUsuario .datos-usuario-reservas .info-personal-usuario .logo-usuario').text(response.usuario.nombre[0])
                     $('#modalReservasUsuario .datos-usuario-reservas .info-personal-usuario .info-usuario .nombre-usuario').text(response.usuario.nombre)
                     $('#modalReservasUsuario .datos-usuario-reservas .info-personal-usuario .info-usuario .email-telf-usuario').text(response.usuario.email + " · " + response.usuario.telf);
+                    $('#modalReservasUsuario .datos-usuario-reservas .info-personal-usuario .info-usuario .email-telf-usuario-movil').text(response.usuario.email);
 
                     $('#modalReservasUsuario .stats-usuario .total-reservas h3').text(response.reservas.length)
                     $('#modalReservasUsuario .stats-usuario .total-gastado h3').text((response.reservas.length > 0) ? response.reservas.filter(r => parseInt(r.pagadas) === 1).reduce((acc, r) => acc + parseFloat(r.precio_reserva), 0) + " €" : "0 €")
@@ -370,7 +372,7 @@ $(document).ready(() => {
                         let tr = $(`<tr data-index="${r.id_usuario}" class="${(parseInt(r.reservas_pasadas) >= 3) ? "table-warning" : ""} ${(parseInt(r.usuario_baja) === 1) ? "table-danger" : ""}">
                                     <td>${cont}</td>
                                     <td>${r.nombre}</td>
-                                    <td>${r.email}</td>
+                                    <td title="${r.email}">${r.email}</td>
                                     <td>${r.telf}</td>
                                     <td>${(r.token_date === null) ? "---" : String(new Date(r.token_date).getDate()).padStart(2, '0') + "/" + String(new Date(r.token_date).getMonth() + 1).padStart(2, '0') + "/" + new Date(r.token_date).getFullYear()}</td>
                                     <td>
@@ -431,7 +433,7 @@ $(document).ready(() => {
                         let tr = $(`<tr data-index="${r.id_usuario}" class="${(parseInt(r.reservas_pasadas) >= 3) ? "table-warning" : ""} ${(parseInt(r.usuario_baja) === 1) ? "table-danger" : ""}">
                                     <td>${cont}</td>
                                     <td>${r.nombre}</td>
-                                    <td>${r.email}</td>
+                                    <td title="${r.email}" >${r.email}</td>
                                     <td>${r.telf}</td>
                                     <td>${(r.token_date === null) ? "---" : String(new Date(r.token_date).getDate()).padStart(2, '0') + "/" + String(new Date(r.token_date).getMonth() + 1).padStart(2, '0') + "/" + new Date(r.token_date).getFullYear()}</td>
                                     <td>

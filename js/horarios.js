@@ -1459,6 +1459,8 @@ $(document).ready(() => {
         $('#sidebar-cambio-horario').removeClass('active'); // --> Desactivamos el menú lateral de nuevo horario
         $('#calendario').removeClass('seleccion-dia')
         $(`.numero-dia.dia-seleccionado`).removeClass('dia-seleccionado');
+
+        unlockScroll(); // ← aquí
     })
 
 
@@ -1599,6 +1601,9 @@ $(document).ready(() => {
             $('#sidebar-cambio-horario').addClass('active');
             $('#calendario, #contenedor-loader-horario').addClass('seleccion-dia');
             $('#btn-guardar-cambio-seleccion').removeClass('btn-primary-personal-disabled');
+
+            lockScroll(); // ← aquí
+
             return; // ⛔ NO continúa con la lógica normal
         }
 
@@ -2456,5 +2461,101 @@ $(document).on('click', '#btnCerraSidebarCambio', function() {
     // Si quieres resetear la altura al cerrar, descomenta:
     // window.sidebarFooterResizer.setHeight(200);
 });
+
+
+(function () {
+    const sidebar = document.getElementById('sidebar-cambio-horario');
+    const header  = sidebar.querySelector('.sidebar-header'); // ← el header como handle
+    const MIN_H   = 200;
+
+    let isDragging = false;
+    let startY     = 0;
+    let startH     = 0;
+
+    // ── Media query ────────────────────────────────────
+    const mq = window.matchMedia('(max-width: 750px)');
+
+    function onMediaChange(e) {
+        if (e.matches) {
+            header.style.cursor = 'ns-resize';
+        } else {
+            header.style.cursor = '';
+            sidebar.style.height = '';
+        }
+    }
+
+    mq.addEventListener('change', onMediaChange);
+    onMediaChange(mq);
+
+    // ── Mouse events ───────────────────────────────────
+    header.addEventListener('mousedown', (e) => {
+        if (!window.matchMedia('(max-width: 750px)').matches) return;
+        isDragging = true;
+        startY     = e.clientY;
+        startH     = sidebar.offsetHeight;
+
+        document.body.style.cursor     = 'ns-resize';
+        document.body.style.userSelect = 'none';
+
+        document.addEventListener('mousemove', onMouseDrag);
+        document.addEventListener('mouseup',   stopDrag);
+        e.preventDefault();
+    });
+
+    function onMouseDrag(e) {
+        if (!isDragging) return;
+        const delta   = startY - e.clientY;
+        let newHeight = startH + delta;
+        newHeight     = Math.max(MIN_H, Math.min(window.innerHeight * 0.95, newHeight));
+        sidebar.style.height = newHeight + 'px';
+    }
+
+    // ── Touch events ───────────────────────────────────
+    header.addEventListener('touchstart', (e) => {
+        if (!window.matchMedia('(max-width: 750px)').matches) return;
+        isDragging = true;
+        startY     = e.touches[0].clientY;
+        startH     = sidebar.offsetHeight;
+        e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        const delta   = startY - e.touches[0].clientY;
+        let newHeight = startH + delta;
+        newHeight     = Math.max(MIN_H, Math.min(window.innerHeight * 0.95, newHeight));
+        sidebar.style.height = newHeight + 'px';
+        e.preventDefault();
+    }, { passive: false });
+
+    document.addEventListener('touchend', () => {
+        if (!isDragging) return;
+        isDragging = false;
+    });
+
+    // ── Stop drag (mouse) ──────────────────────────────
+    function stopDrag() {
+        isDragging = false;
+        document.body.style.cursor     = '';
+        document.body.style.userSelect = '';
+        document.removeEventListener('mousemove', onMouseDrag);
+        document.removeEventListener('mouseup',   stopDrag);
+    }
+
+})();
+
+
+// ── Bloquear/desbloquear scroll solo en móvil ──────────────
+function lockScroll() {
+    if (window.matchMedia('(max-width: 750px)').matches) {
+        document.body.style.overflow    = 'hidden';
+        document.body.style.touchAction = 'none';
+    }
+}
+
+function unlockScroll() {
+    document.body.style.overflow    = '';
+    document.body.style.touchAction = '';
+}
 
 })
