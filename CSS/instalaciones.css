@@ -1885,3 +1885,12 @@ span.estado.no-disponible{
     z-index: 9999;
     width: auto;
 }
+
+#modalVerInstalacion #accordionPistas .accordion-body, #modalBorrarInstalacion #accordionBorrarPistas .accordion-body {
+  padding: 0% !important;
+}
+
+#modalVerInstalacion #accordionPistas .accordion-body .row, #modalBorrarInstalacion #accordionBorrarPistas .accordion-body .row {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}

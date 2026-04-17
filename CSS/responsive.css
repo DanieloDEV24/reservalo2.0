@@ -453,10 +453,13 @@
         width: 3.5% !important;
     }
 
-    .accordion-body button {
+    .accordion-body .botonesPista > button {
         width: 25% !important;
     }
 
+    .sidebar .dropdown-menu {
+        width: 10rem !important;
+    }
 }
 
 @media screen and (max-width: 1300px) {
@@ -658,12 +661,60 @@
         width: 50% !important;
     }
 
-    #modalNuevaInstalacion .modal-footer button, #modalEditarInstalacion .modal-footer button {
+    #modalNuevaInstalacion .modal-footer button, #modalEditarInstalacion .modal-footer button, #modalNuevaInstalacion .modal-footer button {
         width: 47% !important;
+        padding-top: 2% !;
+        padding-bottom: 2% !important;
+    }
+
+    #modalBorrarInstalacion .modal-footer {
+        justify-content: center;
+    }
+
+    #modalBorrarInstalacion .modal-footer button {
+        width: 48% !important;
     }
 
     #modalNuevaInstalacion .modal-footer, #modalEditarInstalacion .modal-footer{
         justify-content: center;
+    }
+
+    #modalVerInstalacion .modal-footer button {
+        width: 50% !important;
+    }
+
+    #modalNuevaInstalacion .accordion-body .botonesPista button.guardarPista, #modalNuevaInstalacion .accordion-body label.btn {
+        width: 40% !important;
+        padding-top: 1% !important;
+        padding-bottom: 1% !important;
+    }
+
+    #modalEditarInstalacion .accordion-body .botonesPista button {
+        width: 50% !important;
+    }
+
+    #modalEditarInstalacion .w-50 {
+        gap: 3% !important;
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    #modalEditarInstalacion .accordion-body label.btn {
+        width: 40% !important;
+    }
+
+    #modalActividadReciente .modal-footer button {
+        width: 50% !important;
+    }
+
+
+}
+
+@media screen and (max-width: 780px) {
+    #modalNuevaInstalacion .accordion-body .w-50 {
+        width: 100% ;
+        flex-wrap: wrap !important;
     }
 }
 
@@ -980,6 +1031,14 @@
     .instalaciones .accordion-item .botonesPista button, .pagina-crud-instalaciones .accordion-item .botonesPista button {
         width: 100% !important;
     }
+
+    
+    #modalNuevaInstalacion .modal-footer button, #modalEditarInstalacion .modal-footer button, #modalBorrarInstalacion .modal-footer button {
+        width: 100% !important;
+        padding-top: 2% !;
+        padding-bottom: 2% !important;
+    }
+
 }
 
 @media screen and (max-width: 610px) {
@@ -1169,12 +1228,16 @@
         margin-right: 4% !important;
     }
 
-    .instalaciones {
+    .instalaciones, .horario {
         padding: 4% !important;
     }
 
     .pagina-crud-instalaciones, .pagina-gestor-categorias {
         padding: 3% !important;
+    }
+
+    .pagina-gestor-usuarios {
+        padding: 2% !important;
     }
 
     .paginaReservas {
@@ -1185,6 +1248,10 @@
         width: 30% !important;
         padding: 1.3% 0% 1.3% 0% !important;
         font-size: 1.2rem;
+    }
+
+    .pagina-dashboard {
+        padding: 4% !important;
     }
 }
 
@@ -1216,6 +1283,15 @@
 
     .instalaciones .instalaciones-container .card-instalacion {
         margin-bottom: 10% !important;
+    }
+
+    .pagina-gestor-usuarios {
+        padding: 5% !important;
+        padding-top: 3% !important;
+    }
+
+    .pagina-dashboard {
+        padding: 6% !important;
     }
 }
 
@@ -1457,7 +1533,7 @@
         padding-top: 4% !important;
     }
 
-    .categoriasInstalacion .categoria-principal {
+    .categoriasInstalacion .categoria-principal, .categoriasInstalacion .categoria-secundaria {
         padding: 1% 4% !important;
         margin-bottom: 2% !important;
     }
@@ -1485,7 +1561,7 @@
         height: auto !important;
     }
 
-    .categoriasInstalacion .categoria-principal {
+    .categoriasInstalacion .categoria-principal, .categoriasInstalacion .categoria-secundaria {
         padding: 1.5% 4% !important;
         margin-bottom: 5% !important;
     }
@@ -1520,18 +1596,26 @@
 
 @media screen and (max-width: 992px) {
 
-    #modalReservaPista .modal-dialog, #modalNuevaInstalacion .modal-dialog, #modalVerInstalacion .modal-dialog, #modalEditarInstalacion .modal-dialog {
+    #modalReservaPista .modal-dialog, #modalNuevaInstalacion .modal-dialog, #modalVerInstalacion .modal-dialog, #modalEditarInstalacion .modal-dialog, #modalBorrarInstalacion .modal-dialog, #modalBajaInstalacion .modal-dialog {
         max-width: none !important;
         width: 90% !important;
     }
 
 
-    #modalReservaPista .row > .col-8, #modalReservaPista .row > .col-4, #modalNuevaInstalacion .row > .col, #modalNuevaInstalacion .row > .col-12, #modalEditarInstalacion .row > .col {
+    #modalReservaPista .row > .col-8, #modalReservaPista .row > .col-4, #modalReservaPista .row > .col-10, #modalNuevaInstalacion .row > .col, #modalNuevaInstalacion .row > .col-12, #modalEditarInstalacion .row > .col, #modalBorrarInstalacion .row > .col {
         width: 100% !important;
         flex: 0 0 100% !important; /* 👈 esto fuerza el .col */
         max-width: 100% !important;
         margin-bottom: 5% !important;
         flex-wrap: wrap !important;
+    }
+
+    #modalBorrarInstalacion .row {
+        gap: 0% !important;
+    }
+
+    #modalBorrarInstalacion .row > .col{
+        margin-bottom: 3% !important;
     }
 
     #modalEditarInstalacion .row{
@@ -1608,6 +1692,10 @@
         font-size: 1.2rem;
         width: 25% ;
     }
+
+    #modalReservaPista .modal-body, #modalNuevaInstalacion .modal-body, #modalVerInstalacion .modal-body, #modalEditarInstalacion .modal-body, #modalBorrarInstalacion .modal-body {
+        padding: 3% !important;
+    }
 }
 
 
@@ -1633,9 +1721,31 @@
 }
 
 
+@media screen and (max-width: 500px) {
+
+    header.headerPlantilla img {
+        width: 12% !important;
+    }  
+}
+
+@media screen and (max-width: 450px) {
+
+    header.headerPlantilla img {
+        width: 15% !important;
+    }  
+}
+
+@media screen and (max-width: 360px) {
+
+    header.headerPlantilla img {
+        width: 17% !important;
+    }  
+}
+
+
 @media screen and (max-width: 750px) {
 
-    #modalReservaPista .modal-dialog, #modalNuevaInstalacion .modal-dialog, #modalVerInstalacion .modal-dialog, #modalEditarInstalacion .modal-dialog {
+    #modalReservaPista .modal-dialog, #modalNuevaInstalacion .modal-dialog, #modalVerInstalacion .modal-dialog, #modalEditarInstalacion .modal-dialog, #modalBorrarInstalacion .modal-dialog, #modalBajaInstalacion .modal-dialog, #modalEditarCategoria .modal-dialog {
         max-width: none !important;
         width: 95% !important;
     }
@@ -1725,12 +1835,38 @@
         padding-top: 1% !important;
     }
 
+    #modalNuevaInstalacion .accordion-body .botonesPista div {
+        width: 50% !important;
+        gap: .5rem !important;
+    }
+
+    #modalNuevaInstalacion .accordion-body .botonesPista div button {
+        width: 100% !important;
+    }
+
+
     #modalReservaPista .modal-footer button {
         width: 100% !important;
     }
 
-    #modalNuevaInstalacion, #modalVerInstalacion, #modalEditarInstalacion {
+    #modalNuevaInstalacion, #modalVerInstalacion, #modalEditarInstalacion, #modalBorrarInstalacion {
         font-size: 1.2rem !important;
+    }
+
+    #modalVerInstalacion .capacidad-completo-ver-instalacion .col:first-of-type, #modalVerInstalacion .iluminacion-ver-instalacion .col:first-of-type, #modalVerInstalacion .precio-completo-ver-instalacion .col:first-of-type, #modalVerInstalacion .material-ver-instalacion .col-8{
+        flex: 0 0 70%; 
+        max-width: 100% !important
+
+    }
+
+    #modalVerInstalacion .capacidad-completo-ver-instalacion .col:last-of-type, #modalVerInstalacion .iluminacion-ver-instalacion .col:last-of-type, #modalVerInstalacion .precio-completo-ver-instalacion .col:last-of-type, #modalVerInstalacion .material-ver-instalacion .col-4{
+        flex: 0 0 5%; 
+        max-width: 100% !important
+
+    }
+    
+    #modalVerInstalacion .items-ver {
+        gap: 2rem !important
     }
 
     #modalNuevaInstalacion .w-50 {
@@ -1744,10 +1880,272 @@
     .accordion-body  {
         font-size: 1.2rem !important;
     }
+
+    #modalBajaInstalacion .btns-borrado button {
+        width: 35% !important;
+    }
+
+    .horario .div-ano {
+        margin-bottom: 5% !important;
+    }
+
+    .calendario .div-mes {
+        height: 460px !important;
+    }
+
 }
 
-@media screen and (max-width: 651px) {
+@media screen and (max-width: 1300px) {
+    .horario .legend-item {
+        font-size: 18px !important;
+    }
 
+    .horario .calendario .div-mes {
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 1150px) {
+    .calendario .div-mes {
+        width: 48%;
+        margin-bottom: 4%;
+        height: 500px !important;
+    }
+
+    .calendario {
+        gap: 4%;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    .calendario .div-mes {
+        height: 485px !important;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .calendario .div-mes {
+        height: 460px !important;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .calendario .div-mes {
+        height: 435px !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    
+    .calendario .div-mes {
+        width: 100%;
+        margin-bottom: 10%;
+        height: 550px !important;
+        padding: 5%;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    
+    .calendario .div-mes {
+        height: 525px !important;
+        padding: 5%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    
+    .calendario .div-mes {
+        height: 500px !important;
+        padding: 5%;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    
+    .calendario .div-mes {
+        height: 485px !important;
+        padding: 5%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    
+    .calendario .div-mes {
+        height: 455px !important;
+        padding: 5%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    
+    .calendario .div-mes {
+        height: 425px !important;
+        padding: 5%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    
+    .calendario .div-mes {
+        height: 405px !important;
+        padding: 5%;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    
+    .calendario .div-mes {
+        height: 390px !important;
+        padding: 5%;
+    }
+}
+
+@media screen and (max-width: 1078px) {
+    .horario .div-button a {
+        width: 30% !important;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .horario .div-button a {
+        width: 50% !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .horario .div-button a {
+        width: 100% !important;
+        margin-bottom: 3% !important;
+    }
+
+    .horario .div-button {
+        flex-wrap: wrap !important;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    .sidebar {
+        width: 40% !important;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .sidebar {
+        width: 60% !important;
+    }
+
+    .sidebar .dropdown-menu {
+        width: 12rem !important;
+    }
+
+    #sidebar-cambio-horario {
+        width: 40% !important;
+    }
+}
+
+
+@media screen and (max-width: 750px) {
+    .sidebar {
+        top: auto;
+        bottom: 0;
+        
+        width: 100% !important;
+        height: 80vh;
+        box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.1);
+        transform: translateY(100%);
+        border-radius: 25px 25px 0 0;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    #calendario.seleccion-dia {
+        width: 61% !important;
+    }
+
+    #calendario.seleccion-dia .div-mes {
+        height: 420px !important;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+
+    #calendario.seleccion-dia .div-mes {
+        width: 100% !important;
+        height: 520px !important;
+        padding: 5% !important;
+    }
+
+    #calendario.seleccion-dia {
+        width: 58% !important;
+    }
+}
+
+@media screen and (max-width: 950px) {
+
+    #calendario.seleccion-dia .div-mes {
+        height: 490px !important;
+    }
+}
+
+@media screen and (max-width: 850px) {
+
+    #calendario.seleccion-dia {
+        width: 52% !important;
+    }
+
+    #sidebar-cambio-horario {
+        width: 45% !important;
+    }
+
+    #calendario.seleccion-dia .div-mes {
+        height: 450px !important;
+    }
+}
+
+@media screen and (max-width: 800px) {
+
+    #calendario.seleccion-dia .div-mes {
+        height: 430px !important;
+    }
+}
+
+@media screen and (max-width: 750px) {
+
+    #calendario.seleccion-dia {
+        width: 100% !important;
+    }
+
+    #sidebar-cambio-horario {
+        width: 100% !important;
+       
+    }
+
+    #sidebar-vertical-handle {
+    touch-action: none;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .sidebar .sidebar-header h2 {
+        font-size: 1.7rem !important;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    .sidebar .sidebar-header h2 {
+        font-size: 1.5rem !important;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .sidebar .sidebar-header h2 {
+        font-size: 1.2rem !important;
+    }
+}
+
+
+@media screen and (max-width: 651px) {
 
     .pagina-crud-instalaciones .divTable {
         padding-bottom: 3.5% !important;
@@ -2385,6 +2783,7 @@
         flex: 0 0 25% !important;
         max-width: 25% !important;
     }
+
 }
 
 
@@ -2520,5 +2919,848 @@
 @media screen and (max-width: 750px) {
     #modalVerInstalacion .modal-footer button {
         width: 100% !important;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    #modalNuevaInstalacion .accordion-body .botonesPista button.guardarPista:disabled {
+        width: 35% !important;
+    }
+
+    #modalNuevaInstalacion .accordion-body .botonesPista div {
+        width: 65% !important;
+    }
+
+    #modalBajaInstalacion .btns-borrado button {
+        width: 50% !important;
+    }
+
+    #modalEditarCategoria .modal-footer {
+        justify-content: center !important;
+    }
+
+    #modalEditarCategoria .modal-footer button, #modalBorrarCategoria .modal-footer button, #modalCrearCategoria .modal-footer button {
+        width: 48% !important;
+        padding: 2% !important;
+    }
+
+    #modalEditarCategoria .modal-dialog, #modalBorrarCategoria .modal-dialog, #modalCrearCategoria .modal-dialog {
+        width: 80% !important;
+        max-width: 100% !important;
+    }
+    
+}
+
+@media screen and (max-width: 750px) {
+    
+    #modalEditarCategoria .modal-dialog, #modalBorrarCategoria .modal-dialog, #modalCrearCategoria .modal-dialog {
+        max-width: none !important;
+        width: 95% !important;
+    }
+}
+
+@media screen and (max-width: 640px) {
+   
+    #modalNuevaInstalacion .accordion-body .botonesPista, #modalEditarInstalacion .accordion-body .botonesPista {
+        flex-wrap: wrap !important;
+    }
+
+    #modalNuevaInstalacion .accordion-body .botonesPista button.guardarPista:disabled, #modalEditarInstalacion .accordion-body .botonesPista button.guardarPista:disabled {
+        width: 100% !important;
+    }
+
+    #modalNuevaInstalacion .accordion-body .botonesPista div, #modalEditarInstalacion .accordion-body .botonesPista div {
+        width: 100% !important;
+        flex-wrap: wrap !important;
+    }
+
+    #modalNuevaInstalacion .accordion-body .botonesPista div button, #modalEditarInstalacion .accordion-body .botonesPista button, #modalEditarInstalacion .accordion-body label.btn {
+        width: 100% !important;
+    }
+
+    #modalBajaInstalacion .btns-borrado {
+        flex-wrap: wrap;
+    }
+
+    #modalBajaInstalacion .btns-borrado button {
+        width: 100% !important;
+        margin-bottom: 3% !important;
+    }
+
+    #modalBajaInstalacion .pregunta-borrado {
+        margin-bottom: 7% !important;
+    }
+
+    
+    #modalEditarCategoria .modal-footer button, #modalBorrarCategoria .modal-footer button, #modalCrearCategoria .modal-footer button {
+        width: 100% !important;
+        padding: 3% !important;
+    }
+
+}
+
+@media screen and (max-width: 501px) {
+    
+    #modalBajaInstalacion .pregunta-borrado h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    #modalEditarHorario .modal-dialog,  #modalBorrarUsuario .modal-dialog,  #modalBorrarUsuario .modal-dialog, #modalReservasUsuario .modal-dialog, #modalInfoUsuario .modal-dialog, #modalActividadReciente .modal-dialog, #modalInformacionPersonal .modal-dialog{
+        width: 90% !important;
+        max-width: none !important;
+    }
+
+    #modalInfoUsuario .col-6, #modalInformacionPersonal .col-6  {
+        width: 100% !important;
+    }
+
+    #modalInfoUsuario .col-6, #modalInfoUsuario .col-12, #modalInformacionPersonal .col-6, #modalInformacionPersonal .col-12 {
+        margin-bottom: 3% ;
+    }
+
+}
+
+@media screen and (max-width: 576px) {
+    
+    #modalEditarHorario .modal-dialog, #modalActividadReciente .modal-dialog, #modalInformacionPersonal .modal-dialog {
+        width: 97% !important;
+        max-width: none !important;
+    }
+
+    #modalEditarHorario .col-6, #modalEditarHorario .col, .sidebar .col-6, .sidebar .col {
+        width: 100% !important;
+        margin-bottom: 5% !important;
+    }
+
+    #modalEditarHorario .col, .sidebar .col {
+
+        width: 100% !important;
+        flex: 0 0 100% !important; /* 👈 esto fuerza el .col */
+        max-width: 100% !important;
+    }
+
+    #modalEditarHorario .row, .sidebar .row {
+
+        margin-bottom: 0% !important;
+    }
+
+    #sidebar .row:first-of-type {
+        margin-bottom: 5% !important;
+    }
+
+    
+    #modalBorrarUsuario .modal-dialog, #modalInfoUsuario .modal-dialog {
+        width: 95% !important;
+        max-width: none !important;
+        justify-content: center;
+    }
+
+}
+
+@media screen and (max-width: 1000px) {
+
+    #modalEditarHorario .modal-footer {
+        justify-content: center;
+    }
+
+    #modalEditarHorario .modal-footer button {
+        width: 48% !important;
+        padding: 1% !important;
+    }
+
+    #modalBorrarUsuario .modal-footer {
+        justify-content: center;
+    }
+
+    #modalBorrarUsuario .modal-footer button {
+        width: 48% !important;
+    }
+    
+    #modalReservasUsuario .modal-footer button {
+        width: 50% !important;
+    }
+
+    #modalReservasUsuario .contenedor-estado-reserva button{
+        width: 40% !important;
+        padding: 1% !important;
+    }
+
+    #modalReservasUsuario .contenedor-estado-reserva .estado-reserva {
+        width: 35% !important;
+    }
+
+    #modalInfoUsuario .modal-footer {
+        justify-content: center;
+    }
+
+    #modalInfoUsuario .modal-footer button {
+        width: 48% !important;
+    }
+
+    #modalInformacionPersonal .modal-footer {
+        justify-content: center;
+    }
+
+    #modalInformacionPersonal .modal-footer button {
+        width: 48% !important;
+    }
+}
+
+@media screen and (max-width: 640px) {
+
+    #modalEditarHorario .modal-footer {
+        justify-content: center;
+    }
+
+    #modalEditarHorario .modal-footer button {
+        width: 100% !important;
+        padding: 2% !important;
+    }
+
+    .color-picker-wrapper {
+        flex-wrap: wrap !important;
+    }
+
+    #modalBorrarUsuario .modal-footer button {
+        width: 100% !important;
+    }
+
+    #modalReservasUsuario .modal-footer button,  #modalInfoUsuario .modal-footer button {
+        width: 100% !important;
+    }
+
+    #modalInfoUsuario .modal-footer button {
+        padding: 1% !important;
+    }
+
+    #modalReservasUsuario .contenedor-estado-reserva {
+        flex-wrap: wrap;
+    }
+
+    #modalReservasUsuario .contenedor-estado-reserva button {
+        width: 100% !important;
+        margin-top: 3% !important;
+        padding: 1% !important;
+    }
+
+    #modalReservasUsuario .contenedor-estado-reserva .estado-reserva {
+        width: 100% !important;
+        padding: 1% 3% !important;
+        margin-top: 3% !important;
+    }
+
+    #modalActividadReciente .modal-footer button, #modalInformacionPersonal .modal-footer button {
+        width: 100% !important;
+    }
+
+     #modalInformacionPersonal .modal-footer button {
+        padding: 1% !important;
+     }
+    
+}
+
+
+@media screen and (max-width: 1050px) {
+    
+    #tabla-usuarios tr th:nth-of-type(5), #tabla-usuarios tr td:nth-of-type(5){
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 1050px) {
+    
+    #tabla-usuarios tr th:nth-of-type(4), #tabla-usuarios tr td:nth-of-type(4){
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 720px) {
+    
+    #tabla-usuarios tr th:nth-of-type(2), #tabla-usuarios tr td:nth-of-type(2){
+        display: none !important;
+    }
+
+    #tabla-usuarios {
+        font-size: 1.1rem !important;
+    }
+
+    #tabla-usuarios tr td:nth-of-type(6){
+        max-width: 70px;
+    }
+
+    #tabla-usuarios tr th:nth-of-type(6){
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 570px) {
+    
+    #tabla-usuarios tr th:nth-of-type(7), #tabla-usuarios tr td:nth-of-type(7){
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    
+    #tabla-usuarios tr th:nth-of-type(3), #tabla-usuarios tr td:nth-of-type(3){
+        max-width: 150px;       /* ajusta según tu columna */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: default;
+    }
+
+    #tabla-usuarios tr td:nth-of-type(6){
+        display: flex;
+        justify-content: center;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    
+    #tabla-usuarios tr th:nth-of-type(3), #tabla-usuarios tr td:nth-of-type(3){
+        max-width: 130px;       /* ajusta según tu columna */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: default;
+    }
+}
+
+
+@media screen and (max-width: 270px) {
+    
+    #tabla-usuarios tr th:nth-of-type(3), #tabla-usuarios tr td:nth-of-type(3){
+        max-width: 110px;       /* ajusta según tu columna */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: default;
+    }
+}
+
+@media screen and (max-width: 1030px) {
+
+    .filtrado-gestor-usuarios .col-4 {
+        width: 40% !important;
+    }
+}
+
+@media screen and (max-width: 875px) {
+
+    .filtrado-gestor-usuarios .col-4 {
+        width: 50% !important;
+        padding-right: 0% !important;
+    }
+}
+
+@media screen and (max-width: 720px) {
+
+    .filtrado-gestor-usuarios .col-4 {
+        width: 60% !important;
+    }
+}
+
+@media screen and (max-width: 625px) {
+
+    .filtrado-gestor-usuarios .col-4 {
+        width: 65% !important;
+    }
+}
+
+
+@media screen and (max-width: 580px) {
+
+    .filtrado-gestor-usuarios .col-4 {
+        width: 70% !important;
+    }
+
+    .filtrado-gestor-usuarios .col-3 {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 520px) {
+
+    .filtrado-gestor-usuarios .col-4 {
+        width: 75% !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+
+    .filtrado-gestor-usuarios .col-4 {
+        width: 100% !important;
+        padding-left: 0% !important;
+        padding-bottom: 3% !important;
+    }
+}
+
+@media screen and (max-width: 870px){
+    .contenedor-datos-usuario .info-registro-usuario td:nth-of-type(1) {
+        width: 35% ;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .contenedor-datos-usuario .info-registro-usuario td:nth-of-type(1) {
+        width: 40% ;
+    }
+}
+
+@media screen and (max-width: 750px){
+    .contenedor-datos-usuario .info-registro-usuario td:nth-of-type(1) {
+        width: 50% ;
+    }
+}
+
+@media screen and (max-width: 520px){
+    .contenedor-datos-usuario .info-registro-usuario td:nth-of-type(1) {
+        width: 60% ;
+    }
+
+    .info-registro-usuario table {
+        font-size: 1.1rem !important;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .email-telf-usuario {
+        display: none;
+    }
+
+    .email-telf-usuario-movil {
+        display: block !important;
+    }
+}
+
+
+@media screen and (max-width: 400px){
+    .contenedor-datos-usuario .info-registro-usuario td:nth-of-type(1) {
+        width: 60% ;
+    }
+}
+
+@media screen and (max-width: 385px){
+    
+    .contenedor-datos-usuario .info-registro-usuario tr {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 7% !important;
+    }
+
+    .contenedor-datos-usuario .info-registro-usuario td {
+        width: 100% !important;
+    }
+
+    .contenedor-datos-usuario .info-registro-usuario tr td:first-of-type {
+        width: 100% !important;
+        padding-bottom: 0% !important;
+    }
+
+    .contenedor-datos-usuario .info-registro-usuario tr td:last-of-type {
+        width: 100% !important;
+        padding-bottom: 0% !important;
+    }
+
+}
+
+@media screen and (max-width: 300px) {
+
+    .contenedor-datos-usuario .info-personal-usuario {
+        flex-wrap: wrap !important;
+    }
+}
+
+
+@media screen and (max-width: 782px) {
+    #modalReservasUsuario .datos-usuario-reservas {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+
+    #modalReservasUsuario .datos-usuario-reservas > div {
+        width: 100% !important;
+    }
+
+    #modalReservasUsuario .datos-usuario-reservas > div:first-of-type {
+        margin-bottom: 4% !important;
+        justify-content: start;
+    }
+
+    #modalReservasUsuario .datos-usuario-reservas > div:last-of-type {
+        justify-content: space-between;
+        width: 85% !important;
+    }
+
+    #modalReservasUsuario .datos-usuario-reservas .stats-usuario > div {
+        text-align: center !important;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #modalReservasUsuario .categoria {
+        width: 20% !important;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    #modalReservasUsuario .categoria {
+        width: 25% !important;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    #modalReservasUsuario .categoria {
+        width: 30% !important;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    #modalReservasUsuario .categoria {
+        width: 35% !important;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    #modalReservasUsuario .categoria {
+        width: 40% !important;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 270px) {
+    #modalReservasUsuario .categoria {
+        width: 45% !important;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    #modalInfoUsuario .datos-usuario-editar .info-usuario .registro-ultm-acceso {
+        display: none;
+    }
+
+    #modalInfoUsuario .datos-usuario-editar .info-usuario .registro-movil {
+        display: block !important;
+    }
+
+    #modalInfoUsuario .datos-usuario-editar .info-usuario .ultm-acceso-movil {
+        display: block !important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+
+    #modalInfoUsuario .datos-usuario-editar .info-usuario .registro-movil {
+        display: none !important;
+    }
+
+    #modalInfoUsuario .datos-usuario-editar .info-usuario .ultm-acceso-movil {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .grid-dashboard {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-areas: "grafico-reservas"  
+                             "grafico-donut"      
+                             "tabla-reservas"        
+                             "tabla-actividad-reciente"
+    }
+}
+
+
+@media screen and (max-width: 760px) {
+    .pagina-dashboard .tabla-reservas table td:nth-of-type(3), .pagina-dashboard .tabla-reservas table th:nth-of-type(3) {
+        display: none !important;
+    }
+
+    .pagina-dashboard .tabla-reservas table td:nth-of-type(2), .pagina-dashboard .tabla-reservas table th:nth-of-type(2) {
+        width: 40% !important;
+    }
+
+    .pagina-dashboard .tabla-reservas table td:nth-of-type(4), .pagina-dashboard .tabla-reservas table th:nth-of-type(4) {
+        width: 30% !important;
+    }
+
+    .pagina-dashboard .tabla-reservas table td:nth-of-type(4) .span-estado {
+        max-width: 120px;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    
+    .pagina-dashboard .tabla-reservas table td:nth-of-type(4) .span-estado {
+        max-width: 100px;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    
+    .pagina-dashboard .tabla-reservas table td:nth-of-type(4), .pagina-dashboard .tabla-reservas table th:nth-of-type(4) {
+        display: none !important;
+    }
+
+    .pagina-dashboard .tabla-reservas table td:nth-of-type(2), .pagina-dashboard .tabla-reservas table th:nth-of-type(2) {
+        width: 60% !important;
+    }
+
+    .pagina-dashboard .tabla-reservas table {
+        font-size: 1rem !important;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    
+    .pagina-dashboard .tabla-reservas table td:nth-of-type(2), .pagina-dashboard .tabla-reservas table th:nth-of-type(2) {
+        width: 80% !important;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    
+    .pagina-dashboard .tabla-reservas table td:nth-of-type(2) {
+        max-width: 100px;       /* ajusta según tu columna */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: default;
+    }
+}
+
+@media screen and (max-width: 460px) {
+    .pagina-dashboard h3 {
+        font-size: 1.3rem;
+    }
+
+    .pagina-dashboard h3::before {
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 345px) {
+    .pagina-dashboard h3 {
+        font-size: 1.1rem;
+    }
+
+    .pagina-dashboard h3::before {
+        height: 20px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    
+    .pagina-dashboard .informacion-actividad .descripcion {
+        max-width: 300px;       /* ajusta según tu columna */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: default;
+    }
+
+    .pagina-dashboard .leyenda-actividad {
+        width: 8px !important;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    
+    .pagina-dashboard .informacion-actividad .descripcion {
+        max-width: 280px;       /* ajusta según tu columna */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: default;
+    }   
+
+}
+
+@media screen and (max-width: 375px) {
+    
+    .pagina-dashboard .informacion-actividad .descripcion {
+        max-width: 260px;       /* ajusta según tu columna */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: default;
+    }   
+
+}
+
+@media screen and (max-width: 360px) {
+    
+    .pagina-dashboard .informacion-actividad .descripcion {
+        max-width: 250px;       /* ajusta según tu columna */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: default;
+    }   
+
+}
+
+
+@media screen and (max-width: 340px) {
+    
+    .pagina-dashboard .informacion-actividad .descripcion {
+        max-width: 230px;       /* ajusta según tu columna */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: default;
+    }   
+
+}
+
+
+@media screen and (max-width: 310px) {
+    
+    .tabla-reservas h3 {
+        gap: 3%;
+        width: 100%;
+    } 
+
+    .pagina-dashboard .informacion-actividad .descripcion {
+        max-width: 210px;       /* ajusta según tu columna */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        cursor: default;
+    } 
+
+}
+
+@media screen and (max-width: 510px) {
+    
+    #modalActividadReciente .leyenda-actividad {
+        width: 10px !important;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    
+    #modalActividadReciente .leyenda-actividad {
+        width: 12px !important;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    
+    .pagina-dashboard .leyenda-actividad {
+        width: 10px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    
+    #modalActividadReciente #pag-prev, #modalActividadReciente #pag-next {
+        min-width: 150px;
+        padding: 2% !important;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    
+    #modalActividadReciente .d-flex.justify-content-between.align-items-center.mt-3 {
+        flex-wrap: wrap;
+    }
+
+    #modalActividadReciente .d-flex.justify-content-between.align-items-center.mt-3 .d-flex.gap-2 {
+        width: 100%;
+        padding-top: 2%;
+    }
+
+    #modalActividadReciente #pag-prev, #modalActividadReciente #pag-next {
+        min-width: 50%;
+        padding: 2% !important;
+    }
+
+    .instalaciones .accordion-item .botonesPista button, .pagina-crud-instalaciones .accordion-item .botonesPista button {
+        padding: 4% !important;
+    }
+
+    .instalaciones .accordion-item .botonesPista button:nth-of-type(1), .pagina-crud-instalaciones .accordion-item .botonesPista button:nth-of-type(1) {
+        margin-bottom: 5% !important;
+    } 
+}
+
+@media screen and (max-width: 1101px) {
+
+    .mainLi .drop-mis-reservas, .mainLi .drop-mi-perfil {
+        display: none !important;
+    }
+}
+
+
+@media screen and (max-width: 541px) {
+
+    #modalInformacionPersonal .datos-usuario-editar .info-usuario .registro-movil, #modalInformacionPersonal .datos-usuario-editar .info-usuario .ultm-accesofiltr-movil {
+        display: block !important;
+    }
+
+    #modalInformacionPersonal .datos-usuario-editar .info-usuario .registro-ultm-acceso {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 645px) {
+    .categoriasInstalacion .categoria-principal, .categoriasInstalacion .categoria-secundaria {
+        padding: 1.5% 7% !important;
+        margin-bottom: 5% !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .categoriasInstalacion .categoria-principal, .categoriasInstalacion .categoria-secundaria {
+        padding: 1.5% 10% !important;
+        margin-bottom: 5% !important;
+    }
+}
+
+@media screen and (max-width: 903px) {
+    #modalVerInstalacion .capacidad-completo-ver-instalacion .col:first-of-type, #modalVerInstalacion .iluminacion-ver-instalacion .col:first-of-type, #modalVerInstalacion .precio-completo-ver-instalacion .col:first-of-type, #modalVerInstalacion .material-ver-instalacion .col-8{
+        flex: 0 0 75%; 
+        max-width: 100% !important
+
+    }
+
+    #modalVerInstalacion .capacidad-completo-ver-instalacion .col:last-of-type, #modalVerInstalacion .iluminacion-ver-instalacion .col:last-of-type, #modalVerInstalacion .precio-completo-ver-instalacion .col:last-of-type, #modalVerInstalacion .material-ver-instalacion .col-4{
+        flex: 0 0 5%; 
+        max-width: 100% !important
+
+    }
+}
+
+
+@media screen and (max-width: 837px) {
+    #modalVerInstalacion .items-ver .capacidad-completo-ver-instalacion .col:first-of-type, #modalVerInstalacion .items-ver .iluminacion-ver-instalacion .col:first-of-type, #modalVerInstalacion .items-ver .precio-completo-ver-instalacion .col:first-of-type, #modalVerInstalacion .items-ver .material-ver-instalacion .col-8{
+        flex: 0 0 80% !important; 
+        max-width: 100% !important
+
+    }
+
+    #modalVerInstalacion .items-ver .capacidad-completo-ver-instalacion .col:last-of-type, #modalVerInstalacion .items-ver .iluminacion-ver-instalacion .col:last-of-type, #modalVerInstalacion .items-ver .precio-completo-ver-instalacion .col:last-of-type, #modalVerInstalacion .items-ver .material-ver-instalacion .col-4{
+        flex: 0 0 5% !important; 
+        max-width: 100% !important
+
     }
 }

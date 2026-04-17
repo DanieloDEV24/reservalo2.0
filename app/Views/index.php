@@ -66,7 +66,7 @@
     </nav>
 
     <div class="div-contacto-menu-movil">
-      <div style="text-align: end; display: flex; justify-content: end" class="inicio-sesion <?= ($session->has('usuario')) ? "sesion-iniciada" : "sesion-no-iniciada" ?>" id="menu-usuario" data-rol="<?= $session->has('usuario') ? $session->get('usuario')['rol'] : '' ?>">
+      <div style="text-align: end; display: flex; justify-content: end" class="inicio-sesion <?= ($session->has('usuario')) ? "sesion-iniciada" : "sesion-no-iniciada" ?>" id="menu-usuario" data-rol="<?= $session->has('usuario') ? $session->get('usuario')['rol'] : '' ?>" data-index="<?= $session->has('usuario') ? $session->get('usuario')['id_usuario'] : '' ?>">
         <?php
         if ($session->has('usuario')) {
           // La sesión 'usuario' existe
@@ -88,14 +88,14 @@
               </li>
 
               <?php if ($session->has('usuario') && intval($session->get('usuario')['rol']) === 1): ?>
-                <li style="width: 100%" class="d-flex justify-content-start">
+                <li style="width: 100%" class="d-flex justify-content-start drop-mis-reservas">
                   <a class="dropdown-item d-flex justify-content-start iconoAvatar" id="btnMisReservas" href="#">
                     <i class="bi bi-calendar-check me-2"></i>
                     <span class="align-middle">Mis Reservas</span>
                   </a>
                 </li>
 
-                <li style="width: 100%" class="d-flex justify-content-start">
+                <li style="width: 100%" class="d-flex justify-content-start drop-mi-perfil">
                   <a class="dropdown-item d-flex justify-content-start iconoAvatar" id="btnMiPerfil" href="#" data-index="<?= intval($session->get('usuario')["id_usuario"]) ?>">
                     <i class="bi bi-person-fill"></i>
                     <span class="align-middle">Mi perfil</span>
@@ -157,6 +157,16 @@
             <div class="menu-list">
               <i class="bi bi-graph-down"></i>
               <a href="<?= base_url() ?>index.php/dashboard" style="--i: 5">Estadísticas</a>
+            </div>
+          <?php elseif ($session->has('usuario') && intval($session->get('usuario')['rol']) === 1):  ?>
+            <div class="menu-list">
+              <i class="bi bi-person"></i>
+              <a href="#" style="--i: 4" id="btnMisReservas">Mis Reservas</a>
+            </div>
+
+            <div class="menu-list">
+              <i class="bi bi-person-fill"></i>
+              <a href="#" style="--i: 4" id="btnMiPerfil">Mi Perfil</a>
             </div>
           <?php endif; ?>
 

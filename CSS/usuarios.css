@@ -50,7 +50,7 @@ table td .dropdown button i {
   border-bottom: 1px solid #ccc;
   display: flex;
   align-items: center;
-  gap: 5%;
+  gap: 2%;
   padding-bottom: 2%;
 }
 
@@ -100,8 +100,16 @@ table td .dropdown button i {
   padding: 2%;
 }
 
+.contenedor-datos-usuario .info-registro-usuario td:nth-of-type(1) {
+  width: 30% ;
+}
+
 .contenedor-datos-usuario .info-registro-usuario  {
-  width: 35%;
+  width: 100%;
+}
+
+.contenedor-datos-usuario .info-registro-usuario table {
+  margin-top: 1% !important;
 }
 
 #modalReservasUsuario .stats-usuario {
@@ -206,9 +214,9 @@ table td .dropdown button i {
 .estado-reserva.estado-no-pagada{background-color: #F54927;}
 
 .datos-usuario-reservas {
-  position: sticky;
+  /* position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 10; */
   background-color: #fff;
   padding-top: 4%;
 }

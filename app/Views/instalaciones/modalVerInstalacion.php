@@ -22,7 +22,7 @@
                 <p id="direccionVerInstalacion"></p>
                 <p id="descripcionVerInstalacion"></p>
 
-                <div class="row gap-5">
+                <div class="row gap-5 items-ver">
                     <div class="col capacidad-completo-ver-instalacion">
                         <div class="row">
                             <div class="col">
@@ -47,7 +47,7 @@
                 </div>
 
 
-                <div class="row gap-5">
+                <div class="row gap-5 items-ver">
                     <div class="col iluminacion-ver-instalacion">
                         <div class="row">
                             <div class="col">

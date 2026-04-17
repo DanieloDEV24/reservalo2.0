@@ -419,7 +419,7 @@ $(document).ready(() => {
 
     $(document).on('click', '#btnMiPerfil', function(){
 
-        let idUsuario = $(this).data('index');
+        let idUsuario = parseInt($("#menu-usuario").data('index'));
 
         $.ajax({
             type: "POST",
@@ -435,6 +435,10 @@ $(document).ready(() => {
                     $('#modalInformacionPersonal .datos-usuario-editar .logo-usuario').text(response.usuario.nombre[0])
                     $('#modalInformacionPersonal .datos-usuario-editar .info-usuario .nombre-usuario').text(response.usuario.nombre)
                     $('#modalInformacionPersonal .datos-usuario-editar .info-usuario .registro-ultm-acceso').text(`Fecha Registro: ${formatearFecha(response.usuario.fecha_registro)} · Último Acceso: ${tiempoTranscurrido(response.usuario.ultimo_inicio)}`)
+
+                    $('#modalInformacionPersonal .datos-usuario-editar .info-usuario .registro-movil').text(`Fecha Registro: ${formatearFecha(response.usuario.fecha_registro)}`)
+
+                    $('#modalInformacionPersonal .datos-usuario-editar .info-usuario .ultm-acceso-movil').text(`Último Acceso: ${tiempoTranscurrido(response.usuario.ultimo_inicio)}`)
 
                     $('#modalInformacionPersonal #nombre-usuario-personal').val(response.usuario.nombre)
                     $('#modalInformacionPersonal #telf-usuario-personal').val(response.usuario.telf)
