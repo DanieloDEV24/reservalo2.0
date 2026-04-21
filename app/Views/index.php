@@ -76,7 +76,7 @@
             <a  class="nav-link" href=<?= site_url('/logout') ?>><span>Cerrar Sesión</span><i class="bi bi-arrow-right"></i></a>
           </li> -->
           <li class="navbar-dropdown dropdown-user dropdown mainLi">
-            <a class="btn-primary-personal dropdown-toggle hide-arrow d-flex align-items-center justify-content-end gap-2" href="javascript:void(0);" data-bs-toggle="dropdown" style="padding: 5%;">
+            <a class="btn-primary-personal dropdown-toggle hide-arrow d-flex align-items-center justify-content-end gap-2" href="javascript:void(0);" data-bs-toggle="dropdown" style="padding: 3%;">
               <i class="bi bi-person" style="font-size: 25px;"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end iconoAvatar" style="background-color: #111">

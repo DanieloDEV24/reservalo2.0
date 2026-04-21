@@ -921,6 +921,12 @@ $(document).ready(() => {
                         const input = $(`<input value="${categoria.id_categoria}" name="subcategoriaEditar" id="sub-${categoria.id_categoria}" type="checkbox" ${(response.instalacion[0].categoria_principal && response.instalacion[0].categoria_opcional1 === categoria.id_categoria) ? "checked" : ""}>`);
                         const label = $(`<label for="sub-${categoria.id_categoria}">${categoria.nombre}</label>`);
 
+                        input.on('change', function () {
+                            if ($(this).is(':checked')) {
+                                $('#subcategoriasEditar input[type="checkbox"]').not(this).prop('checked', false);
+                            }
+                        });
+
                         // La añadimos al div
                         $('#subcategoriasEditar').append(input, label);
                     }

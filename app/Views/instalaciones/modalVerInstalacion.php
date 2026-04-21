@@ -71,7 +71,7 @@
                     </div>
                 </div>
 
-                <h2>Pistas.</h2>
+                <h2 style="margin-top: 5%;">Pistas.</h2>
                 <div class="accordion mt-3" id="accordionPistas">
                     <!-- Aquí se insertarán las pistas dinámicamente -->
                     

@@ -1542,7 +1542,7 @@ span.estado.no-disponible{
     }
 
     .dia-franjas {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     }
 }
 
@@ -1633,6 +1633,8 @@ span.estado.no-disponible{
         flex-direction: column;
         align-items: flex-start;
     }
+
+    
 }
 
 @media (max-width: 480px) {

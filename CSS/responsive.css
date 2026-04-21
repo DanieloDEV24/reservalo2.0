@@ -460,6 +460,12 @@
     .sidebar .dropdown-menu {
         width: 10rem !important;
     }
+
+    
+    #modalBorrarInstalacion .modal-footer button {
+        width: 30% !important;
+        padding: 1% !important;
+    }
 }
 
 @media screen and (max-width: 1300px) {
@@ -663,7 +669,7 @@
 
     #modalNuevaInstalacion .modal-footer button, #modalEditarInstalacion .modal-footer button, #modalNuevaInstalacion .modal-footer button {
         width: 47% !important;
-        padding-top: 2% !;
+        padding-top: 2% !important;
         padding-bottom: 2% !important;
     }
 
@@ -685,8 +691,8 @@
 
     #modalNuevaInstalacion .accordion-body .botonesPista button.guardarPista, #modalNuevaInstalacion .accordion-body label.btn {
         width: 40% !important;
-        padding-top: 1% !important;
-        padding-bottom: 1% !important;
+        padding-top: 2% !important;
+        padding-bottom: 2% !important;
     }
 
     #modalEditarInstalacion .accordion-body .botonesPista button {
@@ -1033,10 +1039,15 @@
     }
 
     
-    #modalNuevaInstalacion .modal-footer button, #modalEditarInstalacion .modal-footer button, #modalBorrarInstalacion .modal-footer button {
+    #modalNuevaInstalacion .modal-footer button, #modalEditarInstalacion .modal-footer button, #modalBorrarInstalacion .modal-footer button, #modalVerInstalacion .modal-footer button {
         width: 100% !important;
-        padding-top: 2% !;
-        padding-bottom: 2% !important;
+        padding-top: 3% !important;
+        padding-bottom: 3% !important;
+    }
+
+    #modalNuevaInstalacion .accordion-body .botonesPista button.guardarPista, #modalNuevaInstalacion .accordion-body label.btn {
+        width: 100% !important;
+        padding: 3% !important;
     }
 
 }
@@ -1422,11 +1433,16 @@
 @media screen and (max-width: 525px) {
     .bodyLogin .login {
         width: 100% !important;
-        height: 90vh !important;
+        height: 105vh !important;
         border-radius: 35px !important;
         padding-left: 5% !important;
         padding-right: 5% !important;
         padding-top: 5% !important;
+    }
+
+    .bodyLogin {
+        min-height: 110vh !important;
+        overflow: hidden !important;
     }
 
     .bodyLogin .login form .loginEmail, .bodyLogin .login form .form-password-toggle {
@@ -2977,6 +2993,11 @@
 
     #modalNuevaInstalacion .accordion-body .botonesPista div button, #modalEditarInstalacion .accordion-body .botonesPista button, #modalEditarInstalacion .accordion-body label.btn {
         width: 100% !important;
+        padding: 3% !important;
+    }
+
+    #modalEditarInstalacion .accordion-body label.btn, #modalNuevaInstalacion .accordion-body label.btn {
+        margin-top: 2% !important;
     }
 
     #modalBajaInstalacion .btns-borrado {
@@ -2986,6 +3007,7 @@
     #modalBajaInstalacion .btns-borrado button {
         width: 100% !important;
         margin-bottom: 3% !important;
+        padding: 3% !important;
     }
 
     #modalBajaInstalacion .pregunta-borrado {
@@ -2993,8 +3015,12 @@
     }
 
     
-    #modalEditarCategoria .modal-footer button, #modalBorrarCategoria .modal-footer button, #modalCrearCategoria .modal-footer button {
+    #modalEditarCategoria .modal-footer button, #modalBorrarCategoria .modal-footer button, #modalCrearCategoria .modal-footer button, #modalBorrarUsuario .modal-footer button {
         width: 100% !important;
+        padding: 3% !important;
+    }
+
+    #crear, #btn-nueva-categoria {
         padding: 3% !important;
     }
 
@@ -3052,11 +3078,13 @@
     }
 
     
-    #modalBorrarUsuario .modal-dialog, #modalInfoUsuario .modal-dialog {
-        width: 95% !important;
+    #modalBorrarUsuario .modal-dialog, #modalInfoUsuario .modal-dialog, #modalReservasUsuario .modal-dialog {
+        width: 97% !important;
         max-width: none !important;
         justify-content: center;
     }
+
+
 
 }
 
@@ -3676,6 +3704,12 @@
         min-width: 150px;
         padding: 2% !important;
     }
+
+    .btn-gestor-categorias button {
+        width: 60px !important;
+        height: 60px !important;
+        font-size: 1.5rem !important;
+    }
 }
 
 @media screen and (max-width: 640px) {
@@ -3701,6 +3735,7 @@
     .instalaciones .accordion-item .botonesPista button:nth-of-type(1), .pagina-crud-instalaciones .accordion-item .botonesPista button:nth-of-type(1) {
         margin-bottom: 5% !important;
     } 
+    
 }
 
 @media screen and (max-width: 1101px) {
@@ -3758,9 +3793,1099 @@
 
     }
 
-    #modalVerInstalacion .items-ver .capacidad-completo-ver-instalacion .col:last-of-type, #modalVerInstalacion .items-ver .iluminacion-ver-instalacion .col:last-of-type, #modalVerInstalacion .items-ver .precio-completo-ver-instalacion .col:last-of-type, #modalVerInstalacion .items-ver .material-ver-instalacion .col-4{
+    #modalVerInstalacion .items-ver .capacidad-completo-ver-instalacion .col:last-of-type, #modalVerInstalacion .items-ver .iluminacion-ver-instalacion .col:last-of-type, #modalVerInstalacion .items-ver .precio-completo-ver-instalacion .col:last-of-type, #modalVerInstalacion .items-ver .material-ver-instalacion .col-4:last-child{
         flex: 0 0 5% !important; 
         max-width: 100% !important
 
     }
 }
+
+@media screen and (max-width: 792px) {
+    #modalVerInstalacion .items-ver .capacidad-completo-ver-instalacion, #modalVerInstalacion .items-ver .iluminacion-ver-instalacion   {
+        flex: 0 0 40% !important; 
+        max-width: 100% !important
+    }
+
+    #modalVerInstalacion .items-ver .precio-completo-ver-instalacion{
+        flex: 0 0 35% !important; 
+        max-width: 100% !important
+    }
+}
+
+@media screen and (max-width: 781px) {
+    
+
+    #modalVerInstalacion .items-ver .precio-completo-ver-instalacion{
+        flex: 0 0 40% !important; 
+        max-width: 100% !important
+    }
+}
+
+@media screen and (max-width: 708px) {
+    
+
+    #modalVerInstalacion .items-ver .capacidad-completo-ver-instalacion, #modalVerInstalacion .items-ver .iluminacion-ver-instalacion   {
+        flex: 0 0 45% !important; 
+        max-width: 100% !important
+    }
+
+    #modalVerInstalacion .material-ver-instalacion .row > .col-8:first-child {
+        flex: 0 0 65% !important;
+        max-width: 65% !important;
+    }
+}
+
+
+@media screen and (max-width: 645px) {
+    
+
+    #modalVerInstalacion .items-ver .precio-completo-ver-instalacion{
+        flex: 0 0 45% !important; 
+        max-width: 100% !important
+    }
+
+    #modalVerInstalacion .material-ver-instalacion .row > .col-8:first-child {
+        flex: 0 0 70% !important;
+        max-width: 70% !important;
+    }
+}
+
+
+@media screen and (max-width: 627px) {
+    
+
+    #modalVerInstalacion .items-ver .capacidad-completo-ver-instalacion, #modalVerInstalacion .items-ver .iluminacion-ver-instalacion   {
+        flex: 0 0 50% !important; 
+        max-width: 100% !important
+    }
+
+    #modalVerInstalacion .material-ver-instalacion .row > .col-8:first-child {
+        flex: 0 0 75% !important;
+        max-width: 75% !important;
+    }
+}
+
+
+@media screen and (max-width: 608px) {
+    
+
+    #modalVerInstalacion .material-ver-instalacion .row > .col-8:first-child,  #modalVerInstalacion .capacidad-completo-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .iluminacion-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .precio-completo-ver-instalacion .row > .col:first-child {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+        #descripcionVerInstalacion, #direccionVerInstalacion {
+        margin-bottom: 8% !important;
+    }
+}
+
+@media screen and (max-width: 594px) {
+    
+
+    #modalVerInstalacion .material-ver-instalacion .row > .col-8:first-child,  #modalVerInstalacion .capacidad-completo-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .iluminacion-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .precio-completo-ver-instalacion .row > .col:first-child {
+        flex: 0 0 55% !important;
+        max-width: 55% !important;
+    }
+}
+
+
+@media screen and (max-width: 540px) {
+    
+
+    #modalVerInstalacion .material-ver-instalacion .row > .col-8:first-child,  #modalVerInstalacion .capacidad-completo-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .iluminacion-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .precio-completo-ver-instalacion .row > .col:first-child {
+        flex: 0 0 60% !important;
+        max-width: 60% !important;
+    }
+}
+
+
+@media screen and (max-width: 495px) {
+    
+
+    #modalVerInstalacion .material-ver-instalacion .row > .col-8:first-child,  #modalVerInstalacion .capacidad-completo-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .iluminacion-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .precio-completo-ver-instalacion .row > .col:first-child {
+        flex: 0 0 65% !important;
+        max-width: 65% !important;
+    }
+}
+
+
+@media screen and (max-width: 457px) {
+    
+
+    #modalVerInstalacion .material-ver-instalacion .row > .col-8:first-child,  #modalVerInstalacion .capacidad-completo-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .iluminacion-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .precio-completo-ver-instalacion .row > .col:first-child {
+        flex: 0 0 70% !important;
+        max-width: 70% !important;
+    }
+}
+
+
+@media screen and (max-width: 427px) {
+    
+
+    #modalVerInstalacion .material-ver-instalacion .row > .col-8:first-child,  #modalVerInstalacion .capacidad-completo-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .iluminacion-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .precio-completo-ver-instalacion .row > .col:first-child {
+        flex: 0 0 75% !important;
+        max-width: 75% !important;
+    }
+}
+
+
+@media screen and (max-width: 397px) {
+    
+
+    #modalVerInstalacion .material-ver-instalacion .row > .col-8:first-child,  #modalVerInstalacion .capacidad-completo-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .iluminacion-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .precio-completo-ver-instalacion .row > .col:first-child {
+        flex: 0 0 80% !important;
+        max-width: 80% !important;
+    }
+}
+
+
+@media screen and (max-width: 372px) {
+    
+
+    #modalVerInstalacion .material-ver-instalacion .row > .col-8:first-child,  #modalVerInstalacion .capacidad-completo-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .iluminacion-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .precio-completo-ver-instalacion .row > .col:first-child {
+        flex: 0 0 85% !important;
+        max-width: 85% !important;
+    }
+
+    #modalVerInstalacion .items-ver .capacidad-completo-ver-instalacion .col:last-of-type, #modalVerInstalacion .items-ver .iluminacion-ver-instalacion .col:last-of-type, #modalVerInstalacion .items-ver .precio-completo-ver-instalacion .col:last-of-type, #modalVerInstalacion .items-ver .material-ver-instalacion .col-4:last-child {
+        padding: 0% !important;
+    }
+}
+
+
+@media screen and (max-width: 350px) {
+    
+
+    #modalVerInstalacion .material-ver-instalacion .row > .col-8:first-child,  #modalVerInstalacion .capacidad-completo-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .iluminacion-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .precio-completo-ver-instalacion .row > .col:first-child {
+        flex: 0 0 90% !important;
+        max-width: 90% !important;
+    } 
+}
+
+@media screen and (max-width: 331px) {
+    
+
+    #modalVerInstalacion .material-ver-instalacion .row > .col-8:first-child,  #modalVerInstalacion .capacidad-completo-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .iluminacion-ver-instalacion .row > .col:first-child,  #modalVerInstalacion .precio-completo-ver-instalacion .row > .col:first-child {
+        flex: 0 0 91% !important;
+        max-width: 91% !important;
+    } 
+
+    #descripcionVerInstalacion, #direccionVerInstalacion {
+        margin-bottom: 15% !important;
+    }
+}
+
+
+@media screen and (max-width: 805px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8 {
+        flex: 0 0 70% !important;
+        max-width: 70% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4 {
+        flex: 0 0 30% !important;
+        max-width: 30% !important;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8 {
+        flex: 0 0 75% !important;
+        max-width: 75% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4 {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+    }
+}
+
+
+@media screen and (max-width: 711px) {
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 65% !important;
+        max-width: 65% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 35% !important;
+        max-width: 35% !important;
+    }
+}
+
+@media screen and (max-width: 684px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8 {
+        flex: 0 0 80% !important;
+        max-width: 80% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4 {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+}
+
+
+@media screen and (max-width: 667px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8,  #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 40% !important;
+        max-width: 40% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4, #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+}
+
+
+@media screen and (max-width: 635px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8,  #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 45% !important;
+        max-width: 45% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4, #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+}
+
+
+@media screen and (max-width: 569px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8,  #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4, #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+}
+
+
+@media screen and (max-width: 516px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8,  #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 55% !important;
+        max-width: 55% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4, #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+}
+
+
+@media screen and (max-width: 473px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8,  #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 60% !important;
+        max-width: 60% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4, #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+}
+
+
+
+@media screen and (max-width: 437px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8,  #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 65% !important;
+        max-width: 65% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4, #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+}
+
+
+@media screen and (max-width: 406px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8 {
+        flex: 0 0 70% !important;
+        max-width: 70% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 65% !important;
+        max-width: 65% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4, #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+}
+
+@media screen and (max-width: 380px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8 {
+        flex: 0 0 75% !important;
+        max-width: 75% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 70% !important;
+        max-width: 70% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4, #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+}
+
+
+@media screen and (max-width: 358px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8 {
+        flex: 0 0 80% !important;
+        max-width: 80% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 75% !important;
+        max-width: 75% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4, #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+}
+
+
+@media screen and (max-width: 338px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8 {
+        flex: 0 0 85% !important;
+        max-width: 85% !important;
+    }
+
+    #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 79% !important;
+        max-width: 79% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4, #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 15% !important;
+        max-width: 15% !important;
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8 {
+        flex: 0 0 90% !important;
+        max-width: 90% !important;
+    }
+
+     #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:first-child {
+        flex: 0 0 83% !important;
+        max-width: 83% !important;
+    }
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-4, #modalVerInstalacion .accordion-body .precio-pista-ver-instalacion .col:last-child {
+        flex: 0 0 10% !important;
+        max-width: 10% !important;
+    }
+}
+
+@media screen and (max-width: 305px) {
+
+    #modalVerInstalacion .capacidad-pista-ver-instalacion .col-8 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+}
+
+
+@media screen and (max-width: 1351px) {
+    #accordionBorrarPistas .accordion-body .col-7, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child  {
+        flex: 0 0 70% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 30% !important;
+        max-width: 100% !important;
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+    #accordionBorrarPistas .accordion-body > .row > .col {
+        flex: 0 0 50% !important;
+        max-width: 100% !important;
+    }
+
+
+    #accordionBorrarPistas .accordion-body .col-7, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child  {
+        flex: 0 0 55% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 100% !important;
+    }
+
+}
+
+
+@media screen and (max-width: 946px) {
+
+    #accordionBorrarPistas .accordion-body .col-7 {
+        flex: 0 0 60% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 100% !important;
+    }
+
+}
+
+@media screen and (max-width: 870px) {
+
+    #accordionBorrarPistas .accordion-body .col-7 {
+        flex: 0 0 65% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 100% !important;
+    }
+
+}
+
+@media screen and (max-width: 806px) {
+
+    #accordionBorrarPistas .accordion-body .col-7 {
+        flex: 0 0 70% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 100% !important;
+    }
+
+}
+
+
+@media screen and (max-width: 781px) {
+
+    #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child{
+        flex: 0 0 60% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 100% !important;
+    }
+
+}
+
+@media screen and (max-width: 711px) {
+
+    #accordionBorrarPistas .accordion-body .col-7 {
+        flex: 0 0 75% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 100% !important;
+    }
+
+}
+
+@media screen and (max-width: 681px) {
+
+    #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child{
+        flex: 0 0 65% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 20% !important;
+        max-width: 100% !important;
+    }
+
+}
+
+@media screen and (max-width: 670px) {
+
+    #accordionBorrarPistas .accordion-body > .row > .col {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-7, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child  {
+        flex: 0 0 40% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 10% !important;
+        max-width: 100% !important;
+    }
+}
+
+
+@media screen and (max-width: 608px) {
+
+    #accordionBorrarPistas .accordion-body .col-7, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child  {
+        flex: 0 0 45% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 10% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 542px) {
+
+    #accordionBorrarPistas .accordion-body .col-7, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child  {
+        flex: 0 0 50% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 10% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 489px) {
+
+    #accordionBorrarPistas .accordion-body .col-7, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child  {
+        flex: 0 0 55% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 10% !important;
+        max-width: 100% !important;
+    }
+}
+
+
+@media screen and (max-width: 446px) {
+
+    #accordionBorrarPistas .accordion-body .col-7, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child  {
+        flex: 0 0 60% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 10% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 410px) {
+
+    #accordionBorrarPistas .accordion-body .col-7, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child  {
+        flex: 0 0 65% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 10% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 380px) {
+
+    #accordionBorrarPistas .accordion-body .col-7, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child  {
+        flex: 0 0 70% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 10% !important;
+        max-width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 353px) {
+
+    #accordionBorrarPistas .accordion-body .col-7, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child  {
+        flex: 0 0 75% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 10% !important;
+        max-width: 100% !important;
+    }
+}
+
+
+@media screen and (max-width: 331px) {
+
+    #accordionBorrarPistas .accordion-body .col-7, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child  {
+        flex: 0 0 80% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 10% !important;
+        max-width: 100% !important;
+    }
+}
+
+
+@media screen and (max-width: 311px) {
+
+    #accordionBorrarPistas .accordion-body .col-7, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:first-child  {
+        flex: 0 0 85% !important;
+        max-width: 100% !important;
+    }
+
+    #accordionBorrarPistas .accordion-body .col-5, #accordionBorrarPistas .accordion-body > .row > .col > .row .col:last-child {
+        flex: 0 0 10% !important;
+        max-width: 100% !important;
+    }
+}
+
+
+@media screen and (max-width: 992px) {
+    #accordionEditarPistas .accordion-body > .row > .col {
+        padding-right: 0% !important ;
+
+    }
+
+    #accordionExample .accordion-body > .row > .col {
+        padding: 0% !important;
+    }
+
+    #accordionEditarPistas .accordion-body > .row, #accordionExample .accordion-body > .row{
+        --bs-gutter-x: 0% !important
+    }
+}
+
+@media screen and (max-width: 640px) {
+    #accordionEditarPistas .accordion-body {
+        padding: 1rem 0.7rem;
+    }
+}
+
+@media screen and (max-width: 525px) {
+    .stats-summary {
+        flex-wrap: wrap;
+    }
+
+    .stats-summary > div, .calendar-container {
+        width: 100% !important;
+    }
+
+    .contenedor-reservas {
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
+}
+
+@media screen and (max-width: 400px) {
+    
+
+    .contenedor-reservas {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .card-reserva .contenedor-abajo {
+        flex-wrap: wrap;
+        
+    }
+
+    .card-reserva .contenedor-abajo .contenedor-extras {
+        width: 100% !important;
+        margin-bottom: 10% !important;
+    }
+
+    .card-reserva .contenedor-abajo .contenedor-extras .estado-reserva {
+        margin-top: 5% !important;
+        padding: 3% !important;
+    }
+
+    .card-reserva .contenedor-abajo .precio-hora-reserva {
+        display: flex !important;
+        align-items: center;
+        justify-content: space-between;
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 380px) {
+
+    .mini-calendar {
+        left: -7% !important;
+    }
+}
+
+@media screen and (max-width: 361px) {
+
+    .card-reserva .contenedor-usuario {
+        gap: .5rem;
+    }
+}
+
+@media screen and (max-width: 355px) {
+
+    .mini-calendar {
+        left: -10% !important;
+    }
+}
+
+@media screen and (max-width: 345px) {
+
+    .mini-calendar {
+        left: -12% !important;
+    }
+}
+
+@media screen and (max-width: 342px) {
+
+    .mini-calendar {
+        left: -15% !important;
+    }
+}
+
+@media screen and (max-width: 331px) {
+
+    .mini-calendar {
+        left: -17% !important;
+    }
+}
+
+@media screen and (max-width: 326px) {
+
+    .mini-calendar {
+        left: -12% !important;
+    }
+
+    .mini-calendar {
+        padding: 15px !important;
+        min-width: 300px !important;
+    }
+
+    .calendar-days {
+        gap: 2px !important;
+    }
+
+}
+
+@media screen and (max-width: 320px) {
+
+    .mini-calendar {
+        left: -15% !important;
+    }
+
+}
+
+
+@media screen and (max-width: 315px) {
+
+    .mini-calendar {
+        min-width: 280px !important;
+        left: -12% !important;
+    }
+
+}
+
+@media screen and (max-width: 306px) {
+
+   .date-selector {
+     padding: 20px;
+   }
+
+    .mini-calendar {
+        left: -12% !important;
+    }
+
+}
+
+@media screen and (max-width: 296px) {
+
+   .date-selector {
+     padding: 18px;
+   }
+
+    .mini-calendar {
+        left: -12% !important;
+    }
+
+}
+
+
+@media screen and (max-width: 351px) {
+
+    .card-reserva .contenedor-usuario {
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+
+
+@media screen and (max-width: 320px) {
+
+    .contenedor-reservas {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+}
+
+
+@media screen and (max-width: 375px ) {
+    .categoria-instalacion-reserva {
+        width: 35% !important;
+    }
+}
+
+@media screen and (max-width: 1350px ) {
+    .card-reserva .card-footer button {
+        width: 35% !important;
+        padding: 2% !important;
+    }
+}
+
+@media screen and (max-width: 1000px ) {
+    .card-reserva .card-footer button {
+        width: 48% !important;
+        padding: 2% !important;
+    }
+
+    .card-reserva .card-footer {
+        justify-content: center !important;
+        flex-wrap: wrap !important;
+    }
+}
+
+@media screen and (max-width: 640px ) {
+    .card-reserva .card-footer button {
+        width: 100% !important;
+        padding: 3% !important;
+    }
+
+    .card-reserva .card-footer button:first-of-type {
+        margin-bottom: 5% !important;
+    }
+
+    #modalReservasUsuario .modal-footer button, #modalReservasUsuario .contenedor-estado-reserva button, #modalReservasUsuario .contenedor-estado-reserva .estado-reserva, #modalInfoUsuario .modal-footer button {
+        width: 100% !important;
+        padding: 3% !important;
+    }
+}
+
+
+@media screen and (max-width: 992px ) {
+    #modalNuevaInstalacion .accordion-body > .row:first-child > .col {
+        margin-bottom: 2% !important;
+
+    }
+
+    #modalMisReservas .modal-dialog {
+        width: 90% !important;
+        max-width: none !important;
+    }
+}
+
+@media screen and (max-width: 1000px ) {
+    
+
+    #modalMisReservas .reserva-actions button {
+        width: 47% !important;
+        padding: 2% !important;
+    }
+
+     #modalMisReservas {
+        font-size: 1.2rem !important;
+     }
+}
+
+@media screen and (max-width: 769px ) {
+    
+
+    #modalMisReservas .reserva-actions button {
+        width: 100% !important;
+        padding: 3% !important;
+    }
+}
+
+@media screen and (max-width: 576px ) {
+
+    #modalMisReservas .modal-dialog {
+        width: 97% !important;
+        max-width: none !important;
+    }
+}
+
+@media screen and (max-width: 366px) {
+    #modalBorrarHorario .btns-borrado button {
+        width: 100% !important;
+    }
+}
+
+
+
+
+@media screen and (max-width: 750px) {
+    #btnCrearHorario, #btnMenuHorario, #btnGuardarNuevoHorario, #modalEditarHorario .modal-footer button, #modalBorrarHorario .btns-borrado button, #btn-guardar-cambio-seleccion {
+        padding: 3% !important;
+    }
+}
+
+@media screen and (max-width: 1036px) {
+    .alert.alert-danger {
+        width: 100% !important;
+    }
+
+    .contenedor-alert-instalacion, .contenedor-alert-reservas, .contenedor-alert-crear-categoria, .contenedor-alert-editar-categoria-success, .contenedor-alert-borrar-categoria-success, .contenedor-alert-crear-categoria-success, .contenedor-alert-reservas-success {
+        width: 80% !important;
+    }
+}
+
+@media screen and (max-width: 648px) {
+    .alert.alert-danger {
+        width: 100% !important;
+    }
+
+    .contenedor-alert-instalacion, .contenedor-alert-reservas, .contenedor-alert-crear-categoria, .contenedor-alert-editar-categoria-success, .contenedor-alert-borrar-categoria-success, .contenedor-alert-crear-categoria-success, .contenedor-alert-reservas-success {
+        width: 90% !important;
+    }
+}
+
+
+@media screen and (max-width: 576px) {
+    .alert.alert-danger {
+        width: 100% !important;
+    }
+
+    .contenedor-alert-instalacion, .contenedor-alert-reservas, .contenedor-alert-crear-categoria, .contenedor-alert-editar-categoria-success, .contenedor-alert-borrar-categoria-success, .contenedor-alert-crear-categoria-success, .contenedor-alert-reservas-success {
+        width: 95% !important;
+    }
+}
+
+
+@media screen and (max-width: 545px) {
+    .alert.alert-danger i{
+        font-size: 2rem !important;
+    }
+
+    .alert.alert-danger {
+        gap: 3% !important;
+    }
+}
+
+
+@media screen and (max-width: 450px) {
+    #modalReservaPista .calendario-dias {
+        gap: 4px !important;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #modalReservaPista .calendario-container {
+        padding: 15px !important;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    #modalReservaPista .calendario-container {
+        padding: 10px !important;
+    }
+}
+
+
+@media screen and (max-width: 400px) {
+    .card-instalacion div.button {
+        flex-wrap: wrap;
+    }
+
+    .paginaInstalacion .card-instalacion div.button a{
+        width: 100% !important;
+        padding: 3% !important;
+        order: 2 !important;
+    }
+
+    .paginaInstalacion .card-instalacion div.button .precio-pista{
+        width: 100% !important;
+        margin-bottom: 5% !important;
+        order: 1 !important;
+        padding: 3% !important;
+        font-size: 20px !important;
+        padding-top: 1% !important;
+    }
+
+    .paginaInstalacion .card-instalacion div.button .precio-pista span {
+        font-size: 28px !important;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .menu-container {
+        width: 18rem !important;
+    }
+}
+
+@media screen and (max-width: 315px) {
+    .menu-container {
+        width: 15rem !important;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .datos-gif > .dato-gif {
+        width: 70% !important;
+    }
+}
+
+@media screen and (max-width: 405px) {
+    .containerComoFunciona .comoFunciona h1 {
+        font-size: 2rem !important;
+    }
+}
+
+@media screen and (max-width: 368px) {
+    .containerComoFunciona .comoFunciona h1 {
+        font-size: 1.8rem !important;
+    }
+
+    .content .comoFunciona li, .content .comoFunciona p {
+        font-size: 1.2rem;
+        margin-bottom: 0%;
+    }
+
+    .content .comoFunciona p {
+        font-size: 1.3rem !important;
+    }
+}
+
