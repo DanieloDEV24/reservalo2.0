@@ -145,8 +145,12 @@ class instalacionesModel extends Model
 
         $query = $builder
             ->select('pistas.*, instalaciones.estado')
+            ->selectCount('reservas.id_reserva', 'reservas')
+            ->selectMin('reservas.fecha', 'proxima_reserva') 
             ->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion', 'inner')
+            ->join('reservas', 'pistas.id_pista = reservas.id_pista', 'inner')
             ->where('pistas.id_pista', $id_pista)
+            ->where('reservas.fecha >=', date('Y-m-d')) 
             ->get();
 
         $result = $query->getResultArray();

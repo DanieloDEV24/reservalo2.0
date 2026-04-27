@@ -16,6 +16,11 @@
         <div class="pregunta-borrado">
           <h2></h2>
         </div>
+
+        <div class="reservas-pista">
+          
+        </div>
+
         <div class="btns-borrado">
           <button class="btn-primary-personal aceptarBorrarEditar">Borrar</button>
           <button class="btn-secondary-personal" data-bs-dismiss="modal" aria-label="Cancelar">Cancelar</button>

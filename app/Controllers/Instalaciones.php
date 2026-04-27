@@ -433,10 +433,10 @@ class Instalaciones extends BaseController
                 "nombre_pista"    => $nombre,
                 "capacidad_pista" => $capacidad,
                 "precio_pista"    => $precio,
-                'imagen1'         => $imagenesGuardadas[0] ?? null,
-                'imagen2'         => $imagenesGuardadas[1] ?? null,
-                'imagen3'         => $imagenesGuardadas[2] ?? null,
-                'imagen4'         => $imagenesGuardadas[3] ?? null,
+                'imagen1'         => $imagenesGuardadas[0] ?? 'predefinida.png',
+                'imagen2'         => $imagenesGuardadas[1] ?? 'predefinida.png',
+                'imagen3'         => $imagenesGuardadas[2] ?? 'predefinida.png',
+                'imagen4'         => $imagenesGuardadas[3] ?? 'predefinida.png',
             ];
 
             $nuevaPista = $instalacionesModel->createPistas($data);

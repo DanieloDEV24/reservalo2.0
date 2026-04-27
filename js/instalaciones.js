@@ -1494,6 +1494,10 @@ $(document).ready(() => {
                     `¿Desea eliminar la instalación ${pista.nombre_pista}?`
                 );
 
+                if(parseInt(pista.reservas) > 0 ) {
+                    console.log(`Hay reservas: ${pista.reservas} - ${pista.proxima_reserva}`)
+                }
+
                 // Guardamos la posición actual del scroll del modal de fondo para que el modal se abra en esa posicion
                 let scrollTop = $('#modalEditarInstalacion .modal-dialog').scrollTop();
 
