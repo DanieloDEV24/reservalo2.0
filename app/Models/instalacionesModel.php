@@ -143,11 +143,21 @@ class instalacionesModel extends Model
         // Tabla principal
         $builder = $db->table('pistas');
 
+        $subquery = $this->db->table('reservas')
+            ->select('
+                id_pista,
+                MIN(CASE WHEN DATE(fecha) >= CURDATE() THEN fecha END) as proxima_reserva,
+                COUNT(id_reserva) as reservas
+            ')
+            ->groupBy('id_pista');
+
         $query = $builder
-            ->select('pistas.*, instalaciones.estado')
+            ->select('pistas.*, instalaciones.estado, r.proxima_reserva, r.reservas')
             ->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion', 'inner')
+            ->join("({$subquery->getCompiledSelect()}) r", 'r.id_pista = pistas.id_pista', 'left')
             ->where('pistas.id_pista', $id_pista)
             ->get();
+
 
         $result = $query->getResultArray();
         return $result;

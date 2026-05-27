@@ -1896,3 +1896,34 @@ span.estado.no-disponible{
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+
+#modalBorraPista .reservas-pista {
+
+  width: 100% !important;
+  padding: 2% !important;
+}
+
+#modalBorraPista .reservas-pista > div {
+
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+#modalBorraPista .reservas-pista p{
+  font-size: 1.1rem;
+}
+
+#modalBorraPista .reservas-pista > div div {
+
+  width: 50% !important;
+  text-align: center;
+}
+
+#modalBorraPista .reservas-pista > div div h2 {
+  font-size: 2.5rem;
+}
+
+#modalBorraPista .btns-borrado button {
+  width: 30% !important;
+}

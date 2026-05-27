@@ -1,0 +1,832 @@
+INFO - 2026-04-27 10:53:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 10:53:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 10:54:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 11:57:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 11:58:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 11:58:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 11:59:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 11:59:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 11:59:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 11:59:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 11:59:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 12:13:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 12:13:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 12:27:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-27 12:27:38 --> mysqli_sql_exception: Unknown column 'reservas' in 'field list' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pistas`...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(151): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-04-27 12:27:39 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'reservas' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(151): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 12:27:39 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'reservas' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(151): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 12:27:39 --> [Caused by] mysqli_sql_exception: Unknown column 'reservas' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(151): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-04-27 12:28:55 --> mysqli_sql_exception: Unknown column 'reservas' in 'field list' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pistas`...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(151): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+INFO - 2026-04-27 12:29:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-27 12:29:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'reservas' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(151): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 12:29:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'reservas' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(151): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 12:29:32 --> [Caused by] mysqli_sql_exception: Unknown column 'reservas' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas` as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(151): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-04-27 12:29:48 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id...' at line 1 in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pistas`...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(151): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+INFO - 2026-04-27 12:34:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-27 12:34:56 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id...' at line 1
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas`.* as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(151): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 12:34:56 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas`.* as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas`.* as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas`.* as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(151): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 12:34:56 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id...' at line 1
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas`.* as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas`.* as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas`.* as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `reservas`.* as `reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+INNER JOIN `reservas` ON `pistas`.`id_pista` = `reservas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(151): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-04-27 12:45:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 12:49:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 12:49:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 12:50:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 12:52:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 13:00:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 13:08:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 13:27:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 13:28:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 13:29:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 13:30:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-27 13:31:21 --> mysqli_sql_exception: Unknown column 'r.total_reservas' in 'field list' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pistas`...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(159): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-04-27 13:31:22 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.total_reservas' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(159): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 13:31:22 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.total_reservas' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(159): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 13:31:22 --> [Caused by] mysqli_sql_exception: Unknown column 'r.total_reservas' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(159): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-04-27 13:31:25 --> mysqli_sql_exception: Unknown column 'r.total_reservas' in 'field list' in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pistas`...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(159): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-04-27 13:31:26 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.total_reservas' in 'field list'
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 2 APPPATH\Models\instalacionesModel.php(159): CodeIgniter\Database\BaseBuilder->get()
+ 3 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 13:31:26 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'r.total_reservas' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 4 APPPATH\Models\instalacionesModel.php(159): CodeIgniter\Database\BaseBuilder->get()
+ 5 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 13:31:26 --> [Caused by] mysqli_sql_exception: Unknown column 'r.total_reservas' in 'field list'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = 89')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `pistas`.*, `instalaciones`.`estado`, `r`.`proxima_reserva`, `r`.`total_reservas`
+FROM `pistas`
+INNER JOIN `instalaciones` ON `instalaciones`.`id_instalacion` = `pistas`.`id_instalacion`
+LEFT JOIN (SELECT `id_pista`, MIN(CASE WHEN fecha >= NOW() THEN fecha END) as proxima_reserva, COUNT(id_reserva) as reservas
+FROM `reservas`
+GROUP BY `id_pista`) r ON `r`.`id_pista` = `pistas`.`id_pista`
+WHERE `pistas`.`id_pista` = :pistas.id_pista:', [...], false)
+ 5 APPPATH\Models\instalacionesModel.php(159): CodeIgniter\Database\BaseBuilder->get()
+ 6 APPPATH\Controllers\Instalaciones.php(218): App\Models\instalacionesModel->getPistasById(89)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->infoPista()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-04-27 13:31:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 13:33:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 13:35:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 13:36:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 13:41:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 13:42:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 13:43:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 13:45:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:03:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:05:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:06:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:07:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:31:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:48:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:49:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:49:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:49:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:49:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:49:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:50:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:50:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:50:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:50:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:52:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:52:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:52:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:53:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-27 14:53:31 --> ❌ Error enviando email: {"statusCode":403,"name":"validation_error","message":"You can only send testing emails to your own email address (danielruizdeveloper@gmail.com). To send emails to other recipients, please verify a domain at resend.com/domains, and change the `from` address to an email using this domain."}
+INFO - 2026-04-27 14:53:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:53:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 14:56:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:01:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:04:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:08:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:09:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-27 15:09:31 --> mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE) in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `pe...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pe...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pe...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pe...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-04-27 15:09:32 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN :id_pedido:', [...], false)
+ 2 APPPATH\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+ 3 APPPATH\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 15:09:32 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN :id_pedido:', [...], false)
+ 4 APPPATH\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+ 5 APPPATH\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 15:09:32 --> [Caused by] mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN :id_pedido:', [...], false)
+ 5 APPPATH\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+ 6 APPPATH\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-04-27 15:11:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:12:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:13:03 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-27 15:13:09 --> mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE) in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `pe...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pe...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pe...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pe...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-04-27 15:13:09 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN :id_pedido:', [...], false)
+ 2 APPPATH\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+ 3 APPPATH\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 15:13:09 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN :id_pedido:', [...], false)
+ 4 APPPATH\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+ 5 APPPATH\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 15:13:09 --> [Caused by] mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN :id_pedido:', [...], false)
+ 5 APPPATH\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+ 6 APPPATH\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-04-27 15:13:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-27 15:13:55 --> mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE) in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `pe...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pe...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pe...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pe...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-04-27 15:13:55 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN :id_pedido:', [...], false)
+ 2 APPPATH\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+ 3 APPPATH\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 15:13:55 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN :id_pedido:', [...], false)
+ 4 APPPATH\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+ 5 APPPATH\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 15:13:55 --> [Caused by] mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN :id_pedido:', [...], false)
+ 5 APPPATH\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+ 6 APPPATH\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-04-27 15:13:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2026-04-27 15:14:07 --> mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE) in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `pe...', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pe...')
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pe...')
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pe...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2026-04-27 15:14:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\BaseConnection.php on line 647.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN :id_pedido:', [...], false)
+ 2 APPPATH\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+ 3 APPPATH\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 15:14:27 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 311.
+ 1 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN :id_pedido:', [...], false)
+ 4 APPPATH\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+ 5 APPPATH\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 15:14:27 --> [Caused by] mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`reservalo2`.`reservas`, CONSTRAINT `FK_reservas_pedido` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id_pedido`) ON DELETE NO ACTION ON UPDATE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(693): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(607): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `pedido`
+WHERE `id_pedido` IN (\'108\',\'108\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2787): CodeIgniter\Database\BaseConnection->query('DELETE FROM `pedido`
+WHERE `id_pedido` IN :id_pedido:', [...], false)
+ 5 APPPATH\Models\reservasModel.php(782): CodeIgniter\Database\BaseBuilder->delete()
+ 6 APPPATH\Controllers\Instalaciones.php(374): App\Models\reservasModel->deletePedidoByPista(98)
+ 7 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Instalaciones->borrarPista()
+ 8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Instalaciones))
+ 9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+INFO - 2026-04-27 15:14:55 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:16:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:16:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:18:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:19:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:21:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:22:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:24:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:24:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:25:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:29:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:31:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:32:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:32:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:33:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:34:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:35:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:37:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 15:38:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 18:08:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 18:11:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-27 18:14:20 --> ErrorException: Maximum execution time of 120 seconds exceeded
+in SYSTEMPATH\Debug\Exceptions.php on line 202.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-27 18:14:20 --> ErrorException: Maximum execution time of 120 seconds exceeded
+in SYSTEMPATH\Debug\Exceptions.php on line 202.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+CRITICAL - 2026-04-27 18:14:20 --> ErrorException: Maximum execution time of 120 seconds exceeded
+in SYSTEMPATH\Debug\Exceptions.php on line 202.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()
+ERROR - 2026-04-27 18:14:20 --> Error connecting to the database: ErrorException: mysqli::real_connect(): Error while reading greeting packet. PID=16896 in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\Proyectos\\re...', 184)
+#1 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#5 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(182): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(20): App\Models\instalacionesModel->getInstalacionesHome()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next mysqli_sql_exception: MySQL server has gone away in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(182): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(20): App\Models\instalacionesModel->getInstalacionesHome()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: MySQL server has gone away in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#3 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(182): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(20): App\Models\instalacionesModel->getInstalacionesHome()
+#5 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+ERROR - 2026-04-27 18:14:20 --> Error connecting to the database: ErrorException: mysqli::real_connect(): Error while reading greeting packet. PID=16896 in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mysqli::real_co...', 'C:\\Proyectos\\re...', 184)
+#1 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#4 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#5 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(182): CodeIgniter\Database\BaseBuilder->get()
+#6 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(20): App\Models\instalacionesModel->getInstalacionesHome()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#9 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next mysqli_sql_exception: MySQL server has gone away in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(182): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(20): App\Models\instalacionesModel->getInstalacionesHome()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: MySQL server has gone away in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#3 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(182): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(20): App\Models\instalacionesModel->getInstalacionesHome()
+#5 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+INFO - 2026-04-27 18:16:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2026-04-27 18:23:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2026-04-27 19:57:15 --> RuntimeException: Ha ocurrido un error
+in APPPATH\Models\loginModel.php on line 92.
+ 1 APPPATH\Controllers\Login.php(134): App\Models\loginModel->buscaUsuarioPorId(23)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->registrarse()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-27 20:03:58 --> RuntimeException: Ha ocurrido un error
+in APPPATH\Models\loginModel.php on line 92.
+ 1 APPPATH\Controllers\Login.php(134): App\Models\loginModel->buscaUsuarioPorId(24)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Login->registrarse()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Login))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

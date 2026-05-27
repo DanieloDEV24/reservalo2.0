@@ -1,5 +1,8 @@
 <div class="pagina-dashboard">
 
+    <h1 class="title-page">Estadística</h1>
+    <p class="description-page">Comprueba el uso de cada instalación, las categorías más usadas y los registros realizados en la web</p>
+    <br>
     <div class="grid-dashboard">
         <div class="div-dashboard grafico-reservas">
             <h3 style="margin-bottom: 5%;">Reservas por mes</h3>

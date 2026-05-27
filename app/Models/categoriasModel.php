@@ -104,6 +104,8 @@ class categoriasModel extends Model
 
         $builder->where('id_categoria', $id_categoria);
         $builder->delete();
+
+        return $db->affectedRows();
     }
 
     public function createCategoria(string $nombre) {

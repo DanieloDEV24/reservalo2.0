@@ -104,3 +104,8 @@ $routes->get('/reservasMes', 'Dashboard::reservasMes', ['filter' => 'auth']);
 $routes->get('/reservasCategoria', 'Dashboard::reservasCategoria', ['filter' => 'auth']);
 
 $routes->post('/getInstalacionesCategoriaHome', 'Home::getInstalacionesCategoriaHome');
+
+$routes->get('/contacto', 'Contacto::contacto');
+$routes->get('/politicasPrivacidad', 'Permisos::politicaPrivacidad');
+$routes->get('/cookies', 'Permisos::cookies');
+$routes->get('/avisoLegal', 'Permisos::avisoLegal');

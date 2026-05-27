@@ -1500,6 +1500,34 @@ $(document).ready(() => {
                     `¿Desea eliminar la instalación ${pista.nombre_pista}?`
                 );
 
+                if(parseInt(pista.reservas) > 0 ) {
+                    let nodoReserva1 = $(`<p>Esta pista tiene las siguientes reservas asociadas. El borrado de la pista significará el borrado de las reservas</p>`)
+                    let nodoReservas = $(`  
+                                            <div>
+                                                <div class="numero-reservas-pista">
+                                                    <span>Nº RESERVAS</span>
+                                                    <h2>${pista.reservas}</h2>
+                                                </div>
+
+                                                <div class="proxima-reserva-pista">
+                                                    <span>PRÓX RESERVA</span>
+                                                    <h2>${(pista.proxima_reserva) !== null ? formatearFecha(pista.proxima_reserva) : "---"}</h2>
+                                                </div>
+
+                                            </div>`
+                                        )
+
+                    $('#modalBorraPista .reservas-pista').empty();
+                    $('#modalBorraPista .reservas-pista').append(nodoReserva1)
+                    $('#modalBorraPista .reservas-pista').append(nodoReservas)
+
+                    $('#modalBorraPista .reservas-pista').data('reservas', 1)
+                }
+                else {
+                    $('#modalBorraPista .reservas-pista').empty();
+                    $('#modalBorraPista .reservas-pista').data('reservas', 0)
+                }
+
                 // Guardamos la posición actual del scroll del modal de fondo para que el modal se abra en esa posicion
                 let scrollTop = $('#modalEditarInstalacion .modal-dialog').scrollTop();
 
@@ -1532,12 +1560,13 @@ $(document).ready(() => {
 
         // Obtenemos el id de la pista que queremos eliminar
         let id = parseInt($('#modalBorraPista').data('index'));
+        let reservas = parseInt($('#modalBorraPista .reservas-pista').data('reservas'))
 
         // Hago una petición ajax al back para eliminar la pista de la base de datos
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/borrarPista`, // --> URL a donde va la petición
-            data: { id: id },
+            data: { id: id, reservas: reservas },
             dataType: "json",
             success: function (response) {
 
@@ -3080,6 +3109,12 @@ $(document).ready(() => {
     function campoSolucionado(input) {
         input.removeClass('input-error').addClass('input-ok');
     }
+
+    function formatearFecha(fecha) {
+        if (!fecha) return '---';
+        const [year, month, day] = fecha.split('-');
+        return `${day}/${month}/${year}`;
+    }   
 
     gsap.registerPlugin(ScrollTrigger);
 

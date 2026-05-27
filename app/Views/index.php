@@ -63,6 +63,7 @@
         </div>
         <a href="<?= base_url() ?>index.php/dashboard" class="menu__link"> Estadística</a>
       <?php endif; ?>
+      <a href="<?= base_url() ?>index.php/contacto" class="menu__link"> Contacto</a>
     </nav>
 
     <div class="div-contacto-menu-movil">
@@ -170,6 +171,10 @@
             </div>
           <?php endif; ?>
 
+            <div class="menu-list">
+              <i class="bi bi-envelope"></i>
+              <a style="--i: 4" href="<?= base_url() ?>index.php/contacto">Contacto</a>
+            </div>
         </section>
       </label>
     </div>
@@ -206,13 +211,11 @@
           <h3>Nuestra Plataforma</h3>
         </div>
 
-        <a href="">Inicio</a>
+        <a href="<?= base_url() ?>">Inicio</a>
 
-        <a href="">Instalaciones</a>
+        <a href="<?= base_url() ?>index.php/instalaciones">Instalaciones</a>
 
-        <a href="">Gestor de Instalaciones</a>
-
-        <a href="">Gestor de Categorías</a>
+        <a href="<?= base_url() ?>index.php/contacto">Contacto</a>
 
       </div>
 
@@ -262,12 +265,11 @@
 
     </div>
     <div class="footer-bottom">
-      <p>© 2025 ReservaMunicipal. Todos los derechos reservados.</p>
+      <p>© 2026 Reservalo. Todos los derechos reservados.</p>
       <div class="footer-legal">
-        <a href="#privacidad">Política de privacidad</a>
-        <a href="#terminos">Términos y condiciones</a>
-        <a href="#cookies">Cookies</a>
-        <a href="#legal">Aviso legal</a>
+        <a href="<?= base_url() ?>index.php/politicasPrivacidad">Política de privacidad</a>
+        <a href="<?= base_url() ?>index.php/cookies">Cookies</a>
+        <a href="<?= base_url() ?>index.php/avisoLegal">Aviso legal</a>
       </div>
     </div>
   </footer>

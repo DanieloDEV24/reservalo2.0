@@ -183,7 +183,12 @@ class usuariosModel extends Model
         $builder->select('password');
         $builder->where('id_usuario', $id_usuario);
 
-        return $builder->get()->getResultArray()[0];
+        if(isset($builder->get()->getResultArray()[0])) {
+            return $builder->get()->getResultArray()[0];
+        }
+        else {
+            // Pagina error
+        }
 
     }
 }

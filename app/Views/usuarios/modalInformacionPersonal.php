@@ -71,6 +71,13 @@
                     </div>
                 </div>
 
+                <div class="form-check mb-0 ms-2 mt-3">
+                    <input class="form-check-input" type="checkbox" id="politicas-privacidad-2" style="border:1px solid #000;">
+                    <label class="form-check-label" for="politicas-privacidad">
+                        He leido y acepto la política de privacidad
+                    </label>
+                </div>
+                
             </div>
 
             <!-- Footer -->

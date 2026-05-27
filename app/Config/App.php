@@ -25,9 +25,8 @@ class App extends BaseConfig
     // public string $baseURL = 'http://172.26.1.31/reservalo2.0/';
 
     // BaseURL --> localhost de la casa
-    public string $baseURL = 'http://192.168.1.45/reservalo2.0/';
-    // public string $baseURL = 'http://192.168.1.38/reservalo2.0/';
-
+    // public string $baseURL = 'http://192.168.1.45/reservalo2.0/';
+    public string $baseURL = 'http://192.168.1.38/reservalo2.0/';
 
     // BaseURL --> localhost wifi guadalinfo
     // public string $baseURL = 'http://192.168.0.20/reservalo2.0/';

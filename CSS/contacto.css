@@ -1,0 +1,139 @@
+.pagina-contacto {
+    padding: 2.5% !important;
+}
+
+.contenedor-contacto-header {
+        display: flex;
+        align-items: center;
+        gap: 2% !important;
+        padding: 3% !important;
+}
+
+.contacto-mensaje .contenedor-contacto-header {
+    padding: 2% !important;
+}
+
+.contenedor-contacto-header i {
+    color: #32cccc;
+    font-size: 1.3rem;
+}
+
+.contenedor-contacto-header h3 {
+    font-size: 1.3rem;
+    margin: 0% !important;
+}
+
+.contacto-informacion {grid-area: contacto-informacion;}
+.contacto-horario {grid-area: contacto-horario;}
+.contacto-mensaje {grid-area: contacto-mensaje;}
+
+.grid-contacto {
+    display: grid;
+    grid-template-areas: "contacto-informacion contacto-horario"
+                         "contacto-mensaje contacto-mensaje";
+    grid-template-columns: 1fr 1fr; /* añade esto */
+    row-gap: 2% !important;
+    column-gap: 2.5% !important;
+}
+
+.grid-contacto > div {
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 2% !important;
+}
+
+.contenedor-tipo-informacion {
+    padding: 3% !important;
+    padding-top: 0% !important;
+}
+
+.icono-contacto {
+    background-color: #32cccc10;
+    padding: 1.5% 2% !important;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    
+    
+}
+
+.icono-contacto i {
+    color: #32cccc;
+    font-size: 1.3rem;
+}
+
+.telefono-contacto, .email-contacto, .ubicacion-contacto {
+    display: flex;
+    align-items: center;
+    gap: 3% !important;
+}
+
+.telefono-contacto p, .email-contacto a, .ubicacion-contacto p {
+    margin: 0% !important;
+    font-weight: bolder;
+}
+
+.email-contacto a {
+    color: #32cccc;
+        text-decoration: none;
+    }
+
+    .telefono-contacto span, .email-contacto span, .ubicacion-contacto span {
+        color: #aaa;
+        font-size: .9rem;
+    }
+
+    .grid-contacto hr {
+        margin-bottom: 3% !important;
+        color: #aaa;
+        background-color: #aaa;
+    }
+
+
+.contacto-horario .info-contacto-horario {
+    padding: 3% !important;
+    padding-top: 0% !important;
+}
+
+.contacto-horario .info-contacto-horario > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px !important;
+    padding: 2% !important;
+}
+
+.contacto-horario .info-contacto-horario > div P {
+    margin: 0% !important;
+}
+
+.contacto-horario .info-contacto-horario > div.horario-contacto-hoy {
+    background-color: #32cccc10;
+    color: #32cccc ;
+}
+
+.embed-map-fixed {
+    width: 100%;
+    padding: 2% !important;
+    padding-top: 0% !important;
+}
+
+.embed-map-container {
+    position: relative;
+    width: 100%;
+    height: 400px; /* ajusta este valor a tu gusto */
+    overflow: hidden;
+    background: none !important;
+    border-radius: 10px;
+}
+
+.embed-map-frame {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+    border: 0;
+}
