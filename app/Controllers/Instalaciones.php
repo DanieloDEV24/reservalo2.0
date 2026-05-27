@@ -358,6 +358,7 @@ class Instalaciones extends BaseController
     public function borrarPista() {
         $post = $this->request->getPost(); // --> Obtenemos el post de la petición
         $instalacionesModel = new instalacionesModel(); // --> Inicializamos el modelo de instalaciones
+        $reservasModel = new reservasModel();
         $actividadModel = new actividadModel(); 
 
         $session = session();
@@ -365,8 +366,14 @@ class Instalaciones extends BaseController
         // Comprobamos que el post no este vacío para poder obtener el id de la pista
         if (!empty($post)) {
             $id_pista = intval($post["id"]); // --> Obtenemos el id de la pista que queremos eliminar
+            $reservas = intval($post["reservas"]);
 
             $pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
+
+            if($reservas === 1) {
+               $reservasModel->anularReservaByPista($id_pista);
+               $reservasModel->deletePedidoByPista($id_pista); 
+            }
 
             $result = $instalacionesModel->borrarPista($id_pista); // --> Llamamos a la función del modelo que elimina la pista
             $actividad = $actividadModel->crearActividad([

@@ -87,7 +87,14 @@ class loginModel extends Model
         $query  = $builder->get();
         $result = $query->getResultArray();
 
-        return $result[0]; 
+        if(isset($result[0])){
+            return $result[0];
+        }
+        else {
+            // Pagina Error
+            throw new \ErrorException('Ha ocurrido un error');
+        }
+         
     }
 
     public function passwordEmail($email)
@@ -105,7 +112,13 @@ class loginModel extends Model
         $query  = $builder->get();
         $result = $query->getResultArray();
 
-        return $result[0];
+        if(isset($result[0])){
+            return $result[0];
+        }
+        else {
+            // Pagina Error
+            throw new \ErrorException('Ha ocurrido un error');
+        }
     }
 
     public function selectDatawithEmail($email)
@@ -123,7 +136,13 @@ class loginModel extends Model
         $query  = $builder->get();
         $result = $query->getResultArray();
 
-        return $result[0];
+        if(isset($result[0])){
+            return $result[0];
+        }
+        else {
+            // Pagina Error
+            throw new \ErrorException('Ha ocurrido un error');
+        }
     }
 
     public function buscarIdporEmail (string $email)
@@ -141,7 +160,13 @@ class loginModel extends Model
         $query  = $builder->get();
         $result = $query->getResultArray();
 
-        return $result[0];
+        if(isset($result[0])){
+            return $result[0];
+        }
+        else {
+            // Pagina Error
+            throw new \ErrorException('Ha ocurrido un error');
+        }
     }
 
     public function anadirToken (array $data, int $id_usuario)
@@ -170,7 +195,13 @@ class loginModel extends Model
         $query  = $builder->get();
         $result = $query->getResultArray();
 
-        return $result[0];
+        if(isset($result[0])){
+            return $result[0];
+        }
+        else {
+            // Pagina Error
+            throw new \ErrorException('Ha ocurrido un error');
+        }
     }
 
     public function cambioPass(string $newPass, int $id_usuario) 

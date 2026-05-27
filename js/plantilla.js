@@ -419,7 +419,7 @@ $(document).ready(() => {
 
     $(document).on('click', '#btnMiPerfil', function(){
 
-        let idUsuario = $(this).data('index');
+        let idUsuario = parseInt($("#menu-usuario").data('index'));
 
         $.ajax({
             type: "POST",
@@ -435,6 +435,10 @@ $(document).ready(() => {
                     $('#modalInformacionPersonal .datos-usuario-editar .logo-usuario').text(response.usuario.nombre[0])
                     $('#modalInformacionPersonal .datos-usuario-editar .info-usuario .nombre-usuario').text(response.usuario.nombre)
                     $('#modalInformacionPersonal .datos-usuario-editar .info-usuario .registro-ultm-acceso').text(`Fecha Registro: ${formatearFecha(response.usuario.fecha_registro)} · Último Acceso: ${tiempoTranscurrido(response.usuario.ultimo_inicio)}`)
+
+                    $('#modalInformacionPersonal .datos-usuario-editar .info-usuario .registro-movil').text(`Fecha Registro: ${formatearFecha(response.usuario.fecha_registro)}`)
+
+                    $('#modalInformacionPersonal .datos-usuario-editar .info-usuario .ultm-acceso-movil').text(`Último Acceso: ${tiempoTranscurrido(response.usuario.ultimo_inicio)}`)
 
                     $('#modalInformacionPersonal #nombre-usuario-personal').val(response.usuario.nombre)
                     $('#modalInformacionPersonal #telf-usuario-personal').val(response.usuario.telf)
@@ -461,6 +465,82 @@ $(document).ready(() => {
 
     })
 
+    // $(document).on('click', '#btn-guardar-info-usuario-personal', function() {
+    //     let errores = []
+
+    //     let idUsuario = $('#modalInformacionPersonal').data('usuario')
+    //     let nombre = $('#nombre-usuario-personal').val();
+    //     let telf = $('#telf-usuario-personal').val().trim();
+    //     let email = $('#email-usuario-personal').val();
+    //     let passwordActual = $('#password-actual-usuario-personal').val();
+    //     let passwordNueva  = $('#password-usuario-personal').val();
+
+    //     if (nombre === "") {
+    //         errores.push({ campo: "Nombre", message: "El campo de nombre no puede estar vacío" })
+    //     }
+
+    //     if (telf === "") {
+    //         errores.push({ campo: "Telf", message: "El campo de telefono no puede estar vacío" })
+    //     }
+    //     else if (isNaN(telf) || telf === "e") {
+    //         errores.push({ campo: "Telf", message: "El telefono debe ser un numero" })
+    //     }
+    //     else if (!/^[6789]\d{8}$/.test(telf)) {
+    //         errores.push({ campo: "Telf", message: "El telefono tener 9 dígitos y estar con el formato correcto" })
+    //     }
+
+    //     if (email === "") {
+    //         errores.push({ campo: "Email", message: "El campo de email no puede estar vacío" })
+    //     }
+    //     else if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(email)) {
+    //         errores.push({ campo: "Email", message: "El email debe tener un formato correcto" })
+    //     }
+
+    //     if(passwordActual !== "" && passwordNueva === "") {
+    //         errores.push({ campo: "Contraseña", message: "Debe introducir una contraseña nueva" })
+    //     }
+    //     else if (passwordActual === "" && passwordNueva !== ""){
+    //         errores.push({ campo: "Contraseña", message: "Debe introducir la contraseña actual" })
+    //     }
+
+    //     if(!$('#politicas-privacidad-2').is(':checked')){
+    //         errores.push({ campo: "Políticas de privacidad", message: "Debe aceptar las políticas de privacidad" })
+    //     }
+
+
+    //     if (errores.length === 0) {
+    //         $.ajax({
+    //             type: "POST",
+    //             url: `${BASE_URL}index.php/editarUsuarioPersonal`,
+    //             data: { id_usuario: idUsuario, nombre: nombre, email: email, telf: telf, password_vieja: passwordActual, password_nueva: passwordNueva },
+    //             dataType: "JSON",
+    //             success: function (response) {
+
+    //                 if (response.success == true) {
+    //                     $('#modalInfoUsuario').modal('hide')
+    //                 }
+    //                 else {
+    //                     $('.contenedor-alert-editar-usuario .alert-errores-editar-usuario .errores ul').append(`<li>${response.message}</li>`)
+
+    //                     $('.contenedor-alert-editar-usuario').removeClass('d-none')
+    //                     $('.alert-errores-editar-usuario').show();
+    //                 }
+    //             }
+    //         });
+    //     }
+    //     else {
+
+    //         $('#modalInfoUsuario .alert-errores-editar-usuario .errores ul').empty()
+
+    //         errores.map(e => {
+    //             $('#modalInfoUsuario .alert-errores-editar-usuario .errores ul').append(`<li>${e.message}</li>`)
+    //         })
+
+    //         $('#modalInfoUsuario .contenedor-alert-editar-usuario').removeClass('d-none');
+    //         $('#modalInfoUsuario .alert-errores-editar-usuario').show();
+    //     }
+    // })
+
     $(document).on('click', '#btn-guardar-info-usuario-personal', function() {
         let errores = []
 
@@ -499,76 +579,8 @@ $(document).ready(() => {
             errores.push({ campo: "Contraseña", message: "Debe introducir la contraseña actual" })
         }
 
-
-        if (errores.length === 0) {
-            $.ajax({
-                type: "POST",
-                url: `${BASE_URL}index.php/editarUsuarioPersonal`,
-                data: { id_usuario: idUsuario, nombre: nombre, email: email, telf: telf, password_vieja: passwordActual, password_nueva: passwordNueva },
-                dataType: "JSON",
-                success: function (response) {
-
-                    if (response.success == true) {
-                        $('#modalInfoUsuario').modal('hide')
-                    }
-                    else {
-                        $('.contenedor-alert-editar-usuario .alert-errores-editar-usuario .errores ul').append(`<li>${response.message}</li>`)
-
-                        $('.contenedor-alert-editar-usuario').removeClass('d-none')
-                        $('.alert-errores-editar-usuario').show();
-                    }
-                }
-            });
-        }
-        else {
-
-            $('#modalInfoUsuario .alert-errores-editar-usuario .errores ul').empty()
-
-            errores.map(e => {
-                $('#modalInfoUsuario .alert-errores-editar-usuario .errores ul').append(`<li>${e.message}</li>`)
-            })
-
-            $('#modalInfoUsuario .contenedor-alert-editar-usuario').removeClass('d-none');
-            $('#modalInfoUsuario .alert-errores-editar-usuario').show();
-        }
-    })
-
-    $(document).on('click', '#btn-guardar-info-usuario-personal', function() {
-        let errores = []
-
-        let idUsuario = $('#modalInformacionPersonal').data('usuario')
-        let nombre = $('#nombre-usuario-personal').val();
-        let telf = $('#telf-usuario-personal').val().trim();
-        let email = $('#email-usuario-personal').val();
-        let passwordActual = $('#password-actual-usuario-personal').val();
-        let passwordNueva  = $('#password-usuario-personal').val();
-
-        if (nombre === "") {
-            errores.push({ campo: "Nombre", message: "El campo de nombre no puede estar vacío" })
-        }
-
-        if (telf === "") {
-            errores.push({ campo: "Telf", message: "El campo de telefono no puede estar vacío" })
-        }
-        else if (isNaN(telf) || telf === "e") {
-            errores.push({ campo: "Telf", message: "El telefono debe ser un numero" })
-        }
-        else if (!/^[6789]\d{8}$/.test(telf)) {
-            errores.push({ campo: "Telf", message: "El telefono tener 9 dígitos y estar con el formato correcto" })
-        }
-
-        if (email === "") {
-            errores.push({ campo: "Email", message: "El campo de email no puede estar vacío" })
-        }
-        else if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/.test(email)) {
-            errores.push({ campo: "Email", message: "El email debe tener un formato correcto" })
-        }
-
-        if(passwordActual !== "" && passwordNueva === "") {
-            errores.push({ campo: "Contraseña", message: "Debe introducir una contraseña nueva" })
-        }
-        else if (passwordActual === "" && passwordNueva !== ""){
-            errores.push({ campo: "Contraseña", message: "Debe introducir la contraseña actual" })
+        if(!$('#politicas-privacidad-2').is(':checked')){
+            errores.push({ campo: "Políticas de privacidad", message: "Debe aceptar las políticas de privacidad" })
         }
 
 

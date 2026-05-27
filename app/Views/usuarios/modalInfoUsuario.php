@@ -28,6 +28,8 @@
                     <div class="info-usuario">
                         <p class="nombre-usuario"></p>
                         <p class="registro-ultm-acceso"></p>
+                        <p class="registro-movil" style="display: none;"></p>
+                        <p class="ultm-acceso-movil" style="display: none;"></p>
                     </div>
                 </div>
 

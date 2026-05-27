@@ -63,10 +63,11 @@
         </div>
         <a href="<?= base_url() ?>index.php/dashboard" class="menu__link"> Estadística</a>
       <?php endif; ?>
+      <a href="<?= base_url() ?>index.php/contacto" class="menu__link"> Contacto</a>
     </nav>
 
     <div class="div-contacto-menu-movil">
-      <div style="text-align: end; display: flex; justify-content: end" class="inicio-sesion <?= ($session->has('usuario')) ? "sesion-iniciada" : "sesion-no-iniciada" ?>" id="menu-usuario" data-rol="<?= $session->has('usuario') ? $session->get('usuario')['rol'] : '' ?>">
+      <div style="text-align: end; display: flex; justify-content: end" class="inicio-sesion <?= ($session->has('usuario')) ? "sesion-iniciada" : "sesion-no-iniciada" ?>" id="menu-usuario" data-rol="<?= $session->has('usuario') ? $session->get('usuario')['rol'] : '' ?>" data-index="<?= $session->has('usuario') ? $session->get('usuario')['id_usuario'] : '' ?>">
         <?php
         if ($session->has('usuario')) {
           // La sesión 'usuario' existe
@@ -76,7 +77,7 @@
             <a  class="nav-link" href=<?= site_url('/logout') ?>><span>Cerrar Sesión</span><i class="bi bi-arrow-right"></i></a>
           </li> -->
           <li class="navbar-dropdown dropdown-user dropdown mainLi">
-            <a class="btn-primary-personal dropdown-toggle hide-arrow d-flex align-items-center justify-content-end gap-2" href="javascript:void(0);" data-bs-toggle="dropdown" style="padding: 5%;">
+            <a class="btn-primary-personal dropdown-toggle hide-arrow d-flex align-items-center justify-content-end gap-2" href="javascript:void(0);" data-bs-toggle="dropdown" style="padding: 3%;">
               <i class="bi bi-person" style="font-size: 25px;"></i>
             </a>
             <ul class="dropdown-menu dropdown-menu-end iconoAvatar" style="background-color: #111">
@@ -88,14 +89,14 @@
               </li>
 
               <?php if ($session->has('usuario') && intval($session->get('usuario')['rol']) === 1): ?>
-                <li style="width: 100%" class="d-flex justify-content-start">
+                <li style="width: 100%" class="d-flex justify-content-start drop-mis-reservas">
                   <a class="dropdown-item d-flex justify-content-start iconoAvatar" id="btnMisReservas" href="#">
                     <i class="bi bi-calendar-check me-2"></i>
                     <span class="align-middle">Mis Reservas</span>
                   </a>
                 </li>
 
-                <li style="width: 100%" class="d-flex justify-content-start">
+                <li style="width: 100%" class="d-flex justify-content-start drop-mi-perfil">
                   <a class="dropdown-item d-flex justify-content-start iconoAvatar" id="btnMiPerfil" href="#" data-index="<?= intval($session->get('usuario')["id_usuario"]) ?>">
                     <i class="bi bi-person-fill"></i>
                     <span class="align-middle">Mi perfil</span>
@@ -158,8 +159,22 @@
               <i class="bi bi-graph-down"></i>
               <a href="<?= base_url() ?>index.php/dashboard" style="--i: 5">Estadísticas</a>
             </div>
+          <?php elseif ($session->has('usuario') && intval($session->get('usuario')['rol']) === 1):  ?>
+            <div class="menu-list">
+              <i class="bi bi-person"></i>
+              <a href="#" style="--i: 4" id="btnMisReservas">Mis Reservas</a>
+            </div>
+
+            <div class="menu-list">
+              <i class="bi bi-person-fill"></i>
+              <a href="#" style="--i: 4" id="btnMiPerfil">Mi Perfil</a>
+            </div>
           <?php endif; ?>
 
+            <div class="menu-list">
+              <i class="bi bi-envelope"></i>
+              <a style="--i: 4" href="<?= base_url() ?>index.php/contacto">Contacto</a>
+            </div>
         </section>
       </label>
     </div>
@@ -196,13 +211,11 @@
           <h3>Nuestra Plataforma</h3>
         </div>
 
-        <a href="">Inicio</a>
+        <a href="<?= base_url() ?>">Inicio</a>
 
-        <a href="">Instalaciones</a>
+        <a href="<?= base_url() ?>index.php/instalaciones">Instalaciones</a>
 
-        <a href="">Gestor de Instalaciones</a>
-
-        <a href="">Gestor de Categorías</a>
+        <a href="<?= base_url() ?>index.php/contacto">Contacto</a>
 
       </div>
 
@@ -252,12 +265,11 @@
 
     </div>
     <div class="footer-bottom">
-      <p>© 2025 ReservaMunicipal. Todos los derechos reservados.</p>
+      <p>© 2026 Reservalo. Todos los derechos reservados.</p>
       <div class="footer-legal">
-        <a href="#privacidad">Política de privacidad</a>
-        <a href="#terminos">Términos y condiciones</a>
-        <a href="#cookies">Cookies</a>
-        <a href="#legal">Aviso legal</a>
+        <a href="<?= base_url() ?>index.php/politicasPrivacidad">Política de privacidad</a>
+        <a href="<?= base_url() ?>index.php/cookies">Cookies</a>
+        <a href="<?= base_url() ?>index.php/avisoLegal">Aviso legal</a>
       </div>
     </div>
   </footer>

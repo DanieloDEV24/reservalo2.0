@@ -17,8 +17,8 @@
           <h2></h2>
         </div>
 
-        <div class="reservas-pista">
-          
+        <div class="reservas-pista" data-reservas="0">
+
         </div>
 
         <div class="btns-borrado">

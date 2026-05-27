@@ -838,8 +838,8 @@ $(document).ready(() => {
                                         <div class="row gap-3 mt-3">
                                         <div class="col">
                                             <div class="row capacidad-pista-ver-instalacion">
-                                                <div class="col-7"><label>Capacidad de la Pista:</label></div>
-                                                <div class="col-3"><p>${pista["capacidad_pista"]}</p></div>
+                                                <div class="col-8"><label>Capacidad de la Pista:</label></div>
+                                                <div class="col-4"><p>${pista["capacidad_pista"]}</p></div>
                                             </div>
                                         </div>
 
@@ -920,6 +920,12 @@ $(document).ready(() => {
                         // Creamos los elementos de las categorías secundarias
                         const input = $(`<input value="${categoria.id_categoria}" name="subcategoriaEditar" id="sub-${categoria.id_categoria}" type="checkbox" ${(response.instalacion[0].categoria_principal && response.instalacion[0].categoria_opcional1 === categoria.id_categoria) ? "checked" : ""}>`);
                         const label = $(`<label for="sub-${categoria.id_categoria}">${categoria.nombre}</label>`);
+
+                        input.on('change', function () {
+                            if ($(this).is(':checked')) {
+                                $('#subcategoriasEditar input[type="checkbox"]').not(this).prop('checked', false);
+                            }
+                        });
 
                         // La añadimos al div
                         $('#subcategoriasEditar').append(input, label);
@@ -1495,7 +1501,31 @@ $(document).ready(() => {
                 );
 
                 if(parseInt(pista.reservas) > 0 ) {
-                    console.log(`Hay reservas: ${pista.reservas} - ${pista.proxima_reserva}`)
+                    let nodoReserva1 = $(`<p>Esta pista tiene las siguientes reservas asociadas. El borrado de la pista significará el borrado de las reservas</p>`)
+                    let nodoReservas = $(`  
+                                            <div>
+                                                <div class="numero-reservas-pista">
+                                                    <span>Nº RESERVAS</span>
+                                                    <h2>${pista.reservas}</h2>
+                                                </div>
+
+                                                <div class="proxima-reserva-pista">
+                                                    <span>PRÓX RESERVA</span>
+                                                    <h2>${(pista.proxima_reserva) !== null ? formatearFecha(pista.proxima_reserva) : "---"}</h2>
+                                                </div>
+
+                                            </div>`
+                                        )
+
+                    $('#modalBorraPista .reservas-pista').empty();
+                    $('#modalBorraPista .reservas-pista').append(nodoReserva1)
+                    $('#modalBorraPista .reservas-pista').append(nodoReservas)
+
+                    $('#modalBorraPista .reservas-pista').data('reservas', 1)
+                }
+                else {
+                    $('#modalBorraPista .reservas-pista').empty();
+                    $('#modalBorraPista .reservas-pista').data('reservas', 0)
                 }
 
                 // Guardamos la posición actual del scroll del modal de fondo para que el modal se abra en esa posicion
@@ -1530,12 +1560,13 @@ $(document).ready(() => {
 
         // Obtenemos el id de la pista que queremos eliminar
         let id = parseInt($('#modalBorraPista').data('index'));
+        let reservas = parseInt($('#modalBorraPista .reservas-pista').data('reservas'))
 
         // Hago una petición ajax al back para eliminar la pista de la base de datos
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/borrarPista`, // --> URL a donde va la petición
-            data: { id: id },
+            data: { id: id, reservas: reservas },
             dataType: "json",
             success: function (response) {
 
@@ -3078,6 +3109,12 @@ $(document).ready(() => {
     function campoSolucionado(input) {
         input.removeClass('input-error').addClass('input-ok');
     }
+
+    function formatearFecha(fecha) {
+        if (!fecha) return '---';
+        const [year, month, day] = fecha.split('-');
+        return `${day}/${month}/${year}`;
+    }   
 
     gsap.registerPlugin(ScrollTrigger);
 

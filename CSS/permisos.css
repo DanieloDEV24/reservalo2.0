@@ -1,0 +1,331 @@
+.pagina-politica-privacidad, .pagina-politica-cookies, .pagina-aviso-legal {
+    padding: 2.5% !important;
+    padding-bottom: 3rem !important;
+}
+
+.pagina-politica-privacidad{
+    height: 486vh !important;
+    min-height: 2900px !important;
+
+}
+
+.pagina-aviso-legal {
+    height: 305vh;
+}
+
+.cesion-terceros p, .plazo-conservacion p, .medidas-seguridad p {
+    margin-bottom: 0% !important;
+}
+
+.header-card-responsable {
+    display: flex;
+    align-items: center;
+    gap: 2% !important;
+    padding: 3% !important;
+}
+
+.responsable-tratamiento, .datos-recogemos, .finalidad-tratamiento, .base-juridica, .sus-derechos, .plazo-conservacion, .medidas-seguridad, .cesion-terceros, .que-son, .cookies-usamos, .gestion-cookies, .cookies-terceros, .titular, .objeto-marco-legal, .condiciones-uso, .propiedad-intelectual, .responsabilidad-enlaces, .legislacion-aplicable {
+    background-color: #fff;
+    border-radius: 10px;
+}
+
+.header-card-permisos {
+    display: flex;
+    align-items: center;
+    gap: 2% !important;
+    padding: 3% !important;
+}
+
+.header-card-permisos i {
+    color: #32cccc;
+    font-size: 1.3rem;
+}
+
+.header-card-permisos h3 {
+    font-size: 1.3rem;
+    margin: 0% !important;
+}
+
+table.table-responsable-tratamiento, table.datos-recogemos, table.table-base-juridica, table.table-cookies-usamos, table.table-gestion-cookies, table.table-objeto-marco-legal, table.table-condiciones-uso {
+    width: 100% !important;
+    font-size: 1rem;
+}
+
+table.table-cookies-usamos th {
+    color: #32cccc;
+}
+
+
+table.table-responsable-tratamiento tr, table.datos-recogemos tr, table.table-base-juridica tr, table.table-cookies-usamos tr, table.table-gestion-cookies tr, table.table-objeto-marco-legal tr, table.table-condiciones-uso tr {
+    border-bottom: 1px solid #eee;
+}
+
+table.table-responsable-tratamiento tr:last-of-type, table.datos-recogemos tr:last-of-type, table.table-base-juridica tr:last-of-type, table.table-gestion-cookies tr:last-of-type, table.table-cookies-usamos tr:last-of-type, table.table-objeto-marco-legal tr:last-of-type, table.table-condiciones-uso tr:last-of-type {
+    border-bottom: none !important;
+}
+
+table.table-responsable-tratamiento tr td:first-of-type, table.datos-recogemos tr td:first-of-type, table.table-base-juridica tr td:first-of-type, table.table-gestion-cookies tr td:first-of-type, table.table-objeto-marco-legal tr td:first-of-type, table.table-condiciones-uso tr td:first-of-type {
+    width: 35% !important;
+    color: #32cccc;
+    padding: 1% 0% !important;
+    padding-left: .5% !important;
+}
+
+table.datos-recogemos tr td:first-of-type {
+    width: 40% !important;
+    padding: 2% 0% !important;
+}
+
+table.table-base-juridica tr td:first-of-type {
+    width: 20% !important;
+    padding-top: 1.5% !important;
+}
+
+table.table-base-juridica tr td:first-of-type span {
+    background-color: #32cccc10;
+    border-radius: 30px;
+    padding: 2% 5% !important ;
+}
+
+table.table-base-juridica tr td:last-of-type span {
+    font-weight: bolder;
+}
+
+
+table.table-responsable-tratamiento tr td:last-of-type, table.datos-recogemos tr td:last-of-type, table.table-base-juridica tr td:last-of-type, table.table-gestion-cookies tr td:last-of-type, table.table-objeto-marco-legal tr td:last-of-type, table.table-condiciones-uso tr td:last-of-type {
+    width: 65% !important;
+    padding: 1% 0% !important;
+}
+
+table.datos-recogemos tr td:last-of-type {
+    width: 60% !important;
+    padding: 2% 0% !important;
+}
+
+table.table-cookies-usamos tr td {
+    padding: 1% 0% !important;
+}
+
+table.table-cookies-usamos tr td:nth-of-type(4), table.table-cookies-usamos tr th:nth-of-type(4), table.table-cookies-usamos tr td:nth-of-type(5), table.table-cookies-usamos tr th:nth-of-type(5) {
+    text-align: center !important;
+}
+
+.objeto-marco-legal table.table-objeto-marco-legal tr td, .condiciones-uso table.table-condiciones-uso tr td:first-of-type {
+    padding: 3% 0% !important;
+}
+
+table.table-base-juridica tr td:last-of-type {
+    width: 80% !important;
+}
+
+table.table-cookies-usamos span.tecnica{
+    color: #32cccc;
+    background-color: #32cccc10;
+    padding: 2% 7%;
+    border-radius: 30px;
+}
+
+table.table-cookies-usamos span.analitica{
+    color: #E67E22;
+    background-color: #E67E2210;
+    padding: 2% 7%;
+    border-radius: 30px;
+}
+
+table.table-cookies-usamos tr td:nth-of-type(3) {
+    width: 35% !important;
+}
+
+.gestion-cookies table.table-gestion-cookies tr td {
+    padding: 3% 0% !important;
+}
+
+.contenedor-responsable-tratamiento {
+    padding: 3%;
+    padding-top: 0% !important;
+}
+
+.responsable-tratamiento > div, .base-juridica > div, .sus-derechos > div, .cesion-terceros > div, .que-son > div, .cookies-usamos > div, .titular > div, .legislacion-aplicable > div {
+    padding: 2% !important;
+    gap: 1% !important;
+}
+
+.responsable-tratamiento .contenedor-responsable-tratamiento, .base-juridica > .contenedor-responsable-tratamiento, .sus-derechos > .contenedor-responsable-tratamiento, .cesion-terceros > .contenedor-responsable-tratamiento, .que-son .contenedor-responsable-tratamiento, .cookies-usamos .contenedor-responsable-tratamiento, .titular .contenedor-responsable-tratamiento, .legislacion-aplicable .contenedor-responsable-tratamiento{
+    padding-top: 0% !important;
+}
+
+.que-son p {
+    margin: 0% !important;
+}
+
+.grid-politica .responsable-tratamiento {grid-area: responsable;}
+.grid-politica .datos-recogemos {grid-area: datos;}
+.grid-politica .finalidad-tratamiento {grid-area: finalidad;}
+.grid-politica .base-juridica {grid-area: base-juridica;}
+.grid-politica .sus-derechos {grid-area: derechos; padding-bottom: 2% !important;}
+.grid-politica .plazo-conservacion {grid-area: plazo;}
+.grid-politica .medidas-seguridad {grid-area: medidas;}
+.grid-politica .cesion-terceros {grid-area: cesion;}
+
+.grid-politica{
+    display: grid;
+    grid-template-areas: "responsable responsable"
+                         "datos finalidad"
+                         "base-juridica base-juridica"
+                         "derechos derechos"
+                         "plazo medidas"
+                         "cesion cesion";
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2% !important;
+    row-gap: 1% !important;
+}
+
+table.table-base-juridica td {
+   vertical-align: top !important;
+}
+
+.grid-derechos .acceso {grid-area: acceso;}
+.grid-derechos .rectificacion {grid-area: rectificacion;}
+.grid-derechos .supresion {grid-area: supresion;}
+.grid-derechos .limitacion {grid-area: limitacion;}
+.grid-derechos .oposicion {grid-area: oposicion;}
+.grid-derechos .portabilidad {grid-area: portabilidad;}
+.grid-derechos .mensaje-derechos {grid-area: mensaje;}
+
+.grid-derechos {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "acceso rectificacion"
+                         "supresion limitacion"
+                         "oposicion portabilidad"
+                         "mensaje mensaje";
+    gap: 3%;
+}
+
+.grid-derechos > div
+{
+    background-color: #32cccc10;
+    border-radius: 10px;
+    margin-bottom: 3% ;
+    padding: 3% 5% !important;
+}
+
+
+.grid-derechos > div i {
+    color: #F2FCFC;
+    font-size: 1.2rem ;
+    font-weight: bolder;
+}
+
+.grid-derechos > div span {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.grid-derechos > div p {
+    margin-bottom: 0% !important;
+}
+
+.grid-derechos .icono-derechos {
+    width: 40px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #32cccc;
+    border-radius: 50%;
+}
+
+.grid-cookies .que-son {grid-area: que-son;}
+.grid-cookies .cookies-usamos {grid-area: cookies-usamos;}
+.grid-cookies .gestion-cookies {grid-area: gestion;}
+.grid-cookies .cookies-terceros {grid-area: terceros;}
+
+.grid-cookies {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "que-son que-son"
+                         "cookies-usamos cookies-usamos"
+                         "gestion terceros";
+    column-gap: 2%;
+    row-gap: 2%;
+}
+
+.cookies-usamos .info-cookies {
+    color: #32cccc;
+    background-color: #32cccc10;
+    border-radius: 10px;
+    margin-top: 3% !important;
+    padding: 2%;
+    display: flex;
+    gap: 1%;
+    font-size: 1.1rem;
+}
+
+.cookies-usamos .info-cookies p {
+    margin: 0% !important;
+}
+
+.cookies-usamos .info-cookies i {
+    font-size: 1.2rem;
+}
+
+.grid-aviso-legal .responsabilidad-enlaces i {
+    font-size: 1.9rem;
+}
+
+.grid-aviso-legal .titular {grid-area: titular;}
+.grid-aviso-legal .objeto-marco-legal {grid-area: objeto;}
+.grid-aviso-legal .condiciones-uso {grid-area: condiciones;}
+.grid-aviso-legal .propiedad-intelectual {grid-area: propiedad;}
+.grid-aviso-legal .responsabilidad-enlaces {grid-area: responsabilidad;}
+.grid-aviso-legal .legislacion-aplicable {grid-area: legislacion;}
+
+.grid-aviso-legal {
+    display: grid;
+    grid-template-areas: "titular titular"
+                         "objeto condiciones"
+                         "propiedad responsabilidad"
+                         "legislacion legislacion";
+    column-gap: 2%;
+    row-gap: 3%;
+}
+
+.titular .contenedor-responsable-tratamiento {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 2%;
+    column-gap: 2%;
+}
+
+.titular .contenedor-responsable-tratamiento > div {
+    background-color: #32cccc10;
+    border-radius: 10px;
+    padding: 3% ;
+    margin-bottom: 2% !important;
+}
+
+.titular .contenedor-responsable-tratamiento > div p.titulo {
+    color: #aaa;
+    margin: 0%;
+    margin-bottom: 1% !important;
+    font-weight: bolder;
+}
+
+.titular .contenedor-responsable-tratamiento > div p.text {
+    margin: 0%;
+    font-weight: bolder;
+}
+
+.legislacion-aplicable .reclamaciones {
+    background-color: #32cccc10;
+    border-radius: 10px;
+    color: #32cccc;
+    display: flex;
+    gap: 2%;
+    padding: 2% !important;
+}
+
+.legislacion-aplicable .reclamaciones p {
+    margin: 0%;
+}

@@ -82,7 +82,12 @@
                     </div>
                 </div>
                 <br>
-            
+                <div class="form-check mb-0 ms-2">
+                    <input class="form-check-input" type="checkbox" id="politicas-privacidad" style="border:1px solid #000;">
+                    <label class="form-check-label" for="politicas-privacidad">
+                        He leido y acepto la política de privacidad
+                    </label>
+                </div>
                 <br>
                 <div>
                     <button class="btn-primary-personal" type="submit" style="width: 100%;">Registrarse</button>

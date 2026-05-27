@@ -41,6 +41,15 @@ $(document).ready(() => {
 
             errores.push(salida)
         }
+        else if (!$('#politicas-privacidad').is(':checked')) {
+            
+            salida = {
+                type   : "danger",
+                mensaje: "Debe aceptar las políticas de privacidad"
+            }
+
+            errores.push(salida)
+        }
 
         if(errores.length > 0)
         {

@@ -1,9 +1,14 @@
 <div class="pagina-dashboard">
 
+    <h1 class="title-page">Estadística</h1>
+    <p class="description-page">Comprueba el uso de cada instalación, las categorías más usadas y los registros realizados en la web</p>
+    <br>
     <div class="grid-dashboard">
         <div class="div-dashboard grafico-reservas">
             <h3 style="margin-bottom: 5%;">Reservas por mes</h3>
-            <canvas id="grafico-reservas"></canvas>
+            <div class="chart-container">          <!-- 👈 añade este wrapper -->
+                <canvas id="grafico-reservas"></canvas>
+            </div>
         </div>
 
         <div class="div-dashboard grafico-donut">
@@ -30,7 +35,7 @@
                     <?php foreach($reservas as $key => $reserva): ?>
                         <tr>
                            <td><?= $key + 1 ?></td>
-                           <td><?= $reserva["nombre"] ?></td>
+                           <td title="<?= $reserva["nombre"] ?></td>"><?= $reserva["nombre"] ?></td>
                            <td><?= $reserva["categoria"] ?></td>
                            <td style="width: 20%;"><?= (intval($reserva["estado"]) === 0) ? "<span class='span-estado estado-activa'>Activa</span>" : "<span class='span-estado estado-baja'>Baja</span>" ?></td>
                            <td><?= $reserva["reservas"] ?></td> 

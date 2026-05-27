@@ -1,0 +1,749 @@
+CRITICAL - 2026-04-29 11:14:22 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:19:25 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:21:53 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:22:00 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:22:07 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:22:29 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:31:37 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:33:05 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:33:41 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:33:45 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:34:14 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:34:28 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:34:41 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:34:59 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:35:49 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:42:29 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:43:04 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:45:43 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:46:03 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:49:05 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:49:25 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:49:33 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:49:43 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:50:01 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-04-29 11:50:21 --> Error connecting to the database: mysqli_sql_exception: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(182): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(20): App\Models\instalacionesModel->getInstalacionesHome()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#3 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(182): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(20): App\Models\instalacionesModel->getInstalacionesHome()
+#5 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2026-04-29 11:50:21 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`, (SELECT imagen1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as imagen1
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`', [], false)
+ 3 APPPATH\Models\instalacionesModel.php(182): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Home.php(20): App\Models\instalacionesModel->getInstalacionesHome()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+ERROR - 2026-04-29 11:50:26 --> Error connecting to the database: mysqli_sql_exception: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:184
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php(184): mysqli->real_connect('localhost', 'root', Object(SensitiveParameterValue), 'reservalo2', 3306, '', 0)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#4 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(182): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(20): App\Models\instalacionesModel->getInstalacionesHome()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#8 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#10 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión in C:\Proyectos\reservalo2.0\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(392): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\Proyectos\reservalo2.0\system\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\Proyectos\reservalo2.0\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instala...', Array, false)
+#3 C:\Proyectos\reservalo2.0\app\Models\instalacionesModel.php(182): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\Proyectos\reservalo2.0\app\Controllers\Home.php(20): App\Models\instalacionesModel->getInstalacionesHome()
+#5 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(941): App\Controllers\Home->index()
+#6 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+#7 C:\Proyectos\reservalo2.0\system\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\Proyectos\reservalo2.0\index.php(79): CodeIgniter\CodeIgniter->run()
+#9 {main}
+CRITICAL - 2026-04-29 11:50:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Unable to connect to the database.
+Main connection [MySQLi]: No se puede establecer una conexión ya que el equipo de destino denegó expresamente dicha conexión
+in SYSTEMPATH\Database\BaseConnection.php on line 428.
+ 1 SYSTEMPATH\Database\BaseConnection.php(575): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query('SELECT `instalaciones`.*, `categorias1`.`nombre` as `categoria_name`, `categorias2`.`nombre` as `categoria_opc_name`, (SELECT imagen1 FROM pistas
+                            WHERE pistas.id_instalacion = instalaciones.id_instalacion
+                            ORDER BY id_pista ASC LIMIT 1) as imagen1
+FROM `instalaciones`
+LEFT JOIN `categorias` as `categorias1` ON `instalaciones`.`categoria_principal` = `categorias1`.`id_categoria`
+LEFT JOIN `categorias` as `categorias2` ON `instalaciones`.`categoria_opcional1` = `categorias2`.`id_categoria`', [], false)
+ 3 APPPATH\Models\instalacionesModel.php(182): CodeIgniter\Database\BaseBuilder->get()
+ 4 APPPATH\Controllers\Home.php(20): App\Models\instalacionesModel->getInstalacionesHome()
+ 5 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Home->index()
+ 6 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 7 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:51:05 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:51:33 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:51:42 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:51:55 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:52:02 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:52:19 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:52:39 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:53:04 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:53:11 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:53:28 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:54:38 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:55:16 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:56:10 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:56:32 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:56:45 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:56:52 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:58:09 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:58:46 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 11:59:52 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:00:09 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:00:14 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:01:08 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:01:21 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:02:26 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:02:52 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:03:23 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:04:22 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:05:24 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:06:24 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:06:45 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:06:56 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:07:22 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:07:38 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:08:01 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:09:39 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:14:40 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:17:51 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:18:36 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:18:55 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:20:17 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:20:32 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:23:51 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:26:13 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:26:43 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:34:16 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:34:38 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:36:57 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:37:51 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:43:40 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:44:00 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:45:11 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:46:08 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:46:58 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:47:47 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:47:53 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:48:14 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:53:02 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:53:45 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 12:54:30 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 13:10:01 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 13:11:20 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 13:12:52 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 13:13:51 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 13:14:17 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 13:14:36 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 13:14:49 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 13:15:38 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 13:15:50 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 13:16:01 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 13:58:20 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-04-29 14:00:37 --> ErrorException: Undefined array key "instalacion"
+in APPPATH\Controllers\Horarios.php on line 233.
+ 1 APPPATH\Controllers\Horarios.php(233): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 233)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->comprobarHorarios()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

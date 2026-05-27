@@ -186,6 +186,9 @@ $(document).ready(() => {
                     $('#modalInfoUsuario .datos-usuario-editar .info-usuario .nombre-usuario').text(response.usuario.nombre)
                     $('#modalInfoUsuario .datos-usuario-editar .info-usuario .registro-ultm-acceso').text(`Fecha Registro: ${formatearFecha(response.usuario.fecha_registro)} · Último Acceso: ${tiempoTranscurrido(response.usuario.ultimo_inicio)}`)
 
+                    $('#modalInfoUsuario .datos-usuario-editar .info-usuario .registro-movil').text(`Fecha Registro: ${formatearFecha(response.usuario.fecha_registro)}`)
+                    $('#modalInfoUsuario .datos-usuario-editar .info-usuario .ultm-acceso-movil').text(`Último Acceso: ${tiempoTranscurrido(response.usuario.ultimo_inicio)}`)
+
                     $('#modalInfoUsuario #nombre-usuario').val(response.usuario.nombre)
                     $('#modalInfoUsuario #telf-usuario').val(response.usuario.telf)
                     $('#modalInfoUsuario #email-usuario').val(response.usuario.email)

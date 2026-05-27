@@ -18,6 +18,8 @@ document.addEventListener('DOMContentLoaded', function () {
             }]
           },
           options: {
+            responsive: true,
+            maintainAspectRatio: false, 
             animations: {
               x: {
                 duration: 800,

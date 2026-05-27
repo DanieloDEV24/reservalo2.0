@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-INFO - 2026-01-19 20:48:08 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
-=======
+
 INFO - 2026-01-19 10:11:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2026-01-19 10:13:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2026-01-19 10:14:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
@@ -238,4 +236,4 @@ WHERE `excepciones_horario`.`id_tipo_horario_base` = :excepciones_horario.id_tip
 10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
 INFO - 2026-01-19 17:26:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
 INFO - 2026-01-19 17:26:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
->>>>>>> b009772f3870595a47496a607bed9cda99743fe2
+

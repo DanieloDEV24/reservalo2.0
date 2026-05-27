@@ -21,7 +21,8 @@ class Dashboard extends BaseController
             "css" => [
                 'css/instalaciones.css',
                 'css/dashboard.css',
-                'css/style.css'
+                'css/style.css', 
+                'css/responsive.css'
             ], 
 
             "js" => [

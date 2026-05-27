@@ -1542,7 +1542,7 @@ span.estado.no-disponible{
     }
 
     .dia-franjas {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     }
 }
 
@@ -1633,6 +1633,8 @@ span.estado.no-disponible{
         flex-direction: column;
         align-items: flex-start;
     }
+
+    
 }
 
 @media (max-width: 480px) {
@@ -1884,4 +1886,44 @@ span.estado.no-disponible{
     transform: translateX(-50%);
     z-index: 9999;
     width: auto;
+}
+
+#modalVerInstalacion #accordionPistas .accordion-body, #modalBorrarInstalacion #accordionBorrarPistas .accordion-body {
+  padding: 0% !important;
+}
+
+#modalVerInstalacion #accordionPistas .accordion-body .row, #modalBorrarInstalacion #accordionBorrarPistas .accordion-body .row {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+#modalBorraPista .reservas-pista {
+
+  width: 100% !important;
+  padding: 2% !important;
+}
+
+#modalBorraPista .reservas-pista > div {
+
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+}
+
+#modalBorraPista .reservas-pista p{
+  font-size: 1.1rem;
+}
+
+#modalBorraPista .reservas-pista > div div {
+
+  width: 50% !important;
+  text-align: center;
+}
+
+#modalBorraPista .reservas-pista > div div h2 {
+  font-size: 2.5rem;
+}
+
+#modalBorraPista .btns-borrado button {
+  width: 30% !important;
 }
