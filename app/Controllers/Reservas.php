@@ -555,7 +555,7 @@ class Reservas extends BaseController
 
             $pago = $reservasModel->hacerPago($data);
 
-            $id_pista = intval($reservasModel->getReservaById($id_reserva))[0]["id_pista"];
+            $id_pista = intval($reservasModel->getReservaById($id_reserva)[0]["id_pista"]);
             $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
 
             $actividad = $actividadModel->crearActividad([
@@ -593,7 +593,7 @@ class Reservas extends BaseController
             $reservasModel->setPagadas($id_reserva, 0);
             $reservasModel->deshacerPago($id_reserva);
 
-            $id_pista = intval($reservasModel->getReservaById($id_reserva))[0]["id_pista"];
+            $id_pista = intval($reservasModel->getReservaById($id_reserva)[0]["id_pista"]);
             $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
 
             $actividad = $actividadModel->crearActividad([

@@ -462,6 +462,7 @@ class reservasModel extends Model
         $builder = $db->table('reservas');
 
         $builder->select('
+        pistas.id_pista,
         pistas.nombre_pista,
         pistas.imagen1,
         pistas.capacidad_pista,
