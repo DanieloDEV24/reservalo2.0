@@ -1326,3 +1326,4 @@ body.resizing-sidebar-footer * {
 .checkbox-wrapper:has(input.task-checkbox:checked) + .checkbox-text::after {
   width: 100%;
 } 
+

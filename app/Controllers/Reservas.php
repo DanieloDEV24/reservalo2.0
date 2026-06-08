@@ -21,18 +21,39 @@ class Reservas extends BaseController
         $horariosModel = new horariosModel();
         $post  = $this->request->getPost();
 
-        if(!empty($post)){
+            if(!empty($post)){
 
             $id_pista = intval($post["pistaId"]);
             $fecha = $post["fecha"];
             $rolUsuario = intval($post["rol"]);
             $tipo_reserva = intval($post["tipo_reserva"]);
+            $completa = intval($post["completa"]);
 
 
             $infoPista = [];
             
             // Obtenemos la informacion de la pista
             $infoPista = $reservasModel->getInfoPista($id_pista, $fecha);
+            if(count($infoPista) === 0){
+                $pista = $instalacionesModel->getPistasById($id_pista);
+                $infoPista = [
+                    [
+                        "nombre_pista" => $pista[0]["nombre_pista"],
+                        "capacidad_pista" => $pista[0]["capacidad_pista"],
+                        "imagen1" => $pista[0]["imagen1"],
+                        "imagen2" => $pista[0]["imagen2"],
+                        "imagen3" => $pista[0]["imagen3"],
+                        "imagen4" => $pista[0]["imagen4"],
+                        "precio_pista" => $pista[0]["precio_pista"],
+                        "categoria" => $pista[0]["categoria"],
+                        "estado" => $pista[0]["estado"],
+                        "hora_inicio_manana" => "00:00:00",
+                        "hora_fin_manana" => "00:00:00",
+                        "hora_inicio_tarde" => "00:00:00",
+                        "hora_fin_tarde" => "00:00:00"
+                    ]
+                ];
+            }
             
             $hay_horarios = $horariosModel->getHorariosFromPista($id_pista);
 
@@ -51,7 +72,18 @@ class Reservas extends BaseController
                 $reservasAllPista = [];
             }
 
-            $reservasPista = $reservasModel->reservasById($id_pista, $fecha);
+            $reservasPista = [];
+            if($completa === 0) {
+                $reservasPista = $reservasModel->reservasById($id_pista, $fecha);
+            }
+            else {
+                $instalacion = $instalacionesModel->getPistasById($id_pista)[0]["id_instalacion"];
+                $pistas = $instalacionesModel->getPistasByInstalacion($instalacion);
+                foreach($pistas as $pista) {
+                    $reservasPista = array_merge($reservasPista, $reservasModel->reservasById($pista["id_pista"], $fecha));
+                }
+            }
+            
 
             $usuarios = [];
             if($rolUsuario === 2) {
@@ -555,7 +587,7 @@ class Reservas extends BaseController
 
             $pago = $reservasModel->hacerPago($data);
 
-            $id_pista = intval($reservasModel->getReservaById($id_reserva))[0]["id_pista"];
+            $id_pista = intval($reservasModel->getReservaById($id_reserva)[0]["id_pista"]);
             $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
 
             $actividad = $actividadModel->crearActividad([
@@ -593,7 +625,7 @@ class Reservas extends BaseController
             $reservasModel->setPagadas($id_reserva, 0);
             $reservasModel->deshacerPago($id_reserva);
 
-            $id_pista = intval($reservasModel->getReservaById($id_reserva))[0]["id_pista"];
+            $id_pista = intval($reservasModel->getReservaById($id_reserva)[0]["id_pista"]);
             $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
 
             $actividad = $actividadModel->crearActividad([
@@ -649,7 +681,7 @@ class Reservas extends BaseController
 
             $data = $post["data"];
             
-            $id_pista = intval($reservasModel->getReservaById(intval($data[0]["id_pedido"])))[0]["id_pista"];
+            $id_pista = intval($reservasModel->getReservaById(intval($data[0]["id_pedido"]))[0]["id_pista"]);
             $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
 
             $actividad = $actividadModel->crearActividad([

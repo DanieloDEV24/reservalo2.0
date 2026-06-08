@@ -463,6 +463,7 @@ class reservasModel extends Model
 
         $builder->select('
         pistas.nombre_pista,
+        pistas.id_pista,
         pistas.imagen1,
         pistas.capacidad_pista,
         pistas.precio_pista,

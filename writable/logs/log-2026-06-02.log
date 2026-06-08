@@ -1,0 +1,28 @@
+CRITICAL - 2026-06-02 13:09:21 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Reservas.php on line 558.
+ 1 APPPATH\Controllers\Reservas.php(558): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'D:\\proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 558)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->checkIn()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-02 13:10:50 --> ErrorException: Trying to access array offset on value of type int
+in APPPATH\Controllers\Reservas.php on line 558.
+ 1 APPPATH\Controllers\Reservas.php(558): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type int', 'D:\\proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 558)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->checkIn()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-02 13:11:36 --> ErrorException: Undefined array key "id_pista"
+in APPPATH\Controllers\Reservas.php on line 558.
+ 1 APPPATH\Controllers\Reservas.php(558): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_pista"', 'D:\\proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 558)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->checkIn()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-02 13:12:02 --> ErrorException: Undefined array key "id_pista"
+in APPPATH\Controllers\Reservas.php on line 558.
+ 1 APPPATH\Controllers\Reservas.php(558): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_pista"', 'D:\\proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 558)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->checkIn()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

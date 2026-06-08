@@ -152,6 +152,7 @@ class Instalaciones extends BaseController
                     'nombre_pista' => $pista->nombrePista,
                     'capacidad_pista' => $pista->capacidadPista,
                     'precio_pista' => $pista->precioPista,
+                    'completa' => ($pista->id === 'completo') ? 1 : 0,
                     'imagen1' => $imagenesGuardadas[0] ?? null,
                     'imagen2' => $imagenesGuardadas[1] ?? null,
                     'imagen3' => $imagenesGuardadas[2] ?? null,
@@ -439,7 +440,8 @@ class Instalaciones extends BaseController
                 "id_instalacion"  => $id_instalacion,
                 "nombre_pista"    => $nombre,
                 "capacidad_pista" => $capacidad,
-                "precio_pista"    => $precio,
+                "precio_pista"    => $precio, 
+                "completa"        => 0,
                 'imagen1'         => $imagenesGuardadas[0] ?? 'predefinida.png',
                 'imagen2'         => $imagenesGuardadas[1] ?? 'predefinida.png',
                 'imagen3'         => $imagenesGuardadas[2] ?? 'predefinida.png',
@@ -493,6 +495,7 @@ class Instalaciones extends BaseController
             $direccion = $post["direccion"];
 
             $instalacionAntigua = $instalaciones->getInstalacion($id);
+            $puedeCompletaAntigua = filter_var($instalacionAntigua[0]["puede_completo"], FILTER_VALIDATE_BOOLEAN);
             $noPistasAntigua = filter_var($instalacionAntigua[0]["no_pistas"], FILTER_VALIDATE_BOOLEAN);
 
             // Inicializamos array para guardar nombres de imágenes nuevas (si se suben)
@@ -531,6 +534,7 @@ class Instalaciones extends BaseController
                             "nombre_pista"    => "pista única " . $nombre,
                             "capacidad_pista" => $capacidadCompleta,
                             "precio_pista"    => $precioCompleto,
+                            "completa"        => 0,
                             "imagen1"         => $imagenesGuardadas['imagen1'],
                             "imagen2"         => $imagenesGuardadas['imagen2'],
                             "imagen3"         => $imagenesGuardadas['imagen3'],
@@ -560,6 +564,29 @@ class Instalaciones extends BaseController
                     $instalaciones->updatePista($pista[0]["id_pista"], $datos);
                 }
             }
+
+            if(!$puedeCompleta && $puedeCompletaAntigua) {
+                
+                $instalaciones->borrarPistaCompleta($id);
+            }
+            else if ($puedeCompleta && !$puedeCompletaAntigua) {
+                $pistaCompleta = [
+                    "id_instalacion"  => $id,
+                    "nombre_pista"    => "pista completa " . $nombre,
+                    "capacidad_pista" => $capacidadCompleta,
+                    "precio_pista"    => $precioCompleto,
+                    "completa"        => 1,
+                    "imagen1"         => $imagenesGuardadas['imagen1'],
+                    "imagen2"         => $imagenesGuardadas['imagen2'],
+                    "imagen3"         => $imagenesGuardadas['imagen3'],
+                    "imagen4"         => $imagenesGuardadas['imagen4'],
+                    "pista_unica"     => 0
+                ];
+
+                $instalaciones->createPistas($pistaCompleta);
+            }
+
+
 
             // Datos generales de la instalación
             $data = [

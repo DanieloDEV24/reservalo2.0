@@ -72,6 +72,27 @@
               </div>
             </div>
           </div>
+
+          <div class="row">
+                    <div style="display: flex; align-items: start; justify-content: start; gap: 2%; margin-bottom: 3%;">
+        <div class="checkbox-wrapper-4 masInstalacionesEditar">
+          <input class="inp-cbx" id="masInstalacionesEditar" type="checkbox">
+          <label class="cbx" for="masInstalacionesEditar">
+            <span><svg width="20px" height="20px"></svg></span>
+            <span>Modificar este horario en las otras instalaciones que lo tiene.</span>
+          </label>
+          <svg class="inline-svg">
+            <symbol id="check-4" viewBox="0 0 12 10">
+              <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+            </symbol>
+          </svg>
+        </div>
+        <div id="loaderInstalacionesEditar" class="loader2" style="display: none;"></div>
+        </div>
+        <div class="contenedor-instalaciones">
+
+        </div>
+          </div>
         </div>
         <!-- Cierre -->
       </div>

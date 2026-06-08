@@ -24,7 +24,7 @@
 
           <div class="contenedor-a-borrar">
             <div class="horario-a-borrar">
-              <p style="font-weight: 700;">Ya existen horarios en las fechas seleccionadas:</p>
+              <p style="font-weight: 700;" class="p-existen-horarios">Ya existen horarios en las fechas seleccionadas:</p>
               <div class="nombres-horarios-existentes">
                 <ul></ul>
               </div>

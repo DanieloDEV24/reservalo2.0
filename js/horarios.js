@@ -576,6 +576,9 @@ $(document).ready(() => {
     // los enviamos al servidor para su creación
     $(document).on('click', '#btnGuardarNuevoHorario', function (e) {
 
+        let otrasInstalaciones = [];
+        
+
         e.preventDefault();
         let data = {}; // --> Objeto donde guardamos los datos del nuevo horario
         let errores = []; // --> Array donde guardamos los errores de validacion
@@ -590,6 +593,12 @@ $(document).ready(() => {
         let fechaInicio = $('#fechaInicioHorario').val();
         let fechaFin = $('#fechaFinHorario').val();
         let horarioDistinto = $('#horarioDistinto').is(':checked');
+
+        let horariosInstalaciones = $('#sidebar .contenedor-instalaciones input[type="checkbox"]:checked').map(function() {
+            otrasInstalaciones.push({id: $(this).data('index'), nombre: $(this).data('name')})
+        });
+
+        data["otrasInstalaciones"] = otrasInstalaciones;
 
         // Creamos los objetos de las fechas de la fecha de inicio y fin
         let fechaInicioDate = new Date(fechaInicio)
@@ -812,12 +821,34 @@ $(document).ready(() => {
                         let divNombres = $('#modalHorarioExistente .nombres-horarios-existentes ul');
                         divNombres.empty();
 
-                        response.infoHorario.map(function (horario) {
+                        if (response.hasOwnProperty("infoHorario")){
+                            response.infoHorario.map(function (horario) {
 
-                            divNombres.append(`<li>${horario.nombre}</li>`)
-                        })
+                                divNombres.append(`<li>${horario.nombre}</li>`)
+                            })
+                        }
+                        else if(response.hasOwnProperty("infoHorarioOtros")){
 
-                        $('#modalHorarioExistente').show();
+                            
+                            response.infoHorarioOtros.map(function (horario) {
+                                divNombres.append(`<li>${horario.instalacion.nombre}</li>`)
+                            })
+
+                            $('.contenedor-a-borrar .p-existen-horarios').text("En las siguientes instalaciones no se ha podido establecer el horario, ya que en esa fecha existe un horario")
+
+                            $('.legend').append(`
+                                        <div class="legend-item" data-index="${response.infoHorarioOtros[0].infoHorarioBueno["id_tipo_horario"]}">
+                                            <div class="legend-color" style="background-color: ${response.infoHorarioOtros[0].infoHorarioBueno["color"]}"></div> 
+                                            <span>${response.infoHorarioOtros[0].infoHorarioBueno["nombre"]}</span>
+                                        </div>
+                            `)
+
+                            $('#modalHorarioExistente').off('hidden.bs.modal').one('hidden.bs.modal', function () {
+                            generarCalendario($('#anoActual').text());
+                        });
+                        } 
+
+                        $('#modalHorarioExistente').modal('show');
                     }
 
                                  $('#loaderNuevoHorario').hide();
@@ -1064,13 +1095,14 @@ $(document).ready(() => {
 
         let id = $(this).closest('.card-menu-horarios').data('index');
         console.log(id)
+        let instalacion = parseInt($('#instalacion').val());
 
         $('#idHorarioEditar').val(id);
 
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/getHorario`,
-            data: { id: id },
+            data: { id: id, instalacion: instalacion },
             dataType: "json",
             success: function (response) {
 
@@ -1185,6 +1217,14 @@ $(document).ready(() => {
         let horarioDistinto = $('#horarioDistintoEditar').is(':checked');
         let color = $('#scheduleColorEditar').val();
 
+        let otrasInstalaciones = [];
+
+        let horariosInstalaciones = $('#modalEditarHorario .contenedor-instalaciones input[type="checkbox"]:checked').map(function() {
+            otrasInstalaciones.push({id: $(this).data('index'), nombre: $(this).data('name')})
+        });
+
+        data["otrasInstalaciones"] = otrasInstalaciones;
+
         let fechaInicioDate = new Date(fechaInicio);
         let fechaFinDate = new Date(fechaFin);
 
@@ -1193,6 +1233,9 @@ $(document).ready(() => {
 
         let initialYear = fechaInicioDate.getFullYear();
         let finishYear = fechaFinDate.getFullYear();
+
+        let instalacion = parseInt($('.horario #instalacion'))
+        data["instalacion"] = instalacion;
 
         data["id_tipo_horario"] = $('#idHorarioEditar').val();
 
@@ -1382,11 +1425,12 @@ $(document).ready(() => {
         e.preventDefault();
 
         let id = $(this).closest('.card-menu-horarios').data('index');
+        let instalacion = parseInt($('.horario #instalacion').val());
 
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/getHorario`,
-            data: { id: id },
+            data: { id: id, instalacion: instalacion },
             dataType: "JSON",
             success: function (response) {
 
@@ -1409,11 +1453,17 @@ $(document).ready(() => {
         e.preventDefault();
 
         let id = $('#idHorarioBorrar').val();
+        let instalacion = parseInt($('.horario #instalacion').val())
+        let otrasInstalaciones = [];
+        
+        let horariosInstalaciones = $('#modalBorrarHorario .contenedor-instalaciones input[type="checkbox"]:checked').map(function() {
+            otrasInstalaciones.push({id: $(this).data('index'), nombre: $(this).data('name')})
+        });
 
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/borrarHorario`,
-            data: { id: id },
+            data: { id: id, otrasInstalaciones: otrasInstalaciones, instalacion: instalacion},
             dataType: "JSON",
             beforeSend: function () {
                 $('#loaderModalBorrar').show();
@@ -1497,6 +1547,7 @@ $(document).ready(() => {
 
 
             let idHorario = parseInt($(this).data('index'));
+            let instalacion = parseInt($('.horario #instalacion').val())
 
             let horariosSeleccionados = $('.horarios-old div').map(function() {
                 let id = parseInt($(this).data('new'))
@@ -1509,7 +1560,8 @@ $(document).ready(() => {
                 
                 const data = {
                     "horario-excepcion": $(this).data('index'),
-                    "fecha": $(this).data('day')
+                    "fecha": $(this).data('day'),
+                    "instalacion": instalacion
                 };
 
                 
@@ -1777,6 +1829,7 @@ $(document).ready(() => {
 
             cambios.push({
                 excepcion: ($('.dia-seleccionado').is('[data-exception="true"]')) ? true : false ,
+                idInstalacion: $('.horario #instalacion'),
                 fecha: fecha,
                 horarioAntiguo: idHorario,
                 horarioNuevo: nuevoHorario
@@ -1801,6 +1854,177 @@ $(document).ready(() => {
                 }
             }
         });
+    })
+
+    $(document).on('change', '#masInstalacionesCrear', function (e) {
+
+        let checked = $(this).is(':checked');
+        let idInstalacion = parseInt($('.horario #instalacion').val());
+        if(checked === true) {
+
+            $.ajax({
+                type: "POST",
+                url: `${BASE_URL}index.php/obtenerInstalacionesHorarios`,
+                data: '',
+                dataType: "JSON",
+                beforeSend: function () {
+                    $('#loaderInstalaciones').show();
+                },
+                success: function (response) {
+                    if(response.success === true) {
+
+                        $('#sidebar .contenedor-instalaciones').empty();
+
+                        response.instalaciones.map(function(instalacion) {
+                            let div = ''
+                            if(idInstalacion !== parseInt(instalacion.id_instalacion) && parseInt(instalacion.tipo_reserva) === 0) {
+                            div = $(`<div class="checkbox-wrapper-4 option-horario-instalaciones">
+          <input class="inp-cbx" id="option-horario-instalaciones-${instalacion.nombre}" type="checkbox" data-index="${instalacion.id_instalacion}" data-name="${instalacion.nombre}">
+          <label class="cbx" for="option-horario-instalaciones-${instalacion.nombre}">
+            <span><svg width="20px" height="20px"></svg></span>
+            <span>${instalacion.nombre}</span>
+          </label>
+          <svg class="inline-svg">
+            <symbol id="check-4" viewBox="0 0 12 10">
+              <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+            </symbol>
+          </svg>
+        </div>`)
+                            }
+
+                        $('#sidebar .contenedor-instalaciones').append(div);
+                        })
+                    }
+                }, 
+                complete: function () {
+                    $('#loaderInstalaciones').hide();
+                }
+            });
+        }
+        else {
+            $('#sidebar .contenedor-instalaciones').empty();
+
+        }
+    })
+
+    $(document).on('change', '#masInstalacionesEditar', function (e) {
+
+        let checked = $(this).is(':checked');
+        let idHorario = parseInt($('#idHorarioEditar').val());
+        let idInstalacion = parseInt($('.horario #instalacion').val())
+        if(checked === true) {
+
+            $.ajax({
+                type: "POST",
+                url: `${BASE_URL}index.php/obtenerInstalacionesConEseHorario`,
+                data: {horario: idHorario},
+                dataType: "JSON",
+                beforeSend: function () {
+                    $('#loaderInstalacionesEditar').show();
+                },
+                success: function (response) {
+                    if(response.success === true) {
+
+                        $('#modalEditarHorario .contenedor-instalaciones').empty();
+
+                        if(response.hayInstalaciones === true) {
+                            response.instalaciones.map(function(instalacion) {
+                                let div = ''
+                                if(idInstalacion !== parseInt(instalacion.id_instalacion)) {
+                                    div = $(`<div class="checkbox-wrapper-4 option-horario-instalaciones">
+                                        <input class="inp-cbx" id="option-horario-editar-instalaciones-${instalacion.nombre}" type="checkbox" data-index="${instalacion.id_instalacion}" data-name="${instalacion.nombre}">
+                                        <label class="cbx" for="option-horario-editar-instalaciones-${instalacion.nombre}">
+                                        <span><svg width="20px" height="20px"></svg></span>
+                                        <span>${instalacion.nombre}</span>
+                                        </label>
+                                        <svg class="inline-svg">
+                                        <symbol id="check-4" viewBox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </symbol>
+                                        </svg>
+                                    </div>`)
+                                }
+
+                                $('#modalEditarHorario .contenedor-instalaciones').append(div);
+                            })
+                        }
+                    }
+                }, 
+                complete: function () {
+                    $('#loaderInstalacionesEditar').hide();
+                }, 
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                    console.log(status);
+                    console.log(error);
+                }
+                
+            });
+        }
+        else {
+            $('#modalEditarHorario .contenedor-instalaciones').empty();
+
+        }
+    })
+
+    $(document).on('change', '#masInstalacionesBorrar', function (e) {
+
+        let checked = $(this).is(':checked');
+        let idHorario = parseInt($('#idHorarioBorrar').val());
+        let idInstalacion = parseInt($('.horario #instalacion').val())
+        if(checked === true) {
+
+            $.ajax({
+                type: "POST",
+                url: `${BASE_URL}index.php/obtenerInstalacionesConEseHorario`,
+                data: {horario: idHorario},
+                dataType: "JSON",
+                beforeSend: function () {
+                    $('#loaderInstalacionesBorrar').show();
+                },
+                success: function (response) {
+                    if(response.success === true) {
+
+                        $('#modalBorrarHorario .contenedor-instalaciones').empty();
+
+                        if(response.hayInstalaciones === true) {
+                            response.instalaciones.map(function(instalacion) {
+                                let div = ''
+                                if(idInstalacion !== parseInt(instalacion.id_instalacion)) {
+                                    div = $(`<div class="checkbox-wrapper-4 option-horario-instalaciones">
+                                        <input class="inp-cbx" id="option-horario-editar-instalaciones-${instalacion.nombre}" type="checkbox" data-index="${instalacion.id_instalacion}" data-name="${instalacion.nombre}">
+                                        <label class="cbx" for="option-horario-editar-instalaciones-${instalacion.nombre}">
+                                        <span><svg width="20px" height="20px"></svg></span>
+                                        <span>${instalacion.nombre}</span>
+                                        </label>
+                                        <svg class="inline-svg">
+                                        <symbol id="check-4" viewBox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </symbol>
+                                        </svg>
+                                    </div>`)
+                                }
+
+                                $('#modalBorrarHorario .contenedor-instalaciones').append(div);
+                            })
+                        }
+                    }
+                }, 
+                complete: function () {
+                    $('#loaderInstalacionesBorrar').hide();
+                }, 
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                    console.log(status);
+                    console.log(error);
+                }
+                
+            });
+        }
+        else {
+            $('#modalBorrarHorario .contenedor-instalaciones').empty();
+
+        }
     })
 
 
