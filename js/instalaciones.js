@@ -985,9 +985,10 @@ $(document).ready(() => {
                 // Recorremos las pistas
                 if (!noPistasChecked) {
                     pistas.map((pista) => {
-
-                        // Por cada pista creamos un accordion con sus datos
-                        let acordion = `
+                        let acordion = ''
+                        if (parseInt(pista.completa) === 0) {
+                              // Por cada pista creamos un accordion con sus datos
+                        acordion = `
                     <div class="accordion-item mt-3 accordionEditarPista" data-index="${pista.id_pista}">
                 <h2 class="accordion-header">
                     <button class="accordion-button nuevaPista collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#${pista.id_pista}" aria-expanded="true" aria-controls="${pista.id_pista}">
@@ -1029,6 +1030,9 @@ $(document).ready(() => {
                 </div>
             </div>
                     `
+                        }
+
+                      
                         // Los añadimos al modal
                         $('#accordionEditarPistas').append(acordion)
                     })
@@ -1449,7 +1453,6 @@ $(document).ready(() => {
     });
 
 
-
     // Evento que controla el switch que nos indica si se puede hacer una reserva completa o no. En el caso de que si habilita los campos de precio completo y capacidad completa
     $('#puedeCompletoEditar').on('change', function (event) {
 
@@ -1465,6 +1468,8 @@ $(document).ready(() => {
 
             $('#modalEditarInstalacion #precioCompletoEditar').prop('readonly', true); // --> Hacemos que el campo del precio completa solo se pueda leer
             $('#modalEditarInstalacion #precioCompletoEditar').css('color', '#ccc'); // --> Hacemos que el campo del precio completa sea de color #ccc para dar sensación de no editable
+
+
         }
         else {
             $('#modalEditarInstalacion #capacidadCompletoEditar').prop('readonly', false); // --> Hacemos que el campo de la capacidad completa se pueda editar
@@ -1473,6 +1478,7 @@ $(document).ready(() => {
             $('#modalEditarInstalacion #precioCompletoEditar').prop('readonly', false); // --> Hacemos que el campo del precio completo se pueda editar
             $('#modalEditarInstalacion #precioCompletoEditar').css('color', '#000'); // --> Hacemos que el campo del precio completo tenga el color #000 dando la sensación de que ya es editable
         }
+
     })
 
 
@@ -2013,7 +2019,11 @@ $(document).ready(() => {
                 let pistas = response.pistas; // --> Obtenemos las pistas
 
                 pistas.map(pista => {
-                    let accordion = `
+
+                    let accordion = '';
+
+                    if(parseInt(pista.completa) === 0){
+                                            accordion = `
                      <div class="accordion-item" data-index="${pista["id_pista"]}">
                                     <h2 class="accordion-header">
                                     <button 
@@ -2078,6 +2088,8 @@ $(document).ready(() => {
                                     </div>
                                 </div>
                     `;
+                    }
+
 
                     $('#accordionBorrarPistas').append(accordion);
                 })

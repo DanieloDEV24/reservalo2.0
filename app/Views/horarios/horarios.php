@@ -168,6 +168,25 @@
           </div>
         </div>
 
+        <div style="display: flex; align-items: start; justify-content: start; gap: 2%; margin-bottom: 3%;">
+        <div class="checkbox-wrapper-4 masInstalacionesCrear">
+          <input class="inp-cbx" id="masInstalacionesCrear" type="checkbox">
+          <label class="cbx" for="masInstalacionesCrear">
+            <span><svg width="20px" height="20px"></svg></span>
+            <span>Establecer este horario a otras instalaciones</span>
+          </label>
+          <svg class="inline-svg">
+            <symbol id="check-4" viewBox="0 0 12 10">
+              <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+            </symbol>
+          </svg>
+        </div>
+        <div id="loaderInstalaciones" class="loader2" style="display: none;"></div>
+        </div>
+        <div class="contenedor-instalaciones">
+
+        </div>
+
         <div class="button">
           <a href="#" class="btn-primary-personal" id="btnGuardarNuevoHorario">
             Crear horario
@@ -196,7 +215,7 @@
         <div class="sidebar-content">
           <div style="position: relative; min-height: 70px;" class="contenedor-loader" >
             <div id="loaderMenuHorarios" class="loader" style="display: none;"></div>
-            <div class="menu-content"></div>
+            <div class="menu-content" style="width: 100%;"></div>
           </div>
         </div>
     </div>
@@ -227,13 +246,32 @@
       <div id="loaderSidebarCambioHorario" class="loader" style="display: none;"></div>
 
       <!-- 📦 CONTENIDO REAL -->
-      <div class="sidebar-body">
+      <div class="sidebar-body" style="width: 100%;">
 
         <p class="seleccion-horario-nuevo">
           Seleccione el horario que desea establecer en dichas fechas
         </p>
 
-        <div class="contenedor-cambio-horarios-card"></div>
+        <div class="contenedor-cambio-horarios-card" style="width: 100%;"></div>
+        
+                <div style="display: flex; align-items: start; justify-content: start; gap: 2%; margin-bottom: 3%;">
+        <div class="checkbox-wrapper-4 masInstalacionesCambiar">
+          <input class="inp-cbx" id="masInstalacionesCambiar" type="checkbox" disabled>
+          <label class="cbx" for="masInstalacionesCambiar">
+            <span><svg width="20px" height="20px"></svg></span>
+            <span>Establecer este horario a otras instalaciones</span>
+          </label>
+          <svg class="inline-svg">
+            <symbol id="check-4" viewBox="0 0 12 10">
+              <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+            </symbol>
+          </svg>
+        </div>
+        <div id="loaderInstalacionesCambiar" class="loader2" style="display: none;"></div>
+        </div>
+        <div class="contenedor-instalaciones">
+
+        </div>
 
       </div>
       <!-- 🔹 Fin sidebar-body -->

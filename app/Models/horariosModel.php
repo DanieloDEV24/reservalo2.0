@@ -97,18 +97,16 @@ class horariosModel extends Model
         return $query->getResultArray();
     }
 
-    public function comprobarHorariosLegend(int $instalacion){
+    
+public function comprobarHorariosLegend(int $instalacion){
 
-        //Conexion a la base de datos
-        $db = \Config\Database::connect('BDReservalo2');
+$db = \Config\Database::connect('BDReservalo2');
 
-        //Obtenemos la tabla de horarios
-        $builder = $db->table('tipo_horario');
+    $builder = $db->table('tipo_horario');
 
-        $currentYear = Date('Y');
+    $currentYear = Date('Y');
 
-        // Creamos el horario
-        $query = $builder->distinct()
+    $query = $builder->distinct()
         ->select('tipo_horario.*')
         ->join(
             'franjas_horarias',
@@ -116,12 +114,12 @@ class horariosModel extends Model
             'inner'
         )
         ->where('franjas_horarias.id_instalacion', $instalacion)
-        ->where('tipo_horario.fecha_inicio >=', $currentYear.'-01-01')
-        ->where('tipo_horario.fecha_fin <=', $currentYear.'-12-31')
+        ->where('tipo_horario.fecha_inicio <=', $currentYear.'-12-31')
+        ->where('tipo_horario.fecha_fin >=', $currentYear.'-01-01')
         ->get();
 
-        return $query->getResultArray();
-    }
+    return $query->getResultArray();
+}
 
 
    public function comprobarHorariosSidebar(int $instalacion, string $currentYear)
@@ -149,29 +147,27 @@ class horariosModel extends Model
     }
 
 
-    public function comprobarHorariosAno(int $year, int $instalacion){
-        //Conexion a la base de datos
-        $db = \Config\Database::connect('BDReservalo2');
+public function comprobarHorariosAno(int $year, int $instalacion){
+$db = \Config\Database::connect('BDReservalo2');
 
-        //Obtenemos la tabla de horarios
-        $builder = $db->table('tipo_horario');
+    $builder = $db->table('tipo_horario');
 
-        // Buscamos los horarios de ese año e instalación
-            $query = $builder
-        ->distinct()
-        ->select('tipo_horario.id_tipo_horario, tipo_horario.nombre, tipo_horario.color, tipo_horario.sin_fecha, tipo_horario.fecha_inicio, tipo_horario.fecha_fin, franjas_horarias.id_instalacion')
+    $currentYear = Date('Y');
+
+    $query = $builder->distinct()
+        ->select('tipo_horario.*')
         ->join(
             'franjas_horarias',
             'franjas_horarias.id_tipo_horario = tipo_horario.id_tipo_horario',
             'inner'
         )
-        ->where('tipo_horario.fecha_inicio >=', $year.'-01-01')
-        ->where('tipo_horario.fecha_fin <=', $year.'-12-31')
         ->where('franjas_horarias.id_instalacion', $instalacion)
+        ->where('tipo_horario.fecha_inicio <=', $year.'-12-31')
+        ->where('tipo_horario.fecha_fin >=', $year.'-01-01')
         ->get();
 
-        return $query->getResultArray();
-    }
+    return $query->getResultArray();
+}
 
 
     public function getHorario(int $id_horario){
@@ -189,7 +185,7 @@ class horariosModel extends Model
     }
 
     
-    public function getFranjaByIdHorario(int $id_horario){
+    public function getFranjaByIdHorario(int $id_horario, int $id_instalacion){
 
         //Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
@@ -209,6 +205,7 @@ class horariosModel extends Model
                                    franjas_dias.id_dia_semana')
                          ->join('franjas_horarias', 'franjas_dias.id_franja_horaria = franjas_horarias.id_franja_horaria')
                          ->where('id_tipo_horario', $id_horario)
+                         ->where('id_instalacion', $id_instalacion)
                          ->get();
 
         return $query->getResultArray();
@@ -322,12 +319,12 @@ class horariosModel extends Model
         return true;
     }
 
-    public function getHorarioFromFechas(string $fecha_inicio, string $fecha_fin, int $id_instalacion)
-{
+    public function getHorarioFromFechas(string $fecha_inicio, string $fecha_fin, int $id_instalacion){
     $db = \Config\Database::connect('BDReservalo2');
     $builder = $db->table('tipo_horario');
 
-    $builder->select('*');
+    $builder->select('tipo_horario.*');
+    $builder->distinct();
     
     $builder->join(
             'franjas_horarias',
@@ -344,7 +341,7 @@ class horariosModel extends Model
     
 
     return $builder->get()->getResultArray();
-}
+    }
 
 
 
@@ -364,24 +361,24 @@ class horariosModel extends Model
     }
 
 
-    public function borrarExcepcion(int $id_horario) {
+    public function borrarExcepcion(int $id_horario, int $id_instalacion) {
         
-        //Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
-
-        //Obtenemos la tabla de horarios
         $builder = $db->table('excepciones_horario');
 
-        // Borramos las franjas horarias asociadas al horario
-        $builder->where('id_tipo_horario_base', $id_horario);
-        $builder->orWhere('id_tipo_horario_excepcion', $id_horario);
+        $builder->groupStart()
+                    ->where('id_tipo_horario_base', $id_horario)
+                    ->orWhere('id_tipo_horario_excepcion', $id_horario)
+                ->groupEnd()
+                ->where('id_instalacion', $id_instalacion);
+        
         $builder->delete();
 
         return true;
     }
 
 
-    public function borrarExcepcionFechaSola(string $date) {
+    public function borrarExcepcionFechaSola(string $date, int $id_instalacion) {
         //Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
 
@@ -392,6 +389,7 @@ class horariosModel extends Model
 
         $builder->where('fecha_inicio', $fecha->format('Y-m-d'));
         $builder->where('fecha_fin', $fecha->format('Y-m-d'));
+        $builder->where('id_instalacion', $id_instalacion);
         $builder->delete();
 
 
@@ -400,7 +398,7 @@ class horariosModel extends Model
 
 
 
-    public function hayExcepcionBase(int $id_horario)
+    public function hayExcepcionBase(int $id_horario, int $id_instalacion)
     {
 
         //Conexion a la base de datos
@@ -410,9 +408,10 @@ class horariosModel extends Model
         $builder = $db->table('excepciones_horario');
 
         // Hago el select con join
-        $query = $builder->distinct()->select('tipo_horario.nombre, excepciones_horario.id_tipo_horario_excepcion')
+        $query = $builder->distinct()->select('tipo_horario.nombre, tipo_horario.id_tipo_horario, excepciones_horario.id_tipo_horario_excepcion')
             ->join('tipo_horario', 'tipo_horario.id_tipo_horario = excepciones_horario.id_tipo_horario_excepcion')
             ->where('excepciones_horario.id_tipo_horario_base', $id_horario)
+            ->where('excepciones_horario.id_instalacion', $id_instalacion)
             ->get();
 
         $result = $query->getResultArray();
@@ -422,7 +421,7 @@ class horariosModel extends Model
 
 
 
-    public function hayExcepcionExcepcion(int $id_horario) {
+    public function hayExcepcionExcepcion(int $id_horario, int $id_instalacion) {
         
         //Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
@@ -433,6 +432,7 @@ class horariosModel extends Model
         // Hago el select
         $query = $builder->select()
                          ->where("id_tipo_horario_excepcion", $id_horario)
+                         ->where("id_instalacion", $id_instalacion)
                          ->get();
 
         $result = $query->getResultArray();
@@ -451,13 +451,14 @@ class horariosModel extends Model
 
         // Actualizamos el horario
         $builder->where('id_excepciones_horario', intval($data["id_excepciones_horario"]));
+        $builder->where('id_instalacion', intval($data["id_instalacion"]));
         $builder->update($data);
 
         return true;
     }
 
 
-    public function getHorariosChange(int $year) {
+    public function getHorariosChange(int $year, int $instalacion) {
         
         //Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
@@ -465,9 +466,12 @@ class horariosModel extends Model
         //Obtenemos la tabla de horarios
         $builder = $db->table('tipo_horario');
 
-        $query = $builder->select()->where('es_especial', 1)->where('sin_fecha', 1)
+        $query = $builder->select()
+                 ->join('franjas_horarias', 'tipo_horario.id_tipo_horario = franjas_horarias.id_tipo_horario')
+                 ->where('es_especial', 1)->where('sin_fecha', 1)
                  ->where('tipo_horario.fecha_inicio >=', $year.'-01-01')
                  ->where('tipo_horario.fecha_fin <=', $year.'-12-31')
+                 ->where('franjas_horarias.id_instalacion', $instalacion)
                  ->get();   
 
         $result = $query->getResultArray();
@@ -489,6 +493,7 @@ class horariosModel extends Model
         $builder->insert([
             "id_tipo_horario_base" => intval($cambios['horarioAntiguo']),
             "id_tipo_horario_excepcion" => intval($cambios['horarioNuevo']),
+            "id_instalacion" => intval($cambios["idInstalacion"]),
             "fecha_inicio" => $fecha_convertida,
             "fecha_fin"=> $fecha_convertida
 
@@ -508,16 +513,15 @@ class horariosModel extends Model
 
         $builder = $db->table('excepciones_horario');
         $builder->select('excepciones_horario.*, tipo_horario.nombre, tipo_horario.color');
-        $builder->join('tipo_horario', 'excepciones_horario.id_tipo_horario_excepcion = tipo_horario.id_tipo_horario');
-        $builder->join('franjas_horarias', 'excepciones_horario.id_tipo_horario_excepcion = franjas_horarias.id_tipo_horario');
-        $query = $builder->where('franjas_horarias.id_instalacion', $instalacion)
+        $builder->join('tipo_horario', 'tipo_horario.id_tipo_horario = excepciones_horario.id_tipo_horario_excepcion');
+        $query = $builder->where('id_instalacion', $instalacion)
         ->get();
 
         return $query->getResultArray();
     }
 
 
-    public function getHorariosChangeException(string $fecha) {
+    public function getHorariosChangeException(string $fecha, int $id_instalacion) {
         
         //Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
@@ -532,6 +536,7 @@ class horariosModel extends Model
                          ->join('tipo_horario', 'excepciones_horario.id_tipo_horario_base = tipo_horario.id_tipo_horario')
                          ->where('excepciones_horario.fecha_inicio <=', $fecha_convertida)
                          ->where('excepciones_horario.fecha_fin >=', $fecha_convertida)
+                         ->where('excepciones_horario.id_instalacion', $id_instalacion)
                          ->get();
 
         $result = $query->getResultArray();
@@ -586,6 +591,53 @@ class horariosModel extends Model
 
         $builder = $db->table('franjas_horarias');
         $builder->select()->where('id_tipo_horario', $id_tipo_horario);
+
+        return $builder->get()->getResultArray();
+    }
+
+    public function getInstalacionesByHorario(int $horario) {
+
+        $db = \Config\Database::connect('BDReservalo2');
+
+        $builder = $db->table('tipo_horario');
+
+        $builder->select('instalaciones.nombre, instalaciones.id_instalacion');
+        $builder->distinct();
+
+        $builder->join('franjas_horarias', 'franjas_horarias.id_tipo_horario = tipo_horario.id_tipo_horario');
+        $builder->join('instalaciones', 'instalaciones.id_instalacion = franjas_horarias.id_instalacion');
+
+        $builder->where('tipo_horario.id_tipo_horario', $horario);
+
+        return $builder->get()->getResultArray();
+    }
+
+    public function getFranjasByIdHorarioEInstalacion(int $id_horario, int $id_instalacion): array
+    {
+        return $this->db->table('franjas_horarias')
+            ->where('id_tipo_horario', $id_horario)
+            ->where('id_instalacion', $id_instalacion)
+            ->get()
+            ->getResultArray();
+    }
+
+    public function getHorarioBase(int $instalacion, string $fecha) {
+        
+        $db = \Config\Database::connect('BDReservalo2');
+
+        $builder = $db->table('tipo_horario');
+
+         $fecha_format = DateTime::createFromFormat('d/m/Y', $fecha);
+
+        $builder->select('tipo_horario.id_tipo_horario');
+        $builder->distinct();
+
+        $builder->join('franjas_horarias', 'franjas_horarias.id_tipo_horario = tipo_horario.id_tipo_horario');
+
+        $builder->where('franjas_horarias.id_instalacion', $instalacion);
+        $builder->where('tipo_horario.fecha_inicio <=', $fecha_format->format('Y-m-d'));
+        $builder->where('tipo_horario.fecha_fin >=', $fecha_format->format('Y-m-d'));
+        $builder->where('tipo_horario.es_especial', 0);
 
         return $builder->get()->getResultArray();
     }

@@ -25,7 +25,7 @@ $routes->get('/instalacion/(:num)', 'Instalaciones::instalacion/$1', ['filter' =
 $routes->get('/descargarTicket/(:num)', 'Reservas::descargarTicket/$1', );
 
 // HORARIOS
-$routes->get('/horario/(:num)', 'Horarios::horario/$1');
+$routes->get('/horario/(:num)', 'Horarios::horario/$1,', ['filter' => 'auth']);
 $routes->get('/misReservas', 'Reservas::misReservas');
 
 
@@ -109,3 +109,7 @@ $routes->get('/contacto', 'Contacto::contacto');
 $routes->get('/politicasPrivacidad', 'Permisos::politicaPrivacidad');
 $routes->get('/cookies', 'Permisos::cookies');
 $routes->get('/avisoLegal', 'Permisos::avisoLegal');
+
+$routes->post('/obtenerInstalacionesHorarios', 'Horarios::obtenerInstalacionesHorarios', ['filter' => 'auth']);
+$routes->post('/obtenerInstalacionesConEseHorario', 'Horarios::obtenerInstalacionesConEseHorario', ['filter' => 'auth']);
+$routes->post('/obtenerInstalacionesConEsosHorarios', 'Horarios::obtenerInstalacionesConEsosHorarios', ['filter' => 'auth']);

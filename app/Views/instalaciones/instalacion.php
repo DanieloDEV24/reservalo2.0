@@ -70,7 +70,7 @@
         <h2 class="title-page">Pistas</h1>
         <div class="container-pistas-instalacion">
             <?php foreach($pistas as $pista) : ?>
-                <div class="card-instalacion" data-index="<?=$pista["id_pista"]?>" data-sinHorario="<?= (intval($instalacion["tipo_reserva"]) === 1) ? 1 : 0 ?>" >
+                <div class="card-instalacion" data-index="<?=$pista["id_pista"]?>" data-sinHorario="<?= (intval($instalacion["tipo_reserva"]) === 1) ? 1 : 0 ?>" data-completa="<?=$pista["completa"]?>">
                     <div class="card-image" style="background: url('<?=base_url()."images/".$pista["imagen1"]?>')"></div>
                     <div class="category"> <?=$instalacion["nombre"]?> </div>
                     <div class="heading"> <?=$pista["nombre_pista"]?></div>

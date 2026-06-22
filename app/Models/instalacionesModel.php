@@ -152,8 +152,9 @@ class instalacionesModel extends Model
             ->groupBy('id_pista');
 
         $query = $builder
-            ->select('pistas.*, instalaciones.estado, r.proxima_reserva, r.reservas')
+            ->select('pistas.*, instalaciones.estado, instalaciones.id_instalacion, r.proxima_reserva, r.reservas, categorias.nombre as categoria')
             ->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion', 'inner')
+            ->join('categorias', 'categorias.id_categoria = instalaciones.categoria_principal', 'inner')
             ->join("({$subquery->getCompiledSelect()}) r", 'r.id_pista = pistas.id_pista', 'left')
             ->where('pistas.id_pista', $id_pista)
             ->get();
@@ -355,5 +356,23 @@ class instalacionesModel extends Model
         $result = $query->getResultArray();
         return $result;
     }
+
+    public function borrarPistaCompleta(int $id_instalacion) {
+        // Conexión a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Tabla a borrar
+        $builder = $db->table('pistas');
+
+        // Aplicar condición
+        $builder->where('id_instalacion', $id_instalacion)->where('completa', 1);
+
+        // Ejecutar delete
+        $builder->delete();
+
+        // Retornar true si se afectó alguna fila
+        return $db->affectedRows() > 0;
+    }
+
 
 }

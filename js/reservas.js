@@ -11,6 +11,7 @@ $(document).ready(() => {
         let pistaId = $(this).closest('.card-instalacion').data('index');
         let rolUsuario  = parseInt($("#menu-usuario").data('rol'))
         let tipoReserva = parseInt($(this).closest('.card-instalacion').data('sinhorario'))
+        let completa = parseInt($(this).closest('.card-instalacion').data('completa'))
 
         // Guardar el pistaId en el input hidden del modal
         $('#pistaId').val(pistaId);
@@ -20,7 +21,7 @@ $(document).ready(() => {
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/getInfoPistasReserva`,
-            data: { pistaId: pistaId, "fecha": fechaFormateada, rol: rolUsuario, tipo_reserva: tipoReserva },
+            data: { pistaId: pistaId, "fecha": fechaFormateada, rol: rolUsuario, tipo_reserva: tipoReserva, completa: completa },
             dataType: "json",
             success: function (response) {
 
@@ -182,11 +183,12 @@ $(document).ready(() => {
         let pista = parseInt($('#pistaId').val())
         let rolUsuario = parseInt($("#menu-usuario").data('rol'))
         let tipoReserva = parseInt($('#modalReservaPista').data('tipoReserva'))
+        let completa = parseInt($('.card-instalacion[data-index="' + pista + '"]').data('completa'))
 
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/getInfoPistasReserva`,
-            data: { "pistaId": pista, "fecha": fecha, rol: rolUsuario, tipo_reserva: tipoReserva },
+            data: { "pistaId": pista, "fecha": fecha, rol: rolUsuario, tipo_reserva: tipoReserva, completa: completa },
             dataType: "JSON",
             success: function (response) {
 

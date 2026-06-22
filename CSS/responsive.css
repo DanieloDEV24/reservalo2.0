@@ -1925,10 +1925,12 @@
     }
 
     .calendario .div-mes {
-        height: 460px !important;
+        height: 480px !important;
     }
 
 }
+
+
 
 @media screen and (max-width: 1300px) {
     .horario .legend-item {
@@ -6116,4 +6118,34 @@
     .legislacion-aplicable .reclamaciones {
         padding: 5% !important;
     }
+}
+
+@media screen and (min-width: 1350px ) {
+  .calendario .div-mes {
+    height: 480px !important;
+  }
+}
+
+@media screen and (min-width: 1500px ) {
+  .calendario .div-mes {
+    height: 500px !important;
+  }
+}
+
+@media screen and (min-width: 1600px ) {
+  .calendario .div-mes {
+    height: 520px !important;
+  }
+}
+
+@media screen and (min-width: 1700px ) {
+  .calendario .div-mes {
+    height: 550px !important;
+  }
+}
+
+@media screen and (min-width: 1800px ) {
+  .calendario .div-mes {
+    height: 570px !important;
+  }
 }

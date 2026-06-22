@@ -1,0 +1,63 @@
+CRITICAL - 2026-06-22 16:40:36 --> ErrorException: Trying to access array offset on value of type null
+in APPPATH\Controllers\Horarios.php on line 133.
+ 1 APPPATH\Controllers\Horarios.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 133)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->crearHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-22 16:44:37 --> ErrorException: Undefined array key "id_instalacion"
+in APPPATH\Controllers\Horarios.php on line 148.
+ 1 APPPATH\Controllers\Horarios.php(148): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 148)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->crearHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-22 16:49:55 --> ErrorException: Undefined array key "id_instalacion"
+in APPPATH\Controllers\Horarios.php on line 148.
+ 1 APPPATH\Controllers\Horarios.php(148): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_instalacion"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 148)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->crearHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-22 17:47:05 --> ErrorException: Undefined array key "id_tipo_horario_base"
+in APPPATH\Controllers\Horarios.php on line 398.
+ 1 APPPATH\Controllers\Horarios.php(398): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_tipo_horario_base"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 398)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->editarHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-22 17:49:32 --> ErrorException: Undefined array key "id_tipo_horario_base"
+in APPPATH\Controllers\Horarios.php on line 398.
+ 1 APPPATH\Controllers\Horarios.php(398): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_tipo_horario_base"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 398)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->editarHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-22 17:49:35 --> ErrorException: Undefined array key "id_tipo_horario_base"
+in APPPATH\Controllers\Horarios.php on line 398.
+ 1 APPPATH\Controllers\Horarios.php(398): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_tipo_horario_base"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 398)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->editarHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-22 17:54:32 --> ErrorException: Undefined array key "id_tipo_horario_base"
+in APPPATH\Controllers\Horarios.php on line 398.
+ 1 APPPATH\Controllers\Horarios.php(398): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_tipo_horario_base"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 398)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->editarHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-22 22:11:01 --> ErrorException: Undefined array key "id_tipo_horario_base"
+in APPPATH\Controllers\Horarios.php on line 398.
+ 1 APPPATH\Controllers\Horarios.php(398): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_tipo_horario_base"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 398)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->editarHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-06-22 22:22:16 --> ErrorException: Undefined array key "fecha_inicio"
+in APPPATH\Controllers\Horarios.php on line 400.
+ 1 APPPATH\Controllers\Horarios.php(400): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "fecha_inicio"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 400)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->editarHorario()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

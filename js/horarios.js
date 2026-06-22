@@ -574,91 +574,122 @@ $(document).ready(() => {
 
     // Evento en el que guardamos el nuevo horario. Para ello recibimos los datos del formulario, los validamos y si todo es correcto
     // los enviamos al servidor para su creación
-    $(document).on('click', '#btnGuardarNuevoHorario', function (e) {
+        $(document).on('click', '#btnGuardarNuevoHorario', function (e) {
 
-        e.preventDefault();
-        let data = {}; // --> Objeto donde guardamos los datos del nuevo horario
-        let errores = []; // --> Array donde guardamos los errores de validacion
+            let otrasInstalaciones = [];
+            
 
-        // Guardamos el id de la instalación a la que le asignamos el nuevo horario
-        data["instalacion"] = $('#instalacion').val()
+            e.preventDefault();
+            let data = {}; // --> Objeto donde guardamos los datos del nuevo horario
+            let errores = []; // --> Array donde guardamos los errores de validacion
 
-        // Obtenemos los datos del formulario
-        let nombre = $('#nombreHorario').val();
-        let descripcion = $('#descripcionHorario').val();
-        let horarioEspecial = ($('#horarioEspecial').is(':checked')) ? 1 : 0;
-        let fechaInicio = $('#fechaInicioHorario').val();
-        let fechaFin = $('#fechaFinHorario').val();
-        let horarioDistinto = $('#horarioDistinto').is(':checked');
+            // Guardamos el id de la instalación a la que le asignamos el nuevo horario
+            data["instalacion"] = $('#instalacion').val()
 
-        // Creamos los objetos de las fechas de la fecha de inicio y fin
-        let fechaInicioDate = new Date(fechaInicio)
-        let fechaFinDate = new Date(fechaFin)
+            // Obtenemos los datos del formulario
+            let nombre = $('#nombreHorario').val();
+            let descripcion = $('#descripcionHorario').val();
+            let horarioEspecial = ($('#horarioEspecial').is(':checked')) ? 1 : 0;
+            let fechaInicio = $('#fechaInicioHorario').val();
+            let fechaFin = $('#fechaFinHorario').val();
+            let horarioDistinto = $('#horarioDistinto').is(':checked');
 
-        // Obtenemos el año inicial y final
-        let initialYear = fechaInicioDate.getFullYear()
-        let finishYear = fechaFinDate.getFullYear();
+            let horariosInstalaciones = $('#sidebar .contenedor-instalaciones input[type="checkbox"]:checked').map(function() {
+                otrasInstalaciones.push({id: $(this).data('index'), nombre: $(this).data('name')})
+            });
 
-        // Obtenemos el año actual y el siguiente que son los años límites 
-        let currentYear = new Date().getFullYear()
-        let nextYear = (new Date().getFullYear() + 1)
+            data["otrasInstalaciones"] = JSON.stringify(otrasInstalaciones);;
 
-        let color = $('#scheduleColor').val();
-        data["color"] = color
+            // Creamos los objetos de las fechas de la fecha de inicio y fin
+            let fechaInicioDate = new Date(fechaInicio)
+            let fechaFinDate = new Date(fechaFin)
 
-        data["sin_fecha"] = 0;
+            // Obtenemos el año inicial y final
+            let initialYear = fechaInicioDate.getFullYear()
+            let finishYear = fechaFinDate.getFullYear();
 
-        // Validaciones básicas
-        if (nombre !== "" && nombre.length < 50) {
-            data["nombre"] = nombre;
-            $('#nombreHorario').removeClass('is-invalid')
-        }
-        else if (nombre.length > 50) {
-            errores.push("El nombre un máximo de 50 caracteres");
-            $('#nombreHorario').addClass('is-invalid');
-        }
-        else {
-            errores.push("Debe escribir un nombre para el horario.");
-            $('#nombreHorario').addClass('is-invalid');
-        }
+            // Obtenemos el año actual y el siguiente que son los años límites 
+            let currentYear = new Date().getFullYear()
+            let nextYear = (new Date().getFullYear() + 1)
 
-        if (descripcion !== "" && descripcion.length < 250) {
-            data["descripcion"] = descripcion;
-            $('#descripcionHorario').removeClass('is-invalid')
-        }
-        else if (descripcion.length > 250) {
-            errores.push("La descripción tiene un máximo de 250 caracteres");
-            $('#descripcionHorario').addClass('is-invalid');
-        }
-        else {
-            errores.push("Debe escribir una descripción para el horario.");
-            $('#descripcionHorario').addClass('is-invalid');
-        }
+            let color = $('#scheduleColor').val();
+            data["color"] = color
 
-        if (horarioEspecial === 0 && fechaInicio === "") {
-            errores.push("Si no es un horario especial debe seleccionar la fecha de inicio del horario.");
-            $('#fechaInicioHorario').addClass('is-invalid')
-            $('#fechaFinHorario').removeClass('is-invalid')
-        }
-        else if (horarioEspecial === 0 && fechaFin === "") {
-            errores.push("Si no es un horario especial debe seleccionar la fecha de fin del horario.");
-            $('#fechaInicioHorario').removeClass('is-invalid')
-            $('#fechaFinHorario').addClass('is-invalid')
-        }
-        else if (horarioEspecial === 1) {
+            data["sin_fecha"] = 0;
 
-            if (fechaInicio !== "" && fechaFin === "") {
-                errores.push("Si ha seleccionado una fecha de inicio, debe seleccionar también una fecha de fin.");
+            // Validaciones básicas
+            if (nombre !== "" && nombre.length < 50) {
+                data["nombre"] = nombre;
+                $('#nombreHorario').removeClass('is-invalid')
+            }
+            else if (nombre.length > 50) {
+                errores.push("El nombre un máximo de 50 caracteres");
+                $('#nombreHorario').addClass('is-invalid');
+            }
+            else {
+                errores.push("Debe escribir un nombre para el horario.");
+                $('#nombreHorario').addClass('is-invalid');
+            }
+
+            if (descripcion !== "" && descripcion.length < 250) {
+                data["descripcion"] = descripcion;
+                $('#descripcionHorario').removeClass('is-invalid')
+            }
+            else if (descripcion.length > 250) {
+                errores.push("La descripción tiene un máximo de 250 caracteres");
+                $('#descripcionHorario').addClass('is-invalid');
+            }
+            else {
+                errores.push("Debe escribir una descripción para el horario.");
+                $('#descripcionHorario').addClass('is-invalid');
+            }
+
+            if (horarioEspecial === 0 && fechaInicio === "") {
+                errores.push("Si no es un horario especial debe seleccionar la fecha de inicio del horario.");
+                $('#fechaInicioHorario').addClass('is-invalid')
+                $('#fechaFinHorario').removeClass('is-invalid')
+            }
+            else if (horarioEspecial === 0 && fechaFin === "") {
+                errores.push("Si no es un horario especial debe seleccionar la fecha de fin del horario.");
                 $('#fechaInicioHorario').removeClass('is-invalid')
                 $('#fechaFinHorario').addClass('is-invalid')
             }
-            else if (fechaInicio === "" && fechaFin !== "") {
-                errores.push("Si ha seleccionado una fecha de fin, debe seleccionar también una fecha de inicio.");
-                $('#fechaInicioHorario').removeClass('is-invalid')
-                $('#fechaFinHorario').addClass('is-invalid')
-            }
-            else if (fechaInicio === "" && fechaFin === "") {
-                data["sin_fecha"] = 1
+            else if (horarioEspecial === 1) {
+
+                if (fechaInicio !== "" && fechaFin === "") {
+                    errores.push("Si ha seleccionado una fecha de inicio, debe seleccionar también una fecha de fin.");
+                    $('#fechaInicioHorario').removeClass('is-invalid')
+                    $('#fechaFinHorario').addClass('is-invalid')
+                }
+                else if (fechaInicio === "" && fechaFin !== "") {
+                    errores.push("Si ha seleccionado una fecha de fin, debe seleccionar también una fecha de inicio.");
+                    $('#fechaInicioHorario').removeClass('is-invalid')
+                    $('#fechaFinHorario').addClass('is-invalid')
+                }
+                else if (fechaInicio === "" && fechaFin === "") {
+                    data["sin_fecha"] = 1
+                }
+                else if (fechaInicioDate > fechaFinDate) {
+                    errores.push("La fecha de inicio no puede ser mayor que la final");
+                    $('#fechaInicioHorario').addClass('is-invalid')
+                    $('#fechaFinHorario').addClass('is-invalid')
+                }
+                else if ((initialYear < currentYear) || (finishYear < currentYear)) {
+                    errores.push("No se puede crear un horario para años anteriores al " + currentYear + ".");
+                    $('#fechaInicioHorario').addClass('is-invalid')
+                    $('#fechaFinHorario').removeClass('is-invalid')
+                }
+                else if ((finishYear > nextYear) || (initialYear > nextYear)) {
+                    errores.push("No se puede crear un horario para años anteriores al " + nextYear + ".");
+                    $('#fechaInicioHorario').removeClass('is-invalid')
+                    $('#fechaFinHorario').addClass('is-invalid')
+                }
+                else {
+                    data['fecha_inicio'] = fechaInicio,
+                        data['fecha_fin'] = fechaFin
+                    $('#fechaInicioHorario').removeClass('is-invalid')
+                    $('#fechaFinHorario').removeClass('is-invalid')
+                }
             }
             else if (fechaInicioDate > fechaFinDate) {
                 errores.push("La fecha de inicio no puede ser mayor que la final");
@@ -681,270 +712,270 @@ $(document).ready(() => {
                 $('#fechaInicioHorario').removeClass('is-invalid')
                 $('#fechaFinHorario').removeClass('is-invalid')
             }
-        }
-        else if (fechaInicioDate > fechaFinDate) {
-            errores.push("La fecha de inicio no puede ser mayor que la final");
-            $('#fechaInicioHorario').addClass('is-invalid')
-            $('#fechaFinHorario').addClass('is-invalid')
-        }
-        else if ((initialYear < currentYear) || (finishYear < currentYear)) {
-            errores.push("No se puede crear un horario para años anteriores al " + currentYear + ".");
-            $('#fechaInicioHorario').addClass('is-invalid')
-            $('#fechaFinHorario').removeClass('is-invalid')
-        }
-        else if ((finishYear > nextYear) || (initialYear > nextYear)) {
-            errores.push("No se puede crear un horario para años anteriores al " + nextYear + ".");
-            $('#fechaInicioHorario').removeClass('is-invalid')
-            $('#fechaFinHorario').addClass('is-invalid')
-        }
-        else {
-            data['fecha_inicio'] = fechaInicio,
-                data['fecha_fin'] = fechaFin
-            $('#fechaInicioHorario').removeClass('is-invalid')
-            $('#fechaFinHorario').removeClass('is-invalid')
-        }
 
-        // ✅ Validación de horarios (incluye orden de horas)
-        if (!validarHorarios(horarioDistinto, errores, data)) {
-            console.error("Errores en horarios detectados");
-        }
+            // ✅ Validación de horarios (incluye orden de horas)
+            if (!validarHorarios(horarioDistinto, errores, data)) {
+                console.error("Errores en horarios detectados");
+            }
 
-        data["horario_especial"] = horarioEspecial;
+            data["horario_especial"] = horarioEspecial;
 
-        $('.erroresHorario').empty();
-        // Si no hay errores, mostramos datos
-        if (errores.length === 0) {
-            // console.log(data);
-            $.ajax({
-                type: "POST",
-                url: `${BASE_URL}index.php/crearHorario`,
-                data: { data: data },
-                dataType: "json",
-                // Cargamos el loader y desactivamos los botones e inputs
-                beforeSend: function () {
-                    $('#loaderNuevoHorario').show();
-                    $('#btnGuardarNuevoHorario').addClass('cargando')
-                    $('#sidebar input').addClass('cargando')
-                    $('#sidebar textarea').addClass('cargando')
-                },
-                // Mostramos la respuesta del servidor
-                success: function (response) {
+            $('.erroresHorario').empty();
+            // Si no hay errores, mostramos datos
+            if (errores.length === 0) {
+                // console.log(data);
+                $.ajax({
+                    type: "POST",
+                    url: `${BASE_URL}index.php/crearHorario`,
+                    data: { data: data },
+                    dataType: "json",
+                    // Cargamos el loader y desactivamos los botones e inputs
+                    beforeSend: function () {
+                        $('#loaderNuevoHorario').show();
+                        $('#btnGuardarNuevoHorario').addClass('cargando')
+                        $('#sidebar input').addClass('cargando')
+                        $('#sidebar textarea').addClass('cargando')
+                    },
+                    // Mostramos la respuesta del servidor
+                    success: function (response) {
 
-                    // Si todo ha ido bien
-                    if (response.success === true) {
+                        // Si todo ha ido bien
+                        if (response.success === true) {
 
-                        // Cerramos el loader y desactivamos las clases de carga 
+                            // Cerramos el loader y desactivamos las clases de carga 
+                            $('#loaderNuevoHorario').hide();
+                            $('#btnGuardarNuevoHorario').removeClass('cargando')
+                            $('#sidebar input').removeClass('cargando')
+                            $('#sidebar textarea').removeClass('cargando')
+
+                            console.log(response)
+
+                            // Generamos el calendario
+                            generarCalendario($('#anoActual').text());
+
+                            // Añadimos la leyenda al nuevo horario
+                            $('.legend').append(`
+                                            <div class="legend-item" data-index="${response.infoHorario["id_tipo_horario"]}">
+                                                <div class="legend-color" style="background-color: ${response.infoHorario["color"]}"></div> 
+                                                <span>${response.infoHorario["nombre"]}</span>
+                                            </div>
+                            `)
+
+                            // Añadimos el card del nuevo horario del menu de horarios
+                            if (parseInt(response.infoHorario["es_especial"]) === 0) {
+                                $('#horarios-normailes-menu').append(`
+                                <div data-index="${response.infoHorario["id_tipo_horario"]}" style="background-color: ${response.infoHorario["color"]}20; color: ${response.infoHorario["color"]}; border: 2px solid ${response.infoHorario["color"]}90" class="card-menu-horarios">
+                                    <span>${response.infoHorario["nombre"]}</span>
+                                    <div class="fechas">
+                                        ${new Date(response.infoHorario["fecha_inicio"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+                                    }
+                                        -
+                                        ${new Date(response.infoHorario["fecha_fin"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+                                    }
+                                    </div>
+
+                                    <div class="descripcion">
+                                        ${response.infoHorario["descripcion"]}
+                                    </div>
+
+                                    <div class="dropdown opciones-horario" style="max-width: 200px;">
+                                        <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: ${response.infoHorario["color"]};"><i class="bi bi-three-dots-vertical"></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                            <li><a href="" class="btnBorrarHorario delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            `)
+                            }
+                            else if (parseInt(response.infoHorario["es_especial"]) === 1) {
+                                $('#horarios-especiales-menu').append(`
+                                <div data-index="${response.infoHorario["id_tipo_horario"]}" style="background-color: ${response.infoHorario["color"]}20; color: ${response.infoHorario["color"]}; border: 2px solid ${response.infoHorario["color"]}90" class="card-menu-horarios">
+                                    <span>${response.infoHorario["nombre"]}</span>
+                                    <div class="fechas">
+                                        ${new Date(response.infoHorario["fecha_inicio"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+                                    }
+                                        -
+                                        ${new Date(response.infoHorario["fecha_fin"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
+                                    }
+                                    </div>
+
+                                    <div class="descripcion">
+                                        ${response.infoHorario["descripcion"]}
+                                    </div>
+
+                                    <div class="dropdown opciones-horario" style="max-width: 200px;">
+                                        <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: ${response.infoHorario["color"]};"><i class="bi bi-three-dots-vertical"></i></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
+                                            <li><a href="" class="btnBorrarHorario delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            `)
+                            }
+
+                            $('#sidebar').removeClass('active');
+                        }
+                        else {
+                            let divNombres = $('#modalHorarioExistente .nombres-horarios-existentes ul');
+                            divNombres.empty();
+
+                            if (response.hasOwnProperty("infoHorario")){
+                                response.infoHorario.map(function (horario) {
+
+                                    divNombres.append(`<li>${horario.nombre}</li>`)
+                                })
+                            }
+                            else if(response.hasOwnProperty("infoHorarioOtros")){
+
+                                
+                                response.infoHorarioOtros.map(function (horario) {
+                                    divNombres.append(`<li>${horario.instalacion.nombre}</li>`)
+                                })
+
+                                $('.contenedor-a-borrar .p-existen-horarios').text("En las siguientes instalaciones no se ha podido establecer el horario, ya que en esa fecha existe un horario")
+
+                                $('.legend').append(`
+                                            <div class="legend-item" data-index="${response.infoHorarioOtros[0].infoHorarioBueno["id_tipo_horario"]}">
+                                                <div class="legend-color" style="background-color: ${response.infoHorarioOtros[0].infoHorarioBueno["color"]}"></div> 
+                                                <span>${response.infoHorarioOtros[0].infoHorarioBueno["nombre"]}</span>
+                                            </div>
+                                `)
+
+                                $('#modalHorarioExistente').off('hidden.bs.modal').one('hidden.bs.modal', function () {
+                                generarCalendario($('#anoActual').text());
+                            });
+                            } 
+
+                            $('#modalHorarioExistente').modal('show');
+                        }
+
+                                    $('#loaderNuevoHorario').hide();
+                        $('#btnGuardarNuevoHorario').removeClass('cargando')
+                        $('#sidebar input').removeClass('cargando')
+                        $('#sidebar textarea').removeClass('cargando')
+
+                        $('#nombreHorario').val('');
+                        $('#descripcionHorario').val('');
+                        $('#fechaInicioHorario').val('');
+                        $('#fechaFinHorario').val('');
+                        $('#horarioDistinto').prop('checked', false);
+                        $('#horarioEspecial').prop('checked', false);
+
+                        $('#horaInicioMananaHorario').val('');
+                        $('#horaFinMananaHorario').val('');
+                        $('#horaInicioTardeHorario').val('');
+                        $('#horaFinTardeHorario').val('');
+
+                        $('#horaInicioMananaLunesHorario').val('');
+                        $('#horaFinMananaLunesHorario').val('');
+                        $('#horaInicioTardeLunesHorario').val('');
+                        $('#horaFinTardeLunesHorario').val('');
+
+                        $('#horaInicioMananaMartesHorario').val('');
+                        $('#horaFinMananaMartesHorario').val('');
+                        $('#horaInicioTardeMartesHorario').val('');
+                        $('#horaFinTardeMartesHorario').val('');
+                        
+                        $('#horaInicioMananaMiercolesHorario').val('');
+                        $('#horaFinMananaMiercolesHorario').val('');
+                        $('#horaInicioTardeMiercolesHorario').val('');
+                        $('#horaFinTardeMiercolesHorario').val('');
+
+                        $('#horaInicioMananaJuevesHorario').val('');
+                        $('#horaFinMananaJuevesHorario').val('');
+                        $('#horaInicioTardeJuevesHorario').val('');
+                        $('#horaFinTardeJuevesHorario').val('');
+
+                        $('#horaInicioMananaViernesHorario').val('');
+                        $('#horaFinMananaViernesHorario').val('');
+                        $('#horaInicioTardeViernesHorario').val('');
+                        $('#horaFinTardeViernesHorario').val('');
+
+                        $('#horaInicioMananaSabadoHorario').val('');
+                        $('#horaFinMananaSabadoHorario').val('');
+                        $('#horaInicioTardeSabadoHorario').val('');
+                        $('#horaFinTardeSabadoHorario').val('');
+
+                        $('#horaInicioMananaDomingoHorario').val('');
+                        $('#horaFinMananaDomingoHorario').val('');
+                        $('#horaInicioTardeDomingoHorario').val('');
+                        $('#horaFinTardeDomingoHorario').val('');
+                        
+                        $('#scheduleColor').val('#000000')
+                    },
+                    complete: function () {
                         $('#loaderNuevoHorario').hide();
                         $('#btnGuardarNuevoHorario').removeClass('cargando')
                         $('#sidebar input').removeClass('cargando')
                         $('#sidebar textarea').removeClass('cargando')
 
-                        console.log(response)
+                        $('#nombreHorario').val('');
+                        $('#descripcionHorario').val('');
+                        $('#fechaInicioHorario').val('');
+                        $('#fechaFinHorario').val('');
+                        $('#horarioDistinto').prop('checked', false);
+                        $('#horarioEspecial').prop('checked', false);
 
-                        // Generamos el calendario
-                        generarCalendario($('#anoActual').text());
+                        $('#horaInicioMananaHorario').val('');
+                        $('#horaFinMananaHorario').val('');
+                        $('#horaInicioTardeHorario').val('');
+                        $('#horaFinTardeHorario').val('');
 
-                        // Añadimos la leyenda al nuevo horario
-                        $('.legend').append(`
-                                        <div class="legend-item" data-index="${response.infoHorario["id_tipo_horario"]}">
-                                            <div class="legend-color" style="background-color: ${response.infoHorario["color"]}"></div> 
-                                            <span>${response.infoHorario["nombre"]}</span>
-                                        </div>
-                        `)
+                        $('#horaInicioMananaLunesHorario').val('');
+                        $('#horaFinMananaLunesHorario').val('');
+                        $('#horaInicioTardeLunesHorario').val('');
+                        $('#horaFinTardeLunesHorario').val('');
 
-                        // Añadimos el card del nuevo horario del menu de horarios
-                        if (parseInt(response.infoHorario["es_especial"]) === 0) {
-                            $('#horarios-normailes-menu').append(`
-                            <div data-index="${response.infoHorario["id_tipo_horario"]}" style="background-color: ${response.infoHorario["color"]}20; color: ${response.infoHorario["color"]}; border: 2px solid ${response.infoHorario["color"]}90" class="card-menu-horarios">
-                                <span>${response.infoHorario["nombre"]}</span>
-                                <div class="fechas">
-                                    ${new Date(response.infoHorario["fecha_inicio"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
-                                }
-                                    -
-                                    ${new Date(response.infoHorario["fecha_fin"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
-                                }
-                                </div>
+                        $('#horaInicioMananaMartesHorario').val('');
+                        $('#horaFinMananaMartesHorario').val('');
+                        $('#horaInicioTardeMartesHorario').val('');
+                        $('#horaFinTardeMartesHorario').val('');
+                        
+                        $('#horaInicioMananaMiercolesHorario').val('');
+                        $('#horaFinMananaMiercolesHorario').val('');
+                        $('#horaInicioTardeMiercolesHorario').val('');
+                        $('#horaFinTardeMiercolesHorario').val('');
 
-                                <div class="descripcion">
-                                    ${response.infoHorario["descripcion"]}
-                                </div>
+                        $('#horaInicioMananaJuevesHorario').val('');
+                        $('#horaFinMananaJuevesHorario').val('');
+                        $('#horaInicioTardeJuevesHorario').val('');
+                        $('#horaFinTardeJuevesHorario').val('');
 
-                                <div class="dropdown opciones-horario" style="max-width: 200px;">
-                                    <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: ${response.infoHorario["color"]};"><i class="bi bi-three-dots-vertical"></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
-                                        <li><a href="" class="btnBorrarHorario delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        `)
-                        }
-                        else if (parseInt(response.infoHorario["es_especial"]) === 1) {
-                            $('#horarios-especiales-menu').append(`
-                            <div data-index="${response.infoHorario["id_tipo_horario"]}" style="background-color: ${response.infoHorario["color"]}20; color: ${response.infoHorario["color"]}; border: 2px solid ${response.infoHorario["color"]}90" class="card-menu-horarios">
-                                <span>${response.infoHorario["nombre"]}</span>
-                                <div class="fechas">
-                                    ${new Date(response.infoHorario["fecha_inicio"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
-                                }
-                                    -
-                                    ${new Date(response.infoHorario["fecha_fin"]).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })
-                                }
-                                </div>
+                        $('#horaInicioMananaViernesHorario').val('');
+                        $('#horaFinMananaViernesHorario').val('');
+                        $('#horaInicioTardeViernesHorario').val('');
+                        $('#horaFinTardeViernesHorario').val('');
 
-                                <div class="descripcion">
-                                    ${response.infoHorario["descripcion"]}
-                                </div>
+                        $('#horaInicioMananaSabadoHorario').val('');
+                        $('#horaFinMananaSabadoHorario').val('');
+                        $('#horaInicioTardeSabadoHorario').val('');
+                        $('#horaFinTardeSabadoHorario').val('');
 
-                                <div class="dropdown opciones-horario" style="max-width: 200px;">
-                                    <a href="#" class="opciones-horario-link dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: ${response.infoHorario["color"]};"><i class="bi bi-three-dots-vertical"></i></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="" class="btnEditarHorario"><i class="bi bi-pencil"></i>&nbsp;&nbsp;Editar</a></li>
-                                        <li><a href="" class="btnBorrarHorario delete-option"><i class="bi bi-trash3"></i>&nbsp;&nbsp;Eliminar</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        `)
-                        }
-
-                        $('#sidebar').removeClass('active');
+                        $('#horaInicioMananaDomingoHorario').val('');
+                        $('#horaFinMananaDomingoHorario').val('');
+                        $('#horaInicioTardeDomingoHorario').val('');
+                        $('#horaFinTardeDomingoHorario').val('');
+                        
+                        $('#scheduleColor').val('#000000')
                     }
-                    else {
-                        let divNombres = $('#modalHorarioExistente .nombres-horarios-existentes ul');
-                        divNombres.empty();
+                });
+            }
+            else {
 
-                        response.infoHorario.map(function (horario) {
+                let lista = $(`<ul></ul>`)
+                errores.map(function (error) {
+                    let elemento = $(`<li>${error}</li>`);
+                    lista.append(elemento)
+                })
 
-                            divNombres.append(`<li>${horario.nombre}</li>`)
-                        })
+                let alertBox = $(`<div class="alert alert-danger mb-0" role="alert"></div>`);
+                alertBox.append(lista)
 
-                        $('#modalHorarioExistente').show();
-                    }
-
-                                 $('#loaderNuevoHorario').hide();
-                    $('#btnGuardarNuevoHorario').removeClass('cargando')
-                    $('#sidebar input').removeClass('cargando')
-                    $('#sidebar textarea').removeClass('cargando')
-
-                    $('#nombreHorario').val('');
-                    $('#descripcionHorario').val('');
-                    $('#fechaInicioHorario').val('');
-                    $('#fechaFinHorario').val('');
-                    $('#horarioDistinto').prop('checked', false);
-                    $('#horarioEspecial').prop('checked', false);
-
-                    $('#horaInicioMananaHorario').val('');
-                    $('#horaFinMananaHorario').val('');
-                    $('#horaInicioTardeHorario').val('');
-                    $('#horaFinTardeHorario').val('');
-
-                    $('#horaInicioMananaLunesHorario').val('');
-                    $('#horaFinMananaLunesHorario').val('');
-                    $('#horaInicioTardeLunesHorario').val('');
-                    $('#horaFinTardeLunesHorario').val('');
-
-                    $('#horaInicioMananaMartesHorario').val('');
-                    $('#horaFinMananaMartesHorario').val('');
-                    $('#horaInicioTardeMartesHorario').val('');
-                    $('#horaFinTardeMartesHorario').val('');
-                    
-                    $('#horaInicioMananaMiercolesHorario').val('');
-                    $('#horaFinMananaMiercolesHorario').val('');
-                    $('#horaInicioTardeMiercolesHorario').val('');
-                    $('#horaFinTardeMiercolesHorario').val('');
-
-                    $('#horaInicioMananaJuevesHorario').val('');
-                    $('#horaFinMananaJuevesHorario').val('');
-                    $('#horaInicioTardeJuevesHorario').val('');
-                    $('#horaFinTardeJuevesHorario').val('');
-
-                    $('#horaInicioMananaViernesHorario').val('');
-                    $('#horaFinMananaViernesHorario').val('');
-                    $('#horaInicioTardeViernesHorario').val('');
-                    $('#horaFinTardeViernesHorario').val('');
-
-                    $('#horaInicioMananaSabadoHorario').val('');
-                    $('#horaFinMananaSabadoHorario').val('');
-                    $('#horaInicioTardeSabadoHorario').val('');
-                    $('#horaFinTardeSabadoHorario').val('');
-
-                    $('#horaInicioMananaDomingoHorario').val('');
-                    $('#horaFinMananaDomingoHorario').val('');
-                    $('#horaInicioTardeDomingoHorario').val('');
-                    $('#horaFinTardeDomingoHorario').val('');
-                    
-                    $('#scheduleColor').val('#000000')
-                },
-                complete: function () {
-                    $('#loaderNuevoHorario').hide();
-                    $('#btnGuardarNuevoHorario').removeClass('cargando')
-                    $('#sidebar input').removeClass('cargando')
-                    $('#sidebar textarea').removeClass('cargando')
-
-                    $('#nombreHorario').val('');
-                    $('#descripcionHorario').val('');
-                    $('#fechaInicioHorario').val('');
-                    $('#fechaFinHorario').val('');
-                    $('#horarioDistinto').prop('checked', false);
-                    $('#horarioEspecial').prop('checked', false);
-
-                    $('#horaInicioMananaHorario').val('');
-                    $('#horaFinMananaHorario').val('');
-                    $('#horaInicioTardeHorario').val('');
-                    $('#horaFinTardeHorario').val('');
-
-                    $('#horaInicioMananaLunesHorario').val('');
-                    $('#horaFinMananaLunesHorario').val('');
-                    $('#horaInicioTardeLunesHorario').val('');
-                    $('#horaFinTardeLunesHorario').val('');
-
-                    $('#horaInicioMananaMartesHorario').val('');
-                    $('#horaFinMananaMartesHorario').val('');
-                    $('#horaInicioTardeMartesHorario').val('');
-                    $('#horaFinTardeMartesHorario').val('');
-                    
-                    $('#horaInicioMananaMiercolesHorario').val('');
-                    $('#horaFinMananaMiercolesHorario').val('');
-                    $('#horaInicioTardeMiercolesHorario').val('');
-                    $('#horaFinTardeMiercolesHorario').val('');
-
-                    $('#horaInicioMananaJuevesHorario').val('');
-                    $('#horaFinMananaJuevesHorario').val('');
-                    $('#horaInicioTardeJuevesHorario').val('');
-                    $('#horaFinTardeJuevesHorario').val('');
-
-                    $('#horaInicioMananaViernesHorario').val('');
-                    $('#horaFinMananaViernesHorario').val('');
-                    $('#horaInicioTardeViernesHorario').val('');
-                    $('#horaFinTardeViernesHorario').val('');
-
-                    $('#horaInicioMananaSabadoHorario').val('');
-                    $('#horaFinMananaSabadoHorario').val('');
-                    $('#horaInicioTardeSabadoHorario').val('');
-                    $('#horaFinTardeSabadoHorario').val('');
-
-                    $('#horaInicioMananaDomingoHorario').val('');
-                    $('#horaFinMananaDomingoHorario').val('');
-                    $('#horaInicioTardeDomingoHorario').val('');
-                    $('#horaFinTardeDomingoHorario').val('');
-                    
-                    $('#scheduleColor').val('#000000')
-                }
-            });
-        }
-        else {
-
-            let lista = $(`<ul></ul>`)
-            errores.map(function (error) {
-                let elemento = $(`<li>${error}</li>`);
-                lista.append(elemento)
-            })
-
-            let alertBox = $(`<div class="alert alert-danger mb-0" role="alert"></div>`);
-            alertBox.append(lista)
-
-            $('.erroresHorario').append(alertBox);
-        }
-    });
+                $('.erroresHorario').append(alertBox);
+            }
+        });
 
     // Evento para actualizar el valor del color seleccionado en la creación de un nuevo horario
     $(document).on('change', '#scheduleColor', function () {
@@ -1064,13 +1095,14 @@ $(document).ready(() => {
 
         let id = $(this).closest('.card-menu-horarios').data('index');
         console.log(id)
+        let instalacion = parseInt($('#instalacion').val());
 
         $('#idHorarioEditar').val(id);
 
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/getHorario`,
-            data: { id: id },
+            data: { id: id, instalacion: instalacion },
             dataType: "json",
             success: function (response) {
 
@@ -1185,6 +1217,14 @@ $(document).ready(() => {
         let horarioDistinto = $('#horarioDistintoEditar').is(':checked');
         let color = $('#scheduleColorEditar').val();
 
+        let otrasInstalaciones = [];
+
+        let horariosInstalaciones = $('#modalEditarHorario .contenedor-instalaciones input[type="checkbox"]:checked').map(function() {
+            otrasInstalaciones.push({id: $(this).data('index'), nombre: $(this).data('name')})
+        });
+
+        data["otrasInstalaciones"] = JSON.stringify(otrasInstalaciones);
+
         let fechaInicioDate = new Date(fechaInicio);
         let fechaFinDate = new Date(fechaFin);
 
@@ -1193,6 +1233,9 @@ $(document).ready(() => {
 
         let initialYear = fechaInicioDate.getFullYear();
         let finishYear = fechaFinDate.getFullYear();
+
+        let instalacion = parseInt($('.horario #instalacion'))
+        data["instalacion"] = instalacion;
 
         data["id_tipo_horario"] = $('#idHorarioEditar').val();
 
@@ -1382,11 +1425,12 @@ $(document).ready(() => {
         e.preventDefault();
 
         let id = $(this).closest('.card-menu-horarios').data('index');
+        let instalacion = parseInt($('.horario #instalacion').val());
 
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/getHorario`,
-            data: { id: id },
+            data: { id: id, instalacion: instalacion },
             dataType: "JSON",
             success: function (response) {
 
@@ -1409,11 +1453,17 @@ $(document).ready(() => {
         e.preventDefault();
 
         let id = $('#idHorarioBorrar').val();
+        let instalacion = parseInt($('.horario #instalacion').val())
+        let otrasInstalaciones = [];
+        
+        let horariosInstalaciones = $('#modalBorrarHorario .contenedor-instalaciones input[type="checkbox"]:checked').map(function() {
+            otrasInstalaciones.push({id: $(this).data('index'), nombre: $(this).data('name')})
+        });
 
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/borrarHorario`,
-            data: { id: id },
+            data: { id: id, otrasInstalaciones: JSON.stringify(otrasInstalaciones), instalacion: instalacion},
             dataType: "JSON",
             beforeSend: function () {
                 $('#loaderModalBorrar').show();
@@ -1459,6 +1509,9 @@ $(document).ready(() => {
         $('#sidebar-cambio-horario').removeClass('active'); // --> Desactivamos el menú lateral de nuevo horario
         $('#calendario').removeClass('seleccion-dia')
         $(`.numero-dia.dia-seleccionado`).removeClass('dia-seleccionado');
+        $('.horarios-old').empty()
+        $('.horarios-new').empty()
+
 
         unlockScroll(); // ← aquí
     })
@@ -1474,138 +1527,132 @@ $(document).ready(() => {
         /* =========================
            🟠 CASO: EXCEPCIÓN
            ========================= */
-        if ($(this).data('exception') === true) {
+if ($(this).data('exception') === true) {
 
-            if ($('.dia-seleccionado:not([data-exception])').length > 0) {
+    if ($('.dia-seleccionado:not([data-exception])').length > 0) {
+        $('#modalCambioHorario #mensaje-dia-sin-horario').text('El día seleccionado no tiene un horario normal asignado.')
+        $('#modalCambioHorario #mensaje-opciones').text(' Puedes continuar con el cambio de horario o cerrarlo para asignar un horario normal a este día.')
+        $('#modalCambioHorario').show();
+        return;
+    }
 
-                $('#modalCambioHorario #mensaje-dia-sin-horario').text('El día seleccionado no tiene un horario normal asignado.')
-                $('#modalCambioHorario #mensaje-opciones').text(' Puedes continuar con el cambio de horario o cerrarlo para asignar un horario normal a este día.')
-                $('#modalCambioHorario').show();
-            return;
+    $(this).addClass('dia-seleccionado');
+
+    if($('.dia-seleccionado[data-exception="true"]').length === 1) 
+        $('#sidebar-cambio-horario .contenedor-cambio-horarios-card').empty(); 
+
+    $('#sidebar-cambio-horario p.seleccion-horario-nuevo')
+        .text('¿Desea volver al siguiente horario? :');
+
+    let idHorario = parseInt($(this).data('index'));
+    let idBase = parseInt($(this).data('base'));
+    let instalacion = parseInt($('.horario #instalacion').val());
+
+    // ¿Ya existe la excepción en leyenda izquierda?
+    let horariosSeleccionados = $('.horarios-old div').map(function() {
+        return parseInt($(this).data('new'));
+    }).get();
+    let existeLeyendaOld = horariosSeleccionados.includes(idHorario);
+
+    // ¿Ya se procesó este horario base?
+    let basesYaProcesadas = $('.horarios-new div').map(function() {
+        return parseInt($(this).data('new'));
+    }).get();
+    let existeBase = basesYaProcesadas.includes(idBase);
+
+    if (!existeBase) {
+
+        const data = {
+            "horario-excepcion": $(this).data('index'),
+            "fecha": $(this).data('day'),
+            "instalacion": instalacion
+        };
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/getHorariosChangeException`,
+            data: { data },
+            dataType: "JSON",
+            beforeSend: function () {
+                $('#loaderSidebarCambioHorario').show();
+            },
+            success: function (response) {
+
+                if (!response.success) return;
+
+                $('#loaderSidebarCambioHorario').hide();
+
+                const idHorarioBase = response.excepcion.id_tipo_horario_base;
+                const $contenedor = $('#sidebar-cambio-horario .contenedor-cambio-horarios-card');
+                const e = response.excepcion;
+
+                const num2 = $(`.numero-dia.dia-seleccionado[data-name="${response.horario_excepcion.nombre}"]`).length;
+
+                // Div leyenda izquierda — solo si la excepción no existe aún
+                if (!existeLeyendaOld) {
+                    const div = `
+                        <div data-name="${response.horario_excepcion.nombre}" data-color="${response.horario_excepcion.color}" data-new="${response.horario_excepcion.id_tipo_horario}" data-excepcion ="${true}"
+                            style="width:40px;height:40px;border-radius:5px;
+                                    background-color:${response.horario_excepcion.color}50;color:${response.horario_excepcion.color};
+                                    border:1px solid ${response.horario_excepcion.color};
+                                    display:flex;align-items:center;justify-content:center;">
+                            <span>${num2}</span>
+                        </div>
+                    `;
+                    $('.horarios-old').append(div);
+                }
+
+                // Div leyenda derecha — uno por cada horario base distinto
+                let horariosExistentes = $('.horarios-new div').map(function() {
+                    return $(this).data('new');
+                }).get();
+                let existeLeyenda2 = horariosExistentes.includes(parseInt(response.excepcion.id_tipo_horario));
+
+                if (!existeLeyenda2) {
+                    const div2 = `
+                        <div data-name="${response.excepcion.nombre}" data-color="${response.excepcion.color}" data-new="${response.excepcion.id_tipo_horario}"
+                            style="width:40px;height:40px;border-radius:5px;
+                                    background-color:${response.excepcion.color};color:${response.excepcion.color};
+                                    border:1px solid ${response.excepcion.color};
+                                    display:flex;align-items:center;justify-content:center;">
+                            <span>${num2}</span>
+                        </div>
+                    `;
+
+                    const cardHorario = `
+                        <div data-index="${idHorarioBase}" data-color="${e.color}"
+                            style="background-color:${e.color}20;color:${e.color};
+                                    border:2px solid ${e.color}90"
+                            class="card-menu-horarios">
+                            <span>${e.nombre}</span>
+                            <div class="descripcion">${e.descripcion}</div>
+                        </div>
+                    `;
+
+                    $contenedor.append(cardHorario);
+                    $('.horarios-new').append(div2);
+                }
+            },
+            complete: function () {
+                $('#loaderSidebarCambioHorario').hide();
             }
+        });
 
+    } else {
+        // Solo actualizar contador
+        const num2 = $(`.numero-dia.dia-seleccionado[data-name="${$(this).data('name')}"]`).length;
+        $(`.horarios-old div[data-name="${$(this).data('name')}"] span`).text(num2);
+    }
 
+    $('#sidebar-cambio-horario').addClass('active');
+    $('#calendario, #contenedor-loader-horario').addClass('seleccion-dia');
+    $('#masInstalacionesCambiar').prop('disabled', false);
+    $('#btn-guardar-cambio-seleccion').removeClass('btn-primary-personal-disabled');
 
+    lockScroll();
 
-            $(this).addClass('dia-seleccionado');
-
-            if($('.dia-seleccionado[data-exception="true"]').length === 1) 
-                $('#sidebar-cambio-horario .contenedor-cambio-horarios-card').empty(); 
-
-            $('#sidebar-cambio-horario p.seleccion-horario-nuevo')
-                .text('¿Desea volver al siguiente horario? :');
-
-
-            let idHorario = parseInt($(this).data('index'));
-
-            let horariosSeleccionados = $('.horarios-old div').map(function() {
-                let id = parseInt($(this).data('new'))
-                return id
-            }).get()
-
-            let existeLeyenda = horariosSeleccionados.includes(idHorario);
-
-            if (!existeLeyenda) {
-                
-                const data = {
-                    "horario-excepcion": $(this).data('index'),
-                    "fecha": $(this).data('day')
-                };
-
-                
-
-                $.ajax({
-                    type: "POST",
-                    url: `${BASE_URL}index.php/getHorariosChangeException`,
-                    data: { data },
-                    dataType: "JSON",
-                    beforeSend: function () {
-                        $('#loaderSidebarCambioHorario').show();
-                    },
-                    success: function (response) {
-
-                        if (!response.success) return;
-
-                        $('#loaderSidebarCambioHorario').hide();
-
-                        const idHorarioBase = response.excepcion.id_tipo_horario_base;
-                        const $contenedor = $('#sidebar-cambio-horario .contenedor-cambio-horarios-card');
-
-                            const e = response.excepcion;
-
-                            let cardHorario = ''
-
-                        // }
-
-                        const num2 = $(`.numero-dia.dia-seleccionado[data-name="${response.horario_excepcion.nombre}"]`).length;
-                        const div = `
-                                <div data-name="${response.horario_excepcion.nombre}" data-color="${response.horario_excepcion.color}" data-new="${response.horario_excepcion.id_tipo_horario}"
-                                    style="width:40px;height:40px;border-radius:5px;
-                                            background-color:${response.horario_excepcion.color}50;color:${response.horario_excepcion.color};
-                                            border:1px solid ${response.horario_excepcion.color};
-                                            display:flex;align-items:center;justify-content:center;">
-                                    <span>${num2}</span>
-                                </div>
-                        `;
-
-                        let horariosExistentes = $('.horarios-new div').map(function(cardHorario) {
-                            return $(this).data('new')
-                        }).get()
-
-                        let existeLeyenda2 = horariosExistentes.includes(parseInt(response.excepcion.id_tipo_horario));
-
-                        let div2 = ''
-                        if(!existeLeyenda2) {
-                            div2 = `
-                                    <div data-name="${response.excepcion.nombre}" data-color="${response.excepcion.color}" data-new="${response.excepcion.id_tipo_horario}"
-                                        style="width:40px;height:40px;border-radius:5px;
-                                                background-color:${response.excepcion.color};color:${response.excepcion.color};
-                                                border:1px solid ${response.excepcion.color};
-                                                display:flex;align-items:center;justify-content:center;">
-                                        <span>${num2}</span>
-                                    </div>
-                            `;
-
-
-                            cardHorario = `
-                                <div data-index="${idHorarioBase}" data-color="${e.color}"
-                                    style="background-color:${e.color}20;color:${e.color};
-                                            border:2px solid ${e.color}90"
-                                    class="card-menu-horarios">
-
-                                    <span>${e.nombre}</span>
-                                    <div class="descripcion">${e.descripcion}</div>
-                                </div>
-                            `;
-                        }
-                            
-                            $('.horarios-old').append(div);
-
-                            if(!existeLeyenda2) {
-                                $contenedor.append(cardHorario);
-                                $('.horarios-new').append(div2);
-                            }
-                    }, 
-                    complete: function () {
-                        $('#loaderSidebarCambioHorario').hide();
-                    }
-                    });
-            }
-            else {
-                const num2 = $(`.numero-dia.dia-seleccionado[data-name="${$(this).data('name')}"]`).length;
-                $(`.horarios-old div[data-name="${$(this).data('name')}"] span`).text(num2);
-            }
-            
-            
-
-            $('#sidebar-cambio-horario').addClass('active');
-            $('#calendario, #contenedor-loader-horario').addClass('seleccion-dia');
-            $('#btn-guardar-cambio-seleccion').removeClass('btn-primary-personal-disabled');
-
-            lockScroll(); // ← aquí
-
-            return; // ⛔ NO continúa con la lógica normal
-        }
+    return; // ⛔ NO continúa con la lógica normal
+}
 
         if($(this).data('index') === "") {
             return;
@@ -1642,7 +1689,7 @@ $(document).ready(() => {
            num = $(`.numero-dia.dia-seleccionado[data-name="${nombreHorario}"]`).length;
 
             div = `
-            <div data-name="${nombreHorario}" data-color="${colorFondo}"
+            <div data-name="${nombreHorario}" data-color="${colorFondo}" data-excepcion ="${false}"
                  style="width:40px;height:40px;border-radius:5px;
                         background-color:${colorFondo}50;color:${colorFondo};
                         border:1px solid ${colorFondo};
@@ -1678,7 +1725,7 @@ $(document).ready(() => {
             $.ajax({
                 type: "POST",
                 url: `${BASE_URL}index.php/getHorariosChange`,
-                data: { year: $('#anoActual').text() },
+                data: { year: $('#anoActual').text(), instalacion: parseInt($('.horario #instalacion').val()) },
                 dataType: "json",
                 beforeSend: function () {
                     $('#loaderSidebarCambioHorario').show();
@@ -1728,6 +1775,8 @@ $(document).ready(() => {
         let div = $(`<div data-color="${colorFondo}" data-new="${idNuevoHorario}" style="width: 40px; height: 40px; border-radius: 5px; background-color: ${colorFondo}"></div>`)
 
         $('.horarios-new').append(div)
+        
+        $('#masInstalacionesCambiar').prop('disabled', false);
         $('#btn-guardar-cambio-seleccion').removeClass('btn-primary-personal-disabled');
     })
 
@@ -1752,6 +1801,7 @@ $(document).ready(() => {
             $('#contenedor-loader-horario').removeClass('seleccion-dia')
             $('.horarios-old').empty();
             $('.horarios-new').empty();
+            $('#masInstalacionesCambiar').prop('disabled', true);
             $('#btn-guardar-cambio-seleccion').addClass('btn-primary-personal-disabled');
         }
 
@@ -1760,47 +1810,316 @@ $(document).ready(() => {
     })
 
 
+let cambios = []
+let otrasInstalaciones = []
+$(document).on('click', '#btn-guardar-cambio-seleccion', function (e) {
+    e.preventDefault();
 
-    $(document).on('click', '#btn-guardar-cambio-seleccion', function (e) {
-        e.preventDefault();
+    console.log('Guardar cambios de selección de días');
 
-        console.log('Guardar cambios de selección de días');
+    if ($(this).hasClass('btn-primary-personal-disabled')) return;
 
-        if ($(this).hasClass('btn-primary-personal-disabled')) return;
+    let esExcepcion = false;
+    let horariosInstalaciones = $('#sidebar-cambio-horario .contenedor-instalaciones input[type="checkbox"]:checked').map(function() {
+        otrasInstalaciones.push({id: $(this).data('index'), nombre: $(this).data('name')})
+    });
 
-        let cambios = []
+    $('.dia-seleccionado').map(function (i, diaSeleccionado) {
+        esExcepcion = $(diaSeleccionado).attr('data-exception') === 'true';
+        let fecha = $(diaSeleccionado).data('day');
+        let idHorario = $(diaSeleccionado).data('index');
+        let nuevoHorario;
 
-        $('.dia-seleccionado').map(function (i, diaSeleccionado) {
-            let fecha = $(diaSeleccionado).data('day');
-            let idHorario = $(diaSeleccionado).data('index');
-            let nuevoHorario = $('.horarios-new div').attr('data-new');
+        if (esExcepcion) {
+            // Buscar el horario de retorno correspondiente al base de este día
+            let idBase = $(diaSeleccionado).data('base');
+            nuevoHorario = $(`.horarios-new div[data-new="${idBase}"]`).attr('data-new');
+        } else {
+            nuevoHorario = $('.horarios-new div').attr('data-new');
+        }
 
-            cambios.push({
-                excepcion: ($('.dia-seleccionado').is('[data-exception="true"]')) ? true : false ,
-                fecha: fecha,
-                horarioAntiguo: idHorario,
-                horarioNuevo: nuevoHorario
-            });
-        })
-
-        $.ajax({
-            type: "POST",
-            url: `${BASE_URL}index.php/cambiarHorariosSeleccionados`,
-            data: { cambios: cambios },
-            dataType: "JSON",
-            success: function (response) {
-                if (response.success === true) {
-                    generarCalendario($('#anoActual').text());
-                    $('#sidebar-cambio-horario').removeClass('active');
-                    $('#calendario').removeClass('seleccion-dia')
-                    $('#contenedor-loader-horario').removeClass('seleccion-dia')
-                    $('.dia-seleccionado').removeClass('dia-seleccionado')
-                    $('.horarios-old').empty();
-                    $('.horarios-new').empty();
-                    $('#btn-guardar-cambio-seleccion').addClass('btn-primary-personal-disabled');
-                }
-            }
+        cambios.push({
+            excepcion: esExcepcion ? true : false,
+            idInstalacion: $('.horario #instalacion').val(),
+            fecha: fecha,
+            horarioAntiguo: idHorario,
+            horarioNuevo: nuevoHorario
         });
+
+        esExcepcion = false;
+    })
+
+    $.ajax({
+        type: "POST",
+        url: `${BASE_URL}index.php/cambiarHorariosSeleccionados`,
+        data: { cambios: cambios, otrasInstalaciones: JSON.stringify(otrasInstalaciones) },
+        dataType: "JSON",
+        success: function (response) {
+            if (response.success === true) {
+                generarCalendario($('#anoActual').text());
+                $('#sidebar-cambio-horario').removeClass('active');
+                $('#calendario').removeClass('seleccion-dia')
+                $('#contenedor-loader-horario').removeClass('seleccion-dia')
+                $('.dia-seleccionado').removeClass('dia-seleccionado')
+                $('.horarios-old').empty();
+                $('.horarios-new').empty();
+
+                $('#masInstalacionesCambiar').prop('checked', false).prop('disabled', true);
+                $('#sidebar-cambio-horario .contenedor-instalaciones').empty();
+                $('#btn-guardar-cambio-seleccion').addClass('btn-primary-personal-disabled');
+
+                cambios = []
+            }
+        }
+    });
+})
+
+    $(document).on('change', '#masInstalacionesCrear', function (e) {
+
+        let checked = $(this).is(':checked');
+        let idInstalacion = parseInt($('.horario #instalacion').val());
+        if(checked === true) {
+
+            $.ajax({
+                type: "POST",
+                url: `${BASE_URL}index.php/obtenerInstalacionesHorarios`,
+                data: '',
+                dataType: "JSON",
+                beforeSend: function () {
+                    $('#loaderInstalaciones').show();
+                },
+                success: function (response) {
+                    if(response.success === true) {
+
+                        $('#sidebar .contenedor-instalaciones').empty();
+
+                        response.instalaciones.map(function(instalacion) {
+                            let div = ''
+                            if(idInstalacion !== parseInt(instalacion.id_instalacion) && parseInt(instalacion.tipo_reserva) === 0) {
+                            div = $(`<div class="checkbox-wrapper-4 option-horario-instalaciones">
+          <input class="inp-cbx" id="option-horario-instalaciones-${instalacion.nombre}" type="checkbox" data-index="${instalacion.id_instalacion}" data-name="${instalacion.nombre}">
+          <label class="cbx" for="option-horario-instalaciones-${instalacion.nombre}">
+            <span><svg width="20px" height="20px"></svg></span>
+            <span>${instalacion.nombre}</span>
+          </label>
+          <svg class="inline-svg">
+            <symbol id="check-4" viewBox="0 0 12 10">
+              <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+            </symbol>
+          </svg>
+        </div>`)
+                            }
+
+                        $('#sidebar .contenedor-instalaciones').append(div);
+                        })
+                    }
+                }, 
+                complete: function () {
+                    $('#loaderInstalaciones').hide();
+                }
+            });
+        }
+        else {
+            $('#sidebar .contenedor-instalaciones').empty();
+
+        }
+    })
+
+    $(document).on('change', '#masInstalacionesEditar', function (e) {
+
+        let checked = $(this).is(':checked');
+        let idHorario = parseInt($('#idHorarioEditar').val());
+        let idInstalacion = parseInt($('.horario #instalacion').val())
+        if(checked === true) {
+
+            $.ajax({
+                type: "POST",
+                url: `${BASE_URL}index.php/obtenerInstalacionesConEseHorario`,
+                data: {horario: idHorario},
+                dataType: "JSON",
+                beforeSend: function () {
+                    $('#loaderInstalacionesEditar').show();
+                },
+                success: function (response) {
+                    if(response.success === true) {
+
+                        $('#modalEditarHorario .contenedor-instalaciones').empty();
+
+                        if(response.hayInstalaciones === true) {
+                            response.instalaciones.map(function(instalacion) {
+                                let div = ''
+                                if(idInstalacion !== parseInt(instalacion.id_instalacion)) {
+                                    div = $(`<div class="checkbox-wrapper-4 option-horario-instalaciones">
+                                        <input class="inp-cbx" id="option-horario-editar-instalaciones-${instalacion.nombre}" type="checkbox" data-index="${instalacion.id_instalacion}" data-name="${instalacion.nombre}">
+                                        <label class="cbx" for="option-horario-editar-instalaciones-${instalacion.nombre}">
+                                        <span><svg width="20px" height="20px"></svg></span>
+                                        <span>${instalacion.nombre}</span>
+                                        </label>
+                                        <svg class="inline-svg">
+                                        <symbol id="check-4" viewBox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </symbol>
+                                        </svg>
+                                    </div>`)
+                                }
+
+                                $('#modalEditarHorario .contenedor-instalaciones').append(div);
+                            })
+                        }
+                    }
+                }, 
+                complete: function () {
+                    $('#loaderInstalacionesEditar').hide();
+                }, 
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                    console.log(status);
+                    console.log(error);
+                }
+                
+            });
+        }
+        else {
+            $('#modalEditarHorario .contenedor-instalaciones').empty();
+
+        }
+    })
+
+    $(document).on('change', '#masInstalacionesBorrar', function (e) {
+
+        let checked = $(this).is(':checked');
+        let idHorario = parseInt($('#idHorarioBorrar').val());
+        let idInstalacion = parseInt($('.horario #instalacion').val())
+        if(checked === true) {
+
+            $.ajax({
+                type: "POST",
+                url: `${BASE_URL}index.php/obtenerInstalacionesConEseHorario`,
+                data: {horario: idHorario},
+                dataType: "JSON",
+                beforeSend: function () {
+                    $('#loaderInstalacionesBorrar').show();
+                },
+                success: function (response) {
+                    if(response.success === true) {
+
+                        $('#modalBorrarHorario .contenedor-instalaciones').empty();
+
+                        if(response.hayInstalaciones === true) {
+                            response.instalaciones.map(function(instalacion) {
+                                let div = ''
+                                if(idInstalacion !== parseInt(instalacion.id_instalacion)) {
+                                    div = $(`<div class="checkbox-wrapper-4 option-horario-instalaciones">
+                                        <input class="inp-cbx" id="option-horario-editar-instalaciones-${instalacion.nombre}" type="checkbox" data-index="${instalacion.id_instalacion}" data-name="${instalacion.nombre}">
+                                        <label class="cbx" for="option-horario-editar-instalaciones-${instalacion.nombre}">
+                                        <span><svg width="20px" height="20px"></svg></span>
+                                        <span>${instalacion.nombre}</span>
+                                        </label>
+                                        <svg class="inline-svg">
+                                        <symbol id="check-4" viewBox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </symbol>
+                                        </svg>
+                                    </div>`)
+                                }
+
+                                $('#modalBorrarHorario .contenedor-instalaciones').append(div);
+                            })
+                        }
+                    }
+                }, 
+                complete: function () {
+                    $('#loaderInstalacionesBorrar').hide();
+                }, 
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                    console.log(status);
+                    console.log(error);
+                }
+                
+            });
+        }
+        else {
+            $('#modalBorrarHorario .contenedor-instalaciones').empty();
+
+        }
+    })
+
+    $(document).on('change', '#masInstalacionesCambiar', function (e) {
+
+        let checked = $(this).is(':checked');
+        let horarios = []
+
+        if($('#sidebar-cambio-horario .horarios-old div').eq(0).data('excepcion') == true) {
+            horarios = $('#sidebar-cambio-horario .horarios-old div').map(function() {
+                return $(this).data('new')
+            }).get();    
+        } 
+        else {
+            horarios = $('#sidebar-cambio-horario .horarios-new div').map(function() {
+                return $(this).data('new')
+            }).get();
+        }
+
+        
+        let idInstalacion = parseInt($('.horario #instalacion').val())
+        if(checked === true) {
+
+            $.ajax({
+                type: "POST",
+                url: `${BASE_URL}index.php/obtenerInstalacionesConEsosHorarios`,
+                data: {horarios: horarios},
+                dataType: "JSON",
+                beforeSend: function () {
+                    $('#loaderInstalacionesCambiar').show();
+                },
+                success: function (response) {
+                    if(response.success === true) {
+
+                        $('#sidebar-cambio-horario .contenedor-instalaciones').empty();
+
+                        if(response.hayInstalaciones === true) {
+                            response.instalaciones.map(function(instalacion) {
+                                let div = ''
+                                instalacion.map(function(elem){
+                                    if(idInstalacion !== parseInt(elem.id_instalacion)) {
+                                    div = $(`<div class="checkbox-wrapper-4 option-horario-instalaciones">
+                                        <input class="inp-cbx" id="option-horario-cambiar-instalaciones-${elem.nombre}" type="checkbox" data-index="${elem.id_instalacion}" data-name="${elem.nombre}">
+                                        <label class="cbx" for="option-horario-cambiar-instalaciones-${elem.nombre}">
+                                        <span><svg width="20px" height="20px"></svg></span>
+                                        <span>${elem.nombre}</span>
+                                        </label>
+                                        <svg class="inline-svg">
+                                        <symbol id="check-4" viewBox="0 0 12 10">
+                                            <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
+                                        </symbol>
+                                        </svg>
+                                    </div>`)
+                                }
+
+                                $('#sidebar-cambio-horario .contenedor-instalaciones').append(div);
+                                })
+
+                            })
+                        }
+                    }
+                }, 
+                complete: function () {
+                    $('#loaderInstalacionesCambiar').hide();
+                }, 
+                error: function (xhr, status, error) {
+                    console.log(xhr.responseText);
+                    console.log(status);
+                    console.log(error);
+                }
+                
+            });
+        }
+        else {
+            $('#sidebar-cambio-horario .contenedor-instalaciones').empty();
+
+        }
+        console.log(cambios)
     })
 
 
@@ -1884,6 +2203,7 @@ $(document).ready(() => {
                         let colorFondo = '';
                         let nombre = ''
                         let idHorario = ''
+                        let idHorarioBase = '';
                         let hayExcepcion = false;
 
                         if (excepciones && Array.isArray(excepciones) && excepciones.length > 0) {
@@ -1898,6 +2218,7 @@ $(document).ready(() => {
                                     colorFondo = excepcion.color;
                                     nombre = excepcion.nombre;
                                     idHorario = excepcion.id_tipo_horario_excepcion;
+                                    idHorarioBase = excepcion.id_tipo_horario_base;
                                     hayExcepcion = true;
                                 }
                             })
@@ -1919,6 +2240,7 @@ $(document).ready(() => {
                                         colorFondo = color;
                                         nombre = horario.nombre
                                         idHorario = horario.id_tipo_horario;
+                                        idHorarioBase = horario.id_tipo_horario;
                                     }
                                 }
                             })
@@ -1927,7 +2249,7 @@ $(document).ready(() => {
 
 
                         return `
-<div data-color="${colorFondo}" data-name="${(nombre !== '') ? nombre : ''}" data-index= "${(idHorario !== '') ? idHorario : ''}" ${(hayExcepcion) ? 'data-exception="true"' : ''}
+<div data-color="${colorFondo}" data-name="${(nombre !== '') ? nombre : ''}" data-index= "${(idHorario !== '') ? idHorario : ''}" data-base="${idHorarioBase}" ${(hayExcepcion) ? 'data-exception="true"' : ''}
 
   title="${(nombre !== '') ? nombre : ''}"
   data-day="${dia.getDate()}/${dia.getMonth() + 1}/${dia.getFullYear()}"
@@ -2456,11 +2778,6 @@ window.sidebarFooterResizer = new SidebarFooterResizer({
 });
 
 // Limpiar cuando se cierra el sidebar (opcional)
-$(document).on('click', '#btnCerraSidebarCambio', function() {
-    // El resizer sigue activo, solo se oculta el sidebar
-    // Si quieres resetear la altura al cerrar, descomenta:
-    // window.sidebarFooterResizer.setHeight(200);
-});
 
 
 (function () {
