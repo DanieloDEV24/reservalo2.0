@@ -130,7 +130,7 @@ $(document).ready(() => {
 
                             response.usuarios.map(u => {
 
-                                if (parseInt(u.id_rol) === 1) {
+                                if (parseInt(u.id_rol) === 1 && parseInt(u.usuario_baja) === 0) {
                                     select.append(`<option value="${u.id_usuario}">${u.nombre} - ${u.email} - ${u.telf}</option>`)
                                 }
                             })
@@ -277,7 +277,7 @@ $(document).ready(() => {
 
                     response.usuarios.map(u => {
 
-                        if (parseInt(u.id_rol) === 1) {
+                        if (parseInt(u.id_rol) === 1 && parseInt(u.usuario_baja) === 0) {
                             select.append(`<option value="${u.id_usuario}">${u.nombre} - ${u.email} - ${u.telf}</option>`)
                         }
                     })

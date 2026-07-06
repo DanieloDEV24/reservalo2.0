@@ -331,3 +331,4 @@
 <?=$modalBorrar?>
 <?=$modalHorarioExistente?>
 <?=$modalCambioHorario?>
+<?= $modalSinFechaHorario ?>

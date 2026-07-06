@@ -283,6 +283,13 @@
       if (fechaDia < hoy) {
         dia.classList.add('disabled');
       }
+      
+      let dentro7dias = new Date();
+      dentro7dias.setDate(hoy.getDate() + 7)
+
+      if(fechaDia > dentro7dias) {
+        dia.classList.add('disabled');
+      }
       // NO agregamos addEventListener aquí - se manejará con jQuery
 
       calendarioDias.appendChild(dia);
@@ -312,6 +319,18 @@
         dia.dataset.fecha = `${year}-${month}-${day}`;
 
         // NO agregamos addEventListener aquí - se manejará con jQuery
+
+        // Deshabilitar días pasados
+        if (fechaDia < hoy) {
+          dia.classList.add('disabled');
+        }
+
+        let dentro7dias = new Date();
+        dentro7dias.setDate(hoy.getDate() + 7)
+
+        if(fechaDia > dentro7dias) {
+          dia.classList.add('disabled');
+        }
       }
 
       calendarioDias.appendChild(dia);

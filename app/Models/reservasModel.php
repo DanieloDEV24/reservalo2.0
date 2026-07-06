@@ -258,6 +258,47 @@ class reservasModel extends Model
         return $query->getResultArray();
     }
 
+    public function getFullReservasFromPedidoAnular(int $id_pedido, string $hora_inicio)
+    {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal 'pedido'
+        $builder = $db->table('pedido');
+
+        // Seleccionamos los campos que necesitamos
+        $builder->select('
+            reservas.fecha AS fecha_reserva,
+            reservas.hora_inicio,
+            reservas.hora_final,
+            pistas.imagen1,
+            pistas.capacidad_pista,
+            pistas.nombre_pista,
+            pistas.precio_pista,
+            instalaciones.nombre,
+            instalaciones.direccion,
+            instalaciones.material,
+            instalaciones.iluminacion,
+            instalaciones.tipo_reserva,
+            categorias.nombre AS categoria
+        ');
+
+        // Hacemos los joins necesarios
+        $builder->join('reservas', 'reservas.id_pedido = pedido.id_pedido');
+        $builder->join('pistas', 'pistas.id_pista = reservas.id_pista');
+        $builder->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion');
+        $builder->join('categorias', 'categorias.id_categoria = instalaciones.categoria_principal');
+
+        $builder->where('reservas.id_pedido', $id_pedido);
+        $builder->where('reservas.hora_inicio', $hora_inicio.":00");
+
+        $builder->orderBy('reservas.fecha');
+
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+
     public function getPedidoFromId(int $id_pedido)
     {
 

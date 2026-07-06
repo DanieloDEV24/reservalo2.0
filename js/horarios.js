@@ -1523,11 +1523,15 @@ $(document).ready(() => {
 
         if ($(this).text() === '') return;
         
-
         /* =========================
            🟠 CASO: EXCEPCIÓN
            ========================= */
 if ($(this).data('exception') === true) {
+
+    if($(this).data('sinfecha') === false || $(this).data('sinfecha') === 'false') {
+        $('#modalSinFechaHorario').show();
+        return; 
+    }
 
     if ($('.dia-seleccionado:not([data-exception])').length > 0) {
         $('#modalCambioHorario #mensaje-dia-sin-horario').text('El día seleccionado no tiene un horario normal asignado.')
@@ -2205,6 +2209,7 @@ $(document).on('click', '#btn-guardar-cambio-seleccion', function (e) {
                         let idHorario = ''
                         let idHorarioBase = '';
                         let hayExcepcion = false;
+                        let sinFecha = 0
 
                         if (excepciones && Array.isArray(excepciones) && excepciones.length > 0) {
                             excepciones.forEach(function (excepcion) {
@@ -2220,6 +2225,7 @@ $(document).on('click', '#btn-guardar-cambio-seleccion', function (e) {
                                     idHorario = excepcion.id_tipo_horario_excepcion;
                                     idHorarioBase = excepcion.id_tipo_horario_base;
                                     hayExcepcion = true;
+                                    sinFecha = excepcion.sin_fecha;
                                 }
                             })
                         }
@@ -2249,7 +2255,7 @@ $(document).on('click', '#btn-guardar-cambio-seleccion', function (e) {
 
 
                         return `
-<div data-color="${colorFondo}" data-name="${(nombre !== '') ? nombre : ''}" data-index= "${(idHorario !== '') ? idHorario : ''}" data-base="${idHorarioBase}" ${(hayExcepcion) ? 'data-exception="true"' : ''}
+<div data-color="${colorFondo}" data-name="${(nombre !== '') ? nombre : ''}" data-index= "${(idHorario !== '') ? idHorario : ''}" data-base="${idHorarioBase}" ${(hayExcepcion) ? 'data-exception="true"' : ''} data-sinfecha="${(hayExcepcion && parseInt(sinFecha) === 1) ? true : false}" 
 
   title="${(nombre !== '') ? nombre : ''}"
   data-day="${dia.getDate()}/${dia.getMonth() + 1}/${dia.getFullYear()}"

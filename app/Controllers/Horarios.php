@@ -29,6 +29,7 @@ class Horarios extends BaseController
             $modalBorrar = view('horarios/modalBorrarHorario');
             $modalHorarioExistente = view('horarios/modalHorarioExistente');
             $modalCambioHorario = view('horarios/modalCambioHorario');
+            $modalSinFechaHorario = view('horarios/modalSinFechaHorario');
 
             $assets = [
                 "css" => [
@@ -46,7 +47,7 @@ class Horarios extends BaseController
             $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
             $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
-            $view = view('horarios/horarios', ["instalacion" => $instalacion, "id_instalacion" => $id_instalacion, "horarios" => $horarios, "modalEditar" => $modalEditar, "modalBorrar" => $modalBorrar, "modalHorarioExistente" => $modalHorarioExistente, "modalCambioHorario" => $modalCambioHorario]);
+            $view = view('horarios/horarios', ["instalacion" => $instalacion, "id_instalacion" => $id_instalacion, "horarios" => $horarios, "modalEditar" => $modalEditar, "modalBorrar" => $modalBorrar, "modalHorarioExistente" => $modalHorarioExistente, "modalCambioHorario" => $modalCambioHorario, "modalSinFechaHorario" => $modalSinFechaHorario]);
             return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas, "modalInformacionPersonal" => $modalInformacionPersonal]);
         }
     }
@@ -394,8 +395,9 @@ private function crearFranjasParaInstalacion(horariosModel $horariosModel, int $
                 : (count($hay_excepcion_excepcion) > 0 ? $hay_excepcion_excepcion : []);
 
             foreach ($excepciones as $excepcion) {
-                $horario_excepcion = $horariosModel->getHorario(intval($excepcion["id_tipo_horario_excepcion"]));
-                $horario_base      = $horariosModel->getHorario(intval($excepcion["id_tipo_horario"]));
+
+                $horario_excepcion = $horariosModel->getHorario(intval($excepcion["id_tipo_horario_excepcion"]))[0];
+                $horario_base      = $horariosModel->getHorario(intval($excepcion["id_tipo_horario"]))[0];
 
                 $fechaInicioBase      = new DateTime($horario_base["fecha_inicio"]);
                 $fechaInicioExcepcion = new DateTime($horario_excepcion["fecha_inicio"]);
@@ -404,7 +406,7 @@ private function crearFranjasParaInstalacion(horariosModel $horariosModel, int $
 
                 $horariosModel->editarExcepcion([
                     "id_excepciones_horario"    => intval($excepcion["id_excepciones_horario"]),
-                    "id_tipo_horario_base"      => intval($excepcion["id_tipo_horario_base"]),
+                    "id_tipo_horario_base"      => intval($excepcion["id_tipo_horario"]),
                     "id_tipo_horario_excepcion" => intval($excepcion["id_tipo_horario_excepcion"]),
                     "id_instalacion"            =>  $instalacion,   
                     "fecha_inicio"              => ($fechaInicioBase > $fechaInicioExcepcion) ? $fechaInicioBase->format("Y-m-d") : $fechaInicioExcepcion->format("Y-m-d"),
@@ -521,10 +523,68 @@ private function crearFranjasParaInstalacion(horariosModel $horariosModel, int $
             foreach ($cambios as $cambio) {
 
                 if(isset($cambio["excepcion"]) && filter_var($cambio["excepcion"], FILTER_VALIDATE_BOOLEAN) === true) {
-                    $horariosModel->borrarExcepcionFechaSola($cambio["fecha"], intval($cambio["idInstalacion"]));
-                    foreach($otrasInstalaciones as $otraInstalacion) {
-                        $horariosModel->borrarExcepcionFechaSola($cambio["fecha"], intval($otraInstalacion["id"]));
+                    $obj_sin_fecha = $horariosModel->comprobarSinFechaExcepcion($cambio["fecha"], intval($cambio["idInstalacion"]), intval($cambio["horarioAntiguo"]));
+                    $sin_fecha = (intval($obj_sin_fecha[0]["sin_fecha"]) === 1) ? true : false;
+
+                    if($sin_fecha){
+                        
+                        $horariosModel->borrarExcepcionFechaSola($cambio["fecha"], intval($cambio["idInstalacion"]), intval($cambio["horarioAntiguo"]));
+                        foreach($otrasInstalaciones as $otraInstalacion) {
+                            $horariosModel->borrarExcepcionFechaSola($cambio["fecha"], intval($otraInstalacion["id"]), intval($cambio["horarioAntiguo"]));
+                        }
+
+                        // $excepcion_a_buscar = $horariosModel->getExcepcion(intval($cambio["horarioAntiguo"]), intval($cambio["horarioNuevo"]), intval($cambio["idInstalacion"]))[0];
+                        // $fecha_inicio = $excepcion_a_buscar["fecha_inicio"];
+                        // $fecha_final = $excepcion_a_buscar["fecha_fin"];
+                        // $fecha_cambio = \DateTime::createFromFormat('d/m/Y', $cambio["fecha"])->format('Y-m-d');
+
+                        // $fecha_inicio_excepecion = "";
+                        // $fecha_final_excepcion = "";
+
+                        // if($fecha_inicio === $fecha_cambio){
+                        //     $fecha_inicio_excepecion = \DateTime::createFromFormat('Y-m-d', $fecha_inicio)->modify('+1 day')->format('Y-m-d');
+                        //     $fecha_final_excepcion   = $fecha_final;
+                        //     $horariosModel->crearExcepcion([
+                        //         "id_tipo_horario_base" => intval($cambio["horarioNuevo"]), 
+                        //         "id_tipo_horario_excepcion" => intval($cambio["horarioAntiguo"]), 
+                        //         "id_instalacion" => intval($cambio["idInstalacion"]), 
+                        //         "fecha_inicio" => $fecha_inicio_excepecion, 
+                        //         "fecha_fin" => $fecha_final_excepcion
+                        //     ]);
+                            
+                        // }
+                        // else if ($fecha_final === $fecha_cambio) {
+                        //     $fecha_inicio_excepecion = $fecha_inicio;
+                        //     $fecha_final_excepcion   = \DateTime::createFromFormat('Y-m-d', $fecha_final)->modify('-1 day')->format('Y-m-d');
+                        //     $horariosModel->crearExcepcion([
+                        //         "id_tipo_horario_base" => intval($cambio["horarioNuevo"]), 
+                        //         "id_tipo_horario_excepcion" => intval($cambio["horarioAntiguo"]), 
+                        //         "id_instalacion" => intval($cambio["idInstalacion"]), 
+                        //         "fecha_inicio" => $fecha_inicio_excepecion, 
+                        //         "fecha_fin" => $fecha_final_excepcion
+                        //     ]);
+                        // }
+                        // else {
+                        //     $horariosModel->crearExcepcion([
+                        //         "id_tipo_horario_base" => intval($cambio["horarioNuevo"]), 
+                        //         "id_tipo_horario_excepcion" => intval($cambio["horarioAntiguo"]), 
+                        //         "id_instalacion" => intval($cambio["idInstalacion"]), 
+                        //         "fecha_inicio" => $fecha_inicio, 
+                        //         "fecha_fin" => \DateTime::createFromFormat('Y-m-d', $fecha_cambio)->modify('-1 day')->format('Y-m-d')
+                        //     ]);
+
+                        //     $horariosModel->crearExcepcion([
+                        //         "id_tipo_horario_base" => intval($cambio["horarioNuevo"]), 
+                        //         "id_tipo_horario_excepcion" => intval($cambio["horarioAntiguo"]), 
+                        //         "id_instalacion" => intval($cambio["idInstalacion"]), 
+                        //         "fecha_inicio" => \DateTime::createFromFormat('Y-m-d', $fecha_cambio)->modify('+1 day')->format('Y-m-d'), 
+                        //         "fecha_fin" => $fecha_final
+                        //     ]);
+                        // }
+
+                        // $horariosModel->borrarExcepcionFechaSola($cambio["fecha"], intval($cambio["idInstalacion"]), intval($cambio["horarioAntiguo"]));
                     }
+                    
                 }
                 else {
                     $horariosModel->cambiarHorariosSeleccionados($cambio);

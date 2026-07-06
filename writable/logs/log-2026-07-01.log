@@ -1,0 +1,84 @@
+CRITICAL - 2026-07-01 13:00:38 --> ErrorException: Undefined array key 0
+in APPPATH\Controllers\Reservas.php on line 411.
+ 1 APPPATH\Controllers\Reservas.php(411): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 411)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->anularReservaEspecial()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-01 13:15:52 --> ErrorException: Undefined array key 0
+in APPPATH\Controllers\Reservas.php on line 411.
+ 1 APPPATH\Controllers\Reservas.php(411): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 411)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->anularReservaEspecial()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-01 13:15:54 --> ErrorException: Undefined array key 0
+in APPPATH\Controllers\Reservas.php on line 411.
+ 1 APPPATH\Controllers\Reservas.php(411): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 411)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->anularReservaEspecial()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-01 13:21:00 --> ErrorException: Undefined array key 0
+in APPPATH\Controllers\Reservas.php on line 413.
+ 1 APPPATH\Controllers\Reservas.php(413): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 413)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->anularReservaEspecial()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-01 13:33:47 --> TypeError: App\Models\reservasModel::getReservasByPedido(): Argument #1 ($id_pedido) must be of type int, array given, called in C:\Proyectos\reservalo2.0\app\Controllers\Reservas.php on line 376
+in APPPATH\Models\reservasModel.php on line 661.
+ 1 APPPATH\Controllers\Reservas.php(376): App\Models\reservasModel->getReservasByPedido([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->anularHora()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-01 17:47:44 --> TypeError: App\Models\reservasModel::getReservasByPedido(): Argument #1 ($id_pedido) must be of type int, array given, called in C:\Proyectos\reservalo2.0\app\Controllers\Reservas.php on line 376
+in APPPATH\Models\reservasModel.php on line 661.
+ 1 APPPATH\Controllers\Reservas.php(376): App\Models\reservasModel->getReservasByPedido([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->anularHora()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-01 18:04:18 --> TypeError: App\Models\reservasModel::getReservasByPedido(): Argument #1 ($id_pedido) must be of type int, array given, called in C:\Proyectos\reservalo2.0\app\Controllers\Reservas.php on line 399
+in APPPATH\Models\reservasModel.php on line 661.
+ 1 APPPATH\Controllers\Reservas.php(399): App\Models\reservasModel->getReservasByPedido([...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->anularHora()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-01 18:09:35 --> ErrorException: Undefined array key 0
+in APPPATH\Controllers\Reservas.php on line 399.
+ 1 APPPATH\Controllers\Reservas.php(399): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 399)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->anularHora()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-01 18:10:07 --> ErrorException: Undefined array key 0
+in APPPATH\Controllers\Reservas.php on line 369.
+ 1 APPPATH\Controllers\Reservas.php(369): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 369)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->anularHora()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-01 18:13:24 --> ErrorException: Undefined array key 0
+in APPPATH\Controllers\Reservas.php on line 399.
+ 1 APPPATH\Controllers\Reservas.php(399): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 399)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->anularHora()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-01 18:21:08 --> ErrorException: Undefined array key 0
+in APPPATH\Controllers\Reservas.php on line 399.
+ 1 APPPATH\Controllers\Reservas.php(399): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 399)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->anularHora()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-01 18:26:19 --> ErrorException: Undefined array key "id_pista"
+in APPPATH\Controllers\Reservas.php on line 399.
+ 1 APPPATH\Controllers\Reservas.php(399): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_pista"', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Reservas.php', 399)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Reservas->anularHora()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Reservas))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

@@ -146,6 +146,31 @@ $db = \Config\Database::connect('BDReservalo2');
         return $query->getResultArray();
     }
 
+    public function comprobarSinFechaExcepcion(string $date, int $instalacion, int $idTipoHorario)
+{
+    $db = \Config\Database::connect('BDReservalo2');
+    $builder = $db->table('excepciones_horario');
+
+    $fecha = DateTime::createFromFormat('j/n/Y', $date); // j y n aceptan con o sin cero
+
+    $fecha_formateada = $fecha->format('Y-m-d');
+
+    $query = $builder
+        ->select('tipo_horario.sin_fecha')
+        ->join(
+            'tipo_horario',
+            'tipo_horario.id_tipo_horario = excepciones_horario.id_tipo_horario_excepcion',
+            'inner'
+        )
+        ->where('excepciones_horario.fecha_inicio <=', $fecha_formateada)
+        ->where('excepciones_horario.fecha_fin >=', $fecha_formateada)
+        ->where('excepciones_horario.id_instalacion', $instalacion)
+        ->where('excepciones_horario.id_tipo_horario_excepcion', $idTipoHorario)
+        ->get();
+
+    return $query->getResultArray();
+}
+
 
 public function comprobarHorariosAno(int $year, int $instalacion){
 $db = \Config\Database::connect('BDReservalo2');
@@ -179,7 +204,8 @@ $db = \Config\Database::connect('BDReservalo2');
         $builder = $db->table('tipo_horario');
 
         // Creamos el horario
-        $query = $builder->select()->where('id_tipo_horario', $id_horario)->get();
+        $query = $builder->select()->where('id_tipo_horario', $id_horario)
+        ->get();
 
         return $query->getResultArray();
     }
@@ -378,18 +404,21 @@ $db = \Config\Database::connect('BDReservalo2');
     }
 
 
-    public function borrarExcepcionFechaSola(string $date, int $id_instalacion) {
+    public function borrarExcepcionFechaSola(string $date, int $id_instalacion, int $id_horario_excepcion) {
         //Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
 
         //Obtenemos la tabla de horarios
         $builder = $db->table('excepciones_horario');
 
-        $fecha = DateTime::createFromFormat('d/m/Y', $date);
+        $fecha = DateTime::createFromFormat('j/n/Y', $date); // j y n aceptan con o sin cero
 
-        $builder->where('fecha_inicio', $fecha->format('Y-m-d'));
-        $builder->where('fecha_fin', $fecha->format('Y-m-d'));
+        $fecha_formateada = $fecha->format('Y-m-d');
+
+        $builder->where('fecha_inicio <=', $fecha_formateada);
+        $builder->where('fecha_fin >=', $fecha_formateada);
         $builder->where('id_instalacion', $id_instalacion);
+        $builder->where('id_tipo_horario_excepcion', $id_horario_excepcion);
         $builder->delete();
 
 
@@ -408,7 +437,7 @@ $db = \Config\Database::connect('BDReservalo2');
         $builder = $db->table('excepciones_horario');
 
         // Hago el select con join
-        $query = $builder->distinct()->select('tipo_horario.nombre, tipo_horario.id_tipo_horario, excepciones_horario.id_tipo_horario_excepcion')
+        $query = $builder->distinct()->select('tipo_horario.nombre, tipo_horario.id_tipo_horario, excepciones_horario.id_tipo_horario_excepcion, excepciones_horario.id_excepciones_horario')
             ->join('tipo_horario', 'tipo_horario.id_tipo_horario = excepciones_horario.id_tipo_horario_excepcion')
             ->where('excepciones_horario.id_tipo_horario_base', $id_horario)
             ->where('excepciones_horario.id_instalacion', $id_instalacion)
@@ -430,8 +459,29 @@ $db = \Config\Database::connect('BDReservalo2');
         $builder = $db->table('excepciones_horario');
 
         // Hago el select
-        $query = $builder->select()
+        $query = $builder->distinct()->select('tipo_horario.nombre, tipo_horario.id_tipo_horario, excepciones_horario.id_tipo_horario_excepcion, excepciones_horario.id_excepciones_horario')
+                         ->join('tipo_horario', 'tipo_horario.id_tipo_horario = excepciones_horario.id_tipo_horario_base')
                          ->where("id_tipo_horario_excepcion", $id_horario)
+                         ->where("id_instalacion", $id_instalacion)
+                         ->get();
+
+        $result = $query->getResultArray();
+
+        return $result;
+    }
+
+    public function getExcepcion(int $id_horario_base, int $id_horario_excepcion, int $id_instalacion) {
+
+        //Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        //Obtenemos la tabla de horarios
+        $builder = $db->table('excepciones_horario');
+
+        // Hago el select
+        $query = $builder->distinct()->select()
+                         ->where("id_tipo_horario_excepcion", $id_horario_excepcion)
+                         ->where("id_tipo_horario_base", $id_horario_base)
                          ->where("id_instalacion", $id_instalacion)
                          ->get();
 
@@ -512,7 +562,7 @@ $db = \Config\Database::connect('BDReservalo2');
         $builder = $db->table('excepciones_horario');
 
         $builder = $db->table('excepciones_horario');
-        $builder->select('excepciones_horario.*, tipo_horario.nombre, tipo_horario.color');
+        $builder->select('excepciones_horario.*, tipo_horario.nombre, tipo_horario.color, tipo_horario.sin_fecha');
         $builder->join('tipo_horario', 'tipo_horario.id_tipo_horario = excepciones_horario.id_tipo_horario_excepcion');
         $query = $builder->where('id_instalacion', $instalacion)
         ->get();

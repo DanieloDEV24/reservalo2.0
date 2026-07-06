@@ -310,9 +310,11 @@ class Reservas extends BaseController
         // Procesar email en segundo plano
         if (function_exists('fastcgi_finish_request')) {
             fastcgi_finish_request();
-            $this->enviarEmailYSMS($datos_pdf, $datos_usuario, $tempPath, $pdfFilename, $id_pedido, $datos_reserva);
+            $this->enviarEmailYSMS($datos_pdf, 'danielruizdeveloper@gmail.com', $tempPath, $pdfFilename, $id_pedido, $datos_reserva);
+            $this->enviarEmailYSMS2($datos_pdf, 'danielruizdeveloper@gmail.com', $tempPath, $pdfFilename, $id_pedido, $datos_reserva);
         } else {
-            $this->enviarEmailYSMS($datos_pdf, $datos_usuario, $tempPath, $pdfFilename, $id_pedido, $datos_reserva);
+            $this->enviarEmailYSMS($datos_pdf, 'danielruizdeveloper@gmail.com', $tempPath, $pdfFilename, $id_pedido, $datos_reserva);
+            $this->enviarEmailYSMS2($datos_pdf, 'danielruizdeveloper@gmail.com', $tempPath, $pdfFilename, $id_pedido, $datos_reserva);
         }
         
         exit;
@@ -355,6 +357,7 @@ class Reservas extends BaseController
         $reservasModel = new reservasModel();
         $actividadModel = new actividadModel();
         $instalacionesModel = new instalacionesModel();
+        $loginModel = new loginModel();
         $post = $this->request->getPost();
 
         if(!empty($post)){
@@ -363,16 +366,39 @@ class Reservas extends BaseController
 
             foreach($datos as $dato) {
 
+                $pedido = $reservasModel->getPedidoFromId(intval($dato["pedido"]))[0];
+
+                $id_pista = intval($reservasModel->getReservasByPedido(intval($dato["pedido"]))[0]["id_pista"]);
+                $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
+
+                // Obtener datos del pedido
+                $datos_usuario = $loginModel->buscaUsuarioPorId($pedido['id_usuario']);
+                $datos_reserva = $reservasModel->getFullReservasFromPedidoAnular(intval($dato["pedido"]), $dato["hora"]);
+
+                $datos_pdf = [
+                    "nombre_usuario" => $datos_usuario["nombre"], 
+                    "email_usuario"  => $datos_usuario["email"], 
+                    "telf_usuario"   => $datos_usuario["telf"],
+                    "fecha_pedido"   => $pedido['fecha_pedido'], 
+                    "precio_pedido"  => $pedido['precio_pedido'], 
+                    "numero_pedido"  => $pedido['num_pedido'], 
+                    "reservas"       => $datos_reserva
+                ];
+
+                $this->enviarEmailAnular($datos_pdf, 'danielruizdeveloper@gmail.com', intval($dato["pedido"]), $datos_reserva);
+                $this->enviarEmailAnular2($datos_pdf, 'danielruizdeveloper@gmail.com', intval($dato["pedido"]), $datos_reserva);
+
+                $id_pista = intval($reservasModel->getReservasByPedido(intval($datos[0]["pedido"]))[0]["id_pista"]);
+                $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
+
                 $anularReserva = $reservasModel->anularReservaByHourAndDate($dato["fecha"], $dato["hora"], $dato["pedido"]);
-                $num_pedidos   = $reservasModel->numReservasFromPedido($dato["pedido"]);
+                $num_pedidos   = $reservasModel->numReservasFromPedido(intval($dato["pedido"]));
 
                 if($num_pedidos === 0){
-                    $reservasModel->anularPedido($dato["pedido"]);
+                    $reservasModel->anularPedido(intval($dato["pedido"]));
                 }
             }
 
-            $id_pista = intval($reservasModel->getReservasByPedido($datos[0])[0]["id_pedido"]);
-            $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
 
             $actividad = $actividadModel->crearActividad([
                     "tipo" => 2,
@@ -396,17 +422,37 @@ class Reservas extends BaseController
         $reservasModel = new reservasModel();
         $actividadModel = new actividadModel();
         $instalacionesModel = new instalacionesModel();
+        $loginModel = new loginMOdel();
         $post = $this->request->getPost();
 
         if(!empty($post)){
             
             $id_pedido = intval($post["idPedido"]);
 
-            $anularReservas = $reservasModel->anularReservasByPedido($id_pedido);
-            $anularPedido   = $reservasModel->anularPedido($id_pedido);
+            $pedido = $reservasModel->getPedidoFromId($id_pedido)[0];
 
             $id_pista = intval($reservasModel->getReservasByPedido($id_pedido)[0]["id_pista"]);
             $nombre_pista = $instalacionesModel->getPistasById($id_pista)[0]["nombre_pista"];
+
+            // Obtener datos del pedido
+            $datos_usuario = $loginModel->buscaUsuarioPorId($pedido['id_usuario']);
+            $datos_reserva = $reservasModel->getFullReservasFromPedido(intval($id_pedido));
+
+            $datos_pdf = [
+                "nombre_usuario" => $datos_usuario["nombre"], 
+                "email_usuario"  => $datos_usuario["email"], 
+                "telf_usuario"   => $datos_usuario["telf"],
+                "fecha_pedido"   => $pedido['fecha_pedido'], 
+                "precio_pedido"  => $pedido['precio_pedido'], 
+                "numero_pedido"  => $pedido['num_pedido'], 
+                "reservas"       => $datos_reserva
+            ];
+
+            $this->enviarEmailAnular($datos_pdf, 'danielruizdeveloper@gmail.com', $id_pedido, $datos_reserva);
+            $this->enviarEmailAnular2($datos_pdf, 'danielruizdeveloper@gmail.com', $id_pedido, $datos_reserva);
+
+            $anularReservas = $reservasModel->anularReservasByPedido($id_pedido);
+            $anularPedido   = $reservasModel->anularPedido($id_pedido);
 
             $actividad = $actividadModel->crearActividad([
                     "tipo" => 2,
@@ -500,6 +546,7 @@ class Reservas extends BaseController
         $reservasModel = new reservasModel();
         $actividadModel = new actividadModel(); 
         $instalacionesModel = new instalacionesModel();
+        $loginModel = new loginModel();
         $post = $this->request->getPost();
 
         if(!empty($post)){
@@ -520,9 +567,28 @@ class Reservas extends BaseController
             $cont_reservas_no_pagadas = count($reservasModel->getReservasNoPagadasByDate($fecha));
             $todas_reservas = $reservasModel->getTodasReservasByUsuario($id_usuario);
 
+            // Obtener datos del pedido
+            $pedido = $reservasModel->getPedidoFromId($id_pedido)[0];
+
             if($num_pedidos === 0){
                 $reservasModel->anularPedido($id_pedido);
             }
+
+            $datos_usuario = $loginModel->buscaUsuarioPorId($pedido['id_usuario']);
+            $datos_reserva = $reservasModel->getFullReservasFromPedido(intval($id_pedido));
+
+            $datos_pdf = [
+                "nombre_usuario" => $datos_usuario["nombre"], 
+                "email_usuario"  => $datos_usuario["email"], 
+                "telf_usuario"   => $datos_usuario["telf"],
+                "fecha_pedido"   => $pedido['fecha_pedido'], 
+                "precio_pedido"  => $pedido['precio_pedido'], 
+                "numero_pedido"  => $pedido['num_pedido'], 
+                "reservas"       => $datos_reserva
+            ];
+
+            $this->enviarEmailAnular($datos_pdf, 'danielruizdeveloper@gmail.com', $id_pedido, $datos_reserva);
+            $this->enviarEmailAnular2($datos_pdf, 'danielruizdeveloper@gmail.com', $id_pedido, $datos_reserva);
 
             $actividad = $actividadModel->crearActividad([
                     "tipo" => 2,
@@ -711,7 +777,7 @@ class Reservas extends BaseController
         }
     }
 
-    private function enviarEmailYSMS($datos_pdf, $datos_usuario, $tempPath, $pdfFilename, $id_pedido, $datos_reserva) {
+    private function enviarEmailYSMS($datos_pdf, $email, $tempPath, $pdfFilename, $id_pedido, $datos_reserva) {
         try {
             // Leer el PDF
             $pdfContent = file_get_contents($tempPath);
@@ -727,7 +793,7 @@ class Reservas extends BaseController
             
             $curlData = [
                 'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
-                'to' => [$datos_usuario['email']],
+                'to' => [$email],
                 'subject' => '✅ Confirmación de Reserva #' . $datos_pdf['numero_pedido'],
                 'html' => $htmlContent,
                 'attachments' => [
@@ -752,7 +818,7 @@ class Reservas extends BaseController
             curl_close($ch);
 
             if ($httpCode === 200 || $httpCode === 202) {
-                log_message('info', '✅ Email enviado a: ' . $datos_usuario['email']);
+                log_message('info', '✅ Email enviado a: ' . $email);
             } else {
                 log_message('error', '❌ Error enviando email: ' . $response);
             }
@@ -761,10 +827,152 @@ class Reservas extends BaseController
             log_message('error', '❌ Error email: ' . $e->getMessage());
         }
         
-        
-        // Eliminar archivo temporal
-        if (file_exists($tempPath)) {
-            unlink($tempPath);
-        }
+
     }
+
+    private function enviarEmailYSMS2($datos_pdf, $email, $tempPath, $pdfFilename, $id_pedido, $datos_reserva) {
+    try {
+        // Leer el PDF
+        $pdfContent = file_get_contents($tempPath);
+        $pdfBase64 = base64_encode($pdfContent);
+        
+        // Cargar plantilla de email
+        $htmlContent = view('plantillas/emailReservaGestor', [
+            'datos_reserva' => $datos_pdf
+        ]);
+        
+        // API Key de Resend
+        $apiKey = 're_EoU5q6Mw_Hz3ECMQADDxHKz3o3opLeS6e';
+        
+        $curlData = [
+            'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
+            'to' => [$email],
+            'subject' => '✅ NUEVA RESERVA RECIBIDA #' . $datos_pdf['numero_pedido'],
+            'html' => $htmlContent,
+            'attachments' => [
+                [
+                    'filename' => $pdfFilename,
+                    'content' => $pdfBase64,
+                ]
+            ]
+        ];
+
+        $ch = curl_init('https://api.resend.com/emails');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Authorization: Bearer ' . $apiKey,
+            'Content-Type: application/json',
+        ]);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
+        $response  = curl_exec($ch);
+        $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($httpCode === 200 || $httpCode === 202) {
+            log_message('info', '✅ Email enviado a: ' . $email);
+        } else {
+            log_message('error', '❌ Error enviando email: ' . $response);
+        }
+        
+    } catch (\Exception $e) {
+        log_message('error', '❌ Error email: ' . $e->getMessage());
+    }
+    
+    
+    // Eliminar archivo temporal
+    if (file_exists($tempPath)) {
+        unlink($tempPath);
+    }
+}
+
+private function enviarEmailAnular($datos_pdf, $email, $id_pedido, $datos_reserva) {
+    try {        
+        // Cargar plantilla de email
+        $htmlContent = view('plantillas/emailAnularReservaUsuario', [
+            'datos_reserva' => $datos_pdf
+        ]);
+        
+        // API Key de Resend
+        $apiKey = 're_EoU5q6Mw_Hz3ECMQADDxHKz3o3opLeS6e';
+        
+        $curlData = [
+            'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
+            'to' => [$email],
+            'subject' => '✅ RESERVA ANULADA #' . $datos_pdf['numero_pedido'],
+            'html' => $htmlContent
+        ];
+
+        $ch = curl_init('https://api.resend.com/emails');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Authorization: Bearer ' . $apiKey,
+            'Content-Type: application/json',
+        ]);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
+        $response  = curl_exec($ch);
+        $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($httpCode === 200 || $httpCode === 202) {
+            log_message('info', '✅ Email enviado a: ' . $email);
+        } else {
+            log_message('error', '❌ Error enviando email: ' . $response);
+        }
+        
+    } catch (\Exception $e) {
+        log_message('error', '❌ Error email: ' . $e->getMessage());
+    }
+    
+    
+    
+}
+
+private function enviarEmailAnular2($datos_pdf, $email, $id_pedido, $datos_reserva) {
+    try {        
+        // Cargar plantilla de email
+        $htmlContent = view('plantillas/emailAnularReservaGestor', [
+            'datos_reserva' => $datos_pdf
+        ]);
+        
+        // API Key de Resend
+        $apiKey = 're_EoU5q6Mw_Hz3ECMQADDxHKz3o3opLeS6e';
+        
+        $curlData = [
+            'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
+            'to' => [$email],
+            'subject' => '✅ RESERVA ANULADA #' . $datos_pdf['numero_pedido'],
+            'html' => $htmlContent
+        ];
+
+        $ch = curl_init('https://api.resend.com/emails');
+        curl_setopt($ch, CURLOPT_HTTPHEADER, [
+            'Authorization: Bearer ' . $apiKey,
+            'Content-Type: application/json',
+        ]);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
+        $response  = curl_exec($ch);
+        $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+
+        if ($httpCode === 200 || $httpCode === 202) {
+            log_message('info', '✅ Email enviado a: ' . $email);
+        } else {
+            log_message('error', '❌ Error enviando email: ' . $response);
+        }
+        
+    } catch (\Exception $e) {
+        log_message('error', '❌ Error email: ' . $e->getMessage());
+    }
+    
+    
+    
+}
+
 }
