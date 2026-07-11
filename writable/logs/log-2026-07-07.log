@@ -1,0 +1,38 @@
+CRITICAL - 2026-07-07 14:42:40 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "usuarios/actividades.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(216): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('usuarios/actividades.php')
+ 2 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('usuarios/actividades', [], true)
+ 3 APPPATH\Controllers\Actividades.php(36): view('usuarios/actividades', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->actividades()
+ 5 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 6 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-07 18:05:44 --> BadMethodCallException: Call to undefined method App\Models\usuariosModel::getUsuario
+in SYSTEMPATH\Model.php on line 874.
+ 1 APPPATH\Controllers\Actividades.php(26): CodeIgniter\Model->__call('getUsuario', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->actividades()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-07 18:07:02 --> ErrorException: Undefined array key "id_rol"
+in APPPATH\Views\actividades\actividades.php on line 25.
+ 1 APPPATH\Views\actividades\actividades.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_rol"', 'D:\\proyectos\\reservalo2.0\\app\\Views\\actividades\\actividades.php', 25)
+ 2 SYSTEMPATH\View\View.php(228): include('D:\\proyectos\\reservalo2.0\\app\\Views\\actividades\\actividades.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('actividades/actividades', [], true)
+ 5 APPPATH\Controllers\Actividades.php(44): view('actividades/actividades', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->actividades()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-07 18:07:33 --> ErrorException: Undefined array key "id_rol"
+in APPPATH\Views\actividades\actividades.php on line 25.
+ 1 APPPATH\Views\actividades\actividades.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_rol"', 'D:\\proyectos\\reservalo2.0\\app\\Views\\actividades\\actividades.php', 25)
+ 2 SYSTEMPATH\View\View.php(228): include('D:\\proyectos\\reservalo2.0\\app\\Views\\actividades\\actividades.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('actividades/actividades', [], true)
+ 5 APPPATH\Controllers\Actividades.php(44): view('actividades/actividades', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->actividades()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

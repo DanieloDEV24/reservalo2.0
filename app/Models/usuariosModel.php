@@ -41,7 +41,7 @@ class usuariosModel extends Model
         usuarios.*,
         SUM(CASE 
             WHEN reservas.pagadas = 0
-            AND reservas.fecha < '" . date("Y-m-d") . "'
+            AND CONCAT(reservas.fecha, ' ', reservas.hora_final) < NOW()
             THEN 1
             ELSE 0
         END) AS reservas_pasadas

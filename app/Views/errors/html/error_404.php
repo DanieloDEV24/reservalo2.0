@@ -293,6 +293,7 @@
        <nav class="align-items-center nav-grande">
         <a href="<?= base_url() ?>" class="menu__link"> Home</a>
         <a href="<?= base_url() ?>index.php/instalaciones" class="menu__link"> Instalaciones</a>
+        <a href="<?= base_url() ?>index.php/actividades" class="menu__link"> Actividades</a>
       
         <?php $session = session(); ?>
         <?php if ($session->has('usuario') && intval($session->get('usuario')['rol']) === 2): ?>
@@ -376,6 +377,10 @@
           <div class="menu-list">
             <i class="bi bi-buildings"></i>
             <a href="<?= base_url() ?>index.php/instalaciones">Instalaciones</a>
+          </div>
+          <div class="menu-list">
+            <i class="bi bi-buildings"></i>
+            <a href="<?= base_url() ?>index.php/actividades">Actividades</a>
           </div>
 
           <?php if ($session->has('usuario') && intval($session->get('usuario')['rol']) === 2): ?>
@@ -526,6 +531,8 @@
         <a href="">Inicio</a>
 
         <a href="">Instalaciones</a>
+
+        <a href="">Actividades</a>
 
         <a href="">Gestor de Instalaciones</a>
 

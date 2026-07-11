@@ -7,6 +7,19 @@ $(document).ready(() => {
     $(document).on('click', '.btn-panel-reservas', function (e) {
         e.preventDefault();
 
+        if ($(this).hasClass('btn-primary-personal-disabled')) {
+            $('.contenedor-alert-instalacion').removeClass('d-none')
+            $('.alert-instalacion-no-disponible p').html('<strong>Ups!!</strong>&nbsp;El usuario está dado de baja. Hable con el administrador del sistema para darle de alta.')
+            $('.alert-instalacion-no-disponible').show()
+
+            setTimeout(() => {
+                $('.alert-instalacion-no-disponible').hide()
+                $('.contenedor-alert-instalacion').addClass('d-none')
+            }, 3000);
+
+            return;
+        }
+
         // Obtenemos el id de la pista de la que queremos hacer la reserva
         let pistaId = $(this).closest('.card-instalacion').data('index');
         let rolUsuario  = parseInt($("#menu-usuario").data('rol'))

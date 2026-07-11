@@ -113,3 +113,10 @@ $routes->get('/avisoLegal', 'Permisos::avisoLegal');
 $routes->post('/obtenerInstalacionesHorarios', 'Horarios::obtenerInstalacionesHorarios', ['filter' => 'auth']);
 $routes->post('/obtenerInstalacionesConEseHorario', 'Horarios::obtenerInstalacionesConEseHorario', ['filter' => 'auth']);
 $routes->post('/obtenerInstalacionesConEsosHorarios', 'Horarios::obtenerInstalacionesConEsosHorarios', ['filter' => 'auth']);
+
+$routes->get('/actividades', 'Actividades::actividades');
+$routes->post('/crearTipoActividad', 'Actividades::crearTipoActividad');
+$routes->post('/getMenuTiposActividades', 'Actividades::getMenuTiposActividades');
+$routes->post('/getTipoActividad', 'Actividades::getTipoActividad');
+$routes->post('/editarTipoActividad', 'Actividades::editarTipoActividad');
+$routes->post('/eliminarTipoActividad', 'Actividades::eliminarTipoActividad');

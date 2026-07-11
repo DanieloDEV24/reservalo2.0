@@ -6,6 +6,8 @@
       <p class="mb-0"><strong>Ups!!</strong>&nbsp;Esta instalación no está disponible en estos momentos</p>
 
     </div>
+
+    
 </div>
 
 <div class="d-flex justify-content-center d-none contenedor-alert-errores pt-2">
@@ -76,7 +78,7 @@
                     <div class="heading"> <?=$pista["nombre_pista"]?></div>
                     <span id="comunity"><i class="bi bi-people"></i>&nbsp;<?=$pista["capacidad_pista"]?>&nbsp;personas</span>
                     <div class="button">
-                        <a href="" class="btn-primary-personal btn-panel-reservas">Hacer reserva &nbsp;<i class="bi bi-arrow-right"></i></a>
+                        <a href="" class="btn-primary-personal btn-panel-reservas <?= (intval($usuario["usuario_baja"]) === 1) ? "btn-primary-personal-disabled" : ""?>" >Hacer reserva &nbsp;<i class="bi bi-arrow-right"></i></a>
                         <div class="precio-pista"><span><?=$pista["precio_pista"]?></span><i class="bi bi-currency-euro"></i>/<?= (intval($instalacion["tipo_reserva"]) === 1) ? "dia" : "hora" ?></div>
                     </div>
                     <!-- Aqui debo poner la parte del estado -->

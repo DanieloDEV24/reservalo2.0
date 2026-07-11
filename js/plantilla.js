@@ -72,7 +72,7 @@ $(document).ready(() => {
 
                             // Generar franjas horarias
                             let franjasHTML = franjas.map(franja => `
-                                <div class="franja-horaria ${(hoy > fechaReserva || (hoy.toDateString() === fechaReserva.toDateString() && hoy.getHours() >= parseInt(franja.hora_inicio.split(':')[0]))) ? 'hora-disabled' : ''}" data-hora="${franja.hora_inicio}">
+                                <div class="franja-horaria ${(hoy > fechaReserva || !horasPasadasDesde(fechaReserva, franja.hora_inicio)) ? 'hora-disabled' : ''}" data-hora="${franja.hora_inicio}">
                                     <span class="franja-horaria-icon">⏰</span>
                                     <span>${franja.hora_inicio} - ${franja.hora_final}</span>
                                 </div>
@@ -210,6 +210,8 @@ $(document).ready(() => {
 
 
         if(parseInt(tipoReserva) === 0){
+            let esTarde = false;
+            let cont = 0;
             $('.reserva-card[data-pedido="' + idPedido + '"] .dias-container .franja-horaria:not(.hora-disabled)').each(function(){
                 
                 let hora = $(this).find('span:nth-child(2)').text().split(' - ')[0];
@@ -219,13 +221,22 @@ $(document).ready(() => {
                 if(horasPasadasDesde(fechaReserva, hora)){
                     $(this).append(`<button class="icono-borrar-reserva"><i class="bi bi-x-lg icon-borrar"></i></button>`)
                 }
+                else {
+                    esTarde = true;
+                }
+
+                cont++;
             })
+
+            if($('.reserva-card[data-pedido="' + idPedido + '"] .dias-container .franja-horaria.hora-disabled').length > 0) esTarde = true;
+
+            
             // $('.reserva-card[data-pedido="' + idPedido + '"] .dias-container .franja-horaria:not(.hora-disabled)').append(`<button class="icono-borrar-reserva"><i class="bi bi-x-lg icon-borrar"></i></button>`)
 
             $('.reserva-card[data-pedido="' + idPedido + '"] .reserva-actions').empty();
 
-            let confirmarHoras = `<button class="btn btn-danger btn-confirmar-anulacion-horas" data-pedido="${idPedido}" data-tipoReserva="${tipoReserva}">Anular Horas Seleccionadas</button>`;
-            let confirmarPedido = `<button class="btn btn-danger btn-confirmar-anulacion-pedido" data-pedido="${idPedido}" data-tipoReserva="${tipoReserva}">Anular Reserva Completa</button>`;
+            let confirmarHoras = `<button class="btn btn-danger btn-confirmar-anulacion-horas" data-pedido="${idPedido}" data-tipoReserva="${tipoReserva}" ${cont === 0 ? 'disabled' : ''}>Anular Horas Seleccionadas</button>`;
+            let confirmarPedido = `<button class="btn btn-danger btn-confirmar-anulacion-pedido" data-pedido="${idPedido}" data-tipoReserva="${tipoReserva}" ${esTarde || cont === 0 ? 'disabled' : ''}>Anular Reserva Completa</button>`;
             let cancelar = `<button class="btn btn-secondary btn-cancelar-anulacion" data-pedido="${idPedido}" data-tipoReserva="${tipoReserva}">Cancelar</button>`;
 
             $('.reserva-card[data-pedido="' + idPedido + '"] .reserva-actions').append(confirmarHoras + confirmarPedido + cancelar);
@@ -742,6 +753,8 @@ $(document).ready(() => {
     
     const fechaCompleta = new Date(fechaReserva);
     fechaCompleta.setHours(horas, minutos, 0, 0);
+
+    console.log("Fecha completa de la reserva:", fechaCompleta);
     
     const ahora = new Date();
     

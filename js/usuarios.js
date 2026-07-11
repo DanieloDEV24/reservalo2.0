@@ -161,6 +161,9 @@ $(document).ready(() => {
                     $('#modalReservasUsuario .stats-usuario .total-gastado h3').text((response.todas_reservas.length > 0) ? response.todas_reservas.filter(r => r.pagadas).reduce((acc, r) => acc + parseFloat(r.precio_reserva), 0) + " €" : "0 €")
                     $('#modalReservasUsuario .stats-usuario .reservas-activas h3').text((response.todas_reservas.length > 0) ? response.todas_reservas.filter(r => new Date(`${r.fecha}T${r.hora_inicio}`) >= new Date()).length : 0)
                 }
+            },
+            error: function (xhr, status, error) {
+                console.log('ERROR AJAX:', xhr.responseText, status, error);
             }
         });
     })

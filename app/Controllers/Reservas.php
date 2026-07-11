@@ -559,8 +559,7 @@ class Reservas extends BaseController
 
             $fecha = $reservasModel->getDateReserva($id_reserva)[0]["fecha"];
             $id_usuario = intval($reservasModel->getUsuarioReserva($id_reserva)[0]["id_usuario"]);
-            $borrar_pago = $reservasModel->deshacerPago($id_reserva);
-            $anularReserva = $reservasModel->anularReservaById($id_reserva);
+           
             $num_pedidos   = $reservasModel->numReservasFromPedido($id_pedido);
             $cont_reservas = count($reservasModel->getReservasByDate($fecha));
             $cont_reservas_pagadas = count($reservasModel->getReservasPagadasByDate($fecha));
@@ -569,13 +568,15 @@ class Reservas extends BaseController
 
             // Obtener datos del pedido
             $pedido = $reservasModel->getPedidoFromId($id_pedido)[0];
+            $datos_usuario = $loginModel->buscaUsuarioPorId($pedido['id_usuario']);
+            $datos_reserva = $reservasModel->getFullReservasFromPedido(intval($id_pedido));
+
+            $borrar_pago = $reservasModel->deshacerPago($id_reserva);
+            $anularReserva = $reservasModel->anularReservaById($id_reserva);
 
             if($num_pedidos === 0){
                 $reservasModel->anularPedido($id_pedido);
             }
-
-            $datos_usuario = $loginModel->buscaUsuarioPorId($pedido['id_usuario']);
-            $datos_reserva = $reservasModel->getFullReservasFromPedido(intval($id_pedido));
 
             $datos_pdf = [
                 "nombre_usuario" => $datos_usuario["nombre"], 

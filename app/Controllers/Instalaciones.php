@@ -7,6 +7,7 @@ use App\Models\categoriasModel;
 use App\Models\horariosModel;
 use App\Models\instalacionesModel;
 use App\Models\reservasModel;
+use App\Models\loginModel;
 
 class Instalaciones extends BaseController
 {
@@ -894,6 +895,8 @@ class Instalaciones extends BaseController
 
     public function instalacion(?int $id_instalacion = null){
 
+        $loginModel = new loginModel();
+
         if($id_instalacion !== null){
             
             $id = intval($id_instalacion);
@@ -902,6 +905,8 @@ class Instalaciones extends BaseController
             
             $instalacion = $instalacionesModel->getInstalacion($id)[0];
             $pistas = $instalacionesModel->getPistasByInstalacion($id);
+
+            $usuario = $loginModel->buscaUsuarioPorId(session()->get('usuario')["id_usuario"]);
             
 
             $assets = [
@@ -925,7 +930,7 @@ class Instalaciones extends BaseController
             $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
             $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
-            $view = view('instalaciones/instalacion', ["instalacion" => $instalacion, "pistas" => $pistas, "modalReservaPista" => $modalReservaPista, "baseUrl" => base_url()]);
+            $view = view('instalaciones/instalacion', ["instalacion" => $instalacion, "pistas" => $pistas, "usuario" => $usuario, "modalReservaPista" => $modalReservaPista, "baseUrl" => base_url()]);
             return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas, "modalInformacionPersonal" => $modalInformacionPersonal]);
         }
         else
