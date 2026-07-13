@@ -125,6 +125,18 @@
 
                 </div>
 
+                <div class="row mt-3">
+                    <div class="col-10">
+                        <div class="w-50">
+                            Selecciona imagen para la actividad
+                            <label class="btn btn-primary mt-1">
+                            Imagen
+                            <input class="imagenes" type="file" name="imagenes[]" accept="image/*" hidden="">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
 
             </div>
 

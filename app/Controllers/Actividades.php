@@ -166,4 +166,92 @@ class Actividades extends BaseController
         }
     }
 
+
+    public function crearActividad() {
+
+        $actividadesModel = new actividadesModel();
+        $post = $this->request->getPost();
+
+        if(!empty($post)){
+
+            $nombre = $post["nombre"];
+            $tipo_actividad = intval($post["categoria"]);
+            $descripcion = $post["descripcion"];
+            $fecha_actividad = $post["fecha"];
+            $hora_actividad = $post["hora"];
+            $fecha_lanzamiento = date('Y-m-d H:i:s');
+            $fecha_limite = $post["fechaLimite"]; 
+            $hora_limite = $post["horaLimite"];
+            $tiene_aforo = filter_var($post["tieneAforo"], FILTER_VALIDATE_BOOLEAN);
+            $aforo = ($tiene_aforo) ? intval($post["aforo"]) : null;
+            $tiene_precio = filter_var($post["tienePrecio"], FILTER_VALIDATE_BOOLEAN);
+            $precio = ($tiene_precio) ? floatval($post["precio"]) : null;
+            $estado = 'activa';
+            $lugar = $post["lugar"];
+            $duracion = $post["duracion"];
+            $plazas_ocupadas = 0;
+
+            $rutaDestino = FCPATH . 'images/';
+            if (!is_dir($rutaDestino)) {
+                mkdir($rutaDestino, 0755, true);
+            }
+            
+            $imagenGuardada = "";
+
+            if(isset($_FILES['imagen'])) {
+                
+                $imagen = $this->request->getFile('imagen');
+
+                if ($imagen !== null && $imagen->isValid() && !$imagen->hasMoved()) {
+                    $nombreArchivo = basename($imagen->getClientName());
+                    $rutaFinal = $rutaDestino . $nombreArchivo;
+
+                    // Eliminar si ya existe para sobrescribir
+                    if (file_exists($rutaFinal)) {
+                        unlink($rutaFinal);
+                    }
+
+                    // Mover imagen al destino
+                    $imagen->move($rutaDestino, $nombreArchivo);
+
+                    // Guardar ruta relativa para la base de datos
+                    $imagenGuardada = $nombreArchivo;
+                }
+            }
+
+            $data_actividades = [
+                "nombre"            => $nombre, 
+                "fecha_actividad"   => $fecha_actividad, 
+                "hora_actividad"    => $hora_actividad, 
+                "fecha_lanzamiento" => $fecha_lanzamiento, 
+                "fecha_limite"      => $fecha_limite, 
+                "hora_limite"       => $hora_limite, 
+                "descripcion"       => $descripcion, 
+                "tiene_aforo"       => $tiene_aforo, 
+                "aforo"             => $aforo, 
+                "tiene_precio"      => $tiene_precio, 
+                "precio"            => $precio, 
+                "estado"            => $estado, 
+                "lugar"             => $lugar, 
+                "imagen"            => ($imagenGuardada === "") ? "predefinida-actividad" : $imagenGuardada, 
+                "duracion"          => $duracion, 
+                "tipo_actividad"    => $tipo_actividad, 
+                "plazas_ocupadas"   => $plazas_ocupadas        
+
+            ];
+
+            $crear_actividad = $actividadesModel->crearActividad($data_actividades);
+            $actividades = $actividadesModel->getActividades();
+
+            if($crear_actividad) {
+                
+                echo json_encode([
+                    "success" => true,
+                    "message" => "La actividad se ha creado correctamente",
+                    "actividades" => $actividades
+                ]);
+                return;
+            }
+        }
+    }
 }

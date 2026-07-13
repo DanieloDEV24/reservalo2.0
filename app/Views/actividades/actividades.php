@@ -13,10 +13,37 @@
         <?php endif; ?>
      </div>
 
-    <?php if(count($actividades) > 0): ?>
-            
-    <?php else: ?>
-        <div class="no-actividades">
+        <div class="grid-actividades <?= (count($actividades) > 0) ? "" : "d-none" ?>">
+            <?php foreach($actividades as $actividad): ?>
+                <div class="card-actividad">
+            <div class="card-actividad-img">
+                <img src="<?= base_url('images/' . $actividad['imagen']) ?>" alt="<?= $actividad['nombre'] ?>">
+                <span class="card-actividad-badge" style="background-color: #32cccc"><?= $actividad['categoria_actividad'] ?></span>
+            </div>
+            <div class="card-actividad-body">
+                <p class="card-actividad-titulo"><?= $actividad['nombre'] ?></p>
+                <p class="card-actividad-desc"><?= $actividad['descripcion'] ?></p>
+                <div class="card-actividad-meta">
+                    <div><i class="bi bi-calendar"></i> <?= date('d/m/Y', strtotime($actividad['fecha_actividad'])) ?>, <?= $actividad['hora_actividad'] ?></div>
+                    <div><i class="bi bi-geo-alt"></i> <?= $actividad['lugar'] ?></div>
+                    <?php if ((int) $actividad['tiene_aforo'] === 1): ?>
+                        <div><i class="bi bi-people"></i> <?= $actividad['plazas_ocupadas'] ?> / <?= $actividad['aforo'] ?> plazas</div>
+                    <?php endif; ?>
+                </div>
+                <div class="card-actividad-footer">
+                    <span class="card-actividad-precio"><?= $actividad['tiene_precio'] ? $actividad['precio'] . '€' : 'Gratis' ?></span>
+                    <button class="btn btn-outline-actividad">Ver más</button>
+                </div>
+            </div>
+        </div>
+            <?php endforeach; ?>
+        </div>  
+
+        <div class="botones-actividades <?= (count($actividades) > 0) ? "" : "d-none" ?>">
+            <a href="" class="btn-primary-personal btn-crear-actividad">Crear actividad</a>
+        </div>
+
+        <div class="no-actividades <?= (count($actividades) === 0) ? '' : 'd-none' ?>">
             <div class="icono-no-actividades">
                 <i class="bi bi-calendar-x-fill"></i>
             </div>
@@ -29,7 +56,6 @@
                </div>
             <?php endif; ?>
         </div>
-    <?php endif; ?>
 </div>
 <?= $modalCrearTipoActividad ?>
 <?= $modalMenuTiposActividades ?>

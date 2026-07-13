@@ -77,8 +77,128 @@
     margin-top: 1%;
 }
 
-.botones-no-actividades a {
+.botones-actividades {
+    display: flex;
+    gap: 2%;
+    align-items: center;
+    justify-content: end;
+    width: 100%;
+    margin-top: 1%;
+}
+
+.botones-no-actividades a, .botones-actividades a {
     min-width: 250px;
+}
+
+.grid-actividades {
+    background-color: #fff;
+    border-radius: 12px;
+    margin-top: 4%;
+    padding: 5% 2%;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.card-actividad {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.card-actividad-img {
+    position: relative;
+    height: 150px;
+    background: #f4f4f4;
+}
+
+.card-actividad-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.card-actividad-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: #0d6efd;
+    color: #fff;
+    font-size: 15px;
+    padding: 4px 10px;
+    border-radius: 6px;
+}
+
+.card-actividad-body {
+    padding: 1rem;
+}
+
+.card-actividad-titulo {
+    font-weight: 600;
+    font-size: 17px;
+    margin: 0 0 4px;
+}
+
+.card-actividad-desc {
+    font-size: 15px;
+    color: #666;
+    margin: 0 0 12px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-actividad-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 14px;
+    color: #666;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+}
+
+.card-actividad-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 14px;
+}
+
+.card-actividad-precio {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.btn-outline-actividad {
+    color: #32cccc;
+    border: 1px solid #32cccc;
+    background-color: transparent;
+}
+
+.btn-outline-actividad:hover {
+    color: #fff;
+    background-color: #32cccc;
+    border-color: #32cccc;
+}
+
+.btn.btn-outline-actividad {
+    color: #32cccc;
+    border: 1px solid #32cccc;
+    background-color: transparent;
+}
+
+.btn.btn-outline-actividad:hover {
+    color: #fff;
+    background-color: #32cccc;
+    border-color: #32cccc;
 }
 
 /* #modalCrearTipoActividad {

@@ -311,6 +311,7 @@ $(document).ready(function () {
         let precio = tienePrecio ? $('#precio-actividad-crear').val() : null;
         let lugar = $('#lugar-actividad-crear').val();
         let duracion = $('#duracion-actividad-crear').val();
+        let imagen = $('#modalCrearActividad .imagenes')[0].files[0];
 
 
         if(nombre === '') {
@@ -370,6 +371,8 @@ $(document).ready(function () {
             errores.push({campo: 'duracion', mensaje: "Debe seleccionar la duración de la actividad"})
         }
 
+        
+
 
         if(errores.length > 0) {
 
@@ -381,6 +384,73 @@ $(document).ready(function () {
 
             $('#modalCrearActividad .contenedor-alert-nueva-actividad').removeClass('d-none');
             $('#modalCrearActividad .alert-errores-nueva-actividad').show();
+        }
+        else {
+
+            let formData = new FormData();
+            formData.append('nombre', nombre);
+            formData.append('categoria', categoria);
+            formData.append('descripcion', descripcion);
+            formData.append('fecha', fecha);
+            formData.append('hora', hora);
+            formData.append('fechaLimite', fechaLimite);
+            formData.append('horaLimite', horaLimite);
+            formData.append('tieneAforo', tieneAforo);
+            formData.append('aforo', aforo);
+            formData.append('tienePrecio', tienePrecio);
+            formData.append('precio', precio);
+            formData.append('lugar', lugar);
+            formData.append('duracion', duracion);
+            formData.append('imagen', imagen);
+
+            $.ajax({
+                type: "POST",
+                url: `${BASE_URL}index.php/crearActividad`,
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "JSON",
+                success: function (response) {
+                    
+                    if(response.success == true) {
+                        
+                        if(response.actividades.length > 1) {
+
+                        }
+                        else {
+                            $('.actividades .no-actividades').addClass('d-none');
+                            $('.actividades .grid-actividades').removeClass('d-none');
+                            
+                            response.actividades.map(function(actividad){
+                                $('.actividades .grid-actividades').append(`
+                                <div class="card-actividad">
+                                    <div class="card-actividad-img">
+                                        <img src="${BASE_URL}images/${actividad.imagen}" alt="${actividad.nombre}">
+                                        <span class="card-actividad-badge" style="background-color: #32cccc">${actividad.categoria_actividad}</span>
+                                    </div>
+                                    <div class="card-actividad-body">
+                                        <p class="card-actividad-titulo">${actividad.nombre}</p>
+                                        <p class="card-actividad-desc">${actividad.descripcion}</p>
+                                        <div class="card-actividad-meta">
+                                            <div><i class="bi bi-calendar"></i> ${parseFechaES(actividad.fecha_actividad)}, ${actividad.hora_actividad}</div>
+                                            <div><i class="bi bi-geo-alt"></i> ${actividad.lugar}</div>
+                                            ${(parseInt(actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${actividad.plazas_ocupadas} / ${actividad.aforo} plazas</div>` : ''}
+                                        </div>
+                                        <div class="card-actividad-footer">
+                                            <span class="card-actividad-precio">${(actividad.tiene_precio) ? actividad.precio+'€' : 'Gratis'}</span>
+                                            <button class="btn btn-outline-primary">Ver más</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                `)
+                            })
+
+
+                            $('#modalCrearActividad').modal('hide');
+                        }
+                    }
+                }
+            });
         }
 
     })

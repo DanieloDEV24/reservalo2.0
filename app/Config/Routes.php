@@ -120,3 +120,4 @@ $routes->post('/getMenuTiposActividades', 'Actividades::getMenuTiposActividades'
 $routes->post('/getTipoActividad', 'Actividades::getTipoActividad');
 $routes->post('/editarTipoActividad', 'Actividades::editarTipoActividad');
 $routes->post('/eliminarTipoActividad', 'Actividades::eliminarTipoActividad');
+$routes->post('/crearActividad', 'Actividades::crearActividad');

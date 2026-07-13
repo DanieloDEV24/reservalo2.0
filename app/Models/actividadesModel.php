@@ -36,7 +36,8 @@ class actividadesModel extends Model
         $builder = $db->table('actividades');
 
         // Select con los campos y agregaciones
-        $builder->select();
+        $builder->select('actividades.*, tipos_actividades.nombre as categoria_actividad');
+        $builder->join('tipos_actividades', 'tipos_actividades.id_tipos_actividades = actividades.tipo_actividad');
         $query = $builder->get();
 
         return $query->getResultArray();
@@ -136,5 +137,18 @@ class actividadesModel extends Model
         $builder->delete();
 
         return true;
+    }
+
+
+    public function crearActividad(array $data) {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal
+        $builder = $db->table('actividades');
+        $builder->insert($data);
+
+        return $db->insertID();
     }
 }
