@@ -427,6 +427,20 @@ $(document).ready(function () {
                                     <div class="card-actividad-img">
                                         <img src="${BASE_URL}images/${actividad.imagen}" alt="${actividad.nombre}">
                                         <span class="card-actividad-badge" style="background-color: #32cccc">${actividad.categoria_actividad}</span>
+
+                                        ${(parseInt($('#rol_usuario').val()) === 2) ? `
+                                            <div class="dropdown card-actividad-admin-menu">
+                                                <button class="btn btn-sm card-actividad-admin-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                    <li><a class="dropdown-item" href="#" onclick=""><i class="bi bi-pencil me-2"></i>Editar</a></li>
+                                                    <li><a class="dropdown-item" href="#" onclick="verInscritos"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item text-danger" href="#" onclick=""><i class="bi bi-trash me-2"></i>Eliminar</a></li>
+                                                </ul>
+                                            </div>
+                                        ` : ''}
                                     </div>
                                     <div class="card-actividad-body">
                                         <p class="card-actividad-titulo">${actividad.nombre}</p>

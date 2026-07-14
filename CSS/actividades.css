@@ -108,6 +108,13 @@
     border: 1px solid #e0e0e0;
     border-radius: 12px;
     overflow: hidden;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    transition: ease-in-out .3s all;
+}
+
+.card-actividad:hover {
+    transform: scale(1.05);
+
 }
 
 .card-actividad-img {
@@ -199,6 +206,42 @@
     color: #fff;
     background-color: #32cccc;
     border-color: #32cccc;
+}
+
+.card-actividad-img {
+    position: relative;
+}
+
+.dropdown.card-actividad-admin-menu {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.btn.card-actividad-admin-btn {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.55);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+
+.btn.card-actividad-admin-btn:hover,
+.btn.card-actividad-admin-btn:focus {
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #fff;
+}
+
+.btn.card-actividad-admin-btn::after {
+    display: none;
+}
+
+.actividades a.dropdown-item {
+    font-size: 15px !important;
 }
 
 /* #modalCrearTipoActividad {
