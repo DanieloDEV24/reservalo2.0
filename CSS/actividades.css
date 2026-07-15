@@ -244,6 +244,49 @@
     font-size: 15px !important;
 }
 
+.informacion-actividad {
+    border-radius: 10px;
+    background-color: #cccccc20;
+    padding: 3%;
+}
+
+.email-inscritos {
+    border-radius: 10px;
+    padding: 2% 3%;
+    background-color: #611717;
+    color: #EC7E7E;
+    display: flex;
+    align-items: center;
+    gap: 2%;
+}
+
+.email-inscritos p {
+    margin-bottom: 0% !important;
+}
+
+.card-actividad-img img.grayscale-img {
+    filter: grayscale(100%);
+    opacity: 0.85;
+}
+
+.card-actividad-cancelada .btn-outline-actividad {
+    background-color: #e0e0e0;
+    border-color: #e0e0e0;
+    color: #888;
+    cursor: not-allowed;
+}
+
+.card-actividad-badge-cancelada {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background-color: rgba(0, 0, 0, 0.65);
+    color: #fff;
+    font-size: 12px;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+
 /* #modalCrearTipoActividad {
     z-index: 1060;
 }

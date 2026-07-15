@@ -151,4 +151,63 @@ class actividadesModel extends Model
 
         return $db->insertID();
     }
+
+
+    public function editarActividad(int $id_actividad, array $data_actividades){
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal
+        $builder = $db->table('actividades');
+        $builder->where('id_actividades', $id_actividad);
+        $builder->update($data_actividades);
+
+        return $db->affectedRows() > 0;
+    }
+
+
+    public function getDataActividad(int $id_actividad){
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal
+        $builder = $db->table('actividades');
+        $builder->select('actividades.*, tipos_actividades.nombre as categoria_actividad');
+        $builder->join('tipos_actividades', 'tipos_actividades.id_tipos_actividades = actividades.tipo_actividad');
+        $builder->where('id_actividades', $id_actividad);
+
+        $query = $builder->get();
+        return $query->getResultArray();
+    }
+
+    public function bajaActividad(int $id_actividad){
+        
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal
+        $builder = $db->table('actividades');
+
+        $builder->where('id_actividades', $id_actividad);
+        $builder->update(["estado" => 'cancelada']);
+
+        return $db->affectedRows() > 0;
+    }
+
+
+    public function altaActividad(int $id_actividad){
+        
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal
+        $builder = $db->table('actividades');
+
+        $builder->where('id_actividades', $id_actividad);
+        $builder->update(["estado" => 'activa']);
+
+        return $db->affectedRows() > 0;
+    }
 }

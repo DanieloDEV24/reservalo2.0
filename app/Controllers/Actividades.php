@@ -49,8 +49,10 @@ class Actividades extends BaseController
         $modalEliminarTipoActividad = view('actividades/modalEliminarTipoActividad');
 
         $modalCrearActividad = view('actividades/modalCrearActividad', ["tipos_actividades" => $tipos_actividades]);
+        $modalEditarActividad = view('actividades/modalEditarActividad');
+        $modalCancelarActividad = view('actividades/modalCancelarActividad');
 
-        $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad]);
+        $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad, "modalEditarActividad" => $modalEditarActividad, "modalCancelarActividad" => $modalCancelarActividad]);
         return view('plantillas/normal', ["view" => $view, "assets" => $assets]);
     }
 
@@ -249,6 +251,193 @@ class Actividades extends BaseController
                     "success" => true,
                     "message" => "La actividad se ha creado correctamente",
                     "actividades" => $actividades
+                ]);
+                return;
+            }
+        }
+    }
+
+    public function getDataActividad() {
+
+        $actividadesModel = new actividadesModel();
+        $post = $this->request->getPost();
+
+        if(!empty($post)) {
+
+            $id_actividad = intval($post["idActividad"]);
+            $actividad = $actividadesModel->getDataActividad($id_actividad)[0];
+
+            $tipos_actividades = $actividadesModel->getTiposActividadesConTotal();
+
+            if($actividad){
+                echo json_encode([
+                    "success" => true,
+                    "message" => "La actividad se ha creado correctamente",
+                    "actividad" => $actividad,
+                    "tiposActividades" => $tipos_actividades
+                ]);
+                return;
+            }
+        }
+    }
+
+    public function editarActividad(){
+
+        $actividadesModel = new actividadesModel();
+        $post = $this->request->getPost();
+
+        if(!empty($post)){
+
+            $id_actividad = intval($post["idActividad"]);
+            $nombre = $post["nombre"];
+            $tipo_actividad = intval($post["categoria"]);
+            $descripcion = $post["descripcion"];
+            $fecha_actividad = $post["fecha"];
+            $hora_actividad = $post["hora"];
+            $fecha_lanzamiento = date('Y-m-d H:i:s');
+            $fecha_limite = $post["fechaLimite"]; 
+            $hora_limite = $post["horaLimite"];
+            $tiene_aforo = filter_var($post["tieneAforo"], FILTER_VALIDATE_BOOLEAN);
+            $aforo = ($tiene_aforo) ? intval($post["aforo"]) : null;
+            $tiene_precio = filter_var($post["tienePrecio"], FILTER_VALIDATE_BOOLEAN);
+            $precio = ($tiene_precio) ? floatval($post["precio"]) : null;
+            $estado = $post['estado'];
+            $lugar = $post["lugar"];
+            $duracion = $post["duracion"];
+
+            $rutaDestino = FCPATH . 'images/';
+            if (!is_dir($rutaDestino)) {
+                mkdir($rutaDestino, 0755, true);
+            }
+            
+            $imagenGuardada = "";
+
+            if(isset($_FILES['imagen'])) {
+                
+                $imagen = $this->request->getFile('imagen');
+
+                if ($imagen !== null && $imagen->isValid() && !$imagen->hasMoved()) {
+                    $nombreArchivo = basename($imagen->getClientName());
+                    $rutaFinal = $rutaDestino . $nombreArchivo;
+
+                    // Eliminar si ya existe para sobrescribir
+                    if (file_exists($rutaFinal)) {
+                        unlink($rutaFinal);
+                    }
+
+                    // Mover imagen al destino
+                    $imagen->move($rutaDestino, $nombreArchivo);
+
+                    // Guardar ruta relativa para la base de datos
+                    $imagenGuardada = $nombreArchivo;
+                }
+            }
+
+
+            if($imagenGuardada !== "") {
+                
+                $data_actividades = [
+                    "nombre"            => $nombre, 
+                    "fecha_actividad"   => $fecha_actividad, 
+                    "hora_actividad"    => $hora_actividad, 
+                    "fecha_lanzamiento" => $fecha_lanzamiento, 
+                    "fecha_limite"      => $fecha_limite, 
+                    "hora_limite"       => $hora_limite, 
+                    "descripcion"       => $descripcion, 
+                    "tiene_aforo"       => $tiene_aforo, 
+                    "aforo"             => $aforo, 
+                    "tiene_precio"      => $tiene_precio, 
+                    "precio"            => $precio, 
+                    "estado"            => $estado, 
+                    "lugar"             => $lugar, 
+                    "imagen"            => $imagenGuardada, 
+                    "duracion"          => $duracion, 
+                    "tipo_actividad"    => $tipo_actividad, 
+                          
+
+                ];
+            }
+            else {
+
+                $data_actividades = [
+                    "nombre"            => $nombre, 
+                    "fecha_actividad"   => $fecha_actividad, 
+                    "hora_actividad"    => $hora_actividad, 
+                    "fecha_lanzamiento" => $fecha_lanzamiento, 
+                    "fecha_limite"      => $fecha_limite, 
+                    "hora_limite"       => $hora_limite, 
+                    "descripcion"       => $descripcion, 
+                    "tiene_aforo"       => $tiene_aforo, 
+                    "aforo"             => $aforo, 
+                    "tiene_precio"      => $tiene_precio, 
+                    "precio"            => $precio, 
+                    "estado"            => $estado, 
+                    "lugar"             => $lugar, 
+                    "duracion"          => $duracion, 
+                    "tipo_actividad"    => $tipo_actividad, 
+                           
+
+                ];
+            }
+
+            $editar_actividad = $actividadesModel->editarActividad($id_actividad, $data_actividades);
+            $actividad = $actividadesModel->getDataActividad($id_actividad)[0];
+
+            if($editar_actividad) {
+                
+                echo json_encode([
+                    "success" => true,
+                    "message" => "La actividad se ha editado correctamente",
+                    "actividad" => $actividad
+                ]);
+                return;
+            }
+            
+        }
+    }
+
+    public function darBajaActividad(){
+
+        $actividadesModel = new actividadesModel();
+        $post = $this->request->getPost();
+
+        if(!empty($post)){
+
+            $id_actividad = intval($post["idActividad"]);
+            $baja_actividades = $actividadesModel->bajaActividad($id_actividad);
+            $actividad = $actividadesModel->getDataActividad($id_actividad)[0];
+
+            if($baja_actividades) {
+
+                 
+                echo json_encode([
+                    "success" => true,
+                    "message" => "La actividad se ha dado de baja correctamente",
+                    "actividad" => $actividad
+                ]);
+                return;
+            }
+        }
+    }
+
+    public function darAltaActividad(){
+
+        $actividadesModel = new actividadesModel();
+        $post = $this->request->getPost();
+
+        if(!empty($post)){
+
+            $id_actividad = intval($post["idActividad"]);
+            $alta_actividades = $actividadesModel->altaActividad($id_actividad);
+            $actividad = $actividadesModel->getDataActividad($id_actividad)[0];
+
+            if($alta_actividades) {
+
+                 
+                echo json_encode([
+                    "success" => true,
+                    "message" => "La actividad se ha dado de baja correctamente",
+                    "actividad" => $actividad
                 ]);
                 return;
             }

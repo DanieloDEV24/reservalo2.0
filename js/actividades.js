@@ -423,7 +423,7 @@ $(document).ready(function () {
                             
                             response.actividades.map(function(actividad){
                                 $('.actividades .grid-actividades').append(`
-                                <div class="card-actividad">
+                                <div class="card-actividad" data-index="${actividad.id_actividades}">
                                     <div class="card-actividad-img">
                                         <img src="${BASE_URL}images/${actividad.imagen}" alt="${actividad.nombre}">
                                         <span class="card-actividad-badge" style="background-color: #32cccc">${actividad.categoria_actividad}</span>
@@ -434,10 +434,10 @@ $(document).ready(function () {
                                                     <i class="bi bi-three-dots-vertical"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a class="dropdown-item" href="#" onclick=""><i class="bi bi-pencil me-2"></i>Editar</a></li>
-                                                    <li><a class="dropdown-item" href="#" onclick="verInscritos"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
+                                                    <li><a class="dropdown-item btn-editar-actividad" href="#" onclick=""><i class="bi bi-pencil me-2"></i>Editar</a></li>
+                                                    <li><a class="dropdown-item btn-inscritos-actividad" href="#" onclick="verInscritos"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
                                                     <li><hr class="dropdown-divider"></li>
-                                                    <li><a class="dropdown-item text-danger" href="#" onclick=""><i class="bi bi-trash me-2"></i>Eliminar</a></li>
+                                                    <li><a class="dropdown-item text-danger btn-borrar-actividad" href="#" onclick=""><i class="bi bi-x-lg me-2"></i></i>Cancelar</a></li>
                                                 </ul>
                                             </div>
                                         ` : ''}
@@ -452,7 +452,7 @@ $(document).ready(function () {
                                         </div>
                                         <div class="card-actividad-footer">
                                             <span class="card-actividad-precio">${(actividad.tiene_precio) ? actividad.precio+'€' : 'Gratis'}</span>
-                                            <button class="btn btn-outline-primary">Ver más</button>
+                                            <button class="btn btn-outline-actividad">Ver más</button>
                                         </div>
                                     </div>
                                 </div>
@@ -469,6 +469,488 @@ $(document).ready(function () {
 
     })
 
+    $(document).on('click', '.btn-editar-actividad', function(e){
+
+        e.preventDefault();
+        let idActividad = $(this).closest('.card-actividad').data('index');
+        
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/getDataActividad`,
+            data: {idActividad: idActividad},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true) {
+
+                    $('#modalEditarActividad #id-actividad').val(response.actividad.id_actividades);
+                    $('#modalEditarActividad #nombre-actividad-editar').val(response.actividad.nombre);
+                    $('#modalEditarActividad #descripcion-actividad-editar').val(response.actividad.descripcion);
+                    $('#modalEditarActividad #fecha-actividad-editar').val(response.actividad.fecha_actividad);
+                    $('#modalEditarActividad #hora-actividad-editar').val(response.actividad.hora_actividad);
+                    $('#modalEditarActividad #fecha-limite-actividad-editar').val(response.actividad.fecha_limite);
+                    $('#modalEditarActividad #hora-limite-actividad-editar').val(response.actividad.hora_limite);
+                    (parseInt(response.actividad.tiene_aforo) === 1) ? $('.toggle-switch .aforo-editar').prop('checked', true) : $('.toggle-switch .aforo-editar').prop('checked', false); // <-- el ; aquí es la clave
+                    (parseInt(response.actividad.tiene_aforo) === 1) ? $('#modalEditarActividad #aforo-actividad-editar').prop('readonly', false).css('color', '#000') : $('#modalEditarActividad #aforo-actividad-editar').prop('readonly', true).css('color', '#ccc');
+                    
+                    $('#modalEditarActividad #aforo-actividad-editar').val((parseInt(response.actividad.aforo) > 0) ? response.actividad.aforo : '');
+
+                    (parseInt(response.actividad.tiene_precio) === 1) ? $('.toggle-switch .precio-editar').prop('checked', true) : $('.toggle-switch .precio-editar').prop('checked', false);
+                    (parseInt(response.actividad.tiene_precio) === 1) ? $('#modalEditarActividad #precio-actividad-editar').prop('readonly', false).css('color', '#000') : $('#modalEditarActividad #precio-actividad-editar').prop('readonly', true).css('color', '#ccc');
+                    
+                    $('#modalEditarActividad #precio-actividad-editar').val((parseInt(response.actividad.precio) > 0) ? response.actividad.precio : '');
+
+                    $('#modalEditarActividad #lugar-actividad-editar').val(response.actividad.lugar);
+                    $('#modalEditarActividad #duracion-actividad-editar').val(response.actividad.duracion);
+
+                    $('#modalEditarActividad #categoria-actividad-editar').empty();
+                    response.tiposActividades.map(function(tipo){
+
+                        $('#modalEditarActividad #categoria-actividad-editar').append($('<option>', {value: tipo.id_tipos_actividades, text: tipo.nombre}));
+
+                    })
+                    $('#modalEditarActividad #categoria-actividad-editar').val(response.actividad.tipo_actividad);
+
+                    $('#estado-actividad-editar').empty();
+                    const estados = ['activa', 'cancelada', 'finalizada', 'proximamente'];
+
+                    estados.map(function(estado){
+                        $('#estado-actividad-editar').append($('<option>', {value: estado, text: estado}));
+                    })
+                    $('#estado-actividad-editar').val(response.actividad.estado)
+
+                    $('#modalEditarActividad').modal('show');
+                }
+            }
+        });
+    })
+
+    $('.toggle-switch input.precio-editar').on('change', function (event) {
+
+        event.preventDefault();
+
+        let isChecked = $(this).is(':checked'); // --> Comprobamos si esta seleccionado
+
+        // En el caso de que esté seleccionado, borramos el atributo readonly para poder añadir un valor) y ponemos el color del texto del input en negro. Además le añadimos el foco
+        if (isChecked) {
+            $('#precio-actividad-editar').removeAttr('readonly').css('color', 'black').focus(); 
+        }
+        // Si no está seleccionado,  
+        else {
+           $('#precio-actividad-editar').attr('readonly', 'readonly').val(0.0).css('color', '#ccc');
+        }
+    })
+
+    $('.toggle-switch input.aforo-editar').on('change', function (event) {
+
+        event.preventDefault();
+
+        let isChecked = $(this).is(':checked'); // --> Comprobamos si esta seleccionado
+
+        // En el caso de que esté seleccionado, borramos el atributo readonly para poder añadir un valor) y ponemos el color del texto del input en negro. Además le añadimos el foco
+        if (isChecked) {
+            $('#aforo-actividad-editar').removeAttr('readonly').css('color', 'black').focus(); 
+        }
+        // Si no está seleccionado,  
+        else {
+           $('#aforo-actividad-editar').attr('readonly', 'readonly').val(0.0).css('color', '#ccc');
+        }
+    })
+
+    $(document).on('click', '#btn-guardar-editar-actividad', function(e){
+
+        e.preventDefault();
+        let errores = [];
+
+        let idActividad = $('#modalEditarActividad #id-actividad').val();
+        let nombre = $('#nombre-actividad-editar').val();
+        let categoria = $('#categoria-actividad-editar').val();
+        let descripcion = $('#descripcion-actividad-editar').val();
+        let fecha = $('#fecha-actividad-editar').val();
+        let hora = $('#hora-actividad-editar').val();
+        let fechaLimite = $('#fecha-limite-actividad-editar').val();
+        let horaLimite = $('#hora-limite-actividad-editar').val();
+        let tieneAforo = $('.toggle-switch .aforo-editar').is(':checked');
+        let aforo = tieneAforo ? $('#aforo-actividad-editar').val() : null;
+        let tienePrecio = $('.toggle-switch .precio-editar').is(':checked');
+        let precio = tienePrecio ? $('#precio-actividad-editar').val() : null;
+        let lugar = $('#lugar-actividad-editar').val();
+        let duracion = $('#duracion-actividad-editar').val();
+        let imagen = $('#modalEditarActividad .imagenes')[0].files[0];
+        let estado = $('#estado-actividad-editar').val();
+
+
+        if(nombre === '') {
+            errores.push({campo: 'nombre', mensaje: 'El nombre de la actividad no puede estar vacío'})
+        }
+
+        if(parseInt(categoria) === -1 ) {
+            errores.push({campo: 'categoría', mensaje: "Debe seleccionar una categoría"})
+        }
+
+        if(descripcion === '') {
+            errores.push({campo: 'descripción', mensaje: "La descripción de la actividad no puede estar vacío"})
+        }
+
+        if(fecha === '') {
+            errores.push({campo: 'fecha', mensaje: "Debe seleccionar una fecha para la actividad"})
+        }
+
+        if(hora === '') {
+            errores.push({campo: 'hora', mensaje: "Debe seleccionar una hora para la actividad"})
+        }
+
+        if(fechaLimite === '') {
+            errores.push({campo: 'fecha límite', mensaje: "Debe seleccionar una fecha límite de inscripción"})
+        }
+
+        if(parseFechaES(fecha) <= parseFechaES(fechaLimite)){
+            errores.push({campo: 'fecha límite', mensaje: "La fecha límite debe ser menor que la fecha de la actividad"})
+        }
+
+        const hoy = new Date().toISOString().split('T')[0]; 
+        if(parseFechaES(fecha) <= parseFechaES(hoy)){
+            errores.push({campo: 'fecha', mensaje: "No puede seleccionar una fecha pasada"})
+        }
+
+        if(parseFechaES(fechaLimite) <= parseFechaES(hoy)){
+            errores.push({campo: 'fecha límite', mensaje: "No puede seleccionar una fecha pasada"})
+        }
+
+        if(horaLimite === '') {
+            errores.push({campo: 'hora límite', mensaje: "Debe seleccionar una hora límite de inscripción"})
+        }
+
+        if(tieneAforo &&  (aforo === '' || parseFloat(aforo) === 0)) {
+            errores.push({campo: 'aforo', mensaje: "Debe seleccionar un aforo para la actividad"})
+        }
+
+        if(tienePrecio && (precio === '' || parseFloat(precio) === 0)) {
+            errores.push({campo: 'precio', mensaje: "Debe seleccionar un precio para la actividad"})
+        }
+
+        if(lugar === '') {
+            errores.push({campo: 'lugar', mensaje: "Debe introducir el lugar de la actividad"})
+        }
+
+        if(duracion === '') {
+            errores.push({campo: 'duracion', mensaje: "Debe seleccionar la duración de la actividad"})
+        }
+
+        if(parseInt(estado) === -1 ) {
+            errores.push({campo: 'estado', mensaje: "Debe seleccionar debe seleccionar un estado de los indicados"})
+        }
+
+
+        if(errores.length > 0) {
+
+            $('#modalEditarActividad .alert-errores-editar-actividad .errores ul').empty()
+
+            errores.map(e => {
+                $('#modalEditarActividad .alert-errores-editar-actividad .errores ul').append(`<li>${e.mensaje}</li>`)
+            })
+
+            $('#modalEditarActividad .contenedor-alert-editar-actividad').removeClass('d-none');
+            $('#modalEditarActividad .alert-errores-editar-actividad').show();
+        }
+        else {
+
+            let formData = new FormData();
+            formData.append('idActividad', idActividad);
+            formData.append('nombre', nombre);
+            formData.append('categoria', categoria);
+            formData.append('descripcion', descripcion);
+            formData.append('fecha', fecha);
+            formData.append('hora', hora);
+            formData.append('fechaLimite', fechaLimite);
+            formData.append('horaLimite', horaLimite);
+            formData.append('tieneAforo', tieneAforo);
+            formData.append('aforo', aforo);
+            formData.append('tienePrecio', tienePrecio);
+            formData.append('precio', precio);
+            formData.append('lugar', lugar);
+            formData.append('duracion', duracion);
+            formData.append('imagen', imagen);
+            formData.append('estado', estado);
+
+            $.ajax({
+                type: "POST",
+                url: `${BASE_URL}index.php/editarActividad`,
+                data: formData,
+                processData: false,
+                contentType: false,
+                dataType: "JSON",
+                success: function (response) {
+                    
+                    if(response.success == true) {
+                    
+                        // response.actividades.map(function(actividad){
+                        //     $('.actividades .grid-actividades').append(`
+                        //     <div class="card-actividad" data-index="${actividad.id_actividades}">
+                        //         <div class="card-actividad-img">
+                        //             <img src="${BASE_URL}images/${actividad.imagen}" alt="${actividad.nombre}">
+                        //             <span class="card-actividad-badge" style="background-color: #32cccc">${actividad.categoria_actividad}</span>
+
+                        //             ${(parseInt($('#rol_usuario').val()) === 2) ? `
+                        //                 <div class="dropdown card-actividad-admin-menu">
+                        //                     <button class="btn btn-sm card-actividad-admin-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        //                         <i class="bi bi-three-dots-vertical"></i>
+                        //                     </button>
+                        //                     <ul class="dropdown-menu dropdown-menu-end">
+                        //                         <li><a class="dropdown-item btn-editar-actividad" href="#" onclick=""><i class="bi bi-pencil me-2"></i>Editar</a></li>
+                        //                         <li><a class="dropdown-item btn-inscritos-actividad" href="#" onclick="verInscritos"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
+                        //                         <li><hr class="dropdown-divider"></li>
+                        //                         <li><a class="dropdown-item text-danger btn-borrar-actividad" href="#" onclick=""><i class="bi bi-trash me-2"></i>Eliminar</a></li>
+                        //                     </ul>
+                        //                 </div>
+                        //             ` : ''}
+                        //         </div>
+                        //         <div class="card-actividad-body">
+                        //             <p class="card-actividad-titulo">${actividad.nombre}</p>
+                        //             <p class="card-actividad-desc">${actividad.descripcion}</p>
+                        //             <div class="card-actividad-meta">
+                        //                 <div><i class="bi bi-calendar"></i> ${parseFechaES(actividad.fecha_actividad)}, ${actividad.hora_actividad}</div>
+                        //                 <div><i class="bi bi-geo-alt"></i> ${actividad.lugar}</div>
+                        //                 ${(parseInt(actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${actividad.plazas_ocupadas} / ${actividad.aforo} plazas</div>` : ''}
+                        //             </div>
+                        //             <div class="card-actividad-footer">
+                        //                 <span class="card-actividad-precio">${(actividad.tiene_precio) ? actividad.precio+'€' : 'Gratis'}</span>
+                        //                 <button class="btn btn-outline-primary">Ver más</button>
+                        //             </div>
+                        //         </div>
+                        //     </div>
+                        //     `)
+                        // })
+
+                        $(`.grid-actividades .card-actividad[data-index="${response.actividad.id_actividades}"]`).replaceWith(
+                            `
+                                <div class="card-actividad" data-index="${response.actividad.id_actividades}">
+                                    <div class="card-actividad-img">
+                                        <img src="${BASE_URL}images/${response.actividad.imagen}" alt="${response.actividad.nombre}">
+                                        <span class="card-actividad-badge" style="background-color: #32cccc">${response.actividad.categoria_actividad}</span>
+
+                                        ${(parseInt($('#rol_usuario').val()) === 2) ? `
+                                            <div class="dropdown card-actividad-admin-menu">
+                                                <button class="btn btn-sm card-actividad-admin-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                    <li><a class="dropdown-item btn-editar-actividad" href="#"><i class="bi bi-pencil me-2"></i>Editar</a></li>
+                                                    <li><a class="dropdown-item btn-inscritos-actividad" href="#"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
+                                                    ${(response.actividad.estado !== 'finalizada') ? `
+                                                            <li><hr class="dropdown-divider"></li>
+                                                            ${(response.actividad.estado !== 'cancelada')
+                                                                ? `<li><a class="dropdown-item btn-reactivar-actividad" href="#"><i class="bi bi-arrow-clockwise me-2"></i>Reactivar</a></li>`
+                                                                : `<li><a class="dropdown-item text-danger btn-borrar-actividad" href="#"><i class="bi bi-x-lg me-2"></i>Cancelar</a></li>`
+                                                            }
+                                                        ` : ''
+                                                    }
+                                                    
+                                                </ul>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                    <div class="card-actividad-body">
+                                        <p class="card-actividad-titulo">${response.actividad.nombre}</p>
+                                        <p class="card-actividad-desc">${response.actividad.descripcion}</p>
+                                        <div class="card-actividad-meta">
+                                            <div><i class="bi bi-calendar"></i> ${parseFechaES(response.actividad.fecha_actividad)}, ${response.actividad.hora_actividad}</div>
+                                            <div><i class="bi bi-geo-alt"></i> ${response.actividad.lugar}</div>
+                                            ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : ''}
+                                        </div>
+                                        <div class="card-actividad-footer">
+                                            <span class="card-actividad-precio">${(response.actividad.tiene_precio) ? response.actividad.precio+'€' : 'Gratis'}</span>
+                                            <button class="btn btn-outline-actividad">Ver más</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            `
+                        );
+
+                        $('#modalEditarActividad').modal('hide');
+                        
+                    }
+                }
+            });
+        }
+
+    })
+
+    $(document).on('click', '.btn-borrar-actividad', function(e){
+
+        e.preventDefault();
+        let idActividad = $(this).closest('.card-actividad').data('index');
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/getDataActividad`,
+            data: {idActividad: idActividad},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true) {
+                    
+                    $('#modalCancelarActividad #id-actividad').val(idActividad);
+                    
+                    const ocupadas = parseInt(response.actividad.plazas_ocupadas);
+                    const tieneAforo = parseInt(response.actividad.tiene_aforo) === 1;
+                    const tienePrecio = parseInt(response.actividad.tiene_precio) === 1;
+
+                    $('#baja-nombre').text(response.actividad.nombre);
+                    $('#baja-fecha').text(parseFechaES(response.actividad.fecha_actividad))
+                    $('#baja-salida').text(formatearHora(response.actividad.hora_actividad))
+                    $('#baja-duracion').text(formatearHora(response.actividad.duracion)+'h')
+                    $('#baja-lugar').text(response.actividad.lugar)
+                    $('#baja-inscritos').text(ocupadas + (tieneAforo ? '/' + response.actividad.aforo : ''));
+                    $('#precio-datos-inscripcion').text('Precio: '+((tienePrecio)?response.actividad.precio+'€' : 'Gratis') + ' · ' + 'Inscripción hasta el ' + parseFechaES(response.actividad.fecha_limite) + ' a las ' + formatearHora(response.actividad.hora_limite));
+
+                    $('#modalCancelarActividad').modal('show');
+                }
+            }
+        });
+
+    })
+
+    $(document).on('click', '#btn-guardar-cancelar-actividad', function(e){
+
+        e.preventDefault();
+        let idActividad =  $('#modalCancelarActividad #id-actividad').val();
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/darBajaActividad`,
+            data: {idActividad: idActividad},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true) {
+
+                    const estado = response.actividad.estado;
+                    const estaCancelada = estado === 'cancelada';
+                    const estaFinalizada = estado === 'finalizada';
+                    const estaInactiva = estaCancelada || estaFinalizada;
+
+
+                   $(`.grid-actividades .card-actividad[data-index="${response.actividad.id_actividades}"]`).replaceWith(
+                        `
+                            <div class="card-actividad" data-index="${response.actividad.id_actividades}">
+                                <div class="card-actividad-img">
+                                    <img src="${BASE_URL}images/${response.actividad.imagen}" alt="${response.actividad.nombre}" class="${estaInactiva ? 'grayscale-img' : ''}">
+                                    <span class="card-actividad-badge" style="background-color: ${estaInactiva ? '#adb5bd' : '#32cccc'}">${response.actividad.categoria_actividad}</span>
+
+                                    ${(parseInt($('#rol_usuario').val()) === 2) ? `
+                                        <div class="dropdown card-actividad-admin-menu">
+                                            <button class="btn btn-sm card-actividad-admin-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item btn-editar-actividad" href="#"><i class="bi bi-pencil me-2"></i>Editar</a></li>
+                                                <li><a class="dropdown-item btn-inscritos-actividad" href="#"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
+                                                ${(!estaFinalizada) ? `
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        ${estaCancelada
+                                                            ? `<li><a class="dropdown-item btn-reactivar-actividad" href="#"><i class="bi bi-arrow-clockwise me-2"></i>Reactivar</a></li>`
+                                                            : `<li><a class="dropdown-item text-danger btn-borrar-actividad" href="#"><i class="bi bi-x-lg me-2"></i>Cancelar</a></li>`
+                                                        }
+                                                    ` : ''
+                                                }
+                                                
+                                            </ul>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                                <div class="card-actividad-body">
+                                    <p class="card-actividad-titulo">${response.actividad.nombre}</p>
+                                    <p class="card-actividad-desc">${response.actividad.descripcion}</p>
+                                    <div class="card-actividad-meta">
+                                        <div><i class="bi bi-calendar"></i> ${parseFechaES(response.actividad.fecha_actividad)}, ${response.actividad.hora_actividad}</div>
+                                        <div><i class="bi bi-geo-alt"></i> ${response.actividad.lugar}</div>
+                                        ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : ''}
+                                    </div>
+                                    <div class="card-actividad-footer">
+                                        <span class="card-actividad-precio">${(response.actividad.tiene_precio) ? response.actividad.precio+'€' : 'Gratis'}</span>
+                                        <button class="btn btn-outline-actividad" ${estaInactiva ? 'disabled' : ''}>${estaCancelada ? 'Cancelada' : estaFinalizada ? 'Finalizada' : 'Ver más'}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    );
+                    
+                    $('#modalCancelarActividad').modal('hide');
+                }
+            }
+        });
+
+    })
+
+    $(document).on('click', '.btn-reactivar-actividad', function(e){
+
+        e.preventDefault();
+        let idActividad = $(this).closest('.card-actividad').data('index');
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/darAltaActividad`,
+            data: {idActividad: idActividad},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true) {
+
+                    const estado = response.actividad.estado;
+                    const estaCancelada = estado === 'cancelada';
+                    const estaFinalizada = estado === 'finalizada';
+                    const estaInactiva = estaCancelada || estaFinalizada;
+
+
+                   $(`.grid-actividades .card-actividad[data-index="${response.actividad.id_actividades}"]`).replaceWith(
+                        `
+                            <div class="card-actividad" data-index="${response.actividad.id_actividades}">
+                                <div class="card-actividad-img">
+                                    <img src="${BASE_URL}images/${response.actividad.imagen}" alt="${response.actividad.nombre}" class="${estaInactiva ? 'grayscale-img' : ''}">
+                                    <span class="card-actividad-badge" style="background-color: ${estaInactiva ? '#adb5bd' : '#32cccc'}">${response.actividad.categoria_actividad}</span>
+
+                                    ${(parseInt($('#rol_usuario').val()) === 2) ? `
+                                        <div class="dropdown card-actividad-admin-menu">
+                                            <button class="btn btn-sm card-actividad-admin-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu dropdown-menu-end">
+                                                <li><a class="dropdown-item btn-editar-actividad" href="#"><i class="bi bi-pencil me-2"></i>Editar</a></li>
+                                                <li><a class="dropdown-item btn-inscritos-actividad" href="#"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
+                                                ${(!estaFinalizada) ? `
+                                                        <li><hr class="dropdown-divider"></li>
+                                                        ${estaCancelada
+                                                            ? `<li><a class="dropdown-item btn-reactivar-actividad" href="#"><i class="bi bi-arrow-clockwise me-2"></i>Reactivar</a></li>`
+                                                            : `<li><a class="dropdown-item text-danger btn-borrar-actividad" href="#"><i class="bi bi-x-lg me-2"></i>Cancelar</a></li>`
+                                                        }
+                                                    ` : ''
+                                                }
+                                                
+                                            </ul>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                                <div class="card-actividad-body">
+                                    <p class="card-actividad-titulo">${response.actividad.nombre}</p>
+                                    <p class="card-actividad-desc">${response.actividad.descripcion}</p>
+                                    <div class="card-actividad-meta">
+                                        <div><i class="bi bi-calendar"></i> ${parseFechaES(response.actividad.fecha_actividad)}, ${response.actividad.hora_actividad}</div>
+                                        <div><i class="bi bi-geo-alt"></i> ${response.actividad.lugar}</div>
+                                        ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : ''}
+                                    </div>
+                                    <div class="card-actividad-footer">
+                                        <span class="card-actividad-precio">${(response.actividad.tiene_precio) ? response.actividad.precio+'€' : 'Gratis'}</span>
+                                        <button class="btn btn-outline-actividad" ${estaInactiva ? 'disabled' : ''}>${estaCancelada ? 'Cancelada' : estaFinalizada ? 'Finalizada' : 'Ver más'}</button>
+                                    </div>
+                                </div>
+                            </div>
+                        `
+                    );
+                }
+            }
+        });
+    })
 
     $(document).on('shown.bs.modal', '.modal', function () {
         const openModalsCount = $('.modal.show').length;
@@ -480,8 +962,13 @@ $(document).ready(function () {
 
 
     function parseFechaES(str) {
-        const [dia, mes, anio] = str.split('/');
-        return new Date(`${anio}-${mes}-${dia}`);
+        const [anio, mes, dia] = str.split('-');
+        return `${dia}/${mes}/${anio}`;
+    }
+
+    function formatearHora(horaConSegundos) {
+        if (!horaConSegundos) return '';
+        return horaConSegundos.substring(0, 5); // "07:00:00" -> "07:00"
     }
 })
 

@@ -121,3 +121,7 @@ $routes->post('/getTipoActividad', 'Actividades::getTipoActividad');
 $routes->post('/editarTipoActividad', 'Actividades::editarTipoActividad');
 $routes->post('/eliminarTipoActividad', 'Actividades::eliminarTipoActividad');
 $routes->post('/crearActividad', 'Actividades::crearActividad');
+$routes->post('/getDataActividad', 'Actividades::getDataActividad');
+$routes->post('/editarActividad', 'Actividades::editarActividad');
+$routes->post('/darBajaActividad', 'Actividades::darBajaActividad');
+$routes->post('/darAltaActividad', 'Actividades::darAltaActividad');
