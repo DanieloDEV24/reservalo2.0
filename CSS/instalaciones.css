@@ -543,7 +543,7 @@ span.estado.no-disponible{
   padding: 5%;
 }
 
-.paginaInstalacion
+.paginaInstalacion, .paginaActividad
 {
   padding: 2%;
 }

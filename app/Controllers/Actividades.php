@@ -52,8 +52,12 @@ class Actividades extends BaseController
         $modalEditarActividad = view('actividades/modalEditarActividad');
         $modalCancelarActividad = view('actividades/modalCancelarActividad');
 
-        $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad, "modalEditarActividad" => $modalEditarActividad, "modalCancelarActividad" => $modalCancelarActividad]);
-        return view('plantillas/normal', ["view" => $view, "assets" => $assets]);
+        $modalAnularHoras = view('reservas/modalAnularHoras');
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
+        $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
+
+        $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad, "modalEditarActividad" => $modalEditarActividad, "modalCancelarActividad" => $modalCancelarActividad, "baseUrl" => base_url()]);
+        return view('plantillas/normal', ["view" => $view, "assets" => $assets, "modalMisReservas" => $modalMisReservas, "modalInformacionPersonal" => $modalInformacionPersonal]);
     }
 
 
@@ -441,6 +445,126 @@ class Actividades extends BaseController
                 ]);
                 return;
             }
+        }
+    }
+
+
+    public function actividad(?int $actividad = null) {
+
+        $loginModel = new loginModel();
+        $actividadesModel = new actividadesModel();
+
+        if($actividad !== null) {
+
+            $id_actividad = intval($actividad);
+            $actividad = $actividadesModel->getDataActividad($id_actividad)[0];
+
+            $usuario = $loginModel->buscaUsuarioPorId(session()->get('usuario')["id_usuario"]);
+            $usuarios = $loginModel->getUsuarios();
+
+            $assets = [
+                "css" => [
+                    'css/instalaciones.css',
+                    'css/actividades.css', 
+                    'css/style.css', 
+                    'css/responsive.css'
+                ], 
+
+                "js" => [
+                    "js/actividades.js", 
+                    "js/movimiento.js"
+                ]
+            ];
+
+            $modalAnularHoras = view('reservas/modalAnularHoras');
+            $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
+            $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
+
+            $view = view('actividades/actividad', ["actividad" => $actividad, "usuario" => $usuario, 'usuarios'=>$usuarios, "baseUrl" => base_url()]);
+            return view('plantillas/normal', ["view" => $view, "baseUrl" => base_url(), "assets" => $assets, "modalMisReservas" => $modalMisReservas, "modalInformacionPersonal" => $modalInformacionPersonal]);
+        }
+    }
+
+
+    public function reservaActividad() {
+
+        $loginModel = new loginModel();
+        $actividadesModel = new actividadesModel();
+        $reservasModel = new reservasModel();
+        $post = $this->request->getPost();
+
+        if(!empty($post)) {
+
+            $fecha = new DateTime(); // fecha/hora actual como objeto
+            $fechaString = $fecha->format('Y-m-d H:i:s');
+
+            $usuario = intval($post["usuario"]);
+            $actividad = intval($post["actividad"]);
+            $num_plazas = intval($post["plazas"]);
+
+            $datos_actividad = $actividadesModel->getDataActividad($actividad)[0];
+
+            $precio_reserva = (intval($datos_actividad["tiene_precio"]) === 1 ? $num_plazas*floatval($datos_actividad['precio']) : 0);
+
+            $fecha_hora_actual = date('Y-m-d H:i:s');
+            $dt = new DateTime($fecha_hora_actual);
+
+            $anio    = $dt->format('Y');
+            $mes     = $dt->format('m');
+            $dia     = $dt->format('d');
+            $hora    = $dt->format('H');
+            $minuto  = $dt->format('i');
+            $segundo = $dt->format('s');
+
+            $contador_pedido = count($reservasModel->pedidosFromDate($fecha_hora_actual)) + 1;
+            $contador_formateado = str_pad($contador_pedido, 3, '0', STR_PAD_LEFT);
+            $num_pedido = $anio.$mes.$dia."-".$hora.$minuto.$segundo."-".$contador_formateado;
+
+            if((intval($datos_actividad["tiene_aforo"]) === 1) && (intval($datos_actividad["plazas_ocupadas"]) + $num_plazas) <= (intval($datos_actividad["aforo"])) ) {
+                
+                $pedido = $reservasModel->hacerPedido([
+                    "id_usuario"    => $usuario, 
+                    "fecha_pedido"  => $fechaString,
+                    "precio_pedido" => $precio_reserva, 
+                    "num_pedido"    => $num_pedido
+                ]);
+
+                $actividadesModel->hacerReservaActividad([
+                    "id_usuario" => $usuario, 
+                    "id_actividad" => $actividad, 
+                    "id_pedido" => $pedido, 
+                    "plazas_reserva" => $num_plazas, 
+                    "fecha_reserva" => $fechaString, 
+                    "pagada" => 0, 
+                    "precio_reserva" => $precio_reserva, 
+                    "confirmada" => 0
+                ]);
+
+                $actividad_actualizada = $actividadesModel->getDataActividad($actividad);
+
+                echo json_encode([
+                    "success" => true,
+                    "message" => "La reserva se ha realizado correctamente",
+                    "actividad" => $actividad_actualizada[0]
+                ]);
+
+                return;
+            }
+            else {
+
+                $actividad_actualizada = $actividadesModel->getDataActividad($actividad);
+
+                echo json_encode([
+                    "success" => false,
+                    "message" => "El numero de plazas es superior al que se puede seleccionar", 
+                    "actividad" => $actividad_actualizada[0]
+                ]);
+
+                return;
+            }
+
+            
+
         }
     }
 }

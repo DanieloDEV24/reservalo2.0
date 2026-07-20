@@ -210,4 +210,26 @@ class actividadesModel extends Model
 
         return $db->affectedRows() > 0;
     }
+
+    public function hacerReservaActividad(array $data){
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla en la que vamos a buscar las reservas
+        $builder = $db->table('reservas_actividades');
+
+        // Hacemos la sentencia 
+        $builder->insert($data);
+
+        $idReserva = $db->insertID();
+
+        // Actualizamos las plazas ocupadas en la actividad
+        $db->table('actividades')
+            ->where('id_actividades', $data['id_actividad'])
+            ->set('plazas_ocupadas', $data['plazas_reserva'])
+            ->update();
+
+        return $idReserva;
+    }
 }

@@ -1,0 +1,33 @@
+CRITICAL - 2026-07-16 13:16:31 --> ErrorException: Undefined variable $baseUrl
+in APPPATH\Views\actividades\actividades.php on line 60.
+ 1 APPPATH\Views\actividades\actividades.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $baseUrl', 'D:\\proyectos\\reservalo2.0\\app\\Views\\actividades\\actividades.php', 60)
+ 2 SYSTEMPATH\View\View.php(228): include('D:\\proyectos\\reservalo2.0\\app\\Views\\actividades\\actividades.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('actividades/actividades', [], true)
+ 5 APPPATH\Controllers\Actividades.php(59): view('actividades/actividades', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->actividades()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-16 13:16:49 --> ErrorException: Undefined variable $baseUrl
+in APPPATH\Views\actividades\actividades.php on line 60.
+ 1 APPPATH\Views\actividades\actividades.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $baseUrl', 'D:\\proyectos\\reservalo2.0\\app\\Views\\actividades\\actividades.php', 60)
+ 2 SYSTEMPATH\View\View.php(228): include('D:\\proyectos\\reservalo2.0\\app\\Views\\actividades\\actividades.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('actividades/actividades', [], true)
+ 5 APPPATH\Controllers\Actividades.php(59): view('actividades/actividades', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->actividades()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-16 13:17:44 --> ErrorException: Undefined variable $baseUrl
+in APPPATH\Views\actividades\actividades.php on line 60.
+ 1 APPPATH\Views\actividades\actividades.php(60): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $baseUrl', 'D:\\proyectos\\reservalo2.0\\app\\Views\\actividades\\actividades.php', 60)
+ 2 SYSTEMPATH\View\View.php(228): include('D:\\proyectos\\reservalo2.0\\app\\Views\\actividades\\actividades.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('actividades/actividades', [], true)
+ 5 APPPATH\Controllers\Actividades.php(59): view('actividades/actividades', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->actividades()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

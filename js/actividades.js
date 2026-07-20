@@ -452,7 +452,7 @@ $(document).ready(function () {
                                         </div>
                                         <div class="card-actividad-footer">
                                             <span class="card-actividad-precio">${(actividad.tiene_precio) ? actividad.precio+'€' : 'Gratis'}</span>
-                                            <button class="btn btn-outline-actividad">Ver más</button>
+                                            <a class="btn btn-outline-actividad" href="${BASE_URL}index.php/actividad/${actividad.id_actividades}">Ver más</a>
                                         </div>
                                     </div>
                                 </div>
@@ -760,7 +760,7 @@ $(document).ready(function () {
                                         </div>
                                         <div class="card-actividad-footer">
                                             <span class="card-actividad-precio">${(response.actividad.tiene_precio) ? response.actividad.precio+'€' : 'Gratis'}</span>
-                                            <button class="btn btn-outline-actividad">Ver más</button>
+                                            <a class="btn btn-outline-actividad" href="${BASE_URL}index.php/actividad/${response.actividad.id_actividades}">Ver más</a>
                                         </div>
                                     </div>
                                 </div>
@@ -869,7 +869,7 @@ $(document).ready(function () {
                                     </div>
                                     <div class="card-actividad-footer">
                                         <span class="card-actividad-precio">${(response.actividad.tiene_precio) ? response.actividad.precio+'€' : 'Gratis'}</span>
-                                        <button class="btn btn-outline-actividad" ${estaInactiva ? 'disabled' : ''}>${estaCancelada ? 'Cancelada' : estaFinalizada ? 'Finalizada' : 'Ver más'}</button>
+                                        <a class="btn btn-outline-actividad" href="${BASE_URL}index.php/actividad/${response.actividad.id_actividades}" ${estaInactiva ? 'disabled' : ''}>${estaCancelada ? 'Cancelada' : estaFinalizada ? 'Finalizada' : 'Ver más'}</a>
                                     </div>
                                 </div>
                             </div>
@@ -941,7 +941,7 @@ $(document).ready(function () {
                                     </div>
                                     <div class="card-actividad-footer">
                                         <span class="card-actividad-precio">${(response.actividad.tiene_precio) ? response.actividad.precio+'€' : 'Gratis'}</span>
-                                        <button class="btn btn-outline-actividad" ${estaInactiva ? 'disabled' : ''}>${estaCancelada ? 'Cancelada' : estaFinalizada ? 'Finalizada' : 'Ver más'}</button>
+                                        <a class="btn btn-outline-actividad" href="${BASE_URL}index.php/actividad/${response.actividad.id_actividades}" ${estaInactiva ? 'disabled' : ''}>${estaCancelada ? 'Cancelada' : estaFinalizada ? 'Finalizada' : 'Ver más'}</a>
                                     </div>
                                 </div>
                             </div>
@@ -950,6 +950,174 @@ $(document).ready(function () {
                 }
             }
         });
+    })
+
+    $(document).on('click', '#btn-restar-plaza', function(e){
+        
+        e.preventDefault();
+
+        let plazasSeleccionadas = parseInt($('#num-plazas').val());
+        let numTotal = plazasSeleccionadas 
+        let precio = $('#precio-actividad').val();
+
+        if(plazasSeleccionadas > 1) {
+
+            numTotal = parseInt(plazasSeleccionadas-1)
+            $('#num-plazas').val(numTotal);
+        }
+
+        if(precio !== '') {
+            $('#precio-total-ver-actividad strong').text(numTotal*parseInt(precio)+'€')
+        }
+    })
+
+    $(document).on('click', '#btn-sumar-plaza', function(e){
+        
+        e.preventDefault();
+
+        let plazasSeleccionadas = parseInt($('#num-plazas').val());
+        let aforo = $('#num-aforo-actividad').val();
+        let numTotal = plazasSeleccionadas 
+        let precio = $('#precio-actividad').val();
+        
+        if(aforo !== ''){
+
+            if(plazasSeleccionadas < parseInt(aforo)) {
+
+                numTotal = parseInt(plazasSeleccionadas+1)
+                $('#num-plazas').val(numTotal);
+            }
+        }
+
+        if(precio !== '') {
+            $('#precio-total-ver-actividad strong').text(numTotal*parseInt(precio)+'€')
+        }
+    })
+
+    $(document).on('input', '#num-plazas', function(e){
+
+        e.preventDefault();
+        let numeroReservas = parseInt($('#num-plazas').val());
+        let aforo = $('#num-aforo-actividad').val();
+        let precio = $('#precio-actividad').val();
+        let usuario = $('#usuarios-reserva-actividad').val();
+
+        if(parseInt(numeroReservas) < 1 || isNaN(numeroReservas)) {
+            $('#btn-reservar-plaza-actividad').prop('disabled', true);
+        }
+        else if(aforo !== '' && parseInt(numeroReservas) > parseInt(aforo) ) {
+            $('#btn-reservar-plaza-actividad').prop('disabled', true);
+        }
+        else if(parseInt(usuario) === -1) {
+            $('#btn-reservar-plaza-actividad').prop('disabled', true);
+        }
+        else {
+            $('#btn-reservar-plaza-actividad').prop('disabled', false);
+            
+            if(parseFloat(precio) > 0 && !isNaN(parseFloat(precio))){
+                $('#precio-total-ver-actividad strong').text(numeroReservas*parseInt(precio)+'€')
+            }
+        }
+    })
+
+    $(document).on('change', '#usuarios-reserva-actividad', function(e){
+
+        e.preventDefault();
+        let usuario = $(this).val();
+        let numeroReservas = parseInt($('#num-plazas').val());
+        let aforo = $('#num-aforo-actividad').val();
+        let precio = $('#precio-actividad').val();
+
+        if(parseInt(usuario) === -1) {
+            $('#btn-reservar-plaza-actividad').prop('disabled', true);
+        }
+        else if(parseInt(numeroReservas) < 1 || isNaN(numeroReservas)) {
+            $('#btn-reservar-plaza-actividad').prop('disabled', true);
+        }
+        else if(aforo !== '' && parseInt(numeroReservas) > parseInt(aforo) ) {
+            $('#btn-reservar-plaza-actividad').prop('disabled', true);
+        }
+        else {
+            $('#btn-reservar-plaza-actividad').prop('disabled', false);
+            if(parseFloat(precio) > 0 && !isNaN(parseFloat(precio))){
+                $('#precio-total-ver-actividad strong').text(numeroReservas*parseInt(precio)+'€')
+            }
+        }
+    })
+
+    $(document).on('click', '#btn-reservar-plaza-actividad', function(e){
+
+        e.preventDefault();
+        let numeroReservas = parseInt($('#num-plazas').val());
+        let idUsuario = parseInt($('#usuarios-reserva-actividad').val())
+        let aforo = $('#num-aforo-actividad').val();
+        let precioTotal = $('#precio-total-ver-actividad strong').text()
+        let precio = $('#precio-actividad').val()
+        let rolUsuario = $('#rol_usuario').val();
+        let actividad = parseInt($('#id-actividad').val());
+
+        let errores = [];
+
+        if(numeroReservas < 1 || isNaN(numeroReservas)) {
+            errores.push({campo: 'plazas', mensaje: 'Para reservar debe seleccionar al menos una plaza'})
+        }
+
+        if(!isNaN(parseInt(aforo)) && numeroReservas > parseInt(aforo)) {
+            errores.push({campo: 'plazas', mensaje: `No puede superar el número máximo de plazas (${aforo} personas)`})
+        }
+
+        if((rolUsuario !== '' && parseInt(rolUsuario) === 2) && parseInt(idUsuario) === -1) {
+            errores.push({campo: 'usuario', mensaje: 'Debe seleccionar a un usuario para la reserva'})
+        }
+
+        console.log(BASE_URL)
+
+        if(errores.length === 0) {
+            $.ajax({
+                type: "POST",
+                url: `${BASE_URL}index.php/reservaActividad`,
+                data: {plazas: numeroReservas, usuario: idUsuario, actividad: actividad},
+                dataType: "JSON",
+                success: function (response) {
+                    
+                    if(response.success == false) {
+                        errores.push({campo: 'plazas', mensaje: `Se ha superado el numero de plazas disponibles`})
+
+                        $('.paginaActividad .alert-errores-reservar-actividad .errores ul').empty()
+
+                        errores.map(e => {
+                            $('.paginaActividad .alert-errores-reservar-actividad .errores ul').append(`<li>${e.mensaje}</li>`)
+                        })
+
+                        $('.paginaActividad .contenedor-alert-reserva-actividad').removeClass('d-none');
+                        $('.paginaActividad .alert-errores-reservar-actividad').show();
+                    }
+                    else {
+                        $('.paginaActividad .contenedor-alert-reserva-actividad-2').removeClass('d-none');
+                        $('.paginaActividad .alert-reserva-actividad-completada').show();
+                    }
+
+                    $('#num-plazas').val(1)
+                    $('#rol_usuario').val('-1')
+                    $('.info-card.plazas .info-value').text(
+                        response.actividad.plazas_ocupadas + ' ' + (parseInt(response.actividad.tiene_aforo) === 1 ? "/" + response.actividad.aforo : '')
+                    );
+
+                }
+            });
+        }else {
+            
+            $('.paginaActividad .alert-errores-reservar-actividad .errores ul').empty()
+
+            errores.map(e => {
+                $('.paginaActividad .alert-errores-reservar-actividad .errores ul').append(`<li>${e.mensaje}</li>`)
+            })
+
+            $('.paginaActividad .contenedor-alert-reserva-actividad').removeClass('d-none');
+            $('.paginaActividad .alert-errores-reservar-actividad').show();
+        }
+        
+        
     })
 
     $(document).on('shown.bs.modal', '.modal', function () {

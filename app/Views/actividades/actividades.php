@@ -57,9 +57,9 @@
                         </div>
                         <div class="card-actividad-footer">
                             <span class="card-actividad-precio"><?= $actividad['tiene_precio'] ? $actividad['precio'] . '€' : 'Gratis' ?></span>
-                            <button class="btn btn-outline-actividad" <?= $estaInactiva ? 'disabled' : '' ?>>
+                            <a class="btn btn-outline-actividad" <?= $estaInactiva ? 'disabled' : '' ?> href="<?= $baseUrl.'index.php/actividad/'.$actividad['id_actividades'] ?>">
                                 <?= $estaCancelada ? 'Cancelada' : ($estaFinalizada ? 'Finalizada' : 'Ver más') ?>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </div>

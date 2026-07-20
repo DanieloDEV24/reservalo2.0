@@ -287,6 +287,166 @@
     border-radius: 4px;
 }
 
+
+#img-ir-actividad {
+    width: 100%;
+    height: 350px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+}
+
+.info-actividad {
+
+    background-color: #fff;
+    margin-top: 3%;
+    border-radius: 20px;
+    padding: 5%;
+}
+
+.categoria-actividad {
+    
+    background-color: #32cccc;
+    color: #fff;
+    border-radius: 20px;
+    padding: .5% 1.5%;
+    margin-bottom: 5%;
+}
+
+.reserva-plaza {
+    background-color: #f8fafc;
+    padding: 3% !important;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+}
+
+.selector-plazas {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.selector-plazas-label {
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.selector-plazas-controles {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-plazas {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    border: none;
+    background-color: #e9ecef;
+    color: #1a1a1a;
+    font-size: 16px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.btn-plazas:hover {
+    background-color: #dde0e3;
+}
+
+.btn-plazas:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+input.selector-plazas-valor {
+    min-width: 36px;
+    width: 44px;
+    height: 36px;
+    border-radius: 8px;
+    background-color: #e9ecef;
+    border: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+    color: #1a1a1a;
+    -moz-appearance: textfield;
+}
+
+input.selector-plazas-valor::-webkit-outer-spin-button,
+input.selector-plazas-valor::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.precio-ver-actividad {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-reservar-plazas {
+    width: 100%;
+    background-color: #32cccc !important;
+    color: #fff !important;
+    font-size: 20px !important;
+    padding: 5%;
+    margin-top: 1%;
+}
+
+.select-usuario-reserva {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    width: 100%;
+    height: 40px;
+    padding: 0 36px 0 12px;
+
+    background-color: #e9ecef;
+    border: none;
+    border-radius: 8px;
+
+    font-size: 14px;
+    color: #1a1a1a;
+    cursor: pointer;
+
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+.select-usuario-reserva:hover {
+    background-color: #dde0e3;
+}
+
+.select-usuario-reserva:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #32cccc55;
+}
+
+.select-usuario-reserva option {
+    color: #1a1a1a;
+    background-color: #fff;
+}
+
+.alert-flotante {
+    position: fixed;
+    top: 20px;
+    left: 0;
+    right: 0;
+    z-index: 1080;
+    pointer-events: none;
+}
+
+.alert-flotante .alert {
+    pointer-events: auto;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
 /* #modalCrearTipoActividad {
     z-index: 1060;
 }
