@@ -1,5 +1,8 @@
 <div class="paginaActividad">
 
+    <input type="hidden" id="rol_usuario" value="<?= (isset($usuario)) ? $usuario["id_rol"] : '' ?>">
+    <input type="hidden" id="id_usuario" value="<?= (isset($usuario)) ? $usuario["id_usuario"] : '' ?>">
+
     <div class="d-flex justify-content-center d-none contenedor-alert-reserva-actividad pt-2">
     
         
@@ -69,7 +72,7 @@
 
                 <div class="col-3">
                     <div class="info-card plazas">
-                        <div class="info-label">Plazas</div>
+                        <div class="info-label"><?= intval($actividad["tiene_aforo"]) === 1 ? 'Plazas' : 'Inscritos' ?></div>
                         <div class="info-value"><?= $actividad["plazas_ocupadas"] ?> <?= intval($actividad["tiene_aforo"]) === 1 ? "/".$actividad["aforo"] : '' ?></div>
                     </div>
                 </div>

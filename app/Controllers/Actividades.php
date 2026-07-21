@@ -51,12 +51,13 @@ class Actividades extends BaseController
         $modalCrearActividad = view('actividades/modalCrearActividad', ["tipos_actividades" => $tipos_actividades]);
         $modalEditarActividad = view('actividades/modalEditarActividad');
         $modalCancelarActividad = view('actividades/modalCancelarActividad');
+        $modalInscritosActividad = view('actividades/modalInscritosActividad');
 
         $modalAnularHoras = view('reservas/modalAnularHoras');
         $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
         $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
-        $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad, "modalEditarActividad" => $modalEditarActividad, "modalCancelarActividad" => $modalCancelarActividad, "baseUrl" => base_url()]);
+        $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad, "modalEditarActividad" => $modalEditarActividad, "modalCancelarActividad" => $modalCancelarActividad, "modalInscritosActividad" => $modalInscritosActividad, "baseUrl" => base_url()]);
         return view('plantillas/normal', ["view" => $view, "assets" => $assets, "modalMisReservas" => $modalMisReservas, "modalInformacionPersonal" => $modalInformacionPersonal]);
     }
 
@@ -520,7 +521,7 @@ class Actividades extends BaseController
             $contador_formateado = str_pad($contador_pedido, 3, '0', STR_PAD_LEFT);
             $num_pedido = $anio.$mes.$dia."-".$hora.$minuto.$segundo."-".$contador_formateado;
 
-            if((intval($datos_actividad["tiene_aforo"]) === 1) && (intval($datos_actividad["plazas_ocupadas"]) + $num_plazas) <= (intval($datos_actividad["aforo"])) ) {
+            if(((intval($datos_actividad["tiene_aforo"]) === 1) && (intval($datos_actividad["plazas_ocupadas"]) + $num_plazas) <= (intval($datos_actividad["aforo"]))) || (intval($datos_actividad["tiene_aforo"]) === 0)) {
                 
                 $pedido = $reservasModel->hacerPedido([
                     "id_usuario"    => $usuario, 
@@ -549,6 +550,7 @@ class Actividades extends BaseController
                 ]);
 
                 return;
+
             }
             else {
 
@@ -561,10 +563,37 @@ class Actividades extends BaseController
                 ]);
 
                 return;
+
             }
 
             
 
+        }
+    }
+
+    public function verInscritos() {
+
+        $loginModel = new loginModel();
+        $actividadesModel = new actividadesModel();
+        $reservasModel = new reservasModel();
+        $post = $this->request->getPost();
+
+        if(!empty($post)) {
+
+            $actividad = intval($post["actividad"]);
+            $inscritos_actividad = $actividadesModel->getInscritosActividad($actividad);
+            $data_actividad = $actividadesModel->getDataActividad($actividad)[0];
+
+            if($inscritos_actividad) {
+                
+                echo json_encode([
+                    "success" => true, 
+                    "inscritosActividad" => $inscritos_actividad, 
+                    "actividad" => $data_actividad
+                ]);
+
+                return;
+            }
         }
     }
 }

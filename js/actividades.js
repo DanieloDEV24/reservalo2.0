@@ -40,6 +40,8 @@ $(document).ready(function () {
                         else {
                             $('#modalMenuTiposActividades table tbody').empty();
                             let cont = 0;
+                            $('#modalCrearActividad #categoria-actividad-crear').empty();
+                            $('#modalCrearActividad #categoria-actividad-crear').append(`<option value="-1">Seleccione una categoría</option>`);
                             let tiposActividad = response.tiposActividad;
                             tiposActividad.map(tipo => {
                                 cont++
@@ -55,6 +57,9 @@ $(document).ready(function () {
                                         </td>
                                     </tr>
                                 `)
+                                
+                                $('#modalCrearActividad #categoria-actividad-crear').append(`<option value="${tipo.id_tipos_actividades}">${tipo.nombre}</option>`);
+                                
                             });
 
                         $('#modalCrearTipoActividad').modal('hide');
@@ -163,6 +168,8 @@ $(document).ready(function () {
                 success: function (response) {
                     if(response.success == true){
                         $('#modalMenuTiposActividades table tbody').empty();
+                        $('#modalCrearActividad #categoria-actividad-crear').empty();
+                        $('#modalCrearActividad #categoria-actividad-crear').append(`<option value="-1">Seleccione una categoría</option>`);
                         let cont = 0;
                         let tiposActividad = response.tiposActividad;
                         tiposActividad.map(tipo => {
@@ -179,6 +186,8 @@ $(document).ready(function () {
                                     </td>
                                 </tr>
                             `)
+
+                            $('#modalCrearActividad #categoria-actividad-crear').append(`<option value="${tipo.id_tipos_actividades}">${tipo.nombre}</option>`);
                         });
 
                         $('#modalEditarTipoActividad').modal('hide');
@@ -216,6 +225,8 @@ $(document).ready(function () {
                 if(response.success == true){
 
                     $('#modalMenuTiposActividades table tbody').empty();
+                    $('#modalCrearActividad #categoria-actividad-crear').empty();
+                    $('#modalCrearActividad #categoria-actividad-crear').append(`<option value="-1">Seleccione una categoría</option>`);
                     let cont = 0;
                     let tiposActividad = response.tiposActividad;
                     
@@ -233,6 +244,8 @@ $(document).ready(function () {
                                     </td>
                                 </tr>
                             `)
+
+                            $('#modalCrearActividad #categoria-actividad-crear').append(`<option value="${tipo.id_tipos_actividades}">${tipo.nombre}</option>`);
                         });
 
                         $('#modalEliminarTipoActividad').modal('hide');
@@ -338,16 +351,16 @@ $(document).ready(function () {
             errores.push({campo: 'fecha límite', mensaje: "Debe seleccionar una fecha límite de inscripción"})
         }
 
-        if(parseFechaES(fecha) <= parseFechaES(fechaLimite)){
+        if(toDate(parseFechaES(fecha)) <= toDate(parseFechaES(fechaLimite))){
             errores.push({campo: 'fecha límite', mensaje: "La fecha límite debe ser menor que la fecha de la actividad"})
         }
 
         const hoy = new Date().toISOString().split('T')[0]; 
-        if(parseFechaES(fecha) <= parseFechaES(hoy)){
+        if(toDate(parseFechaES(fecha)) <= toDate(parseFechaES(hoy))){
             errores.push({campo: 'fecha', mensaje: "No puede seleccionar una fecha pasada"})
         }
 
-        if(parseFechaES(fechaLimite) <= parseFechaES(hoy)){
+        if(toDate(parseFechaES(fechaLimite)) <= toDate(parseFechaES(hoy))){
             errores.push({campo: 'fecha límite', mensaje: "No puede seleccionar una fecha pasada"})
         }
 
@@ -415,7 +428,48 @@ $(document).ready(function () {
                     if(response.success == true) {
                         
                         if(response.actividades.length > 1) {
+                            
+                            $('.actividades .grid-actividades').empty();
 
+                            response.actividades.map(function(actividad){
+                                $('.actividades .grid-actividades').append(`
+                                <div class="card-actividad" data-index="${actividad.id_actividades}">
+                                    <div class="card-actividad-img">
+                                        <img src="${BASE_URL}images/${actividad.imagen}" alt="${actividad.nombre}">
+                                        <span class="card-actividad-badge" style="background-color: #32cccc">${actividad.categoria_actividad}</span>
+
+                                        ${(parseInt($('#rol_usuario').val()) === 2) ? `
+                                            <div class="dropdown card-actividad-admin-menu">
+                                                <button class="btn btn-sm card-actividad-admin-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <i class="bi bi-three-dots-vertical"></i>
+                                                </button>
+                                                <ul class="dropdown-menu dropdown-menu-end">
+                                                    <li><a class="dropdown-item btn-editar-actividad" href="#" onclick=""><i class="bi bi-pencil me-2"></i>Editar</a></li>
+                                                    <li><a class="dropdown-item btn-inscritos-actividad" href="#" onclick="verInscritos"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
+                                                    <li><hr class="dropdown-divider"></li>
+                                                    <li><a class="dropdown-item text-danger btn-borrar-actividad" href="#" onclick=""><i class="bi bi-x-lg me-2"></i></i>Cancelar</a></li>
+                                                </ul>
+                                            </div>
+                                        ` : ''}
+                                    </div>
+                                    <div class="card-actividad-body">
+                                        <p class="card-actividad-titulo">${actividad.nombre}</p>
+                                        <p class="card-actividad-desc">${actividad.descripcion}</p>
+                                        <div class="card-actividad-meta">
+                                            <div><i class="bi bi-calendar"></i> ${parseFechaES(actividad.fecha_actividad)}, ${actividad.hora_actividad}</div>
+                                            <div><i class="bi bi-geo-alt"></i> ${actividad.lugar}</div>
+                                            ${(parseInt(actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${actividad.plazas_ocupadas} / ${actividad.aforo} plazas</div>` : ''}
+                                        </div>
+                                        <div class="card-actividad-footer">
+                                            <span class="card-actividad-precio">${(parseInt(actividad.tiene_precio) === 1) ? actividad.precio+'€' : 'Gratis'}</span>
+                                            <a class="btn btn-outline-actividad" href="${BASE_URL}index.php/actividad/${actividad.id_actividades}">Ver más</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                `)
+                            })
+
+                            $('#modalCrearActividad').modal('hide');
                         }
                         else {
                             $('.actividades .no-actividades').addClass('d-none');
@@ -988,6 +1042,10 @@ $(document).ready(function () {
                 $('#num-plazas').val(numTotal);
             }
         }
+        else {
+            numTotal = parseInt(plazasSeleccionadas+1)
+            $('#num-plazas').val(numTotal);
+        }
 
         if(precio !== '') {
             $('#precio-total-ver-actividad strong').text(numTotal*parseInt(precio)+'€')
@@ -1095,11 +1153,19 @@ $(document).ready(function () {
                     else {
                         $('.paginaActividad .contenedor-alert-reserva-actividad-2').removeClass('d-none');
                         $('.paginaActividad .alert-reserva-actividad-completada').show();
+
+                        setTimeout(function() {
+                            $('.paginaActividad .contenedor-alert-reserva-actividad-2').addClass('d-none');
+                            $('.paginaActividad .alert-reserva-actividad-completada').hide();
+                        }, 3000);
                     }
 
                     $('#num-plazas').val(1)
                     $('#rol_usuario').val('-1')
                     $('#precio-total-ver-actividad strong').text((parseInt(response.actividad.tiene_precio) === 1) ? response.actividad.precio + "€" : 'Gratis')
+                    if(parseInt(response.actividad.tiene_aforo) === 1) {
+                        $('#num-aforo-actividad').val(parseInt(response.actividad.aforo) - parseInt(response.actividad.plazas_ocupadas));
+                    }
                     $('.info-card.plazas .info-value').text(
                         response.actividad.plazas_ocupadas + ' ' + (parseInt(response.actividad.tiene_aforo) === 1 ? "/" + response.actividad.aforo : '')
                     );
@@ -1116,10 +1182,63 @@ $(document).ready(function () {
 
             $('.paginaActividad .contenedor-alert-reserva-actividad').removeClass('d-none');
             $('.paginaActividad .alert-errores-reservar-actividad').show();
-        }
-        
-        
+        }    
     })
+
+
+    $(document).on('click', '.btn-inscritos-actividad', function(e){
+
+        e.preventDefault();
+        let actividad = $(this).closest('.card-actividad').data('index');
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/verInscritos`,
+            data: {actividad: actividad},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true) {
+
+                    $('#modalInscritosActividad table tbody').empty();
+
+                    $('#modalInscritosActividad h5.modal-title span').text(response.actividad.nombre); 
+
+                    let cont = 1;
+                    response.inscritosActividad.map(function(inscrito){
+                        $('#modalInscritosActividad table tbody').append(
+                            `
+                            <tr data-reserva='${inscrito.id_reserva_actividad}'>
+                                <td>${cont}</td>
+                                <td>${inscrito.email}</td>
+                                <td>${inscrito.telf}</td>
+                                <td>${inscrito.plazas_reserva}</td>
+                                <td>${timestampAFechaES(inscrito.fecha_reserva)}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <button class="btn btn-light rounded-circle dropdown-toggle-no-caret" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 32px; height: 32px; padding: 0; background-color: #ffffff00 !important">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+                                        <ul class="dropdown-menu">
+                                            <li><a class="dropdown-item btn-pagar-inscrito" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="bi bi-check2-square"></i> Pagar</a></li>
+                                            <li><a class="dropdown-item text-danger btn-anular-inscrito" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="bi bi-trash3"></i> Anular</a></li>
+                                            <li><a class="dropdown-item btn-editar-inscrito" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="bi bi-pencil-square"></i> Editar</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                            `
+                        )
+
+                        cont++;
+                    })
+
+                    $('#modalInscritosActividad').modal('show');
+                }
+            }
+        });
+    })
+
 
     $(document).on('shown.bs.modal', '.modal', function () {
         const openModalsCount = $('.modal.show').length;
@@ -1138,6 +1257,22 @@ $(document).ready(function () {
     function formatearHora(horaConSegundos) {
         if (!horaConSegundos) return '';
         return horaConSegundos.substring(0, 5); // "07:00:00" -> "07:00"
+    }
+    
+    function toDate(fechaDDMMYYYY) {
+        const [dia, mes, anio] = fechaDDMMYYYY.split('/');
+        return new Date(anio, mes - 1, dia);
+    }
+
+ 
+    function timestampAFechaES(timestamp) {
+        const [fecha, hora] = timestamp.split(' ');
+        const [anio, mes, dia] = fecha.split('-');
+    
+        if (hora) {
+            return `${dia}/${mes}/${anio} ${hora}`;
+        }
+        return `${dia}/${mes}/${anio}`;
     }
 })
 

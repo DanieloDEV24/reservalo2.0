@@ -232,4 +232,20 @@ class actividadesModel extends Model
 
         return $idReserva;
     }
+
+    public function getInscritosActividad(int $actividad) {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla en la que vamos a buscar las reservas
+        $builder = $db->table('reservas_actividades');
+
+        $query = $builder->select()
+                         ->join('usuarios', 'usuarios.id_usuario = reservas_actividades.id_usuario')
+                         ->where('reservas_actividades.id_actividad', $actividad)
+                         ->get();
+        
+        return $query->getResultArray();
+    }
 }

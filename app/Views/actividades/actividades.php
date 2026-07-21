@@ -69,6 +69,7 @@
 
         <div class="botones-actividades <?= ((count($actividades) > 0) && (isset($usuario) && intval($usuario["id_rol"]) === 2)) ? "" : "d-none" ?>">
             <a href="" class="btn-primary-personal btn-crear-actividad">Crear actividad</a>
+            <?= ($numeroTiposActividad > 0) ? '<a href="" class="btn-secondary-personal btn-modal-menu-tipo-actividad">Menu categorías</a>' : '<a href="" class="btn-secondary-personal btn-modal-crear-tipo-actividad">Crear categoría</a>' ?>
         </div>
 
         <div class="no-actividades <?= (count($actividades) === 0) ? '' : 'd-none' ?>">
@@ -85,6 +86,7 @@
             <?php endif; ?>
         </div>
 </div>
+
 <?= $modalCrearTipoActividad ?>
 <?= $modalMenuTiposActividades ?>
 <?= $modalEditarTipoActividad ?>
@@ -92,3 +94,4 @@
 <?= $modalCrearActividad ?>
 <?= $modalEditarActividad ?>
 <?= $modalCancelarActividad ?>
+<?= $modalInscritosActividad ?>

@@ -69,8 +69,10 @@
 
     </div>
 
+    <h1 class="title-page">Reservas de instalaciones</h1>
     <div class="contenedor-reservas">
         <?php if (isset($reservas) && count($reservas) > 0) : ?>
+        
 
             <?php foreach ($reservas as $reserva) : ?>
                 <div class="card-reserva" data-index="<?= $reserva["id_reserva"] ?>" data-pedido="<?= $reserva["id_pedido"] ?>" data-tipo="<?= $reserva["tipo_reserva"] ?>">
@@ -125,8 +127,11 @@
                     
                 </div>
             <?php endforeach; ?>
+    
+        <?php else : ?>
+            <p>No hay reservas de instalaciones para este día</p>
+        <?php endif; ?>
     </div>
-<?php endif; ?>
 </div>
                                 </div>  
 
