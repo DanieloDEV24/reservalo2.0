@@ -1,5 +1,6 @@
 <div class="actividades">
     <input type="hidden" id="rol_usuario" value="<?= (isset($usuario)) ? $usuario["id_rol"] : '' ?>">
+    <input type="hidden" id="id_usuario" value="<?= (isset($usuario)) ? $usuario["id_usuario"] : '' ?>">
     <h1 class="title-page">Actividades</h1>
     <p class="description-page">Explora nuestras actividades y reserva tu lugar</p>
 

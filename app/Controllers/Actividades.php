@@ -538,7 +538,7 @@ class Actividades extends BaseController
                     "pagada" => 0, 
                     "precio_reserva" => $precio_reserva, 
                     "confirmada" => 0
-                ]);
+                ], intval($datos_actividad["plazas_ocupadas"]));
 
                 $actividad_actualizada = $actividadesModel->getDataActividad($actividad);
 

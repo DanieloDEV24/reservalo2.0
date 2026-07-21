@@ -211,7 +211,7 @@ class actividadesModel extends Model
         return $db->affectedRows() > 0;
     }
 
-    public function hacerReservaActividad(array $data){
+    public function hacerReservaActividad(array $data, int $plazas){
 
         // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
@@ -227,7 +227,7 @@ class actividadesModel extends Model
         // Actualizamos las plazas ocupadas en la actividad
         $db->table('actividades')
             ->where('id_actividades', $data['id_actividad'])
-            ->set('plazas_ocupadas', $data['plazas_reserva'])
+            ->set('plazas_ocupadas', (intval($data['plazas_reserva']) + $plazas))
             ->update();
 
         return $idReserva;

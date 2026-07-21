@@ -1049,12 +1049,12 @@ $(document).ready(function () {
 
         e.preventDefault();
         let numeroReservas = parseInt($('#num-plazas').val());
-        let idUsuario = parseInt($('#usuarios-reserva-actividad').val())
         let aforo = $('#num-aforo-actividad').val();
         let precioTotal = $('#precio-total-ver-actividad strong').text()
         let precio = $('#precio-actividad').val()
         let rolUsuario = $('#rol_usuario').val();
         let actividad = parseInt($('#id-actividad').val());
+        let idUsuario = (parseInt(rolUsuario) === 2) ? parseInt($('#usuarios-reserva-actividad').val()) : parseInt($('#id_usuario').val())
 
         let errores = [];
 
@@ -1099,6 +1099,7 @@ $(document).ready(function () {
 
                     $('#num-plazas').val(1)
                     $('#rol_usuario').val('-1')
+                    $('#precio-total-ver-actividad strong').text((parseInt(response.actividad.tiene_precio) === 1) ? response.actividad.precio + "€" : 'Gratis')
                     $('.info-card.plazas .info-value').text(
                         response.actividad.plazas_ocupadas + ' ' + (parseInt(response.actividad.tiene_aforo) === 1 ? "/" + response.actividad.aforo : '')
                     );

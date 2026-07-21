@@ -91,7 +91,7 @@
                         <button type="button" class="btn-plazas" id="btn-sumar-plaza" aria-label="Sumar plaza">+</button>
                     </div>
 
-                    <input type="hidden" name="" id="num-aforo-actividad" value="<?= intval($actividad["tiene_aforo"]) === 1 ? $actividad["aforo"] : '' ?>">
+                    <input type="hidden" name="" id="num-aforo-actividad" value="<?= intval($actividad["tiene_aforo"]) === 1 ? (intval($actividad["aforo"]) - intval($actividad["plazas_ocupadas"])) : '' ?>">
                 </div>
 
                 <hr>
