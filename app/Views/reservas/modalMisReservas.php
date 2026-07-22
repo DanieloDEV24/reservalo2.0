@@ -14,7 +14,7 @@
   </div>
 
 
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
     <div class="modal-content">
       <!-- <input type="hidden" id="pistaId"> -->
       <!-- Header -->
@@ -28,10 +28,26 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
+      <!-- Switch instalaciones / actividades -->
+      <div class="px-3 pt-3">
+        <div class="switch-tipo-reserva" role="tablist">
+          <div class="switch-tipo-reserva-pill" id="switchPill"></div>
+          <button type="button" class="switch-tipo-reserva-btn active" data-tipo="instalaciones" role="tab" aria-selected="true">Instalaciones</button>
+          <button type="button" class="switch-tipo-reserva-btn" data-tipo="actividades" role="tab" aria-selected="false">Actividades</button>
+        </div>
+      </div>
+
       <!-- Body -->
       <div class="modal-body" style="padding: 5%;">
-        <div class="reservas-list">
+        <div class="reservas-list reservas-list-instalaciones">
           
+        </div>
+
+        <div class="reservas-list reservas-list-actividades d-none">
+          <div class="text-center text-muted py-4 loader-actividades">
+            <div class="spinner-border spinner-border-sm me-2" role="status"></div>
+            Cargando actividades...
+          </div>
         </div>
       </div>
 

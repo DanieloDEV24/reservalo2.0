@@ -54,6 +54,8 @@
                             <div><i class="bi bi-geo-alt"></i> <?= $actividad['lugar'] ?></div>
                             <?php if ((int) $actividad['tiene_aforo'] === 1): ?>
                                 <div><i class="bi bi-people"></i> <?= $actividad['plazas_ocupadas'] ?> / <?= $actividad['aforo'] ?> plazas</div>
+                            <?php else: ?>
+                                <div><i class="bi bi-people"></i> <?= $actividad['plazas_ocupadas'] ?> inscritos</div>
                             <?php endif; ?>
                         </div>
                         <div class="card-actividad-footer">
@@ -95,3 +97,4 @@
 <?= $modalEditarActividad ?>
 <?= $modalCancelarActividad ?>
 <?= $modalInscritosActividad ?>
+<?= $modalEliminarReservaActividad ?>

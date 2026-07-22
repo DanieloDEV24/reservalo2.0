@@ -52,12 +52,13 @@ class Actividades extends BaseController
         $modalEditarActividad = view('actividades/modalEditarActividad');
         $modalCancelarActividad = view('actividades/modalCancelarActividad');
         $modalInscritosActividad = view('actividades/modalInscritosActividad');
+        $modalEliminarReservaActividad = view('actividades/modalEliminarReservaActividad');
 
         $modalAnularHoras = view('reservas/modalAnularHoras');
         $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
         $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
-        $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad, "modalEditarActividad" => $modalEditarActividad, "modalCancelarActividad" => $modalCancelarActividad, "modalInscritosActividad" => $modalInscritosActividad, "baseUrl" => base_url()]);
+        $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad, "modalEditarActividad" => $modalEditarActividad, "modalCancelarActividad" => $modalCancelarActividad, "modalInscritosActividad" => $modalInscritosActividad, 'modalEliminarReservaActividad' => $modalEliminarReservaActividad, "baseUrl" => base_url()]);
         return view('plantillas/normal', ["view" => $view, "assets" => $assets, "modalMisReservas" => $modalMisReservas, "modalInformacionPersonal" => $modalInformacionPersonal]);
     }
 
@@ -622,9 +623,7 @@ class Actividades extends BaseController
 
     public function deshacerPagoActividad() {
 
-        $loginModel = new loginModel();
         $actividadesModel = new actividadesModel();
-        $reservasModel = new reservasModel();
         $post = $this->request->getPost();
 
         if(!empty($post)){
@@ -640,6 +639,89 @@ class Actividades extends BaseController
                 ]); 
                 return;
             }
+        }
+    }
+
+
+    public function getDataReserva() {
+
+        $actividadesModel = new actividadesModel();
+        $post = $this->request->getPost();
+
+        if(!empty($post)){
+
+            $reserva = intval($post["reserva"]);
+            $datos_reserva = $actividadesModel->getReservaById($reserva)[0];
+            $actividad = $actividadesModel->getDataActividad(intval($datos_reserva["id_actividad"]))[0];
+
+            if($datos_reserva){
+                echo json_encode([
+                    "success"   => true, 
+                    "reserva"   => $datos_reserva, 
+                    "actividad" => $actividad
+                ]);
+                return;
+            }
+        }
+    }
+
+    public function eliminarReservaActividad(){
+
+        $actividadesModel = new actividadesModel();
+        $post = $this->request->getPost();
+
+        if(!empty($post)){
+
+            $reserva = intval($post["reserva"]);
+            $plazas = intval($actividadesModel->getReservaById($reserva)[0]['plazas_reserva']);
+            $actividad = intval($actividadesModel->getReservaById($reserva)[0]['id_actividad']);
+            $plazas_ocupadas = intval($actividadesModel->getDataActividad($actividad)[0]['plazas_ocupadas']);
+            $borrar_reserva = $actividadesModel->eliminarReservaActividad($reserva, $plazas, $actividad, $plazas_ocupadas);
+            $data_actividad = $actividadesModel->getDataActividad($actividad)[0];
+
+            if($borrar_reserva){
+                echo json_encode([
+                    "success" => true, 
+                    "mensaje" => "La reserva de la actividad se ha eliminado correctamente", 
+                    "actividad" => $actividad,
+                    "data_actividad" => $data_actividad
+                ]);
+                return;
+            }
+        }
+    }
+
+
+    public function editarReservaActividad(){
+
+        $actividadesModel = new actividadesModel();
+        $post = $this->request->getPost();
+
+        if(!empty($post)){
+          
+            $reserva = intval($post["reserva"]);
+            $plazas = intval($post["plazas"]);
+
+            $id_actividad = intval($actividadesModel->getReservaById($reserva)[0]['id_actividad']);
+            $plazas_ocupadas = intval($actividadesModel->getDataActividad($id_actividad)[0]['plazas_ocupadas']);
+            $precio_actividad = (intval($actividadesModel->getDataActividad($id_actividad)[0]['tiene_precio']) === 1) ? floatval($actividadesModel->getDataActividad($id_actividad)[0]['precio']) : 0;
+
+            // Aquí función editar plazas de la reserva + plazas ocupadas de la actividad (tablas reservas_actividades y actividades)
+            $plazas_reservadas = intval($actividadesModel->getReservaById($reserva)[0]['plazas_reserva']);
+            $editar_reserva = $actividadesModel->editarReserva($reserva, $plazas, $plazas_ocupadas, $plazas_reservadas, $id_actividad, $precio_actividad);
+
+            $actividad = $actividadesModel->getDataActividad($id_actividad)[0];
+
+            if($editar_reserva) {
+                echo json_encode([
+                    "success" => true, 
+                    "actividad" => $actividad, 
+                ]);
+
+                return;
+            }
+
+
         }
     }
 }

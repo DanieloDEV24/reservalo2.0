@@ -253,8 +253,8 @@
 .email-inscritos {
     border-radius: 10px;
     padding: 2% 3%;
-    background-color: #611717;
-    color: #EC7E7E;
+    color: #611717;
+    background-color: #EC7E7E50;
     display: flex;
     align-items: center;
     gap: 2%;
@@ -445,6 +445,82 @@ input.selector-plazas-valor::-webkit-inner-spin-button {
 .alert-flotante .alert {
     pointer-events: auto;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#modalEliminarReservaActividad .datos-reservas-eliminar {
+
+    border-radius: 10px;
+    background-color: #cccccc20;
+    padding: 3%;
+}
+
+#modalEliminarReservaActividad .div-avio-email {
+
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    background-color: #EC7E7E50;
+    border-radius: 10px;
+    color: #611717;
+    padding: 2%;
+}
+
+#modalEliminarReservaActividad .div-avio-email p {
+    margin: 0%;
+}
+
+.plazas-stepper {
+  display: inline-flex;
+  align-items: center;
+  background: #f4f4f5;
+  border-radius: 10px;
+  padding: 4px;
+  gap: 2px;
+}
+.plazas-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 8px;
+  background: #fff;
+  color: #555;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+}
+.plazas-btn:hover { background: #32cccc; color: #fff; }
+.input-plazas {
+  width: 40px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-weight: 600;
+  font-size: 15px;
+  -moz-appearance: textfield;
+}
+.input-plazas::-webkit-inner-spin-button,
+.input-plazas::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.plazas-stepper:focus-within { box-shadow: 0 0 0 2px #32cccc; }
+
+
+#modalInscritosActividad table td:nth-child(4) {
+    width: 30%;
+}
+
+.btn-acciones-editar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+}
+
+.btn-acciones-editar button {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* #modalCrearTipoActividad {

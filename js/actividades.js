@@ -458,7 +458,7 @@ $(document).ready(function () {
                                         <div class="card-actividad-meta">
                                             <div><i class="bi bi-calendar"></i> ${parseFechaES(actividad.fecha_actividad)}, ${actividad.hora_actividad}</div>
                                             <div><i class="bi bi-geo-alt"></i> ${actividad.lugar}</div>
-                                            ${(parseInt(actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${actividad.plazas_ocupadas} / ${actividad.aforo} plazas</div>` : ''}
+                                            ${(parseInt(actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${actividad.plazas_ocupadas} / ${actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"> ${actividad.plazas_ocupadas} inscritos</div>`}
                                         </div>
                                         <div class="card-actividad-footer">
                                             <span class="card-actividad-precio">${(parseInt(actividad.tiene_precio) === 1) ? actividad.precio+'€' : 'Gratis'}</span>
@@ -502,7 +502,7 @@ $(document).ready(function () {
                                         <div class="card-actividad-meta">
                                             <div><i class="bi bi-calendar"></i> ${parseFechaES(actividad.fecha_actividad)}, ${actividad.hora_actividad}</div>
                                             <div><i class="bi bi-geo-alt"></i> ${actividad.lugar}</div>
-                                            ${(parseInt(actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${actividad.plazas_ocupadas} / ${actividad.aforo} plazas</div>` : ''}
+                                            ${(parseInt(actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${actividad.plazas_ocupadas} / ${actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"> ${actividad.plazas_ocupadas} inscritos</div>`}
                                         </div>
                                         <div class="card-actividad-footer">
                                             <span class="card-actividad-precio">${(actividad.tiene_precio) ? actividad.precio+'€' : 'Gratis'}</span>
@@ -810,7 +810,7 @@ $(document).ready(function () {
                                         <div class="card-actividad-meta">
                                             <div><i class="bi bi-calendar"></i> ${parseFechaES(response.actividad.fecha_actividad)}, ${response.actividad.hora_actividad}</div>
                                             <div><i class="bi bi-geo-alt"></i> ${response.actividad.lugar}</div>
-                                            ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : ''}
+                                            ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"> ${actividad.plazas_ocupadas} inscritos</div>`}
                                         </div>
                                         <div class="card-actividad-footer">
                                             <span class="card-actividad-precio">${(response.actividad.tiene_precio) ? response.actividad.precio+'€' : 'Gratis'}</span>
@@ -919,7 +919,7 @@ $(document).ready(function () {
                                     <div class="card-actividad-meta">
                                         <div><i class="bi bi-calendar"></i> ${parseFechaES(response.actividad.fecha_actividad)}, ${response.actividad.hora_actividad}</div>
                                         <div><i class="bi bi-geo-alt"></i> ${response.actividad.lugar}</div>
-                                        ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : ''}
+                                        ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"> ${actividad.plazas_ocupadas} inscritos</div>`}
                                     </div>
                                     <div class="card-actividad-footer">
                                         <span class="card-actividad-precio">${(response.actividad.tiene_precio) ? response.actividad.precio+'€' : 'Gratis'}</span>
@@ -991,7 +991,7 @@ $(document).ready(function () {
                                     <div class="card-actividad-meta">
                                         <div><i class="bi bi-calendar"></i> ${parseFechaES(response.actividad.fecha_actividad)}, ${response.actividad.hora_actividad}</div>
                                         <div><i class="bi bi-geo-alt"></i> ${response.actividad.lugar}</div>
-                                        ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : ''}
+                                        ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"> ${actividad.plazas_ocupadas} inscritos</div>`}
                                     </div>
                                     <div class="card-actividad-footer">
                                         <span class="card-actividad-precio">${(response.actividad.tiene_precio) ? response.actividad.precio+'€' : 'Gratis'}</span>
@@ -1212,7 +1212,20 @@ $(document).ready(function () {
                                 <td>${cont}</td>
                                 <td>${inscrito.email}</td>
                                 <td>${inscrito.telf}</td>
-                                <td>${inscrito.plazas_reserva}</td>
+                                <td>
+                                    <span class="plazas-texto">${inscrito.plazas_reserva}</span>
+                                    <div class="d-flex gap-3">
+                                        <div class="plazas-stepper d-none">
+                                            <button type="button" class="plazas-btn plaza-btn-menos" data-action="dec" aria-label="Restar plaza">-</button>
+                                            <input type="number" class="input-plazas" name="plazas" value="${inscrito.plazas_reserva}" min="1" max="${(parseInt(response.actividad.tiene_aforo) === 1) ? (parseInt(response.actividad.aforo) - parseInt(response.actividad.plazas_ocupadas)) : ''}" aria-label="Plazas reservadas" />
+                                            <button type="button" class="plazas-btn plaza-btn-mas" data-action="inc" aria-label="Sumar plaza">+</button>
+                                        </div>
+                                        <div class="d-none btn-acciones-editar">
+                                            <button class="btn btn-success btn-aceptar-editar-reserva-actividad"><i class="bi bi-check-lg"></i></button>
+                                            <button class="btn btn-danger btn-cancelar-editar-reserva-actividad"><i class="bi bi-x-lg"></i></button>
+                                        </div>
+                                    </div>
+                                </td>
                                 <td>${timestampAFechaES(inscrito.fecha_reserva)}</td>
                                 <td>
                                     <div class="dropdown">
@@ -1220,7 +1233,7 @@ $(document).ready(function () {
                                             <i class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item ${(parseInt(inscrito.pagada) === 0 ? 'btn-pagar-inscrito' : 'btn-deshacer-pago-inscrito')}" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="${(parseInt(inscrito.pagada) === 0) ? 'bi bi-check2-square' : 'bi bi-x-square'}"></i> ${(parseInt(inscrito.pagada) === 0) ? 'Pagar' : 'Deshacer pago'}</a></li>
+                                            <li><a class="dropdown-item ${(parseInt(inscrito.pagada) === 0 ? 'btn-pagar-inscrito' : 'btn-deshacer-pago-inscrito')}" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="${(parseInt(inscrito.pagada) === 0) ? 'bi bi-check2-square' : 'bi bi-x-square'}"></i> ${(parseInt(inscrito.pagada) === 0) ? 'Confirmar' : 'Deshacer confirmación'}</a></li>
                                             <li><a class="dropdown-item text-danger btn-anular-inscrito" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="bi bi-trash3"></i> Anular</a></li>
                                             <li><a class="dropdown-item btn-editar-inscrito" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="bi bi-pencil-square"></i> Editar</a></li>
                                         </ul>
@@ -1257,7 +1270,7 @@ $(document).ready(function () {
                     item
                         .removeClass('btn-deshacer-pago-inscrito')
                         .addClass('btn-pagar-inscrito')
-                        .html(`<i class="bi bi-check2-square"></i> Pagar`);
+                        .html(`<i class="bi bi-check2-square"></i> Confirmar`);
                 }
             }
         });
@@ -1281,7 +1294,160 @@ $(document).ready(function () {
                     item
                         .removeClass('btn-pagar-inscrito')
                         .addClass('btn-deshacer-pago-inscrito')
-                        .html(`<i class="bi bi-x-square"></i> Deshacer pago`);
+                        .html(`<i class="bi bi-x-square"></i> Deshacer confirmación`);
+                }
+            }
+        });
+    })
+
+    $(document).on('click', '.btn-anular-inscrito', function(e){
+
+        e.preventDefault();
+        let reserva = parseInt($(this).data('reserva'));
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/getDataReserva`,
+            data: {reserva: reserva},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true) {
+
+                    $('#modalEliminarReservaActividad #id-reserva-eliminar').val(reserva)
+                    $('#modalEliminarReservaActividad #nombre-actividad-eliminar-reserva').text(response.actividad.nombre);
+                    $('#modalEliminarReservaActividad #nombre-usuario-eliminar-reserva').text(response.reserva.nombre);
+                    $('#modalEliminarReservaActividad #email-usuario-eliminar-reserva').text(response.reserva.email);
+                    $('#modalEliminarReservaActividad #telf-usuario-eliminar-reserva').text(response.reserva.telf);
+                    $('#modalEliminarReservaActividad #fecha-eliminar-reserva').text(timestampAFechaES(response.reserva.fecha_reserva));
+                    $('#modalEliminarReservaActividad #plazas-eliminar-reserva').text(response.reserva.plazas_reserva);
+                    $('#modalEliminarReservaActividad').modal('show');
+                }
+            }
+        });
+
+    })
+
+    $(document).on('click', '#btn-guardar-eliminar-reserva-actividad', function(e){
+
+        e.preventDefault();
+        let reserva = $('#modalEliminarReservaActividad #id-reserva-eliminar').val();
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/eliminarReservaActividad`,
+            data: {reserva: reserva},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true){
+
+                    $(`#modalInscritosActividad table tbody tr[data-reserva="${reserva}"]`).remove();
+                    $(`.grid-actividades .card-actividad[data-index='${response.actividad}'] .card-actividad-meta`).children('div').eq(2).html((parseInt(response.data_actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.data_actividad.plazas_ocupadas} / ${response.data_actividad.aforo} plazas</div>` : `<div><i class="bi bi-people">${response.data_actividad.plazas_ocupadas} inscritos</div>`);
+                    $('#modalEliminarReservaActividad').modal('hide');
+                }
+            }
+        });
+    })
+
+    $(document).on('click', '.btn-editar-inscrito', function(e){
+
+        e.preventDefault();
+        // Cierra la edicion de cualquier otra fila que estuviera abierta
+        $('.plazas-stepper').not($(this).closest('tr').find('.plazas-stepper')).addClass('d-none');
+        $('span.plazas-texto').not($(this).closest('tr').find('span.plazas-texto')).removeClass('d-none');
+        $('.btn-acciones-editar').not($(this).closest('tr').find('.plazas-stepper')).addClass('d-none');
+
+
+        // Abre la de esta fila
+        $(this).closest('tr').find('span.plazas-texto').addClass('d-none');
+        $(this).closest('tr').find('.plazas-stepper').removeClass('d-none');
+        $(this).closest('tr').find('.btn-acciones-editar').removeClass('d-none');
+    })
+
+
+    $(document).on('click', '.plaza-btn-menos', function(e){
+
+        e.preventDefault()
+        let valor = parseInt($(this).closest('div').find('input').val());
+        let max = parseInt($(this).closest('div').find('input').attr('max'));
+        
+        if(valor > 1) {
+            $(this).closest('div').find('input').val((valor - 1))
+            
+            if(valor < max){
+                $(this).closest('tr').find('button.btn-aceptar-editar-reserva-actividad').prop('disabled', false);  
+            }
+        }
+
+    })
+
+    $(document).on('click', '.plaza-btn-mas', function(e){
+
+        e.preventDefault()
+        
+        let valor = parseInt($(this).closest('div').find('input').val());
+        let max = parseInt($(this).closest('div').find('input').attr('max'));
+
+
+        if(valor < max) {
+            $(this).closest('div').find('input').val((valor + 1))
+            
+            if(valor > -1) {
+                $(this).closest('tr').find('button.btn-aceptar-editar-reserva-actividad').prop('disabled', false);  
+            }
+        }
+
+    })
+
+    $(document).on('input', '.input-plazas', function(e){
+
+        e.preventDefault();
+        let max = parseInt($(this).attr('max'));
+        let min = parseInt($(this).attr('min'));
+        let val = parseInt($(this).val());
+
+        if(val > max || val < min) {
+            $(this).closest('tr').find('button.btn-aceptar-editar-reserva-actividad').prop('disabled', true);
+        }
+        else {
+          $(this).closest('tr').find('button.btn-aceptar-editar-reserva-actividad').prop('disabled', false);  
+        }
+    })
+
+    $(document).on('click', '.btn-cancelar-editar-reserva-actividad', function(e){
+
+        e.preventDefault();
+
+        $(this).closest('tr').find('span.plazas-texto').removeClass('d-none');
+        $(this).closest('tr').find('.plazas-stepper').addClass('d-none');
+        $(this).closest('tr').find('.btn-acciones-editar').addClass('d-none');
+
+    })
+
+    $(document).on('click', '.btn-aceptar-editar-reserva-actividad', function(e){
+
+        e.preventDefault()
+        let valor = $(this).closest('tr').find('input').val()
+        let reserva = $(this).closest('tr').data('reserva');
+        let campo = $(this);
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/editarReservaActividad`,
+            data: {plazas: valor, reserva: reserva},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true){
+                    
+                    campo.closest('tr').find('span.plazas-texto').text(valor)
+                    campo.closest('tr').find('span.plazas-texto').removeClass('d-none');
+                    campo.closest('tr').find('.plazas-stepper').addClass('d-none');
+                    campo.closest('tr').find('.btn-acciones-editar').addClass('d-none');
+
+                    $(`.grid-actividades .card-actividad[data-index='${response.actividad.id_actividades}'] .card-actividad-meta`).children('div').eq(2).html((parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people">${response.actividad.plazas_ocupadas} inscritos</div>`);
+
                 }
             }
         });

@@ -130,3 +130,6 @@ $routes->post('/reservaActividad', 'Actividades::reservaActividad', ['filter' =>
 $routes->post('/verInscritos', 'Actividades::verInscritos', ['filter' => 'auth']);
 $routes->post('/pagarActividad', 'Actividades::pagarActividad', ['filter' => 'auth']);
 $routes->post('/deshacerPagoActividad', 'Actividades::deshacerPagoActividad', ['filter' => 'auth']);
+$routes->post('/getDataReserva', 'Actividades::getDataReserva', ['filter' => 'auth']);
+$routes->post('/eliminarReservaActividad', 'Actividades::eliminarReservaActividad', ['filter' => 'auth']);
+$routes->post('/editarReservaActividad', 'Actividades::editarReservaActividad', ['filter' => 'auth']);

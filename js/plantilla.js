@@ -718,6 +718,58 @@ $(document).ready(() => {
         });
     })
 
+
+    $(document).on('click', '.switch-tipo-reserva-btn', function () {
+        const tipo = $(this).data('tipo');
+
+        if ($(this).hasClass('active')) return;
+
+        $('.switch-tipo-reserva-btn').removeClass('active').attr('aria-selected', 'false');
+        $(this).addClass('active').attr('aria-selected', 'true');
+
+        $('#switchPill').css('transform', tipo === 'actividades' ? 'translateX(100%)' : 'translateX(0)');
+
+        $('.reservas-list-instalaciones').toggleClass('d-none', tipo !== 'instalaciones');
+        $('.reservas-list-actividades').toggleClass('d-none', tipo !== 'actividades');
+
+        if (tipo === 'actividades' && !$('.reservas-list-actividades').data('cargado')) {
+            cargarMisActividades();
+        }
+    });
+
+    function cargarMisActividades() {
+        const cont = $('.reservas-list-actividades');
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/misReservasActividades`,
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true) {
+
+                    
+                    let html = ''
+
+                    response.response_reservas.forEach(function (reserva) {
+
+                         html += 
+                                `
+                                    <div class="reserva-card">
+                                        <div class="reserva-image-container" style="background-image: url('${BASE_URL}images/${reserva.imagen}')">
+                                        </div>
+
+                                        <div class="reserva-content">
+                                        </div>
+                                    </div>
+                                `
+                    })
+                }
+            }
+        });
+    }
+
+
     function sumarHora(hora) {
         let [horas, minutos] = hora.split(":");
         let nuevaHora = (parseInt(horas) + 1).toString().padStart(2, '0');

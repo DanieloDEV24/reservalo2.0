@@ -278,4 +278,51 @@ class actividadesModel extends Model
         
         return $query->getResultArray();
     }
+
+    public function eliminarReservaActividad(int $reserva, int $plazas_reserva, int $actividad, int $plazas_ocupadas) {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal
+        $builder = $db->table('reservas_actividades');
+
+        // Eliminamos el tipo de actividad
+        $builder->where('id_reserva_actividad', $reserva);
+        $builder->delete();
+
+        $db->table('actividades')
+        ->where('id_actividades', $actividad)
+        ->set('plazas_ocupadas', ($plazas_ocupadas - $plazas_reserva))
+        ->update();
+
+        return true;
+    }
+
+
+    public function editarReserva(int $reserva, int $plazas, int $plazas_ocupadas, int $plazas_reservadas, int $actividad, float $precio_actividad) {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal
+        $builder = $db->table('reservas_actividades');
+
+        // Eliminamos el tipo de actividad
+        $builder->where('id_reserva_actividad', $reserva);
+        $builder->update([
+                "plazas_reserva" => $plazas,
+                "precio_reserva" => ($precio_actividad * $plazas)
+            ]);
+
+        $diferencia = $plazas - $plazas_reservadas;
+
+        $db->table('actividades')
+        ->where('id_actividades', $actividad)
+        ->set('plazas_ocupadas', 'plazas_ocupadas + (' . $diferencia . ')', false)
+        ->update();
+
+        return $db->affectedRows() > 0;
+
+    }
 }

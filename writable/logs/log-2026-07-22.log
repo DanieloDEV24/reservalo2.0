@@ -1,0 +1,25 @@
+CRITICAL - 2026-07-22 12:45:21 --> ErrorException: Undefined variable $modalEliminarReservaActividad
+in APPPATH\Views\actividades\actividades.php on line 98.
+ 1 APPPATH\Views\actividades\actividades.php(98): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $modalEliminarReservaActividad', 'D:\\proyectos\\reservalo2.0\\app\\Views\\actividades\\actividades.php', 98)
+ 2 SYSTEMPATH\View\View.php(228): include('D:\\proyectos\\reservalo2.0\\app\\Views\\actividades\\actividades.php')
+ 3 SYSTEMPATH\View\View.php(231): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1178): CodeIgniter\View\View->render('actividades/actividades', [], true)
+ 5 APPPATH\Controllers\Actividades.php(61): view('actividades/actividades', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->actividades()
+ 7 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 8 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-22 12:59:09 --> ErrorException: Undefined array key "id_instalacion"
+in APPPATH\Controllers\Actividades.php on line 655.
+ 1 APPPATH\Controllers\Actividades.php(655): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_instalacion"', 'D:\\proyectos\\reservalo2.0\\app\\Controllers\\Actividades.php', 655)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->getDataReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-22 12:59:56 --> ErrorException: Undefined array key "id_instalacion"
+in APPPATH\Controllers\Actividades.php on line 655.
+ 1 APPPATH\Controllers\Actividades.php(655): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id_instalacion"', 'D:\\proyectos\\reservalo2.0\\app\\Controllers\\Actividades.php', 655)
+ 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->getDataReserva()
+ 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

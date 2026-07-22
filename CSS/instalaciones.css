@@ -1927,3 +1927,41 @@ span.estado.no-disponible{
 #modalBorraPista .btns-borrado button {
   width: 30% !important;
 }
+
+.switch-tipo-reserva {
+  position: relative;
+  display: flex;
+  background: #f4f4f5;
+  border-radius: 999px;
+  padding: 3px;
+  width: 70%;
+  margin: 0 auto;
+  margin-bottom: 2%;
+  margin-top: 3%;
+}
+.switch-tipo-reserva-btn {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+  border: none;
+  background: transparent;
+  padding: 8px 0;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 999px;
+  color: #6b7280;
+  transition: color 0.2s ease;
+}
+.switch-tipo-reserva-btn.active {
+  color: #fff;
+}
+.switch-tipo-reserva-pill {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: calc(50% - 3px);
+  height: calc(100% - 6px);
+  background: #32cccc;
+  border-radius: 999px;
+  transition: transform 0.25s ease;
+}
