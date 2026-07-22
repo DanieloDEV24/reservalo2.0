@@ -748,21 +748,60 @@ $(document).ready(() => {
                 
                 if(response.success == true) {
 
-                    
-                    let html = ''
-
                     response.response_reservas.forEach(function (reserva) {
 
-                         html += 
+                        cont.append(
                                 `
                                     <div class="reserva-card">
                                         <div class="reserva-image-container" style="background-image: url('${BASE_URL}images/${reserva.imagen}')">
                                         </div>
 
                                         <div class="reserva-content">
+                                            <div class="reserva-header">
+                                                <div class="reserva-info">
+                                                    <h3 class="reserva-instalacion"></h3>
+                                                    <span class="reserva-tipo"></span>
+                                                </div>
+
+                                                <div class="reserva-detalles">
+                                                    <div class="detalle-icon">📅</div>
+                                                    <div class="detalle-content">
+                                                        <div class="detalle-label">Fecha de la actividad</div>
+                                                        <div class="detalle-value info-fechas"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="detalle-item">
+                                                    <div class="detalle-icon">🕐</div>
+                                                    <div class="detalle-content">
+                                                        <div class="detalle-label">Hora/duración</div>
+                                                        <div class="detalle-value"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="detalle-item">
+                                                    <div class="detalle-icon">👥</div>
+                                                    <div class="detalle-content">
+                                                        <div class="detalle-label">Plazas reservadas</div>
+                                                        <div class="detalle-value"></div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="detalle-item">
+                                                    <div class="detalle-icon">💰</div>
+                                                    <div class="detalle-content">
+                                                        <div class="detalle-label">Precio</div>
+                                                        <div class="detalle-value"></div>
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
                                         </div>
                                     </div>
                                 `
+                        )
                     })
                 }
             }
