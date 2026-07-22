@@ -43,3 +43,35 @@ in SYSTEMPATH\Database\MySQLi\Connection.php on line 306.
  8 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
  9 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
 10 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-21 22:17:14 --> ErrorException: unlink(C:\Proyectos\reservalo2.0\images/gymkana.jpg): Resource temporarily unavailable
+in APPPATH\Controllers\Actividades.php on line 218.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\Proyectos\\reservalo2.0\\images/gymkana.jpg): Resource temporarily unavailable', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Actividades.php', 218)
+ 2 APPPATH\Controllers\Actividades.php(218): unlink('C:\\Proyectos\\reservalo2.0\\images/gymkana.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->crearActividad()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-21 22:17:22 --> ErrorException: unlink(C:\Proyectos\reservalo2.0\images/gymkana.jpg): Resource temporarily unavailable
+in APPPATH\Controllers\Actividades.php on line 218.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\Proyectos\\reservalo2.0\\images/gymkana.jpg): Resource temporarily unavailable', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Actividades.php', 218)
+ 2 APPPATH\Controllers\Actividades.php(218): unlink('C:\\Proyectos\\reservalo2.0\\images/gymkana.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->crearActividad()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-21 22:18:18 --> ErrorException: unlink(C:\Proyectos\reservalo2.0\images/gymkana.jpg): Resource temporarily unavailable
+in APPPATH\Controllers\Actividades.php on line 218.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\Proyectos\\reservalo2.0\\images/gymkana.jpg): Resource temporarily unavailable', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Actividades.php', 218)
+ 2 APPPATH\Controllers\Actividades.php(218): unlink('C:\\Proyectos\\reservalo2.0\\images/gymkana.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->crearActividad()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2026-07-21 22:19:21 --> ErrorException: unlink(C:\Proyectos\reservalo2.0\images/gymkana.jpg): Resource temporarily unavailable
+in APPPATH\Controllers\Actividades.php on line 218.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\Proyectos\\reservalo2.0\\images/gymkana.jpg): Resource temporarily unavailable', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Actividades.php', 218)
+ 2 APPPATH\Controllers\Actividades.php(218): unlink('C:\\Proyectos\\reservalo2.0\\images/gymkana.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->crearActividad()
+ 4 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
+ 5 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

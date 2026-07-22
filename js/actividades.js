@@ -444,10 +444,10 @@ $(document).ready(function () {
                                                     <i class="bi bi-three-dots-vertical"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a class="dropdown-item btn-editar-actividad" href="#" onclick=""><i class="bi bi-pencil me-2"></i>Editar</a></li>
-                                                    <li><a class="dropdown-item btn-inscritos-actividad" href="#" onclick="verInscritos"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
+                                                    <li><a class="dropdown-item btn-editar-actividad" href="#" "><i class="bi bi-pencil me-2"></i>Editar</a></li>
+                                                    <li><a class="dropdown-item btn-inscritos-actividad" href="#"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
                                                     <li><hr class="dropdown-divider"></li>
-                                                    <li><a class="dropdown-item text-danger btn-borrar-actividad" href="#" onclick=""><i class="bi bi-x-lg me-2"></i></i>Cancelar</a></li>
+                                                    <li><a class="dropdown-item text-danger btn-borrar-actividad" href="#" ><i class="bi bi-x-lg me-2"></i></i>Cancelar</a></li>
                                                 </ul>
                                             </div>
                                         ` : ''}
@@ -488,10 +488,10 @@ $(document).ready(function () {
                                                     <i class="bi bi-three-dots-vertical"></i>
                                                 </button>
                                                 <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a class="dropdown-item btn-editar-actividad" href="#" onclick=""><i class="bi bi-pencil me-2"></i>Editar</a></li>
-                                                    <li><a class="dropdown-item btn-inscritos-actividad" href="#" onclick="verInscritos"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
+                                                    <li><a class="dropdown-item btn-editar-actividad" href="#"><i class="bi bi-pencil me-2"></i>Editar</a></li>
+                                                    <li><a class="dropdown-item btn-inscritos-actividad" href="#" ><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
                                                     <li><hr class="dropdown-divider"></li>
-                                                    <li><a class="dropdown-item text-danger btn-borrar-actividad" href="#" onclick=""><i class="bi bi-x-lg me-2"></i></i>Cancelar</a></li>
+                                                    <li><a class="dropdown-item text-danger btn-borrar-actividad" href="#" ><i class="bi bi-x-lg me-2"></i></i>Cancelar</a></li>
                                                 </ul>
                                             </div>
                                         ` : ''}
@@ -1208,7 +1208,7 @@ $(document).ready(function () {
                     response.inscritosActividad.map(function(inscrito){
                         $('#modalInscritosActividad table tbody').append(
                             `
-                            <tr data-reserva='${inscrito.id_reserva_actividad}'>
+                            <tr data-reserva='${inscrito.id_reserva_actividad}' class="${(parseInt(inscrito.pagada) === 1) ? 'table-success' : '' }">
                                 <td>${cont}</td>
                                 <td>${inscrito.email}</td>
                                 <td>${inscrito.telf}</td>
@@ -1220,7 +1220,7 @@ $(document).ready(function () {
                                             <i class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item btn-pagar-inscrito" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="bi bi-check2-square"></i> Pagar</a></li>
+                                            <li><a class="dropdown-item ${(parseInt(inscrito.pagada) === 0 ? 'btn-pagar-inscrito' : 'btn-deshacer-pago-inscrito')}" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="${(parseInt(inscrito.pagada) === 0) ? 'bi bi-check2-square' : 'bi bi-x-square'}"></i> ${(parseInt(inscrito.pagada) === 0) ? 'Pagar' : 'Deshacer pago'}</a></li>
                                             <li><a class="dropdown-item text-danger btn-anular-inscrito" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="bi bi-trash3"></i> Anular</a></li>
                                             <li><a class="dropdown-item btn-editar-inscrito" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="bi bi-pencil-square"></i> Editar</a></li>
                                         </ul>
@@ -1239,6 +1239,53 @@ $(document).ready(function () {
         });
     })
 
+    $(document).on('click', '.btn-deshacer-pago-inscrito', function(e){
+
+        e.preventDefault();
+        let reserva = parseInt($(this).data('reserva'));
+        let item = $(this); // <-- guardamos la referencia aquí
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/deshacerPagoActividad`,
+            data: {reserva: reserva},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true){
+                    $(`#modalInscritosActividad table tbody tr[data-reserva="${response.reserva.id_reserva_actividad}"]`).removeClass('table-success');
+                    item
+                        .removeClass('btn-deshacer-pago-inscrito')
+                        .addClass('btn-pagar-inscrito')
+                        .html(`<i class="bi bi-check2-square"></i> Pagar`);
+                }
+            }
+        });
+    })
+
+    $(document).on('click', '.btn-pagar-inscrito', function(e){
+
+        e.preventDefault();
+        let reserva = parseInt($(this).data('reserva'));
+        let item = $(this); // <-- guardamos la referencia aquí
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/pagarActividad`,
+            data: {reserva: reserva},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true){
+                    $(`#modalInscritosActividad table tbody tr[data-reserva="${response.reserva.id_reserva_actividad}"]`).addClass('table-success');
+                    item
+                        .removeClass('btn-pagar-inscrito')
+                        .addClass('btn-deshacer-pago-inscrito')
+                        .html(`<i class="bi bi-x-square"></i> Deshacer pago`);
+                }
+            }
+        });
+    })
 
     $(document).on('shown.bs.modal', '.modal', function () {
         const openModalsCount = $('.modal.show').length;

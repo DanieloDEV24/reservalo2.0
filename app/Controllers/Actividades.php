@@ -596,4 +596,50 @@ class Actividades extends BaseController
             }
         }
     }
+
+    public function pagarActividad() {
+
+        $loginModel = new loginModel();
+        $actividadesModel = new actividadesModel();
+        $reservasModel = new reservasModel();
+        $post = $this->request->getPost();
+
+        if(!empty($post)){
+
+            $reserva = intval($post["reserva"]);
+            $actualizar_reserva = $actividadesModel->setPagada($reserva, ["pagada" => 1]);
+            $reserva_actualizada = $actividadesModel->getReservaById($reserva)[0];
+
+            if($actualizar_reserva){
+                echo json_encode([
+                    "success" => true, 
+                    "reserva" => $reserva_actualizada
+                ]); 
+                return;
+            }
+        }
+    }
+
+    public function deshacerPagoActividad() {
+
+        $loginModel = new loginModel();
+        $actividadesModel = new actividadesModel();
+        $reservasModel = new reservasModel();
+        $post = $this->request->getPost();
+
+        if(!empty($post)){
+
+            $reserva = intval($post["reserva"]);
+            $actualizar_reserva = $actividadesModel->setPagada($reserva, ["pagada" => 0]);
+            $reserva_actualizada = $actividadesModel->getReservaById($reserva)[0];
+
+            if($actualizar_reserva){
+                echo json_encode([
+                    "success" => true, 
+                    "reserva" => $reserva_actualizada
+                ]); 
+                return;
+            }
+        }
+    }
 }

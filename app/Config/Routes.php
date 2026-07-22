@@ -128,3 +128,5 @@ $routes->post('/darAltaActividad', 'Actividades::darAltaActividad');
 $routes->get('/actividad/(:num)', 'Actividades::actividad/$1', ['filter' => 'auth']);
 $routes->post('/reservaActividad', 'Actividades::reservaActividad', ['filter' => 'auth']);
 $routes->post('/verInscritos', 'Actividades::verInscritos', ['filter' => 'auth']);
+$routes->post('/pagarActividad', 'Actividades::pagarActividad', ['filter' => 'auth']);
+$routes->post('/deshacerPagoActividad', 'Actividades::deshacerPagoActividad', ['filter' => 'auth']);

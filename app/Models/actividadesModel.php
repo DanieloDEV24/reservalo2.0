@@ -248,4 +248,34 @@ class actividadesModel extends Model
         
         return $query->getResultArray();
     }
+
+    public function setPagada(int $reserva, array $data){
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla en la que vamos a buscar las reservas
+        $builder = $db->table('reservas_actividades');
+
+        $builder->where('id_reserva_actividad', $reserva);
+        $builder->update($data);
+
+        return $db->affectedRows() > 0;
+    }
+
+    public function getReservaById(int $reserva) {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla en la que vamos a buscar las reservas
+        $builder = $db->table('reservas_actividades');
+
+        $query = $builder->select()
+                         ->join('usuarios', 'usuarios.id_usuario = reservas_actividades.id_usuario')
+                         ->where('reservas_actividades.id_reserva_actividad', $reserva)
+                         ->get();
+        
+        return $query->getResultArray();
+    }
 }
