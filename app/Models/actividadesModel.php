@@ -325,4 +325,24 @@ class actividadesModel extends Model
         return $db->affectedRows() > 0;
 
     }
+
+
+    public function getReservasCompletas(int $id_usuario) {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal
+        $builder = $db->table('reservas_actividades');
+
+        
+        $builder->select('reservas_actividades.*, actividades.*, tipos_actividades.nombre as categoria');
+        $builder->join('actividades', 'actividades.id_actividades = reservas_actividades.id_actividad');
+        $builder->join('tipos_actividades', 'actividades.tipo_actividad = tipos_actividades.id_tipos_actividades');
+        $builder->where('reservas_actividades.id_usuario', $id_usuario);
+
+        $query = $builder->get();
+
+        return $query->getResultArray();
+    }
 }

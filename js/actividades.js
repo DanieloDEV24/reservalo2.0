@@ -1453,13 +1453,7 @@ $(document).ready(function () {
         });
     })
 
-    $(document).on('shown.bs.modal', '.modal', function () {
-        const openModalsCount = $('.modal.show').length;
-        const zIndexModal = 1050 + (10 * openModalsCount);
-
-        $(this).css('z-index', zIndexModal);
-        $('.modal-backdrop:not(.modal-stack)').css('z-index', zIndexModal - 5).addClass('modal-stack');
-    });
+    
 
 
     function parseFechaES(str) {

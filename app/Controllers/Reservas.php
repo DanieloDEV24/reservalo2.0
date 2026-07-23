@@ -495,7 +495,9 @@ class Reservas extends BaseController
 
         $modalAnularReserva = view('reservas/modalAnularAdmin');
         $modalAnularHoras = view('reservas/modalAnularHoras');
-        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
+        $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+           $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
         $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
         $view = view('reservas/reservas', ["reservas" => $reservas, "modalAnularReserva"=>$modalAnularReserva]);

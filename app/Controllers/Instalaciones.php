@@ -53,7 +53,9 @@ class Instalaciones extends BaseController
         ];
 
         $modalAnularHoras = view('reservas/modalAnularHoras');
-        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
+        $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+            $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
         $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
 
@@ -886,7 +888,9 @@ class Instalaciones extends BaseController
         ];
 
         $modalAnularHoras = view('reservas/modalAnularHoras');
-        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
+        $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+           $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
         $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
         $view = view('instalaciones/instalaciones', ["instalaciones" => $instalaciones, "numInstalaciones"=>$numInstalaciones, "instalacionesCategorias" => $instalacionesCategorias, "categorias" => $categorias, "baseUrl" => base_url()]);
@@ -927,7 +931,9 @@ class Instalaciones extends BaseController
             $modalReservaPista = view('instalaciones/modalPanelReserva', ["baseUrl" => base_url(), "instalacion" => $instalacion]);
 
             $modalAnularHoras = view('reservas/modalAnularHoras');
-            $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
+            $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+                $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
             $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
             $view = view('instalaciones/instalacion', ["instalacion" => $instalacion, "pistas" => $pistas, "usuario" => $usuario, "modalReservaPista" => $modalReservaPista, "baseUrl" => base_url()]);

@@ -28,7 +28,9 @@ class Contacto extends BaseController
             ];
 
             $modalAnularHoras = view('reservas/modalAnularHoras');
-            $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
+            $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+                $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
             $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
             $view = view('contacto/contacto', []);

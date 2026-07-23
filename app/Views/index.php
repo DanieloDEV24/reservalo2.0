@@ -285,5 +285,8 @@
 
 <?= isset($modalInformacionPersonal) ? $modalInformacionPersonal : '' ?>
 <?= isset($modalMisReservas) ? $modalMisReservas : '' ?>
+<?= $modalEditarReservaactividadUsuario ?>
+<?= $modalEliminarReservaActividadUsuario ?>
+
 
 </html>

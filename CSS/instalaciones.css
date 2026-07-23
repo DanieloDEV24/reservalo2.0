@@ -1964,4 +1964,65 @@ span.estado.no-disponible{
   background: #32cccc;
   border-radius: 999px;
   transition: transform 0.25s ease;
+  pointer-events: none;
+}
+
+
+#modalEliminarReservaActividadUsuario .datos-reservas-eliminar {
+
+    border-radius: 10px;
+    background-color: #cccccc20;
+    padding: 3%;
+}
+
+#modalEliminarReservaActividadUsuario .div-avio-email {
+
+    display: flex;
+    align-items: center;
+    gap: 2%;
+    background-color: #EC7E7E50;
+    border-radius: 10px;
+    color: #611717;
+    padding: 2%;
+}
+
+#modalEliminarReservaActividadUsuario .div-avio-email p {
+    margin: 0%;
+}
+
+.empty-state-reservas {
+    text-align: center;
+    padding: 3rem 2rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.empty-icon-reservas-wrapper {
+    width: 90px;
+    height: 90px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, #f0f9f9 0%, #e1f5f5 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.empty-icon-reservas-wrapper i {
+    font-size: 2.2rem;
+    color: #32cccc;
+}
+
+.empty-state-reservas h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1a2332;
+    margin: 0 0 0.5rem;
+}
+
+.empty-state-reservas p {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.5;
+    margin: 0 0 1.75rem;
 }

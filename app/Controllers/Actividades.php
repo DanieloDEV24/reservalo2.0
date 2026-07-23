@@ -55,7 +55,9 @@ class Actividades extends BaseController
         $modalEliminarReservaActividad = view('actividades/modalEliminarReservaActividad');
 
         $modalAnularHoras = view('reservas/modalAnularHoras');
-        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
+        $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+        $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
         $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
         $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad, "modalEditarActividad" => $modalEditarActividad, "modalCancelarActividad" => $modalCancelarActividad, "modalInscritosActividad" => $modalInscritosActividad, 'modalEliminarReservaActividad' => $modalEliminarReservaActividad, "baseUrl" => base_url()]);
@@ -479,7 +481,9 @@ class Actividades extends BaseController
             ];
 
             $modalAnularHoras = view('reservas/modalAnularHoras');
-            $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras]);
+            $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+               $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
             $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
             $view = view('actividades/actividad', ["actividad" => $actividad, "usuario" => $usuario, 'usuarios'=>$usuarios, "baseUrl" => base_url()]);
@@ -711,11 +715,13 @@ class Actividades extends BaseController
             $editar_reserva = $actividadesModel->editarReserva($reserva, $plazas, $plazas_ocupadas, $plazas_reservadas, $id_actividad, $precio_actividad);
 
             $actividad = $actividadesModel->getDataActividad($id_actividad)[0];
+            $data_reserva = $actividadesModel->getReservaById($reserva)[0];
 
             if($editar_reserva) {
                 echo json_encode([
                     "success" => true, 
                     "actividad" => $actividad, 
+                    "reserva" => $data_reserva,
                 ]);
 
                 return;
@@ -723,5 +729,22 @@ class Actividades extends BaseController
 
 
         }
+    }
+
+
+    public function misReservasActividades(){
+
+        $actividadesModel = new actividadesModel();
+        $session = session();
+
+        $id_usuario = intval($session->get('usuario')['id_usuario']);
+        $reservas_completas = $actividadesModel->getReservasCompletas($id_usuario);
+
+        echo json_encode([
+            'success' => true, 
+            'reservas' => $reservas_completas
+        ]);
+
+        return;
     }
 }

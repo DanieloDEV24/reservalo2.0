@@ -15,11 +15,28 @@ $(document).ready(() => {
             if(response.success === true){
 
                 // Limpiar lista de reservas antes de agregar nuevas
-                $('#modalMisReservas .reservas-list').empty();
+                $('#modalMisReservas .reservas-list-instalaciones').empty();
 
                 let pedido;
                 let reservasPorPedido = {};
                 
+                if(response.reservas.length === 0) {
+                    $('#modalMisReservas .reservas-list-instalaciones').append(`
+                        
+                        <div class="empty-state-reservas">
+    <div class="empty-icon-reservas-wrapper">
+        <i class="bi bi-calendar-check"></i>
+    </div>
+    <h3>Aún no tienes reservas</h3>
+    <p>Cuando reserves una instalación o te apuntes a una actividad, aparecerá aquí para que puedas consultarla en cualquier momento.</p>
+    <a href="${BASE_URL}index.php/instalaciones" class="btn-primary-personal">
+        Ver instalaciones <span aria-hidden="true">→</span>
+    </a>
+</div>
+
+                        `);
+                }
+                else {
                 // Agrupar reservas por pedido
                 response.reservas.forEach(reserva => {
                     if (!reservasPorPedido[reserva.id_pedido]) {
@@ -194,8 +211,9 @@ $(document).ready(() => {
                                 </div>
                             </div>`);
 
-                        $('#modalMisReservas .reservas-list').append(div);
+                        $('#modalMisReservas .reservas-list-instalaciones').append(div);
                 });
+            }
 
                 $('#modalMisReservas').modal('show');
             }
@@ -737,8 +755,173 @@ $(document).ready(() => {
         }
     });
 
+    $(document).on('click', '.btn-editar-reserva-actividad-mis-reservas', function(e){
+
+        e.preventDefault()
+        let reserva = parseInt($(this).closest('.reserva-card').data('reserva'));
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/getDataReserva`,
+            data: {reserva: reserva},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true){
+
+                    $('#modalEditarReservaActividadUsuario #numPlazas').val(response.reserva.plazas_reserva)
+                    $('#modalEditarReservaActividadUsuario #numPlazas').attr('max', (parseInt(response.actividad.tiene_aforo) === 1) ? (parseInt(response.actividad.aforo) - parseInt(response.actividad.plazas_ocupadas)) : '');
+                    $('#modalEditarReservaActividadUsuario #numPlazas').attr('min', 1);
+
+                    $('#modalEditarReservaActividadUsuario #totalPrecio').text(parseFloat((parseInt(response.actividad.tiene_precio) === 1) ? response.actividad.precio : 0) * parseInt(response.reserva.plazas_reserva));
+
+                    $('#modalEditarReservaActividadUsuario #precio-actividad').val(parseFloat((parseInt(response.actividad.tiene_precio) === 1) ? response.actividad.precio : 0))
+
+                    $('#modalEditarReservaActividadUsuario #id-reserva-actividad').val(reserva)
+
+                    $('#modalEditarReservaActividadUsuario').modal('show');
+                }
+            }
+        });
+    })
+
+    $(document).on('input', '#modalEditarReservaActividadUsuario #numPlazas', function(e){
+        e.preventDefault();
+
+        let val = parseInt($(this).val());
+        let max = parseInt($(this).attr('max'));
+        let min = parseInt($(this).attr('min'));
+
+        if(max < val || val < min) {
+            $('#modalEditarReservaActividadUsuario #btnGuardarPlazas').prop('disabled', true)
+        }
+        else {
+            $('#modalEditarReservaActividadUsuario #btnGuardarPlazas').prop('disabled', false)
+            $('#modalEditarReservaActividadUsuario #totalPrecio').text(parseFloat( $('#modalEditarReservaActividadUsuario #precio-actividad').val()) * val);
+        }
+
+    })
+
+    $(document).on('click', '#modalEditarReservaActividadUsuario #btnMenosPlazas', function(e){
+        e.preventDefault();
+
+        let val = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').val());
+        let max = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('max'));
+        let min = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('min'));
+
+        if(val > 1) {
+            $('#modalEditarReservaActividadUsuario #numPlazas').val((val - 1))
+            
+            if(val < max) {
+                $('#modalEditarReservaActividadUsuario #btnGuardarPlazas').prop('disabled', false);  
+                $('#modalEditarReservaActividadUsuario #totalPrecio').text(parseFloat( $('#modalEditarReservaActividadUsuario #precio-actividad').val()) * (val-1));
+            }
+        }
+
+    })
+
+    $(document).on('click', '#modalEditarReservaActividadUsuario #btnMasPlazas', function(e){
+        e.preventDefault();
+
+        let val = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').val());
+        let max = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('max'));
+        let min = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('min'));
+
+        if(val < max) {
+            $('#modalEditarReservaActividadUsuario #numPlazas').val((val + 1))
+            
+            if(val > -1) {
+                $('#modalEditarReservaActividadUsuario #btnGuardarPlazas').prop('disabled', false);  
+                $('#modalEditarReservaActividadUsuario #totalPrecio').text(parseFloat( $('#modalEditarReservaActividadUsuario #precio-actividad').val()) * (val+1));
+            }
+        }
+
+    })
+
+    $(document).on('click', '#modalEditarReservaActividadUsuario #btnGuardarPlazas', function(e){
+
+        e.preventDefault()
+        let plazas = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').val());
+        let reserva = parseInt($('#modalEditarReservaActividadUsuario #id-reserva-actividad').val())
+
+        $.ajax({
+            type: 'POST',
+            url: `${BASE_URL}index.php/editarReservaActividad`,
+            data: {plazas: plazas, reserva: reserva},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success === true) {
+
+                    $(`#modalMisReservas .reserva-card[data-reserva=${reserva}] .reserva-detalles .detalle-item`).eq(2).find('.detalle-value').text(response.reserva.plazas_reserva)
+                    $(`#modalMisReservas .reserva-card[data-reserva=${reserva}] .reserva-detalles .detalle-item`).eq(3).find('.detalle-value').text(response.reserva.precio_reserva+'€')
+
+                    $('#modalEditarReservaActividadUsuario').modal('hide');
+                }
+            }
+        });
+    })
+
+    $(document).on('click', '.btn-anular-reserva-actividad-mis-reservas', function(e){
+
+        e.preventDefault()
+        let reserva = parseInt($(this).closest('.reserva-card').data('reserva'));
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/getDataReserva`,
+            data: {reserva: reserva},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true) {
+
+                    $('#modalEliminarReservaActividadUsuario #id-reserva-eliminar').val(reserva)
+                    $('#modalEliminarReservaActividadUsuario #nombre-actividad-eliminar-reserva-usuario').text(response.actividad.nombre);
+                    $('#modalEliminarReservaActividadUsuario #fecha-eliminar-reserva-usuario').text(formatearFecha(response.actividad.fecha_actividad));
+                    $('#modalEliminarReservaActividadUsuario #hora-eliminar-reserva-usuario').text(formatHora(response.actividad.hora_actividad));
+                    $('#modalEliminarReservaActividadUsuario #plazas-eliminar-reserva-usuario').text(response.reserva.plazas_reserva);
+                    $('#modalEliminarReservaActividadUsuario #precio-eliminar-reserva-usuario').text(response.reserva.precio_reserva+'€');
+                    $('#modalEliminarReservaActividadUsuario').modal('show');
+                }
+            }
+        });
+
+    })
+
+
+    $(document).on('click', '#btn-guardar-eliminar-reserva-actividad-usuario', function(e){
+        e.preventDefault();
+        let reserva = $('#modalEliminarReservaActividadUsuario #id-reserva-eliminar').val();
+
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/eliminarReservaActividad`,
+            data: {reserva: reserva},
+            dataType: "JSON",
+            success: function (response) {
+                
+                if(response.success == true){
+
+                    $(`#modalMisReservas .reserva-card[data-reserva=${reserva}]`).empty();
+                    $('#modalEliminarReservaActividadUsuario').modal('hide');
+                }
+            }
+        });
+    })
+
+    $(document).on('shown.bs.modal', '.modal', function () {
+        const openModalsCount = $('.modal.show').length;
+        const zIndexModal = 9999 + (10 * openModalsCount);
+
+        $(this).css('z-index', zIndexModal);
+        $('.modal-backdrop:not(.modal-stack)').css('z-index', zIndexModal - 5).addClass('modal-stack');
+    });
+
+
     function cargarMisActividades() {
         const cont = $('.reservas-list-actividades');
+        cont.empty();
 
         $.ajax({
             type: "POST",
@@ -748,63 +931,88 @@ $(document).ready(() => {
                 
                 if(response.success == true) {
 
-                    response.response_reservas.forEach(function (reserva) {
+                    if(response.reservas.length > 0) {
+                        response.reservas.forEach(function (reserva) {
 
-                        cont.append(
-                                `
-                                    <div class="reserva-card">
-                                        <div class="reserva-image-container" style="background-image: url('${BASE_URL}images/${reserva.imagen}')">
-                                        </div>
+                            cont.append(
+                                    `
+                                        <div class="reserva-card" data-reserva='${reserva.id_reserva_actividad}'>
+                                            <div class="reserva-image-container" style="background-image: url('${BASE_URL}images/${reserva.imagen}')">
+                                            </div>
 
-                                        <div class="reserva-content">
-                                            <div class="reserva-header">
-                                                <div class="reserva-info">
-                                                    <h3 class="reserva-instalacion"></h3>
-                                                    <span class="reserva-tipo"></span>
-                                                </div>
-
-                                                <div class="reserva-detalles">
-                                                    <div class="detalle-icon">📅</div>
-                                                    <div class="detalle-content">
-                                                        <div class="detalle-label">Fecha de la actividad</div>
-                                                        <div class="detalle-value info-fechas"></div>
+                                            <div class="reserva-content">
+                                                <div class="reserva-header">
+                                                    <div class="reserva-info">
+                                                        <h3 class="reserva-instalacion">${reserva.nombre}</h3>
+                                                        <span class="reserva-tipo">${reserva.categoria}</span>
                                                     </div>
                                                 </div>
 
-                                                <div class="detalle-item">
-                                                    <div class="detalle-icon">🕐</div>
-                                                    <div class="detalle-content">
-                                                        <div class="detalle-label">Hora/duración</div>
-                                                        <div class="detalle-value"></div>
+                                                    <div class="reserva-detalles">
+                                                        <div class="detalle-item">
+                                                            <div class="detalle-icon">📅</div>
+                                                            <div class="detalle-content">
+                                                                <div class="detalle-label">Fecha de la actividad</div>
+                                                                <div class="detalle-value info-fechas">${formatearFecha(reserva.fecha_actividad)}</div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="detalle-item">
+                                                            <div class="detalle-icon">🕐</div>
+                                                            <div class="detalle-content">
+                                                                <div class="detalle-label">Hora/duración</div>
+                                                                <div class="detalle-value">${formatHora(reserva.hora_actividad)} · ${formatHora(reserva.duracion)}</div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="detalle-item">
+                                                            <div class="detalle-icon">👥</div>
+                                                            <div class="detalle-content">
+                                                                <div class="detalle-label">Plazas reservadas</div>
+                                                                <div class="detalle-value">${reserva.plazas_reserva}</div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="detalle-item">
+                                                            <div class="detalle-icon">💰</div>
+                                                            <div class="detalle-content">
+                                                                <div class="detalle-label">Precio</div>
+                                                                <div class="detalle-value">${reserva.precio_reserva}€</div>
+                                                            </div>
+                                                        </div>
                                                     </div>
-                                                </div>
+                                            </div>
 
-                                                <div class="detalle-item">
-                                                    <div class="detalle-icon">👥</div>
-                                                    <div class="detalle-content">
-                                                        <div class="detalle-label">Plazas reservadas</div>
-                                                        <div class="detalle-value"></div>
+                                            <div class="reserva-actions">
+                                                ${(!haPasado(reserva.fecha_limite, reserva.hora_limite)) ? 
+                                                    `
+                                                    <div class="d-flex gap-2">
+                                                        <button class="btn btn-danger btn-anular-reserva-actividad-mis-reservas">Anular</button>
+                                                        <button class="btn btn-primary btn-editar-reserva-actividad-mis-reservas">Editar</button>
                                                     </div>
-                                                </div>
-
-                                                <div class="detalle-item">
-                                                    <div class="detalle-icon">💰</div>
-                                                    <div class="detalle-content">
-                                                        <div class="detalle-label">Precio</div>
-                                                        <div class="detalle-value"></div>
-                                                    </div>
-                                                </div>
-
-
-
+                                                    `:
+                                                    ''
+                                                }
                                             </div>
                                         </div>
-                                    </div>
-                                `
-                        )
+                                    `
+                            )
 
-                        cont.data('cargado', true);
-                    })
+                            cont.data('cargado', true);
+                        })
+                    }
+                    else {
+                        cont.append(`<div class="empty-state-reservas">
+    <div class="empty-icon-reservas-wrapper">
+        <i class="bi bi-calendar-check"></i>
+    </div>
+    <h3>Aún no tienes reservas</h3>
+    <p>Cuando te apuntes a una actividad, aparecerá aquí para que puedas consultarla en cualquier momento.</p>
+    <a href="${BASE_URL}index.php/actividades" class="btn-primary-personal">
+        Ver actividades <span aria-hidden="true">→</span>
+    </a>
+</div>`)
+                    }
                 }
             }
         });
@@ -883,5 +1091,14 @@ $(document).ready(() => {
         }
     }
 
+    function formatHora(hora) {
+        return hora ? hora.substring(0, 5) : '';
+    }
+
+    function haPasado(fecha, hora) {
+        // fecha: "YYYY-MM-DD", hora: "HH:MM:SS" o "HH:MM"
+        const fechaHora = new Date(`${fecha}T${hora}`);
+        return fechaHora < new Date();
+    }
     
 });

@@ -1,4 +1,4 @@
-<div class="modal fade modal-stack-2" tabindex="-1" id="modalEliminarReservaActividad" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" data-categoria="">
+<div class="modal fade modal-stack-2" tabindex="-1" id="modalEliminarReservaActividadUsuario" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" data-categoria="">
     <input type="hidden" id="id-reserva-eliminar" name="id-reserva-eliminar" value="">
 
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
@@ -17,35 +17,31 @@
                     </div>
 
                     <div class="col-12">
-                                                <div class="datos-reservas-eliminar">
+
+                        <div class="datos-reservas-eliminar">
                             <div class="row">
                                 <div class="col-6">Actividad</div>
-                                <div class="col-6"><span id="nombre-actividad-eliminar-reserva"></span></div>
+                                <div class="col-6"><span id="nombre-actividad-eliminar-reserva-usuario"></span></div>
                             </div>
 
                             <div class="row mt-3">
-                                <div class="col-6">Usuario</div>
-                                <div class="col-6"><span id="nombre-usuario-eliminar-reserva"></span></div>
+                                <div class="col-6">Fecha de la actividad</div>
+                                <div class="col-6"><span id="fecha-eliminar-reserva-usuario"></span></div>
                             </div>
 
                             <div class="row mt-3">
-                                <div class="col-6">Email del usuario</div>
-                                <div class="col-6"><span id="email-usuario-eliminar-reserva"></span></div>
-                            </div>
-
-                            <div class="row mt-3">
-                                <div class="col-6">Teléfono del usuario</div>
-                                <div class="col-6"><span id="telf-usuario-eliminar-reserva"></span></div>
-                            </div>
-
-                            <div class="row mt-3">
-                                <div class="col-6">Fecha de la reserva</div>
-                                <div class="col-6"><span id="fecha-eliminar-reserva"></span></div>
+                                <div class="col-6">Hora de la actividad</div>
+                                <div class="col-6"><span id="hora-eliminar-reserva-usuario"></span></div>
                             </div>
 
                             <div class="row mt-3">
                                 <div class="col-6">Plazas reservadas</div>
-                                <div class="col-6"><span id="plazas-eliminar-reserva"></span></div>
+                                <div class="col-6"><span id="plazas-eliminar-reserva-usuario"></span></div>
+                            </div>
+
+                            <div class="row mt-3">
+                                <div class="col-6">Precio de la reserva</div>
+                                <div class="col-6"><span id="precio-eliminar-reserva-usuario"></span></div>
                             </div>
                         </div>
                     </div>
@@ -65,7 +61,7 @@
                     Cancelar <i class="bi bi-x-lg"></i>
                 </button>
 
-                <button type="button" class="btn btn-danger" id="btn-guardar-eliminar-reserva-actividad">
+                <button type="button" class="btn btn-danger" id="btn-guardar-eliminar-reserva-actividad-usuario">
                     Eliminar <i class="bi bi-check-lg"></i>
                 </button>
             </div>
