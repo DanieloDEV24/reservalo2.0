@@ -4,7 +4,7 @@
 
   </div>
 
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-xl" style="width: 90% !important;">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Crear Instalación <i class="bi bi-plus-circle"></i></h5>

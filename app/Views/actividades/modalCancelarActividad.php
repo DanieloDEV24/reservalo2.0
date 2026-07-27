@@ -76,7 +76,7 @@
                     Cancelar <i class="bi bi-x-lg"></i>
                 </button>
 
-                <button type="button" class="btn btn-danger" id="btn-guardar-cancelar-actividad">
+                <button type="button" class="btn btn-danger" id="btn-guardar-baja-actividad">
                     Dar de baja <i class="bi bi-trash3"></i>
                 </button>
             </div>

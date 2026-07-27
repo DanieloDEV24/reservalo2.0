@@ -345,4 +345,91 @@ class actividadesModel extends Model
 
         return $query->getResultArray();
     }
+
+
+    public function getFullReservasFromPedido(int $pedido) {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal 'pedido'
+        $builder = $db->table('pedido');
+
+        $builder->select('reservas_actividades.*, actividades.*, tipos_actividades.nombre AS categoria');
+        $builder->join('reservas_actividades', 'reservas_actividades.id_pedido = pedido.id_pedido', 'inner');
+        $builder->join('actividades', 'reservas_actividades.id_actividad = actividades.id_actividades', 'inner');
+        $builder->join('tipos_actividades', 'tipos_actividades.id_tipos_actividades = actividades.tipo_actividad', 'inner');
+        $builder->where('pedido.id_pedido', $pedido);
+
+        $query = $builder->get();
+
+        return $query->getResultArray();
+    }
+
+
+    public function editarPedido(int $id_pedido, float $precio){
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal
+        $builder = $db->table('pedido');
+
+        $builder->where('id_pedido', $id_pedido);
+        $builder->update([
+                "precio_pedido" => $precio
+        ]);
+
+        return $db->affectedRows() > 0;
+    }
+
+    public function getUsuariosActividad(int $id_actividad){
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal
+        $builder = $db->table('usuarios');
+
+        $builder->select('usuarios.*, reservas_actividades.id_reserva_actividad');
+        $builder->join('reservas_actividades', 'reservas_actividades.id_usuario = usuarios.id_usuario');
+        $builder->where('reservas_actividades.id_actividad', $id_actividad);
+
+        $query = $builder->get();
+
+        return $query->getResultArray();
+    }
+
+
+    public function hayAforoDisponible($id_actividad, $plazas_solicitadas)
+    {
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Comprobamos si la actividad tiene control de aforo
+        $actividad = $db->table('actividades')
+            ->select('tiene_aforo, aforo')
+            ->where('id_actividad', $id_actividad)
+            ->get()
+            ->getRowArray();
+
+        if (!$actividad) {
+            return false; // la actividad no existe
+        }
+
+        // Si no tiene aforo, siempre hay plazas
+        if ((int) $actividad['tiene_aforo'] === 0) {
+            return true;
+        }
+
+        // Sumamos las plazas ya reservadas para esa actividad
+        $builder = $db->table('reserva_actividad');
+        $builder->selectSum('plazas_reserva');
+        $builder->where('id_actividad', $id_actividad);
+
+        $resultado = $builder->get()->getRowArray();
+        $plazasOcupadas = (int) ($resultado['plazas_reserva'] ?? 0);
+
+        $plazasLibres = (int) $actividad['aforo'] - $plazasOcupadas;
+
+        return $plazasLibres >= $plazas_solicitadas;
+    }
 }

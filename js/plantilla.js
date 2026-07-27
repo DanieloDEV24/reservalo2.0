@@ -827,7 +827,7 @@ $(document).ready(() => {
         let max = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('max'));
         let min = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('min'));
 
-        if(val < max) {
+        if(val < max || isNaN(max)) {
             $('#modalEditarReservaActividadUsuario #numPlazas').val((val + 1))
             
             if(val > -1) {

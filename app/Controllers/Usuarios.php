@@ -75,6 +75,10 @@ class Usuarios extends BaseController
             ]);
 
             $id_usuario = intval($post["id_usuario"]);
+            $usuariosModel->borrarReservasUsuario($id_usuario);
+            $usuariosModel->borrarActividadesUsuario($id_usuario);
+            $usuariosModel->borrarPedidoUsuario($id_usuario);
+            $usuariosModel->borrarActividadUsuario($id_usuario);
             $usuariosModel->borrarUsuario($id_usuario);
 
             echo json_encode([

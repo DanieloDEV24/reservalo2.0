@@ -1,6 +1,6 @@
 <div class="modal fade" tabindex="-1" id="modalReservasUsuario" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" data-usuario="">
 
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
         <div class="modal-content">
             <!-- Header -->
             <div class="modal-header border-bottom">

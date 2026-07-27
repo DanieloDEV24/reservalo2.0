@@ -407,6 +407,8 @@ class Actividades extends BaseController
     public function darBajaActividad(){
 
         $actividadesModel = new actividadesModel();
+        $reservasModel = new reservasModel();
+        $loginModel = new loginModel();
         $post = $this->request->getPost();
 
         if(!empty($post)){
@@ -414,6 +416,27 @@ class Actividades extends BaseController
             $id_actividad = intval($post["idActividad"]);
             $baja_actividades = $actividadesModel->bajaActividad($id_actividad);
             $actividad = $actividadesModel->getDataActividad($id_actividad)[0];
+
+            $usuarios_reserva = $actividadesModel->getUsuariosActividad($id_actividad);
+            
+            foreach($usuarios_reserva as $usuario) {
+                
+                $pedido = $reservasModel->getPedidoFromId(intval($actividadesModel->getReservaById(intval($usuario["id_reserva_actividad"]))[0]['id_pedido']))[0];
+                $datos_usuario = $usuario;
+                $datos_reserva = $actividadesModel->getFullReservasFromPedido(intval($actividadesModel->getReservaById(intval($usuario["id_reserva_actividad"]))[0]['id_pedido']));
+                
+                $datos_pdf = [
+                    "nombre_usuario" => $datos_usuario["nombre"], 
+                    "email_usuario"  => $datos_usuario["email"], 
+                    "telf_usuario"   => $datos_usuario["telf"],
+                    "fecha_pedido"   => $pedido['fecha_pedido'], 
+                    "precio_pedido"  => $pedido['precio_pedido'], 
+                    "numero_pedido"  => $pedido['num_pedido'], 
+                    "reservas"       => $datos_reserva
+                ];
+
+                $this->enviarEmailActividadCancelada($datos_pdf, 'danielruizdeveloper@gmail.com', intval($pedido["id_pedido"]), $datos_reserva);
+            }
 
             if($baja_actividades) {
 
@@ -431,6 +454,7 @@ class Actividades extends BaseController
     public function darAltaActividad(){
 
         $actividadesModel = new actividadesModel();
+        $reservasModel = new reservasModel();
         $post = $this->request->getPost();
 
         if(!empty($post)){
@@ -438,6 +462,27 @@ class Actividades extends BaseController
             $id_actividad = intval($post["idActividad"]);
             $alta_actividades = $actividadesModel->altaActividad($id_actividad);
             $actividad = $actividadesModel->getDataActividad($id_actividad)[0];
+            
+            $usuarios_reserva = $actividadesModel->getUsuariosActividad($id_actividad);
+
+            foreach($usuarios_reserva as $usuario) {
+                
+                $pedido = $reservasModel->getPedidoFromId(intval($actividadesModel->getReservaById(intval($usuario["id_reserva_actividad"]))[0]['id_pedido']))[0];
+                $datos_usuario = $usuario;
+                $datos_reserva = $actividadesModel->getFullReservasFromPedido(intval($actividadesModel->getReservaById(intval($usuario["id_reserva_actividad"]))[0]['id_pedido']));
+                
+                $datos_pdf = [
+                    "nombre_usuario" => $datos_usuario["nombre"], 
+                    "email_usuario"  => $datos_usuario["email"], 
+                    "telf_usuario"   => $datos_usuario["telf"],
+                    "fecha_pedido"   => $pedido['fecha_pedido'], 
+                    "precio_pedido"  => $pedido['precio_pedido'], 
+                    "numero_pedido"  => $pedido['num_pedido'], 
+                    "reservas"       => $datos_reserva
+                ];
+
+                $this->enviarEmailActividadAlta($datos_pdf, 'danielruizdeveloper@gmail.com', intval($pedido["id_pedido"]), $datos_reserva);
+            }
 
             if($alta_actividades) {
 
@@ -542,8 +587,7 @@ class Actividades extends BaseController
                     "plazas_reserva" => $num_plazas, 
                     "fecha_reserva" => $fechaString, 
                     "pagada" => 0, 
-                    "precio_reserva" => $precio_reserva, 
-                    "confirmada" => 0
+                    "precio_reserva" => $precio_reserva
                 ], intval($datos_actividad["plazas_ocupadas"]));
 
                 $actividad_actualizada = $actividadesModel->getDataActividad($actividad);
@@ -551,7 +595,8 @@ class Actividades extends BaseController
                 echo json_encode([
                     "success" => true,
                     "message" => "La reserva se ha realizado correctamente",
-                    "actividad" => $actividad_actualizada[0]
+                    "actividad" => $actividad_actualizada[0],
+                    "pedido" => $pedido
                 ]);
 
                 return;
@@ -672,6 +717,8 @@ class Actividades extends BaseController
     public function eliminarReservaActividad(){
 
         $actividadesModel = new actividadesModel();
+        $loginModel = new loginModel();
+        $reservasModel = new reservasModel();
         $post = $this->request->getPost();
 
         if(!empty($post)){
@@ -680,8 +727,27 @@ class Actividades extends BaseController
             $plazas = intval($actividadesModel->getReservaById($reserva)[0]['plazas_reserva']);
             $actividad = intval($actividadesModel->getReservaById($reserva)[0]['id_actividad']);
             $plazas_ocupadas = intval($actividadesModel->getDataActividad($actividad)[0]['plazas_ocupadas']);
+            $pedido = $reservasModel->getPedidoFromId(intval($actividadesModel->getReservaById($reserva)[0]['id_pedido']))[0];
+            $datos_usuario = $loginModel->buscaUsuarioPorId(intval($actividadesModel->getReservaById($reserva)[0]['id_usuario']));
+            $datos_reserva = $actividadesModel->getFullReservasFromPedido(intval($actividadesModel->getReservaById($reserva)[0]['id_pedido']));
+
             $borrar_reserva = $actividadesModel->eliminarReservaActividad($reserva, $plazas, $actividad, $plazas_ocupadas);
+            $reservasModel->anularPedido(intval($pedido["id_pedido"]));
             $data_actividad = $actividadesModel->getDataActividad($actividad)[0];
+
+
+            $datos_pdf = [
+                "nombre_usuario" => $datos_usuario["nombre"], 
+                "email_usuario"  => $datos_usuario["email"], 
+                "telf_usuario"   => $datos_usuario["telf"],
+                "fecha_pedido"   => $pedido['fecha_pedido'], 
+                "precio_pedido"  => $pedido['precio_pedido'], 
+                "numero_pedido"  => $pedido['num_pedido'], 
+                "reservas"       => $datos_reserva
+            ];
+
+            $this->enviarEmailAnularActividad($datos_pdf, 'danielruizdeveloper@gmail.com', intval($pedido["id_pedido"]), $datos_reserva);
+            $this->enviarEmailAnularActividad2($datos_pdf, 'danielruizdeveloper@gmail.com', intval($pedido["id_pedido"]), $datos_reserva);
 
             if($borrar_reserva){
                 echo json_encode([
@@ -699,6 +765,8 @@ class Actividades extends BaseController
     public function editarReservaActividad(){
 
         $actividadesModel = new actividadesModel();
+        $loginModel = new loginModel();
+        $reservasModel = new reservasModel();
         $post = $this->request->getPost();
 
         if(!empty($post)){
@@ -707,24 +775,45 @@ class Actividades extends BaseController
             $plazas = intval($post["plazas"]);
 
             $id_actividad = intval($actividadesModel->getReservaById($reserva)[0]['id_actividad']);
+            
+            $rol_usuario = intval($loginModel->buscaUsuarioPorId(intval($actividadesModel->getReservaById($reserva)[0]['id_usuario']))["id_rol"]);
+            $numero_pedido = $reservasModel->getPedidoFromId(intval($actividadesModel->getReservaById($reserva)[0]['id_pedido']))[0]["num_pedido"];
             $plazas_ocupadas = intval($actividadesModel->getDataActividad($id_actividad)[0]['plazas_ocupadas']);
             $precio_actividad = (intval($actividadesModel->getDataActividad($id_actividad)[0]['tiene_precio']) === 1) ? floatval($actividadesModel->getDataActividad($id_actividad)[0]['precio']) : 0;
 
-            // Aquí función editar plazas de la reserva + plazas ocupadas de la actividad (tablas reservas_actividades y actividades)
-            $plazas_reservadas = intval($actividadesModel->getReservaById($reserva)[0]['plazas_reserva']);
-            $editar_reserva = $actividadesModel->editarReserva($reserva, $plazas, $plazas_ocupadas, $plazas_reservadas, $id_actividad, $precio_actividad);
+            if($actividadesModel->hayAforoDisponible($id_actividad, $plazas)) {
 
-            $actividad = $actividadesModel->getDataActividad($id_actividad)[0];
-            $data_reserva = $actividadesModel->getReservaById($reserva)[0];
+                 // Aquí función editar plazas de la reserva + plazas ocupadas de la actividad (tablas reservas_actividades y actividades)
+                $plazas_reservadas = intval($actividadesModel->getReservaById($reserva)[0]['plazas_reserva']);
+                $editar_reserva = $actividadesModel->editarReserva($reserva, $plazas, $plazas_ocupadas, $plazas_reservadas, $id_actividad, $precio_actividad);
 
-            if($editar_reserva) {
-                echo json_encode([
-                    "success" => true, 
-                    "actividad" => $actividad, 
-                    "reserva" => $data_reserva,
-                ]);
+                $reserva_datos = $actividadesModel->getReservaById($reserva)[0];
 
-                return;
+                $editar_pedido = $actividadesModel->editarPedido(intval($reserva_datos["id_pedido"]), floatval($reserva_datos["precio_reserva"]));
+
+                $actividad = $actividadesModel->getDataActividad($id_actividad)[0];
+                $data_reserva = $actividadesModel->getReservaById($reserva)[0];
+                
+                $this->enviarEmailEditarReserva($rol_usuario, 'danielruizdeveloper@gmail.com', $numero_pedido);
+
+                if($editar_reserva) {
+                    
+                    echo json_encode([
+                        "success" => true, 
+                        "actividad" => $actividad, 
+                        "reserva" => $data_reserva,
+                    ]);
+
+                    return;
+                }
+            }
+            else {
+                 echo json_encode([
+                        "success" => false, 
+                        "mensaje" => 'No hay plazas suficientes', 
+                    ]);
+
+                    return;
             }
 
 
@@ -746,5 +835,401 @@ class Actividades extends BaseController
         ]);
 
         return;
+    }
+
+
+    public function descargarTicketActividad(int $id_pedido) {
+        $actividadesModel = new actividadesModel();
+        $reservasModel = new reservasModel();
+        $loginModel    = new loginModel();
+        
+        // Obtener datos del pedido
+        $pedido = $reservasModel->getPedidoFromId($id_pedido)[0];
+        
+        if(!$pedido) {
+            return redirect()->back()->with('error', 'Pedido no encontrado');
+        }
+        
+        $datos_usuario = $loginModel->buscaUsuarioPorId($pedido['id_usuario']);
+        $datos_reserva = $actividadesModel->getFullReservasFromPedido(intval($id_pedido));
+
+        $datos_pdf = [
+            "nombre_usuario" => $datos_usuario["nombre"], 
+            "email_usuario"  => $datos_usuario["email"], 
+            "telf_usuario"   => $datos_usuario["telf"],
+            "fecha_pedido"   => $pedido['fecha_pedido'], 
+            "precio_pedido"  => $pedido['precio_pedido'], 
+            "numero_pedido"  => $pedido['num_pedido'], 
+            "reservas"       => $datos_reserva
+        ];
+
+        $html = view('actividades/pdf_template_reserva', [
+            "datos" => $datos_pdf, 
+            "baseUrl" => base_url()
+        ]);
+        
+        $pdfFilename = 'reserva-' . $pedido['num_pedido'] . '.pdf';
+        
+        // Asegurar que el directorio existe
+        $uploadDir = rtrim(WRITEPATH, '/\\') . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR;
+        if (!is_dir($uploadDir)) {
+            mkdir($uploadDir, 0755, true);
+        }
+        
+        // Generar PDF
+        $pdf = new Pdf();
+        $pdf->writeHTML($html);
+        
+        // Guardar temporalmente con ruta normalizada
+        $tempPath = $uploadDir . $pdfFilename;
+        $pdf->output($tempPath, 'F');
+        
+        // VERIFICAR que el archivo se creó correctamente
+        if (!file_exists($tempPath)) {
+            log_message('error', '❌ No se pudo crear el PDF en: ' . $tempPath);
+            return redirect()->back()->with('error', 'Error al generar el PDF');
+        }
+        
+        // Enviar PDF al navegador
+        header('Content-Type: application/pdf');
+        header('Content-Disposition: attachment; filename="' . $pdfFilename . '"');
+        header('Content-Length: ' . filesize($tempPath));
+        readfile($tempPath);
+        
+        // Procesar email en segundo plano
+        if (function_exists('fastcgi_finish_request')) {
+            fastcgi_finish_request();
+            $this->enviarEmailReservaActividad($datos_pdf, 'danielruizdeveloper@gmail.com', $tempPath, $pdfFilename, $id_pedido, $datos_reserva);
+            $this->enviarEmailReservaActividad2($datos_pdf, 'danielruizdeveloper@gmail.com', $tempPath, $pdfFilename, $id_pedido, $datos_reserva);
+        } else {
+            $this->enviarEmailReservaActividad($datos_pdf, 'danielruizdeveloper@gmail.com', $tempPath, $pdfFilename, $id_pedido, $datos_reserva);
+            $this->enviarEmailReservaActividad2($datos_pdf, 'danielruizdeveloper@gmail.com', $tempPath, $pdfFilename, $id_pedido, $datos_reserva);
+        }
+        
+        exit;
+    }
+
+    private function enviarEmailReservaActividad($datos_pdf, $email, $tempPath, $pdfFilename, $id_pedido, $datos_reserva){
+        try {
+            // Leer el PDF
+            $pdfContent = file_get_contents($tempPath);
+            $pdfBase64 = base64_encode($pdfContent);
+            
+            // Cargar plantilla de email
+            $htmlContent = view('plantillas/emailReservaActividad', [
+                'datos_reserva' => $datos_pdf
+            ]);
+            
+            // API Key de Resend
+            $apiKey = env('RESEND_API_KEY');
+            
+            $curlData = [
+                'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
+                'to' => [$email],
+                'subject' => '✅ Confirmación de Reserva #' . $datos_pdf['numero_pedido'],
+                'html' => $htmlContent,
+                'attachments' => [
+                    [
+                        'filename' => $pdfFilename,
+                        'content' => $pdfBase64,
+                    ]
+                ]
+            ];
+
+            $ch = curl_init('https://api.resend.com/emails');
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $apiKey,
+                'Content-Type: application/json',
+            ]);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
+            $response  = curl_exec($ch);
+            $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            if ($httpCode === 200 || $httpCode === 202) {
+                log_message('info', '✅ Email enviado a: ' . $email);
+            } else {
+                log_message('error', '❌ Error enviando email: ' . $response);
+            }
+            
+        } catch (\Exception $e) {
+            log_message('error', '❌ Error email: ' . $e->getMessage());
+        }
+        
+    }
+
+    private function enviarEmailReservaActividad2($datos_pdf, $email, $tempPath, $pdfFilename, $id_pedido, $datos_reserva){
+        try {
+            // Leer el PDF
+            $pdfContent = file_get_contents($tempPath);
+            $pdfBase64 = base64_encode($pdfContent);
+            
+            // Cargar plantilla de email
+            $htmlContent = view('plantillas/emailReservaGestorActividad', [
+                'datos_reserva' => $datos_pdf
+            ]);
+            
+            // API Key de Resend
+            $apiKey = env('RESEND_API_KEY');
+            
+            $curlData = [
+                'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
+                'to' => [$email],
+                'subject' => '✅ Confirmación de Reserva #' . $datos_pdf['numero_pedido'],
+                'html' => $htmlContent,
+                'attachments' => [
+                    [
+                        'filename' => $pdfFilename,
+                        'content' => $pdfBase64,
+                    ]
+                ]
+            ];
+
+            $ch = curl_init('https://api.resend.com/emails');
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $apiKey,
+                'Content-Type: application/json',
+            ]);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
+            $response  = curl_exec($ch);
+            $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            if ($httpCode === 200 || $httpCode === 202) {
+                log_message('info', '✅ Email enviado a: ' . $email);
+            } else {
+                log_message('error', '❌ Error enviando email: ' . $response);
+            }
+            
+        } catch (\Exception $e) {
+            log_message('error', '❌ Error email: ' . $e->getMessage());
+        }
+        
+    }
+
+    private function enviarEmailAnularActividad($datos_pdf, $email, $id_pedido, $datos_reserva) {
+        try {        
+            // Cargar plantilla de email
+            $htmlContent = view('plantillas/emailAnularReservaUsuarioActividad', [
+                'datos_reserva' => $datos_pdf
+            ]);
+            
+            // API Key de Resend
+            $apiKey = env('RESEND_API_KEY');
+            
+            $curlData = [
+                'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
+                'to' => [$email],
+                'subject' => '✅ RESERVA ANULADA #' . $datos_pdf['numero_pedido'],
+                'html' => $htmlContent
+            ];
+
+            $ch = curl_init('https://api.resend.com/emails');
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $apiKey,
+                'Content-Type: application/json',
+            ]);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
+            $response  = curl_exec($ch);
+            $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            if ($httpCode === 200 || $httpCode === 202) {
+                log_message('info', '✅ Email enviado a: ' . $email);
+            } else {
+                log_message('error', '❌ Error enviando email: ' . $response);
+            }
+            
+        } catch (\Exception $e) {
+            log_message('error', '❌ Error email: ' . $e->getMessage());
+        }
+        
+        
+        
+    }
+
+    private function enviarEmailAnularActividad2($datos_pdf, $email, $id_pedido, $datos_reserva) {
+        try {        
+            // Cargar plantilla de email
+            $htmlContent = view('plantillas/emailAnularReservaGestorActividad', [
+                'datos_reserva' => $datos_pdf
+            ]);
+            
+            // API Key de Resend
+            $apiKey = env('RESEND_API_KEY');
+            
+            $curlData = [
+                'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
+                'to' => [$email],
+                'subject' => '✅ RESERVA ANULADA #' . $datos_pdf['numero_pedido'],
+                'html' => $htmlContent
+            ];
+
+            $ch = curl_init('https://api.resend.com/emails');
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $apiKey,
+                'Content-Type: application/json',
+            ]);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
+            $response  = curl_exec($ch);
+            $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            if ($httpCode === 200 || $httpCode === 202) {
+                log_message('info', '✅ Email enviado a: ' . $email);
+            } else {
+                log_message('error', '❌ Error enviando email: ' . $response);
+            }
+            
+        } catch (\Exception $e) {
+            log_message('error', '❌ Error email: ' . $e->getMessage());
+        }
+        
+        
+        
+    }
+
+    private function enviarEmailEditarReserva(int $rol, string $email, string $numero_pedido) {
+        try {        
+            // Cargar plantilla de email
+            $htmlContent = view('plantillas/emailEditarReservaActividad', [
+                'rol' => $rol
+            ]);
+            
+            // API Key de Resend
+            $apiKey = env('RESEND_API_KEY');
+            
+            $curlData = [
+                'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
+                'to' => [$email],
+                'subject' => '✅ CAMBIO EN LA RESERVA #' . $numero_pedido,
+                'html' => $htmlContent
+            ];
+
+            $ch = curl_init('https://api.resend.com/emails');
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $apiKey,
+                'Content-Type: application/json',
+            ]);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
+            $response  = curl_exec($ch);
+            $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            if ($httpCode === 200 || $httpCode === 202) {
+                log_message('info', '✅ Email enviado a: ' . $email);
+            } else {
+                log_message('error', '❌ Error enviando email: ' . $response);
+            }
+            
+        } catch (\Exception $e) {
+            log_message('error', '❌ Error email: ' . $e->getMessage());
+        }
+        
+        
+        
+    }
+
+    private function enviarEmailActividadCancelada($datos_pdf, $email, $id_pedido, $datos_reserva) {
+        try {        
+            // Cargar plantilla de email
+            $htmlContent = view('plantillas/emailActividadCancelada', [
+                'datos_reserva' => $datos_pdf
+            ]);
+            
+            // API Key de Resend
+            $apiKey = env('RESEND_API_KEY');
+            
+            $curlData = [
+                'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
+                'to' => [$email],
+                'subject' => '‼️ ACTIVIDAD CANCELADA ' . $datos_reserva[0]['nombre'],
+                'html' => $htmlContent
+            ];
+
+            $ch = curl_init('https://api.resend.com/emails');
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $apiKey,
+                'Content-Type: application/json',
+            ]);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
+            $response  = curl_exec($ch);
+            $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            if ($httpCode === 200 || $httpCode === 202) {
+                log_message('info', '✅ Email enviado a: ' . $email);
+            } else {
+                log_message('error', '❌ Error enviando email: ' . $response);
+            }
+            
+        } catch (\Exception $e) {
+            log_message('error', '❌ Error email: ' . $e->getMessage());
+        }
+        
+        
+        
+    }
+
+    private function enviarEmailActividadAlta($datos_pdf, $email, $id_pedido, $datos_reserva) {
+        try {        
+            // Cargar plantilla de email
+            $htmlContent = view('plantillas/emailActividadAlta', [
+                'datos_reserva' => $datos_pdf
+            ]);
+            
+            // API Key de Resend
+            $apiKey = env('RESEND_API_KEY');
+            
+            $curlData = [
+                'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
+                'to' => [$email],
+                'subject' => '‼️ ACTIVIDAD DE ALTA ' . $datos_reserva[0]['nombre'],
+                'html' => $htmlContent
+            ];
+
+            $ch = curl_init('https://api.resend.com/emails');
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $apiKey,
+                'Content-Type: application/json',
+            ]);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
+            $response  = curl_exec($ch);
+            $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            if ($httpCode === 200 || $httpCode === 202) {
+                log_message('info', '✅ Email enviado a: ' . $email);
+            } else {
+                log_message('error', '❌ Error enviando email: ' . $response);
+            }
+            
+        } catch (\Exception $e) {
+            log_message('error', '❌ Error email: ' . $e->getMessage());
+        }
+        
+        
+        
     }
 }

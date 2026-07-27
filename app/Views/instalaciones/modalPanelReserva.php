@@ -21,7 +21,7 @@
   </div>
 
 
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
     <div class="modal-content">
       <input type="hidden" id="pistaId">
       <!-- Header -->

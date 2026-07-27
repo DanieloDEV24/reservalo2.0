@@ -257,14 +257,14 @@ $(document).ready(() => {
         }
 
         // Comprobamos que existan la capacidad de la pista o no sea 0 o sea un número. Si falla alguno de estos aspectos guardamos un error
-        if (!capacidadPista || capacidadPista == 0 || !parseInt(capacidadPista)) {
+        if (!capacidadPista || parseInt(capacidadPista) === 0 || !parseInt(capacidadPista)) {
             errores.push('Debes seleccionar una capacidad para la pista'); // --> Guardamos el error en el array de errores
             camposError(body.find('.capacidadPista')) // --> Marcamos el campo como erróneo
         }
 
         // Comprobamos que esté marcado el switch del que se pueda hacer una reserva completa y la capacidad pista sea menor que la capacidad completa
-        else if (puedeTotal && (parseInt(capacidadPista) > parseInt(capacidadTotal))) {
-            errores.push('La capacidad de una pista no puede superar a la total de la instalación'); // --> Guardamos el error en el array de errores
+        else if (puedeTotal && (parseInt(capacidadPista) > parseInt(capacidadTotal) || parseInt(capacidadPista) <= 0)) {
+            errores.push('La capacidad de una pista no puede superar a la total de la instalación y debe ser superior a 0'); // --> Guardamos el error en el array de errores
             camposError(body.find('.capacidadPista')) // --> Marcamos el campo como erróneo
         }
         else {
@@ -272,7 +272,7 @@ $(document).ready(() => {
         }
 
         // Comprobamos que el campo de precio no este vacío
-        if (precioPista === '' || isNaN(precioPista)) {
+        if (precioPista === '' || isNaN(precioPista) || parseFloat(precioPista) < 0) {
             errores.push('Debe seleccionar un precio para la pista'); // --> Guardamos el error en el array de errores
             camposError(body.find('.precioPista')) // --> Marcamos el campo como erróneo
         }
@@ -507,7 +507,7 @@ $(document).ready(() => {
 
 
         // Comprobamos que si esta seleccionada la opción de reserva completa o instalación sin pistas, haya un precio de la instalación completa
-        if ((puedeCompleto || noPistas) && (precioCompleto === '' || isNaN(precioCompleto))) {
+        if ((puedeCompleto || noPistas) && (precioCompleto === '' || isNaN(precioCompleto) || parseFloat(precioCompleto) < 0 )) {
             errores.push('Debe seleccionar un precio válido'); // --> Guardamos la el mensaje de error en el array de errores
             camposError($('#precioCompleto')); // --> Mostramos el campo como erróneo
         } else {
@@ -516,7 +516,7 @@ $(document).ready(() => {
 
 
         // Comporbamos que si esta seleccionada la opción de reserva completa o instalación sin pistas, haya una capacidad indicada para la reserva de la instalación completa 
-        if ((puedeCompleto || noPistas) && (capacidadCompleto === '' || isNaN(capacidadCompleto) || parseInt(capacidadCompleto) === 0)) {
+        if ((puedeCompleto || noPistas) && (capacidadCompleto === '' || isNaN(capacidadCompleto) || parseInt(capacidadCompleto) <= 0)) {
             errores.push('Debe seleccionar una capacidad válida'); // --> Guardamos el mensaje de error en el array de errores
             camposError($('#capacidadCompleto')); // --> Mostramos el campo como erróneo
         }
@@ -703,6 +703,82 @@ $(document).ready(() => {
                     <div id="loader${instalacion.id_instalacion}" class="loader2" style="display: none;"></div>` : ''}
           </td>
                             </tr>`);
+
+
+
+
+
+                    
+                        // LIMPIAMOS EL MODAL
+                        $('#nombreInstalacion').val('');
+                        $('#categorias').val(-1);
+                        $('#direccionInstalacion').val('');
+                        $('#capacidadCompleto').val('0.0');
+                        $('#precioCompleto').val('0.0');
+                        $('#descripcion').val('');
+
+                        // Switches (dentro de #modalNuevaInstalacion para no tocar los del modal de editar)
+                        $('#modalNuevaInstalacion .toggle-switch input.iluminacion').prop('checked', false);
+                        $('#modalNuevaInstalacion .toggle-switch input.material').prop('checked', false);
+                        $('#modalNuevaInstalacion .toggle-switch input.noPistas').prop('checked', false);
+                        $('#modalNuevaInstalacion .toggle-switch input.puedeCompleto').prop('checked', false);
+                        $('#modalNuevaInstalacion .toggle-switch input.sinHorario').prop('checked', false);
+
+                        // Subcategorías: se generan dinámicamente, así que las vaciamos directamente
+                        $('#subcategorias').empty();
+
+                        // Accordion de pistas: lo dejamos como estaba al cargar la página
+                        $('#accordionExample').empty().append(`
+                            <div class="accordion-item" data-index="1">
+                                <h2 class="accordion-header">
+                                    <button class="accordion-button nuevaPista collapsed d-flex justify-content-start" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                        <div>Añadir Pista&nbsp;<i class="bi bi-plus-circle"></i></div>
+                                    </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="row gap-5">
+                                            <div class="col">
+                                                <label>Nombre: <span class="campo-obligatorio">*</span></label>
+                                                <input type="text" name="nombrePista" class="form-control nombrePista" placeholder="Ej: Pista de padel nº 1">
+                                            </div>
+                                        </div>
+                                        <div class="row gap-5 mt-3">
+                                            <div class="col">
+                                                <label>Capacidad de la Pista: <span class="campo-obligatorio">*</span></label>
+                                                <input type="text" name="capacidadPista" class="form-control capacidadPista" placeholder="Ej: 4">
+                                            </div>
+                                            <div class="col">
+                                                <label>Precio de la Pista: <span class="campo-obligatorio">*</span></label>
+                                                <input type="text" name="precioPista" class="form-control precioPista" placeholder="Ej: 21">
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-start mt-4">
+                                            <div class="w-50">
+                                                Selecciona las imágenes de la pista (máx 4)
+                                                <label class="btn btn-primary mt-1">
+                                                    Imagenes
+                                                    <input class="imagenes" type="file" name="imagenes[]" multiple accept="image/*" hidden>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex gap-2 mt-3 justify-content-end botonesPista">
+                                            <button class="btn btn-primary guardarPista">Guardar <i class="bi bi-check-lg"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `);
+
+                        // Array global de pistas e imágenes de "sin pistas"
+                        pistas = [];
+                        imagenesNoPistas = null;
+
+                        // Clases de error/éxito
+                        $('#modalNuevaInstalacion .form-control').removeClass('is-invalid is-valid');
+
+                        // Alertas de error
+                        $('#modalNuevaInstalacion .alertModal').empty();
                     });
 
                     // Cerramos el modal de crear una nueva instalación
@@ -954,6 +1030,12 @@ $(document).ready(() => {
                             const input = $(`<input value="${val}" name="subcategoriaEditar" id="sub-${val}" type="checkbox">`);
                             const label = $(`<label for="sub-${val}">${text}</label>`);
 
+                            input.on('change', function () {
+                                if ($(this).is(':checked')) {
+                                    $('#subcategoriasEditar input[type="checkbox"]').not(this).prop('checked', false);
+                                }
+                            });
+
                             // Lo añadimos al div
                             $('#subcategoriasEditar').append(input, label);
                         }
@@ -1178,6 +1260,7 @@ $(document).ready(() => {
     $(document).on('click', '.guardarPistaEditar', function (event) {
 
         event.preventDefault();
+        let errores = [];
 
         let $accordionItem = $(this).closest('.accordion-item');
         let idPista = parseInt($accordionItem.data('index'));
@@ -1186,6 +1269,22 @@ $(document).ready(() => {
         let nombre = $accordionItem.find('.nombrePistaEditar').val();
         let capacidad = $accordionItem.find('.capacidadPistaEditar').val();
         let precio = $accordionItem.find('.precioPistaEditar').val();
+
+        if(nombre === '' || !nombre) errores.push('Debe seleccionar un nombre válido');
+        if(capacidad === '' || !capacidad || parseInt(capacidad) <= 0) errores.push('Debe seleccionar una capacidad válida (mayor que 0)'); 
+        if(parseFloat(precio) < 0) errores.push('Debe seleccionar un precio válido'); 
+
+        if (errores.length > 0) {
+            const listaErrores = errores.map(e => `<li>${e}</li>`).join('');
+            const alertBox = $(`
+                <div class="alert alert-danger mb-0" role="alert">
+                    <ul class="mb-0">${listaErrores}</ul>
+                </div>
+            `);
+
+            $('#modalEditarInstalacion .alertModal').empty().append(alertBox);
+            return;
+        }
 
         // Obtenemos las imágenes guardadas en el data del body
         let body = $accordionItem.find('.accordion-body');

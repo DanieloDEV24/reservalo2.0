@@ -658,16 +658,16 @@ $(document).ready(function () {
             errores.push({campo: 'fecha límite', mensaje: "Debe seleccionar una fecha límite de inscripción"})
         }
 
-        if(parseFechaES(fecha) <= parseFechaES(fechaLimite)){
+        if(toDate(parseFechaES(fecha)) <= toDate(parseFechaES(fechaLimite))){
             errores.push({campo: 'fecha límite', mensaje: "La fecha límite debe ser menor que la fecha de la actividad"})
         }
 
         const hoy = new Date().toISOString().split('T')[0]; 
-        if(parseFechaES(fecha) <= parseFechaES(hoy)){
+        if(toDate(parseFechaES(fecha)) <= toDate(parseFechaES(hoy))){
             errores.push({campo: 'fecha', mensaje: "No puede seleccionar una fecha pasada"})
         }
 
-        if(parseFechaES(fechaLimite) <= parseFechaES(hoy)){
+        if(toDate(parseFechaES(fechaLimite)) <= toDate(parseFechaES(hoy))){
             errores.push({campo: 'fecha límite', mensaje: "No puede seleccionar una fecha pasada"})
         }
 
@@ -810,10 +810,12 @@ $(document).ready(function () {
                                         <div class="card-actividad-meta">
                                             <div><i class="bi bi-calendar"></i> ${parseFechaES(response.actividad.fecha_actividad)}, ${response.actividad.hora_actividad}</div>
                                             <div><i class="bi bi-geo-alt"></i> ${response.actividad.lugar}</div>
-                                            ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"> ${actividad.plazas_ocupadas} inscritos</div>`}
+                                            ${(parseInt(response.actividad.tiene_aforo) === 1) 
+    ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` 
+    : `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} inscritos</div>`}
                                         </div>
                                         <div class="card-actividad-footer">
-                                            <span class="card-actividad-precio">${(response.actividad.tiene_precio) ? response.actividad.precio+'€' : 'Gratis'}</span>
+                                            <span class="card-actividad-precio">${(parseInt(response.actividad.tiene_precio) === 1) ? response.actividad.precio+'€' : 'Gratis'}</span>
                                             <a class="btn btn-outline-actividad" href="${BASE_URL}index.php/actividad/${response.actividad.id_actividades}">Ver más</a>
                                         </div>
                                     </div>
@@ -865,7 +867,7 @@ $(document).ready(function () {
 
     })
 
-    $(document).on('click', '#btn-guardar-cancelar-actividad', function(e){
+    $(document).on('click', '#btn-guardar-baja-actividad', function(e){
 
         e.preventDefault();
         let idActividad =  $('#modalCancelarActividad #id-actividad').val();
@@ -876,6 +878,8 @@ $(document).ready(function () {
             data: {idActividad: idActividad},
             dataType: "JSON",
             success: function (response) {
+                
+                console.log(response)
                 
                 if(response.success == true) {
 
@@ -919,10 +923,10 @@ $(document).ready(function () {
                                     <div class="card-actividad-meta">
                                         <div><i class="bi bi-calendar"></i> ${parseFechaES(response.actividad.fecha_actividad)}, ${response.actividad.hora_actividad}</div>
                                         <div><i class="bi bi-geo-alt"></i> ${response.actividad.lugar}</div>
-                                        ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"> ${actividad.plazas_ocupadas} inscritos</div>`}
+                                        ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} inscritos</div>`}
                                     </div>
                                     <div class="card-actividad-footer">
-                                        <span class="card-actividad-precio">${(response.actividad.tiene_precio) ? response.actividad.precio+'€' : 'Gratis'}</span>
+                                        <span class="card-actividad-precio">${(parseInt(response.actividad.tiene_precio) === 1) ? response.actividad.precio+'€' : 'Gratis'}</span>
                                         <a class="btn btn-outline-actividad" href="${BASE_URL}index.php/actividad/${response.actividad.id_actividades}" ${estaInactiva ? 'disabled' : ''}>${estaCancelada ? 'Cancelada' : estaFinalizada ? 'Finalizada' : 'Ver más'}</a>
                                     </div>
                                 </div>
@@ -932,6 +936,10 @@ $(document).ready(function () {
                     
                     $('#modalCancelarActividad').modal('hide');
                 }
+            },             
+            error: function (xhr, status, error) {
+                console.error('Error AJAX:', status, error);
+                console.error('Respuesta cruda:', xhr.responseText);
             }
         });
 
@@ -948,6 +956,8 @@ $(document).ready(function () {
             data: {idActividad: idActividad},
             dataType: "JSON",
             success: function (response) {
+
+                
                 
                 if(response.success == true) {
 
@@ -991,10 +1001,10 @@ $(document).ready(function () {
                                     <div class="card-actividad-meta">
                                         <div><i class="bi bi-calendar"></i> ${parseFechaES(response.actividad.fecha_actividad)}, ${response.actividad.hora_actividad}</div>
                                         <div><i class="bi bi-geo-alt"></i> ${response.actividad.lugar}</div>
-                                        ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"> ${actividad.plazas_ocupadas} inscritos</div>`}
+                                        ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} inscritos</div>`}
                                     </div>
                                     <div class="card-actividad-footer">
-                                        <span class="card-actividad-precio">${(response.actividad.tiene_precio) ? response.actividad.precio+'€' : 'Gratis'}</span>
+                                        <span class="card-actividad-precio">${(parseInt(response.actividad.tiene_precio) === 1) ? response.actividad.precio+'€' : 'Gratis'}</span>
                                         <a class="btn btn-outline-actividad" href="${BASE_URL}index.php/actividad/${response.actividad.id_actividades}" ${estaInactiva ? 'disabled' : ''}>${estaCancelada ? 'Cancelada' : estaFinalizada ? 'Finalizada' : 'Ver más'}</a>
                                     </div>
                                 </div>
@@ -1002,6 +1012,10 @@ $(document).ready(function () {
                         `
                     );
                 }
+            }, 
+            error: function (xhr, status, error) {
+                console.error('Error AJAX:', status, error);
+                console.error('Respuesta cruda:', xhr.responseText);
             }
         });
     })
@@ -1151,6 +1165,7 @@ $(document).ready(function () {
                         $('.paginaActividad .alert-errores-reservar-actividad').show();
                     }
                     else {
+                        window.location.href = `${BASE_URL}index.php/descargarTicketActividad/${parseInt(response.pedido)}`;
                         $('.paginaActividad .contenedor-alert-reserva-actividad-2').removeClass('d-none');
                         $('.paginaActividad .alert-reserva-actividad-completada').show();
 
@@ -1390,7 +1405,7 @@ $(document).ready(function () {
         let max = parseInt($(this).closest('div').find('input').attr('max'));
 
 
-        if(valor < max) {
+        if(valor < max || isNaN(max)) {
             $(this).closest('div').find('input').val((valor + 1))
             
             if(valor > -1) {
@@ -1438,6 +1453,8 @@ $(document).ready(function () {
             data: {plazas: valor, reserva: reserva},
             dataType: "JSON",
             success: function (response) {
+
+                console.log(response)
                 
                 if(response.success == true){
                     
@@ -1446,9 +1463,13 @@ $(document).ready(function () {
                     campo.closest('tr').find('.plazas-stepper').addClass('d-none');
                     campo.closest('tr').find('.btn-acciones-editar').addClass('d-none');
 
-                    $(`.grid-actividades .card-actividad[data-index='${response.actividad.id_actividades}'] .card-actividad-meta`).children('div').eq(2).html((parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people">${response.actividad.plazas_ocupadas} inscritos</div>`);
+                    $(`.grid-actividades .card-actividad[data-index='${response.actividad.id_actividades}'] .card-actividad-meta`).children('div').eq(2).html((parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"></i>${response.actividad.plazas_ocupadas} inscritos</div>`);
 
                 }
+            },
+            error: function (xhr, status, error) {
+                console.error('Error AJAX:', status, error);
+                console.error('Respuesta cruda:', xhr.responseText);
             }
         });
     })

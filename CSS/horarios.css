@@ -1291,23 +1291,23 @@ body.resizing-sidebar-footer * {
   stroke-dashoffset: 0;
 }
 
-.checks-horarios-excepcion {
+#modalBorrarHorario .checks-horarios-excepcion {
   margin-top: 2%;
 }
 
-.checks-horarios-excepcion > div {
+#modalBorrarHorario .checks-horarios-excepcion > div {
   display: flex;
   align-items: center;
   gap: 12px;
   margin-bottom: 10px;
 }
 
-.checkbox-text {
+#modalBorrarHorario .checkbox-text {
   transition: all 0.3s ease;
   position: relative;
 }
 
-.checkbox-text::after {
+#modalBorrarHorario .checkbox-text::after {
   content: "";
   position: absolute;
   top: 50%;
@@ -1319,11 +1319,37 @@ body.resizing-sidebar-footer * {
   transform: translateY(-50%);
 }
 
-.checkbox-wrapper:has(input.task-checkbox:checked) + .checkbox-text {
+#modalBorrarHorario .checkbox-wrapper:has(input.task-checkbox:checked) + .checkbox-text {
   color: #6b7280;
 }
 
-.checkbox-wrapper:has(input.task-checkbox:checked) + .checkbox-text::after {
+#modalBorrarHorario .checkbox-wrapper:has(input.task-checkbox:checked) + .checkbox-text::after {
   width: 100%;
 } 
 
+#modalBorrarHorario .contenedor-instalaciones {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  max-width: 320px;
+  margin: 12px auto 0;
+  padding-left: 4px;
+}
+ 
+/* Cada checkbox individual */
+#modalBorrarHorario .contenedor-instalaciones .option-horario-instalaciones {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+ 
+#modalBorrarHorario .contenedor-instalaciones .option-horario-instalaciones .cbx {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: #333;
+}

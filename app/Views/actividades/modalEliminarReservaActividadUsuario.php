@@ -20,27 +20,29 @@
 
                         <div class="datos-reservas-eliminar">
                             <div class="row">
-                                <div class="col-6">Actividad</div>
+                                <div class="col-6"><strong>Actividad</strong></div>
                                 <div class="col-6"><span id="nombre-actividad-eliminar-reserva-usuario"></span></div>
                             </div>
 
                             <div class="row mt-3">
-                                <div class="col-6">Fecha de la actividad</div>
+                                <div class="col-6"><strong>Fecha de la actividad</strong></div>
                                 <div class="col-6"><span id="fecha-eliminar-reserva-usuario"></span></div>
                             </div>
 
                             <div class="row mt-3">
-                                <div class="col-6">Hora de la actividad</div>
+                                <div class="col-6"><strong>Hora de la actividad</strong>
+
+                            </div>
                                 <div class="col-6"><span id="hora-eliminar-reserva-usuario"></span></div>
                             </div>
 
                             <div class="row mt-3">
-                                <div class="col-6">Plazas reservadas</div>
+                                <div class="col-6"><strong>Plazas reservadas</strong></div>
                                 <div class="col-6"><span id="plazas-eliminar-reserva-usuario"></span></div>
                             </div>
 
                             <div class="row mt-3">
-                                <div class="col-6">Precio de la reserva</div>
+                                <div class="col-6"><strong>Precio de la reserva</strong></div>
                                 <div class="col-6"><span id="precio-eliminar-reserva-usuario"></span></div>
                             </div>
                         </div>

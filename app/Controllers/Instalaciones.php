@@ -797,15 +797,29 @@ class Instalaciones extends BaseController
             $id_instalacion = intval($post["id"]);
 
             $instalacion = $instalacionesModel->getInstalacion($id_instalacion);
+            $reservas = $reservasModel->getReservasByInstalacion($id_instalacion);
+
+            $reservas_agrupadas = $this->agruparReservas($reservas);
+            foreach($reservas_agrupadas as $reserva_agr){
+                $this->enviarEmailAnularActividad($reserva_agr, 'danielruizdeveloper@gmail.com');
+            }
         
             // Lo nuevo - 17/03/2026
             $getHorario = $horariosModel->getHorarioByInstalacion($id_instalacion);
 
             if(count($getHorario) > 0) {
 
+                $pistas = $instalacionesModel->getPistasByInstalacion($id_instalacion);
+                
+                foreach($pistas as $pista) {
+                    $borrarReservas = $reservasModel->anularReservaByPista(intval($pista["id_pista"]));
+                    $borrarPedido = $reservasModel->deletePedidoByPista(intval($pista["id_pista"]));
+                }
+
                 foreach($getHorario as $horario) {
                     
-                    $getFranjasHoraria = $horariosModel->getFranjaHorariaByIdHorario(intval($horario["id_tipo_horario"]));
+                    $getFranjasHoraria = $horariosModel->getFranjaHorariaByIdHorarioEInstalacion(intval($horario["id_tipo_horario"]), $id_instalacion);
+                    $numero_instalaciones_horario = count($horariosModel->getIdsInstalacionesFromHorario(intval($horario["id_tipo_horario"])));
 
                     foreach($getFranjasHoraria as $franja){
 
@@ -813,15 +827,11 @@ class Instalaciones extends BaseController
                         $borrarFranjaHoraria = $horariosModel->borrarFranjaHoraria(intval($franja["id_franja_horaria"]));
                     }
                     
-                    $borrarExcepcion = $horariosModel->borrarExcepcion(intval($horario["id_tipo_horario"]));
-                    $borrarHorario = $horariosModel->borrarHorario(intval($horario["id_tipo_horario"]));
-                }
-                
-                $pistas = $instalacionesModel->getPistasByInstalacion($id_instalacion);
-                
-                foreach($pistas as $pista) {
-                    $borrarReservas = $reservasModel->anularReservaByPista(intval($pista["id_pista"]));
-                    $borrarPedido = $reservasModel->deletePedidoByPista(intval($pista["id_pista"]));
+                    $borrarExcepcion = $horariosModel->borrarExcepcion(intval($horario["id_tipo_horario"]), $id_instalacion);
+                    if( $numero_instalaciones_horario <= 1) {
+
+                        $borrarHorario = $horariosModel->borrarHorario(intval($horario["id_tipo_horario"]));
+                    }
                 }
                 
 
@@ -851,6 +861,8 @@ class Instalaciones extends BaseController
                     exit;
                 }
             }
+
+
         }
     }
 
@@ -944,6 +956,75 @@ class Instalaciones extends BaseController
             // Aqui va la página de error
         }
 
+    }
+
+    private function agruparReservas(array $rows): array
+    {
+        $agrupadas = [];
+
+        foreach ($rows as $row) {
+            $clave = $row['id_pedido'];
+
+            if (!isset($agrupadas[$clave])) {
+                $agrupadas[$clave] = [
+                    'id_pedido'  => $row['id_pedido'],
+                    'id_usuario' => $row['id_usuario'],
+                    'nombre'     => $row['nombre'],
+                    'email'      => $row['email'],
+                    'fecha'      => $row['fecha'],
+                    'horas'      => [],
+                    'nombre_instalacion' => $row['nombre_instalacion']
+                ];
+            }
+
+            $agrupadas[$clave]['horas'][] = $row['hora_inicio'];
+        }
+
+        return array_values($agrupadas);
+    }
+
+    private function enviarEmailAnularActividad($datos_reserva, $email) {
+        try {        
+            // Cargar plantilla de email
+            $htmlContent = view('plantillas/emailInstalacionEliminada', [
+                'datos_reserva' => $datos_reserva
+            ]);
+            
+            // API Key de Resend
+            $apiKey = env('RESEND_API_KEY');
+            
+            $curlData = [
+                'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
+                'to' => [$email],
+                'subject' => '‼️SE HA ELIMINADO LA INSTALACIÓN DONDE TENÍAS UNA RESERVA',
+                'html' => $htmlContent
+            ];
+
+            $ch = curl_init('https://api.resend.com/emails');
+            curl_setopt($ch, CURLOPT_HTTPHEADER, [
+                'Authorization: Bearer ' . $apiKey,
+                'Content-Type: application/json',
+            ]);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_POST, true);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($curlData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+
+            $response  = curl_exec($ch);
+            $httpCode  = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+
+            if ($httpCode === 200 || $httpCode === 202) {
+                log_message('info', '✅ Email enviado a: ' . $email);
+            } else {
+                log_message('error', '❌ Error enviando email: ' . $response);
+            }
+            
+        } catch (\Exception $e) {
+            log_message('error', '❌ Error email: ' . $e->getMessage());
+        }
+        
+        
+        
     }
 
 }

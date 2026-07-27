@@ -4,7 +4,7 @@
 
   </div>
 
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">¿Está seguro/a de que quiere borrar la instalación: <span></span> ? <i class="bi bi-pencil-square"></i></h5>
@@ -91,7 +91,7 @@
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
           Cancelar <i class="bi bi-x-lg"></i>
         </button>
-        <button type="submit" class="btn btn-primary" id="aceptarBorrarInstalacion">
+        <button type="submit" class="btn btn-danger" id="aceptarBorrarInstalacion">
           Borrar Instalación <i class="bi bi-check-lg"></i>
         </button>
       </div>

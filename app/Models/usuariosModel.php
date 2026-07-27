@@ -191,4 +191,38 @@ class usuariosModel extends Model
         }
 
     }
+
+
+    public function borrarReservasUsuario(int $id_usuario) {
+
+        $db = \Config\Database::connect('BDReservalo2');
+        $builder = $db->table('reservas');
+        $builder->where('id_usuario', $id_usuario);
+        $builder->delete();
+    }
+
+    public function borrarActividadesUsuario(int $id_usuario) {
+
+        $db = \Config\Database::connect('BDReservalo2');
+        $builder = $db->table('reservas_actividades');
+        $builder->where('id_usuario', $id_usuario);
+        $builder->delete();
+    }
+
+
+    public function borrarPedidoUsuario(int $id_usuario) {
+
+        $db = \Config\Database::connect('BDReservalo2');
+        $builder = $db->table('pedido');
+        $builder->where('id_usuario', $id_usuario);
+        $builder->delete();
+    }
+
+        public function borraractividadUsuario(int $id_usuario) {
+
+        $db = \Config\Database::connect('BDReservalo2');
+        $builder = $db->table('actividad');
+        $builder->where('id_usuario', $id_usuario);
+        $builder->delete();
+    }
 }

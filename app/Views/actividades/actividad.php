@@ -39,7 +39,7 @@
         <div class="row">
             <div class="col-12">
                 <span class="categoria-actividad"><?= $actividad["categoria_actividad"] ?></span>
-                <h1 class="title-page" style="margin-top: 2%;"><?=$actividad["nombre"]?>.</h1>
+                <h1 class="title-page principal" style="margin-top: 2%;"><?=$actividad["nombre"]?>.</h1>
             </div>
 
             <div class="row">
@@ -121,8 +121,15 @@
                             </div>
                         </div>
                     </div>
-                <?php endif ; ?>        
-                <button href="#" class="btn btn-reservar-plazas" id="btn-reservar-plaza-actividad" <?= (intval($usuario['id_rol']) === 2) ? 'disabled' : '' ?> >Reservar plaza</button>
+                <?php endif ; ?> 
+                <?php
+                    $plazoExpirado = false;
+                    if (!empty($actividad["fecha_limite"])) {
+                        $fechaHoraLimite = strtotime($actividad["fecha_limite"] . ' ' . ($actividad["hora_limite"] ?? '23:59:59'));
+                        $plazoExpirado = $fechaHoraLimite < time();
+                    }
+                ?>       
+                <button href="#" class="btn btn-reservar-plazas" id="btn-reservar-plaza-actividad" <?= (intval($usuario['id_rol']) === 2) ? 'disabled' : '' ?> <?= (intval($usuario['id_rol']) === 1 && $plazoExpirado) ? 'disabled' : '' ?> >Reservar plaza</button>
             </div>
             
         </div>

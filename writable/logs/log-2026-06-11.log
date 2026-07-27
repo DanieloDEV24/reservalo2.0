@@ -1,7 +1,0 @@
-CRITICAL - 2026-06-11 17:08:08 --> ErrorException: Undefined array key 0
-in APPPATH\Controllers\Horarios.php on line 531.
- 1 APPPATH\Controllers\Horarios.php(531): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\Proyectos\\reservalo2.0\\app\\Controllers\\Horarios.php', 531)
- 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Horarios->cambiarHorariosSeleccionados()
- 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
- 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
- 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

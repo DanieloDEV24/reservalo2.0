@@ -93,6 +93,17 @@
     }
 }
 
+@media screen and (max-width: 1650px) {
+
+    header nav {
+        gap: 7% !important;
+    }
+
+    header nav >.dropdown:first-of-type {
+        width: 15% !important;
+    }
+}
+
 @media screen and (min-width: 1600px) {
     .home .textoPortada {
         width: 80% !important;
@@ -272,7 +283,7 @@
     }
 
     header img {
-        width: 7% !important;
+        width: 5.5% !important;
     }
 
     .sesion-iniciada {
@@ -594,7 +605,7 @@
     }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1257px) {
 
     header .nav-grande {
         display: none !important
@@ -717,11 +728,45 @@
 
 }
 
+@media screen and (max-width: 990px) {
+    .card-actividad-footer {
+        flex-wrap: wrap;
+    }
+
+    .card-actividad-footer a {
+        width: 100% !important;
+        margin-top: 5%;
+    }
+
+    .grid-actividades {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 5%;
+    }
+}
+
 @media screen and (max-width: 780px) {
     #modalNuevaInstalacion .accordion-body .w-50 {
         width: 100% ;
         flex-wrap: wrap !important;
     }
+
+}
+
+@media screen and (max-width: 690px) {
+    .grid-actividades {
+        grid-template-columns: repeat(1, 1fr);
+        padding: 5%;
+    }
+
+    .botones-actividades  {
+        flex-wrap: wrap;
+    }
+
+    .botones-actividades a {
+        width: 100%;
+        margin-top: 3%;
+    }
+
 }
 
 @media screen and (max-width: 970px) {
@@ -1610,6 +1655,16 @@
     .paginaInstalacion {
         padding: 2% 5% 0% 5% !important;
     }
+
+    .paginaActividad, .actividades {
+        padding: 2% 5% 0% 5% !important;
+    }
+}
+
+@media screen and (max-width: 717px) {
+    .actividades {
+        padding: 2% 7% 0% 7% !important;
+    }
 }
 
 @media screen and (max-width: 1350px) {
@@ -1631,11 +1686,46 @@
 
 @media screen and (max-width: 992px) {
 
-    #modalReservaPista .modal-dialog, #modalNuevaInstalacion .modal-dialog, #modalVerInstalacion .modal-dialog, #modalEditarInstalacion .modal-dialog, #modalBorrarInstalacion .modal-dialog, #modalBajaInstalacion .modal-dialog {
+    #modalReservaPista .modal-dialog, #modalNuevaInstalacion .modal-dialog, #modalVerInstalacion .modal-dialog, #modalEditarInstalacion .modal-dialog, #modalBorrarInstalacion .modal-dialog, #modalBajaInstalacion .modal-dialog, #modalCrearActividad .modal-dialog, #modalMenuTiposActividades .modal-dialog, #modalEditarTipoActividad .modal-dialog, #modalEliminarTipoActividad .modal-dialog, #modalEditarActividad .modal-dialog, #modalInscritosActividad .modal-dialog, #modalEliminarReservaActividad .modal-dialog, #modalCancelarActividad .modal-dialog, #modalEliminarReservaActividadUsuario .modal-dialog, #modalEditarReservaActividadUsuario, .modal-dialog, #modalAnularReservaAdmin .modal-dialog {
         max-width: none !important;
         width: 90% !important;
     }
 
+    #modalMisReservas .reserva-card .reserva-actions > div {
+        width: 100% !important;
+    }
+
+    #modalCrearActividad .modal-footer button, #modalMenuTiposActividades .modal-footer button, #modalEditarTipoActividad .modal-footer button, #modalEliminarTipoActividad .modal-footer button, #modalEditarActividad .modal-footer button, #modalInscritosActividad .modal-footer button, #modalEliminarReservaActividad .modal-footer button, #modalCancelarActividad .modal-footer button, #modalCrearTipoActividad .modal-footer button, #modalMisReservas .reserva-card .reserva-actions button, #modalEliminarReservaActividadUsuario .modal-footer button, #modalEditarReservaActividadUsuario .modal-footer button, #modalAnularReservaAdmin .modal-footer button {
+        
+        width: 48% !important;
+        justify-content: center !important;
+    }
+
+    #modalInscritosActividad table td:nth-child(5), #modalInscritosActividad table th:nth-child(5) {
+        display: none !important;
+    }
+
+    #modalEditarActividad .col-3, #modalCrearActividad .col-3 {
+        width: 50% !important;
+    }
+
+    #modalEditarActividad .row:last-of-type .col-6:first-of-type {
+        width: 100% !important;
+    }
+
+     #modalEditarActividad .row:last-of-type .col-6:first-of-type label.btn {
+        width: 100% !important;
+        padding: 1%;
+     }
+
+    #modalCrearActividad .w-50, #modalCrearActividad .col-10{
+        width: 100% !important;
+    }
+
+    #modalCrearActividad .w-50 label.btn{
+        width: 100% !important;
+        padding: 1%;
+    }
 
     #modalReservaPista .row > .col-8, #modalReservaPista .row > .col-4, #modalReservaPista .row > .col-10, #modalNuevaInstalacion .row > .col, #modalNuevaInstalacion .row > .col-12, #modalEditarInstalacion .row > .col, #modalBorrarInstalacion .row > .col {
         width: 100% !important;
@@ -2118,11 +2208,22 @@
     }
 }
 
+@media screen and (max-width: 1313px) {
+
+    .paginaActividad .info-actividad .row .col-3 {
+        width: 50% !important;
+    }
+}
+
 @media screen and (max-width: 950px) {
 
     #calendario.seleccion-dia .div-mes {
         height: 490px !important;
     }
+
+    .switch-tipo-reserva {
+        width: 80% !important;
+    }   
 }
 
 @media screen and (max-width: 850px) {
@@ -3041,6 +3142,7 @@
         padding: 3% !important;
     }
 
+
     #crear, #btn-nueva-categoria {
         padding: 3% !important;
     }
@@ -3474,6 +3576,14 @@
         width: 30% !important;
         display: flex;
         justify-content: center;
+    }
+
+    #modalEliminarReservaActividadUsuario .datos-reservas-eliminar .row .col-6, #modalEliminarReservaActividad .datos-reservas-eliminar .row .col-6 {
+        width: 100%;
+    }
+
+    #modalEliminarReservaActividadUsuario .datos-reservas-eliminar .row, #modalEliminarReservaActividad .datos-reservas-eliminar .row .col-6 {
+        padding-bottom: 3%;
     }
 }
 
@@ -5233,6 +5343,17 @@
     }
 }
 
+@media screen and (max-width: 412px) {
+    .paginaActividad .title-page.principal {
+        gap: 12px !important;
+    }
+
+    .paginaActividad .title-page.principal::before {
+        
+        height: 50px !important;
+    }
+}
+
 @media screen and (max-width: 601px) {
     .pagina-politica-privacidad .header-card-permisos {
         gap: 3% !important;
@@ -5325,6 +5446,11 @@
 @media screen and (max-width: 550px) {
     .grid-derechos > div.mensaje-derechos {
         margin-bottom: 40% !important;
+    }
+
+    .paginaActividad .categoria-actividad {
+        padding: 1.5% 4.5% !important;
+        margin-bottom: 5% !important;
     }
 }
 
@@ -5734,7 +5860,24 @@
     table.table-cookies-usamos tr td:nth-child(1), table.table-cookies-usamos tr td:nth-child(2), table.table-cookies-usamos tr td:nth-child(3), table.table-cookies-usamos tr td:nth-child(4), table.table-cookies-usamos tr td:nth-child(5) {
         gap: 4% !important;
     }
+
+    #modalCrearActividad .modal-footer button, #modalEditarActividad .modal-footer button, #modalInscritosActividad .modal-footer button, #modalCancelarActividad .modal-footer button, #modalEliminarReservaActividad .modal-footer button, #modalMenuTiposActividades .modal-footer button, #modalCrearTipoActividad .modal-footer button, #modalEditarTipoActividad .modal-footer button, #modalEliminarTipoActividad .modal-footer button, #modalMisReservas .reserva-card .reserva-actions button, #modalEliminarReservaActividadUsuario .modal-footer button, #modalEditarReservaActividadUsuario .modal-footer button {
+        width: 100% !important;
+    }
+
+    #modalMisReservas .reserva-card .reserva-actions > div {
+        width: 100% !important;
+        flex-wrap: wrap;
+    }
     
+    #modalCrearActividad .row > div, #modalEditarActividad .row > div{
+        width: 100% !important;
+        padding-bottom: 2% !important;
+    }
+
+    #modalCrearActividad label.btn, #modalEditarActividad .row > div {
+        padding: 2% !important;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -5757,6 +5900,20 @@
   .pagina-politica-cookies > div > div .header-card-permisos {
     gap: 3% !important;
   }
+
+  .paginaActividad .categoria-actividad {
+    padding: .7% 3.5%;
+    margin-bottom: 5% !important;
+  }
+
+  .paginaActividad .title-page {
+    margin-top: 7% !important;
+  }
+  
+  .switch-tipo-reserva {
+    width: 100% !important;
+  }
+  
 }
 
 @media screen and (max-width: 500px) {
@@ -5908,6 +6065,15 @@
         gap: 3% !important;
         padding: 3% !important;
     }
+
+    .switch-tipo-reserva {
+        width: 90% !important;
+    }
+
+    #modalAnularReservaAdmin .modal-footer button {
+        width: 100% !important;
+        padding: 2%;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -6040,6 +6206,11 @@
     .pagina-aviso-legal > p:last-of-type {
         margin-top: 15% !important;
     }
+
+    #modalBorrarHorario .modal-dialog{
+        width: 90% !important;
+        max-width: none !important;
+    }
 }
 
 @media screen and (max-width: 970px) {
@@ -6069,6 +6240,14 @@
 @media screen and (max-width: 575px) {
     .pagina-aviso-legal > p:last-of-type {
         margin-top: 40% !important;
+    }
+
+    #modalCrearActividad .modal-dialog, #modalEditarActividad .modal-dialog, #modalInscritosActividad .modal-dialog, #modalCancelarActividad .modal-dialog, #modalMenuTiposActividades .modal-dialog, #modalEditarTipoActividad .modal-dialog, #modalEditarTipoActividad .modal-dialog, #modalEliminarTipoActividad .modal-dialog, #modalEliminarReservaActividadUsuario .modal-dialog, #modalEditarReservaActividadUsuario, .modal-dialog, #modalEliminarReservaActividad .modal-dialog, #modalAnularReservaAdmin .modal-dialog {
+        width: 97% !important;
+    }
+
+    #modalMenuTiposActividades #tabla-categorias tr td:nth-of-type(3), #modalMenuTiposActividades #tabla-categorias tr th:nth-of-type(3) {
+        display: table-cell !important;
     }
 }
 
@@ -6112,11 +6291,40 @@
     .legislacion-aplicable .reclamaciones {
         padding: 4% !important;
     }
+
+    
 }
+
+@media screen and (max-width: 652px) {
+    
+    .paginaActividad .info-actividad .row .col-3 {
+        width: 100% !important;
+    }
+}
+
 
 @media screen and (max-width: 400px) {
     .legislacion-aplicable .reclamaciones {
         padding: 5% !important;
+    }
+
+    .paginaActividad .selector-plazas {
+        flex-wrap: wrap;
+    }
+
+    .paginaActividad .selector-plazas > div, .paginaActividad .selector-plazas > span {
+        width: 100%;
+        margin-bottom: 2% !important;
+    }
+
+    .paginaActividad .selector-plazas > div input {
+        width: 200px !important;
+        height: 50px;
+    }
+
+    .paginaActividad .selector-plazas > div button {
+        width: 50px;
+        height: 50px;
     }
 }
 
@@ -6136,12 +6344,16 @@
   .calendario .div-mes {
     height: 520px !important;
   }
+
+  
 }
 
 @media screen and (min-width: 1700px ) {
   .calendario .div-mes {
     height: 550px !important;
   }
+
+  
 }
 
 @media screen and (min-width: 1800px ) {

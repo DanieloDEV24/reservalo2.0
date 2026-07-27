@@ -68,8 +68,6 @@
 
 
     </div>
-
-    <h1 class="title-page">Reservas de instalaciones</h1>
     <div class="contenedor-reservas">
         <?php if (isset($reservas) && count($reservas) > 0) : ?>
         

@@ -4,7 +4,7 @@
 
   </div>
 
-  <div class="modal-dialog modal-lg">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Editar Instalación <i class="bi bi-pencil-square"></i></h5>

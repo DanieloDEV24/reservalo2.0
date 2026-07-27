@@ -458,7 +458,7 @@ $(document).ready(() => {
             data: { datos: data, precio: precio, tipo_reserva: tipoReserva, precio_reserva: precioReserva, id_usuario: idUsuario },
             dataType: "JSON",
             success: function (response) {
-                if (response.success) {
+                if (response.success == true) {
 
                     // Mostrar mensaje
                     $('.contenedor-alert-reservas-success').removeClass('d-none')
@@ -482,8 +482,8 @@ $(document).ready(() => {
                     // window.open(`${BASE_URL}index.php/descargarTicket/${response.id_pedido}`, '_blank');
 
                 } else {
-                    $('.contenedor-alert-errores').removeClass('d-none')
-                    $('.alert-error-reserva').show()
+                    $('.contenedor-alert-reservas').removeClass('d-none')
+                    $('.alertHoraNoDisponible').show()
                     console.error(response.mensaje)
                 }
             },

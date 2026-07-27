@@ -1,6 +1,6 @@
 <div class="modal fade" tabindex="-1" id="modalBorrarUsuario" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" data-usuario="">
 
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
     <div class="modal-content">
       <!-- Header -->
       <div class="modal-header border-bottom">
@@ -11,7 +11,7 @@
       <!-- Body -->
       <div class="modal-body" style="padding: 5%;" data-index="">
         
-        <h3 class="title-borrar-usuario">¿Desea eliminar a este usuario?</h3>
+        <h3 class="title-borrar-usuario" style="margin-bottom: 2%;">¿Desea eliminar a este usuario?</h3>
 
         <div class="contenedor-datos-usuario">
           <div class="info-personal-usuario">

@@ -179,73 +179,84 @@ class Reservas extends BaseController
             $contador_formateado = str_pad($contador_pedido, 3, '0', STR_PAD_LEFT);
             $num_pedido = $anio.$mes.$dia."-".$hora.$minuto.$segundo."-".$contador_formateado;
 
-            $id_pedido = $reservasModel->hacerPedido([
-                "id_usuario"    => $id_usuario, 
-                "fecha_pedido"  => $fecha_hora_actual, 
-                "precio_pedido" => $precio, 
-                "num_pedido"    => $num_pedido
-            ]);
+            if(!$reservasModel->existeReserva(intval($datos[0]["pista"]), $datos[0]["fecha"], $datos[0]["hora"])){
 
-            $nombre_pista = "";
-            if($tipo_reserva === 0){
-                foreach($datos as $dato) {
-                    
-                    $data = [
-                        "id_pista"       => $dato["pista"], 
-                        "fecha"          => $dato["fecha"], 
-                        "hora_inicio"    => $dato["hora"],
-                        "hora_final"     => $dato["horaFin"], 
-                        "fecha_reserva"  => $fecha_hora_actual,
-                        "id_usuario"     => $id_usuario, 
-                        "id_pedido"      => $id_pedido, 
-                        "pagadas"        => 0, 
-                        "precio_reserva" => $precio_reserva
-                    ];
+                $id_pedido = $reservasModel->hacerPedido([
+                    "id_usuario"    => $id_usuario, 
+                    "fecha_pedido"  => $fecha_hora_actual, 
+                    "precio_pedido" => $precio, 
+                    "num_pedido"    => $num_pedido
+                ]);
 
-                    $nombre_pista = $instalacionesModel->getPistasById(intval($dato["pista"]))[0]["nombre_pista"];
-
-                    $reserva = $reservasModel->hacerReserva($data);
-                }
-            }
-            else {
-                $fecha_inicio = new DateTime($datos[0]["fecha_inicio"]); 
-                $fecha_final  = new DateTime($datos[1]["fecha_fin"]);
-
-                while($fecha_inicio <= $fecha_final){
-
-                    $data = [
-                            "id_pista"       => $datos[2]["pista"], 
-                            "fecha"          => $fecha_inicio->format('Y-m-d'), 
-                            "hora_inicio"    => "00:00:00",
-                            "hora_final"     => "23:59:59", 
+                $nombre_pista = "";
+                if($tipo_reserva === 0){
+                    foreach($datos as $dato) {
+                        
+                        $data = [
+                            "id_pista"       => $dato["pista"], 
+                            "fecha"          => $dato["fecha"], 
+                            "hora_inicio"    => $dato["hora"],
+                            "hora_final"     => $dato["horaFin"], 
                             "fecha_reserva"  => $fecha_hora_actual,
                             "id_usuario"     => $id_usuario, 
                             "id_pedido"      => $id_pedido, 
                             "pagadas"        => 0, 
                             "precio_reserva" => $precio_reserva
-                    ];
+                        ];
 
-                    $nombre_pista = $instalacionesModel->getPistasById(intval($datos[2]["pista"]))[0]["nombre_pista"];
+                        $nombre_pista = $instalacionesModel->getPistasById(intval($dato["pista"]))[0]["nombre_pista"];
 
-                    $reserva = $reservasModel->hacerReserva($data);
-
-                    $fecha_inicio->modify('+1 day');
+                        $reserva = $reservasModel->hacerReserva($data);
+                    }
                 }
+                else {
+                    $fecha_inicio = new DateTime($datos[0]["fecha_inicio"]); 
+                    $fecha_final  = new DateTime($datos[1]["fecha_fin"]);
+
+                    while($fecha_inicio <= $fecha_final){
+
+                        $data = [
+                                "id_pista"       => $datos[2]["pista"], 
+                                "fecha"          => $fecha_inicio->format('Y-m-d'), 
+                                "hora_inicio"    => "00:00:00",
+                                "hora_final"     => "23:59:59", 
+                                "fecha_reserva"  => $fecha_hora_actual,
+                                "id_usuario"     => $id_usuario, 
+                                "id_pedido"      => $id_pedido, 
+                                "pagadas"        => 0, 
+                                "precio_reserva" => $precio_reserva
+                        ];
+
+                        $nombre_pista = $instalacionesModel->getPistasById(intval($datos[2]["pista"]))[0]["nombre_pista"];
+
+                        $reserva = $reservasModel->hacerReserva($data);
+
+                        $fecha_inicio->modify('+1 day');
+                    }
+                }
+
+                $actividad = $actividadModel->crearActividad([
+                        "tipo" => 1,
+                        "descripcion" => "Reserva de la pista ". $nombre_pista, 
+                        "fecha" => date("Y-m-d H:i:s"), 
+                        "id_usuario" => session()->get('usuario')["id_usuario"]
+                ]);
+                
+                // Devolver solo JSON, SIN generar PDF aquí
+                return $this->response->setJSON([
+                    "success" => true, 
+                    "mensaje" => "La reserva se ha hecho de manera satisfactoria",
+                    "id_pedido" => $id_pedido
+                ]);
+            }
+            else {
+                return $this->response->setJSON([
+                    "success" => false, 
+                    "mensaje" => "La fecha seleccionada no está disponible, recarge la pagina",
+                ]);
             }
 
-            $actividad = $actividadModel->crearActividad([
-                    "tipo" => 1,
-                    "descripcion" => "Reserva de la pista ". $nombre_pista, 
-                    "fecha" => date("Y-m-d H:i:s"), 
-                    "id_usuario" => session()->get('usuario')["id_usuario"]
-            ]);
             
-            // Devolver solo JSON, SIN generar PDF aquí
-            return $this->response->setJSON([
-                "success" => true, 
-                "mensaje" => "La reserva se ha hecho de manera satisfactoria",
-                "id_pedido" => $id_pedido
-            ]);
         }
     }
 
@@ -792,7 +803,7 @@ class Reservas extends BaseController
             ]);
             
             // API Key de Resend
-            $apiKey = 're_EoU5q6Mw_Hz3ECMQADDxHKz3o3opLeS6e';
+            $apiKey = env('RESEND_API_KEY');
             
             $curlData = [
                 'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
@@ -845,7 +856,7 @@ class Reservas extends BaseController
         ]);
         
         // API Key de Resend
-        $apiKey = 're_EoU5q6Mw_Hz3ECMQADDxHKz3o3opLeS6e';
+        $apiKey = env('RESEND_API_KEY');
         
         $curlData = [
             'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
@@ -898,7 +909,7 @@ private function enviarEmailAnular($datos_pdf, $email, $id_pedido, $datos_reserv
         ]);
         
         // API Key de Resend
-        $apiKey = 're_EoU5q6Mw_Hz3ECMQADDxHKz3o3opLeS6e';
+        $apiKey = env('RESEND_API_KEY');
         
         $curlData = [
             'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',
@@ -942,7 +953,7 @@ private function enviarEmailAnular2($datos_pdf, $email, $id_pedido, $datos_reser
         ]);
         
         // API Key de Resend
-        $apiKey = 're_EoU5q6Mw_Hz3ECMQADDxHKz3o3opLeS6e';
+        $apiKey = env('RESEND_API_KEY');
         
         $curlData = [
             'from' => 'Ayuntamiento de Fuente de Piedra <noreply@resend.dev>',

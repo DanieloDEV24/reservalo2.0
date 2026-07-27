@@ -1,7 +1,0 @@
-CRITICAL - 2026-07-20 18:04:11 --> ErrorException: Undefined array key 0
-in APPPATH\Controllers\Actividades.php on line 505.
- 1 APPPATH\Controllers\Actividades.php(505): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'D:\\proyectos\\reservalo2.0\\app\\Controllers\\Actividades.php', 505)
- 2 SYSTEMPATH\CodeIgniter.php(941): App\Controllers\Actividades->reservaActividad()
- 3 SYSTEMPATH\CodeIgniter.php(502): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Actividades))
- 4 SYSTEMPATH\CodeIgniter.php(361): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
- 5 FCPATH\index.php(79): CodeIgniter\CodeIgniter->run()

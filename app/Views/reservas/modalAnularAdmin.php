@@ -1,6 +1,6 @@
 <div class="modal fade" tabindex="-1" id="modalAnularReservaAdmin" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" data-pedido="" data-reserva="" data-tipo="">
 
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
     <div class="modal-content">
       <!-- <input type="hidden" id="pistaId"> -->
       <!-- Header -->

@@ -840,4 +840,36 @@ class reservasModel extends Model
         return true;
     }
 
+    public function getReservasByInstalacion (int $instalacion) {
+
+// Conexión a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Tabla principal
+        $builder = $db->table('reservas');
+
+        $query = $builder->select('reservas.*, usuarios.*, instalaciones.nombre as nombre_instalacion')
+                ->join('pistas', 'pistas.id_pista = reservas.id_pista')
+                ->join('instalaciones', 'instalaciones.id_instalacion = pistas.id_instalacion')
+                ->join('usuarios', 'usuarios.id_usuario = reservas.id_usuario')
+                ->where('pistas.id_instalacion', $instalacion)
+                ->where('TIMESTAMP(reservas.fecha, reservas.hora_inicio) >=', date('Y-m-d H:i:s'))
+                ->get();
+
+        return $query->getResultArray();
+    }
+
+    public function existeReserva(int $id_pista, string $fecha, string $hora_inicio)
+    {
+        $db = \Config\Database::connect('BDReservalo2');
+
+        $builder = $db->table('reservas');
+
+        $builder->where('id_pista', $id_pista);
+        $builder->where('fecha', $fecha);
+        $builder->where('hora_inicio', $hora_inicio);
+
+        return $builder->countAllResults() > 0;
+    }
+
 }

@@ -23,7 +23,7 @@ $routes->get('/resetPass', 'Login::resetPass');
 $routes->get('/instalaciones', 'Instalaciones::instalaciones');
 $routes->get('/instalacion/(:num)', 'Instalaciones::instalacion/$1', ['filter' => 'auth']);
 $routes->get('/descargarTicket/(:num)', 'Reservas::descargarTicket/$1', );
-
+$routes->get('/descargarTicketActividad/(:num)', 'Actividades::descargarTicketActividad/$1', );
 // HORARIOS
 $routes->get('/horario/(:num)', 'Horarios::horario/$1,', ['filter' => 'auth']);
 $routes->get('/misReservas', 'Reservas::misReservas');

@@ -1,0 +1,22 @@
+# Entorno
+.env
+
+# Dependencias
+/vendor/
+/node_modules/
+
+# Cache, logs, sesiones y uploads generados en runtime
+/writable/cache/*
+!/writable/cache/index.html
+/writable/logs/*
+!/writable/logs/index.html
+/writable/session/*
+!/writable/session/index.html
+/writable/uploads/*
+!/writable/uploads/index.html
+
+# IDE / SO
+.vscode/
+.idea/
+*.log
+Thumbs.db

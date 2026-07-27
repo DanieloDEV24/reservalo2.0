@@ -5,7 +5,7 @@
 
   </div>
 
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Borrar Horario <i class="bi bi-trash3"></i></h5>
@@ -36,7 +36,7 @@
           </div>
 
                     <div>
-                    <div style="display: flex; align-items: start; justify-content: start; gap: 2%; margin-bottom: 3%;">
+                    <div style="display: flex; align-items: start; justify-content: center; gap: 2%; margin-bottom: 1%;">
         <div class="checkbox-wrapper-4 masInstalacionesBorrar">
           <input class="inp-cbx" id="masInstalacionesBorrar" type="checkbox">
           <label class="cbx" for="masInstalacionesBorrar">
