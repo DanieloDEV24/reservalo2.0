@@ -1362,16 +1362,16 @@ $(document).ready(() => {
             url: `${BASE_URL}index.php/getNewIndexPista`,
             data: "",
             dataType: 'json',
-            beforeSend: function (event) {
-                // Mostrar loader
-                $("#loader").show();
+            // beforeSend: function (event) {
+            //     // Mostrar loader
+            //     $("#loader").show();
 
-                // Obtenemos los btns de los accordions
-                let headerBtn = $('#accordionEditarPistas .accordion-header .accordion-button');
+            //     // Obtenemos los btns de los accordions
+            //     let headerBtn = $('#accordionEditarPistas .accordion-header .accordion-button');
 
-                // Le ponemos ese color gris para dar efecto carga
-                headerBtn.css("color", "#ccc", "important")
-            },
+            //     // Le ponemos ese color gris para dar efecto carga
+            //     headerBtn.css("color", "#ccc", "important")
+            // },
             success: function (response) {
 
                 // Obetenemos el nuevo id de la pista, que es el que añadiremos al accordion como data-index
@@ -1946,9 +1946,9 @@ $(document).ready(() => {
             contentType: false,
             processData: false,
             dataType: "json",
-            beforeSend: function (event) {
-                $("#loader").show();
-            },
+            // beforeSend: function (event) {
+            //     $("#loader").show();
+            // },
             success: function (response) {
                 $("#loader").hide();
                 $('#modalEditarInstalacion').modal('hide');
@@ -2049,11 +2049,11 @@ $(document).ready(() => {
             url: `${BASE_URL}index.php/darAlta`, // --> URL donde va destinada la petición
             data: { id: index },
             dataType: "json",
-            beforeSend: function (event) {
+            // beforeSend: function (event) {
 
-                // Activamos el loader
-                $(`#loader${index}`).show();
-            },
+            //     // Activamos el loader
+            //     $(`#loader${index}`).show();
+            // },
             success: function (response) {
 
                 // Quitamos el loader
@@ -2362,10 +2362,10 @@ $(document).ready(() => {
         url: `${BASE_URL}index.php/crudInstalaciones`,
         data: { filter: filter },
         dataType: "json",
-        beforeSend: function(){
-            $('#loadertablaInstalaciones').show()
-            $('#tablaInstalaciones').addClass('tablaCargando')
-        },
+        // beforeSend: function(){
+        //     $('#loadertablaInstalaciones').show()
+        //     $('#tablaInstalaciones').addClass('tablaCargando')
+        // },
         success: function (response) {
             let tbody = $('#tablaInstalaciones tbody');
             tbody.empty();
@@ -2486,10 +2486,10 @@ $(document).ready(() => {
         url: `${BASE_URL}index.php/crudInstalaciones`,
         data: { filter: filter },
         dataType: "json",
-        beforeSend: function(){
-            $('#loadertablaInstalaciones').show()
-            $('#tablaInstalaciones').addClass('tablaCargando')
-        },
+        // beforeSend: function(){
+        //     $('#loadertablaInstalaciones').show()
+        //     $('#tablaInstalaciones').addClass('tablaCargando')
+        // },
         success: function (response) {
             let tbody = $('#tablaInstalaciones tbody');
             tbody.empty();
@@ -2584,10 +2584,10 @@ $(document).ready(() => {
         url: `${BASE_URL}index.php/crudInstalaciones`,
         data: { filter: null },
         dataType: "json",
-        beforeSend: function(){
-            $('#loadertablaInstalaciones').show()
-            $('#tablaInstalaciones').addClass('tablaCargando')
-        },
+        // beforeSend: function(){
+        //     $('#loadertablaInstalaciones').show()
+        //     $('#tablaInstalaciones').addClass('tablaCargando')
+        // },
         success: function (response) {
             let tbody = $('#tablaInstalaciones tbody');
             tbody.empty();
@@ -2835,10 +2835,10 @@ $(document).ready(() => {
     url: `${BASE_URL}index.php/instalaciones`,
     data: { filterInstalaciones: filterInstalaciones },
     dataType: "json",
-    beforeSend: function(){
-        $('#loaderInstalaciones').show();
-        $('#contenedor-instalaciones .card-instalacion').addClass('card-cargando');
-    },
+    // beforeSend: function(){
+    //     $('#loaderInstalaciones').show();
+    //     $('#contenedor-instalaciones .card-instalacion').addClass('card-cargando');
+    // },
     success: function (response) {
         let body = $('#contenedor-instalaciones');
         body.empty();
@@ -2987,10 +2987,10 @@ $(document).ready(() => {
         url: `${BASE_URL}index.php/instalaciones`,
         data: { filterInstalaciones: filterInstalaciones },
         dataType: "json",
-        beforeSend: function(){
-            $('#loaderInstalaciones').show()
-            $('#contenedor-instalaciones .card-instalacion').addClass('card-cargando');
-        },
+        // beforeSend: function(){
+        //     $('#loaderInstalaciones').show()
+        //     $('#contenedor-instalaciones .card-instalacion').addClass('card-cargando');
+        // },
             success: function (response) {
         let body = $('#contenedor-instalaciones');
         body.empty();

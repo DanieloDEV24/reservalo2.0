@@ -1,7 +1,7 @@
 <div class="modal fade modal-stack-2" tabindex="-1" id="modalEliminarReservaActividad" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" data-categoria="">
     <input type="hidden" id="id-reserva-eliminar" name="id-reserva-eliminar" value="">
 
-    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
         <div class="modal-content">
             <!-- Header -->
             <div class="modal-header border-bottom">

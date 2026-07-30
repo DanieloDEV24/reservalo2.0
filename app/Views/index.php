@@ -12,6 +12,8 @@
   <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/home.css" />
   <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/instalaciones.css" />
   <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/responsive.css" />
+  <link rel="stylesheet" type="text/css" href="<?= base_url() ?>css/loader.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/splash.css" media="screen" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 
   <script>
@@ -22,6 +24,8 @@
   <script src="<?= base_url() ?>js/movimiento.js"></script>
   <script src="<?= base_url() ?>js/plantilla.js"></script>
   <script src="<?= base_url() ?>js/home.js"></script>
+  <script src="<?= base_url() ?>js/loader.js"></script>
+  <script src="<?= base_url() ?>js/splash.js"></script>
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
@@ -41,6 +45,14 @@
 </head>
 
 <body>
+
+    <div id="splash">
+      <img src="<?= base_url() ?>images/logo-reservalo.png" alt="Reservalo" class="splash-logo">
+      <div class="progress-track">
+        <div class="progress-fill"></div>
+      </div>
+    </div>
+
   <header class="headerHome">
     <img src="<?= base_url() ?>images/logo-reservalo.png" alt="">
     <nav class="align-items-center nav-grande">
@@ -281,6 +293,18 @@
       </div>
     </div>
   </footer>
+
+  <div id="ajax-loader-overlay">
+    <div class="loader-col">
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="loader-text">Cargando...</div>
+    </div>
+  </div>
+
 </body>
 
 <?= isset($modalInformacionPersonal) ? $modalInformacionPersonal : '' ?>

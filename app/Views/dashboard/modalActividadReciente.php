@@ -4,7 +4,7 @@
 
 <div class="modal fade" tabindex="-1" id="modalActividadReciente" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
 
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
     <div class="modal-content">
       <!-- <input type="hidden" id="pistaId"> -->
       <!-- Header -->

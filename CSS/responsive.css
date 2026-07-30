@@ -99,9 +99,9 @@
         gap: 7% !important;
     }
 
-    header nav >.dropdown:first-of-type {
+    /* header nav >.dropdown:first-of-type {
         width: 15% !important;
-    }
+    } */
 }
 
 @media screen and (min-width: 1600px) {
@@ -278,19 +278,28 @@
         padding-left: 5% !important;
     }
 
-    .sesion-iniciada {
-        width: 50% !important;
-    }
-
-    header img {
+    header img, header.headerPlantilla img {
         width: 5.5% !important;
     }
 
-    .sesion-iniciada {
-        width: 65% !important;
+    header.headerPlantilla {
+        padding: 1.5% 3% !important;
     }
 
+    .sesion-iniciada {
+        width: 100% !important;
+    }
 
+    header > div, header.headerPlantilla > div {
+        width: 15%;
+    }
+
+    header > nav, header.headerPlantilla > nav {
+        width: 70% !important;
+        gap: 6% !important;
+    }
+
+    
 
     .containerComoFunciona {
         justify-content: space-between !important;
@@ -1664,6 +1673,10 @@
 @media screen and (max-width: 717px) {
     .actividades {
         padding: 2% 7% 0% 7% !important;
+    }
+
+    .paginaActividad {
+        padding: 2% 6% 0% 6% !important;
     }
 }
 
@@ -5914,6 +5927,14 @@
     width: 100% !important;
   }
   
+  .informacion-actividad .col-4 {
+    width: 100% !important;
+  }
+
+  .informacion-actividad .row .col-4:nth-child(2),
+  .informacion-actividad .row .col-4:nth-child(3) {
+    margin-top: 1rem;
+   }
 }
 
 @media screen and (max-width: 500px) {
@@ -6074,6 +6095,10 @@
         width: 100% !important;
         padding: 2%;
     }
+
+    .info-actividad {
+        padding: 7% !important;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -6081,6 +6106,14 @@
     .cookies-usamos .info-cookies {
         gap: 3% !important;
         padding: 5% !important;
+    }
+
+    .info-actividad {
+        padding: 10% !important;
+    }
+
+    .paginaActividad {
+        padding: 5% 8% 0% 8% !important;
     }
 }
 
@@ -6360,4 +6393,11 @@
   .calendario .div-mes {
     height: 570px !important;
   }
+}
+
+
+@media screen and (max-width: 1200px ) {
+    header nav {
+        gap: 1% !important;
+    }
 }

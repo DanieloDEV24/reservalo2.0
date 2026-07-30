@@ -8,6 +8,7 @@
   <!-- <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/home.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/instalaciones.css" media="screen" />
   <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/crudInstalaciones.css" media="screen" /> -->
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>css/loader.css" media="screen" />
    <link rel="icon" href="<?= base_url() ?>images/logo-reservalo.png" type="image/png">
   <?php if(isset($assets['css']) && is_array($assets['css'])): ?>
     <?php foreach($assets['css'] as $archivo_css): ?>
@@ -24,6 +25,7 @@
 
   <script src="<?= base_url() ?>js/jquery.js"></script>
   <script src="<?= base_url() ?>js/plantilla.js"></script>
+  <script src="<?= base_url() ?>js/loader.js"></script>
   
   <!-- <script src="<?= base_url() ?>js/movimiento.js"></script>
   <script src="<?= base_url() ?>js/instalaciones.js"></script> -->
@@ -287,6 +289,18 @@
         </div>
       </div>
   </footer> 
+  
+  <div id="ajax-loader-overlay">
+    <div class="loader-col">
+      <div class="dots">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="loader-text">Cargando...</div>
+    </div>
+  </div>
+
 </body>
 
 </html>

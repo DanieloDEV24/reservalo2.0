@@ -5,7 +5,7 @@
 
 <div class="modal " tabindex="-1" id="modalVerInstalacion">
 
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="">Ver Instalación <i class="bi bi-eye"></i></h5>

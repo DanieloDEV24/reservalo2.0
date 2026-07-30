@@ -407,7 +407,7 @@ class actividadesModel extends Model
         // Comprobamos si la actividad tiene control de aforo
         $actividad = $db->table('actividades')
             ->select('tiene_aforo, aforo')
-            ->where('id_actividad', $id_actividad)
+            ->where('id_actividades', $id_actividad)
             ->get()
             ->getRowArray();
 
@@ -421,7 +421,7 @@ class actividadesModel extends Model
         }
 
         // Sumamos las plazas ya reservadas para esa actividad
-        $builder = $db->table('reserva_actividad');
+        $builder = $db->table('reservas_actividades');
         $builder->selectSum('plazas_reserva');
         $builder->where('id_actividad', $id_actividad);
 

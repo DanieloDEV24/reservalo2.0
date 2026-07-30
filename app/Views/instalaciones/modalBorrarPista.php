@@ -4,7 +4,7 @@
 
   </div>
 
-  <div class="modal-dialog modal-lg modal-dialog-centered">
+  <div class="modal-dialog modal-xl modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Borrado de la pista <i class="bi bi-trash3"></i></h5>

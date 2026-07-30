@@ -58,11 +58,11 @@ header nav {
 }
 
 header.headerPlantilla nav {
-    justify-content: end;
+    justify-content: center;
 }
 
 
-header div {
+header > div {
     width: 20%;
     display: flex;
     justify-content: end;

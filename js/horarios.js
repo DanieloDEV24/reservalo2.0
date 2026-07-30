@@ -418,15 +418,15 @@ $(document).ready(() => {
                 url: `${BASE_URL}index.php/comprobarHorariosAno`,
                 data: { year: newYear, instalacion: $('#instalacion').val() },
                 dataType: "JSON",
-                beforeSend: function () {
-                    $('#loaderAno').show();
-                    $('#anoActual').addClass('loading');
-                    $('.legend-name').addClass('loading');
-                    $('.legend-color').addClass('loading');
-                    $('.div-mes h3').addClass('loading');
-                    $('.div-mes .grid-dias-mes').addClass('loading');
-                    $('.div-mes .grid-nombres-mes').addClass('loading');
-                },
+                // beforeSend: function () {
+                //     $('#loaderAno').show();
+                //     $('#anoActual').addClass('loading');
+                //     $('.legend-name').addClass('loading');
+                //     $('.legend-color').addClass('loading');
+                //     $('.div-mes h3').addClass('loading');
+                //     $('.div-mes .grid-dias-mes').addClass('loading');
+                //     $('.div-mes .grid-nombres-mes').addClass('loading');
+                // },
                 success: function (response) {
                     $('.legend .no-selected').empty();
                     response.horarios.map(horario => {
@@ -474,15 +474,15 @@ $(document).ready(() => {
                 url: `${BASE_URL}index.php/comprobarHorariosAno`,
                 data: { year: newYear, instalacion: $('#instalacion').val() },
                 dataType: "JSON",
-                beforeSend: function () {
-                    $('#loaderAno').show();
-                    $('#anoActual').addClass('loading');
-                    $('.legend-name').addClass('loading');
-                    $('.legend-color').addClass('loading');
-                    $('.div-mes h3').addClass('loading');
-                    $('.div-mes .grid-dias-mes').addClass('loading');
-                    $('.div-mes .grid-nombres-mes').addClass('loading');
-                },
+                // beforeSend: function () {
+                //     $('#loaderAno').show();
+                //     $('#anoActual').addClass('loading');
+                //     $('.legend-name').addClass('loading');
+                //     $('.legend-color').addClass('loading');
+                //     $('.div-mes h3').addClass('loading');
+                //     $('.div-mes .grid-dias-mes').addClass('loading');
+                //     $('.div-mes .grid-nombres-mes').addClass('loading');
+                // },
                 success: function (response) {
                     $('.legend .no-selected').empty();
                     response.horarios.map(horario => {
@@ -730,12 +730,12 @@ $(document).ready(() => {
                     data: { data: data },
                     dataType: "json",
                     // Cargamos el loader y desactivamos los botones e inputs
-                    beforeSend: function () {
-                        $('#loaderNuevoHorario').show();
-                        $('#btnGuardarNuevoHorario').addClass('cargando')
-                        $('#sidebar input').addClass('cargando')
-                        $('#sidebar textarea').addClass('cargando')
-                    },
+                    // beforeSend: function () {
+                    //     $('#loaderNuevoHorario').show();
+                    //     $('#btnGuardarNuevoHorario').addClass('cargando')
+                    //     $('#sidebar input').addClass('cargando')
+                    //     $('#sidebar textarea').addClass('cargando')
+                    // },
                     // Mostramos la respuesta del servidor
                     success: function (response) {
 
@@ -997,10 +997,10 @@ $(document).ready(() => {
             url: `${BASE_URL}index.php/menuHorario`,
             data: {year: $('#anoActual').text(), instalacion: $('#instalacion').val()},
             dataType: "JSON",
-            beforeSend: function () {
-                $('#loaderMenuHorarios').show();
-                $('.card-menu-horarios').addClass('loading');
-            },
+            // beforeSend: function () {
+            //     $('#loaderMenuHorarios').show();
+            //     $('.card-menu-horarios').addClass('loading');
+            // },
             success: function (response) {
                 if(response.succes == true) {
 
@@ -1317,13 +1317,13 @@ $(document).ready(() => {
                 url: `${BASE_URL}index.php/editarHorario`,
                 data: { data: data },
                 dataType: "json",
-                beforeSend: function () {
-                    $('#modalEditarHorario').addClass('show');
-                    $('#loaderModalEditar').show();
-                    $('#modalEditarHorario .modal-footer button').addClass('cargando')
-                    $('#modalEditarHorario input').addClass('cargando')
-                    $('#modalEditarHorario textarea').addClass('cargando')
-                },
+                // beforeSend: function () {
+                //     $('#modalEditarHorario').addClass('show');
+                //     $('#loaderModalEditar').show();
+                //     $('#modalEditarHorario .modal-footer button').addClass('cargando')
+                //     $('#modalEditarHorario input').addClass('cargando')
+                //     $('#modalEditarHorario textarea').addClass('cargando')
+                // },
                 success: function (response) {
 
                     if (response.success === true) {
@@ -1465,14 +1465,14 @@ $(document).ready(() => {
             url: `${BASE_URL}index.php/borrarHorario`,
             data: { id: id, otrasInstalaciones: JSON.stringify(otrasInstalaciones), instalacion: instalacion},
             dataType: "JSON",
-            beforeSend: function () {
-                $('#loaderModalBorrar').show();
-                $('#modalBorrarHorario button').addClass('cargando');
-                $('#modalBorrarHorario p').addClass('cargando');
-                $('#modalBorrarHorario span').addClass('cargando');
-                $('#modalBorrarHorario .iconoModal i').addClass('cargando');
+            // beforeSend: function () {
+            //     $('#loaderModalBorrar').show();
+            //     $('#modalBorrarHorario button').addClass('cargando');
+            //     $('#modalBorrarHorario p').addClass('cargando');
+            //     $('#modalBorrarHorario span').addClass('cargando');
+            //     $('#modalBorrarHorario .iconoModal i').addClass('cargando');
 
-            },
+            // },
             success: function (response) {
                 if (response.success === true) {
                     $('#loaderModalBorrar').hide();
@@ -1577,9 +1577,9 @@ if ($(this).data('exception') === true) {
             url: `${BASE_URL}index.php/getHorariosChangeException`,
             data: { data },
             dataType: "JSON",
-            beforeSend: function () {
-                $('#loaderSidebarCambioHorario').show();
-            },
+            // beforeSend: function () {
+            //     $('#loaderSidebarCambioHorario').show();
+            // },
             success: function (response) {
 
                 if (!response.success) return;
@@ -1731,9 +1731,9 @@ if ($(this).data('exception') === true) {
                 url: `${BASE_URL}index.php/getHorariosChange`,
                 data: { year: $('#anoActual').text(), instalacion: parseInt($('.horario #instalacion').val()) },
                 dataType: "json",
-                beforeSend: function () {
-                    $('#loaderSidebarCambioHorario').show();
-                },
+                // beforeSend: function () {
+                //     $('#loaderSidebarCambioHorario').show();
+                // },
                 success: function (response) {
 
                     $('#loaderSidebarCambioHorario').hide();
@@ -1889,9 +1889,9 @@ $(document).on('click', '#btn-guardar-cambio-seleccion', function (e) {
                 url: `${BASE_URL}index.php/obtenerInstalacionesHorarios`,
                 data: '',
                 dataType: "JSON",
-                beforeSend: function () {
-                    $('#loaderInstalaciones').show();
-                },
+                // beforeSend: function () {
+                //     $('#loaderInstalaciones').show();
+                // },
                 success: function (response) {
                     if(response.success === true) {
 
@@ -1941,9 +1941,9 @@ $(document).on('click', '#btn-guardar-cambio-seleccion', function (e) {
                 url: `${BASE_URL}index.php/obtenerInstalacionesConEseHorario`,
                 data: {horario: idHorario},
                 dataType: "JSON",
-                beforeSend: function () {
-                    $('#loaderInstalacionesEditar').show();
-                },
+                // beforeSend: function () {
+                //     $('#loaderInstalacionesEditar').show();
+                // },
                 success: function (response) {
                     if(response.success === true) {
 
@@ -2001,9 +2001,9 @@ $(document).on('click', '#btn-guardar-cambio-seleccion', function (e) {
                 url: `${BASE_URL}index.php/obtenerInstalacionesConEseHorario`,
                 data: {horario: idHorario},
                 dataType: "JSON",
-                beforeSend: function () {
-                    $('#loaderInstalacionesBorrar').show();
-                },
+                // beforeSend: function () {
+                //     $('#loaderInstalacionesBorrar').show();
+                // },
                 success: function (response) {
                     if(response.success === true) {
 
@@ -2074,9 +2074,9 @@ $(document).on('click', '#btn-guardar-cambio-seleccion', function (e) {
                 url: `${BASE_URL}index.php/obtenerInstalacionesConEsosHorarios`,
                 data: {horarios: horarios},
                 dataType: "JSON",
-                beforeSend: function () {
-                    $('#loaderInstalacionesCambiar').show();
-                },
+                // beforeSend: function () {
+                //     $('#loaderInstalacionesCambiar').show();
+                // },
                 success: function (response) {
                     if(response.success === true) {
 
@@ -2151,11 +2151,11 @@ $(document).on('click', '#btn-guardar-cambio-seleccion', function (e) {
             url: `${BASE_URL}index.php/comprobarHorarios`,
             data: { year: currentYear, instalacion: instalacion },
             dataType: "json",
-            beforeSend: function (event) {
+            // beforeSend: function (event) {
 
-                // Mostrar loader
-                $("#loaderCalendario").show();
-            },
+            //     // Mostrar loader
+            //     $("#loaderCalendario").show();
+            // },
             success: function (response) {
 
                 let horarios = response.horarios;
