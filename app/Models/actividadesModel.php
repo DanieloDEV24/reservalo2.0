@@ -15,7 +15,7 @@ class actividadesModel extends Model
     protected $returnType = 'array'; //object
     // protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['id_actividades', 'nombre', 'fecha_actividad', 'hora_actividad', 'fecha_lanzamiento', 'fecha_limite', 'hora_limite', 'descripcion', 'tiene_aforo', 'aforo', 'tiene_precio', 'precio', 'estado', 'lugar', 'imagen', 'duracion', 'tipo_actividad', 'plazas_ocupadas', 'created_at', 'updated_at', 'deleted_at'];
+    protected $allowedFields = ['id_actividades', 'nombre', 'fecha_actividad', 'hora_actividad', 'fecha_lanzamiento', 'fecha_limite', 'hora_limite', 'descripcion', 'tiene_aforo', 'aforo', 'tiene_precio', 'precio', 'estado', 'lugar', 'imagen', 'duracion', 'tipo_actividad', 'plazas_ocupadas', 'nombre_usuario', 'apellidos_usuarios', 'fecha_nacimiento_usuario', 'dni_usuario', 'email-usuario', 'telefono_usuario', 'direccion_usuario', 'created_at', 'updated_at', 'deleted_at'];
 
     protected bool $allowEmptyInserts = false;
 

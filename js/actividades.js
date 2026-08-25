@@ -326,6 +326,15 @@ $(document).ready(function () {
         let duracion = $('#duracion-actividad-crear').val();
         let imagen = $('#modalCrearActividad .imagenes')[0].files[0];
 
+        let nombreUsuario = $('#modalInformacionUsuarioActividad .nombre-usuario').is(':checked');
+        let apellidosUsuario = $('#modalInformacionUsuarioActividad .apellidos-usuario').is(':checked');
+        let fechaNacimientoUsuario = $('#modalInformacionUsuarioActividad .fecha-nacimiento-usuario').is(':checked');
+        let edadMinimaUsuario = $(fechaNacimientoUsuario) ? $('#modalInformacionUsuarioActividad #edad-min-usuario').val() : null;
+        let dniUsuario = $('#modalInformacionUsuarioActividad .dni-nie-usuario').is(':checked');
+        let emailUsuario = $('#modalInformacionUsuarioActividad .email-usuario').is(':checked');
+        let telefonoUsuario = $('#modalInformacionUsuarioActividad .telefono-usuario').is(':checked');
+        let direccionUsuario = $('#modalInformacionUsuarioActividad .direccion-usuario').is(':checked');
+
 
         if(nombre === '') {
             errores.push({campo: 'nombre', mensaje: 'El nombre de la actividad no puede estar vacío'})
@@ -415,6 +424,16 @@ $(document).ready(function () {
             formData.append('lugar', lugar);
             formData.append('duracion', duracion);
             formData.append('imagen', imagen);
+
+
+            formData.append('nombre_usuario', nombreUsuario);
+            formData.append('apellidos_usuario', apellidosUsuario);
+            formData.append('fecha_nacimiento_usuario', fechaNacimientoUsuario);
+            formData.append('edad_minima_usuario', edadMinimaUsuario);
+            formData.append('dni_usuario', dniUsuario);
+            formData.append('email_usuario', emailUsuario);
+            formData.append('telefono_usuario', telefonoUsuario);
+            formData.append('direccion_usuario', direccionUsuario);
 
             $.ajax({
                 type: "POST",
@@ -573,6 +592,18 @@ $(document).ready(function () {
                     })
                     $('#estado-actividad-editar').val(response.actividad.estado)
 
+                    if(parseInt(response.actividad.nombre_usuario) === 1) $('#modalInformacionUsuarioActividad .nombre-usuario').prop('checked', true);
+                    if(parseInt(response.actividad.apellidos_usuario) === 1) $('#modalInformacionUsuarioActividad .apellidos-usuario').prop('checked', true);
+                    if(parseInt(response.actividad.fecha_nacimiento_usuario) === 1){ 
+                        $('#modalInformacionUsuarioActividad .fecha-nacimiento-usuario').prop('checked', true);
+                        $('#modalInformacionUsuarioActividad #edad-min-usuario').val(parseInt(response.actividad.edad_minima_usuario)).prop('disabled', false);
+                        $('#modalInformacionUsuarioActividad label[for="edad-min-usuario"]').css('color', '#212529')
+                    }
+                    if(parseInt(response.actividad.dni_usuario) === 1) $('#modalInformacionUsuarioActividad .dni-nie-usuario').prop('checked', true);
+                    if(parseInt(response.actividad.email_usuario) === 1) $('#modalInformacionUsuarioActividad .email-usuario').prop('checked', true);
+                    if(parseInt(response.actividad.telefono_usuario) === 1) $('#modalInformacionUsuarioActividad .telefono-usuario').prop('checked', true);
+                    if(parseInt(response.actividad.direccion_usuario) === 1) $('#modalInformacionUsuarioActividad .direccion-usuario').prop('checked', true);
+
                     $('#modalEditarActividad').modal('show');
                 }
             }
@@ -632,6 +663,15 @@ $(document).ready(function () {
         let duracion = $('#duracion-actividad-editar').val();
         let imagen = $('#modalEditarActividad .imagenes')[0].files[0];
         let estado = $('#estado-actividad-editar').val();
+
+        let nombreUsuario = $('#modalInformacionUsuarioActividad .nombre-usuario').is(':checked');
+        let apellidosUsuario = $('#modalInformacionUsuarioActividad .apellidos-usuario').is(':checked');
+        let fechaNacimientoUsuario = $('#modalInformacionUsuarioActividad .fecha-nacimiento-usuario').is(':checked');
+        let edadMinimaUsuario = fechaNacimientoUsuario ? $('#modalInformacionUsuarioActividad #edad-min-usuario').val() : null;
+        let dniUsuario = $('#modalInformacionUsuarioActividad .dni-nie-usuario').is(':checked');
+        let emailUsuario = $('#modalInformacionUsuarioActividad .email-usuario').is(':checked');
+        let telefonoUsuario = $('#modalInformacionUsuarioActividad .telefono-usuario').is(':checked');
+        let direccionUsuario = $('#modalInformacionUsuarioActividad .direccion-usuario').is(':checked');
 
 
         if(nombre === '') {
@@ -726,6 +766,14 @@ $(document).ready(function () {
             formData.append('duracion', duracion);
             formData.append('imagen', imagen);
             formData.append('estado', estado);
+            formData.append('nombre_usuario', nombreUsuario);
+            formData.append('apellidos_usuario', apellidosUsuario);
+            formData.append('fecha_nacimiento_usuario', fechaNacimientoUsuario);
+            formData.append('edad_minima_usuario', edadMinimaUsuario);
+            formData.append('dni_usuario', dniUsuario);
+            formData.append('email_usuario', emailUsuario);
+            formData.append('telefono_usuario', telefonoUsuario);
+            formData.append('direccion_usuario', direccionUsuario);
 
             $.ajax({
                 type: "POST",
@@ -775,6 +823,18 @@ $(document).ready(function () {
                         //     </div>
                         //     `)
                         // })
+
+                        if(parseInt(response.actividad.nombre_usuario) === 1) $('#modalInformacionUsuarioActividad .nombre-usuario').prop('checked', true);
+                        if(parseInt(response.actividad.apellidos_usuario) === 1) $('#modalInformacionUsuarioActividad .apellidos-usuario').prop('checked', true);
+                        if(parseInt(response.actividad.fecha_nacimiento_usuario) === 1){ 
+                            $('#modalInformacionUsuarioActividad .fecha-nacimiento-usuario').prop('checked', true);
+                            $('#modalInformacionUsuarioActividad #edad-min-usuario').val(parseInt(response.actividad.edad_minima_usuario)).prop('disabled', false);
+                            $('#modalInformacionUsuarioActividad label[for="edad-min-usuario"]').css('color', '#212529')
+                        }
+                        if(parseInt(response.actividad.dni_usuario) === 1) $('#modalInformacionUsuarioActividad .dni-nie-usuario').prop('checked', true);
+                        if(parseInt(response.actividad.email_usuario) === 1) $('#modalInformacionUsuarioActividad .email-usuario').prop('checked', true);
+                        if(parseInt(response.actividad.telefono_usuario) === 1) $('#modalInformacionUsuarioActividad .telefono-usuario').prop('checked', true);
+                        if(parseInt(response.actividad.direccion_usuario) === 1) $('#modalInformacionUsuarioActividad .direccion-usuario').prop('checked', true);
 
                         $(`.grid-actividades .card-actividad[data-index="${response.actividad.id_actividades}"]`).replaceWith(
                             `
@@ -1028,10 +1088,27 @@ $(document).ready(function () {
         let numTotal = plazasSeleccionadas 
         let precio = $('#precio-actividad').val();
 
+        let nombre     = $('.paginaActividad .informacion-adicional').data('nombre');
+        let apellidos  = $('.paginaActividad .informacion-adicional').data('apellidos');
+        let fecha      = $('.paginaActividad .informacion-adicional').data('fecha');
+        let dni        = $('.paginaActividad .informacion-adicional').data('dni');
+        let email      = $('.paginaActividad .informacion-adicional').data('email');
+        let telefono   = $('.paginaActividad .informacion-adicional').data('telefono');
+        let direccion  = $('.paginaActividad .informacion-adicional').data('direccion');
+        let edad       = $('.paginaActividad .informacion-adicional').data('edad');
+        
+
         if(plazasSeleccionadas > 1) {
 
             numTotal = parseInt(plazasSeleccionadas-1)
             $('#num-plazas').val(numTotal);
+
+            $('.paginaActividad .informacion-adicional #contenedor-personas').empty()
+            for (let i = 1; i <= numTotal; i++) {
+
+                let articulo = crearInputsInfoAdicional(nombre, apellidos, fecha, edad, dni, email, telefono, direccion, i);
+                $('.paginaActividad .informacion-adicional #contenedor-personas').append(articulo);
+            }
         }
 
         if(precio !== '') {
@@ -1047,6 +1124,16 @@ $(document).ready(function () {
         let aforo = $('#num-aforo-actividad').val();
         let numTotal = plazasSeleccionadas 
         let precio = $('#precio-actividad').val();
+
+        let nombre     = $('.paginaActividad .informacion-adicional').data('nombre');
+        let apellidos  = $('.paginaActividad .informacion-adicional').data('apellidos');
+        let fecha      = $('.paginaActividad .informacion-adicional').data('fecha');
+        let dni        = $('.paginaActividad .informacion-adicional').data('dni');
+        let email      = $('.paginaActividad .informacion-adicional').data('email');
+        let telefono   = $('.paginaActividad .informacion-adicional').data('telefono');
+        let direccion  = $('.paginaActividad .informacion-adicional').data('direccion');
+        let edad       = $('.paginaActividad .informacion-adicional').data('edad');
+        
         
         if(aforo !== ''){
 
@@ -1054,11 +1141,25 @@ $(document).ready(function () {
 
                 numTotal = parseInt(plazasSeleccionadas+1)
                 $('#num-plazas').val(numTotal);
+
+                $('.paginaActividad .informacion-adicional #contenedor-personas').empty()
+                for (let i = 1; i <= numTotal; i++) {
+
+                    let articulo = crearInputsInfoAdicional(nombre, apellidos, fecha, edad, dni, email, telefono, direccion, i);
+                    $('.paginaActividad .informacion-adicional #contenedor-personas').append(articulo);
+                }
             }
         }
         else {
             numTotal = parseInt(plazasSeleccionadas+1)
             $('#num-plazas').val(numTotal);
+
+            $('.paginaActividad .informacion-adicional #contenedor-personas').empty()
+            for (let i = 1; i <= numTotal; i++) {
+
+                let articulo = crearInputsInfoAdicional(nombre, apellidos, fecha, edad, dni, email, telefono, direccion, i);
+                $('.paginaActividad .informacion-adicional #contenedor-personas').append(articulo);
+            }
         }
 
         if(precio !== '') {
@@ -1074,6 +1175,30 @@ $(document).ready(function () {
         let precio = $('#precio-actividad').val();
         let usuario = $('#usuarios-reserva-actividad').val();
 
+        let nombre     = $('.paginaActividad .informacion-adicional').data('nombre');
+        let apellidos  = $('.paginaActividad .informacion-adicional').data('apellidos');
+        let fecha      = $('.paginaActividad .informacion-adicional').data('fecha');
+        let dni        = $('.paginaActividad .informacion-adicional').data('dni');
+        let email      = $('.paginaActividad .informacion-adicional').data('email');
+        let telefono   = $('.paginaActividad .informacion-adicional').data('telefono');
+        let direccion  = $('.paginaActividad .informacion-adicional').data('direccion');
+        let edad       = $('.paginaActividad .informacion-adicional').data('edad');
+        
+        let inputsVacios = 0;
+        let inputsInfoAdicional = $('.paginaActividad .informacion-adicional #contenedor-personas input')
+
+        inputsInfoAdicional.map(function(){
+
+            let input = $(this);
+
+            if (input.val() === '') {
+                inputsVacios++;
+                input.addClass('is-invalid');
+            } else {
+                input.removeClass('is-invalid');
+            }
+        })
+
         if(parseInt(numeroReservas) < 1 || isNaN(numeroReservas)) {
             $('#btn-reservar-plaza-actividad').prop('disabled', true);
         }
@@ -1083,12 +1208,73 @@ $(document).ready(function () {
         else if(parseInt(usuario) === -1) {
             $('#btn-reservar-plaza-actividad').prop('disabled', true);
         }
+        else if(inputsVacios > 0) {
+            $('#btn-reservar-plaza-actividad').prop('disabled', true);
+        }
         else {
             $('#btn-reservar-plaza-actividad').prop('disabled', false);
+
+            $('.paginaActividad .informacion-adicional #contenedor-personas').empty()
+            for (let i = 1; i <= numeroReservas; i++) {
+
+                let articulo = crearInputsInfoAdicional(nombre, apellidos, fecha, edad, dni, email, telefono, direccion, i);
+                $('.paginaActividad .informacion-adicional #contenedor-personas').append(articulo);
+            }
             
             if(parseFloat(precio) > 0 && !isNaN(parseFloat(precio))){
                 $('#precio-total-ver-actividad strong').text(numeroReservas*parseInt(precio)+'€')
             }
+        }
+    })
+
+    $(document).on('input', '.paginaActividad .informacion-adicional #contenedor-personas input', function(e){
+
+        e.preventDefault();
+        let numeroReservas = parseInt($('#num-plazas').val());
+        let aforo = $('#num-aforo-actividad').val();
+        let precio = $('#precio-actividad').val();
+        let usuario = $('#usuarios-reserva-actividad').val();
+
+        let nombre     = $('.paginaActividad .informacion-adicional').data('nombre');
+        let apellidos  = $('.paginaActividad .informacion-adicional').data('apellidos');
+        let fecha      = $('.paginaActividad .informacion-adicional').data('fecha');
+        let dni        = $('.paginaActividad .informacion-adicional').data('dni');
+        let email      = $('.paginaActividad .informacion-adicional').data('email');
+        let telefono   = $('.paginaActividad .informacion-adicional').data('telefono');
+        let direccion  = $('.paginaActividad .informacion-adicional').data('direccion');
+        let edad       = $('.paginaActividad .informacion-adicional').data('edad');
+        
+        let inputsVacios = 0;
+        let inputsInfoAdicional = $('.paginaActividad .informacion-adicional #contenedor-personas input')
+
+        inputsInfoAdicional.map(function(){
+
+            let input = $(this);
+
+            if (input.val() === '') {
+                inputsVacios++;
+                input.addClass('is-invalid');
+            } else {
+                input.removeClass('is-invalid');
+            }
+        })
+
+        if(parseInt(numeroReservas) < 1 || isNaN(numeroReservas)) {
+            $('#btn-reservar-plaza-actividad').prop('disabled', true);
+        }
+        else if(aforo !== '' && parseInt(numeroReservas) > parseInt(aforo) ) {
+            $('#btn-reservar-plaza-actividad').prop('disabled', true);
+        }
+        else if(parseInt(usuario) === -1) {
+            $('#btn-reservar-plaza-actividad').prop('disabled', true);
+        }
+        else if(inputsVacios > 0) {
+            $('#btn-reservar-plaza-actividad').prop('disabled', true);
+        }
+        else {
+            $('#btn-reservar-plaza-actividad').prop('disabled', false);
+
+            
         }
     })
 
@@ -1100,6 +1286,30 @@ $(document).ready(function () {
         let aforo = $('#num-aforo-actividad').val();
         let precio = $('#precio-actividad').val();
 
+        let nombre     = $('.paginaActividad .informacion-adicional').data('nombre');
+        let apellidos  = $('.paginaActividad .informacion-adicional').data('apellidos');
+        let fecha      = $('.paginaActividad .informacion-adicional').data('fecha');
+        let dni        = $('.paginaActividad .informacion-adicional').data('dni');
+        let email      = $('.paginaActividad .informacion-adicional').data('email');
+        let telefono   = $('.paginaActividad .informacion-adicional').data('telefono');
+        let direccion  = $('.paginaActividad .informacion-adicional').data('direccion');
+        let edad       = $('.paginaActividad .informacion-adicional').data('edad');
+        
+        let inputsVacios = 0;
+        let inputsInfoAdicional = $('.paginaActividad .informacion-adicional #contenedor-personas input')
+
+        inputsInfoAdicional.map(function(){
+
+            let input = $(this);
+
+            if (input.val() === '') {
+                inputsVacios++;
+                input.addClass('is-invalid');
+            } else {
+                input.removeClass('is-invalid');
+            }
+        })
+
         if(parseInt(usuario) === -1) {
             $('#btn-reservar-plaza-actividad').prop('disabled', true);
         }
@@ -1109,8 +1319,12 @@ $(document).ready(function () {
         else if(aforo !== '' && parseInt(numeroReservas) > parseInt(aforo) ) {
             $('#btn-reservar-plaza-actividad').prop('disabled', true);
         }
+        else if(inputsVacios > 0) {
+            $('#btn-reservar-plaza-actividad').prop('disabled', true);
+        }
         else {
             $('#btn-reservar-plaza-actividad').prop('disabled', false);
+            
             if(parseFloat(precio) > 0 && !isNaN(parseFloat(precio))){
                 $('#precio-total-ver-actividad strong').text(numeroReservas*parseInt(precio)+'€')
             }
@@ -1120,6 +1334,11 @@ $(document).ready(function () {
     $(document).on('click', '#btn-reservar-plaza-actividad', function(e){
 
         e.preventDefault();
+
+        const regexDniNie = /^(?:\d{8}[A-Z]|[XYZ]\d{7}[A-Z])$/;
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const regexTelefono = /^[6789]\d{8}$/;
+
         let numeroReservas = parseInt($('#num-plazas').val());
         let aforo = $('#num-aforo-actividad').val();
         let precioTotal = $('#precio-total-ver-actividad strong').text()
@@ -1129,6 +1348,40 @@ $(document).ready(function () {
         let idUsuario = (parseInt(rolUsuario) === 2) ? parseInt($('#usuarios-reserva-actividad').val()) : parseInt($('#id_usuario').val())
 
         let errores = [];
+
+        let inputsVacios = 0;
+        let inputsInfoAdicional = $('.paginaActividad .informacion-adicional #contenedor-personas input')
+
+        inputsInfoAdicional.map(function(){
+
+            let input = $(this);
+
+            if (input.val() === '') {
+                inputsVacios++;
+                input.addClass('is-invalid');
+            } else {
+
+                if(input.data('campo') === 'fecha-nacimiento' && new Date(input.val()) > new Date(input.attr('max'))){
+                    input.addClass('is-invalid');
+                    errores.push({campo: 'fecha de nacimiento', mensaje: 'No respeta la edad indicada'})
+                }
+                else if(input.data('campo') === 'dni' && !regexDniNie.test(input.val().toUpperCase().trim())){
+                    input.addClass('is-invalid');
+                    errores.push({campo: 'DNI/NIE', mensaje: 'Debe introducir un dni o nie correcto'})
+                }
+                else if(input.data('campo') === 'email' && !regexEmail.test(input.val().trim())){
+                    input.addClass('is-invalid');
+                    errores.push({campo: 'email', mensaje: 'Debe introducir un email correcto'})
+                }
+                else if(input.data('campo') === 'telefono' && !regexTelefono.test(input.val().replace(/[\s-]/g, ''))){
+                    input.addClass('is-invalid');
+                    errores.push({campo: 'teléfono', mensaje: 'Debe introducir un número de teléfono correcto'})
+                }
+                else{
+                    input.removeClass('is-invalid');
+                }
+            }
+        })
 
         if(numeroReservas < 1 || isNaN(numeroReservas)) {
             errores.push({campo: 'plazas', mensaje: 'Para reservar debe seleccionar al menos una plaza'})
@@ -1141,6 +1394,12 @@ $(document).ready(function () {
         if((rolUsuario !== '' && parseInt(rolUsuario) === 2) && parseInt(idUsuario) === -1) {
             errores.push({campo: 'usuario', mensaje: 'Debe seleccionar a un usuario para la reserva'})
         }
+
+        if(inputsVacios > 0) {
+            errores.push({campo: 'información', mensaje: 'Debe rellenar toda la información solicitada'})
+        }
+
+
 
         console.log(BASE_URL)
 
@@ -1474,7 +1733,90 @@ $(document).ready(function () {
         });
     })
 
-    
+    $(document).on('click', '#modalCrearActividad .btn-info-usuario-actividad', function(e){
+
+        e.preventDefault();
+        $('#modalInformacionUsuarioActividad').modal('show')
+    })
+
+
+    $(document).on('change', '#modalInformacionUsuarioActividad .fecha-nacimiento-usuario', function(e){
+
+        e.preventDefault();
+
+        let valor = $(this).is(':checked');
+        if(valor){
+            $('#modalInformacionUsuarioActividad #edad-min-usuario').prop('disabled', false).focus();
+            $('label[for="edad-min-usuario"]').css('color', '#212529');
+        }
+        else {
+            $('#modalInformacionUsuarioActividad #edad-min-usuario').prop('disabled', true).val('')
+            $('label[for="edad-min-usuario"]').css('color', '#ccc');
+        }
+    })
+
+    $(document).on('click', '#modalInformacionUsuarioActividad #btn-guardar-informacion-necesita-usuario', function(e){
+        
+        e.preventDefault();
+
+        let errores = [];
+
+        let nombre = $('#modalInformacionUsuarioActividad .nombre-usuario').is(':checked');
+        let apellidos = $('#modalInformacionUsuarioActividad .apellidos-usuario').is(':checked');
+        let fechaNacimiento = $('#modalInformacionUsuarioActividad .fecha-nacimiento-usuario').is(':checked');
+        let edadMinima = $(fechaNacimiento) ? $('#modalInformacionUsuarioActividad #edad-min-usuario').val() : null;
+        let dni = $('#modalInformacionUsuarioActividad .dni-nie-usuario').is(':checked');
+        let email = $('#modalInformacionUsuarioActividad .email-usuario').is(':checked');
+        let telefono = $('#modalInformacionUsuarioActividad .telefono-usuario').is(':checked');
+        let direccion = $('#modalInformacionUsuarioActividad .direccion-usuario').is(':checked');
+
+        if(fechaNacimiento && edadMinima === '' || fechaNacimiento && parseInt(edadMinima) <= 0 ) {
+            errores.push({ campo: 'Edad mínima', mensaje: 'La edad si selecciona el campo "Fecha de nacimiento", debe seleccionar una edad mínima superior a 0'})
+        }
+
+        
+        if(errores.length > 0) {
+
+            $('.contenedor-alert-informacion-usuario-actividad .errores ul').empty()
+
+            errores.map(function(error) {
+                $('.contenedor-alert-informacion-usuario-actividad .errores ul').append(`<li>${error.mensaje}</li>`)
+            })     
+
+            $('#modalInformacionUsuarioActividad .contenedor-alert-informacion-usuario-actividad').removeClass('d-none');
+            $('#modalInformacionUsuarioActividad .alert-errores-informacion-usuario-actividad').show();
+        }
+        else {
+            $('.contenedor-alert-informacion-usuario-actividad .errores ul').empty()
+            $('#modalInformacionUsuarioActividad .contenedor-alert-informacion-usuario-actividad').addClass('d-none');
+            $('#modalInformacionUsuarioActividad .alert-errores-informacion-usuario-actividad').hide();
+            $('#modalInformacionUsuarioActividad').modal('hide');
+        }
+    })
+
+
+    // $(document).on('click', '#modalInformacionUsuarioActividad .btn-cancelar-informacion-usuario', function(e){
+
+    //     e.preventDefault();
+
+    //     $('#modalInformacionUsuarioActividad .nombre-usuario').prop('checked', false);
+    //     $('#modalInformacionUsuarioActividad .apellidos-usuario').prop('checked', false);
+    //     $('#modalInformacionUsuarioActividad .fecha-nacimiento-usuario').prop('checked', false);
+    //     $('#modalInformacionUsuarioActividad .dni-nie-usuario').prop('checked', false);
+    //     $('#modalInformacionUsuarioActividad .email-usuario').prop('checked', false);
+    //     $('#modalInformacionUsuarioActividad .telefono-usuario').prop('checked', false);
+    //     $('#modalInformacionUsuarioActividad .direccion-usuario').prop('checked', false);
+
+    //     $('#modalInformacionUsuarioActividad #edad-min-usuario').prop('disabled', true).val('');
+    //     $('label[for="edad-min-usuario"]').css('color', '#ccc');
+
+    // })
+
+    $(document).on('click', '#modalEditarActividad .btn-info-usuario-actividad', function(e){
+
+        e.preventDefault();
+        $('#modalInformacionUsuarioActividad').modal('show')
+    })
 
 
     function parseFechaES(str) {
@@ -1501,6 +1843,57 @@ $(document).ready(function () {
             return `${dia}/${mes}/${anio} ${hora}`;
         }
         return `${dia}/${mes}/${anio}`;
+    }
+
+    function calcularFechaMaximaPorEdad(edadMinima) {
+        const hoy = new Date();
+        const fechaMax = new Date(hoy.getFullYear() - edadMinima, hoy.getMonth(), hoy.getDate());
+        return fechaMax.toISOString().split('T')[0]; // formato YYYY-MM-DD
+    }
+
+    function crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, numeroPersona) {
+
+        let campos = [
+            { activo: nombre,          id: 'nombre',            label: 'Nombre',              tipo: 'text'  },
+            { activo: apellidos,       id: 'apellidos',         label: 'Apellidos',           tipo: 'text'  },
+            { activo: fechaNacimiento, id: 'fecha-nacimiento',  label: 'Fecha de nacimiento', tipo: 'date'  },
+            { activo: dni,             id: 'dni',               label: 'DNI',                 tipo: 'text'  },
+            { activo: email,           id: 'email',             label: 'Email',               tipo: 'email' },
+            { activo: telefono,        id: 'telefono',          label: 'Teléfono',            tipo: 'tel'   },
+            { activo: direccion,       id: 'direccion',         label: 'Dirección',           tipo: 'text'  },
+        ];
+
+        let article = $('<article>').addClass('info-adicional-persona').attr('data-persona', numeroPersona);
+
+        $('<p>').addClass('titulo-persona').text('Persona ' + numeroPersona).appendTo(article);
+
+        campos.map(function(campo) {
+            if (parseInt(campo.activo) === 1) {
+
+                const inputId = `${campo.id}_${numeroPersona}`;
+                const grupo = $('<div>').addClass('form-group mb-3');
+
+                $('<label>').addClass('form-label').attr('for', inputId).text(campo.label).appendTo(grupo);
+
+                let input = $('<input>').addClass('form-control').attr({
+                    type: campo.tipo,
+                    id: inputId,
+                    name: inputId,
+                    required: true, 
+                    'data-campo': campo.id
+
+                });
+
+                if (campo.id === 'fecha_nacimiento' && edadMinima > 0) {
+                    input.attr('max', calcularFechaMaximaPorEdad(edadMinima));
+                }
+
+                input.appendTo(grupo);
+                article.append(grupo);
+            }
+        });
+
+        return article;
     }
 })
 

@@ -22,7 +22,7 @@ class App extends BaseConfig
     // public string $baseURL = 'http://localhost/reservalo2.0/';
     
     // BaseURL --> localhost del sobremesa
-    public string $baseURL = 'http://172.20.10.13/reservalo2.0/';
+    // public string $baseURL = 'http://172.20.10.13/reservalo2.0/';
 
     // BaseURL --> localhost de la casa
     public string $baseURL = 'http://192.168.1.45/reservalo2.0/';

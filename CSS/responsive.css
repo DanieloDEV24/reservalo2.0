@@ -1699,7 +1699,7 @@
 
 @media screen and (max-width: 992px) {
 
-    #modalReservaPista .modal-dialog, #modalNuevaInstalacion .modal-dialog, #modalVerInstalacion .modal-dialog, #modalEditarInstalacion .modal-dialog, #modalBorrarInstalacion .modal-dialog, #modalBajaInstalacion .modal-dialog, #modalCrearActividad .modal-dialog, #modalMenuTiposActividades .modal-dialog, #modalEditarTipoActividad .modal-dialog, #modalEliminarTipoActividad .modal-dialog, #modalEditarActividad .modal-dialog, #modalInscritosActividad .modal-dialog, #modalEliminarReservaActividad .modal-dialog, #modalCancelarActividad .modal-dialog, #modalEliminarReservaActividadUsuario .modal-dialog, #modalEditarReservaActividadUsuario, .modal-dialog, #modalAnularReservaAdmin .modal-dialog {
+    #modalReservaPista .modal-dialog, #modalNuevaInstalacion .modal-dialog, #modalVerInstalacion .modal-dialog, #modalEditarInstalacion .modal-dialog, #modalBorrarInstalacion .modal-dialog, #modalBajaInstalacion .modal-dialog, #modalCrearActividad .modal-dialog, #modalMenuTiposActividades .modal-dialog, #modalEditarTipoActividad .modal-dialog, #modalEliminarTipoActividad .modal-dialog, #modalEditarActividad .modal-dialog, #modalInscritosActividad .modal-dialog, #modalEliminarReservaActividad .modal-dialog, #modalCancelarActividad .modal-dialog, #modalEliminarReservaActividadUsuario .modal-dialog, #modalEditarReservaActividadUsuario, .modal-dialog, #modalAnularReservaAdmin .modal-dialog, #modalInformacionUsuarioActividad .modal-dialog {
         max-width: none !important;
         width: 90% !important;
     }
@@ -1708,7 +1708,7 @@
         width: 100% !important;
     }
 
-    #modalCrearActividad .modal-footer button, #modalMenuTiposActividades .modal-footer button, #modalEditarTipoActividad .modal-footer button, #modalEliminarTipoActividad .modal-footer button, #modalEditarActividad .modal-footer button, #modalInscritosActividad .modal-footer button, #modalEliminarReservaActividad .modal-footer button, #modalCancelarActividad .modal-footer button, #modalCrearTipoActividad .modal-footer button, #modalMisReservas .reserva-card .reserva-actions button, #modalEliminarReservaActividadUsuario .modal-footer button, #modalEditarReservaActividadUsuario .modal-footer button, #modalAnularReservaAdmin .modal-footer button {
+    #modalCrearActividad .modal-footer button, #modalMenuTiposActividades .modal-footer button, #modalEditarTipoActividad .modal-footer button, #modalEliminarTipoActividad .modal-footer button, #modalEditarActividad .modal-footer button, #modalInscritosActividad .modal-footer button, #modalEliminarReservaActividad .modal-footer button, #modalCancelarActividad .modal-footer button, #modalCrearTipoActividad .modal-footer button, #modalMisReservas .reserva-card .reserva-actions button, #modalEliminarReservaActividadUsuario .modal-footer button, #modalEditarReservaActividadUsuario .modal-footer button, #modalAnularReservaAdmin .modal-footer button, #modalInformacionUsuarioActividad .modal-footer button {
         
         width: 48% !important;
         justify-content: center !important;
@@ -5874,7 +5874,7 @@
         gap: 4% !important;
     }
 
-    #modalCrearActividad .modal-footer button, #modalEditarActividad .modal-footer button, #modalInscritosActividad .modal-footer button, #modalCancelarActividad .modal-footer button, #modalEliminarReservaActividad .modal-footer button, #modalMenuTiposActividades .modal-footer button, #modalCrearTipoActividad .modal-footer button, #modalEditarTipoActividad .modal-footer button, #modalEliminarTipoActividad .modal-footer button, #modalMisReservas .reserva-card .reserva-actions button, #modalEliminarReservaActividadUsuario .modal-footer button, #modalEditarReservaActividadUsuario .modal-footer button {
+    #modalCrearActividad .modal-footer button, #modalEditarActividad .modal-footer button, #modalInscritosActividad .modal-footer button, #modalCancelarActividad .modal-footer button, #modalEliminarReservaActividad .modal-footer button, #modalMenuTiposActividades .modal-footer button, #modalCrearTipoActividad .modal-footer button, #modalEditarTipoActividad .modal-footer button, #modalEliminarTipoActividad .modal-footer button, #modalMisReservas .reserva-card .reserva-actions button, #modalEliminarReservaActividadUsuario .modal-footer button, #modalEditarReservaActividadUsuario .modal-footer button, #modalInformacionUsuarioActividad .modal-footer button {
         width: 100% !important;
     }
 
@@ -6275,7 +6275,7 @@
         margin-top: 40% !important;
     }
 
-    #modalCrearActividad .modal-dialog, #modalEditarActividad .modal-dialog, #modalInscritosActividad .modal-dialog, #modalCancelarActividad .modal-dialog, #modalMenuTiposActividades .modal-dialog, #modalEditarTipoActividad .modal-dialog, #modalEditarTipoActividad .modal-dialog, #modalEliminarTipoActividad .modal-dialog, #modalEliminarReservaActividadUsuario .modal-dialog, #modalEditarReservaActividadUsuario, .modal-dialog, #modalEliminarReservaActividad .modal-dialog, #modalAnularReservaAdmin .modal-dialog {
+    #modalCrearActividad .modal-dialog, #modalEditarActividad .modal-dialog, #modalInscritosActividad .modal-dialog, #modalCancelarActividad .modal-dialog, #modalMenuTiposActividades .modal-dialog, #modalEditarTipoActividad .modal-dialog, #modalEditarTipoActividad .modal-dialog, #modalEliminarTipoActividad .modal-dialog, #modalEliminarReservaActividadUsuario .modal-dialog, #modalEditarReservaActividadUsuario, .modal-dialog, #modalEliminarReservaActividad .modal-dialog, #modalAnularReservaAdmin .modal-dialog, #modalInformacionUsuarioActividad .modal-dialog{
         width: 97% !important;
     }
 

@@ -98,3 +98,4 @@
 <?= $modalCancelarActividad ?>
 <?= $modalInscritosActividad ?>
 <?= $modalEliminarReservaActividad ?>
+<?= $modalInformacionUsuarioActividad ?>

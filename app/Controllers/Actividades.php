@@ -53,6 +53,7 @@ class Actividades extends BaseController
         $modalCancelarActividad = view('actividades/modalCancelarActividad');
         $modalInscritosActividad = view('actividades/modalInscritosActividad');
         $modalEliminarReservaActividad = view('actividades/modalEliminarReservaActividad');
+        $modalInformacionUsuarioActividad = view('actividades/modalInformacionUsuarioActividad');
 
         $modalAnularHoras = view('reservas/modalAnularHoras');
         $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
@@ -60,7 +61,7 @@ class Actividades extends BaseController
         $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
         $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
-        $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad, "modalEditarActividad" => $modalEditarActividad, "modalCancelarActividad" => $modalCancelarActividad, "modalInscritosActividad" => $modalInscritosActividad, 'modalEliminarReservaActividad' => $modalEliminarReservaActividad, "baseUrl" => base_url()]);
+        $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad, "modalEditarActividad" => $modalEditarActividad, "modalCancelarActividad" => $modalCancelarActividad, "modalInscritosActividad" => $modalInscritosActividad, 'modalEliminarReservaActividad' => $modalEliminarReservaActividad, "modalInformacionUsuarioActividad" => $modalInformacionUsuarioActividad, "baseUrl" => base_url()]);
         return view('plantillas/normal', ["view" => $view, "assets" => $assets, "modalMisReservas" => $modalMisReservas, "modalInformacionPersonal" => $modalInformacionPersonal]);
     }
 
@@ -201,6 +202,15 @@ class Actividades extends BaseController
             $duracion = $post["duracion"];
             $plazas_ocupadas = 0;
 
+            $nombre_usuario = filter_var($post["nombre_usuario"], FILTER_VALIDATE_BOOLEAN);
+            $apellidos_usuario = filter_var($post["apellidos_usuario"], FILTER_VALIDATE_BOOLEAN);
+            $fecha_nacimiento_usuario = filter_var($post["fecha_nacimiento_usuario"], FILTER_VALIDATE_BOOLEAN);
+            $edad_minima_usuario = $post["edad_minima_usuario"];
+            $dni_usuario = filter_var($post["dni_usuario"], FILTER_VALIDATE_BOOLEAN);
+            $email_usuario =filter_var($post["email_usuario"], FILTER_VALIDATE_BOOLEAN);
+            $telefono_usuario = filter_var($post["telefono_usuario"], FILTER_VALIDATE_BOOLEAN);
+            $direccion_usuario = filter_var($post["direccion_usuario"], FILTER_VALIDATE_BOOLEAN);
+
             $rutaDestino = FCPATH . 'images/';
             if (!is_dir($rutaDestino)) {
                 mkdir($rutaDestino, 0755, true);
@@ -230,23 +240,31 @@ class Actividades extends BaseController
             }
 
             $data_actividades = [
-                "nombre"            => $nombre, 
-                "fecha_actividad"   => $fecha_actividad, 
-                "hora_actividad"    => $hora_actividad, 
-                "fecha_lanzamiento" => $fecha_lanzamiento, 
-                "fecha_limite"      => $fecha_limite, 
-                "hora_limite"       => $hora_limite, 
-                "descripcion"       => $descripcion, 
-                "tiene_aforo"       => $tiene_aforo, 
-                "aforo"             => $aforo, 
-                "tiene_precio"      => $tiene_precio, 
-                "precio"            => $precio, 
-                "estado"            => $estado, 
-                "lugar"             => $lugar, 
-                "imagen"            => ($imagenGuardada === "") ? "predefinida-actividad" : $imagenGuardada, 
-                "duracion"          => $duracion, 
-                "tipo_actividad"    => $tipo_actividad, 
-                "plazas_ocupadas"   => $plazas_ocupadas        
+                "nombre"                    => $nombre, 
+                "fecha_actividad"           => $fecha_actividad, 
+                "hora_actividad"            => $hora_actividad, 
+                "fecha_lanzamiento"         => $fecha_lanzamiento, 
+                "fecha_limite"              => $fecha_limite, 
+                "hora_limite"               => $hora_limite, 
+                "descripcion"               => $descripcion, 
+                "tiene_aforo"               => $tiene_aforo, 
+                "aforo"                     => $aforo, 
+                "tiene_precio"              => $tiene_precio, 
+                "precio"                    => $precio, 
+                "estado"                    => $estado, 
+                "lugar"                     => $lugar, 
+                "imagen"                    => ($imagenGuardada === "") ? "predefinida-actividad" : $imagenGuardada, 
+                "duracion"                  => $duracion, 
+                "tipo_actividad"            => $tipo_actividad, 
+                "plazas_ocupadas"           => $plazas_ocupadas,
+                "nombre_usuario"            => $nombre_usuario ? 1 : 0,
+                "apellidos_usuario"         => $apellidos_usuario ? 1 : 0,
+                "fecha_nacimiento_usuario"  => $fecha_nacimiento_usuario ? 1 : 0,
+                "edad_minima_usuario"       => $edad_minima_usuario,
+                "dni_usuario"               => $dni_usuario ? 1 : 0,
+                "email_usuario"             => $email_usuario ? 1 : 0,
+                "telefono_usuario"          => $telefono_usuario ? 1 : 0,
+                "direccion_usuario"         => $direccion_usuario ? 1 : 0,     
 
             ];
 
@@ -313,6 +331,15 @@ class Actividades extends BaseController
             $lugar = $post["lugar"];
             $duracion = $post["duracion"];
 
+            $nombre_usuario = filter_var($post["nombre_usuario"], FILTER_VALIDATE_BOOLEAN);
+            $apellidos_usuario = filter_var($post["apellidos_usuario"], FILTER_VALIDATE_BOOLEAN);
+            $fecha_nacimiento_usuario = filter_var($post["fecha_nacimiento_usuario"], FILTER_VALIDATE_BOOLEAN);
+            $edad_minima_usuario = ($fecha_nacimiento_usuario && $post["edad_minima_usuario"] !== "null") ? intval($post["edad_minima_usuario"]) : null;
+            $dni_usuario = filter_var($post["dni_usuario"], FILTER_VALIDATE_BOOLEAN);
+            $email_usuario = filter_var($post["email_usuario"], FILTER_VALIDATE_BOOLEAN);
+            $telefono_usuario = filter_var($post["telefono_usuario"], FILTER_VALIDATE_BOOLEAN);
+            $direccion_usuario = filter_var($post["direccion_usuario"], FILTER_VALIDATE_BOOLEAN);
+
             $rutaDestino = FCPATH . 'images/';
             if (!is_dir($rutaDestino)) {
                 mkdir($rutaDestino, 0755, true);
@@ -343,47 +370,61 @@ class Actividades extends BaseController
 
 
             if($imagenGuardada !== "") {
-                
+                        
                 $data_actividades = [
-                    "nombre"            => $nombre, 
-                    "fecha_actividad"   => $fecha_actividad, 
-                    "hora_actividad"    => $hora_actividad, 
-                    "fecha_lanzamiento" => $fecha_lanzamiento, 
-                    "fecha_limite"      => $fecha_limite, 
-                    "hora_limite"       => $hora_limite, 
-                    "descripcion"       => $descripcion, 
-                    "tiene_aforo"       => $tiene_aforo, 
-                    "aforo"             => $aforo, 
-                    "tiene_precio"      => $tiene_precio, 
-                    "precio"            => $precio, 
-                    "estado"            => $estado, 
-                    "lugar"             => $lugar, 
-                    "imagen"            => $imagenGuardada, 
-                    "duracion"          => $duracion, 
-                    "tipo_actividad"    => $tipo_actividad, 
-                          
+                    "nombre"                   => $nombre, 
+                    "fecha_actividad"          => $fecha_actividad, 
+                    "hora_actividad"           => $hora_actividad, 
+                    "fecha_lanzamiento"        => $fecha_lanzamiento, 
+                    "fecha_limite"             => $fecha_limite, 
+                    "hora_limite"              => $hora_limite, 
+                    "descripcion"              => $descripcion, 
+                    "tiene_aforo"              => $tiene_aforo, 
+                    "aforo"                    => $aforo, 
+                    "tiene_precio"             => $tiene_precio, 
+                    "precio"                   => $precio, 
+                    "estado"                   => $estado, 
+                    "lugar"                    => $lugar, 
+                    "imagen"                   => $imagenGuardada, 
+                    "duracion"                 => $duracion, 
+                    "tipo_actividad"           => $tipo_actividad, 
+                    "nombre_usuario"           => $nombre_usuario ? 1 : 0,
+                    "apellidos_usuario"        => $apellidos_usuario ? 1 : 0,
+                    "fecha_nacimiento_usuario" => $fecha_nacimiento_usuario ? 1 : 0,
+                    "edad_minima_usuario"      => $edad_minima_usuario,
+                    "dni_usuario"              => $dni_usuario ? 1 : 0,
+                    "email_usuario"            => $email_usuario ? 1 : 0,
+                    "telefono_usuario"         => $telefono_usuario ? 1 : 0,
+                    "direccion_usuario"        => $direccion_usuario ? 1 : 0,
 
                 ];
             }
             else {
 
                 $data_actividades = [
-                    "nombre"            => $nombre, 
-                    "fecha_actividad"   => $fecha_actividad, 
-                    "hora_actividad"    => $hora_actividad, 
-                    "fecha_lanzamiento" => $fecha_lanzamiento, 
-                    "fecha_limite"      => $fecha_limite, 
-                    "hora_limite"       => $hora_limite, 
-                    "descripcion"       => $descripcion, 
-                    "tiene_aforo"       => $tiene_aforo, 
-                    "aforo"             => $aforo, 
-                    "tiene_precio"      => $tiene_precio, 
-                    "precio"            => $precio, 
-                    "estado"            => $estado, 
-                    "lugar"             => $lugar, 
-                    "duracion"          => $duracion, 
-                    "tipo_actividad"    => $tipo_actividad, 
-                           
+                    "nombre"                   => $nombre, 
+                    "fecha_actividad"          => $fecha_actividad, 
+                    "hora_actividad"           => $hora_actividad, 
+                    "fecha_lanzamiento"        => $fecha_lanzamiento, 
+                    "fecha_limite"             => $fecha_limite, 
+                    "hora_limite"              => $hora_limite, 
+                    "descripcion"              => $descripcion, 
+                    "tiene_aforo"              => $tiene_aforo, 
+                    "aforo"                    => $aforo, 
+                    "tiene_precio"             => $tiene_precio, 
+                    "precio"                   => $precio, 
+                    "estado"                   => $estado, 
+                    "lugar"                    => $lugar, 
+                    "duracion"                 => $duracion, 
+                    "tipo_actividad"           => $tipo_actividad, 
+                    "nombre_usuario"           => $nombre_usuario ? 1 : 0,
+                    "apellidos_usuario"        => $apellidos_usuario ? 1 : 0,
+                    "fecha_nacimiento_usuario" => $fecha_nacimiento_usuario ? 1 : 0,
+                    "edad_minima_usuario"      => $edad_minima_usuario,
+                    "dni_usuario"              => $dni_usuario ? 1 : 0,
+                    "email_usuario"            => $email_usuario ? 1 : 0,
+                    "telefono_usuario"         => $telefono_usuario ? 1 : 0,
+                    "direccion_usuario"        => $direccion_usuario ? 1 : 0,
 
                 ];
             }

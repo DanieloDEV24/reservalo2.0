@@ -128,6 +128,16 @@
                 <div class="row mt-3">
                     <div class="col-10">
                         <div class="w-50">
+                            Información que debe introducir el usuario
+                            <button class="btn-info-usuario-actividad btn btn-primary"><i class="bi bi-plus-lg"></i> Info</button>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-10">
+                        <div class="w-50">
                             Selecciona imagen para la actividad
                             <label class="btn btn-primary mt-1">
                             Imagen

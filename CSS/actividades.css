@@ -523,6 +523,30 @@ input.selector-plazas-valor::-webkit-inner-spin-button {
     justify-content: center;
 }
 
+#contenedor-personas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+
+#contenedor-personas article {
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    padding: 2rem;
+    width: 100%;
+}
+
+#contenedor-personas article p.titulo-persona {
+    font-size: 1.1rem;
+    font-weight: bolder;
+}
+
+#contenedor-personas article input.is-invalid {
+    border-color: red;
+}
+
 /* #modalCrearTipoActividad {
     z-index: 1060;
 }
