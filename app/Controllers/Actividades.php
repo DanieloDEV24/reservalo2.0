@@ -52,6 +52,7 @@ class Actividades extends BaseController
         $modalEditarActividad = view('actividades/modalEditarActividad');
         $modalCancelarActividad = view('actividades/modalCancelarActividad');
         $modalInscritosActividad = view('actividades/modalInscritosActividad');
+        $modalEditarReservaAdmin = view('actividades/modalEditarReservaAdmin');
         $modalEliminarReservaActividad = view('actividades/modalEliminarReservaActividad');
         $modalInformacionUsuarioActividad = view('actividades/modalInformacionUsuarioActividad');
 
@@ -61,7 +62,7 @@ class Actividades extends BaseController
         $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
         $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
-        $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad, "modalEditarActividad" => $modalEditarActividad, "modalCancelarActividad" => $modalCancelarActividad, "modalInscritosActividad" => $modalInscritosActividad, 'modalEliminarReservaActividad' => $modalEliminarReservaActividad, "modalInformacionUsuarioActividad" => $modalInformacionUsuarioActividad, "baseUrl" => base_url()]);
+        $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad, "modalEditarActividad" => $modalEditarActividad, "modalCancelarActividad" => $modalCancelarActividad, "modalInscritosActividad" => $modalInscritosActividad, 'modalEliminarReservaActividad' => $modalEliminarReservaActividad, "modalInformacionUsuarioActividad" => $modalInformacionUsuarioActividad, "modalEditarReservaAdmin" => $modalEditarReservaAdmin, "baseUrl" => base_url()]);
         return view('plantillas/normal', ["view" => $view, "assets" => $assets, "modalMisReservas" => $modalMisReservas, "modalInformacionPersonal" => $modalInformacionPersonal]);
     }
 
@@ -594,6 +595,8 @@ class Actividades extends BaseController
             $actividad = intval($post["actividad"]);
             $num_plazas = intval($post["plazas"]);
 
+            $personas = $post["personas"];
+
             $datos_actividad = $actividadesModel->getDataActividad($actividad)[0];
 
             $precio_reserva = (intval($datos_actividad["tiene_precio"]) === 1 ? $num_plazas*floatval($datos_actividad['precio']) : 0);
@@ -621,15 +624,28 @@ class Actividades extends BaseController
                     "num_pedido"    => $num_pedido
                 ]);
 
-                $actividadesModel->hacerReservaActividad([
-                    "id_usuario" => $usuario, 
-                    "id_actividad" => $actividad, 
-                    "id_pedido" => $pedido, 
-                    "plazas_reserva" => $num_plazas, 
-                    "fecha_reserva" => $fechaString, 
-                    "pagada" => 0, 
-                    "precio_reserva" => $precio_reserva
-                ], intval($datos_actividad["plazas_ocupadas"]));
+                foreach($personas as $persona) {
+                    
+                    $actividadesModel->hacerReservaActividad([
+                        "id_usuario" => $usuario, 
+                        "id_actividad" => $actividad, 
+                        "id_pedido" => $pedido, 
+                        "plazas_reserva" => $num_plazas, 
+                        "fecha_reserva" => $fechaString, 
+                        "pagada" => 0, 
+                        "precio_reserva" => $precio_reserva, 
+                        "nombre_usuario" => ($persona["nombre"] === "") ? null : $persona["nombre"],
+                        "apellidos_usuario" => ($persona["apellidos"] === "") ? null : $persona["apellidos"],
+                        "dni_usuario" => ($persona["dni"] === "") ? null : $persona["dni"],
+                        "fecha_nacimiento_usuario" => ($persona["fechaNacimiento"] === "") ? null : $persona["fechaNacimiento"],
+                        "edad_minima_usuario" => ($persona["edadMinima"] === "") ? null : $persona["edadMinima"],
+                        "email_usuario" => ($persona["email"] === "") ? null : $persona["email"],
+                        "telefono_usuario" => ($persona["telefono"] === "") ? null : $persona["telefono"],
+                        "direccion_usuario" => ($persona["direccion"] === "") ? null : $persona["direccion"],
+                    ]);
+                }
+
+                $actividadesModel->actualizarPlazasActividad($actividad, $num_plazas, $datos_actividad["plazas_ocupadas"]);
 
                 $actividad_actualizada = $actividadesModel->getDataActividad($actividad);
 
@@ -948,6 +964,31 @@ class Actividades extends BaseController
         }
         
         exit;
+    }
+
+    public function obtenerPersonas() {
+        $actividadesModel = new actividadesModel();
+        $reservasModel = new reservasModel();
+        $post = $this->request->getPost();
+
+        if(!empty($post)){
+
+            $id_reserva = intval($post["id_reserva"]);
+            $id_pedido = intval($actividadesModel->getReservaById($id_reserva)[0]["id_pedido"]);
+            $id_actividad = intval($actividadesModel->getReservaById($id_reserva)[0]["id_actividad"]);
+
+            $total_reservas = $actividadesModel->getReservaByPedido($id_pedido);
+            $actividad = $actividadesModel->getDataActividad($id_actividad);
+            
+            echo json_encode([
+                'success' => true, 
+                'reservas' => $total_reservas, 
+                'actividad' => $actividad
+            ]);
+
+            return;
+
+        }
     }
 
     private function enviarEmailReservaActividad($datos_pdf, $email, $tempPath, $pdfFilename, $id_pedido, $datos_reserva){

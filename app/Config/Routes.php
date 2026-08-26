@@ -134,3 +134,4 @@ $routes->post('/getDataReserva', 'Actividades::getDataReserva', ['filter' => 'au
 $routes->post('/eliminarReservaActividad', 'Actividades::eliminarReservaActividad', ['filter' => 'auth']);
 $routes->post('/editarReservaActividad', 'Actividades::editarReservaActividad', ['filter' => 'auth']);
 $routes->post('/misReservasActividades', 'Actividades::misReservasActividades', ['filter' => 'auth']);
+$routes->post('/obtenerPersonas', 'Actividades::obtenerPersonas', ['filter' => 'auth']);

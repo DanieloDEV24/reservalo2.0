@@ -1352,6 +1352,17 @@ $(document).ready(function () {
         let inputsVacios = 0;
         let inputsInfoAdicional = $('.paginaActividad .informacion-adicional #contenedor-personas input')
 
+        let nombre     = $('.paginaActividad .informacion-adicional').data('nombre');
+        let apellidos  = $('.paginaActividad .informacion-adicional').data('apellidos');
+        let fecha      = $('.paginaActividad .informacion-adicional').data('fecha');
+        let dni        = $('.paginaActividad .informacion-adicional').data('dni');
+        let email      = $('.paginaActividad .informacion-adicional').data('email');
+        let telefono   = $('.paginaActividad .informacion-adicional').data('telefono');
+        let direccion  = $('.paginaActividad .informacion-adicional').data('direccion');
+        let edad       = $('.paginaActividad .informacion-adicional').data('edad');
+
+        let personas = [];
+
         inputsInfoAdicional.map(function(){
 
             let input = $(this);
@@ -1404,10 +1415,25 @@ $(document).ready(function () {
         console.log(BASE_URL)
 
         if(errores.length === 0) {
+
+            $('.paginaActividad .informacion-adicional #contenedor-personas article').map(function(){
+                let article = $(this);
+                personas.push({
+                    nombre: article.find('input[data-campo="nombre"]').length ? article.find('input[data-campo="nombre"]').val() : null,
+                    apellidos: article.find('input[data-campo="apellidos"]').length ? article.find('input[data-campo="apellidos"]').val() : null,
+                    fechaNacimiento: article.find('input[data-campo="fecha-nacimiento"]').length ? article.find('input[data-campo="fecha-nacimiento"]').val() : null,
+                    edadMinima: article.data('data-edad') !== undefined ? parseInt(article.data('data-edad')) : null,
+                    dni: article.find('input[data-campo="dni"]').length ? article.find('input[data-campo="dni"]').val() : null,
+                    email: article.find('input[data-campo="email"]').length ? article.find('input[data-campo="email"]').val() : null,
+                    telefono: article.find('input[data-campo="telefono"]').length ? parseInt(article.find('input[data-campo="telefono"]').val()) : null,
+                    direccion: article.find('input[data-campo="direccion"]').length ? article.find('input[data-campo="direccion"]').val() : null,
+                })
+            })
+
             $.ajax({
                 type: "POST",
                 url: `${BASE_URL}index.php/reservaActividad`,
-                data: {plazas: numeroReservas, usuario: idUsuario, actividad: actividad},
+                data: {plazas: numeroReservas, usuario: idUsuario, actividad: actividad, personas: personas},
                 dataType: "JSON",
                 success: function (response) {
                     
@@ -1427,7 +1453,12 @@ $(document).ready(function () {
                         window.location.href = `${BASE_URL}index.php/descargarTicketActividad/${parseInt(response.pedido)}`;
                         $('.paginaActividad .contenedor-alert-reserva-actividad-2').removeClass('d-none');
                         $('.paginaActividad .alert-reserva-actividad-completada').show();
-
+                        
+                         $('.paginaActividad .informacion-adicional #contenedor-personas').empty()
+                        
+                        let articulo = crearInputsInfoAdicional(nombre, apellidos, fecha, edad, dni, email, telefono, direccion, 1);
+                        $('.paginaActividad .informacion-adicional #contenedor-personas').append(articulo);
+                        
                         setTimeout(function() {
                             $('.paginaActividad .contenedor-alert-reserva-actividad-2').addClass('d-none');
                             $('.paginaActividad .alert-reserva-actividad-completada').hide();
@@ -1456,6 +1487,11 @@ $(document).ready(function () {
 
             $('.paginaActividad .contenedor-alert-reserva-actividad').removeClass('d-none');
             $('.paginaActividad .alert-errores-reservar-actividad').show();
+
+            setTimeout(function() {
+                $('.paginaActividad .contenedor-alert-reserva-actividad').addClass('d-none');
+                $('.paginaActividad .alert-errores-reservar-actividad').hide();
+            }, 3000);
         }    
     })
 
@@ -1486,20 +1522,7 @@ $(document).ready(function () {
                                 <td>${cont}</td>
                                 <td>${inscrito.email}</td>
                                 <td>${inscrito.telf}</td>
-                                <td>
-                                    <span class="plazas-texto">${inscrito.plazas_reserva}</span>
-                                    <div class="d-flex gap-3">
-                                        <div class="plazas-stepper d-none">
-                                            <button type="button" class="plazas-btn plaza-btn-menos" data-action="dec" aria-label="Restar plaza">-</button>
-                                            <input type="number" class="input-plazas" name="plazas" value="${inscrito.plazas_reserva}" min="1" max="${(parseInt(response.actividad.tiene_aforo) === 1) ? (parseInt(response.actividad.aforo) - parseInt(response.actividad.plazas_ocupadas)) : ''}" aria-label="Plazas reservadas" />
-                                            <button type="button" class="plazas-btn plaza-btn-mas" data-action="inc" aria-label="Sumar plaza">+</button>
-                                        </div>
-                                        <div class="d-none btn-acciones-editar">
-                                            <button class="btn btn-success btn-aceptar-editar-reserva-actividad"><i class="bi bi-check-lg"></i></button>
-                                            <button class="btn btn-danger btn-cancelar-editar-reserva-actividad"><i class="bi bi-x-lg"></i></button>
-                                        </div>
-                                    </div>
-                                </td>
+                                
                                 <td>${timestampAFechaES(inscrito.fecha_reserva)}</td>
                                 <td>
                                     <div class="dropdown">
@@ -1628,110 +1651,153 @@ $(document).ready(function () {
 
         e.preventDefault();
         // Cierra la edicion de cualquier otra fila que estuviera abierta
-        $('.plazas-stepper').not($(this).closest('tr').find('.plazas-stepper')).addClass('d-none');
-        $('span.plazas-texto').not($(this).closest('tr').find('span.plazas-texto')).removeClass('d-none');
-        $('.btn-acciones-editar').not($(this).closest('tr').find('.plazas-stepper')).addClass('d-none');
 
-
-        // Abre la de esta fila
-        $(this).closest('tr').find('span.plazas-texto').addClass('d-none');
-        $(this).closest('tr').find('.plazas-stepper').removeClass('d-none');
-        $(this).closest('tr').find('.btn-acciones-editar').removeClass('d-none');
-    })
-
-
-    $(document).on('click', '.plaza-btn-menos', function(e){
-
-        e.preventDefault()
-        let valor = parseInt($(this).closest('div').find('input').val());
-        let max = parseInt($(this).closest('div').find('input').attr('max'));
-        
-        if(valor > 1) {
-            $(this).closest('div').find('input').val((valor - 1))
-            
-            if(valor < max){
-                $(this).closest('tr').find('button.btn-aceptar-editar-reserva-actividad').prop('disabled', false);  
-            }
-        }
-
-    })
-
-    $(document).on('click', '.plaza-btn-mas', function(e){
-
-        e.preventDefault()
-        
-        let valor = parseInt($(this).closest('div').find('input').val());
-        let max = parseInt($(this).closest('div').find('input').attr('max'));
-
-
-        if(valor < max || isNaN(max)) {
-            $(this).closest('div').find('input').val((valor + 1))
-            
-            if(valor > -1) {
-                $(this).closest('tr').find('button.btn-aceptar-editar-reserva-actividad').prop('disabled', false);  
-            }
-        }
-
-    })
-
-    $(document).on('input', '.input-plazas', function(e){
-
-        e.preventDefault();
-        let max = parseInt($(this).attr('max'));
-        let min = parseInt($(this).attr('min'));
-        let val = parseInt($(this).val());
-
-        if(val > max || val < min) {
-            $(this).closest('tr').find('button.btn-aceptar-editar-reserva-actividad').prop('disabled', true);
-        }
-        else {
-          $(this).closest('tr').find('button.btn-aceptar-editar-reserva-actividad').prop('disabled', false);  
-        }
-    })
-
-    $(document).on('click', '.btn-cancelar-editar-reserva-actividad', function(e){
-
-        e.preventDefault();
-
-        $(this).closest('tr').find('span.plazas-texto').removeClass('d-none');
-        $(this).closest('tr').find('.plazas-stepper').addClass('d-none');
-        $(this).closest('tr').find('.btn-acciones-editar').addClass('d-none');
-
-    })
-
-    $(document).on('click', '.btn-aceptar-editar-reserva-actividad', function(e){
-
-        e.preventDefault()
-        let valor = $(this).closest('tr').find('input').val()
-        let reserva = $(this).closest('tr').data('reserva');
-        let campo = $(this);
+        let idReserva = parseInt($(this).closest('tr').data('reserva'))
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/editarReservaActividad`,
-            data: {plazas: valor, reserva: reserva},
+            url: `${BASE_URL}index.php/obtenerPersonas`,
+            data: { id_reserva: idReserva },
             dataType: "JSON",
             success: function (response) {
-
-                console.log(response)
                 
-                if(response.success == true){
-                    
-                    campo.closest('tr').find('span.plazas-texto').text(valor)
-                    campo.closest('tr').find('span.plazas-texto').removeClass('d-none');
-                    campo.closest('tr').find('.plazas-stepper').addClass('d-none');
-                    campo.closest('tr').find('.btn-acciones-editar').addClass('d-none');
+                if(response.success == true) {
 
-                    $(`.grid-actividades .card-actividad[data-index='${response.actividad.id_actividades}'] .card-actividad-meta`).children('div').eq(2).html((parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"></i>${response.actividad.plazas_ocupadas} inscritos</div>`);
+                    let nombre = parseInt(response.actividad['0']['nombre_usuario']);
+                    let apellidos = parseInt(response.actividad['0']['apellidos_usuario']);
+                    let fechaNacimiento = parseInt(response.actividad['0']['fecha_nacimiento_usuario']);
+                    let edadMinima = (response.actividad['0']['edad_minima_usuario'] !== null && response.actividad['0']['edad_minima_usuario'] !== '') ? parseInt(response.actividad['0']['edad_minima_usuario']) : 0;
+                    let dni = parseInt(response.actividad['0']['dni_usuario']);
+                    let email = parseInt(response.actividad['0']['email_usuario']);
+                    let telefono = parseInt(response.actividad['0']['telefono_usuario']);
+                    let direccion = parseInt(response.actividad['0']['direccion_usuario']);
 
+                    $('#modalEditarReservaAdmin .informacion-reserva h3').text(response.actividad['0']['nombre']);
+                    $('#modalEditarReservaAdmin .informacion-reserva p.descripcion').text(response.actividad['0']['descripcion']);
+                    $('#modalEditarReservaAdmin .informacion-reserva p.fecha-actividad').text(response.actividad['0']['fecha_actividad']);
+                    $('#modalEditarReservaAdmin .informacion-reserva p.fecha-actividad').text(response.actividad['0']['fecha_actividad']);
+                    $('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-reserva').text(parseInt(response.reservas.length));
+                    $('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-libres').text((parseInt(response.actividad['0']['tiene_aforo']) === 1) ? '/' + parseInt(response.actividad['0']['aforo']) : ''); 
+
+                    let article = ''
+                    let cont
+                    response.reservas.map(function(reserva, index){
+                        
+                        let cont = index + 1
+
+                        article = crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, cont);
+                        $('#modalEditarReservaAdmin .personas-editar-reserva').append(article);
+
+                        if (nombre === 1) $('#nombre_' + cont).val(reserva['nombre_usuario']);
+                        if (apellidos === 1) $('#apellidos_' + cont).val(reserva['apellidos_usuario']);
+                        if (fechaNacimiento === 1) $('#fecha-nacimiento_' + cont).val(reserva['fecha_nacimiento_usuario']);
+                        if (dni === 1) $('#dni_' + cont).val(reserva['dni_usuario']);
+                        if (email === 1) $('#email_' + cont).val(reserva['email_usuario']);
+                        if (telefono === 1) $('#telefono_' + cont).val(reserva['telefono_usuario']);
+                        if (direccion === 1) $('#direccion_' + cont).val(reserva['direccion_usuario']);
+
+                    })
+
+                    $('#modalEditarReservaAdmin').modal('show');
                 }
-            },
-            error: function (xhr, status, error) {
-                console.error('Error AJAX:', status, error);
-                console.error('Respuesta cruda:', xhr.responseText);
             }
         });
     })
+
+
+
+    // $(document).on('click', '.plaza-btn-menos', function(e){
+
+    //     e.preventDefault()
+    //     let valor = parseInt($(this).closest('div').find('input').val());
+    //     let max = parseInt($(this).closest('div').find('input').attr('max'));
+        
+    //     if(valor > 1) {
+    //         $(this).closest('div').find('input').val((valor - 1))
+            
+    //         if(valor < max){
+    //             $(this).closest('tr').find('button.btn-aceptar-editar-reserva-actividad').prop('disabled', false);  
+    //         }
+    //     }
+
+    // })
+
+    // $(document).on('click', '.plaza-btn-mas', function(e){
+
+    //     e.preventDefault()
+        
+    //     let valor = parseInt($(this).closest('div').find('input').val());
+    //     let max = parseInt($(this).closest('div').find('input').attr('max'));
+
+
+    //     if(valor < max || isNaN(max)) {
+    //         $(this).closest('div').find('input').val((valor + 1))
+            
+    //         if(valor > -1) {
+    //             $(this).closest('tr').find('button.btn-aceptar-editar-reserva-actividad').prop('disabled', false);  
+    //         }
+    //     }
+
+    // })
+
+    // $(document).on('input', '.input-plazas', function(e){
+
+    //     e.preventDefault();
+    //     let max = parseInt($(this).attr('max'));
+    //     let min = parseInt($(this).attr('min'));
+    //     let val = parseInt($(this).val());
+
+    //     if(val > max || val < min) {
+    //         $(this).closest('tr').find('button.btn-aceptar-editar-reserva-actividad').prop('disabled', true);
+    //     }
+    //     else {
+    //       $(this).closest('tr').find('button.btn-aceptar-editar-reserva-actividad').prop('disabled', false);  
+    //     }
+    // })
+
+    // $(document).on('click', '.btn-cancelar-editar-reserva-actividad', function(e){
+
+    //     e.preventDefault();
+
+    //     $(this).closest('tr').find('span.plazas-texto').removeClass('d-none');
+    //     $(this).closest('tr').find('.plazas-stepper').addClass('d-none');
+    //     $(this).closest('tr').find('.btn-acciones-editar').addClass('d-none');
+
+    // })
+
+    // $(document).on('click', '.btn-aceptar-editar-reserva-actividad', function(e){
+
+    //     e.preventDefault()
+    //     let valor = $(this).closest('tr').find('input').val()
+    //     let reserva = $(this).closest('tr').data('reserva');
+    //     let campo = $(this);
+
+    //     $.ajax({
+    //         type: "POST",
+    //         url: `${BASE_URL}index.php/editarReservaActividad`,
+    //         data: {plazas: valor, reserva: reserva},
+    //         dataType: "JSON",
+    //         success: function (response) {
+
+    //             console.log(response)
+                
+    //             if(response.success == true){
+                    
+    //                 campo.closest('tr').find('span.plazas-texto').text(valor)
+    //                 campo.closest('tr').find('span.plazas-texto').removeClass('d-none');
+    //                 campo.closest('tr').find('.plazas-stepper').addClass('d-none');
+    //                 campo.closest('tr').find('.btn-acciones-editar').addClass('d-none');
+
+    //                 $(`.grid-actividades .card-actividad[data-index='${response.actividad.id_actividades}'] .card-actividad-meta`).children('div').eq(2).html((parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"></i>${response.actividad.plazas_ocupadas} inscritos</div>`);
+
+    //             }
+    //         },
+    //         error: function (xhr, status, error) {
+    //             console.error('Error AJAX:', status, error);
+    //             console.error('Respuesta cruda:', xhr.responseText);
+    //         }
+    //     });
+    // })
 
     $(document).on('click', '#modalCrearActividad .btn-info-usuario-actividad', function(e){
 
@@ -1884,7 +1950,7 @@ $(document).ready(function () {
 
                 });
 
-                if (campo.id === 'fecha_nacimiento' && edadMinima > 0) {
+                if (campo.id === 'fecha-nacimiento' && edadMinima > 0) {
                     input.attr('max', calcularFechaMaximaPorEdad(edadMinima));
                 }
 

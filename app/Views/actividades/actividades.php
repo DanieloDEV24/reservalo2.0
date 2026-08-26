@@ -99,3 +99,4 @@
 <?= $modalInscritosActividad ?>
 <?= $modalEliminarReservaActividad ?>
 <?= $modalInformacionUsuarioActividad ?>
+<?= $modalEditarReservaAdmin ?>
