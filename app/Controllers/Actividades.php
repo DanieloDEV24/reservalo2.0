@@ -818,8 +818,92 @@ class Actividades extends BaseController
         }
     }
 
-
     public function editarReservaActividad(){
+        $actividadesModel = new actividadesModel();
+        $loginModel = new loginModel();
+        $reservasModel = new reservasModel();
+        $post = $this->request->getPost();
+
+        // {personas: personas, plazas: personas.length, pedido: parseInt($('#modalEditarReservaAdmin').data('pedido')), actividad: parseInt($('#modalEditarReservaAdmin').data('actividad'))}
+
+        if(!empty($post)){
+            $personas = $post["personas"];
+            $plazas = intval($post["plazas"]);
+            $pedido = intval($post["pedido"]);
+            $actividad = intval($post["actividad"]);
+            $usuario = $actividadesModel->getIdUsuarioPorActividadYPedido($actividad, $pedido);
+            $fecha = new DateTime(); // fecha/hora actual como objeto
+            $fechaString = $fecha->format('Y-m-d H:i:s');
+
+            $datos_actividad = $actividadesModel->getDataActividad($actividad)[0];
+
+            $precio_reserva = (intval($datos_actividad["tiene_precio"]) === 1 ? $plazas * floatval($datos_actividad['precio']) : 0);
+
+            $fecha_hora_actual = date('Y-m-d H:i:s');
+            $dt = new DateTime($fecha_hora_actual);
+
+            $anio    = $dt->format('Y');
+            $mes     = $dt->format('m');
+            $dia     = $dt->format('d');
+            $hora    = $dt->format('H');
+            $minuto  = $dt->format('i');
+            $segundo = $dt->format('s');
+
+            $actividadesModel->borrarReservasPorActividadYPedido($actividad, $pedido);
+            
+            if(((intval($datos_actividad["tiene_aforo"]) === 1) && (intval($datos_actividad["plazas_ocupadas"]) + $plazas) <= (intval($datos_actividad["aforo"]))) || (intval($datos_actividad["tiene_aforo"]) === 0)) {
+                
+                foreach($personas as $persona) {
+                    
+                    $actividadesModel->hacerReservaActividad([
+                        "id_usuario" => $usuario, 
+                        "id_actividad" => $actividad, 
+                        "id_pedido" => $pedido, 
+                        "plazas_reserva" => $plazas, 
+                        "fecha_reserva" => $fechaString, 
+                        "pagada" => 0, 
+                        "precio_reserva" => $precio_reserva, 
+                        "nombre_usuario" => ($persona["nombre"] === "") ? null : $persona["nombre"],
+                        "apellidos_usuario" => ($persona["apellidos"] === "") ? null : $persona["apellidos"],
+                        "dni_usuario" => ($persona["dni"] === "") ? null : $persona["dni"],
+                        "fecha_nacimiento_usuario" => ($persona["fechaNacimiento"] === "") ? null : $persona["fechaNacimiento"],
+                        "edad_minima_usuario" => ($persona["edadMinima"] === "") ? null : $persona["edadMinima"],
+                        "email_usuario" => ($persona["email"] === "") ? null : $persona["email"],
+                        "telefono_usuario" => ($persona["telefono"] === "") ? null : $persona["telefono"],
+                        "direccion_usuario" => ($persona["direccion"] === "") ? null : $persona["direccion"],
+                    ]);
+                }
+
+                $actividadesModel->actualizarPlazasActividad($actividad, $plazas, $datos_actividad["plazas_ocupadas"]);
+                $actividad_actualizada = $actividadesModel->getDataActividad($actividad);
+
+                echo json_encode([
+                    "success" => true,
+                    "message" => "La reserva se ha realizado correctamente",
+                    "actividad" => $actividad_actualizada[0],
+                    "pedido" => $pedido
+                ]);
+
+                return;
+
+            }
+            else {
+
+                $actividad_actualizada = $actividadesModel->getDataActividad($actividad);
+
+                echo json_encode([
+                    "success" => false,
+                    "message" => "El numero de plazas es superior al que se puede seleccionar", 
+                    "actividad" => $actividad_actualizada[0]
+                ]);
+
+                return;
+
+            }
+        }
+    }
+
+    public function editarReservaActividad2(){
 
         $actividadesModel = new actividadesModel();
         $loginModel = new loginModel();
@@ -973,17 +1057,17 @@ class Actividades extends BaseController
 
         if(!empty($post)){
 
-            $id_reserva = intval($post["id_reserva"]);
-            $id_pedido = intval($actividadesModel->getReservaById($id_reserva)[0]["id_pedido"]);
-            $id_actividad = intval($actividadesModel->getReservaById($id_reserva)[0]["id_actividad"]);
+            $pedido = intval($post["pedido"]);
+            $actividad = intval($post["actividad"]);
 
-            $total_reservas = $actividadesModel->getReservaByPedido($id_pedido);
-            $actividad = $actividadesModel->getDataActividad($id_actividad);
+            $total_reservas = $actividadesModel->getReservaByPedido($pedido);
+            $data_actividad = $actividadesModel->getDataActividad($actividad);
             
             echo json_encode([
                 'success' => true, 
                 'reservas' => $total_reservas, 
-                'actividad' => $actividad
+                'actividad' => $data_actividad, 
+                'pedido' => $pedido
             ]);
 
             return;

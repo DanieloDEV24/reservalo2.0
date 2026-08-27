@@ -547,6 +547,44 @@ input.selector-plazas-valor::-webkit-inner-spin-button {
     border-color: red;
 }
 
+.informacion-reserva {
+    border: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    padding: 2rem;
+}
+
+.informacion-reserva h3, .informacion-reserva p {
+    margin-bottom: .75rem;
+}
+
+.informacion-reserva p.contador-plazas {
+    background-color: #32cccc30;
+    border: 1px solid #32cccc;
+    padding: .5rem 1rem;
+    border-radius: 12px;
+    color: #209191;
+}
+
+.informacion-reserva p:last-of-type {
+    margin: 0;
+}
+
+.informacion-reserva p.descripcion {
+    opacity: .7;
+}
+
+#modalEditarReservaAdmin .personas-editar-reserva article {
+    border: 1px solid #e2e8f0;
+    background-color: #f8fafc;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-top: 2rem;
+}
+
+
+
+
 /* #modalCrearTipoActividad {
     z-index: 1060;
 }

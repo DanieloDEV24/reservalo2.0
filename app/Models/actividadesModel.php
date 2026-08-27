@@ -459,4 +459,36 @@ class actividadesModel extends Model
 
         return $plazasLibres >= $plazas_solicitadas;
     }
+
+
+    public function getIdUsuarioPorActividadYPedido(int $id_actividad, int $id_pedido)
+    {
+        $db = \Config\Database::connect('BDReservalo2');
+
+        $reserva = $db->table('reservas_actividades')
+            ->select('id_usuario')
+            ->where('id_actividad', $id_actividad)
+            ->where('id_pedido', $id_pedido)
+            ->get()
+            ->getRowArray();
+
+        if (!$reserva) {
+            return null; // no existe reserva con esa combinación
+        }
+
+        return (int) $reserva['id_usuario'];
+    }
+
+
+    public function borrarReservasPorActividadYPedido($id_actividad, $id_pedido)
+    {
+        $db = \Config\Database::connect('BDReservalo2');
+
+        $db->table('reservas_actividades')
+            ->where('id_actividad', $id_actividad)
+            ->where('id_pedido', $id_pedido)
+            ->delete();
+
+        return $db->affectedRows();
+    }
 }

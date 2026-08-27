@@ -1518,7 +1518,7 @@ $(document).ready(function () {
                     response.inscritosActividad.map(function(inscrito){
                         $('#modalInscritosActividad table tbody').append(
                             `
-                            <tr data-reserva='${inscrito.id_reserva_actividad}' class="${(parseInt(inscrito.pagada) === 1) ? 'table-success' : '' }">
+                            <tr data-pedido='${inscrito.id_pedido}' data-actividad='${inscrito.id_actividad}' class="${(parseInt(inscrito.pagada) === 1) ? 'table-success' : '' }">
                                 <td>${cont}</td>
                                 <td>${inscrito.email}</td>
                                 <td>${inscrito.telf}</td>
@@ -1652,12 +1652,13 @@ $(document).ready(function () {
         e.preventDefault();
         // Cierra la edicion de cualquier otra fila que estuviera abierta
 
-        let idReserva = parseInt($(this).closest('tr').data('reserva'))
+        let pedido = parseInt($(this).closest('tr').data('pedido'))
+        let actividad = parseInt($(this).closest('tr').data('actividad'))
 
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/obtenerPersonas`,
-            data: { id_reserva: idReserva },
+            data: { pedido: pedido, actividad: actividad },
             dataType: "JSON",
             success: function (response) {
                 
@@ -1674,30 +1675,37 @@ $(document).ready(function () {
 
                     $('#modalEditarReservaAdmin .informacion-reserva h3').text(response.actividad['0']['nombre']);
                     $('#modalEditarReservaAdmin .informacion-reserva p.descripcion').text(response.actividad['0']['descripcion']);
-                    $('#modalEditarReservaAdmin .informacion-reserva p.fecha-actividad').text(response.actividad['0']['fecha_actividad']);
-                    $('#modalEditarReservaAdmin .informacion-reserva p.fecha-actividad').text(response.actividad['0']['fecha_actividad']);
+                    $('#modalEditarReservaAdmin .informacion-reserva p.fecha-actividad').text(new Date(response.actividad['0']['fecha_actividad'] + 'T00:00:00').toLocaleDateString('es-ES', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    }));
                     $('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-reserva').text(parseInt(response.reservas.length));
                     $('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-libres').text((parseInt(response.actividad['0']['tiene_aforo']) === 1) ? '/' + parseInt(response.actividad['0']['aforo']) : ''); 
 
+                    $('#modalEditarReservaAdmin .personas-editar-reserva').empty();
                     let article = ''
                     let cont
                     response.reservas.map(function(reserva, index){
                         
                         let cont = index + 1
 
-                        article = crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, cont);
+                        article = crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, cont, true, reserva["id_usuario"]);
                         $('#modalEditarReservaAdmin .personas-editar-reserva').append(article);
 
-                        if (nombre === 1) $('#nombre_' + cont).val(reserva['nombre_usuario']);
-                        if (apellidos === 1) $('#apellidos_' + cont).val(reserva['apellidos_usuario']);
-                        if (fechaNacimiento === 1) $('#fecha-nacimiento_' + cont).val(reserva['fecha_nacimiento_usuario']);
-                        if (dni === 1) $('#dni_' + cont).val(reserva['dni_usuario']);
-                        if (email === 1) $('#email_' + cont).val(reserva['email_usuario']);
-                        if (telefono === 1) $('#telefono_' + cont).val(reserva['telefono_usuario']);
-                        if (direccion === 1) $('#direccion_' + cont).val(reserva['direccion_usuario']);
+                        if (nombre === 1) $('#nombre_' + cont).val(reserva['nombre_usuario']).prop('required', false).prop('readonly', true);
+                        if (apellidos === 1) $('#apellidos_' + cont).val(reserva['apellidos_usuario']).prop('required', false).prop('readonly', true);
+                        if (fechaNacimiento === 1) $('#fecha-nacimiento_' + cont).val(reserva['fecha_nacimiento_usuario']).prop('required', false).prop('readonly', true);
+                        if (dni === 1) $('#dni_' + cont).val(reserva['dni_usuario']).prop('required', false).prop('readonly', true);
+                        if (email === 1) $('#email_' + cont).val(reserva['email_usuario']).prop('required', false).prop('readonly', true);
+                        if (telefono === 1) $('#telefono_' + cont).val(reserva['telefono_usuario']).prop('required', false).prop('readonly', true);
+                        if (direccion === 1) $('#direccion_' + cont).val(reserva['direccion_usuario']).prop('required', false).prop('readonly', true);
 
                     })
 
+                    $('#modalEditarReservaAdmin').attr('data-pedido', parseInt(response.pedido));
+                    $('#modalEditarReservaAdmin').attr('data-actividad', parseInt(response.actividad['0']['id_actividades']));
                     $('#modalEditarReservaAdmin').modal('show');
                 }
             }
@@ -1705,6 +1713,206 @@ $(document).ready(function () {
     })
 
 
+    $(document).on('click', '#modalEditarReservaAdmin .eliminar-persona-reserva-actividad', function(e){
+
+        e.preventDefault();
+        $(this).closest('article').remove();
+        $('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-reserva').text((parseInt($('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-reserva').text())-1))
+
+    })
+
+
+    $(document).on('input', '#modalEditarReservaAdmin .personas-editar-reserva input', function(e){
+        
+        e.preventDefault();
+        const regexDniNie = /^(?:\d{8}[A-Z]|[XYZ]\d{7}[A-Z])$/;
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const regexTelefono = /^[6789]\d{8}$/;
+
+        if($(this).data('campo') === 'fecha-nacimiento' && new Date($(this).val()) > new Date($(this).attr('max'))){
+             $(this).addClass('is-invalid');
+        }
+        else if($(this).data('campo') === 'dni' && !regexDniNie.test($(this).val().toUpperCase().trim())){
+            $(this).addClass('is-invalid');
+            
+        }
+        else if($(this).data('campo') === 'email' && !regexEmail.test($(this).val().trim())){
+            $(this).addClass('is-invalid');
+            
+        }
+        else if($(this).data('campo') === 'telefono' && !regexTelefono.test($(this).val().replace(/[\s-]/g, ''))){
+            $(this).addClass('is-invalid');
+            
+        }else if(($(this).data('campo') === 'nombre' || $(this).data('campo') === 'apellidos' || $(this).data('campo') === 'direccion' ) && $(this).val() === "" ){
+            $(this).addClass('is-invalid');
+        }
+        else{
+            $(this).removeClass('is-invalid');
+        }
+        
+
+    })
+
+
+    $(document).on('click', '#modalEditarReservaAdmin .crear-persona-editar-reserva-actividad', function(e){
+
+        let idActividad = parseInt($('#modalEditarReservaAdmin').data('actividad'));
+
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: `${BASE_URL}index.php/getDataActividad`,
+            data: {idActividad: idActividad},
+            dataType: "JSON",
+            success: function (response) {
+              if(response.success === true){
+                let tieneAforo = parseInt(response.actividad.tiene_aforo);
+                let aforo = tieneAforo === 1 ? parseInt(response.actividad.aforo) : null
+                let plazasOcupadas = parseInt(response.actividad.plazas_ocupadas)
+
+                let nombre = parseInt(response.actividad['nombre_usuario']);
+                let apellidos = parseInt(response.actividad['apellidos_usuario']);
+                let fechaNacimiento = parseInt(response.actividad['fecha_nacimiento_usuario']);
+                let edadMinima = (response.actividad['edad_minima_usuario'] !== null && response.actividad['edad_minima_usuario'] !== '') ? parseInt(response.actividad['edad_minima_usuario']) : 0;
+                let dni = parseInt(response.actividad['dni_usuario']);
+                let email = parseInt(response.actividad['email_usuario']);
+                let telefono = parseInt(response.actividad['telefono_usuario']);
+                let direccion = parseInt(response.actividad['direccion_usuario']);
+
+                if(aforo !== null && (plazasOcupadas + 1) > aforo){
+                    
+                    $('#modalEditarReservaAdmin .alert-crear-persona-editar-actividad .errores ul').empty()
+
+                    $('#modalEditarReservaAdmin .alert-crear-persona-editar-actividad .errores ul').append(`<li>No hay plazas suficientes</li>`)
+                    
+
+                    $('#modalEditarReservaAdmin .contenedor-alert-crear-persona-editar-actividad').removeClass('d-none');
+                    $('#modalEditarReservaAdmin .alert-crear-persona-editar-actividad').show();
+
+                    setTimeout(function() {
+                        $('.paginaActividad .contenedor-alert-reserva-actividad').addClass('d-none');
+                        $('.paginaActividad .alert-errores-reservar-actividad').hide();
+                    }, 3000);
+                }
+                else {
+                    let numPersona = parseInt($('#modalEditarReservaAdmin .personas-editar-reserva article').last().data('persona'));
+                    let articulo = crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, (numPersona + 1), true);
+                    $('#modalEditarReservaAdmin .personas-editar-reserva').append(articulo)
+                    $('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-reserva').text((parseInt($('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-reserva').text())+1))
+                }
+              }  
+            }
+        });
+
+    })
+
+    $(document).on('click', '#modalEditarReservaAdmin #btn-guardar-cambios-reserva-actividad-admin', function(e){
+
+        e.preventDefault();
+
+        let errores = [];
+        const regexDniNie = /^(?:\d{8}[A-Z]|[XYZ]\d{7}[A-Z])$/;
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const regexTelefono = /^[6789]\d{8}$/;
+
+        let personas = [];
+        
+        let cont = 0;
+        $('#modalEditarReservaAdmin .personas-editar-reserva input').map(function(){
+            let input = $(this);
+            if(input.val() === ""){
+                cont++;
+                input.addClass('is-invalid');
+            } else {
+
+                if(input.data('campo') === 'fecha-nacimiento' && new Date(input.val()) > new Date(input.attr('max'))){
+                    input.addClass('is-invalid');
+                    errores.push({campo: 'fecha de nacimiento', mensaje: 'No respeta la edad indicada'})
+                }
+                else if(input.data('campo') === 'dni' && !regexDniNie.test(input.val().toUpperCase().trim())){
+                    input.addClass('is-invalid');
+                    errores.push({campo: 'DNI/NIE', mensaje: 'Debe introducir un dni o nie correcto'})
+                }
+                else if(input.data('campo') === 'email' && !regexEmail.test(input.val().trim())){
+                    input.addClass('is-invalid');
+                    errores.push({campo: 'email', mensaje: 'Debe introducir un email correcto'})
+                }
+                else if(input.data('campo') === 'telefono' && !regexTelefono.test(input.val().replace(/[\s-]/g, ''))){
+                    input.addClass('is-invalid');
+                    errores.push({campo: 'teléfono', mensaje: 'Debe introducir un número de teléfono correcto'})
+                }
+                else{
+                    input.removeClass('is-invalid');
+                }
+            }
+        })
+
+        if(cont > 0){
+            errores.push({campo: 'Alguno', mensaje: 'Debe completar toda la información'})
+        }
+
+        if(errores.length === 0){
+
+            $('#modalEditarReservaAdmin .personas-editar-reserva article').map(function(){
+                let article = $(this);
+                personas.push({
+                    nombre: article.find('input[data-campo="nombre"]').length ? article.find('input[data-campo="nombre"]').val() : null,
+                    apellidos: article.find('input[data-campo="apellidos"]').length ? article.find('input[data-campo="apellidos"]').val() : null,
+                    fechaNacimiento: article.find('input[data-campo="fecha-nacimiento"]').length ? article.find('input[data-campo="fecha-nacimiento"]').val() : null,
+                    edadMinima: article.data('data-edad') !== undefined ? parseInt(article.data('data-edad')) : null,
+                    dni: article.find('input[data-campo="dni"]').length ? article.find('input[data-campo="dni"]').val() : null,
+                    email: article.find('input[data-campo="email"]').length ? article.find('input[data-campo="email"]').val() : null,
+                    telefono: article.find('input[data-campo="telefono"]').length ? parseInt(article.find('input[data-campo="telefono"]').val()) : null,
+                    direccion: article.find('input[data-campo="direccion"]').length ? article.find('input[data-campo="direccion"]').val() : null,
+                })
+            })
+            
+            $.ajax({
+                type: "POST",
+                url: `${BASE_URL}index.php/editarReservaActividad`,
+                data: {personas: personas, plazas: personas.length, pedido: parseInt($('#modalEditarReservaAdmin').data('pedido')), actividad: parseInt($('#modalEditarReservaAdmin').data('actividad'))},
+                dataType: "JSON",
+                success: function (response) {
+                    if(response.success === true){
+                        $('#modalEditarReservaAdmin').modal('hide');
+                    }
+                    else {
+                        $('#modalEditarReservaAdmin .alert-crear-persona-editar-actividad .errores ul').empty()
+
+                        $('#modalEditarReservaAdmin .alert-crear-persona-editar-actividad .errores ul').append(`<li>No hay plazas suficientes</li>`)
+                        
+
+                        $('#modalEditarReservaAdmin .contenedor-alert-crear-persona-editar-actividad').removeClass('d-none');
+                        $('#modalEditarReservaAdmin .alert-crear-persona-editar-actividad').show();
+
+                        setTimeout(function() {
+                            $('.paginaActividad .contenedor-alert-reserva-actividad').addClass('d-none');
+                            $('.paginaActividad .alert-errores-reservar-actividad').hide();
+                        }, 3000);
+                    }
+                }
+            });
+        }
+        else {
+
+            $('#modalEditarReservaAdmin .alert-crear-persona-editar-actividad .errores ul').empty()
+
+            errores.map(function(e){
+                $('#modalEditarReservaAdmin .alert-crear-persona-editar-actividad .errores ul').append(`<li>${e.mensaje}</li>`)
+            })
+            
+
+            $('#modalEditarReservaAdmin .contenedor-alert-crear-persona-editar-actividad').removeClass('d-none');
+            $('#modalEditarReservaAdmin .alert-crear-persona-editar-actividad').show();
+
+            setTimeout(function() {
+                $('.paginaActividad .contenedor-alert-reserva-actividad').addClass('d-none');
+                $('.paginaActividad .alert-errores-reservar-actividad').hide();
+            }, 3000);
+        }
+        
+
+    })
 
     // $(document).on('click', '.plaza-btn-menos', function(e){
 
@@ -1917,7 +2125,7 @@ $(document).ready(function () {
         return fechaMax.toISOString().split('T')[0]; // formato YYYY-MM-DD
     }
 
-    function crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, numeroPersona) {
+    function crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, numeroPersona, editarReserva = false, numeroReserva = '') {
 
         let campos = [
             { activo: nombre,          id: 'nombre',            label: 'Nombre',              tipo: 'text'  },
@@ -1929,9 +2137,14 @@ $(document).ready(function () {
             { activo: direccion,       id: 'direccion',         label: 'Dirección',           tipo: 'text'  },
         ];
 
-        let article = $('<article>').addClass('info-adicional-persona').attr('data-persona', numeroPersona);
+        let article = $('<article>').addClass('info-adicional-persona').attr('data-persona', numeroPersona).attr('data-usuario', numeroReserva );
 
-        $('<p>').addClass('titulo-persona').text('Persona ' + numeroPersona).appendTo(article);
+        $(`
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="titulo-persona">Persona ${numeroPersona}</p>
+                ${(editarReserva) ? '<button class="eliminar-persona-reserva-actividad btn btn-danger"><i class="bi bi-trash3"></i></button>' : '' }
+            </div>
+        `).appendTo(article);
 
         campos.map(function(campo) {
             if (parseInt(campo.activo) === 1) {
