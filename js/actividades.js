@@ -1530,7 +1530,7 @@ $(document).ready(function () {
                                             <i class="bi bi-three-dots-vertical"></i>
                                         </button>
                                         <ul class="dropdown-menu">
-                                            <li><a class="dropdown-item ${(parseInt(inscrito.pagada) === 0 ? 'btn-pagar-inscrito' : 'btn-deshacer-pago-inscrito')}" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="${(parseInt(inscrito.pagada) === 0) ? 'bi bi-check2-square' : 'bi bi-x-square'}"></i> ${(parseInt(inscrito.pagada) === 0) ? 'Confirmar' : 'Deshacer confirmación'}</a></li>
+                                            <li><a class="dropdown-item ${(parseInt(inscrito.pagada) === 0 ? 'btn-pagar-inscrito' : 'btn-deshacer-pago-inscrito')}"  href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="${(parseInt(inscrito.pagada) === 0) ? 'bi bi-check2-square' : 'bi bi-x-square'}"></i> ${(parseInt(inscrito.pagada) === 0) ? 'Confirmar' : 'Deshacer confirmación'}</a></li>
                                             <li><a class="dropdown-item text-danger btn-anular-inscrito" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="bi bi-trash3"></i> Anular</a></li>
                                             <li><a class="dropdown-item btn-editar-inscrito" href="#" data-reserva="${inscrito.id_reserva_actividad}"><i class="bi bi-pencil-square"></i> Editar</a></li>
                                         </ul>
@@ -1810,6 +1810,8 @@ $(document).ready(function () {
 
         e.preventDefault();
 
+        let button = $(this)
+
         let errores = [];
         const regexDniNie = /^(?:\d{8}[A-Z]|[XYZ]\d{7}[A-Z])$/;
         const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -1875,6 +1877,9 @@ $(document).ready(function () {
                 success: function (response) {
                     if(response.success === true){
                         $('#modalEditarReservaAdmin').modal('hide');
+                        if(button.data('place') === 'misReservas') {
+                            window.location.reload();
+                        }
                     }
                     else {
                         $('#modalEditarReservaAdmin .alert-crear-persona-editar-actividad .errores ul').empty()

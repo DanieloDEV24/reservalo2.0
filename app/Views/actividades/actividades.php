@@ -1,3 +1,4 @@
+<?php use CodeIgniter\I18n\Time; ?>
 <div class="actividades">
     <input type="hidden" id="rol_usuario" value="<?= (isset($usuario)) ? $usuario["id_rol"] : '' ?>">
     <input type="hidden" id="id_usuario" value="<?= (isset($usuario)) ? $usuario["id_usuario"] : '' ?>">
@@ -64,6 +65,22 @@
                                 <?= $estaCancelada ? 'Cancelada' : ($estaFinalizada ? 'Finalizada' : 'Ver más') ?>
                             </a>
                         </div>
+                        <?php
+                            $fechaLanzamiento = Time::createFromFormat(
+                                'Y-m-d H:i:s',
+                                $actividad['fecha_limite'] . ' ' . $actividad['hora_limite']
+                            ); 
+
+                            $fechaActividad= Time::createFromFormat(
+                                'Y-m-d H:i:s',
+                                $actividad['fecha_actividad'] . ' ' . $actividad['hora_actividad']
+                            );
+                        ?>
+                        <?php if($fechaActividad->isBefore(Time::now())): ?>
+                            <span class="no-inscripciones finalizada">Actividad finalizada</span>
+                        <?php elseif($fechaLanzamiento->isBefore(Time::now())): ?>
+                            <span class="no-inscripciones">Ya no se permiten inscripciones</span>
+                        <?php endif; ?>
                     </div>
                 </div>
             <?php endforeach; ?>

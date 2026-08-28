@@ -45,7 +45,7 @@
                     Cancelar <i class="bi bi-x-lg"></i>
                 </button>
 
-                <button type="button" class="btn btn-primary" id="btn-guardar-cambios-reserva-actividad-admin">
+                <button type="button" class="btn btn-primary" id="btn-guardar-cambios-reserva-actividad-admin" data-place="">
                     Guardar <i class="bi bi-check-lg"></i>
                 </button>
             </div>

@@ -1,3 +1,5 @@
+<?php use CodeIgniter\I18n\Time; ?>
+
 <div class="paginaActividad">
 
     <input type="hidden" id="rol_usuario" value="<?= (isset($usuario)) ? $usuario["id_rol"] : '' ?>">
@@ -77,7 +79,12 @@
                     </div>
                 </div>
             </div>
-            
+            <?php
+                 $fechaLanzamiento = Time::createFromFormat(
+                                        'Y-m-d H:i:s',
+                                        $actividad['fecha_limite'] . ' ' . $actividad['hora_limite']
+                                    ); 
+            ?>
             <?php if(intval($actividad["tiene_precio"]) === 0) : ?>
                 <div class="reserva-plaza mt-5">
                     <div class="row">
@@ -86,25 +93,26 @@
                             <p class="descripcion-reserva-plaza">Plazo de inscripción hasta el <span id="fecha-limite-actividad"><?= date('d/m/Y', strtotime($actividad["fecha_limite"])) ?></span> a las <span id="hora-limite-actividad"><?= substr($actividad["hora_limite"], 0, 5) ?>h.</span></p>
                         </div>
                     </div>
+                    <?php if(!$fechaLanzamiento->isBefore(Time::now())): ?>
+                        <div class="selector-plazas">
+                            <span class="selector-plazas-label">Número de plazas</span>
+                            <div class="selector-plazas-controles">
+                                <button type="button" class="btn-plazas" id="btn-restar-plaza" aria-label="Restar plaza">−</button>
+                                <input type="number" class="selector-plazas-valor" id="num-plazas" value="1" min="1" max="<?= intval($actividad["tiene_aforo"]) === 1 ? $actividad["aforo"] : '' ?>" inputmode="numeric">
+                                <button type="button" class="btn-plazas" id="btn-sumar-plaza" aria-label="Sumar plaza">+</button>
+                            </div>
 
-                    <div class="selector-plazas">
-                        <span class="selector-plazas-label">Número de plazas</span>
-                        <div class="selector-plazas-controles">
-                            <button type="button" class="btn-plazas" id="btn-restar-plaza" aria-label="Restar plaza">−</button>
-                            <input type="number" class="selector-plazas-valor" id="num-plazas" value="1" min="1" max="<?= intval($actividad["tiene_aforo"]) === 1 ? $actividad["aforo"] : '' ?>" inputmode="numeric">
-                            <button type="button" class="btn-plazas" id="btn-sumar-plaza" aria-label="Sumar plaza">+</button>
+                            <input type="hidden" name="" id="num-aforo-actividad" value="<?= intval($actividad["tiene_aforo"]) === 1 ? (intval($actividad["aforo"]) - intval($actividad["plazas_ocupadas"])) : '' ?>">
                         </div>
 
-                        <input type="hidden" name="" id="num-aforo-actividad" value="<?= intval($actividad["tiene_aforo"]) === 1 ? (intval($actividad["aforo"]) - intval($actividad["plazas_ocupadas"])) : '' ?>">
-                    </div>
+                        <hr>
 
-                    <hr>
+                        <div class="precio-ver-actividad">
+                            <input type="hidden" name="" id="precio-actividad" value="<?= intval($actividad["tiene_precio"]) === 1 ? $actividad["precio"] : '' ?>">
+                            <p style="font-size: 18px;">Total</p>
+                            <p id="precio-total-ver-actividad" style="font-size: 20px;"><strong><?= (intval($actividad["tiene_precio"]) === 1) ? $actividad["precio"].'€' : 'Gratis' ?></strong></p>
+                        </div>
 
-                    <div class="precio-ver-actividad">
-                        <input type="hidden" name="" id="precio-actividad" value="<?= intval($actividad["tiene_precio"]) === 1 ? $actividad["precio"] : '' ?>">
-                        <p style="font-size: 18px;">Total</p>
-                        <p id="precio-total-ver-actividad" style="font-size: 20px;"><strong><?= (intval($actividad["tiene_precio"]) === 1) ? $actividad["precio"].'€' : 'Gratis' ?></strong></p>
-                    </div>
 
                     <?php if(intval($usuario['id_rol']) === 2) : ?>
                         <div class="row mt-3">
@@ -200,6 +208,7 @@
                     
                     <button href="#" class="btn btn-reservar-plazas" id="btn-reservar-plaza-actividad" <?= (intval($usuario['id_rol']) === 2) ? 'disabled' : '' ?> <?= (intval($usuario['id_rol']) === 1 && $plazoExpirado) ? 'disabled' : '' ?> >Reservar plaza</button>
                 </div>
+                <?php endif; ?>
             <?php endif;  ?>
             
         </div>

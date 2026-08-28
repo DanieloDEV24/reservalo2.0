@@ -112,6 +112,33 @@
     transition: ease-in-out .3s all;
 }
 
+.card-actividad .no-inscripciones {
+    border-radius: 20px;
+    padding: 1% 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F59827;
+    width: 35%;
+    color: #fff;
+    font-size: .9rem;
+    margin-top: 2rem;
+}
+
+.card-actividad .no-inscripciones.finalizada {
+    border-radius: 20px;
+    padding: 1% 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #F54927;
+    width: 35%;
+    color: #fff;
+    font-size: .9rem;
+    margin-top: 2rem;
+}
+
+
 .card-actividad:hover {
     transform: scale(1.05);
 

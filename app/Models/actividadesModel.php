@@ -236,6 +236,17 @@ class actividadesModel extends Model
             ->update();
     }
 
+    public function actualizarPlazasActividadMenos(int $idActividad, int $plazasNuevas, int $plazasOcupadas){
+
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Actualizamos las plazas ocupadas en la actividad
+        $db->table('actividades')
+            ->where('id_actividades', $idActividad)
+            ->set('plazas_ocupadas', $plazasOcupadas - $plazasNuevas)
+            ->update();
+    }
+
     public function getInscritosActividad(int $actividad) {
 
         // Conexion a la base de datos
@@ -338,19 +349,26 @@ class actividadesModel extends Model
     }
 
 
-    public function getReservasCompletas(int $id_usuario) {
+    public function getReservasCompletas(int $id_usuario ) {
 
         // Conexion a la base de datos
         $db = \Config\Database::connect('BDReservalo2');
 
+        // Subconsulta: nos quedamos con la primera fila (id más bajo) de cada pedido
+        $subQuery = $db->table('reservas_actividades')
+                        ->select('MIN(id_reserva_actividad)')
+                        ->where('id_usuario', $id_usuario)
+                        ->groupBy('id_pedido')
+                        ->getCompiledSelect();
+
         // Obtenemos la tabla principal
         $builder = $db->table('reservas_actividades');
 
-        
         $builder->select('reservas_actividades.*, actividades.*, tipos_actividades.nombre as categoria');
         $builder->join('actividades', 'actividades.id_actividades = reservas_actividades.id_actividad');
         $builder->join('tipos_actividades', 'actividades.tipo_actividad = tipos_actividades.id_tipos_actividades');
         $builder->where('reservas_actividades.id_usuario', $id_usuario);
+        $builder->where("reservas_actividades.id_reserva_actividad IN ($subQuery)", null, false);
 
         $query = $builder->get();
 
@@ -490,5 +508,16 @@ class actividadesModel extends Model
             ->delete();
 
         return $db->affectedRows();
+    }
+
+    public function getNumeroPersonasPedido(int $idPedido, int $idActividad) {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        return $db->table('reservas_actividades')
+                ->where('id_pedido', $idPedido)
+                ->where('id_actividad', $idActividad)
+                ->countAllResults();
     }
 }

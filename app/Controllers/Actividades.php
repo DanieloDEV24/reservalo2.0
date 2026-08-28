@@ -849,6 +849,7 @@ class Actividades extends BaseController
             $minuto  = $dt->format('i');
             $segundo = $dt->format('s');
 
+            $actividadesModel->actualizarPlazasActividadMenos($actividad, intval($actividadesModel->getNumeroPersonasPedido($pedido, $actividad)), intval($datos_actividad['plazas_ocupadas']));
             $actividadesModel->borrarReservasPorActividadYPedido($actividad, $pedido);
             
             if(((intval($datos_actividad["tiene_aforo"]) === 1) && (intval($datos_actividad["plazas_ocupadas"]) + $plazas) <= (intval($datos_actividad["aforo"]))) || (intval($datos_actividad["tiene_aforo"]) === 0)) {
@@ -873,7 +874,8 @@ class Actividades extends BaseController
                         "direccion_usuario" => ($persona["direccion"] === "") ? null : $persona["direccion"],
                     ]);
                 }
-
+                
+                $datos_actividad = $actividadesModel->getDataActividad($actividad)[0];
                 $actividadesModel->actualizarPlazasActividad($actividad, $plazas, $datos_actividad["plazas_ocupadas"]);
                 $actividad_actualizada = $actividadesModel->getDataActividad($actividad);
 

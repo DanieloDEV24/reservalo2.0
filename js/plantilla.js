@@ -758,109 +758,145 @@ $(document).ready(() => {
     $(document).on('click', '.btn-editar-reserva-actividad-mis-reservas', function(e){
 
         e.preventDefault()
-        let reserva = parseInt($(this).closest('.reserva-card').data('reserva'));
+        let pedido = parseInt($(this).closest('.reserva-card').data('pedido'));
+        let actividad = parseInt($(this).closest('.reserva-card').data('actividad'));
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/getDataReserva`,
-            data: {reserva: reserva},
+            url: `${BASE_URL}index.php/obtenerPersonas`,
+            data: { pedido: pedido, actividad: actividad },
             dataType: "JSON",
             success: function (response) {
                 
-                if(response.success == true){
+                if(response.success == true) {
 
-                    $('#modalEditarReservaActividadUsuario #numPlazas').val(response.reserva.plazas_reserva)
-                    $('#modalEditarReservaActividadUsuario #numPlazas').attr('max', (parseInt(response.actividad.tiene_aforo) === 1) ? (parseInt(response.actividad.aforo) - parseInt(response.actividad.plazas_ocupadas)) : '');
-                    $('#modalEditarReservaActividadUsuario #numPlazas').attr('min', 1);
+                    let nombre = parseInt(response.actividad['0']['nombre_usuario']);
+                    let apellidos = parseInt(response.actividad['0']['apellidos_usuario']);
+                    let fechaNacimiento = parseInt(response.actividad['0']['fecha_nacimiento_usuario']);
+                    let edadMinima = (response.actividad['0']['edad_minima_usuario'] !== null && response.actividad['0']['edad_minima_usuario'] !== '') ? parseInt(response.actividad['0']['edad_minima_usuario']) : 0;
+                    let dni = parseInt(response.actividad['0']['dni_usuario']);
+                    let email = parseInt(response.actividad['0']['email_usuario']);
+                    let telefono = parseInt(response.actividad['0']['telefono_usuario']);
+                    let direccion = parseInt(response.actividad['0']['direccion_usuario']);
 
-                    $('#modalEditarReservaActividadUsuario #totalPrecio').text(parseFloat((parseInt(response.actividad.tiene_precio) === 1) ? response.actividad.precio : 0) * parseInt(response.reserva.plazas_reserva));
+                    $('#modalEditarReservaAdmin .informacion-reserva h3').text(response.actividad['0']['nombre']);
+                    $('#modalEditarReservaAdmin .informacion-reserva p.descripcion').text(response.actividad['0']['descripcion']);
+                    $('#modalEditarReservaAdmin .informacion-reserva p.fecha-actividad').text(new Date(response.actividad['0']['fecha_actividad'] + 'T00:00:00').toLocaleDateString('es-ES', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    }));
+                    $('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-reserva').text(parseInt(response.reservas.length));
+                    $('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-libres').text((parseInt(response.actividad['0']['tiene_aforo']) === 1) ? '/' + parseInt(response.actividad['0']['aforo']) : ''); 
 
-                    $('#modalEditarReservaActividadUsuario #precio-actividad').val(parseFloat((parseInt(response.actividad.tiene_precio) === 1) ? response.actividad.precio : 0))
+                    $('#modalEditarReservaAdmin .personas-editar-reserva').empty();
+                    let article = ''
+                    let cont
+                    response.reservas.map(function(reserva, index){
+                        
+                        cont = index + 1
 
-                    $('#modalEditarReservaActividadUsuario #id-reserva-actividad').val(reserva)
+                        article = crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, cont, true, reserva["id_usuario"]);
+                        $('#modalEditarReservaAdmin .personas-editar-reserva').append(article);
 
-                    $('#modalEditarReservaActividadUsuario').modal('show');
+                        if (nombre === 1) $('#nombre_' + cont).val(reserva['nombre_usuario']).prop('required', false).prop('readonly', true);
+                        if (apellidos === 1) $('#apellidos_' + cont).val(reserva['apellidos_usuario']).prop('required', false).prop('readonly', true);
+                        if (fechaNacimiento === 1) $('#fecha-nacimiento_' + cont).val(reserva['fecha_nacimiento_usuario']).prop('required', false).prop('readonly', true);
+                        if (dni === 1) $('#dni_' + cont).val(reserva['dni_usuario']).prop('required', false).prop('readonly', true);
+                        if (email === 1) $('#email_' + cont).val(reserva['email_usuario']).prop('required', false).prop('readonly', true);
+                        if (telefono === 1) $('#telefono_' + cont).val(reserva['telefono_usuario']).prop('required', false).prop('readonly', true);
+                        if (direccion === 1) $('#direccion_' + cont).val(reserva['direccion_usuario']).prop('required', false).prop('readonly', true);
+
+                    })
+
+                    $('#modalEditarReservaAdmin #btn-guardar-cambios-reserva-actividad-admin').attr('data-place', 'misReservas')
+                    $('#modalEditarReservaAdmin').attr('data-pedido', parseInt(response.pedido));
+                    $('#modalEditarReservaAdmin').attr('data-actividad', parseInt(response.actividad['0']['id_actividades']));
+                    $('#modalEditarReservaAdmin').modal('show');
                 }
             }
         });
     })
 
-    $(document).on('input', '#modalEditarReservaActividadUsuario #numPlazas', function(e){
-        e.preventDefault();
+    
 
-        let val = parseInt($(this).val());
-        let max = parseInt($(this).attr('max'));
-        let min = parseInt($(this).attr('min'));
+    // $(document).on('input', '#modalEditarReservaActividadUsuario #numPlazas', function(e){
+    //     e.preventDefault();
 
-        if(max < val || val < min) {
-            $('#modalEditarReservaActividadUsuario #btnGuardarPlazas').prop('disabled', true)
-        }
-        else {
-            $('#modalEditarReservaActividadUsuario #btnGuardarPlazas').prop('disabled', false)
-            $('#modalEditarReservaActividadUsuario #totalPrecio').text(parseFloat( $('#modalEditarReservaActividadUsuario #precio-actividad').val()) * val);
-        }
+    //     let val = parseInt($(this).val());
+    //     let max = parseInt($(this).attr('max'));
+    //     let min = parseInt($(this).attr('min'));
 
-    })
+    //     if(max < val || val < min) {
+    //         $('#modalEditarReservaActividadUsuario #btnGuardarPlazas').prop('disabled', true)
+    //     }
+    //     else {
+    //         $('#modalEditarReservaActividadUsuario #btnGuardarPlazas').prop('disabled', false)
+    //         $('#modalEditarReservaActividadUsuario #totalPrecio').text(parseFloat( $('#modalEditarReservaActividadUsuario #precio-actividad').val()) * val);
+    //     }
 
-    $(document).on('click', '#modalEditarReservaActividadUsuario #btnMenosPlazas', function(e){
-        e.preventDefault();
+    // })
 
-        let val = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').val());
-        let max = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('max'));
-        let min = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('min'));
+    // $(document).on('click', '#modalEditarReservaActividadUsuario #btnMenosPlazas', function(e){
+    //     e.preventDefault();
 
-        if(val > 1) {
-            $('#modalEditarReservaActividadUsuario #numPlazas').val((val - 1))
+    //     let val = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').val());
+    //     let max = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('max'));
+    //     let min = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('min'));
+
+    //     if(val > 1) {
+    //         $('#modalEditarReservaActividadUsuario #numPlazas').val((val - 1))
             
-            if(val < max) {
-                $('#modalEditarReservaActividadUsuario #btnGuardarPlazas').prop('disabled', false);  
-                $('#modalEditarReservaActividadUsuario #totalPrecio').text(parseFloat( $('#modalEditarReservaActividadUsuario #precio-actividad').val()) * (val-1));
-            }
-        }
+    //         if(val < max) {
+    //             $('#modalEditarReservaActividadUsuario #btnGuardarPlazas').prop('disabled', false);  
+    //             $('#modalEditarReservaActividadUsuario #totalPrecio').text(parseFloat( $('#modalEditarReservaActividadUsuario #precio-actividad').val()) * (val-1));
+    //         }
+    //     }
 
-    })
+    // })
 
-    $(document).on('click', '#modalEditarReservaActividadUsuario #btnMasPlazas', function(e){
-        e.preventDefault();
+    // $(document).on('click', '#modalEditarReservaActividadUsuario #btnMasPlazas', function(e){
+    //     e.preventDefault();
 
-        let val = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').val());
-        let max = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('max'));
-        let min = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('min'));
+    //     let val = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').val());
+    //     let max = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('max'));
+    //     let min = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').attr('min'));
 
-        if(val < max || isNaN(max)) {
-            $('#modalEditarReservaActividadUsuario #numPlazas').val((val + 1))
+    //     if(val < max || isNaN(max)) {
+    //         $('#modalEditarReservaActividadUsuario #numPlazas').val((val + 1))
             
-            if(val > -1) {
-                $('#modalEditarReservaActividadUsuario #btnGuardarPlazas').prop('disabled', false);  
-                $('#modalEditarReservaActividadUsuario #totalPrecio').text(parseFloat( $('#modalEditarReservaActividadUsuario #precio-actividad').val()) * (val+1));
-            }
-        }
+    //         if(val > -1) {
+    //             $('#modalEditarReservaActividadUsuario #btnGuardarPlazas').prop('disabled', false);  
+    //             $('#modalEditarReservaActividadUsuario #totalPrecio').text(parseFloat( $('#modalEditarReservaActividadUsuario #precio-actividad').val()) * (val+1));
+    //         }
+    //     }
 
-    })
+    // })
 
-    $(document).on('click', '#modalEditarReservaActividadUsuario #btnGuardarPlazas', function(e){
+    // $(document).on('click', '#modalEditarReservaActividadUsuario #btnGuardarPlazas', function(e){
 
-        e.preventDefault()
-        let plazas = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').val());
-        let reserva = parseInt($('#modalEditarReservaActividadUsuario #id-reserva-actividad').val())
+    //     e.preventDefault()
+    //     let plazas = parseInt($('#modalEditarReservaActividadUsuario #numPlazas').val());
+    //     let reserva = parseInt($('#modalEditarReservaActividadUsuario #id-reserva-actividad').val())
 
-        $.ajax({
-            type: 'POST',
-            url: `${BASE_URL}index.php/editarReservaActividad`,
-            data: {plazas: plazas, reserva: reserva},
-            dataType: "JSON",
-            success: function (response) {
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: `${BASE_URL}index.php/editarReservaActividad`,
+    //         data: {plazas: plazas, reserva: reserva},
+    //         dataType: "JSON",
+    //         success: function (response) {
                 
-                if(response.success === true) {
+    //             if(response.success === true) {
 
-                    $(`#modalMisReservas .reserva-card[data-reserva=${reserva}] .reserva-detalles .detalle-item`).eq(2).find('.detalle-value').text(response.reserva.plazas_reserva)
-                    $(`#modalMisReservas .reserva-card[data-reserva=${reserva}] .reserva-detalles .detalle-item`).eq(3).find('.detalle-value').text(response.reserva.precio_reserva+'€')
+    //                 $(`#modalMisReservas .reserva-card[data-reserva=${reserva}] .reserva-detalles .detalle-item`).eq(2).find('.detalle-value').text(response.reserva.plazas_reserva)
+    //                 $(`#modalMisReservas .reserva-card[data-reserva=${reserva}] .reserva-detalles .detalle-item`).eq(3).find('.detalle-value').text(response.reserva.precio_reserva+'€')
 
-                    $('#modalEditarReservaActividadUsuario').modal('hide');
-                }
-            }
-        });
-    })
+    //                 $('#modalEditarReservaActividadUsuario').modal('hide');
+    //             }
+    //         }
+    //     });
+    // })
 
     $(document).on('click', '.btn-anular-reserva-actividad-mis-reservas', function(e){
 
@@ -936,7 +972,7 @@ $(document).ready(() => {
 
                             cont.append(
                                     `
-                                        <div class="reserva-card" data-reserva='${reserva.id_reserva_actividad}'>
+                                        <div class="reserva-card" data-pedido='${reserva.id_pedido}' data-actividad='${reserva.id_actividad}'>
                                             <div class="reserva-image-container" style="background-image: url('${BASE_URL}images/${reserva.imagen}')">
                                             </div>
 
@@ -1099,6 +1135,62 @@ $(document).ready(() => {
         // fecha: "YYYY-MM-DD", hora: "HH:MM:SS" o "HH:MM"
         const fechaHora = new Date(`${fecha}T${hora}`);
         return fechaHora < new Date();
+    }
+
+        function crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, numeroPersona, editarReserva = false, numeroReserva = '') {
+
+        let campos = [
+            { activo: nombre,          id: 'nombre',            label: 'Nombre',              tipo: 'text'  },
+            { activo: apellidos,       id: 'apellidos',         label: 'Apellidos',           tipo: 'text'  },
+            { activo: fechaNacimiento, id: 'fecha-nacimiento',  label: 'Fecha de nacimiento', tipo: 'date'  },
+            { activo: dni,             id: 'dni',               label: 'DNI',                 tipo: 'text'  },
+            { activo: email,           id: 'email',             label: 'Email',               tipo: 'email' },
+            { activo: telefono,        id: 'telefono',          label: 'Teléfono',            tipo: 'tel'   },
+            { activo: direccion,       id: 'direccion',         label: 'Dirección',           tipo: 'text'  },
+        ];
+
+        let article = $('<article>').addClass('info-adicional-persona').attr('data-persona', numeroPersona).attr('data-usuario', numeroReserva );
+
+        $(`
+            <div class="d-flex justify-content-between align-items-center">
+                <p class="titulo-persona">Persona ${numeroPersona}</p>
+                ${(editarReserva) ? '<button class="eliminar-persona-reserva-actividad btn btn-danger"><i class="bi bi-trash3"></i></button>' : '' }
+            </div>
+        `).appendTo(article);
+
+        campos.map(function(campo) {
+            if (parseInt(campo.activo) === 1) {
+
+                const inputId = `${campo.id}_${numeroPersona}`;
+                const grupo = $('<div>').addClass('form-group mb-3');
+
+                $('<label>').addClass('form-label').attr('for', inputId).text(campo.label).appendTo(grupo);
+
+                let input = $('<input>').addClass('form-control').attr({
+                    type: campo.tipo,
+                    id: inputId,
+                    name: inputId,
+                    required: true, 
+                    'data-campo': campo.id
+
+                });
+
+                if (campo.id === 'fecha-nacimiento' && edadMinima > 0) {
+                    input.attr('max', calcularFechaMaximaPorEdad(edadMinima));
+                }
+
+                input.appendTo(grupo);
+                article.append(grupo);
+            }
+        });
+
+        return article;
+    }
+
+    function calcularFechaMaximaPorEdad(edadMinima) {
+        const hoy = new Date();
+        const fechaMax = new Date(hoy.getFullYear() - edadMinima, hoy.getMonth(), hoy.getDate());
+        return fechaMax.toISOString().split('T')[0]; // formato YYYY-MM-DD
     }
     
 });
