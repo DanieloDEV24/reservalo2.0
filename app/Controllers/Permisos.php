@@ -26,9 +26,9 @@ class Permisos extends BaseController
             ];
 
             $modalAnularHoras = view('reservas/modalAnularHoras');
-            $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+            $modalEditarReservaActividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
                 $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
-        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaActividadUsuario' => $modalEditarReservaActividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
             $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
             $view = view('permisos/politicasPrivacidad', []);
@@ -49,9 +49,9 @@ class Permisos extends BaseController
         ];
 
         $modalAnularHoras = view('reservas/modalAnularHoras');
-        $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+        $modalEditarReservaActividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
             $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
-        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaActividadUsuario' => $modalEditarReservaActividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
         $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
         $view = view('permisos/cookies', []);
@@ -73,9 +73,9 @@ class Permisos extends BaseController
         ];
 
         $modalAnularHoras = view('reservas/modalAnularHoras');
-        $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+        $modalEditarReservaActividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
             $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
-        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaActividadUsuario' => $modalEditarReservaActividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
         $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
         $view = view('permisos/avisoLegal', []);

@@ -1600,24 +1600,51 @@ $(document).ready(function () {
     $(document).on('click', '.btn-anular-inscrito', function(e){
 
         e.preventDefault();
-        let reserva = parseInt($(this).data('reserva'));
+        let pedido = parseInt($(this).closest('tr').data('pedido'))
+        let actividad = parseInt($(this).closest('tr').data('actividad'))
 
         $.ajax({
             type: "POST",
-            url: `${BASE_URL}index.php/getDataReserva`,
-            data: {reserva: reserva},
+            url: `${BASE_URL}index.php/obtenerPersonas`,
+            data: {pedido: pedido, actividad: actividad},
             dataType: "JSON",
             success: function (response) {
                 
                 if(response.success == true) {
 
-                    $('#modalEliminarReservaActividad #id-reserva-eliminar').val(reserva)
-                    $('#modalEliminarReservaActividad #nombre-actividad-eliminar-reserva').text(response.actividad.nombre);
-                    $('#modalEliminarReservaActividad #nombre-usuario-eliminar-reserva').text(response.reserva.nombre);
-                    $('#modalEliminarReservaActividad #email-usuario-eliminar-reserva').text(response.reserva.email);
-                    $('#modalEliminarReservaActividad #telf-usuario-eliminar-reserva').text(response.reserva.telf);
-                    $('#modalEliminarReservaActividad #fecha-eliminar-reserva').text(timestampAFechaES(response.reserva.fecha_reserva));
-                    $('#modalEliminarReservaActividad #plazas-eliminar-reserva').text(response.reserva.plazas_reserva);
+                    let nombre = parseInt(response.actividad[0]['nombre_usuario']);
+                    let apellidos = parseInt(response.actividad[0]['apellidos_usuario']);
+                    let fechaNacimiento = parseInt(response.actividad[0]['fecha_nacimiento_usuario']);
+                    let edadMinima = (response.actividad[0]['edad_minima_usuario'] !== null && response.actividad[0]['edad_minima_usuario'] !== '') ? parseInt(response.actividad[0]['edad_minima_usuario']) : 0;
+                    let dni = parseInt(response.actividad[0]['dni_usuario']);
+                    let email = parseInt(response.actividad[0]['email_usuario']);
+                    let telefono = parseInt(response.actividad[0]['telefono_usuario']);
+                    let direccion = parseInt(response.actividad[0]['direccion_usuario']);
+
+                    $('#modalEliminarReservaActividad #id-reserva-eliminar').val(response.reservas[0]['id_reserva_actividad'])
+                    $('#modalEliminarReservaActividad #nombre-actividad-eliminar-reserva').text(response.actividad[0].nombre);
+                    $('#modalEliminarReservaActividad #fecha-eliminar-reserva').text(timestampAFechaES(response.reservas[0].fecha_reserva));
+                    $('#modalEliminarReservaActividad #plazas-eliminar-reserva').text(response.reservas[0].plazas_reserva);
+
+                    response.reservas.map(function(reserva, index){
+                        
+                        let cont = index + 1
+
+                        article = crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, cont, false, reserva["id_usuario"]);
+                        $('#modalEliminarReservaActividad .contenedor-personas-anular-reserva').append(article);
+
+                        if (nombre === 1) $('#nombre_' + cont).val(reserva['nombre_usuario']).prop('required', false).prop('readonly', true);
+                        if (apellidos === 1) $('#apellidos_' + cont).val(reserva['apellidos_usuario']).prop('required', false).prop('readonly', true);
+                        if (fechaNacimiento === 1) $('#fecha-nacimiento_' + cont).val(reserva['fecha_nacimiento_usuario']).prop('required', false).prop('readonly', true);
+                        if (dni === 1) $('#dni_' + cont).val(reserva['dni_usuario']).prop('required', false).prop('readonly', true);
+                        if (email === 1) $('#email_' + cont).val(reserva['email_usuario']).prop('required', false).prop('readonly', true);
+                        if (telefono === 1) $('#telefono_' + cont).val(reserva['telefono_usuario']).prop('required', false).prop('readonly', true);
+                        if (direccion === 1) $('#direccion_' + cont).val(reserva['direccion_usuario']).prop('required', false).prop('readonly', true);
+
+                    })
+
+                    $('#modalEliminarReservaActividad').attr('data-pedido', parseInt(response.pedido));
+                    $('#modalEliminarReservaActividad').attr('data-actividad', parseInt(response.actividad['0']['id_actividades']));
                     $('#modalEliminarReservaActividad').modal('show');
                 }
             }
@@ -1628,20 +1655,22 @@ $(document).ready(function () {
     $(document).on('click', '#btn-guardar-eliminar-reserva-actividad', function(e){
 
         e.preventDefault();
-        let reserva = $('#modalEliminarReservaActividad #id-reserva-eliminar').val();
+        let pedido = $('#modalEliminarReservaActividad').data('pedido')
+        let actividad = $('#modalEliminarReservaActividad').data('actividad');
 
         $.ajax({
             type: "POST",
             url: `${BASE_URL}index.php/eliminarReservaActividad`,
-            data: {reserva: reserva},
+            data: {pedido: pedido, actividad: actividad},
             dataType: "JSON",
             success: function (response) {
                 
                 if(response.success == true){
 
-                    $(`#modalInscritosActividad table tbody tr[data-reserva="${reserva}"]`).remove();
+                    $(`#modalInscritosActividad table tbody tr[data-pedido="${pedido}"][data-actividad="${actividad}"]`).remove();
                     $(`.grid-actividades .card-actividad[data-index='${response.actividad}'] .card-actividad-meta`).children('div').eq(2).html((parseInt(response.data_actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.data_actividad.plazas_ocupadas} / ${response.data_actividad.aforo} plazas</div>` : `<div><i class="bi bi-people">${response.data_actividad.plazas_ocupadas} inscritos</div>`);
                     $('#modalEliminarReservaActividad').modal('hide');
+                    $(`#modalInscritosActividad`).modal('hide');
                 }
             }
         });

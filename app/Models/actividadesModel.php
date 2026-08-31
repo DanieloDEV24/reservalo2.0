@@ -301,6 +301,23 @@ class actividadesModel extends Model
         return $query->getResultArray();
     }
 
+        public function getReservaByPedidoActividad(int $pedido, int $actividad) {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla en la que vamos a buscar las reservas
+        $builder = $db->table('reservas_actividades');
+
+        $query = $builder->select()
+                         ->join('usuarios', 'usuarios.id_usuario = reservas_actividades.id_usuario')
+                         ->where('reservas_actividades.id_pedido', $pedido)
+                         ->where('reservas_actividades.id_actividad', $actividad)
+                         ->get();
+        
+        return $query->getResultArray();
+    }
+
     public function eliminarReservaActividad(int $reserva, int $plazas_reserva, int $actividad, int $plazas_ocupadas) {
 
         // Conexion a la base de datos
@@ -311,6 +328,27 @@ class actividadesModel extends Model
 
         // Eliminamos el tipo de actividad
         $builder->where('id_reserva_actividad', $reserva);
+        $builder->delete();
+
+        $db->table('actividades')
+        ->where('id_actividades', $actividad)
+        ->set('plazas_ocupadas', ($plazas_ocupadas - $plazas_reserva))
+        ->update();
+
+        return true;
+    }
+
+    public function eliminarReservaActividadPedido(int $pedido, int $actividad, int $plazas_reserva, int $plazas_ocupadas) {
+
+        // Conexion a la base de datos
+        $db = \Config\Database::connect('BDReservalo2');
+
+        // Obtenemos la tabla principal
+        $builder = $db->table('reservas_actividades');
+
+        // Eliminamos el tipo de actividad
+        $builder->where('id_pedido', $pedido);
+        $builder->where('id_actividad', $actividad);
         $builder->delete();
 
         $db->table('actividades')

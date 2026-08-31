@@ -57,9 +57,9 @@ class Actividades extends BaseController
         $modalInformacionUsuarioActividad = view('actividades/modalInformacionUsuarioActividad');
 
         $modalAnularHoras = view('reservas/modalAnularHoras');
-        $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+        $modalEditarReservaActividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
         $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
-        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaActividadUsuario' => $modalEditarReservaActividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
         $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
         $view = view('actividades/actividades', ["actividades" => $actividades, "numeroTiposActividad" => $numero_tipos_actividad, "usuario" => $usuario, "modalCrearTipoActividad" => $modalCrearTipoActividad, "modalMenuTiposActividades" => $modalMenuTiposActividades, "modalEditarTipoActividad" => $modalEditarTipoActividad, "modalEliminarTipoActividad" => $modalEliminarTipoActividad, "modalCrearActividad" => $modalCrearActividad, "modalEditarActividad" => $modalEditarActividad, "modalCancelarActividad" => $modalCancelarActividad, "modalInscritosActividad" => $modalInscritosActividad, 'modalEliminarReservaActividad' => $modalEliminarReservaActividad, "modalInformacionUsuarioActividad" => $modalInformacionUsuarioActividad, "modalEditarReservaAdmin" => $modalEditarReservaAdmin, "baseUrl" => base_url()]);
@@ -568,9 +568,9 @@ class Actividades extends BaseController
             ];
 
             $modalAnularHoras = view('reservas/modalAnularHoras');
-            $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+            $modalEditarReservaActividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
                $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
-        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaActividadUsuario' => $modalEditarReservaActividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
             $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
             $view = view('actividades/actividad', ["actividad" => $actividad, "usuario" => $usuario, 'usuarios'=>$usuarios, "baseUrl" => base_url()]);
@@ -780,16 +780,16 @@ class Actividades extends BaseController
 
         if(!empty($post)){
 
-            $reserva = intval($post["reserva"]);
-            $plazas = intval($actividadesModel->getReservaById($reserva)[0]['plazas_reserva']);
-            $actividad = intval($actividadesModel->getReservaById($reserva)[0]['id_actividad']);
+            $pedido = intval($post["pedido"]);
+            $actividad = intval($post["actividad"]);
+            $plazas = intval($actividadesModel->getReservaByPedidoActividad($pedido, $actividad)[0]['plazas_reserva']);
             $plazas_ocupadas = intval($actividadesModel->getDataActividad($actividad)[0]['plazas_ocupadas']);
-            $pedido = $reservasModel->getPedidoFromId(intval($actividadesModel->getReservaById($reserva)[0]['id_pedido']))[0];
-            $datos_usuario = $loginModel->buscaUsuarioPorId(intval($actividadesModel->getReservaById($reserva)[0]['id_usuario']));
-            $datos_reserva = $actividadesModel->getFullReservasFromPedido(intval($actividadesModel->getReservaById($reserva)[0]['id_pedido']));
+            $datos_pedido = $reservasModel->getPedidoFromId($pedido)[0];
+            $datos_usuario = $loginModel->buscaUsuarioPorId(intval($actividadesModel->getReservaByPedidoActividad($pedido, $actividad)[0]['id_usuario']));
+            $datos_reserva = $actividadesModel->getFullReservasFromPedido(intval($actividadesModel->getReservaByPedidoActividad($pedido, $actividad)[0]['id_pedido']));
 
-            $borrar_reserva = $actividadesModel->eliminarReservaActividad($reserva, $plazas, $actividad, $plazas_ocupadas);
-            $reservasModel->anularPedido(intval($pedido["id_pedido"]));
+            $borrar_reserva = $actividadesModel->eliminarReservaActividadPedido($pedido, $actividad, $plazas, $plazas_ocupadas);
+            $reservasModel->anularPedido($pedido);
             $data_actividad = $actividadesModel->getDataActividad($actividad)[0];
 
 
@@ -797,14 +797,14 @@ class Actividades extends BaseController
                 "nombre_usuario" => $datos_usuario["nombre"], 
                 "email_usuario"  => $datos_usuario["email"], 
                 "telf_usuario"   => $datos_usuario["telf"],
-                "fecha_pedido"   => $pedido['fecha_pedido'], 
-                "precio_pedido"  => $pedido['precio_pedido'], 
-                "numero_pedido"  => $pedido['num_pedido'], 
+                "fecha_pedido"   => $datos_pedido['fecha_pedido'], 
+                "precio_pedido"  => $datos_pedido['precio_pedido'], 
+                "numero_pedido"  => $datos_pedido['num_pedido'], 
                 "reservas"       => $datos_reserva
             ];
 
-            $this->enviarEmailAnularActividad($datos_pdf, 'danielruizdeveloper@gmail.com', intval($pedido["id_pedido"]), $datos_reserva);
-            $this->enviarEmailAnularActividad2($datos_pdf, 'danielruizdeveloper@gmail.com', intval($pedido["id_pedido"]), $datos_reserva);
+            $this->enviarEmailAnularActividad($datos_pdf, 'danielruizdeveloper@gmail.com', intval($datos_pedido["id_pedido"]), $datos_reserva);
+            $this->enviarEmailAnularActividad2($datos_pdf, 'danielruizdeveloper@gmail.com', intval($datos_pedido["id_pedido"]), $datos_reserva);
 
             if($borrar_reserva){
                 echo json_encode([

@@ -1,4 +1,4 @@
-<div class="modal fade modal-stack-2" tabindex="-1" id="modalEliminarReservaActividad" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" data-categoria="">
+<div class="modal fade modal-stack-2" tabindex="-1" id="modalEliminarReservaActividad" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" data-pedido="" data-actividad="">
     <input type="hidden" id="id-reserva-eliminar" name="id-reserva-eliminar" value="">
 
     <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
@@ -17,25 +17,10 @@
                     </div>
 
                     <div class="col-12">
-                                                <div class="datos-reservas-eliminar">
+                        <div class="datos-reservas-eliminar">
                             <div class="row">
                                 <div class="col-6"><strong>Actividad</strong></div>
                                 <div class="col-6"><span id="nombre-actividad-eliminar-reserva"></span></div>
-                            </div>
-
-                            <div class="row mt-3">
-                                <div class="col-6"><strong>Usuario</strong></div>
-                                <div class="col-6"><span id="nombre-usuario-eliminar-reserva"></span></div>
-                            </div>
-
-                            <div class="row mt-3">
-                                <div class="col-6"><strong>Email del usuario</strong></div>
-                                <div class="col-6"><span id="email-usuario-eliminar-reserva"></span></div>
-                            </div>
-
-                            <div class="row mt-3">
-                                <div class="col-6"><strong>Teléfono del usuario</strong></div>
-                                <div class="col-6"><span id="telf-usuario-eliminar-reserva"></span></div>
                             </div>
 
                             <div class="row mt-3">
@@ -47,6 +32,10 @@
                                 <div class="col-6"><strong>Plazas reservadas</strong></div>
                                 <div class="col-6"><span id="plazas-eliminar-reserva"></span></div>
                             </div>
+                        </div>
+
+                        <div class="contenedor-personas-anular-reserva mt-5">
+                            
                         </div>
                     </div>
 

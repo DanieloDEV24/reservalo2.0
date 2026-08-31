@@ -44,9 +44,9 @@ class Horarios extends BaseController
             ];
 
             $modalAnularHoras = view('reservas/modalAnularHoras');
-            $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+            $modalEditarReservaActividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
                 $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
-        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaActividadUsuario' => $modalEditarReservaActividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
             $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
 
             $view = view('horarios/horarios', ["instalacion" => $instalacion, "id_instalacion" => $id_instalacion, "horarios" => $horarios, "modalEditar" => $modalEditar, "modalBorrar" => $modalBorrar, "modalHorarioExistente" => $modalHorarioExistente, "modalCambioHorario" => $modalCambioHorario, "modalSinFechaHorario" => $modalSinFechaHorario]);

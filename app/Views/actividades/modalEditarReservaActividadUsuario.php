@@ -1,61 +1,55 @@
-<style>
-.plazas-input {
-    width: 60px;
-    height: 40px;
-    text-align: center;
-    font-size: 22px;
-    font-weight: 500;
-    color: #1a1a1a;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    background: #fff;
-    outline: none;
-    -moz-appearance: textfield;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
-}
+<div class="modal fade modal-stack-2" tabindex="-1" id="modalEditarReservaActividadUsuario" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true" data-categoria="" data-pedido="" data-actividad="">
 
-.plazas-input::-webkit-inner-spin-button,
-.plazas-input::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
+    <div class="d-flex justify-content-center p-3 pb-0 d-none contenedor-alert-crear-persona-editar-actividad">
+        <div class="alert alert-danger alert-dismissible mb-0 fade show alert-crear-persona-editar-actividad w-50" role="alert">
 
-.plazas-input:focus {
-    border-color: #32cccc;
-    box-shadow: 0 0 0 3px rgba(50, 204, 204, 0.15);
-}
+            <div class="errores">
+                <ul>
+                    
+                </ul>
+            </div>
 
-.plazas-input:disabled {
-    background: #f5f5f5;
-    color: #999;
-}
-</style>
-
-<div class="modal fade" id="modalEditarReservaActividadUsuario" tabindex="-1">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="modalEditarTitulo">Editar reserva</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
-      <div class="modal-body">
-        <label class="form-label">Plazas reservadas</label>
-        <div class="d-flex align-items-center gap-3">
-          <button type="button" class="btn btn-outline-secondary" id="btnMenosPlazas">−</button>
-          <input id="numPlazas" type="number" class="plazas-input"/>
-          <button type="button" class="btn btn-outline-secondary" id="btnMasPlazas">+</button>
         </div>
-        <input type="hidden" name="" id="id-reserva-actividad">
-        <small class="text-muted" id="plazasInfo"></small>
-        <div class="mt-3">
-            <input type="hidden" name="" id="precio-actividad">
-          <strong>Total: <span id="totalPrecio"></span>€</strong>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-success" id="btnGuardarPlazas">Guardar cambios</button>
-      </div>
+
     </div>
-  </div>
+
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+        <div class="modal-content">
+            <!-- Header -->
+            <div class="modal-header border-bottom">
+                <h5 class="modal-title"><i class="bi bi-eye"></i> Editar reserva: <span></span></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <!-- Body -->
+            <div class="modal-body" style="padding: 3%;" data-index="" > 
+                <div class="informacion-reserva">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3></h3>
+                        <p class="contador-plazas">Num de plazas de la reserva: <span class="plazas-reserva"></span><span class="plazas-libres"></span> </p>
+                    </div>
+                    <p class="descripcion"></p>
+                    <p class="fecha-actividad"></p>
+                </div>
+
+                <div class="personas-editar-reserva">
+
+                </div>
+
+                <button class="btn btn-primary crear-persona-editar-reserva-actividad mt-3"><i class="bi bi-plus"></i> Añadir persona</button>
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer border-top">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                    Cancelar <i class="bi bi-x-lg"></i>
+                </button>
+
+                <button type="button" class="btn btn-primary" id="btn-guardar-cambios-reserva-actividad-admin" data-place="">
+                    Guardar <i class="bi bi-check-lg"></i>
+                </button>
+            </div>
+
+        </div>
+    </div>
 </div>

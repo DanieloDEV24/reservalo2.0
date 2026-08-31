@@ -550,7 +550,7 @@ input.selector-plazas-valor::-webkit-inner-spin-button {
     justify-content: center;
 }
 
-#contenedor-personas {
+#contenedor-personas, .contenedor-personas-anular-reserva {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -558,19 +558,24 @@ input.selector-plazas-valor::-webkit-inner-spin-button {
     gap: 3rem;
 }
 
-#contenedor-personas article {
+#contenedor-personas article, .contenedor-personas-anular-reserva article {
     border-radius: 12px;
     border: 1px solid #e2e8f0;
     padding: 2rem;
     width: 100%;
 }
 
-#contenedor-personas article p.titulo-persona {
+.contenedor-personas-anular-reserva article {
+    background-color: #cccccc20;
+    border: none;
+}
+
+#contenedor-personas article p.titulo-persona, .contenedor-personas-anular-reserva article p.titulo-persona {
     font-size: 1.1rem;
     font-weight: bolder;
 }
 
-#contenedor-personas article input.is-invalid {
+#contenedor-personas article input.is-invalid, .contenedor-personas-anular-reserva article input.is-invalid {
     border-color: red;
 }
 
@@ -601,7 +606,7 @@ input.selector-plazas-valor::-webkit-inner-spin-button {
     opacity: .7;
 }
 
-#modalEditarReservaAdmin .personas-editar-reserva article {
+.personas-editar-reserva article {
     border: 1px solid #e2e8f0;
     background-color: #f8fafc;
     border-radius: 12px;

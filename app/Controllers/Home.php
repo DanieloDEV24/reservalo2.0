@@ -25,9 +25,9 @@ class Home extends BaseController
         
         $modalInformacionPersonal = view('usuarios/modalInformacionPersonal');
         $modalAnularHoras = view('reservas/modalAnularHoras');
-        $modalEditarReservaactividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
+        $modalEditarReservaActividadUsuario = view('actividades/modalEditarReservaActividadUsuario');
         $modalEliminarReservaActividadUsuario = view('actividades/modalEliminarReservaActividadUsuario');
-        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaactividadUsuario' => $modalEditarReservaactividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
+        $modalMisReservas = view('reservas/modalMisReservas', ["modalAnularHoras" => $modalAnularHoras, 'modalEditarReservaActividadUsuario' => $modalEditarReservaActividadUsuario, "modalEliminarReservaActividadUsuario" => $modalEliminarReservaActividadUsuario]);
 
        //Devolvemos la vista
         return view('index', ["view" => $view, "baseUrl" => base_url(), "modalInformacionPersonal" => $modalInformacionPersonal, "modalMisReservas" => $modalMisReservas]);
