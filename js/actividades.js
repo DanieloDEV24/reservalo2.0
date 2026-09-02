@@ -1522,6 +1522,7 @@ $(document).ready(function () {
                                 <td>${cont}</td>
                                 <td>${inscrito.email}</td>
                                 <td>${inscrito.telf}</td>
+                                <td>${inscrito.plazas_reserva}</td>
                                 
                                 <td>${timestampAFechaES(inscrito.fecha_reserva)}</td>
                                 <td>
@@ -1702,6 +1703,13 @@ $(document).ready(function () {
                     let telefono = parseInt(response.actividad['0']['telefono_usuario']);
                     let direccion = parseInt(response.actividad['0']['direccion_usuario']);
 
+                    const fechaHoraLimite = crearFechaHora(response.actividad['0']['fecha_limite'], response.actividad['0']['hora_limite']);
+                    const fechaHoraActividad = crearFechaHora(response.actividad['0']['fecha_actividad'], response.actividad['0']['hora_actividad']);
+                    const ahora = new Date();
+
+                    const limiteSuperado = fechaHoraLimite && fechaHoraLimite < ahora;
+                    const actividadSuperada = fechaHoraActividad && fechaHoraActividad < ahora;
+
                     $('#modalEditarReservaAdmin .informacion-reserva h3').text(response.actividad['0']['nombre']);
                     $('#modalEditarReservaAdmin .informacion-reserva p.descripcion').text(response.actividad['0']['descripcion']);
                     $('#modalEditarReservaAdmin .informacion-reserva p.fecha-actividad').text(new Date(response.actividad['0']['fecha_actividad'] + 'T00:00:00').toLocaleDateString('es-ES', {
@@ -1720,18 +1728,27 @@ $(document).ready(function () {
                         
                         let cont = index + 1
 
-                        article = crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, cont, true, reserva["id_usuario"]);
+                        article = crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, cont, (!limiteSuperado && !actividadSuperada), reserva["id_usuario"]);
                         $('#modalEditarReservaAdmin .personas-editar-reserva').append(article);
 
-                        if (nombre === 1) $('#nombre_' + cont).val(reserva['nombre_usuario']).prop('required', false).prop('readonly', true);
-                        if (apellidos === 1) $('#apellidos_' + cont).val(reserva['apellidos_usuario']).prop('required', false).prop('readonly', true);
-                        if (fechaNacimiento === 1) $('#fecha-nacimiento_' + cont).val(reserva['fecha_nacimiento_usuario']).prop('required', false).prop('readonly', true);
-                        if (dni === 1) $('#dni_' + cont).val(reserva['dni_usuario']).prop('required', false).prop('readonly', true);
-                        if (email === 1) $('#email_' + cont).val(reserva['email_usuario']).prop('required', false).prop('readonly', true);
-                        if (telefono === 1) $('#telefono_' + cont).val(reserva['telefono_usuario']).prop('required', false).prop('readonly', true);
-                        if (direccion === 1) $('#direccion_' + cont).val(reserva['direccion_usuario']).prop('required', false).prop('readonly', true);
+                        if (nombre === 1) $('#nombre_' + cont).val(reserva['nombre_usuario']).prop('readonly', (limiteSuperado || actividadSuperada));
+                        if (apellidos === 1) $('#apellidos_' + cont).val(reserva['apellidos_usuario']).prop('readonly', (limiteSuperado || actividadSuperada));
+                        if (fechaNacimiento === 1) $('#fecha-nacimiento_' + cont).val(reserva['fecha_nacimiento_usuario']).prop('readonly', (limiteSuperado || actividadSuperada));
+                        if (dni === 1) $('#dni_' + cont).val(reserva['dni_usuario']).prop('readonly', (limiteSuperado || actividadSuperada));
+                        if (email === 1) $('#email_' + cont).val(reserva['email_usuario']).prop('readonly', (limiteSuperado || actividadSuperada));
+                        if (telefono === 1) $('#telefono_' + cont).val(reserva['telefono_usuario']).prop('readonly', (limiteSuperado || actividadSuperada));
+                        if (direccion === 1) $('#direccion_' + cont).val(reserva['direccion_usuario']).prop('readonly', (limiteSuperado || actividadSuperada));
 
                     })
+
+                    if(limiteSuperado || actividadSuperada) {
+                        $('#modalEditarReservaAdmin').find('.crear-persona-editar-reserva-actividad').prop('disabled', true);
+                        $('#modalEditarReservaAdmin').find('#btn-guardar-cambios-reserva-actividad-admin').prop('disabled', true);
+                    }
+                    else {
+                        $('#modalEditarReservaAdmin').find('.crear-persona-editar-reserva-actividad').prop('disabled', false);
+                        $('#modalEditarReservaAdmin').find('#btn-guardar-cambios-reserva-actividad-admin').prop('disabled', false);
+                    }
 
                     $('#modalEditarReservaAdmin').attr('data-pedido', parseInt(response.pedido));
                     $('#modalEditarReservaAdmin').attr('data-actividad', parseInt(response.actividad['0']['id_actividades']));
@@ -2207,6 +2224,11 @@ $(document).ready(function () {
         });
 
         return article;
+    }
+
+    function crearFechaHora(fecha, hora) {
+        if (!fecha || !hora) return null;
+        return new Date(`${fecha}T${hora}`);
     }
 })
 

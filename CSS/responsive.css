@@ -687,7 +687,7 @@
         width: 50% !important;
     }
 
-    #modalNuevaInstalacion .modal-footer button, #modalEditarInstalacion .modal-footer button, #modalNuevaInstalacion .modal-footer button {
+    #modalNuevaInstalacion .modal-footer button, #modalEditarInstalacion .modal-footer button {
         width: 47% !important;
         padding-top: 2% !important;
         padding-bottom: 2% !important;
@@ -1184,6 +1184,10 @@
 
     header img {
         width: 14% !important;
+    }
+
+    #modalInformacionUsuarioActividad .modal-footer button{
+        width: 100% !important;
     }
     
 }
@@ -1722,11 +1726,11 @@
         width: 50% !important;
     }
 
-    #modalEditarActividad .row:last-of-type .col-6:first-of-type {
+    #modalEditarActividad .row:last-of-type .col-6:first-of-type, #modalEditarActividad .modal-body > .row .col-10 {
         width: 100% !important;
     }
 
-     #modalEditarActividad .row:last-of-type .col-6:first-of-type label.btn {
+     #modalEditarActividad .row:last-of-type .col-6:first-of-type label.btn, #modalEditarActividad .modal-body > .row .col-10 .btn-info-usuario-actividad {
         width: 100% !important;
         padding: 1%;
      }
@@ -1834,6 +1838,31 @@
     #modalReservaPista .modal-body, #modalNuevaInstalacion .modal-body, #modalVerInstalacion .modal-body, #modalEditarInstalacion .modal-body, #modalBorrarInstalacion .modal-body {
         padding: 3% !important;
     }
+
+    #modalInformacionUsuarioActividad .toggle-switch {
+        width: 40px !important;
+        height: 20px !important;
+    }
+
+    #modalInformacionUsuarioActividad .toggle-switch-handle {
+        width: 20px !important;
+        height: 20px !important;
+        top: 0;
+    }
+
+    #modalInformacionUsuarioActividad .toggle-switch input[type="checkbox"]:checked+.toggle-switch-handle {
+        transform: translateX(20px) !important;  
+    }
+
+    #modalInformacionUsuarioActividad .toggle-switch input[type="checkbox"]:checked+.toggle-switch-background .toggle-switch-handle {
+        transform: translateX(22px) !important;
+    }
+
+    #edad-min-usuario {
+        width: 30% !important;
+    }
+
+
 }
 
 
@@ -6399,5 +6428,102 @@
 @media screen and (max-width: 1200px ) {
     header nav {
         gap: 1% !important;
+    }
+
+    #modalInformacionUsuarioActividad .modal-body > .row .col-6:first-of-type {
+       width: 70% !important;
+    }
+
+    #modalInformacionUsuarioActividad .modal-body > .row .col-6:last-of-type {
+       width: 30% !important;
+    }
+
+    #modalInformacionUsuarioActividad .modal-footer button {
+        width: 30% !important;
+    }
+
+    #modalEditarActividad .modal-body > .row .col-10 > .w-50 {
+       width: 100% !important;
+    }
+
+    #modalEditarReservaAdmin .informacion-reserva > div, #modalEditarReservaActividadUsuario .informacion-reserva > div {
+        flex-wrap: wrap !important;
+    }
+
+    #modalEditarReservaAdmin .informacion-reserva > div > h3, #modalEditarReservaAdmin .informacion-reserva > div > p, #modalEditarReservaActividadUsuario .informacion-reserva > div > h3, #modalEditarReservaActividadUsuario .informacion-reserva > div > p {
+        width: 100% !important;
+    }
+
+    #modalEditarReservaAdmin .informacion-reserva > div > h3, #modalEditarReservaActividadUsuario .informacion-reserva > div > h3 {
+        order: 2 !important;
+    }
+
+    #modalEditarReservaAdmin .informacion-reserva > div > p, #modalEditarReservaActividadUsuario .informacion-reserva > div > p {
+        order: 1 !important;
+        margin-bottom: 2% !important;
+    }
+}
+
+@media screen and (max-width: 1000px ) {
+    #modalInformacionUsuarioActividad .modal-footer button, #modalEditarReservaAdmin .modal-footer button, #modalEditarReservaActividadUsuario .modal-footer button, .crear-persona-editar-reserva-actividad{
+        width: 48.5% !important;
+    }
+}
+
+@media screen and (max-width: 870px ) {
+
+    #modalInformacionUsuarioActividad .modal-body > .row > .col-6:first-of-type, #modalInformacionUsuarioActividad .modal-body > .row > .col-6:last-of-type {
+        width: 50% !important;
+        margin-bottom: 2% !important;
+    }
+
+    #modalInformacionUsuarioActividad .modal-body > .row:nth-of-type(2) > .col-6:first-of-type{
+        gap: 0rem !important;
+    }
+
+    #modalInformacionUsuarioActividad .modal-body > .row:nth-of-type(2) > .col-6:first-of-type > div{
+        width: 50% !important;
+    }
+
+    #modalInformacionUsuarioActividad .modal-body > .row:nth-of-type(2) > .col-6:first-of-type > div:last-of-type{
+        padding-left: 5% !important;
+    }
+
+    #modalInformacionUsuarioActividad .modal-body > .row:nth-of-type(2) > .col-6:first-of-type, #modalInformacionUsuarioActividad .modal-body > .row:nth-of-type(2) > .col-6:last-of-type {
+        width: 100% !important;
+        margin-bottom: 2% !important;
+    }
+    /* #modalInformacionUsuarioActividad .modal-body > .row .col-6:last-of-type {
+        width: 20% !important;
+    } */
+}
+
+@media screen and (max-width: 620px) {
+    #modalInformacionUsuarioActividad .modal-footer button,  #modalInformacionUsuarioActividad .modal-footer button, #modalEditarReservaAdmin .modal-footer button, #modalEditarReservaActividadUsuario .modal-footer button, .crear-persona-editar-reserva-actividad{
+        width: 100% !important;
+    }
+    
+}
+
+@media screen and (max-width: 520px) {
+    #modalInformacionUsuarioActividad .modal-body > .row > .col-6:first-of-type, #modalInformacionUsuarioActividad .modal-body > .row > .col-6:last-of-type {
+        width: 100% !important;
+        margin-bottom: 2% !important;
+    }
+    
+    #edad-min-usuario {
+        width: 40% !important;
+    }
+}
+
+@media screen and (max-width: 1560px) {
+    .card-actividad .no-inscripciones.finalizada {
+        width: 50% !important;
+    }
+}
+
+@media screen and (max-width: 1085px) {
+    .card-actividad .no-inscripciones.finalizada {
+        width: 70% !important;
     }
 }

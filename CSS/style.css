@@ -836,3 +836,17 @@ header .mainLi ul a {
 table {
     border-radius: 20px !important;
 }
+
+.informacion-actividad, .informacion-reserva {
+    border-radius: 10px;
+    background-color: #cccccc20;
+    padding: 3%;
+}
+
+.personas-editar-reserva article, .contenedor-personas-anular-reserva article {
+    border: 1px solid #cccccc20;
+    background-color: #cccccc20;
+    border-radius: 12px;
+    padding: 2rem;
+     margin-top: 2rem;
+}
