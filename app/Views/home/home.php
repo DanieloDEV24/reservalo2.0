@@ -12,9 +12,11 @@
           <label for="">Categoria:</label>
           <select id="categorias-home">
             <option value="-1" selected>Seleccione una</option>
-            <?php foreach ($categorias as $categoria) : ?>
-              <option value="<?= $categoria["id_categoria"] ?>"><?= $categoria["nombre"] ?></option>
-            <?php endforeach; ?>
+            <?php if (isset($categorias) && count($categorias) > 0): ?>
+              <?php foreach ($categorias as $categoria): ?>
+                <option value="<?= $categoria["id_categoria"] ?>"><?= $categoria["nombre"] ?></option>
+              <?php endforeach; ?>
+            <?php endif; ?>
           </select>
         </div>
 
@@ -22,9 +24,11 @@
           <label for="">Instalacion:</label>
           <select name="" id="todas-instalaciones-home">
             <option value="-1" selected>Seleccione una</option>
-            <?php foreach ($instalacionesTodas as $inst) : ?>
-              <option value="<?= $inst["id_instalacion"] ?>"><?= $inst["nombre"] ?></option>
-            <?php endforeach; ?>
+            <?php if (isset($instalacionesTodas) && count($instalacionesTodas) > 0): ?>
+              <?php foreach ($instalacionesTodas as $instalacion): ?>
+                <option value="<?= $instalacion["id_instalacion"] ?>"><?= $instalacion["nombre"] ?></option>
+              <?php endforeach; ?>
+            <?php endif; ?>
           </select>
         </div>
 
@@ -114,6 +118,7 @@
   <div id="instalacionesCarousel" class="carousel slide">
     <div class="carousel-inner" id="carousel-inner-instalaciones">
 
+      <?php if (isset($instalacionesCarrousel) && count($instalacionesCarrousel) > 0): ?>
       <?php foreach ($instalacionesCarrousel as $instalacion):
         $url = base_url() . "images/" . $instalacion["imagen1"];
       ?>
@@ -143,6 +148,7 @@
         </div>
 
       <?php endforeach; ?>
+      <?php endif; ?>
 
     </div>
 

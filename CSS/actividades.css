@@ -21,10 +21,15 @@
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.div-numero-actividades h1 {
+.div-numero-actividades dd {
     font-size: 3rem;
     font-weight: bold;
     color: #32cccc;
+}
+
+.div-numero-actividades dt {
+    font-size: 1rem;
+    font-weight: normal;
 }
 
 .no-actividades {
@@ -99,8 +104,10 @@
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    grid-template-columns: repeat(3, 1fr);
+    /* grid-template-columns: repeat(3, 1fr); */
     gap: 1.5rem;
+
+    list-style: none;
 }
 
 .card-actividad {
@@ -110,6 +117,7 @@
     overflow: hidden;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     transition: ease-in-out .3s all;
+    height: 100%;
 }
 
 .card-actividad .no-inscripciones {
@@ -119,7 +127,7 @@
     justify-content: center;
     align-items: center;
     background-color: #F59827;
-    width: 35%;
+    width: 45%;
     color: #fff;
     font-size: .9rem;
     margin-top: 2rem;
@@ -132,7 +140,7 @@
     justify-content: center;
     align-items: center;
     background-color: #F54927;
-    width: 35%;
+    width: 45%;
     color: #fff;
     font-size: .9rem;
     margin-top: 2rem;
@@ -148,6 +156,7 @@
     position: relative;
     height: 150px;
     background: #f4f4f4;
+    padding: 0 !important;
 }
 
 .card-actividad-img img {
@@ -338,7 +347,6 @@
     color: #fff;
     border-radius: 20px;
     padding: .5% 1.5%;
-    margin-bottom: 5%;
 }
 
 .reserva-plaza {
@@ -558,7 +566,7 @@ input.selector-plazas-valor::-webkit-inner-spin-button {
     gap: 3rem;
 }
 
-#contenedor-personas article, .contenedor-personas-anular-reserva article {
+#contenedor-personas fieldset, .contenedor-personas-anular-reserva fieldset {
     border-radius: 12px;
     border: 1px solid #e2e8f0;
     padding: 2rem;
@@ -624,3 +632,14 @@ input.selector-plazas-valor::-webkit-inner-spin-button {
 .backdrop-crear-tipo-actividad {
     z-index: 1058;
 } */
+
+header.header-actividad {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    align-items: start;
+    padding: 0rem;
+    margin-top: 0rem;
+    padding-top: 0rem !important;
+}

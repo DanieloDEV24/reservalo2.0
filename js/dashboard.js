@@ -91,7 +91,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  $(document).on('click', '.tabla-actividad-reciente i', function () {
+  // CAMBIO: apuntamos al botón (.btn-icono-actividad), elemento clicable real,
+  // en vez del <i> decorativo con aria-hidden="true" que hay dentro
+  $(document).on('click', '.tabla-actividad-reciente .btn-icono-actividad', function () {
 
     $('#modalActividadReciente').modal('show');
 
@@ -107,4 +109,3 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
 });
-

@@ -47,7 +47,10 @@ $(document).ready(function () {
                         $('#modalEditarCategoria').modal('hide');
                         $('.contenedor-alert-editar-categoria-success').removeClass('d-none')
                         $('.contenedor-alert-editar-categoria-success .alert-editar-categoria-hecha').show()
-                        $(`#tabla-categorias tbody tr[data-index="${idCategoria}"] td:eq(1)`).text(response.categoria.nombre)
+
+                        // CAMBIO 1: apuntamos por clase (.celda-nombre-categoria), no por posición,
+                        // así no depende del orden/número de columnas de la tabla
+                        $(`#tabla-categorias tbody tr[data-index="${idCategoria}"] .celda-nombre-categoria`).text(response.categoria.nombre)
 
                         setTimeout(() => {
                             $('.contenedor-alert-editar-categoria-success').hide();
@@ -110,12 +113,12 @@ $(document).ready(function () {
                     $('.contenedor-alert-borrar-categoria-success .alert-editar-categoria-hecha').show()
                     $(`#tabla-categorias tbody tr[data-index="${idCategoria}"]`).remove()
 
+                    // CAMBIO 2: el callback de .each() recibe (índice, elemento), no el <tr> directamente.
+                    // Además el número va en el <th>, no en un <td>.
                     let cont = 0;
-                    $(`#tabla-categorias tbody tr`).each(function(tr){
-
-                        cont++
-
-                        tr.eq(0).text(cont)
+                    $(`#tabla-categorias tbody tr`).each(function(){
+                        cont++;
+                        $(this).find('th').text(cont);
                     })
 
                     setTimeout(() => {
@@ -156,17 +159,23 @@ $(document).ready(function () {
                 
                 if(response.success == true) {
 
+                    // CAMBIO 3: fila coherente con el HTML renderizado por PHP
+                    // (th para el número, <p> de desglose, aria-label y aria-disabled en el botón borrar)
+                    let tieneInstalaciones = parseInt(response.categoria.total_instalaciones) > 0;
+
                     let tr = $(`<tr data-index="${response.categoria.id_categoria}">
-                                    <td style="width: 10%;">${parseInt($('#tabla-categorias tbody tr').length + 1)}</td>
-                                    <td style="width: 40%;">${response.categoria.nombre}</td>
+                                    <th scope="row" style="width: 10%;">${parseInt($('#tabla-categorias tbody tr').length + 1)}</th>
+                                    <td class="celda-nombre-categoria" style="width: 40%;">${response.categoria.nombre}</td>
                                     <td style="width: 40%;">
-                                        <div>${response.categoria.total_instalaciones+" instalaciones"}</div>
-                                        <div class="desglosamiento">${response.categoria.instalaciones_principal+" principal"} · ${response.categoria.instalaciones_secundaria+" secundaria"}</div>
+                                        <p class="m-0">${response.categoria.total_instalaciones} instalaciones</p>
+                                        <p class="desglosamiento m-0">
+                                          <span class="visually-hidden">Desglose: </span>${response.categoria.instalaciones_principal} principal · ${response.categoria.instalaciones_secundaria} secundaria
+                                        </p>
                                     </td>
                                     <td>
-                                        <div class="btn-gestor-categorias">
-                                            <button type="button" class="btn btn-crud-categorias btn-editar-categoria" title="Editar categoría"><i class="bi bi-pencil-square"></i></button>
-                                            <button type="button" class="btn btn-crud-categorias btn-borrar-categoria" title="${ (parseInt(response.categoria.total_instalaciones) > 0) ? "La categoría no se puede borrar porque está asociada a una instalación" : "Borrar categoría" }" ${ (parseInt(response.categoria.total_instalaciones) > 0) ? "disabled" : "" } ><i class="bi bi-trash3"></i></button>
+                                        <div class="btn-gestor-categorias" role="group" aria-label="Acciones para la categoría ${response.categoria.nombre}">
+                                            <button type="button" class="btn btn-crud-categorias btn-editar-categoria" title="Editar categoría" aria-label="Editar categoría ${response.categoria.nombre}"><i class="bi bi-pencil-square" aria-hidden="true"></i></button>
+                                            <button type="button" class="btn btn-crud-categorias btn-borrar-categoria" title="${tieneInstalaciones ? "La categoría no se puede borrar porque está asociada a una instalación" : "Borrar categoría"}" aria-label="${tieneInstalaciones ? "La categoría "+response.categoria.nombre+" no se puede borrar porque está asociada a una instalación" : "Borrar categoría "+response.categoria.nombre}" ${tieneInstalaciones ? 'disabled aria-disabled="true"' : ''}><i class="bi bi-trash3" aria-hidden="true"></i></button>
                                         </div>
                                     </td>
                                 </tr>`)

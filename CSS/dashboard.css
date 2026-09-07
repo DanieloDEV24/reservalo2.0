@@ -1,16 +1,27 @@
-.div-dashboard {
-    background-color: #fff;
-    border-radius: 10px;
-    padding: 1.5rem; /* Cambia % por rem */
-    overflow: hidden; /* Evita desbordamientos internos */
-    min-width: 0; /* Importante: evita que los hijos expandan la celda del grid */
-}
-
 .pagina-dashboard {
     padding: 2%;
 }
 
-.chart-container{
+.title-page {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: .3rem;
+}
+
+.description-page {
+    color: #888;
+    margin-bottom: 1.5rem;
+}
+
+.div-dashboard {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 3rem;
+    overflow: hidden; /* Evita desbordamientos internos */
+    min-width: 0; /* Importante: evita que los hijos expandan la celda del grid */
+}
+
+.chart-container {
     position: relative;
     width: 100%;
     height: clamp(300px, 25vh, 320px);
@@ -23,9 +34,9 @@
 
 .grid-dashboard {
     display: grid;
-    gap: 3rem; /* Cambia % por rem */
+    gap: 3rem;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-areas: 
+    grid-template-areas:
         "grafico-reservas grafico-donut"
         "tabla-reservas tabla-reservas"
         "tabla-actividad-reciente tabla-actividad-reciente";
@@ -51,44 +62,87 @@
     color: #fff;
 }
 
+.text-center {
+    text-align: center;
+}
+
+/* --- Actividad reciente --- */
+
+.lista-actividad-reciente {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
 .actividad-reciente {
+    margin-bottom: 1rem;
+}
+
+.actividad-reciente:last-child {
+    margin-bottom: 0;
+}
+
+.div-dashboard .informacion-actividad {
     display: flex;
-    gap: 1.5%;
-    margin-bottom: 1.5%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+
+    background-color: transparent !important;
+    padding: 1% 0% !important;
+}
+
+#modalActividadReciente .informacion-actividad {
+    background-color: transparent !important;
+    padding: 1% 0% !important;
 }
 
 .actividad-reciente p {
-    margin: 0%;
+    margin: 0;
 }
 
 .actividad-reciente .fecha {
     color: #bbb;
     font-weight: lighter;
     font-size: .8rem;
-    margin-left: 3%;
+    white-space: nowrap;
 }
 
 .leyenda-actividad {
     width: 8px;
     height: 8px;
     border-radius: 50%;
+    flex-shrink: 0;
 }
 
+.btn-icono-actividad {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: .25rem;
+    border-radius: 6px;
+}
+
+.btn-icono-actividad:hover,
 .tabla-actividad-reciente i:hover {
     cursor: pointer;
 }
 
-.pagina-dashboard h3::before {
-  content: '';
-  width: 6px;
-  height: 25px;
-  background: #32cccc;
-  border-radius:5px;
+/* --- Títulos de sección (antes apuntaba a h3, pero el HTML usa h2.h3-dashboard) --- */
+
+.h3-dashboard::before {
+    content: '';
+    width: 6px;
+    height: 25px;
+    background: #32cccc;
+    border-radius: 5px;
 }
 
-.pagina-dashboard h3 {
+.h3-dashboard {
     display: flex;
-    gap: 1%;
+    gap: .5rem;
     align-items: center;
     width: 100%;
 }

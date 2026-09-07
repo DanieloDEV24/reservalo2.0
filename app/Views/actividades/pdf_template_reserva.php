@@ -284,12 +284,12 @@
     <!-- Header Principal -->
     <div class="header-main">
         <h1>Confirmación de Reserva</h1>
-        <div class="numero-reserva">Reserva #<?= $datos['numero_pedido'] ?></div>
+        <div class="numero-reserva">Reserva #<?= isset($datos['numero_pedido']) ? $datos['numero_pedido'] : '' ?></div>
     </div>
     
     <!-- Imagen de la Instalación -->
 <div class="instalacion-imagen"
-     style="background-image: url('<?= esc($baseUrl . 'images/' . $datos['reservas'][0]['imagen']) ?>');">
+     style="background-image: url('<?= esc(isset($baseUrl) && isset($datos['reservas'][0]['imagen']) ? $baseUrl . 'images/' . $datos['reservas'][0]['imagen'] : '') ?>');">
 </div>
     
     <!-- Datos del Cliente -->
@@ -301,15 +301,15 @@
             <table class="info-table">
                 <tr>
                     <td class="label">Nombre</td>
-                    <td class="value"><?= $datos['nombre_usuario'] ?></td>
+                    <td class="value"><?= isset($datos['nombre_usuario']) ? $datos['nombre_usuario'] : '' ?></td>
                 </tr>
                 <tr>
                     <td class="label">Email</td>
-                    <td class="value"><?= $datos['email_usuario'] ?></td>
+                    <td class="value"><?= isset($datos['email_usuario']) ? $datos['email_usuario'] : '' ?></td>
                 </tr>
                 <tr>
                     <td class="label">Teléfono</td>
-                    <td class="value"><?= $datos['telf_usuario'] ?></td>
+                    <td class="value"><?= isset($datos['telf_usuario']) ? $datos['telf_usuario'] : '' ?></td>
                 </tr>
             </table>
         </div>
@@ -324,29 +324,29 @@
             <table class="info-table">
                 <tr>
                     <td class="label">Actividad</td>
-                    <td class="value"><strong><?= $datos["reservas"][0]["nombre"] ?></strong></td>
+                    <td class="value"><strong><?= isset($datos["reservas"][0]["nombre"]) ? $datos["reservas"][0]["nombre"] : '' ?></strong></td>
                 </tr>
                 <tr>
                     <td class="label">Lugar</td>
-                    <td class="value"><?= $datos["reservas"][0]["lugar"] ?></td>
+                    <td class="value"><?= isset($datos["reservas"][0]["lugar"]) ? $datos["reservas"][0]["lugar"] : '' ?></td>
                 </tr>
                 <tr>
                     <td class="label">Fecha de la actividad</td>
-                    <td class="value"><?= date('d/m/Y', strtotime($datos["reservas"][0]["fecha_actividad"])) ?></td>
+                    <td class="value"><?= isset($datos["reservas"][0]["fecha_actividad"]) ? date('d/m/Y', strtotime($datos["reservas"][0]["fecha_actividad"])) : '' ?></td>
                 </tr>
                 <tr>
                     <td class="label">Hora actividad</td>
-                    <td class="value"><?= substr($datos["reservas"][0]["hora_actividad"], 0, 5) ?></td>
+                    <td class="value"><?= isset($datos["reservas"][0]["hora_actividad"]) ? substr($datos["reservas"][0]["hora_actividad"], 0, 5) : '' ?></td>
                 </tr>
                 <tr>
                     <td class="label">Duración de la actividad</td>
-                    <td class="value"><?= substr($datos["reservas"][0]["duracion"], 0, 5) ?></td>
+                    <td class="value"><?= isset($datos["reservas"][0]["duracion"]) ? substr($datos["reservas"][0]["duracion"], 0, 5) : '' ?></td>
                 </tr>
                 
                 <?php if (!empty($datos["reservas"][0]["descripcion"])): ?>
                 <tr>
                     <td class="label">Descripción</td>
-                    <td class="value"><?= $datos["reservas"][0]["descripcion"] ?></td>
+                    <td class="value"><?= isset($datos["reservas"][0]["descripcion"]) ? $datos["reservas"][0]["descripcion"] : '' ?></td>
                 </tr>
                 <?php endif; ?>
             </table>
@@ -363,11 +363,11 @@
             <table class="info-table" style="margin-bottom: 15px;">
                 <tr>
                     <td class="label">Fecha de reserva</td>
-                    <td class="value"><?= date('d/m/Y H:i:s', strtotime($datos["fecha_pedido"])); ?></td>
+                    <td class="value"><?= isset($datos["fecha_pedido"]) ? date('d/m/Y H:i:s', strtotime($datos["fecha_pedido"])) : '' ?></td>
                 </tr>
                 <tr>
                     <td class="label">Plazas seleccionadas</td>
-                    <td class="value"><?= ($datos["reservas"][0]["plazas_reserva"]); ?></td>
+                    <td class="value"><?= isset($datos["reservas"][0]["plazas_reserva"]) ? $datos["reservas"][0]["plazas_reserva"] : '' ?></td>
                 </tr>
                 <tr>
                     <td class="label">Método de pago</td>
@@ -380,16 +380,16 @@
                     <div class="pedido-item">
                         <table>
                             <tr>
-                                <td class="concepto">Inscripción a la actividad: <strong><?= $datos["reservas"][0]["nombre"] ?></strong></td>
-                                <td class="cantidad">x<?= intval($datos["reservas"][0]["plazas_reserva"]) ?></td>
-                                <td class="precio"><?= number_format($datos['reservas'][0]["precio"], 2) ?>€</td>
+                                <td class="concepto">Inscripción a la actividad: <strong><?= isset($datos["reservas"][0]["nombre"]) ? $datos["reservas"][0]["nombre"] : '' ?></strong></td>
+                                <td class="cantidad">x<?= isset($datos["reservas"][0]["plazas_reserva"]) ? intval($datos["reservas"][0]["plazas_reserva"]) : '' ?></td>
+                                <td class="precio"><?= isset($datos['reservas'][0]["precio"]) ? number_format($datos['reservas'][0]["precio"], 2) : '' ?>€</td>
                             </tr>
                         </table>
             </div>
             
             <div class="total-pedido">
                 <div class="label-total">TOTAL A PAGAR</div>
-                <div class="monto-total"><?= number_format($datos['reservas'][0]["precio_reserva"], 2) ?>€</div>
+                <div class="monto-total"><?= isset($datos['reservas'][0]["precio_reserva"]) ? number_format($datos['reservas'][0]["precio_reserva"], 2) : '' ?>€</div>
             </div>
         </div>
     </div>
@@ -405,7 +405,7 @@
     <!-- Footer -->
     <div class="footer">
         <p><strong>¡Gracias por tu reserva!</strong></p>
-        <p>Documento generado el <?= date('d/m/Y H:i:s', strtotime($datos["fecha_pedido"])); ?></p>
+        <p>Documento generado el <?= isset($datos["fecha_pedido"]) ? date('d/m/Y H:i:s', strtotime($datos["fecha_pedido"])) : '' ?></p>
         <p>Para cualquier consulta, contacta con nosotros</p>
         <p>
                 Tel: 952 73 50 16 | 

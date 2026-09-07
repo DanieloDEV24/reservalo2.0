@@ -51,9 +51,12 @@ header.headerHome>div a {
 
 .home .textoPortada {
     width: 70%;
-    padding-top: 10%;
-    margin-bottom: 5%;
-    padding-left: 7%;
+    padding-top: 15% !important;
+    margin-bottom: 5% !important;
+    padding-left: 7% !important;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
 }
 
 .home .textoPortada h1 {
@@ -370,4 +373,8 @@ header.headerHome>div a {
 
 .carousel-indicators .active {
   background-color: #32cccc !important;
+}
+
+footer.contenedor-btn-ver-instalaciones {
+    background-color: transparent !important;
 }

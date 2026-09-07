@@ -55,3 +55,17 @@
     justify-content: end;
     margin-right: 2%;
 }
+
+header.header-categorias {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 0rem;
+    align-items: start;
+    padding: 0rem;
+    margin-top: 0rem;
+    padding-top: 0rem !important;
+    padding: 2.5%;
+    padding-bottom: 0rem;
+    margin-top: 5rem
+}

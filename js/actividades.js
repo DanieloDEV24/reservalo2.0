@@ -446,95 +446,16 @@ $(document).ready(function () {
                     
                     if(response.success == true) {
                         
-                        if(response.actividades.length > 1) {
-                            
-                            $('.actividades .grid-actividades').empty();
-
-                            response.actividades.map(function(actividad){
-                                $('.actividades .grid-actividades').append(`
-                                <div class="card-actividad" data-index="${actividad.id_actividades}">
-                                    <div class="card-actividad-img">
-                                        <img src="${BASE_URL}images/${actividad.imagen}" alt="${actividad.nombre}">
-                                        <span class="card-actividad-badge" style="background-color: #32cccc">${actividad.categoria_actividad}</span>
-
-                                        ${(parseInt($('#rol_usuario').val()) === 2) ? `
-                                            <div class="dropdown card-actividad-admin-menu">
-                                                <button class="btn btn-sm card-actividad-admin-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="bi bi-three-dots-vertical"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a class="dropdown-item btn-editar-actividad" href="#" "><i class="bi bi-pencil me-2"></i>Editar</a></li>
-                                                    <li><a class="dropdown-item btn-inscritos-actividad" href="#"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
-                                                    <li><hr class="dropdown-divider"></li>
-                                                    <li><a class="dropdown-item text-danger btn-borrar-actividad" href="#" ><i class="bi bi-x-lg me-2"></i></i>Cancelar</a></li>
-                                                </ul>
-                                            </div>
-                                        ` : ''}
-                                    </div>
-                                    <div class="card-actividad-body">
-                                        <p class="card-actividad-titulo">${actividad.nombre}</p>
-                                        <p class="card-actividad-desc">${actividad.descripcion}</p>
-                                        <div class="card-actividad-meta">
-                                            <div><i class="bi bi-calendar"></i> ${parseFechaES(actividad.fecha_actividad)}, ${actividad.hora_actividad}</div>
-                                            <div><i class="bi bi-geo-alt"></i> ${actividad.lugar}</div>
-                                            ${(parseInt(actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${actividad.plazas_ocupadas} / ${actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"> ${actividad.plazas_ocupadas} inscritos</div>`}
-                                        </div>
-                                        <div class="card-actividad-footer">
-                                            <span class="card-actividad-precio">${(parseInt(actividad.tiene_precio) === 1) ? actividad.precio+'€' : 'Gratis'}</span>
-                                            <a class="btn btn-outline-actividad" href="${BASE_URL}index.php/actividad/${actividad.id_actividades}">Ver más</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                `)
-                            })
-
-                            $('#modalCrearActividad').modal('hide');
-                        }
-                        else {
+                        if (response.actividades.length === 1) {
                             $('.actividades .no-actividades').addClass('d-none');
                             $('.actividades .grid-actividades').removeClass('d-none');
-                            
-                            response.actividades.map(function(actividad){
-                                $('.actividades .grid-actividades').append(`
-                                <div class="card-actividad" data-index="${actividad.id_actividades}">
-                                    <div class="card-actividad-img">
-                                        <img src="${BASE_URL}images/${actividad.imagen}" alt="${actividad.nombre}">
-                                        <span class="card-actividad-badge" style="background-color: #32cccc">${actividad.categoria_actividad}</span>
-
-                                        ${(parseInt($('#rol_usuario').val()) === 2) ? `
-                                            <div class="dropdown card-actividad-admin-menu">
-                                                <button class="btn btn-sm card-actividad-admin-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="bi bi-three-dots-vertical"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a class="dropdown-item btn-editar-actividad" href="#"><i class="bi bi-pencil me-2"></i>Editar</a></li>
-                                                    <li><a class="dropdown-item btn-inscritos-actividad" href="#" ><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
-                                                    <li><hr class="dropdown-divider"></li>
-                                                    <li><a class="dropdown-item text-danger btn-borrar-actividad" href="#" ><i class="bi bi-x-lg me-2"></i></i>Cancelar</a></li>
-                                                </ul>
-                                            </div>
-                                        ` : ''}
-                                    </div>
-                                    <div class="card-actividad-body">
-                                        <p class="card-actividad-titulo">${actividad.nombre}</p>
-                                        <p class="card-actividad-desc">${actividad.descripcion}</p>
-                                        <div class="card-actividad-meta">
-                                            <div><i class="bi bi-calendar"></i> ${parseFechaES(actividad.fecha_actividad)}, ${actividad.hora_actividad}</div>
-                                            <div><i class="bi bi-geo-alt"></i> ${actividad.lugar}</div>
-                                            ${(parseInt(actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${actividad.plazas_ocupadas} / ${actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"> ${actividad.plazas_ocupadas} inscritos</div>`}
-                                        </div>
-                                        <div class="card-actividad-footer">
-                                            <span class="card-actividad-precio">${(actividad.tiene_precio) ? actividad.precio+'€' : 'Gratis'}</span>
-                                            <a class="btn btn-outline-actividad" href="${BASE_URL}index.php/actividad/${actividad.id_actividades}">Ver más</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                `)
-                            })
-
-
-                            $('#modalCrearActividad').modal('hide');
                         }
+
+                        response.actividades.map(function (actividad) {
+                            $('.actividades .grid-actividades').append(crearCardActividad(actividad));
+                        });
+
+                        $('#modalCrearActividad').modal('hide');
                     }
                 }
             });
@@ -786,43 +707,7 @@ $(document).ready(function () {
                     
                     if(response.success == true) {
                     
-                        // response.actividades.map(function(actividad){
-                        //     $('.actividades .grid-actividades').append(`
-                        //     <div class="card-actividad" data-index="${actividad.id_actividades}">
-                        //         <div class="card-actividad-img">
-                        //             <img src="${BASE_URL}images/${actividad.imagen}" alt="${actividad.nombre}">
-                        //             <span class="card-actividad-badge" style="background-color: #32cccc">${actividad.categoria_actividad}</span>
-
-                        //             ${(parseInt($('#rol_usuario').val()) === 2) ? `
-                        //                 <div class="dropdown card-actividad-admin-menu">
-                        //                     <button class="btn btn-sm card-actividad-admin-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        //                         <i class="bi bi-three-dots-vertical"></i>
-                        //                     </button>
-                        //                     <ul class="dropdown-menu dropdown-menu-end">
-                        //                         <li><a class="dropdown-item btn-editar-actividad" href="#" onclick=""><i class="bi bi-pencil me-2"></i>Editar</a></li>
-                        //                         <li><a class="dropdown-item btn-inscritos-actividad" href="#" onclick="verInscritos"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
-                        //                         <li><hr class="dropdown-divider"></li>
-                        //                         <li><a class="dropdown-item text-danger btn-borrar-actividad" href="#" onclick=""><i class="bi bi-trash me-2"></i>Eliminar</a></li>
-                        //                     </ul>
-                        //                 </div>
-                        //             ` : ''}
-                        //         </div>
-                        //         <div class="card-actividad-body">
-                        //             <p class="card-actividad-titulo">${actividad.nombre}</p>
-                        //             <p class="card-actividad-desc">${actividad.descripcion}</p>
-                        //             <div class="card-actividad-meta">
-                        //                 <div><i class="bi bi-calendar"></i> ${parseFechaES(actividad.fecha_actividad)}, ${actividad.hora_actividad}</div>
-                        //                 <div><i class="bi bi-geo-alt"></i> ${actividad.lugar}</div>
-                        //                 ${(parseInt(actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${actividad.plazas_ocupadas} / ${actividad.aforo} plazas</div>` : ''}
-                        //             </div>
-                        //             <div class="card-actividad-footer">
-                        //                 <span class="card-actividad-precio">${(actividad.tiene_precio) ? actividad.precio+'€' : 'Gratis'}</span>
-                        //                 <button class="btn btn-outline-primary">Ver más</button>
-                        //             </div>
-                        //         </div>
-                        //     </div>
-                        //     `)
-                        // })
+                        
 
                         if(parseInt(response.actividad.nombre_usuario) === 1) $('#modalInformacionUsuarioActividad .nombre-usuario').prop('checked', true);
                         if(parseInt(response.actividad.apellidos_usuario) === 1) $('#modalInformacionUsuarioActividad .apellidos-usuario').prop('checked', true);
@@ -836,52 +721,8 @@ $(document).ready(function () {
                         if(parseInt(response.actividad.telefono_usuario) === 1) $('#modalInformacionUsuarioActividad .telefono-usuario').prop('checked', true);
                         if(parseInt(response.actividad.direccion_usuario) === 1) $('#modalInformacionUsuarioActividad .direccion-usuario').prop('checked', true);
 
-                        $(`.grid-actividades .card-actividad[data-index="${response.actividad.id_actividades}"]`).replaceWith(
-                            `
-                                <div class="card-actividad" data-index="${response.actividad.id_actividades}">
-                                    <div class="card-actividad-img">
-                                        <img src="${BASE_URL}images/${response.actividad.imagen}" alt="${response.actividad.nombre}">
-                                        <span class="card-actividad-badge" style="background-color: #32cccc">${response.actividad.categoria_actividad}</span>
-
-                                        ${(parseInt($('#rol_usuario').val()) === 2) ? `
-                                            <div class="dropdown card-actividad-admin-menu">
-                                                <button class="btn btn-sm card-actividad-admin-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <i class="bi bi-three-dots-vertical"></i>
-                                                </button>
-                                                <ul class="dropdown-menu dropdown-menu-end">
-                                                    <li><a class="dropdown-item btn-editar-actividad" href="#"><i class="bi bi-pencil me-2"></i>Editar</a></li>
-                                                    <li><a class="dropdown-item btn-inscritos-actividad" href="#"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
-                                                    ${(response.actividad.estado !== 'finalizada') ? `
-                                                            <li><hr class="dropdown-divider"></li>
-                                                            ${(response.actividad.estado !== 'cancelada')
-                                                                ? `<li><a class="dropdown-item btn-reactivar-actividad" href="#"><i class="bi bi-arrow-clockwise me-2"></i>Reactivar</a></li>`
-                                                                : `<li><a class="dropdown-item text-danger btn-borrar-actividad" href="#"><i class="bi bi-x-lg me-2"></i>Cancelar</a></li>`
-                                                            }
-                                                        ` : ''
-                                                    }
-                                                    
-                                                </ul>
-                                            </div>
-                                        ` : ''}
-                                    </div>
-                                    <div class="card-actividad-body">
-                                        <p class="card-actividad-titulo">${response.actividad.nombre}</p>
-                                        <p class="card-actividad-desc">${response.actividad.descripcion}</p>
-                                        <div class="card-actividad-meta">
-                                            <div><i class="bi bi-calendar"></i> ${parseFechaES(response.actividad.fecha_actividad)}, ${response.actividad.hora_actividad}</div>
-                                            <div><i class="bi bi-geo-alt"></i> ${response.actividad.lugar}</div>
-                                            ${(parseInt(response.actividad.tiene_aforo) === 1) 
-    ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` 
-    : `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} inscritos</div>`}
-                                        </div>
-                                        <div class="card-actividad-footer">
-                                            <span class="card-actividad-precio">${(parseInt(response.actividad.tiene_precio) === 1) ? response.actividad.precio+'€' : 'Gratis'}</span>
-                                            <a class="btn btn-outline-actividad" href="${BASE_URL}index.php/actividad/${response.actividad.id_actividades}">Ver más</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            `
-                        );
+                        $(`.grid-actividades li:has(.card-actividad[data-index="${response.actividad.id_actividades}"])`)
+                            .replaceWith(crearCardActividad(response.actividad));
 
                         $('#modalEditarActividad').modal('hide');
                         
@@ -949,51 +790,9 @@ $(document).ready(function () {
                     const estaInactiva = estaCancelada || estaFinalizada;
 
 
-                   $(`.grid-actividades .card-actividad[data-index="${response.actividad.id_actividades}"]`).replaceWith(
-                        `
-                            <div class="card-actividad" data-index="${response.actividad.id_actividades}">
-                                <div class="card-actividad-img">
-                                    <img src="${BASE_URL}images/${response.actividad.imagen}" alt="${response.actividad.nombre}" class="${estaInactiva ? 'grayscale-img' : ''}">
-                                    <span class="card-actividad-badge" style="background-color: ${estaInactiva ? '#adb5bd' : '#32cccc'}">${response.actividad.categoria_actividad}</span>
+                    $(`.grid-actividades li:has(.card-actividad[data-index="${response.actividad.id_actividades}"])`)
+                        .replaceWith(crearCardActividad(response.actividad));
 
-                                    ${(parseInt($('#rol_usuario').val()) === 2) ? `
-                                        <div class="dropdown card-actividad-admin-menu">
-                                            <button class="btn btn-sm card-actividad-admin-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item btn-editar-actividad" href="#"><i class="bi bi-pencil me-2"></i>Editar</a></li>
-                                                <li><a class="dropdown-item btn-inscritos-actividad" href="#"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
-                                                ${(!estaFinalizada) ? `
-                                                        <li><hr class="dropdown-divider"></li>
-                                                        ${estaCancelada
-                                                            ? `<li><a class="dropdown-item btn-reactivar-actividad" href="#"><i class="bi bi-arrow-clockwise me-2"></i>Reactivar</a></li>`
-                                                            : `<li><a class="dropdown-item text-danger btn-borrar-actividad" href="#"><i class="bi bi-x-lg me-2"></i>Cancelar</a></li>`
-                                                        }
-                                                    ` : ''
-                                                }
-                                                
-                                            </ul>
-                                        </div>
-                                    ` : ''}
-                                </div>
-                                <div class="card-actividad-body">
-                                    <p class="card-actividad-titulo">${response.actividad.nombre}</p>
-                                    <p class="card-actividad-desc">${response.actividad.descripcion}</p>
-                                    <div class="card-actividad-meta">
-                                        <div><i class="bi bi-calendar"></i> ${parseFechaES(response.actividad.fecha_actividad)}, ${response.actividad.hora_actividad}</div>
-                                        <div><i class="bi bi-geo-alt"></i> ${response.actividad.lugar}</div>
-                                        ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} inscritos</div>`}
-                                    </div>
-                                    <div class="card-actividad-footer">
-                                        <span class="card-actividad-precio">${(parseInt(response.actividad.tiene_precio) === 1) ? response.actividad.precio+'€' : 'Gratis'}</span>
-                                        <a class="btn btn-outline-actividad" href="${BASE_URL}index.php/actividad/${response.actividad.id_actividades}" ${estaInactiva ? 'disabled' : ''}>${estaCancelada ? 'Cancelada' : estaFinalizada ? 'Finalizada' : 'Ver más'}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        `
-                    );
-                    
                     $('#modalCancelarActividad').modal('hide');
                 }
             },             
@@ -1027,50 +826,8 @@ $(document).ready(function () {
                     const estaInactiva = estaCancelada || estaFinalizada;
 
 
-                   $(`.grid-actividades .card-actividad[data-index="${response.actividad.id_actividades}"]`).replaceWith(
-                        `
-                            <div class="card-actividad" data-index="${response.actividad.id_actividades}">
-                                <div class="card-actividad-img">
-                                    <img src="${BASE_URL}images/${response.actividad.imagen}" alt="${response.actividad.nombre}" class="${estaInactiva ? 'grayscale-img' : ''}">
-                                    <span class="card-actividad-badge" style="background-color: ${estaInactiva ? '#adb5bd' : '#32cccc'}">${response.actividad.categoria_actividad}</span>
-
-                                    ${(parseInt($('#rol_usuario').val()) === 2) ? `
-                                        <div class="dropdown card-actividad-admin-menu">
-                                            <button class="btn btn-sm card-actividad-admin-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                                <i class="bi bi-three-dots-vertical"></i>
-                                            </button>
-                                            <ul class="dropdown-menu dropdown-menu-end">
-                                                <li><a class="dropdown-item btn-editar-actividad" href="#"><i class="bi bi-pencil me-2"></i>Editar</a></li>
-                                                <li><a class="dropdown-item btn-inscritos-actividad" href="#"><i class="bi bi-people me-2"></i>Ver inscritos</a></li>
-                                                ${(!estaFinalizada) ? `
-                                                        <li><hr class="dropdown-divider"></li>
-                                                        ${estaCancelada
-                                                            ? `<li><a class="dropdown-item btn-reactivar-actividad" href="#"><i class="bi bi-arrow-clockwise me-2"></i>Reactivar</a></li>`
-                                                            : `<li><a class="dropdown-item text-danger btn-borrar-actividad" href="#"><i class="bi bi-x-lg me-2"></i>Cancelar</a></li>`
-                                                        }
-                                                    ` : ''
-                                                }
-                                                
-                                            </ul>
-                                        </div>
-                                    ` : ''}
-                                </div>
-                                <div class="card-actividad-body">
-                                    <p class="card-actividad-titulo">${response.actividad.nombre}</p>
-                                    <p class="card-actividad-desc">${response.actividad.descripcion}</p>
-                                    <div class="card-actividad-meta">
-                                        <div><i class="bi bi-calendar"></i> ${parseFechaES(response.actividad.fecha_actividad)}, ${response.actividad.hora_actividad}</div>
-                                        <div><i class="bi bi-geo-alt"></i> ${response.actividad.lugar}</div>
-                                        ${(parseInt(response.actividad.tiene_aforo) === 1) ? `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} / ${response.actividad.aforo} plazas</div>` : `<div><i class="bi bi-people"></i> ${response.actividad.plazas_ocupadas} inscritos</div>`}
-                                    </div>
-                                    <div class="card-actividad-footer">
-                                        <span class="card-actividad-precio">${(parseInt(response.actividad.tiene_precio) === 1) ? response.actividad.precio+'€' : 'Gratis'}</span>
-                                        <a class="btn btn-outline-actividad" href="${BASE_URL}index.php/actividad/${response.actividad.id_actividades}" ${estaInactiva ? 'disabled' : ''}>${estaCancelada ? 'Cancelada' : estaFinalizada ? 'Finalizada' : 'Ver más'}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        `
-                    );
+                    $(`.grid-actividades li:has(.card-actividad[data-index="${response.actividad.id_actividades}"])`)
+                        .replaceWith(crearCardActividad(response.actividad));
                 }
             }, 
             error: function (xhr, status, error) {
@@ -1416,17 +1173,41 @@ $(document).ready(function () {
 
         if(errores.length === 0) {
 
-            $('.paginaActividad .informacion-adicional #contenedor-personas article').map(function(){
-                let article = $(this);
+            $('.paginaActividad .informacion-adicional #contenedor-personas fieldset').map(function(){
+                let fieldset = $(this);
+
                 personas.push({
-                    nombre: article.find('input[data-campo="nombre"]').length ? article.find('input[data-campo="nombre"]').val() : null,
-                    apellidos: article.find('input[data-campo="apellidos"]').length ? article.find('input[data-campo="apellidos"]').val() : null,
-                    fechaNacimiento: article.find('input[data-campo="fecha-nacimiento"]').length ? article.find('input[data-campo="fecha-nacimiento"]').val() : null,
-                    edadMinima: article.data('data-edad') !== undefined ? parseInt(article.data('data-edad')) : null,
-                    dni: article.find('input[data-campo="dni"]').length ? article.find('input[data-campo="dni"]').val() : null,
-                    email: article.find('input[data-campo="email"]').length ? article.find('input[data-campo="email"]').val() : null,
-                    telefono: article.find('input[data-campo="telefono"]').length ? parseInt(article.find('input[data-campo="telefono"]').val()) : null,
-                    direccion: article.find('input[data-campo="direccion"]').length ? article.find('input[data-campo="direccion"]').val() : null,
+                    nombre: fieldset.find('input[data-campo="nombre"]').length
+                        ? fieldset.find('input[data-campo="nombre"]').val()
+                        : null,
+
+                    apellidos: fieldset.find('input[data-campo="apellidos"]').length
+                        ? fieldset.find('input[data-campo="apellidos"]').val()
+                        : null,
+
+                    fechaNacimiento: fieldset.find('input[data-campo="fecha-nacimiento"]').length
+                        ? fieldset.find('input[data-campo="fecha-nacimiento"]').val()
+                        : null,
+
+                    edadMinima: fieldset.data('data-edad') !== undefined
+                        ? parseInt(fieldset.data('data-edad'))
+                        : null,
+
+                    dni: fieldset.find('input[data-campo="dni"]').length
+                        ? fieldset.find('input[data-campo="dni"]').val()
+                        : null,
+
+                    email: fieldset.find('input[data-campo="email"]').length
+                        ? fieldset.find('input[data-campo="email"]').val()
+                        : null,
+
+                    telefono: fieldset.find('input[data-campo="telefono"]').length
+                        ? parseInt(fieldset.find('input[data-campo="telefono"]').val())
+                        : null,
+
+                    direccion: fieldset.find('input[data-campo="direccion"]').length
+                        ? fieldset.find('input[data-campo="direccion"]').val()
+                        : null,
                 })
             })
 
@@ -1762,7 +1543,7 @@ $(document).ready(function () {
     $(document).on('click', '#modalEditarReservaAdmin .eliminar-persona-reserva-actividad', function(e){
 
         e.preventDefault();
-        $(this).closest('article').remove();
+        $(this).closest('fieldset').remove();
         $('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-reserva').text((parseInt($('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-reserva').text())-1))
 
     })
@@ -1841,7 +1622,7 @@ $(document).ready(function () {
                     }, 3000);
                 }
                 else {
-                    let numPersona = parseInt($('#modalEditarReservaAdmin .personas-editar-reserva article').last().data('persona'));
+                    let numPersona = parseInt($('#modalEditarReservaAdmin .personas-editar-reserva fieldset').last().data('persona'));
                     let articulo = crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, (numPersona + 1), true);
                     $('#modalEditarReservaAdmin .personas-editar-reserva').append(articulo)
                     $('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-reserva').text((parseInt($('#modalEditarReservaAdmin .informacion-reserva p.contador-plazas span.plazas-reserva').text())+1))
@@ -1901,17 +1682,42 @@ $(document).ready(function () {
 
         if(errores.length === 0){
 
-            $('#modalEditarReservaAdmin .personas-editar-reserva article').map(function(){
-                let article = $(this);
+            $('#modalEditarReservaAdmin .personas-editar-reserva fieldset').map(function(){
+
+                let fieldset = $(this);
+
                 personas.push({
-                    nombre: article.find('input[data-campo="nombre"]').length ? article.find('input[data-campo="nombre"]').val() : null,
-                    apellidos: article.find('input[data-campo="apellidos"]').length ? article.find('input[data-campo="apellidos"]').val() : null,
-                    fechaNacimiento: article.find('input[data-campo="fecha-nacimiento"]').length ? article.find('input[data-campo="fecha-nacimiento"]').val() : null,
-                    edadMinima: article.data('data-edad') !== undefined ? parseInt(article.data('data-edad')) : null,
-                    dni: article.find('input[data-campo="dni"]').length ? article.find('input[data-campo="dni"]').val() : null,
-                    email: article.find('input[data-campo="email"]').length ? article.find('input[data-campo="email"]').val() : null,
-                    telefono: article.find('input[data-campo="telefono"]').length ? parseInt(article.find('input[data-campo="telefono"]').val()) : null,
-                    direccion: article.find('input[data-campo="direccion"]').length ? article.find('input[data-campo="direccion"]').val() : null,
+                    nombre: fieldset.find('input[data-campo="nombre"]').length
+                        ? fieldset.find('input[data-campo="nombre"]').val()
+                        : null,
+
+                    apellidos: fieldset.find('input[data-campo="apellidos"]').length
+                        ? fieldset.find('input[data-campo="apellidos"]').val()
+                        : null,
+
+                    fechaNacimiento: fieldset.find('input[data-campo="fecha-nacimiento"]').length
+                        ? fieldset.find('input[data-campo="fecha-nacimiento"]').val()
+                        : null,
+
+                    edadMinima: fieldset.data('data-edad') !== undefined
+                        ? parseInt(fieldset.data('data-edad'))
+                        : null,
+
+                    dni: fieldset.find('input[data-campo="dni"]').length
+                        ? fieldset.find('input[data-campo="dni"]').val()
+                        : null,
+
+                    email: fieldset.find('input[data-campo="email"]').length
+                        ? fieldset.find('input[data-campo="email"]').val()
+                        : null,
+
+                    telefono: fieldset.find('input[data-campo="telefono"]').length
+                        ? parseInt(fieldset.find('input[data-campo="telefono"]').val())
+                        : null,
+
+                    direccion: fieldset.find('input[data-campo="direccion"]').length
+                        ? fieldset.find('input[data-campo="direccion"]').val()
+                        : null,
                 })
             })
             
@@ -2143,6 +1949,71 @@ $(document).ready(function () {
         $('#modalInformacionUsuarioActividad').modal('show')
     })
 
+    function crearCardActividad(actividad) {
+        const estado = actividad.estado;
+        const estaCancelada = estado === 'cancelada';
+        const estaFinalizada = estado === 'finalizada';
+        const estaInactiva = estaCancelada || estaFinalizada;
+
+        const tieneAforo = parseInt(actividad.tiene_aforo) === 1;
+        const tienePrecio = parseInt(actividad.tiene_precio) === 1;
+        const rolUsuario = parseInt($('#rol_usuario').val());
+
+        const metaPlazas = tieneAforo
+            ? `<div><i class="bi bi-people" aria-hidden="true"></i> ${actividad.plazas_ocupadas} / ${actividad.aforo} plazas</div>`
+            : `<div><i class="bi bi-people" aria-hidden="true"></i> ${actividad.plazas_ocupadas} inscritos</div>`;
+
+        const textoBoton = estaCancelada ? 'Cancelada' : (estaFinalizada ? 'Finalizada' : 'Ver más');
+
+        const menuAdmin = (rolUsuario === 2) ? `
+            <div class="dropdown card-actividad-admin-menu">
+                <button class="btn btn-sm card-actividad-admin-btn" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Opciones de la actividad">
+                    <i class="bi bi-three-dots-vertical" aria-hidden="true"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><a class="dropdown-item btn-editar-actividad" href="#"><i class="bi bi-pencil me-2" aria-hidden="true"></i>Editar</a></li>
+                    <li><a class="dropdown-item btn-inscritos-actividad" href="#"><i class="bi bi-people me-2" aria-hidden="true"></i>Ver inscritos</a></li>
+                    ${(!estaFinalizada) ? `
+                        <li><hr class="dropdown-divider"></li>
+                        ${estaCancelada
+                            ? `<li><a class="dropdown-item btn-reactivar-actividad" href="#"><i class="bi bi-arrow-clockwise me-2" aria-hidden="true"></i>Reactivar</a></li>`
+                            : `<li><a class="dropdown-item text-danger btn-borrar-actividad" href="#"><i class="bi bi-x-lg me-2" aria-hidden="true"></i>Cancelar</a></li>`
+                        }
+                    ` : ''}
+                </ul>
+            </div>
+        ` : '';
+
+        return `
+            <li>
+            <article class="card-actividad" data-index="${actividad.id_actividades}" aria-labelledby="titulo-actividad-${actividad.id_actividades}">
+                <header class="card-actividad-img">
+                    <img src="${BASE_URL}images/${actividad.imagen}" alt="${actividad.nombre}" class="${estaInactiva ? 'grayscale-img' : ''}">
+                    <span class="card-actividad-badge" style="background-color: ${estaInactiva ? '#adb5bd' : '#32cccc'}">${actividad.categoria_actividad}</span>
+                    ${menuAdmin}
+                </header>
+                <section class="card-actividad-body">
+                    <h2 id="titulo-actividad-${actividad.id_actividades}" class="card-actividad-titulo">${actividad.nombre}</h2>
+                    <p class="card-actividad-desc">${actividad.descripcion}</p>
+                    <div class="card-actividad-meta">
+                        <div>
+                            <i class="bi bi-calendar" aria-hidden="true"></i>
+                            <time datetime="${actividad.fecha_actividad}T${actividad.hora_actividad.substring(0, 5)}">
+                                ${parseFechaES(actividad.fecha_actividad)}, ${actividad.hora_actividad.substring(0, 5)}
+                            </time>
+                        </div>
+                        <div><i class="bi bi-geo-alt" aria-hidden="true"></i> ${actividad.lugar}</div>
+                        ${metaPlazas}
+                    </div>
+                    <div class="card-actividad-footer">
+                        <span class="card-actividad-precio">${tienePrecio ? actividad.precio + '€' : 'Gratis'}</span>
+                        <a class="btn btn-outline-actividad" ${estaInactiva ? 'aria-disabled="true" tabindex="-1"' : ''} href="${BASE_URL}index.php/actividad/${actividad.id_actividades}">${textoBoton}</a>
+                    </div>
+                </section>
+            </article>
+            </li>
+        `;
+    }
 
     function parseFechaES(str) {
         const [anio, mes, dia] = str.split('-');
@@ -2176,54 +2047,124 @@ $(document).ready(function () {
         return fechaMax.toISOString().split('T')[0]; // formato YYYY-MM-DD
     }
 
-    function crearInputsInfoAdicional(nombre, apellidos, fechaNacimiento, edadMinima, dni, email, telefono, direccion, numeroPersona, editarReserva = false, numeroReserva = '') {
+    function crearInputsInfoAdicional(
+        nombre,
+        apellidos,
+        fechaNacimiento,
+        edadMinima,
+        dni,
+        email,
+        telefono,
+        direccion,
+        numeroPersona,
+        editarReserva = false,
+        numeroReserva = ''
+    ) {
 
         let campos = [
-            { activo: nombre,          id: 'nombre',            label: 'Nombre',              tipo: 'text'  },
-            { activo: apellidos,       id: 'apellidos',         label: 'Apellidos',           tipo: 'text'  },
-            { activo: fechaNacimiento, id: 'fecha-nacimiento',  label: 'Fecha de nacimiento', tipo: 'date'  },
-            { activo: dni,             id: 'dni',               label: 'DNI',                 tipo: 'text'  },
-            { activo: email,           id: 'email',             label: 'Email',               tipo: 'email' },
-            { activo: telefono,        id: 'telefono',          label: 'Teléfono',            tipo: 'tel'   },
-            { activo: direccion,       id: 'direccion',         label: 'Dirección',           tipo: 'text'  },
+            {
+                activo: nombre,
+                id: 'nombre',
+                label: 'Nombre',
+                tipo: 'text'
+            },
+            {
+                activo: apellidos,
+                id: 'apellidos',
+                label: 'Apellidos',
+                tipo: 'text'
+            },
+            {
+                activo: fechaNacimiento,
+                id: 'fecha-nacimiento',
+                label: 'Fecha de nacimiento',
+                tipo: 'date'
+            },
+            {
+                activo: dni,
+                id: 'dni',
+                label: 'DNI',
+                tipo: 'text'
+            },
+            {
+                activo: email,
+                id: 'email',
+                label: 'Email',
+                tipo: 'email'
+            },
+            {
+                activo: telefono,
+                id: 'telefono',
+                label: 'Teléfono',
+                tipo: 'tel'
+            },
+            {
+                activo: direccion,
+                id: 'direccion',
+                label: 'Dirección',
+                tipo: 'text'
+            },
         ];
 
-        let article = $('<article>').addClass('info-adicional-persona').attr('data-persona', numeroPersona).attr('data-usuario', numeroReserva );
+        let fieldset = $('<fieldset>')
+            .addClass('info-adicional-persona')
+            .attr('data-persona', numeroPersona)
+            .attr('data-usuario', numeroReserva);
 
         $(`
             <div class="d-flex justify-content-between align-items-center">
                 <p class="titulo-persona">Persona ${numeroPersona}</p>
-                ${(editarReserva) ? '<button class="eliminar-persona-reserva-actividad btn btn-danger"><i class="bi bi-trash3"></i></button>' : '' }
+
+                ${
+                    editarReserva
+                        ? '<button class="eliminar-persona-reserva-actividad btn btn-danger"><i class="bi bi-trash3"></i></button>'
+                        : ''
+                }
             </div>
-        `).appendTo(article);
+        `).appendTo(fieldset);
 
         campos.map(function(campo) {
+
             if (parseInt(campo.activo) === 1) {
 
                 const inputId = `${campo.id}_${numeroPersona}`;
-                const grupo = $('<div>').addClass('form-group mb-3');
 
-                $('<label>').addClass('form-label').attr('for', inputId).text(campo.label).appendTo(grupo);
+                const grupo = $('<div>')
+                    .addClass('form-group mb-3');
 
-                let input = $('<input>').addClass('form-control').attr({
-                    type: campo.tipo,
-                    id: inputId,
-                    name: inputId,
-                    required: true, 
-                    'data-campo': campo.id
+                $('<label>')
+                    .addClass('form-label')
+                    .attr('for', inputId)
+                    .text(campo.label)
+                    .appendTo(grupo);
 
-                });
+                let input = $('<input>')
+                    .addClass('form-control')
+                    .attr({
+                        type: campo.tipo,
+                        id: inputId,
+                        name: inputId,
+                        required: true,
+                        'data-campo': campo.id
+                    });
 
-                if (campo.id === 'fecha-nacimiento' && edadMinima > 0) {
-                    input.attr('max', calcularFechaMaximaPorEdad(edadMinima));
+                if (
+                    campo.id === 'fecha-nacimiento' &&
+                    edadMinima > 0
+                ) {
+                    input.attr(
+                        'max',
+                        calcularFechaMaximaPorEdad(edadMinima)
+                    );
                 }
 
                 input.appendTo(grupo);
-                article.append(grupo);
+
+                fieldset.append(grupo);
             }
         });
 
-        return article;
+        return fieldset;
     }
 
     function crearFechaHora(fecha, hora) {

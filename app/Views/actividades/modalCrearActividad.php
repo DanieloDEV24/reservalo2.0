@@ -33,9 +33,11 @@
                         <label for="categoria-actividad-crear">Categoría: <span class="campo-obligatorio">*</span></label>
                         <select id="categoria-actividad-crear" name="categoria-actividad-crear" class="form-select">
                             <option value="-1">Seleccione una categoría</option>
-                            <?php foreach ($tipos_actividades as $tipo_actividad): ?>
-                                <option value="<?= $tipo_actividad["id_tipos_actividades"] ?>"><?= $tipo_actividad["nombre"] ?></option>
-                            <?php endforeach; ?>
+                            <?php if (isset($tipos_actividades)): ?>
+                                <?php foreach ($tipos_actividades as $tipo_actividad): ?>
+                                    <option value="<?= $tipo_actividad["id_tipos_actividades"] ?>"><?= $tipo_actividad["nombre"] ?></option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                         </select>
                     </div>
               </div>

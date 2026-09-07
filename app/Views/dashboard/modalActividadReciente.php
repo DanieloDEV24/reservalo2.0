@@ -1,5 +1,5 @@
 <script>
-  const actividades = <?= json_encode($actividades) ?>;
+  const actividades = <?= (isset($actividades)) ? json_encode($actividades) : '[]' ?>;
 </script>
 
 <div class="modal fade" tabindex="-1" id="modalActividadReciente" data-bs-backdrop="static" data-bs-keyboard="false" aria-hidden="true">
