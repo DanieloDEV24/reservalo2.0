@@ -49,7 +49,7 @@
 </script>
 
 <?php
-  if(count($instalaciones)!== 0){
+  if(isset($instalaciones) && count($instalaciones)!== 0){
 ?>
   <div class="pagina-crud-instalaciones">
     <div style="padding-left: 3%; padding-top: 1%; padding-bottom: .5%;">
@@ -79,9 +79,11 @@
             <label for="filtradoCategoria" class="form-label">Categoría:</label>
             <select class="form-control" id="filtradoCategoria" name="filtradoCategoria">
                 <option value="-1">Seleccione un deporte</option>
-               <?php foreach($categorias as $categoria): ?>
+                <?php if(isset($categorias) && count($categorias) > 0): ?>
+                  <?php foreach($categorias as $categoria): ?>
                 <option value="<?=$categoria["id_categoria"]?>"><?=$categoria["nombre"]?></option>
-               <?php endforeach; ?>
+                  <?php endforeach; ?>
+                <?php endif; ?>
             </select>
           </div>
 
@@ -232,7 +234,7 @@
 
 <div class="divTable">
   <?php
-    if(count($instalaciones)=== 0){
+    if(isset($instalaciones) && count($instalaciones) === 0){
   ?>
     <div class="empty-state">
             <div class="icon-wrapper">
@@ -312,7 +314,8 @@
       <tbody>
         <?php
         $cont = 0;
-        foreach ($instalaciones as $instalacion) {
+        if(isset($instalaciones) && count($instalaciones) > 0){
+          foreach ($instalaciones as $instalacion) {
           $cont++;
         ?>
           <tr data-index="<?= $instalacion["id_instalacion"] ?>" <?= ($instalacion["estado"] == 1) ? 'class="table-danger"' : '' ?>>
@@ -368,6 +371,7 @@
           </tr>
         <?php
         }
+        }
         ?>
       </tbody>
   </table>
@@ -382,9 +386,9 @@
 
   
 
-<?= $nuevaInstalacion ?>
-<?= $verInstalacion ?>
-<?= $editarInstalacion ?>
-<?= $modalBorrarPista ?>
-<?= $modalBajaInstalacion ?>
-<?= $borrarInstalacion ?>
+<?= isset($nuevaInstalacion) ? $nuevaInstalacion : '' ?>
+<?= isset($verInstalacion) ? $verInstalacion : '' ?>
+<?= isset($editarInstalacion) ? $editarInstalacion : '' ?>
+<?= isset($modalBorrarPista) ? $modalBorrarPista : '' ?>
+<?= isset($modalBajaInstalacion) ? $modalBajaInstalacion : '' ?>
+<?= isset($borrarInstalacion) ? $borrarInstalacion : '' ?>

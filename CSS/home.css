@@ -378,3 +378,7 @@ header.headerHome>div a {
 footer.contenedor-btn-ver-instalaciones {
     background-color: transparent !important;
 }
+
+.datos-gif .dato-gif img {
+    width: 100%;
+}

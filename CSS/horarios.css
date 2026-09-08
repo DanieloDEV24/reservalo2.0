@@ -21,22 +21,9 @@
   align-items: center;
   gap: 16px;
   width: 100%;
-  margin-bottom: 2%;
+  margin-bottom: 15%;
 }
 
-
-.horario button {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.3s;
-}
 
 .div-ano button:hover {
   background: #2dd4bf;
@@ -365,12 +352,12 @@
   color: #32cccc;
 }
 
-#sidebarTitle1 {
+.sidebar-header h2 {
   margin-bottom: 0%;
   font-size: 2rem;
 }
 
-#sidebarSubtitle1 {
+.sidebar-header p {
   font-size: 1.2rem;
 }
 
@@ -1352,4 +1339,25 @@ body.resizing-sidebar-footer * {
   cursor: pointer;
   font-size: 0.95rem;
   color: #333;
+}
+
+.horario button:not(.btn-primary-personal) {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.titulo-horario {
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+    margin-bottom: 2rem;
+    align-items: start;
 }

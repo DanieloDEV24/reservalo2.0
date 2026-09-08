@@ -1526,137 +1526,137 @@ $(document).ready(() => {
         /* =========================
            🟠 CASO: EXCEPCIÓN
            ========================= */
-if ($(this).data('exception') === true) {
+        if ($(this).data('exception') === true) {
 
-    if($(this).data('sinfecha') === false || $(this).data('sinfecha') === 'false') {
-        $('#modalSinFechaHorario').show();
-        return; 
-    }
-
-    if ($('.dia-seleccionado:not([data-exception])').length > 0) {
-        $('#modalCambioHorario #mensaje-dia-sin-horario').text('El día seleccionado no tiene un horario normal asignado.')
-        $('#modalCambioHorario #mensaje-opciones').text(' Puedes continuar con el cambio de horario o cerrarlo para asignar un horario normal a este día.')
-        $('#modalCambioHorario').show();
-        return;
-    }
-
-    $(this).addClass('dia-seleccionado');
-
-    if($('.dia-seleccionado[data-exception="true"]').length === 1) 
-        $('#sidebar-cambio-horario .contenedor-cambio-horarios-card').empty(); 
-
-    $('#sidebar-cambio-horario p.seleccion-horario-nuevo')
-        .text('¿Desea volver al siguiente horario? :');
-
-    let idHorario = parseInt($(this).data('index'));
-    let idBase = parseInt($(this).data('base'));
-    let instalacion = parseInt($('.horario #instalacion').val());
-
-    // ¿Ya existe la excepción en leyenda izquierda?
-    let horariosSeleccionados = $('.horarios-old div').map(function() {
-        return parseInt($(this).data('new'));
-    }).get();
-    let existeLeyendaOld = horariosSeleccionados.includes(idHorario);
-
-    // ¿Ya se procesó este horario base?
-    let basesYaProcesadas = $('.horarios-new div').map(function() {
-        return parseInt($(this).data('new'));
-    }).get();
-    let existeBase = basesYaProcesadas.includes(idBase);
-
-    if (!existeBase) {
-
-        const data = {
-            "horario-excepcion": $(this).data('index'),
-            "fecha": $(this).data('day'),
-            "instalacion": instalacion
-        };
-
-        $.ajax({
-            type: "POST",
-            url: `${BASE_URL}index.php/getHorariosChangeException`,
-            data: { data },
-            dataType: "JSON",
-            // beforeSend: function () {
-            //     $('#loaderSidebarCambioHorario').show();
-            // },
-            success: function (response) {
-
-                if (!response.success) return;
-
-                $('#loaderSidebarCambioHorario').hide();
-
-                const idHorarioBase = response.excepcion.id_tipo_horario_base;
-                const $contenedor = $('#sidebar-cambio-horario .contenedor-cambio-horarios-card');
-                const e = response.excepcion;
-
-                const num2 = $(`.numero-dia.dia-seleccionado[data-name="${response.horario_excepcion.nombre}"]`).length;
-
-                // Div leyenda izquierda — solo si la excepción no existe aún
-                if (!existeLeyendaOld) {
-                    const div = `
-                        <div data-name="${response.horario_excepcion.nombre}" data-color="${response.horario_excepcion.color}" data-new="${response.horario_excepcion.id_tipo_horario}" data-excepcion ="${true}"
-                            style="width:40px;height:40px;border-radius:5px;
-                                    background-color:${response.horario_excepcion.color}50;color:${response.horario_excepcion.color};
-                                    border:1px solid ${response.horario_excepcion.color};
-                                    display:flex;align-items:center;justify-content:center;">
-                            <span>${num2}</span>
-                        </div>
-                    `;
-                    $('.horarios-old').append(div);
-                }
-
-                // Div leyenda derecha — uno por cada horario base distinto
-                let horariosExistentes = $('.horarios-new div').map(function() {
-                    return $(this).data('new');
-                }).get();
-                let existeLeyenda2 = horariosExistentes.includes(parseInt(response.excepcion.id_tipo_horario));
-
-                if (!existeLeyenda2) {
-                    const div2 = `
-                        <div data-name="${response.excepcion.nombre}" data-color="${response.excepcion.color}" data-new="${response.excepcion.id_tipo_horario}"
-                            style="width:40px;height:40px;border-radius:5px;
-                                    background-color:${response.excepcion.color};color:${response.excepcion.color};
-                                    border:1px solid ${response.excepcion.color};
-                                    display:flex;align-items:center;justify-content:center;">
-                            <span>${num2}</span>
-                        </div>
-                    `;
-
-                    const cardHorario = `
-                        <div data-index="${idHorarioBase}" data-color="${e.color}"
-                            style="background-color:${e.color}20;color:${e.color};
-                                    border:2px solid ${e.color}90"
-                            class="card-menu-horarios">
-                            <span>${e.nombre}</span>
-                            <div class="descripcion">${e.descripcion}</div>
-                        </div>
-                    `;
-
-                    $contenedor.append(cardHorario);
-                    $('.horarios-new').append(div2);
-                }
-            },
-            complete: function () {
-                $('#loaderSidebarCambioHorario').hide();
+            if($(this).data('sinfecha') === false || $(this).data('sinfecha') === 'false') {
+                $('#modalSinFechaHorario').show();
+                return; 
             }
-        });
 
-    } else {
-        // Solo actualizar contador
-        const num2 = $(`.numero-dia.dia-seleccionado[data-name="${$(this).data('name')}"]`).length;
-        $(`.horarios-old div[data-name="${$(this).data('name')}"] span`).text(num2);
-    }
+            if ($('.dia-seleccionado:not([data-exception])').length > 0) {
+                $('#modalCambioHorario #mensaje-dia-sin-horario').text('El día seleccionado no tiene un horario normal asignado.')
+                $('#modalCambioHorario #mensaje-opciones').text(' Puedes continuar con el cambio de horario o cerrarlo para asignar un horario normal a este día.')
+                $('#modalCambioHorario').show();
+                return;
+            }
 
-    $('#sidebar-cambio-horario').addClass('active');
-    $('#calendario, #contenedor-loader-horario').addClass('seleccion-dia');
-    $('#masInstalacionesCambiar').prop('disabled', false);
-    $('#btn-guardar-cambio-seleccion').removeClass('btn-primary-personal-disabled');
+            $(this).addClass('dia-seleccionado');
 
-    lockScroll();
+            if($('.dia-seleccionado[data-exception="true"]').length === 1) 
+                $('#sidebar-cambio-horario .contenedor-cambio-horarios-card').empty(); 
 
-    return; // ⛔ NO continúa con la lógica normal
-}
+            $('#sidebar-cambio-horario p.seleccion-horario-nuevo')
+                .text('¿Desea volver al siguiente horario? :');
+
+            let idHorario = parseInt($(this).data('index'));
+            let idBase = parseInt($(this).data('base'));
+            let instalacion = parseInt($('.horario #instalacion').val());
+
+            // ¿Ya existe la excepción en leyenda izquierda?
+            let horariosSeleccionados = $('.horarios-old div').map(function() {
+                return parseInt($(this).data('new'));
+            }).get();
+            let existeLeyendaOld = horariosSeleccionados.includes(idHorario);
+
+            // ¿Ya se procesó este horario base?
+            let basesYaProcesadas = $('.horarios-new div').map(function() {
+                return parseInt($(this).data('new'));
+            }).get();
+            let existeBase = basesYaProcesadas.includes(idBase);
+
+            if (!existeBase) {
+
+                const data = {
+                    "horario-excepcion": $(this).data('index'),
+                    "fecha": $(this).data('day'),
+                    "instalacion": instalacion
+                };
+
+                $.ajax({
+                    type: "POST",
+                    url: `${BASE_URL}index.php/getHorariosChangeException`,
+                    data: { data },
+                    dataType: "JSON",
+                    // beforeSend: function () {
+                    //     $('#loaderSidebarCambioHorario').show();
+                    // },
+                    success: function (response) {
+
+                        if (!response.success) return;
+
+                        $('#loaderSidebarCambioHorario').hide();
+
+                        const idHorarioBase = response.excepcion.id_tipo_horario_base;
+                        const $contenedor = $('#sidebar-cambio-horario .contenedor-cambio-horarios-card');
+                        const e = response.excepcion;
+
+                        const num2 = $(`.numero-dia.dia-seleccionado[data-name="${response.horario_excepcion.nombre}"]`).length;
+
+                        // Div leyenda izquierda — solo si la excepción no existe aún
+                        if (!existeLeyendaOld) {
+                            const div = `
+                                <div data-name="${response.horario_excepcion.nombre}" data-color="${response.horario_excepcion.color}" data-new="${response.horario_excepcion.id_tipo_horario}" data-excepcion ="${true}"
+                                    style="width:40px;height:40px;border-radius:5px;
+                                            background-color:${response.horario_excepcion.color}50;color:${response.horario_excepcion.color};
+                                            border:1px solid ${response.horario_excepcion.color};
+                                            display:flex;align-items:center;justify-content:center;">
+                                    <span>${num2}</span>
+                                </div>
+                            `;
+                            $('.horarios-old').append(div);
+                        }
+
+                        // Div leyenda derecha — uno por cada horario base distinto
+                        let horariosExistentes = $('.horarios-new div').map(function() {
+                            return $(this).data('new');
+                        }).get();
+                        let existeLeyenda2 = horariosExistentes.includes(parseInt(response.excepcion.id_tipo_horario));
+
+                        if (!existeLeyenda2) {
+                            const div2 = `
+                                <div data-name="${response.excepcion.nombre}" data-color="${response.excepcion.color}" data-new="${response.excepcion.id_tipo_horario}"
+                                    style="width:40px;height:40px;border-radius:5px;
+                                            background-color:${response.excepcion.color};color:${response.excepcion.color};
+                                            border:1px solid ${response.excepcion.color};
+                                            display:flex;align-items:center;justify-content:center;">
+                                    <span>${num2}</span>
+                                </div>
+                            `;
+
+                            const cardHorario = `
+                                <div data-index="${idHorarioBase}" data-color="${e.color}"
+                                    style="background-color:${e.color}20;color:${e.color};
+                                            border:2px solid ${e.color}90"
+                                    class="card-menu-horarios">
+                                    <span>${e.nombre}</span>
+                                    <div class="descripcion">${e.descripcion}</div>
+                                </div>
+                            `;
+
+                            $contenedor.append(cardHorario);
+                            $('.horarios-new').append(div2);
+                        }
+                    },
+                    complete: function () {
+                        $('#loaderSidebarCambioHorario').hide();
+                    }
+                });
+
+            } else {
+                // Solo actualizar contador
+                const num2 = $(`.numero-dia.dia-seleccionado[data-name="${$(this).data('name')}"]`).length;
+                $(`.horarios-old div[data-name="${$(this).data('name')}"] span`).text(num2);
+            }
+
+            $('#sidebar-cambio-horario').addClass('active');
+            $('#calendario, #contenedor-loader-horario').addClass('seleccion-dia');
+            $('#masInstalacionesCambiar').prop('disabled', false);
+            $('#btn-guardar-cambio-seleccion').removeClass('btn-primary-personal-disabled');
+
+            lockScroll();
+
+            return; // ⛔ NO continúa con la lógica normal
+        }
 
         if($(this).data('index') === "") {
             return;
@@ -1773,6 +1773,12 @@ if ($(this).data('exception') === true) {
         e.preventDefault();
 
         $('.horarios-new').empty();
+
+        if ($('#masInstalacionesCambiar').is(':checked')) {
+            $('#masInstalacionesCambiar').prop('checked', false);
+            $('#sidebar-cambio-horario .contenedor-instalaciones').empty();
+
+        }
 
         let colorFondo = $(this).data('color');
         let idNuevoHorario = $(this).data('index');
