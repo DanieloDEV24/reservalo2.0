@@ -2026,3 +2026,16 @@ span.estado.no-disponible{
     line-height: 1.5;
     margin: 0 0 1.75rem;
 }
+
+header.header-instalaciones {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: start;
+    /* padding: 0rem;
+    margin-top: 0rem;
+    padding-top: 0rem !important; */
+    padding-left: 3% !important;
+    padding-top: 1% !important;
+    padding-bottom: .5% !important;
+}

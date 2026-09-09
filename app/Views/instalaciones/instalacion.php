@@ -37,32 +37,32 @@
 <div class="paginaInstalacion">
     <div class="infoInstalacion">
         <div class="categoriasInstalacion">
-            <span class="categoria-principal"><?=$instalacion["categoria_name"]?></span>
-            <?=($instalacion["categoria_opc_name"] !== null) ? '<span class="categoria-secundaria">'.$instalacion["categoria_opc_name"].'</span>' : ''?>
+            <span class="categoria-principal"><?=isset($instalacion["categoria_name"]) ? $instalacion["categoria_name"] : ''?></span>
+            <?=isset($instalacion["categoria_opc_name"]) && $instalacion["categoria_opc_name"] !== null ? '<span class="categoria-secundaria">'.$instalacion["categoria_opc_name"].'</span>' : ''?>
         </div>
-        <h1 class="title-page"><?=$instalacion["nombre"]?></h1>
-        <p class="description-page"><?=$instalacion["descripcion"]?></p>
+        <h1 class="title-page"><?=isset($instalacion["nombre"]) ? $instalacion["nombre"] : ''?></h1>
+        <p class="description-page"><?=isset($instalacion["descripcion"]) ? $instalacion["descripcion"] : ''?></p>
         
         <div class="info-grid">
 
             <div class="info-card">
                 <div class="info-label">Hay pistas</div>
-                <div class="info-value"><?=($instalacion["no_pistas"] == 1)? "No disponible" : "Sí disponible"?></div>
+                <div class="info-value"><?=isset($instalacion["no_pistas"]) ? ($instalacion["no_pistas"] == 1 ? "No disponible" : "Sí disponible") : ''?></div>
             </div>
 
             <div class="info-card">
                 <div class="info-label">Reserva completa</div>
-                <div class="info-value"><?=($instalacion["puede_completo"] == 0)? "No disponible" : "Sí disponible"?></div>
+                <div class="info-value"><?=isset($instalacion["puede_completo"]) ? ($instalacion["puede_completo"] == 0 ? "No disponible" : "Sí disponible") : ''?></div>
             </div>
 
             <div class="info-card">
                 <div class="info-label">Iluminación</div>
-                <div class="info-value"><?=($instalacion["iluminacion"] == 0)? "No disponible" : "Sí disponible"?></div>
+                <div class="info-value"><?=isset($instalacion["iluminacion"]) ? ($instalacion["iluminacion"] == 0 ? "No disponible" : "Sí disponible") : ''?></div>
             </div>
 
             <div class="info-card">
                 <div class="info-label">Material</div>
-                <div class="info-value"><?=($instalacion["material"] == 0)? "No disponible" : "Sí disponible"?></div>
+                <div class="info-value"><?=isset($instalacion["material"]) ? ($instalacion["material"] == 0 ? "No disponible" : "Sí disponible") : ''?>
             </div>
 
         </div>
@@ -71,22 +71,24 @@
     <div class="pistasInstalacion">
         <h2 class="title-page">Pistas</h1>
         <div class="container-pistas-instalacion">
+            <?php if(isset($pistas) && count($pistas) > 0): ?>
             <?php foreach($pistas as $pista) : ?>
-                <div class="card-instalacion" data-index="<?=$pista["id_pista"]?>" data-sinHorario="<?= (intval($instalacion["tipo_reserva"]) === 1) ? 1 : 0 ?>" data-completa="<?=$pista["completa"]?>">
+                <div class="card-instalacion" data-index="<?=$pista["id_pista"]?>" data-sinHorario="<?=(isset($instalacion["tipo_reserva"]) && intval($instalacion["tipo_reserva"]) === 1) ? 1 : 0 ?>" data-completa="<?=$pista["completa"]?>">
                     <div class="card-image" style="background: url('<?=base_url()."images/".$pista["imagen1"]?>')"></div>
-                    <div class="category"> <?=$instalacion["nombre"]?> </div>
-                    <div class="heading"> <?=$pista["nombre_pista"]?></div>
-                    <span id="comunity"><i class="bi bi-people"></i>&nbsp;<?=$pista["capacidad_pista"]?>&nbsp;personas</span>
+                    <div class="category"> <?= isset($instalacion["nombre"]) ? $instalacion["nombre"] : '' ?> </div>
+                    <div class="heading"> <?= isset($pista["nombre_pista"]) ? $pista["nombre_pista"] : '' ?> </div>
+                    <span id="comunity"><i class="bi bi-people"></i>&nbsp;<?= isset($pista["capacidad_pista"]) ? $pista["capacidad_pista"] : '' ?>&nbsp;personas</span>
                     <div class="button">
-                        <a href="" class="btn-primary-personal btn-panel-reservas <?= (intval($usuario["usuario_baja"]) === 1) ? "btn-primary-personal-disabled" : ""?>" >Hacer reserva &nbsp;<i class="bi bi-arrow-right"></i></a>
-                        <div class="precio-pista"><span><?=$pista["precio_pista"]?></span><i class="bi bi-currency-euro"></i>/<?= (intval($instalacion["tipo_reserva"]) === 1) ? "dia" : "hora" ?></div>
+                        <a href="" class="btn-primary-personal btn-panel-reservas <?=  (isset($usuario["usuario_baja"]) && intval($usuario["usuario_baja"]) === 1) ? "btn-primary-personal-disabled" : ""?>" >Hacer reserva &nbsp;<i class="bi bi-arrow-right"></i></a>
+                        <div class="precio-pista"><span><?= isset($pista["precio_pista"]) ? $pista["precio_pista"] : '' ?></span><i class="bi bi-currency-euro"></i>/<?= (isset($instalacion["tipo_reserva"]) && intval($instalacion["tipo_reserva"]) === 1) ? "dia" : "hora" ?></div>
                     </div>
                     <!-- Aqui debo poner la parte del estado -->
                 </div>
             <?php endforeach; ?>
+            <?php endif; ?>
         </div>
     </div>
 
 </div>
 
-<?=$modalReservaPista?>
+<?=isset($modalReservaPista) ? $modalReservaPista : ''?>
