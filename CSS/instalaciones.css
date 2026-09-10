@@ -122,7 +122,8 @@
   padding-top: 8%;
 }
 
-.card-instalacion .button a {
+.card-instalacion .button a,
+.card-instalacion .button button {
   padding: 6px 12px;
   font-size: 1.2em;
   width: 61%;
@@ -304,7 +305,7 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
-.div-numero-instalaciones h1
+.div-numero-instalaciones h2
 {
   font-size: 3rem;
   font-weight: bold;

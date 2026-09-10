@@ -32,6 +32,7 @@
 .header-card-permisos {
     display: flex;
     align-items: center;
+    justify-content: start;
     gap: 2% !important;
     padding: 3% !important;
 }
@@ -41,8 +42,8 @@
     font-size: 1.3rem;
 }
 
-.header-card-permisos h3 {
-    font-size: 1.3rem;
+.header-card-permisos h2 {
+    font-size: 1.3rem !important;
     margin: 0% !important;
 }
 
