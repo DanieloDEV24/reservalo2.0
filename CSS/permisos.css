@@ -330,3 +330,13 @@ table.table-base-juridica td {
 .legislacion-aplicable .reclamaciones p {
     margin: 0%;
 }
+
+.header-cookies {
+    padding-left: 0% !important;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: start;
+    padding-top: 1% !important;
+    padding-bottom: .5% !important;
+}

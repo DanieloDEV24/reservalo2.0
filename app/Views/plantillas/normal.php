@@ -197,7 +197,9 @@
       </label>
     </div>
   </header>
-   <?=$view?>
+  <main>
+    <?=isset($view) ? $view : ''?>
+  </main>
   <footer>
 
     <div class="principal-footer">

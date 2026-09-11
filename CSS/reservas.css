@@ -265,5 +265,13 @@ button.hora-pasada:hover {
     padding: 2%;
 }
 
-
+.header-reservas {
+    padding-left: 0% !important;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: start;
+    padding-top: 1% !important;
+    padding-bottom: .5% !important;
+}
 

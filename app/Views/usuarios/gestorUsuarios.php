@@ -48,16 +48,16 @@
   });
 </script>
 
-<div class="pagina-gestor-usuarios">
+<section class="pagina-gestor-usuarios">
 
-    <div style="padding-left: 3%; padding-top: 1%; padding-bottom: .5%;">
+    <header class="header-instalaciones">
         <h1 class="title-page">Gestor Usuarios</h1>
         <p class="description-page">Gestiona fácilmente todas los usuarios que pueden acceder a las instalaciones del municipio: crea, da de baja y organiza a todos los usuarios de forma rápida y sencilla.</p>
-    </div>
+    </header>
 
-      <div class="row d-flex justify-content-end align-items-center p-4 pb-0 pt-0 filtrado-gestor-usuarios">
+      <div class="row d-flex justify-content-end align-items-center p-4 pb-0 pt-0 filtrado-gestor-usuarios" role="search">
         <div class="col-3 d-flex align-items-center gap-2 justify-content-end">
-          <label for="">Baja </label>
+          <label for="baja-filtro-usuario">Baja </label>
             <label class="toggle-switch">
               <input type="checkbox" class="baja-usuario" id="baja-filtro-usuario">
               <div class="toggle-switch-background">
@@ -67,15 +67,16 @@
         </div>
         <div class="col-4">
           <div class="input-group">
-            <span class="input-group-text" id="filtro-usuarios"><i class="bi bi-search"></i></span>
+            <span class="input-group-text" id="filtro-usuarios"><i class="bi bi-search" aria-hidden="true"></i></span>
             <input type="text" class="form-control p-2" placeholder="Introduzca el nombre, email o telf" aria-label="Introduzca el nombre, email o telf" aria-describedby="filtro-usuarios" id="input-filtro-usuarios">
           </div>
         </div>
       </div>
 
     <div class="divTable">
-        <?php if (count($usuarios) > 0): ?>
+        <?php if (isset($usuarios) && count($usuarios) > 0): ?>
             <table class="table table-hover" id="tabla-usuarios" > 
+                <caption class="visually-hidden">Listado de usuarios registrados</caption>
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -84,7 +85,7 @@
                         <th scope="col">Telf</th>
                         <th scope="col">Ult. Mod</th>
                         <th scope="col">Accciones</th>
-                        <th></th>
+                        <th scope="col"><span class="visually-hidden">Estado</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -101,27 +102,27 @@
                             <td><?= ($usuario["token_date"] === null) ? "---" : date("d/m/Y H:i:s", strtotime($usuario["token_date"]));  ?></td>
                             <td>
                                 <div class="dropdown" style="max-width: 200px;">
-                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <i class="bi bi-three-dots-vertical"></i>
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Acciones del usuario">
+                                        <i class="bi bi-three-dots-vertical" aria-hidden="true"></i>
                                     </button>
 
                                     <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item btn-borrar-usuario" href="">Borrar &nbsp;<i class="bi bi-trash3"></i></a></li>
-                                        <li><a class="dropdown-item btn-ver-reservas" href="">Reservas <i class="bi bi-bookmark-check-fill"></i></a></li>
-                                        <li><a class="dropdown-item btn-editar-usuario" href="">Editar <i class="bi bi-pencil-fill"></i></a></li>
-                                        <li><a class="dropdown-item <?= (intval($usuario["usuario_baja"]) === 0 ) ? "btn-baja-usuario" : "btn-alta-usuario" ?>"  href=""><?= (intval($usuario["usuario_baja"]) === 0 ) ? "Dar de baja" : "Dar de alta" ?> <?= (intval($usuario["usuario_baja"]) === 0 ) ? '<i class="bi bi-x-lg"></i>' : '<i class="bi bi-check-lg"></i>' ?></a></li>
+                                        <li><button type="button" class="dropdown-item btn-borrar-usuario">Borrar &nbsp;<i class="bi bi-trash3" aria-hidden="true"></i></button></li>
+                                        <li><button type="button" class="dropdown-item btn-ver-reservas">Reservas <i class="bi bi-bookmark-check-fill" aria-hidden="true"></i></button></li>
+                                        <li><button type="button" class="dropdown-item btn-editar-usuario">Editar <i class="bi bi-pencil-fill" aria-hidden="true"></i></button></li>
+                                        <li><button type="button" class="dropdown-item <?= (intval($usuario["usuario_baja"]) === 0 ) ? "btn-baja-usuario" : "btn-alta-usuario" ?>"><?= (intval($usuario["usuario_baja"]) === 0 ) ? "Dar de baja" : "Dar de alta" ?> <?= (intval($usuario["usuario_baja"]) === 0 ) ? '<i class="bi bi-x-lg" aria-hidden="true"></i>' : '<i class="bi bi-check-lg" aria-hidden="true"></i>' ?></button></li>
                                     </ul>
                                 </div>
                             </td>
                             <td>
                                 <?php if(intval($usuario["usuario_baja"]) === 1): ?>
-                                    <i  class="bi bi-info-circle"
+                                    <i  class="bi bi-info-circle" role="img" aria-label="Este usuario está de baja"
                                         data-bs-toggle="tooltip" data-bs-placement="top"
                                         data-bs-custom-class="custom-tooltip"
                                         data-bs-title="Este usuario está de baja">
                                     </i>
                                 <?php elseif(intval($usuario["reservas_pasadas"]) >= 3) : ?>
-                                    <i class="bi bi-info-circle"
+                                    <i class="bi bi-info-circle" role="img" aria-label="Este usuario lleva ya 3 o más reservas sin asistir"
                                         data-bs-toggle="tooltip" data-bs-placement="top"
                                         data-bs-custom-class="custom-tooltip"
                                         data-bs-title="Este usuario lleva ya 3 o más reservas sin asistir">
@@ -136,8 +137,8 @@
         <?php endif; ?>
     </div>
 
-</div>
+</section>
 
-<?= $modalBorrarUsuario ?>
-<?= $modalReservasUsuario ?>
-<?= $modalInfoUsuario ?>
+<?= isset($modalBorrarUsuario) ? $modalBorrarUsuario : '' ?>
+<?= isset($modalReservasUsuario) ? $modalReservasUsuario : '' ?>
+<?= isset($modalInfoUsuario) ? $modalInfoUsuario : '' ?>
