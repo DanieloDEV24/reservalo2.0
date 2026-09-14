@@ -308,81 +308,77 @@ $(document).ready(() => {
         });
     })
 
-    $(document).on('click', '.btn-horario', function (e) {
+$(document).on('click', '.btn-horario', function (e) {
 
-        e.preventDefault()
+    e.preventDefault()
 
-        if ($('.btn-horario.seleccionado').length === 0) {
+    if ($(this).hasClass('horaSeleccionada')) {
+        $(this).removeClass('horaSeleccionada');
+
+        const horaActual = $(this).data('hora');
+        const fechaSeleccionada = $('.dia-calendario.seleccionado').data('fecha');
+        const pistaId = $('#pistaId').val();
+
+        // Filtrar el array excluyendo el elemento que coincide
+        horasAnt = horasAnt.filter(hora =>
+            !(hora.hora === horaActual &&
+                hora.fecha === fechaSeleccionada &&
+                hora.pista === pistaId)
+        );
+
+        if ($('.btn-horario.horaSeleccionada').length === 0) {
             $('#btnConfirmarReserva').prop('disabled', true);
         }
 
+        return
+    }
 
-        if ($(this).hasClass('horaSeleccionada')) {
-            $(this).removeClass('horaSeleccionada');
+    let hora = $(this).data('hora');
+    let fecha = $('.dia-calendario.seleccionado').data('fecha');
+    let pista = $('#pistaId').val();
 
-            const horaActual = $(this).data('hora');
-            const fechaSeleccionada = $('.dia-calendario.seleccionado').data('fecha');
-            const pistaId = $('#pistaId').val();
+    $(this).addClass('horaSeleccionada');
 
-            // Filtrar el array excluyendo el elemento que coincide
-            horasAnt = horasAnt.filter(hora =>
-                !(hora.hora === horaActual &&
-                    hora.fecha === fechaSeleccionada &&
-                    hora.pista === pistaId)
-            );
+    $.ajax({
+        type: "POST",
+        url: `${BASE_URL}index.php/comprobarReservas`,
+        data: { fecha: fecha, hora: hora, pista: pista },
+        dataType: "JSON",
+        success: function (response) {
+            if (response.success === true) {
+                if (response.hayReserva === false) {
+                    $('.alertHoraNoDisponible').hide();
+                    $('.contenedor-alert-reservas').addClass('d-none')
+                    $('#btnConfirmarReserva').prop('disabled', false);
+                    horasAnt.push({ fecha: fecha, hora: hora, pista: pista })
 
-            return
-        }
+                    if ($('.card-precio').find('.card-precio-total').length === 0) {
+                        let div = `<div class="card-precio-total">
+                                        <p class="text-muted small mb-1">Precio total</p>
+                                        <h2 class="mb-0">
+                                        <span class="fw-bold" id="precio-total">${$('#precio-pista').text()}</span>
+                                        <span class="fs-5 text-secondary">€</span>
+                                        </h2>
+                                    </div>`;
 
-
-
-        let hora = $(this).data('hora');
-        let fecha = $('.dia-calendario.seleccionado').data('fecha');
-        let pista = $('#pistaId').val();
-
-        $(this).addClass('horaSeleccionada');
-
-        $.ajax({
-            type: "POST",
-            url: `${BASE_URL}index.php/comprobarReservas`,
-            data: { fecha: fecha, hora: hora, pista: pista },
-            dataType: "JSON",
-            success: function (response) {
-                if (response.success === true) {
-                    if (response.hayReserva === false) {
-                        $('.alertHoraNoDisponible').hide();
-                        $('.contenedor-alert-reservas').addClass('d-none')
-                        $('#btnConfirmarReserva').prop('disabled', false);
-                        horasAnt.push({ fecha: fecha, hora: hora, pista: pista })
-
-                        if ($('.card-precio').find('.card-precio-total').length === 0) {
-                            let div = `<div class="card-precio-total">
-                                            <p class="text-muted small mb-1">Precio total</p>
-                                            <h2 class="mb-0">
-                                            <span class="fw-bold" id="precio-total">${$('#precio-pista').text()}</span>
-                                            <span class="fs-5 text-secondary">€</span>
-                                            </h2>
-                                        </div>`;
-
-                            $('.card-precio').append(div)
-                        }
-                        else if ($('.card-precio').find('.card-precio-total').length > 0) {
-                            let precio = parseInt($('#precio-pista').text() * horasAnt.length)
-                            $('#precio-total').text(precio)
-                        }
+                        $('.card-precio').append(div)
                     }
-                    else {
-                        $(this).removeClass('horaSeleccionada');
-                        $('.contenedor-alert-reservas').removeClass('d-none')
-                        $('.alertHoraNoDisponible').show();
-                        $('.alert-no-usuario').hide()
+                    else if ($('.card-precio').find('.card-precio-total').length > 0) {
+                        let precio = parseInt($('#precio-pista').text() * horasAnt.length)
+                        $('#precio-total').text(precio)
                     }
                 }
+                else {
+                    $(this).removeClass('horaSeleccionada');
+                    $('.contenedor-alert-reservas').removeClass('d-none')
+                    $('.alertHoraNoDisponible').show();
+                    $('.alert-no-usuario').hide()
+                }
             }
-        });
+        }
+    });
 
-
-    })
+})
 
     $(document).on('change', '#select-usuarios', function () {
 

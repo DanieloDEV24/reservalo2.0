@@ -156,10 +156,10 @@ class Instalaciones extends BaseController
                     'capacidad_pista' => $pista->capacidadPista,
                     'precio_pista' => $pista->precioPista,
                     'completa' => ($pista->id === 'completo') ? 1 : 0,
-                    'imagen1' => $imagenesGuardadas[0] ?? null,
-                    'imagen2' => $imagenesGuardadas[1] ?? null,
-                    'imagen3' => $imagenesGuardadas[2] ?? null,
-                    'imagen4' => $imagenesGuardadas[3] ?? null,
+                    'imagen1' => $imagenesGuardadas[0] ?? 'predefinida.png',
+                    'imagen2' => $imagenesGuardadas[1] ?? 'predefinida.png',
+                    'imagen3' => $imagenesGuardadas[2] ?? 'predefinida.png',
+                    'imagen4' => $imagenesGuardadas[3] ?? 'predefinida.png',
                     'pista_unica' => ($noPistas) ? 1 : 0
                 ];
                 $instalacionesModel->createPistas($dataPista);
@@ -304,10 +304,10 @@ class Instalaciones extends BaseController
                 'nombre_pista'     => $post["nombre_pista"] ?? null,
                 'capacidad_pista'  => $post["capacidad_pista"] ?? null,
                 'precio_pista'     => $post["precio_pista"] ?? null,
-                'imagen1'          => $imagenesGuardadas[0] ?? null,
-                'imagen2'          => $imagenesGuardadas[1] ?? null,
-                'imagen3'          => $imagenesGuardadas[2] ?? null,
-                'imagen4'          => $imagenesGuardadas[3] ?? null,
+                'imagen1'          => $imagenesGuardadas[0] ?? 'predefinida.png',
+                'imagen2'          => $imagenesGuardadas[1] ?? 'predefinida.png',
+                'imagen3'          => $imagenesGuardadas[2] ?? 'predefinida.png',
+                'imagen4'          => $imagenesGuardadas[3] ?? 'predefinida.png',
             ];
 
             // --- 3️⃣ Actualizamos la pista ---
@@ -503,10 +503,10 @@ class Instalaciones extends BaseController
 
             // Inicializamos array para guardar nombres de imágenes nuevas (si se suben)
             $imagenesGuardadas = [
-                'imagen1' => null,
-                'imagen2' => null,
-                'imagen3' => null,
-                'imagen4' => null,
+                'imagen1' => 'predefinida.png',
+                'imagen2' => 'predefinida.png',
+                'imagen3' => 'predefinida.png',
+                'imagen4' => 'predefinida.png',
             ];
 
             // Procesamos imágenes solo si existen (no obligatorias)

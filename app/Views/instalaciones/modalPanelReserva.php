@@ -37,7 +37,7 @@
       </div>
 
       <!-- Body -->
-      <div class="modal-body" style="padding: 5%;" data-tipoReserva="<?= $instalacion["tipo_reserva"] ?>">
+      <div class="modal-body" style="padding: 5%;" data-tipoReserva="<?= isset($instalacion["tipo_reserva"]) ? $instalacion["tipo_reserva"] : '' ?>">
 
         <!-- Carrusel de Imágenes -->
         <div id="carouselPista" class="carousel slide" style="margin-bottom: 5%;" data-bs-ride="carousel">
@@ -90,7 +90,7 @@
 
 
         <!-- Calendario Visual -->
-        <?php if (intval($instalacion["tipo_reserva"]) === 0) : ?>
+        <?php if (isset($instalacion["tipo_reserva"]) && intval($instalacion["tipo_reserva"]) === 0) : ?>
           <div class="row mb-4">
 
             <div class="col-8">
@@ -213,7 +213,7 @@
 </div>
 
 <script>
-  const tipo_reserva = <?= intval($instalacion["tipo_reserva"]) ?>
+  const tipo_reserva = <?= isset($instalacion["tipo_reserva"]) ? intval($instalacion["tipo_reserva"]) : '' ?>
 
   // Variables globales
   let fechaSeleccionada = null;

@@ -53,18 +53,26 @@ function renderActividades() {
   const slice = actividades.slice(inicio, fin);
 
   // Renderizar items
-  const lista = document.getElementById('lista-actividades');
-  lista.innerHTML = slice.map(a => `
-    <div class="actividad-reciente">
-      <div class="informacion-actividad">
-        <div class="d-flex align-items-center gap-2">
-          <div class="leyenda-actividad" style="background-color: ${a.color};"></div>
-          <p class="descripcion">${a.descripcion}</p>
-        </div>
-        <p class="fecha">${a.fecha}</p>
+const lista = document.getElementById('lista-actividades');
+
+function formatearFecha(fecha) {
+  const [parteFecha, parteHora] = fecha.split(' ');
+  const [anio, mes, dia] = parteFecha.split('-');
+  const hora = parteHora.slice(0, 5); // "14:12"
+  return `${dia}/${mes}/${anio} ${hora}`;
+}
+
+lista.innerHTML = slice.map(a => `
+  <div class="actividad-reciente">
+    <div class="informacion-actividad">
+      <div class="d-flex align-items-center gap-2">
+        <div class="leyenda-actividad" style="background-color: ${a.color};"></div>
+        <p class="descripcion">${a.descripcion}</p>
       </div>
+      <p class="fecha">${formatearFecha(a.fecha)}</p>
     </div>
-  `).join('');
+  </div>
+`).join('');
 
   // Info y botones
   document.getElementById('pag-info').textContent = 

@@ -829,7 +829,7 @@ $(document).ready(() => {
             success: function (response) {
 
                 // Ponemos la imagen de la instalación en el "header" del modal
-                $('#imagenVerInstalacion').css('background-image', `url(/reservalo2.0/images/${response.pistas[0].imagen1})`);
+                $('#imagenVerInstalacion').css('background-image', `url(${BASE_URL}/images/${response.pistas[0].imagen1})`);
 
                 console.log(response)
 
@@ -2848,7 +2848,7 @@ $(document).ready(() => {
             response.instalaciones.forEach(instalacion => {
                 let card = $(`
                     <div class="card-instalacion" data-index="${instalacion.id_instalacion}">
-                        <div class="card-image" style="background: url('images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
+                        <div class="card-image" style="background: url('${BASE_URL}images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
                         <div class="category">${instalacion.categoria_name}</div>
                         <div class="heading">${instalacion.nombre}</div>
                         <div class="opciones">
@@ -2900,7 +2900,7 @@ $(document).ready(() => {
                             </svg>
                             Reintentar
                         </button>
-                        <button class="btn-secondary-personal" style="width: 20%;" id="btnBorrarFiltrosGestorInstalaciones">
+                        <button class="btn-secondary-personal" style="width: 20%;" id="btnBorrarFiltrosInstalaciones">
                             <i class="bi bi-trash2"></i> Limpiar filtros
                         </button>
                     </div>
@@ -3000,7 +3000,7 @@ $(document).ready(() => {
             response.instalaciones.forEach(instalacion => {
                 let card = $(`
                     <div class="card-instalacion" data-index="${instalacion.id_instalacion}">
-                        <div class="card-image" style="background: url('images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
+                        <div class="card-image" style="background: url('${BASE_URL}images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
                         <div class="category">${instalacion.categoria_name}</div>
                         <div class="heading">${instalacion.nombre}</div>
                         <div class="opciones">
@@ -3127,7 +3127,7 @@ $(document).ready(() => {
 
                 let card = $(`
                     <div class="card-instalacion" data-index="${instalacion.id_instalacion}">
-                        <div class="card-image" style="background: url('images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
+                        <div class="card-image" style="background: url('${BASE_URL}images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
                         <div class="category">${instalacion.categoria_name}</div>
                         <div class="heading">${instalacion.nombre}</div>
                         <div class="opciones">
@@ -3197,6 +3197,80 @@ $(document).ready(() => {
             if($('#siMaterial').is(':checked')) $('#siMaterialInstalaciones').focus();
             if($('#noMaterial').is(':checked')) $('#noMaterialInstalaciones').focus();
         }
+    })
+
+    $(document).on('click', '#btnBorrarFiltrosInstalaciones', function(){
+
+        $('#filtradoNombreInstalaciones').val('');
+        $('#filtradoCategoriaInstalaciones').val(-1);
+        $('#siPistasInstalaciones').prop('checked', false)
+        $('#noPistasInstalaciones').prop('checked', false)
+        $('#siCompletaInstalaciones').prop('checked', false)
+        $('#noCompletaInstalaciones').prop('checked', false)
+        $('#siLuzInstalaciones').prop('checked', false)
+        $('#noLuzInstalaciones').prop('checked', false)
+        $('#siMaterialInstalaciones').prop('checked', false)
+        $('#noMaterialInstalaciones').prop('checked', false)
+
+
+        $('#filtrosInstalaciones').empty();
+
+        $.ajax({
+        type: "POST",
+        url: `${BASE_URL}index.php/instalaciones`,
+        data: { filterInstalaciones: null },
+        dataType: "json",
+        beforeSend: function(){
+            $('#loaderInstalaciones').show()
+            $('#contenedor-instalaciones .card-instalacion').addClass('card-cargando');
+        },
+        success: function (response) {
+            let body = $('#contenedor-instalaciones');
+            body.empty();
+
+            let instalaciones = response.instalaciones;
+
+            instalaciones.forEach(instalacion => {
+
+                let card = $(`
+                    <div class="card-instalacion" data-index="${instalacion.id_instalacion}">
+                        <div class="card-image" style="background: url('${BASE_URL}images/${instalacion.imagen1}'); background-size: cover; background-position: center;"></div>
+                        <div class="category">${instalacion.categoria_name}</div>
+                        <div class="heading">${instalacion.nombre}</div>
+                        <div class="opciones">
+                            ${instalacion.iluminacion == 1 ? '<span>Iluminación</span>' : ''}
+                            ${instalacion.puede_completo == 1 ? '<span>Reserva completa</span>' : ''}
+                            ${instalacion.no_pistas == 1 ? '<span>No tiene pistas</span>' : ''}
+                            ${instalacion.material == 1 ? '<span>Material</span>' : ''}
+                        </div>
+                        <div class="button">
+                            <a href="<?= base_url() ?>index.php/instalacion/${instalacion.id_instalacion}" class="btn-primary-personal">
+                                Ir a instalación &nbsp;<i class="bi bi-arrow-right"></i>
+                            </a>
+                        </div>
+                        <span class="estado ${instalacion.estado == 0 ? 'disponible' : 'no-disponible'}">
+                            ${instalacion.estado == 0 ? 'disponible' : 'no disponible'}
+                        </span>
+                    </div>
+                `);
+
+                body.append(card);
+            });
+
+            // Reinicializar tooltips de Bootstrap (si se usan)
+            $('#loaderInstalaciones').hide()
+            $('#contenedor-instalaciones .card-instalacion').removeClass('card-cargando');
+        },
+        complete: function(){
+            $('#loaderInstalaciones').hide()
+            $('#contenedor-instalaciones .card-instalacion').removeClass('card-cargando');
+        },
+        error: function() {
+            console.error("Error al obtener las instalaciones.");
+            $('#loaderInstalaciones').hide()
+            $('#contenedor-instalaciones .card-instalacion').removeClass('card-cargando');
+        }
+        });
     })
 
 

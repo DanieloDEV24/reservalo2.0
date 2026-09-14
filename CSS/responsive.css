@@ -62,7 +62,7 @@
     }
 
     .contenedor-reservas {
-        grid-template-columns: repeat(auto-fill, 428px);
+        grid-template-columns: repeat(auto-fit, 575px);
     }
 
     .barraBusqueda {

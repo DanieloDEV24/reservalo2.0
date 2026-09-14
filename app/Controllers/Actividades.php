@@ -254,7 +254,7 @@ class Actividades extends BaseController
                 "precio"                    => $precio, 
                 "estado"                    => $estado, 
                 "lugar"                     => $lugar, 
-                "imagen"                    => ($imagenGuardada === "") ? "predefinida-actividad" : $imagenGuardada, 
+                "imagen"                    => ($imagenGuardada === "") ? "predefinida-actividad.png" : $imagenGuardada, 
                 "duracion"                  => $duracion, 
                 "tipo_actividad"            => $tipo_actividad, 
                 "plazas_ocupadas"           => $plazas_ocupadas,
@@ -346,7 +346,7 @@ class Actividades extends BaseController
                 mkdir($rutaDestino, 0755, true);
             }
             
-            $imagenGuardada = "";
+            $imagenGuardada = "predefinida-actividad.png";
 
             if(isset($_FILES['imagen'])) {
                 
