@@ -122,9 +122,13 @@ Software comercial. Para adquirir Reservalo, solicitar una demo o pedir personal
 
 ## 👤 Autor
 
-**Daniel Ruiz**
+**Daniel Ruiz Soto**
 
 - GitHub: [@DanieloDEV24](https://github.com/DanieloDEV24)
 - Email: danielruizdeveloper@gmail.com
-- Instagram:
-- LinkedIn
+- Instagram: [danielo.dev](https://www.instagram.com/danielo.dev24/?hl=es)
+- LinkedIn: [Daniel Ruiz Soto](https://www.linkedin.com/in/daniel-ruiz-soto-831885315/)
+
+## 📄 Licencia
+
+Distribuido bajo licencia MIT. Consulta el archivo `LICENSE` para más información.
