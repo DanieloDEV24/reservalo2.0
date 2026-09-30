@@ -9,7 +9,7 @@
 
 
 
-![Preview](./docs/preview.png)
+![Mockup](./images/mockup.png)
 <!-- Sustituye por una captura de la web -->
 
 ---
